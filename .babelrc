@@ -1,0 +1,28 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@assets/*": "./src/assets/*",
+          "@components/*": "./src/components/*",
+          "@generated/*": "./src/generated/*",
+          "@layout": "./src/layout",
+          "@theme": "./src/theme",
+          "@pages/*": "./src/pages/*",
+          "@screens/*": "./src/screens/*",
+          "@services/*": "./src/services/*",
+          "@shared/*": "./src/shared/*",
+          "@typeDefs/*": "./src/types/*",
+          "@public/*": "./public/*",
+          "@utils/*": "./src/utils/*",
+          "@theme/*": "./src/theme/*",
+          "@data/*": "./src/data/*",
+          "@constants": "./src/constants.ts"
+        }
+      }
+    ]
+  ]
+}
