@@ -1,11 +1,42 @@
-import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  createHttpLink,
+  InMemoryCache,
+  NormalizedCacheObject,
+} from "@apollo/client";
+import { useMemo } from "react";
 
-const client = new ApolloClient({
-  ssrMode: true,
-  link: createHttpLink({
-    uri: "http://localhost:1337/graphql",
-  }),
-  cache: new InMemoryCache(),
-});
+let apolloClient: ApolloClient<NormalizedCacheObject>;
 
-export default client;
+function createApolloClient() {
+  return new ApolloClient({
+    link: createHttpLink({
+      uri: "http://192.168.0.227:1337/graphql",
+    }),
+    ssrMode: typeof window === "undefined",
+    cache: new InMemoryCache(),
+  });
+}
+
+export const initializeApollo = (
+  initialState: NormalizedCacheObject = null
+): ApolloClient<NormalizedCacheObject> => {
+  // eslint-disable-next-line no-underscore-dangle
+  const _apolloClient =
+    apolloClient === undefined ? createApolloClient() : apolloClient;
+
+  if (initialState) {
+    const existingCache = _apolloClient.extract();
+    _apolloClient.cache.restore({ ...existingCache, ...initialState });
+  }
+
+  if (typeof window === "undefined") return _apolloClient;
+
+  if (!apolloClient) apolloClient = _apolloClient;
+  return _apolloClient;
+};
+
+export const useApollo = (
+  initialState: NormalizedCacheObject
+): ApolloClient<NormalizedCacheObject> =>
+  useMemo(() => initializeApollo(initialState), [initialState]);

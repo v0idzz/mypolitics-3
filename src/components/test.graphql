@@ -1,8 +1,0 @@
-query Test {
-    posts {
-        id
-        title {
-            pl
-        }
-    }
-}

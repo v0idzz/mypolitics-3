@@ -24,7 +24,12 @@ const Head: React.FC = () => {
 
   const fontsPreload = R.map(toFontPreloadLink, fontsPreloadPaths);
 
-  return <NextHead>{fontsPreload}</NextHead>;
+  return (
+    <NextHead>
+      <title>myPolitics</title>
+      {fontsPreload}
+    </NextHead>
+  );
 };
 
 export default Head;

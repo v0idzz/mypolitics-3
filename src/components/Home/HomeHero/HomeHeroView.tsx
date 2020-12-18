@@ -9,7 +9,7 @@ import {
   Illustration,
   SubTitle,
   ButtonsWrapper,
-  Wrapper
+  Wrapper,
 } from "./HomeHeroStyle";
 
 const HeroView: React.FC = () => {
@@ -18,22 +18,18 @@ const HeroView: React.FC = () => {
   return (
     <Wrapper>
       <HeroSection>
-        <>
-          <Content>
-            <Title>
-              <Trans
-                i18nKey="home:hero.title"
-                components={[<Title key="0" />, <span key="1" />]}
-              />
-            </Title>
-            <SubTitle>{t("hero.subTitle")}</SubTitle>
-            <ButtonsWrapper>
-              <Button showShadow>{t("hero.quizLink")}</Button>
-              <Button background="black">{t("hero.learnMore")}</Button>
-            </ButtonsWrapper>
-          </Content>
-          <Illustration />
-        </>
+        <Content>
+          <Trans
+            i18nKey="home:hero.title"
+            components={[<Title key="0" />, <span key="1" />]}
+          />
+          <SubTitle>{t("hero.subTitle")}</SubTitle>
+          <ButtonsWrapper>
+            <Button showShadow>{t("hero.quizLink")}</Button>
+            <Button background="black">{t("hero.learnMore")}</Button>
+          </ButtonsWrapper>
+        </Content>
+        <Illustration src="/static/images/candidate.png" alt="Candidate" />
       </HeroSection>
     </Wrapper>
   );

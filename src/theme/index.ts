@@ -21,7 +21,7 @@ const theme: DefaultTheme = {
   colors: {
     backgroundLighten: "#F9FBFB",
     background: "#EEF2F3",
-    backgroundDarken: "#E2E9EB",
+    backgroundDarken: "#005669",
     primary: "#00B3DB",
     primaryDarken: "#005669",
     text: "#001E24",

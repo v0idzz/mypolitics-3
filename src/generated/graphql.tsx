@@ -1,5 +1,5 @@
-import { gql } from '@services/apollo/client';
-import * as Apollo from '@services/apollo/client';
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -70,6 +70,41 @@ export type UsersPermissionsLoginPayload = {
 export type UserPermissionsPasswordPayload = {
   __typename?: 'UserPermissionsPasswordPayload';
   ok: Scalars['Boolean'];
+};
+
+export type Partners = {
+  __typename?: 'Partners';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  partners?: Maybe<Array<Maybe<ComponentPersonPartner>>>;
+};
+
+export type PartnerInput = {
+  partners?: Maybe<Array<Maybe<ComponentPersonPartnerInput>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditPartnerInput = {
+  partners?: Maybe<Array<Maybe<EditComponentPersonPartnerInput>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type UpdatePartnerInput = {
+  data?: Maybe<EditPartnerInput>;
+};
+
+export type UpdatePartnerPayload = {
+  __typename?: 'updatePartnerPayload';
+  partner?: Maybe<Partners>;
+};
+
+export type DeletePartnerPayload = {
+  __typename?: 'deletePartnerPayload';
+  partner?: Maybe<Partners>;
 };
 
 export enum Enum_Politicianresults_Category {
@@ -403,6 +438,188 @@ export type DeletePostInput = {
 export type DeletePostPayload = {
   __typename?: 'deletePostPayload';
   post?: Maybe<Post>;
+};
+
+export enum Enum_Talk_Type {
+  Classic = 'classic',
+  Mvsp = 'mvsp',
+  Interview = 'interview'
+}
+
+export enum Enum_Talk_Lang {
+  Pl = 'pl',
+  En = 'en'
+}
+
+export type Talk = {
+  __typename?: 'Talk';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  title?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['DateTime']>;
+  end?: Maybe<Scalars['DateTime']>;
+  type?: Maybe<Enum_Talk_Type>;
+  url?: Maybe<Scalars['String']>;
+  thumbnail?: Maybe<UploadFile>;
+  lang?: Maybe<Enum_Talk_Lang>;
+  published_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type TalkConnection = {
+  __typename?: 'TalkConnection';
+  values?: Maybe<Array<Maybe<Talk>>>;
+  groupBy?: Maybe<TalkGroupBy>;
+  aggregate?: Maybe<TalkAggregator>;
+};
+
+export type TalkAggregator = {
+  __typename?: 'TalkAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type TalkGroupBy = {
+  __typename?: 'TalkGroupBy';
+  id?: Maybe<Array<Maybe<TalkConnectionId>>>;
+  _id?: Maybe<Array<Maybe<TalkConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<TalkConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<TalkConnectionUpdatedAt>>>;
+  title?: Maybe<Array<Maybe<TalkConnectionTitle>>>;
+  start?: Maybe<Array<Maybe<TalkConnectionStart>>>;
+  end?: Maybe<Array<Maybe<TalkConnectionEnd>>>;
+  type?: Maybe<Array<Maybe<TalkConnectionType>>>;
+  url?: Maybe<Array<Maybe<TalkConnectionUrl>>>;
+  thumbnail?: Maybe<Array<Maybe<TalkConnectionThumbnail>>>;
+  lang?: Maybe<Array<Maybe<TalkConnectionLang>>>;
+  published_at?: Maybe<Array<Maybe<TalkConnectionPublished_At>>>;
+};
+
+export type TalkConnectionId = {
+  __typename?: 'TalkConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnection_Id = {
+  __typename?: 'TalkConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionCreatedAt = {
+  __typename?: 'TalkConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionUpdatedAt = {
+  __typename?: 'TalkConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionTitle = {
+  __typename?: 'TalkConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionStart = {
+  __typename?: 'TalkConnectionStart';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionEnd = {
+  __typename?: 'TalkConnectionEnd';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionType = {
+  __typename?: 'TalkConnectionType';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionUrl = {
+  __typename?: 'TalkConnectionUrl';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionThumbnail = {
+  __typename?: 'TalkConnectionThumbnail';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionLang = {
+  __typename?: 'TalkConnectionLang';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkConnectionPublished_At = {
+  __typename?: 'TalkConnectionPublished_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<TalkConnection>;
+};
+
+export type TalkInput = {
+  title?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['DateTime']>;
+  end?: Maybe<Scalars['DateTime']>;
+  type?: Maybe<Enum_Talk_Type>;
+  url?: Maybe<Scalars['String']>;
+  thumbnail?: Maybe<Scalars['ID']>;
+  lang?: Maybe<Enum_Talk_Lang>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditTalkInput = {
+  title?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['DateTime']>;
+  end?: Maybe<Scalars['DateTime']>;
+  type?: Maybe<Enum_Talk_Type>;
+  url?: Maybe<Scalars['String']>;
+  thumbnail?: Maybe<Scalars['ID']>;
+  lang?: Maybe<Enum_Talk_Lang>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type CreateTalkInput = {
+  data?: Maybe<TalkInput>;
+};
+
+export type CreateTalkPayload = {
+  __typename?: 'createTalkPayload';
+  talk?: Maybe<Talk>;
+};
+
+export type UpdateTalkInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditTalkInput>;
+};
+
+export type UpdateTalkPayload = {
+  __typename?: 'updateTalkPayload';
+  talk?: Maybe<Talk>;
+};
+
+export type DeleteTalkInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteTalkPayload = {
+  __typename?: 'deleteTalkPayload';
+  talk?: Maybe<Talk>;
 };
 
 export type UploadFile = {
@@ -956,6 +1173,28 @@ export type DeleteUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type ComponentPersonPartner = {
+  __typename?: 'ComponentPersonPartner';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  image?: Maybe<UploadFile>;
+};
+
+export type ComponentPersonPartnerInput = {
+  name?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['ID']>;
+};
+
+export type EditComponentPersonPartnerInput = {
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['ID']>;
+};
+
 export type ComponentPersonPolitician = {
   __typename?: 'ComponentPersonPolitician';
   id: Scalars['ID'];
@@ -1035,7 +1274,7 @@ export type EditComponentTranslationShortTextTranslationInput = {
   en?: Maybe<Scalars['String']>;
 };
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPublished_At | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_Id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_Id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_Id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPublished_At | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_Id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_Id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_Id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
 
 export type InputId = {
   id: Scalars['ID'];
@@ -1056,12 +1295,16 @@ export type AdminUser = {
 
 export type Query = {
   __typename?: 'Query';
+  partner?: Maybe<Partners>;
   politicianResult?: Maybe<PoliticianResults>;
   politicianResults?: Maybe<Array<Maybe<PoliticianResults>>>;
   politicianResultsConnection?: Maybe<PoliticianResultsConnection>;
   post?: Maybe<Post>;
   posts?: Maybe<Array<Maybe<Post>>>;
   postsConnection?: Maybe<PostConnection>;
+  talk?: Maybe<Talk>;
+  talks?: Maybe<Array<Maybe<Talk>>>;
+  talksConnection?: Maybe<TalkConnection>;
   files?: Maybe<Array<Maybe<UploadFile>>>;
   filesConnection?: Maybe<UploadFileConnection>;
   role?: Maybe<UsersPermissionsRole>;
@@ -1072,6 +1315,11 @@ export type Query = {
   users?: Maybe<Array<Maybe<UsersPermissionsUser>>>;
   usersConnection?: Maybe<UsersPermissionsUserConnection>;
   me?: Maybe<UsersPermissionsMe>;
+};
+
+
+export type QueryPartnerArgs = {
+  publicationState?: Maybe<PublicationState>;
 };
 
 
@@ -1114,6 +1362,29 @@ export type QueryPostsArgs = {
 
 
 export type QueryPostsConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryTalkArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryTalksArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryTalksConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -1185,12 +1456,17 @@ export type QueryUsersConnectionArgs = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  updatePartner?: Maybe<UpdatePartnerPayload>;
+  deletePartner?: Maybe<DeletePartnerPayload>;
   createPoliticianResult?: Maybe<CreatePoliticianResultPayload>;
   updatePoliticianResult?: Maybe<UpdatePoliticianResultPayload>;
   deletePoliticianResult?: Maybe<DeletePoliticianResultPayload>;
   createPost?: Maybe<CreatePostPayload>;
   updatePost?: Maybe<UpdatePostPayload>;
   deletePost?: Maybe<DeletePostPayload>;
+  createTalk?: Maybe<CreateTalkPayload>;
+  updateTalk?: Maybe<UpdateTalkPayload>;
+  deleteTalk?: Maybe<DeleteTalkPayload>;
   /** Delete one file */
   deleteFile?: Maybe<DeleteFilePayload>;
   /** Create a new role */
@@ -1213,6 +1489,11 @@ export type Mutation = {
   forgotPassword?: Maybe<UserPermissionsPasswordPayload>;
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
+};
+
+
+export type MutationUpdatePartnerArgs = {
+  input?: Maybe<UpdatePartnerInput>;
 };
 
 
@@ -1243,6 +1524,21 @@ export type MutationUpdatePostArgs = {
 
 export type MutationDeletePostArgs = {
   input?: Maybe<DeletePostInput>;
+};
+
+
+export type MutationCreateTalkArgs = {
+  input?: Maybe<CreateTalkInput>;
+};
+
+
+export type MutationUpdateTalkArgs = {
+  input?: Maybe<UpdateTalkInput>;
+};
+
+
+export type MutationDeleteTalkArgs = {
+  input?: Maybe<DeleteTalkInput>;
 };
 
 
@@ -1342,54 +1638,244 @@ export enum CacheControlScope {
   Private = 'PRIVATE'
 }
 
-export type TestQueryVariables = Exact<{ [key: string]: never; }>;
+export type BasicPostPartsFragment = (
+  { __typename?: 'Post' }
+  & Pick<Post, 'id' | 'published_at' | 'category'>
+  & { title?: Maybe<(
+    { __typename?: 'ComponentTranslationShortTextTranslation' }
+    & Pick<ComponentTranslationShortTextTranslation, 'pl' | 'en'>
+  )>, slug?: Maybe<(
+    { __typename?: 'ComponentTranslationShortTextTranslation' }
+    & Pick<ComponentTranslationShortTextTranslation, 'pl' | 'en'>
+  )>, subcategory?: Maybe<(
+    { __typename?: 'ComponentTranslationShortTextTranslation' }
+    & Pick<ComponentTranslationShortTextTranslation, 'pl' | 'en'>
+  )>, thumbnail?: Maybe<(
+    { __typename?: 'UploadFile' }
+    & Pick<UploadFile, 'formats'>
+  )> }
+);
+
+export type PostsByFilterQueryVariables = Exact<{
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+}>;
 
 
-export type TestQuery = (
+export type PostsByFilterQuery = (
   { __typename?: 'Query' }
   & { posts?: Maybe<Array<Maybe<(
     { __typename?: 'Post' }
-    & Pick<Post, 'id'>
-    & { title?: Maybe<(
-      { __typename?: 'ComponentTranslationShortTextTranslation' }
-      & Pick<ComponentTranslationShortTextTranslation, 'pl'>
-    )> }
+    & BasicPostPartsFragment
   )>>> }
 );
 
+export type BasicTalkPartsFragment = (
+  { __typename?: 'Talk' }
+  & Pick<Talk, 'id' | 'published_at' | 'title' | 'url' | 'lang' | 'start' | 'end'>
+  & { thumbnail?: Maybe<(
+    { __typename?: 'UploadFile' }
+    & Pick<UploadFile, 'formats'>
+  )> }
+);
 
-export const TestDocument = gql`
-    query Test {
-  posts {
+export type TalksByFilterQueryVariables = Exact<{
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+}>;
+
+
+export type TalksByFilterQuery = (
+  { __typename?: 'Query' }
+  & { talks?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>> }
+);
+
+export type PartnersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PartnersQuery = (
+  { __typename?: 'Query' }
+  & { partner?: Maybe<(
+    { __typename?: 'Partners' }
+    & Pick<Partners, 'id'>
+    & { partners?: Maybe<Array<Maybe<(
+      { __typename?: 'ComponentPersonPartner' }
+      & Pick<ComponentPersonPartner, 'name' | 'url'>
+      & { image?: Maybe<(
+        { __typename?: 'UploadFile' }
+        & Pick<UploadFile, 'formats'>
+      )> }
+    )>>> }
+  )> }
+);
+
+export const BasicPostPartsFragmentDoc = gql`
+    fragment BasicPostParts on Post {
+  id
+  published_at
+  category
+  title {
+    pl
+    en
+  }
+  slug {
+    pl
+    en
+  }
+  subcategory {
+    pl
+    en
+  }
+  thumbnail {
+    formats
+  }
+}
+    `;
+export const BasicTalkPartsFragmentDoc = gql`
+    fragment BasicTalkParts on Talk {
+  id
+  published_at
+  title
+  url
+  lang
+  start
+  end
+  thumbnail {
+    formats
+  }
+}
+    `;
+export const PostsByFilterDocument = gql`
+    query PostsByFilter($sort: String, $limit: Int, $start: Int, $where: JSON, $publicationState: PublicationState) {
+  posts(
+    sort: $sort
+    limit: $limit
+    start: $start
+    where: $where
+    publicationState: $publicationState
+  ) {
+    ...BasicPostParts
+  }
+}
+    ${BasicPostPartsFragmentDoc}`;
+
+/**
+ * __usePostsByFilterQuery__
+ *
+ * To run a query within a React component, call `usePostsByFilterQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsByFilterQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsByFilterQuery({
+ *   variables: {
+ *      sort: // value for 'sort'
+ *      limit: // value for 'limit'
+ *      start: // value for 'start'
+ *      where: // value for 'where'
+ *      publicationState: // value for 'publicationState'
+ *   },
+ * });
+ */
+export function usePostsByFilterQuery(baseOptions?: Apollo.QueryHookOptions<PostsByFilterQuery, PostsByFilterQueryVariables>) {
+        return Apollo.useQuery<PostsByFilterQuery, PostsByFilterQueryVariables>(PostsByFilterDocument, baseOptions);
+      }
+export function usePostsByFilterLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostsByFilterQuery, PostsByFilterQueryVariables>) {
+          return Apollo.useLazyQuery<PostsByFilterQuery, PostsByFilterQueryVariables>(PostsByFilterDocument, baseOptions);
+        }
+export type PostsByFilterQueryHookResult = ReturnType<typeof usePostsByFilterQuery>;
+export type PostsByFilterLazyQueryHookResult = ReturnType<typeof usePostsByFilterLazyQuery>;
+export type PostsByFilterQueryResult = Apollo.QueryResult<PostsByFilterQuery, PostsByFilterQueryVariables>;
+export const TalksByFilterDocument = gql`
+    query TalksByFilter($sort: String, $limit: Int, $start: Int, $where: JSON, $publicationState: PublicationState) {
+  talks(
+    sort: $sort
+    limit: $limit
+    start: $start
+    where: $where
+    publicationState: $publicationState
+  ) {
+    ...BasicTalkParts
+  }
+}
+    ${BasicTalkPartsFragmentDoc}`;
+
+/**
+ * __useTalksByFilterQuery__
+ *
+ * To run a query within a React component, call `useTalksByFilterQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTalksByFilterQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTalksByFilterQuery({
+ *   variables: {
+ *      sort: // value for 'sort'
+ *      limit: // value for 'limit'
+ *      start: // value for 'start'
+ *      where: // value for 'where'
+ *      publicationState: // value for 'publicationState'
+ *   },
+ * });
+ */
+export function useTalksByFilterQuery(baseOptions?: Apollo.QueryHookOptions<TalksByFilterQuery, TalksByFilterQueryVariables>) {
+        return Apollo.useQuery<TalksByFilterQuery, TalksByFilterQueryVariables>(TalksByFilterDocument, baseOptions);
+      }
+export function useTalksByFilterLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TalksByFilterQuery, TalksByFilterQueryVariables>) {
+          return Apollo.useLazyQuery<TalksByFilterQuery, TalksByFilterQueryVariables>(TalksByFilterDocument, baseOptions);
+        }
+export type TalksByFilterQueryHookResult = ReturnType<typeof useTalksByFilterQuery>;
+export type TalksByFilterLazyQueryHookResult = ReturnType<typeof useTalksByFilterLazyQuery>;
+export type TalksByFilterQueryResult = Apollo.QueryResult<TalksByFilterQuery, TalksByFilterQueryVariables>;
+export const PartnersDocument = gql`
+    query Partners {
+  partner {
     id
-    title {
-      pl
+    partners {
+      name
+      image {
+        formats
+      }
+      url
     }
   }
 }
     `;
 
 /**
- * __useTestQuery__
+ * __usePartnersQuery__
  *
- * To run a query within a React component, call `useTestQuery` and pass it any options that fit your needs.
- * When your component renders, `useTestQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `usePartnersQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePartnersQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useTestQuery({
+ * const { data, loading, error } = usePartnersQuery({
  *   variables: {
  *   },
  * });
  */
-export function useTestQuery(baseOptions?: Apollo.QueryHookOptions<TestQuery, TestQueryVariables>) {
-        return Apollo.useQuery<TestQuery, TestQueryVariables>(TestDocument, baseOptions);
+export function usePartnersQuery(baseOptions?: Apollo.QueryHookOptions<PartnersQuery, PartnersQueryVariables>) {
+        return Apollo.useQuery<PartnersQuery, PartnersQueryVariables>(PartnersDocument, baseOptions);
       }
-export function useTestLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TestQuery, TestQueryVariables>) {
-          return Apollo.useLazyQuery<TestQuery, TestQueryVariables>(TestDocument, baseOptions);
+export function usePartnersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PartnersQuery, PartnersQueryVariables>) {
+          return Apollo.useLazyQuery<PartnersQuery, PartnersQueryVariables>(PartnersDocument, baseOptions);
         }
-export type TestQueryHookResult = ReturnType<typeof useTestQuery>;
-export type TestLazyQueryHookResult = ReturnType<typeof useTestLazyQuery>;
-export type TestQueryResult = Apollo.QueryResult<TestQuery, TestQueryVariables>;
+export type PartnersQueryHookResult = ReturnType<typeof usePartnersQuery>;
+export type PartnersLazyQueryHookResult = ReturnType<typeof usePartnersLazyQuery>;
+export type PartnersQueryResult = Apollo.QueryResult<PartnersQuery, PartnersQueryVariables>;

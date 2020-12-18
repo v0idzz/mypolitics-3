@@ -1,0 +1,17 @@
+query TalksByFilter(
+    $sort: String
+    $limit: Int
+    $start: Int
+    $where: JSON
+    $publicationState: PublicationState
+) {
+    talks(
+        sort: $sort
+        limit: $limit
+        start: $start
+        where: $where
+        publicationState: $publicationState
+    ) {
+        ...BasicTalkParts
+    }
+}

@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import Candidate from "@assets/illustrations/candidate.svg";
 
 export const Wrapper = styled.div`
   ${breakpoint("xs", "md")`
     margin-bottom: 25vw;
+  `};
+
+  ${breakpoint("md")`
+    max-height: 768px;
   `};
 `;
 
@@ -77,11 +80,12 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Illustration = styled(Candidate)`
-  height: 50%;
+export const Illustration = styled.img`
   width: auto;
   filter: drop-shadow(0px 0px 64px rgba(0, 42, 51, 0.33));
   max-width: 50%;
+  max-height: 409px;
+  image-rendering: -webkit-optimize-contrast;
 
   ${breakpoint("xs", "md")`
     position: absolute;
@@ -91,6 +95,10 @@ export const Illustration = styled(Candidate)`
     max-width: unset;
     left: 50%;
     transform: translateX(-50%);
+  `};
+
+  ${breakpoint("md")`
+    padding-left: 4rem;
   `};
 
   @media only screen and (min-width: 1660px) {

@@ -1,0 +1,17 @@
+query PostsByFilter(
+    $sort: String
+    $limit: Int
+    $start: Int
+    $where: JSON
+    $publicationState: PublicationState
+) {
+    posts(
+        sort: $sort
+        limit: $limit
+        start: $start
+        where: $where
+        publicationState: $publicationState
+    ) {
+        ...BasicPostParts
+    }
+}

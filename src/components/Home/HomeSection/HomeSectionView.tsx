@@ -1,21 +1,22 @@
 import React from "react";
+import { Title } from "@shared/Typography";
 import {
   Container,
   Inner,
   Content,
-  Title,
   Header,
-  Slogan,
   ContentFill,
-  IconWrapper,
+  Illustration,
   AdditionalContent,
+  ContentInner,
+  Lead,
 } from "./HomeSectionStyle";
 
 interface Props {
   title: string;
   slogan: string;
   variant: "left" | "right";
-  icon: React.FC;
+  illustrationUrl: string;
   content: JSX.Element;
   additionalContent: JSX.Element;
 }
@@ -26,23 +27,22 @@ const HomeSection: React.FC<Props> = ({
   variant,
   content,
   additionalContent,
-  icon: Icon,
+  illustrationUrl,
 }) => (
-  <Container>
+  <Container variant={variant}>
     <Inner>
-      <IconWrapper>
-        <Icon />
-      </IconWrapper>
+      <Illustration
+        src={illustrationUrl}
+        alt={title}
+      />
       <Header>
-        <Slogan>{slogan}</Slogan>
+        <Lead>{slogan}</Lead>
         <Title>{title}</Title>
       </Header>
       <Content>
         <ContentFill />
-        {content}
-        <AdditionalContent>
-          {additionalContent}
-        </AdditionalContent>
+        <ContentInner>{content}</ContentInner>
+        <AdditionalContent>{additionalContent}</AdditionalContent>
       </Content>
     </Inner>
   </Container>

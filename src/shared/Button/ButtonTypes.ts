@@ -17,4 +17,5 @@ export interface ButtonProps
   extends StyleProps,
     React.ButtonHTMLAttributes<HTMLButtonElement> {
   beforeIcon?: React.ReactNode;
+  as?: any;
 }

@@ -1,0 +1,12 @@
+query Partners {
+    partner {
+        id
+        partners {
+            name
+            image {
+                formats
+            }
+            url
+        }
+    }
+}

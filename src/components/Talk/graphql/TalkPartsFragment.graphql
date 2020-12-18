@@ -1,0 +1,12 @@
+fragment BasicTalkParts on Talk {
+    id
+    published_at
+    title
+    url
+    lang
+    start
+    end
+    thumbnail {
+        formats
+    }
+}

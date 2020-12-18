@@ -24,6 +24,7 @@ export const Container = styled.button<StyleProps>`
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   border: 0;
+  cursor: pointer;
 
   &[href]:hover {
     text-decoration: none;

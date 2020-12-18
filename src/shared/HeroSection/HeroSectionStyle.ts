@@ -1,17 +1,6 @@
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
 
-export const Container = styled.section`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  height: 90vh;
-
-  ${breakpoint("md")`
-    height: 75vh;
-  `};
-`;
-
 export const BackgroundImage = styled.img`
   max-height: 90%;
   display: block;
@@ -34,6 +23,11 @@ export const BackgroundImage = styled.img`
   `};
 `;
 
+export const Overlay = styled(BackgroundImage)`
+  background: linear-gradient(90deg, #002a33 0%, rgba(0, 42, 51, 0) 100%);
+  margin-left: -1px;
+`;
+
 export const Inner = styled.div`
   display: flex;
   justify-content: space-between;
@@ -50,5 +44,19 @@ export const Inner = styled.div`
 
   ${breakpoint("lg")`
     margin: 0 3rem;
+  `};
+`;
+
+export const Container = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+
+  ${breakpoint("md")`
+    height: 75vh;
+    &, ${Inner}, ${Overlay}, ${BackgroundImage} {
+      max-height: 768px;
+    };
   `};
 `;

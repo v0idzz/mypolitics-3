@@ -1,0 +1,20 @@
+fragment BasicPostParts on Post {
+    id
+    published_at
+    category
+    title {
+        pl
+        en
+    }
+    slug {
+        pl
+        en
+    }
+    subcategory {
+        pl
+        en
+    }
+    thumbnail {
+        formats
+    }
+}
