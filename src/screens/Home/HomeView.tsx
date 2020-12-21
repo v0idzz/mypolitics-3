@@ -1,6 +1,7 @@
 import React from "react";
 import { Hero } from "@components/Home";
 import ContactActionSection from "@shared/ContactActionSection";
+import Trans from "next-translate/Trans";
 import HomeQuizSection from "./HomeQuizSection";
 import HomeNewsSection from "./HomeNewsSection";
 import HomeTalkSection from "./HomeTalkSection";
@@ -16,9 +17,10 @@ const HomeView: React.FC = () => (
     <HomePartnersSection />
     <ContactActionSection
       title={
-        <>
-          <b>Masz pytania?</b> Zapraszamy do kontaktu!
-        </>
+        <Trans
+          i18nKey="home:contact.title"
+          components={[<React.Fragment key="0" />, <b key="1" />]}
+        />
       }
     />
   </Container>

@@ -29,7 +29,10 @@ const HeroView: React.FC = () => {
             <Button background="black">{t("hero.learnMore")}</Button>
           </ButtonsWrapper>
         </Content>
-        <Illustration src="/static/images/candidate.png" alt="Candidate" />
+        <Illustration
+          src={require("@assets/images/candidate.png")}
+          alt="Candidate"
+        />
       </HeroSection>
     </Wrapper>
   );

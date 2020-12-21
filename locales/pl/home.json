@@ -4,5 +4,39 @@
     "subTitle": "Szerzymy postawy obywatelskie i edukujemy politycznie ludzi na całym świecie.",
     "quizLink": "Test poglądów politycznych",
     "learnMore": "Dowiedz się więcej"
+  },
+  "quiz": {
+    "title": "Test poglądów politycznych",
+    "slogan": "najbardziej zaawansowany",
+    "content": {
+      "text": "Stworzyliśmy test poglądów politycznych, z którego skorzystało już blisko pół miliona Polek i Polaków oraz wiele znanych postaci polityki. Na podstawie kilkudziesięciu odpowiedzi dopasowuje od poglądy, najbliższą partię czy miejsce na kompasie politycznym.",
+      "buttonText": "Sprawdź swoje poglądy!"
+    }
+  },
+  "news": {
+    "title": "Wiadomości i opinie",
+    "slogan": "dziennikarstwo",
+    "content": {
+      "text": "Zawsze uważaliśmy, że rzetelność i obiektywizm dziennikarski nie powinny być marzeniem. Dlatego stworzyliśmy myPolitics News, informujące bez fałszu i podkolorowań o najważniejszych informacjach z kraju i ze świata. Tam, gdzie zauważamy potrzebę spojrzenia ideologicznego, wkracza myPolitics View, pomagające w zrozumieniu poglądów całej sceny politycznej.",
+      "buttonText": "Zobacz więcej"
+    }
+  },
+  "talk": {
+    "title": "Debaty i wywiady polityczne",
+    "slogan": "najciekawsze",
+    "content": {
+      "text": "Promujemy aktywizm polityczny poprzez organizację debat i wywiadów z udziałem młodzieżówek i dorosłych polityków wszystkich opcji politycznych. Nasze transmisje na żywo docierają do kilkuset tysięcy polskich odbiorców każdego miesiąca.",
+      "buttonText": "Zobacz więcej"
+    }
+  },
+  "partners": {
+    "title": "Współpraca?",
+    "lead": "Jesteśmy na nią otwarci!",
+    "content": {
+      "title": "Nasi partnerzy"
+    }
+  },
+  "contact": {
+    "title": "<0><1>Masz pytania?</1> Zapraszamy do kontaktu!</0>"
   }
 }

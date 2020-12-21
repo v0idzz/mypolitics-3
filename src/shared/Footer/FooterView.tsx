@@ -16,11 +16,7 @@ import {
   WebsiteLinksWrapper,
   MainCopyright,
 } from "./FooterStyle";
-import {
-  logos,
-  socialLinks,
-  SocialLink as SocialLinkType,
-} from "./FooterUtils";
+import { socialLinks, SocialLink as SocialLinkType } from "./FooterUtils";
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
@@ -37,13 +33,25 @@ const Footer: React.FC = () => {
       <Inner>
         <Copyright>
           <MainCopyright>
-            <MainLogo src={logos.main} alt="myPolitics Group" />
+            <MainLogo
+              src={require("@assets/images/logos/group.png")}
+              alt="myPolitics Group"
+            />
             <Title>&copy;&nbsp;{year}</Title>
           </MainCopyright>
           <CopyrightGroup>
-            <GroupLogo src={logos.media} alt="myPolitics Media" />
-            <GroupLogo src={logos.talk} alt="myPolitics Talk" />
-            <GroupLogo src={logos.quiz} alt="myPolitics Quiz" />
+            <GroupLogo
+              src={require("@assets/images/logos/media.png")}
+              alt="myPolitics Media"
+            />
+            <GroupLogo
+              src={require("@assets/images/logos/talk.png")}
+              alt="myPolitics Talk"
+            />
+            <GroupLogo
+              src={require("@assets/images/logos/quiz.png")}
+              alt="myPolitics Quiz"
+            />
           </CopyrightGroup>
         </Copyright>
         <Links>

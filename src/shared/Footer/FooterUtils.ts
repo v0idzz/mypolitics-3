@@ -9,15 +9,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-const logosPath = "/static/images/logos";
-
-export const logos: Record<string, string> = {
-  main: `${logosPath}/group.png`,
-  media: `${logosPath}/media.png`,
-  talk: `${logosPath}/talk.png`,
-  quiz: `${logosPath}/quiz.png`,
-};
-
 library.add(
   faFacebookF,
   faTwitter,

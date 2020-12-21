@@ -1,6 +1,6 @@
 import React from "react";
 import * as R from "ramda";
-import Debate from "@assets/illustrations/debate.svg";
+import DefaultLink from "next/link";
 import { Section } from "@components/Home";
 import Button from "@shared/Button";
 import {
@@ -8,9 +8,11 @@ import {
   useTalksByFilterQuery,
 } from "@generated/graphql";
 import { Link } from "@components/Talk";
+import useTranslation from "next-translate/useTranslation";
 import { AdditionalContentWrapper } from "./HomeTalkSectionStyle";
 
 const HomeTalkSection: React.FC = () => {
+  const { t } = useTranslation("home");
   const { data } = useTalksByFilterQuery({
     variables: {
       limit: 2,
@@ -26,19 +28,20 @@ const HomeTalkSection: React.FC = () => {
 
   return (
     <Section
-      title="Debaty i wywiady polityczne"
-      slogan="najciekawsze"
+      title={t("talk.title")}
+      slogan={t("talk.slogan")}
       variant="right"
-      illustrationUrl="/static/images/debate.png"
+      illustrationUrl={require("@assets/images/debate.png")}
       content={
         <>
-          <p>
-            Promujemy aktywizm polityczny poprzez organizację debat i wywiadów z
-            udziałem młodzieżówek i dorosłych polityków wszystkich opcji
-            politycznych. Nasze transmisje na żywo docierają do kilkuset tysięcy
-            polskich odbiorców każdego miesiąca.
-          </p>
-          <Button showShadow>Zobacz więcej</Button>
+          <p>{t("talk.content.text")}</p>
+          <div>
+            <DefaultLink href="/talks">
+              <Button as="a" showShadow>
+                {t("talk.content.buttonText")}
+              </Button>
+            </DefaultLink>
+          </div>
         </>
       }
       additionalContent={

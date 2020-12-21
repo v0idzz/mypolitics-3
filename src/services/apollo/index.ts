@@ -11,7 +11,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 function createApolloClient() {
   return new ApolloClient({
     link: createHttpLink({
-      uri: "http://192.168.0.227:1337/graphql",
+      uri: "/admin/graphql",
     }),
     ssrMode: typeof window === "undefined",
     cache: new InMemoryCache(),

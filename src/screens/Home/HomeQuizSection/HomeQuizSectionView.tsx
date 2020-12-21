@@ -1,30 +1,36 @@
 import React from "react";
-import Quiz from "@assets/illustrations/quiz.svg";
 import { Section } from "@components/Home";
 import Button from "@shared/Button";
+import useTranslation from "next-translate/useTranslation";
 import { AdditionalContentImage } from "./HomeQuizSectionStyle";
+import DefaultLink from 'next/dist/client/link';
 
-const HomeQuizSection: React.FC = () => (
-  <Section
-    title="Test poglądów politycznych"
-    slogan="najbardziej zaawansowany"
-    variant="right"
-    illustrationUrl="/static/images/quiz.png"
-    additionalContent={
-      <AdditionalContentImage src="/static/images/mypolitics-quiz-results.png" />
-    }
-    content={
-      <>
-        <p>
-          Stworzyliśmy test poglądów politycznych, z którego skorzystało już
-          blisko pół miliona Polek i Polaków oraz wiele znanych postaci
-          polityki. Na podstawie kilkudziesięciu odpowiedzi dopasowuje od
-          poglądy, najbliższą partię czy miejsce na kompasie politycznym.
-        </p>
-        <Button showShadow>Sprawdź swoje poglądy!</Button>
-      </>
-    }
-  />
-);
+const HomeQuizSection: React.FC = () => {
+  const { t } = useTranslation("home");
+
+  return (
+    <Section
+      title={t("quiz.title")}
+      slogan={t("quiz.slogan")}
+      variant="right"
+      illustrationUrl={require("@assets/images/quiz.png")}
+      additionalContent={
+        <AdditionalContentImage src={require("@assets/images/mypolitics-quiz-results.png")} />
+      }
+      content={
+        <>
+          <p>{t("quiz.content.text")}</p>
+          <div>
+            <DefaultLink href="/quizes">
+              <Button as="a" showShadow>
+                {t("quiz.content.buttonText")}
+              </Button>
+            </DefaultLink>
+          </div>
+        </>
+      }
+    />
+  );
+};
 
 export default HomeQuizSection;

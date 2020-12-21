@@ -8,9 +8,12 @@ import {
   usePostsByFilterQuery,
 } from "@generated/graphql";
 import { Link } from "@components/News";
+import useTranslation from "next-translate/useTranslation";
 import { AdditionalContentWrapper } from "./HomeNewsSectionStyle";
+import DefaultLink from 'next/dist/client/link';
 
 const HomeNewsSection: React.FC = () => {
+  const { t } = useTranslation("home");
   const { data } = usePostsByFilterQuery({
     variables: {
       limit: 2,
@@ -26,20 +29,20 @@ const HomeNewsSection: React.FC = () => {
 
   return (
     <Section
-      title="Wiadomości i opinie"
-      slogan="dziennikarstwo"
+      title={t("news.title")}
+      slogan={t("news.slogan")}
       variant="left"
-      illustrationUrl="/static/images/newspaper.png"
+      illustrationUrl={require("@assets/images/newspaper.png")}
       content={
         <>
-          <p>
-            W świecie gdzie obiektywizm dziennikarski mocno stracił na
-            popularności, my stworzyliśmy myPolitics News, które za swój cel
-            postawiło właśnie oparcie na nim swojej działalności. Jednocześnie
-            poprzez myPolitics View promujemy również spojrzenie ideologiczne,
-            dla zrozumienia poglądów całej sceny politycznej.
-          </p>
-          <Button showShadow>Zobacz więcej</Button>
+          <p>{t("news.content.text")}</p>
+          <div>
+            <DefaultLink href="/articles">
+              <Button as="a" showShadow>
+                {t("news.content.buttonText")}
+              </Button>
+            </DefaultLink>
+          </div>
         </>
       }
       additionalContent={

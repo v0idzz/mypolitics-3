@@ -15,6 +15,8 @@ import {
   ContentList,
 } from "./HomePartnersSectionStyle";
 
+const backgroundImage = require("@assets/images/home-hero.png?resize&sizes[]=600&sizes[]=1200&sizes[]=1440");
+
 const HomePartnersSection: React.FC = () => {
   const { data } = usePartnersQuery();
   const toPartnerLink = (partner: ComponentPersonPartner) => (
@@ -35,7 +37,7 @@ const HomePartnersSection: React.FC = () => {
 
   return (
     <Container>
-      <Image src="/static/images/home-hero.png" />
+      <Image src={backgroundImage.src} srcSet={backgroundImage.srcSet} />
       <Overlay as="div" />
       <Inner>
         <Header>

@@ -5,6 +5,7 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem 0;
 
   a {
     direction: ltr;

@@ -52,9 +52,13 @@ export const Content = styled.div`
 `;
 
 export const ContentInner = styled.div`
-  display: grid;
+  display: inline-grid;
   grid-template-columns: 100%;
   grid-gap: 1rem;
+
+  a {
+    display: inline-flex;
+  }
 
   ${breakpoint("md")`
     grid-gap: 2rem;
