@@ -1,6 +1,6 @@
 overwrite: true
 schema:
-  - http://localhost:1337/graphql
+  - https://admin.mypolitics.pl/graphql
 documents: "src/**/*.graphql"
 generates:
   src/generated/graphql.tsx:
