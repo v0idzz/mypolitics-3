@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -70,6 +71,15 @@ const GlobalStyle = createGlobalStyle`
       font-display: swap;
     }
 
+  .container {
+    max-width: ${({ theme }) => theme.breakpoints.xl}px;
+    margin: 0 1rem;
+    position: relative;
+  
+    ${breakpoint("xl")`
+      margin: auto;
+    `};
+  }
 `;
 
 export default GlobalStyle;

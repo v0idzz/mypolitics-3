@@ -24,20 +24,25 @@ const LanguageSelect: React.FC = () => {
   const toggleShowFull = () => setShowFull(!showFull);
 
   const toLanguageLinks = ({ id, name }: Language) => (
-    <Link href={router.pathname} locale={id} key={id}>
+    <Link href={router.asPath} locale={id} key={id} passHref>
       <LanguageImage
         onClick={toggleShowFull}
         key={id}
         title={name}
-        image={`/static/images/langs/${id}.png`}
+        /* eslint-disable-next-line import/no-dynamic-require */
+        image={require(`@assets/images/langs/${id}.png`)}
         disabled={id === lang}
       />
     </Link>
   );
 
-  const languagesSelectedFirst = languages.sort((x, y) =>
-    x.id === lang ? -1 : (y.id === lang ? 1 : 0)
-  );
+  const languagesSelectedFirst = languages.sort((x, y) => {
+    if (x.id === lang) {
+      return -1;
+    }
+
+    return y.id === lang ? 1 : 0;
+  });
 
   const languageButtons = R.map(toLanguageLinks, languagesSelectedFirst);
 

@@ -30,7 +30,7 @@ export const Container = styled.div<{ showFull: boolean }>`
     `}
 `;
 
-export const LanguageImage = styled.div<{ image: string; disabled: boolean }>`
+export const LanguageImage = styled.a<{ image: string; disabled: boolean }>`
   border-radius: 0.125rem;
   height: 1rem;
   width: 1.6rem;

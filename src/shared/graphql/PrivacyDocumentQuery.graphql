@@ -1,0 +1,8 @@
+query PrivacyDocument {
+    document {
+        privacy {
+            pl
+            en
+        }
+    }
+}

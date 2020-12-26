@@ -1,5 +1,21 @@
 {
   "contact": {
-    "email": "biuro@mypolitics.pl"
+    "email": "biuro@mypolitics.pl",
+    "title": "<0><1>Masz pytania?</1> Zapraszamy do kontaktu!</0>"
+  },
+  "documents": {
+    "rules": "Regulamin serwisu",
+    "privacy": "Polityka prywatności",
+    "gdpr": "Jak przetwarzamy dane?"
+  },
+  "footer": {
+    "rules": "Regulamin",
+    "privacy": "Prywatność",
+    "gdpr": "Twoje dane"
+  },
+  "header": {
+    "articles": "Artykuły",
+    "talks": "Debaty",
+    "quiz": "Test poglądów politycznych"
   }
 }

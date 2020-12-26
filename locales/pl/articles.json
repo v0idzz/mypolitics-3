@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "title": "Wiadomości i opinie"
+  },
+  "news": {
+    "title": "Wiadomości",
+    "lead": "nie ominiesz żadnej informacji"
+  },
+  "view": {
+    "title": "Opinie",
+    "lead": "poznaj poglądy drugiej strony"
+  },
+  "contact": {
+    "title": "<0><1>Chcesz dodać własny tekst?</1> Zapraszamy do kontaktu!</0>"
+  },
+  "checkMore": {
+    "title": "Zobacz inne wpisy"
+  },
+  "share": {
+    "title": "Spodobało się?",
+    "facebook": "Udostępnij na Facebooku",
+    "twitter": "Udostępnij na Twitterze"
+  }
+}

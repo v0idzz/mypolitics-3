@@ -1,0 +1,5 @@
+query PostById($id: ID!) {
+    post(id: $id) {
+        ...ExtendedPostParts
+    }
+}

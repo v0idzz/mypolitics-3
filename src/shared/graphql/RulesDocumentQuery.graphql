@@ -1,0 +1,8 @@
+query RulesDocument {
+    document {
+        rules {
+            pl
+            en
+        }
+    }
+}

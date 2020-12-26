@@ -3,6 +3,8 @@ import Button from "@shared/Button";
 import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
 import HeroSection from "@shared/HeroSection";
+import Link from "next/link";
+import { paths } from "@constants";
 import {
   Title,
   Content,
@@ -15,6 +17,13 @@ import {
 const HeroView: React.FC = () => {
   const { t } = useTranslation("home");
 
+  const handleCta = () =>
+    typeof window !== "undefined" &&
+    window.scrollTo({
+      top: window.innerHeight / 2,
+      behavior: "smooth",
+    });
+
   return (
     <Wrapper>
       <HeroSection>
@@ -25,8 +34,12 @@ const HeroView: React.FC = () => {
           />
           <SubTitle>{t("hero.subTitle")}</SubTitle>
           <ButtonsWrapper>
-            <Button showShadow>{t("hero.quizLink")}</Button>
-            <Button background="black">{t("hero.learnMore")}</Button>
+            <Link href={paths.quiz("mypolitics")} passHref>
+              <Button as="a" showShadow>{t("hero.quizLink")}</Button>
+            </Link>
+            <Button onClick={handleCta} background="black">
+              {t("hero.learnMore")}
+            </Button>
           </ButtonsWrapper>
         </Content>
         <Illustration

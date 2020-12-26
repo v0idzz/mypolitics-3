@@ -1,6 +1,6 @@
 {
   "name": "mypolitics",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,6 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.13",
     "@types/styled-components": "^5.1.5",
+    "disqus-react": "^1.0.10",
     "dotenv": "^8.2.0",
     "graphql": "^15.4.0",
     "imagemin-mozjpeg": "^9.0.0",

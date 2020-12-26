@@ -72,6 +72,47 @@ export type UserPermissionsPasswordPayload = {
   ok: Scalars['Boolean'];
 };
 
+export type Documents = {
+  __typename?: 'Documents';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  rules?: Maybe<ComponentTranslationRichTextTranslation>;
+  privacy?: Maybe<ComponentTranslationRichTextTranslation>;
+  gdpr?: Maybe<ComponentTranslationRichTextTranslation>;
+};
+
+export type DocumentInput = {
+  rules?: Maybe<ComponentTranslationRichTextTranslationInput>;
+  privacy?: Maybe<ComponentTranslationRichTextTranslationInput>;
+  gdpr?: Maybe<ComponentTranslationRichTextTranslationInput>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditDocumentInput = {
+  rules?: Maybe<EditComponentTranslationRichTextTranslationInput>;
+  privacy?: Maybe<EditComponentTranslationRichTextTranslationInput>;
+  gdpr?: Maybe<EditComponentTranslationRichTextTranslationInput>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type UpdateDocumentInput = {
+  data?: Maybe<EditDocumentInput>;
+};
+
+export type UpdateDocumentPayload = {
+  __typename?: 'updateDocumentPayload';
+  document?: Maybe<Documents>;
+};
+
+export type DeleteDocumentPayload = {
+  __typename?: 'deleteDocumentPayload';
+  document?: Maybe<Documents>;
+};
+
 export type Partners = {
   __typename?: 'Partners';
   id: Scalars['ID'];
@@ -1274,7 +1315,7 @@ export type EditComponentTranslationShortTextTranslationInput = {
   en?: Maybe<Scalars['String']>;
 };
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPublished_At | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_Id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_Id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_Id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Documents | UpdateDocumentPayload | DeleteDocumentPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPublished_At | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_Id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_Id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_Id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
 
 export type InputId = {
   id: Scalars['ID'];
@@ -1295,6 +1336,7 @@ export type AdminUser = {
 
 export type Query = {
   __typename?: 'Query';
+  document?: Maybe<Documents>;
   partner?: Maybe<Partners>;
   politicianResult?: Maybe<PoliticianResults>;
   politicianResults?: Maybe<Array<Maybe<PoliticianResults>>>;
@@ -1315,6 +1357,11 @@ export type Query = {
   users?: Maybe<Array<Maybe<UsersPermissionsUser>>>;
   usersConnection?: Maybe<UsersPermissionsUserConnection>;
   me?: Maybe<UsersPermissionsMe>;
+};
+
+
+export type QueryDocumentArgs = {
+  publicationState?: Maybe<PublicationState>;
 };
 
 
@@ -1456,6 +1503,8 @@ export type QueryUsersConnectionArgs = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  updateDocument?: Maybe<UpdateDocumentPayload>;
+  deleteDocument?: Maybe<DeleteDocumentPayload>;
   updatePartner?: Maybe<UpdatePartnerPayload>;
   deletePartner?: Maybe<DeletePartnerPayload>;
   createPoliticianResult?: Maybe<CreatePoliticianResultPayload>;
@@ -1489,6 +1538,11 @@ export type Mutation = {
   forgotPassword?: Maybe<UserPermissionsPasswordPayload>;
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
+};
+
+
+export type MutationUpdateDocumentArgs = {
+  input?: Maybe<UpdateDocumentInput>;
 };
 
 
@@ -1656,6 +1710,28 @@ export type BasicPostPartsFragment = (
   )> }
 );
 
+export type ExtendedPostPartsFragment = (
+  { __typename?: 'Post' }
+  & { content?: Maybe<(
+    { __typename?: 'ComponentTranslationRichTextTranslation' }
+    & Pick<ComponentTranslationRichTextTranslation, 'pl' | 'en'>
+  )> }
+  & BasicPostPartsFragment
+);
+
+export type PostByIdQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type PostByIdQuery = (
+  { __typename?: 'Query' }
+  & { post?: Maybe<(
+    { __typename?: 'Post' }
+    & ExtendedPostPartsFragment
+  )> }
+);
+
 export type PostsByFilterQueryVariables = Exact<{
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1699,6 +1775,20 @@ export type TalksByFilterQuery = (
   )>>> }
 );
 
+export type GdprDocumentQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GdprDocumentQuery = (
+  { __typename?: 'Query' }
+  & { document?: Maybe<(
+    { __typename?: 'Documents' }
+    & { gdpr?: Maybe<(
+      { __typename?: 'ComponentTranslationRichTextTranslation' }
+      & Pick<ComponentTranslationRichTextTranslation, 'pl' | 'en'>
+    )> }
+  )> }
+);
+
 export type PartnersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1715,6 +1805,34 @@ export type PartnersQuery = (
         & Pick<UploadFile, 'formats'>
       )> }
     )>>> }
+  )> }
+);
+
+export type PrivacyDocumentQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PrivacyDocumentQuery = (
+  { __typename?: 'Query' }
+  & { document?: Maybe<(
+    { __typename?: 'Documents' }
+    & { privacy?: Maybe<(
+      { __typename?: 'ComponentTranslationRichTextTranslation' }
+      & Pick<ComponentTranslationRichTextTranslation, 'pl' | 'en'>
+    )> }
+  )> }
+);
+
+export type RulesDocumentQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type RulesDocumentQuery = (
+  { __typename?: 'Query' }
+  & { document?: Maybe<(
+    { __typename?: 'Documents' }
+    & { rules?: Maybe<(
+      { __typename?: 'ComponentTranslationRichTextTranslation' }
+      & Pick<ComponentTranslationRichTextTranslation, 'pl' | 'en'>
+    )> }
   )> }
 );
 
@@ -1740,6 +1858,15 @@ export const BasicPostPartsFragmentDoc = gql`
   }
 }
     `;
+export const ExtendedPostPartsFragmentDoc = gql`
+    fragment ExtendedPostParts on Post {
+  ...BasicPostParts
+  content {
+    pl
+    en
+  }
+}
+    ${BasicPostPartsFragmentDoc}`;
 export const BasicTalkPartsFragmentDoc = gql`
     fragment BasicTalkParts on Talk {
   id
@@ -1754,6 +1881,39 @@ export const BasicTalkPartsFragmentDoc = gql`
   }
 }
     `;
+export const PostByIdDocument = gql`
+    query PostById($id: ID!) {
+  post(id: $id) {
+    ...ExtendedPostParts
+  }
+}
+    ${ExtendedPostPartsFragmentDoc}`;
+
+/**
+ * __usePostByIdQuery__
+ *
+ * To run a query within a React component, call `usePostByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function usePostByIdQuery(baseOptions: Apollo.QueryHookOptions<PostByIdQuery, PostByIdQueryVariables>) {
+        return Apollo.useQuery<PostByIdQuery, PostByIdQueryVariables>(PostByIdDocument, baseOptions);
+      }
+export function usePostByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostByIdQuery, PostByIdQueryVariables>) {
+          return Apollo.useLazyQuery<PostByIdQuery, PostByIdQueryVariables>(PostByIdDocument, baseOptions);
+        }
+export type PostByIdQueryHookResult = ReturnType<typeof usePostByIdQuery>;
+export type PostByIdLazyQueryHookResult = ReturnType<typeof usePostByIdLazyQuery>;
+export type PostByIdQueryResult = Apollo.QueryResult<PostByIdQuery, PostByIdQueryVariables>;
 export const PostsByFilterDocument = gql`
     query PostsByFilter($sort: String, $limit: Int, $start: Int, $where: JSON, $publicationState: PublicationState) {
   posts(
@@ -1840,6 +2000,41 @@ export function useTalksByFilterLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type TalksByFilterQueryHookResult = ReturnType<typeof useTalksByFilterQuery>;
 export type TalksByFilterLazyQueryHookResult = ReturnType<typeof useTalksByFilterLazyQuery>;
 export type TalksByFilterQueryResult = Apollo.QueryResult<TalksByFilterQuery, TalksByFilterQueryVariables>;
+export const GdprDocumentDocument = gql`
+    query GdprDocument {
+  document {
+    gdpr {
+      pl
+      en
+    }
+  }
+}
+    `;
+
+/**
+ * __useGdprDocumentQuery__
+ *
+ * To run a query within a React component, call `useGdprDocumentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGdprDocumentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGdprDocumentQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGdprDocumentQuery(baseOptions?: Apollo.QueryHookOptions<GdprDocumentQuery, GdprDocumentQueryVariables>) {
+        return Apollo.useQuery<GdprDocumentQuery, GdprDocumentQueryVariables>(GdprDocumentDocument, baseOptions);
+      }
+export function useGdprDocumentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GdprDocumentQuery, GdprDocumentQueryVariables>) {
+          return Apollo.useLazyQuery<GdprDocumentQuery, GdprDocumentQueryVariables>(GdprDocumentDocument, baseOptions);
+        }
+export type GdprDocumentQueryHookResult = ReturnType<typeof useGdprDocumentQuery>;
+export type GdprDocumentLazyQueryHookResult = ReturnType<typeof useGdprDocumentLazyQuery>;
+export type GdprDocumentQueryResult = Apollo.QueryResult<GdprDocumentQuery, GdprDocumentQueryVariables>;
 export const PartnersDocument = gql`
     query Partners {
   partner {
@@ -1879,3 +2074,73 @@ export function usePartnersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<P
 export type PartnersQueryHookResult = ReturnType<typeof usePartnersQuery>;
 export type PartnersLazyQueryHookResult = ReturnType<typeof usePartnersLazyQuery>;
 export type PartnersQueryResult = Apollo.QueryResult<PartnersQuery, PartnersQueryVariables>;
+export const PrivacyDocumentDocument = gql`
+    query PrivacyDocument {
+  document {
+    privacy {
+      pl
+      en
+    }
+  }
+}
+    `;
+
+/**
+ * __usePrivacyDocumentQuery__
+ *
+ * To run a query within a React component, call `usePrivacyDocumentQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePrivacyDocumentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePrivacyDocumentQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePrivacyDocumentQuery(baseOptions?: Apollo.QueryHookOptions<PrivacyDocumentQuery, PrivacyDocumentQueryVariables>) {
+        return Apollo.useQuery<PrivacyDocumentQuery, PrivacyDocumentQueryVariables>(PrivacyDocumentDocument, baseOptions);
+      }
+export function usePrivacyDocumentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PrivacyDocumentQuery, PrivacyDocumentQueryVariables>) {
+          return Apollo.useLazyQuery<PrivacyDocumentQuery, PrivacyDocumentQueryVariables>(PrivacyDocumentDocument, baseOptions);
+        }
+export type PrivacyDocumentQueryHookResult = ReturnType<typeof usePrivacyDocumentQuery>;
+export type PrivacyDocumentLazyQueryHookResult = ReturnType<typeof usePrivacyDocumentLazyQuery>;
+export type PrivacyDocumentQueryResult = Apollo.QueryResult<PrivacyDocumentQuery, PrivacyDocumentQueryVariables>;
+export const RulesDocumentDocument = gql`
+    query RulesDocument {
+  document {
+    rules {
+      pl
+      en
+    }
+  }
+}
+    `;
+
+/**
+ * __useRulesDocumentQuery__
+ *
+ * To run a query within a React component, call `useRulesDocumentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRulesDocumentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRulesDocumentQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useRulesDocumentQuery(baseOptions?: Apollo.QueryHookOptions<RulesDocumentQuery, RulesDocumentQueryVariables>) {
+        return Apollo.useQuery<RulesDocumentQuery, RulesDocumentQueryVariables>(RulesDocumentDocument, baseOptions);
+      }
+export function useRulesDocumentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RulesDocumentQuery, RulesDocumentQueryVariables>) {
+          return Apollo.useLazyQuery<RulesDocumentQuery, RulesDocumentQueryVariables>(RulesDocumentDocument, baseOptions);
+        }
+export type RulesDocumentQueryHookResult = ReturnType<typeof useRulesDocumentQuery>;
+export type RulesDocumentLazyQueryHookResult = ReturnType<typeof useRulesDocumentLazyQuery>;
+export type RulesDocumentQueryResult = Apollo.QueryResult<RulesDocumentQuery, RulesDocumentQueryVariables>;

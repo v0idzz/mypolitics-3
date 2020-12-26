@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as R from "ramda";
 import Link from "next/link";
+import { paths } from "@constants";
 import {
   Copyright,
   CopyrightGroup,
@@ -17,8 +18,10 @@ import {
   MainCopyright,
 } from "./FooterStyle";
 import { socialLinks, SocialLink as SocialLinkType } from "./FooterUtils";
+import useTranslation from 'next-translate/useTranslation';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation("common");
   const year = new Date().getFullYear();
   const toSocialLink = ({ url, icon }: SocialLinkType) => (
     <SocialLink key={url} href={url} target="_blank">
@@ -57,8 +60,9 @@ const Footer: React.FC = () => {
         <Links>
           <SocialLinksWrapper>{socialLinksElements}</SocialLinksWrapper>
           <WebsiteLinksWrapper>
-            <Link href="/rules">Regulamin serwisu</Link>
-            <Link href="/privacy">Polityka prywatności</Link>
+            <Link href={paths.rules}>{t("footer.rules")}</Link>
+            <Link href={paths.privacy}>{t("footer.privacy")}</Link>
+            <Link href={paths.gdpr}>{t("footer.gdpr")}</Link>
           </WebsiteLinksWrapper>
         </Links>
       </Inner>

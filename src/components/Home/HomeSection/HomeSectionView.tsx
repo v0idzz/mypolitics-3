@@ -2,7 +2,6 @@ import React from "react";
 import { Title } from "@shared/Typography";
 import {
   Container,
-  Inner,
   Content,
   Header,
   ContentFill,
@@ -30,11 +29,8 @@ const HomeSection: React.FC<Props> = ({
   illustrationUrl,
 }) => (
   <Container variant={variant}>
-    <Inner>
-      <Illustration
-        src={illustrationUrl}
-        alt={title}
-      />
+    <div className="container">
+      <Illustration src={illustrationUrl} alt={title} />
       <Header>
         <Lead>{slogan}</Lead>
         <Title>{title}</Title>
@@ -44,7 +40,7 @@ const HomeSection: React.FC<Props> = ({
         <ContentInner>{content}</ContentInner>
         <AdditionalContent>{additionalContent}</AdditionalContent>
       </Content>
-    </Inner>
+    </div>
   </Container>
 );
 

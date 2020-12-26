@@ -22,6 +22,16 @@ const nextConfig = {
         destination: "https://www.facebook.com/myPoliticsTest/live",
         permanent: false,
       },
+      {
+        source: "/quizzes",
+        destination: "/quizzes/mypolitics",
+        permanent: false,
+      },
+      {
+        source: "/quizzes/mypolitics",
+        destination: "https://mypolitics.pl/quiz",
+        permanent: false,
+      },
     ];
   },
   async rewrites() {

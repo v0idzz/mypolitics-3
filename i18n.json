@@ -3,6 +3,8 @@
   "defaultLocale": "pl",
   "pages": {
     "*": ["common"],
-    "/": ["home"]
+    "/": ["home"],
+    "/articles": ["articles"],
+    "/articles/[slug]/[id]": ["articles"]
   }
 }

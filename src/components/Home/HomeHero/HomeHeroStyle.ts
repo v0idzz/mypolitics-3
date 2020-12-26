@@ -70,7 +70,8 @@ export const ButtonsWrapper = styled.div`
   margin-top: 0.75rem;
   margin-bottom: -0.5rem;
 
-  & > button {
+  & > button,
+  & > a {
     display: inline;
     margin-bottom: 0.5rem;
 

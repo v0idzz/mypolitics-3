@@ -1,0 +1,8 @@
+query GdprDocument {
+    document {
+        gdpr {
+            pl
+            en
+        }
+    }
+}

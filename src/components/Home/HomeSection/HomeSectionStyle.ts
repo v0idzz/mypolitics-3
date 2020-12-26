@@ -3,16 +3,6 @@ import breakpoint from "styled-components-breakpoint";
 import breakpoints from "@theme/breakpoints";
 import { Lead as DefaultLead } from "@shared/Typography";
 
-export const Inner = styled.div`
-  max-width: ${breakpoints.xl}px;
-  margin: 0 1rem;
-  position: relative;
-
-  ${breakpoint("xl")`
-    margin: auto;
-  `};
-`;
-
 export const Header = styled.header`
   text-align: right;
   line-height: 1.2;
@@ -206,5 +196,5 @@ export const Container = styled.section<{ variant: "left" | "right" }>`
     };
 
     return variants[variant];
-  }}
+  }};
 `;

@@ -1,0 +1,7 @@
+fragment ExtendedPostParts on Post {
+    ...BasicPostParts
+    content {
+        pl
+        en
+    }
+}

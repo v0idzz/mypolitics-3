@@ -37,6 +37,7 @@ module.exports = {
     "import/no-cycle": [0, { ignoreExternal: true }],
     "prefer-const": "off",
     "no-use-before-define": "off",
+    "import/prefer-default-export": "off",
     "@typescript-eslint/no-use-before-define": [
       "error",
       { functions: false, classes: false, variables: true },
