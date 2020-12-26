@@ -9,12 +9,17 @@ import { useMemo } from "react";
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function createApolloClient() {
+  const productionUri =
+    typeof window !== "undefined"
+      ? "/admin/graphql"
+      : "https://admin.mypolitics.pl/graphql";
+
   return new ApolloClient({
     link: createHttpLink({
       uri:
         process.env.NODE_ENV !== "production"
           ? "http://localhost:1337/graphql"
-          : "/admin/graphql",
+          : productionUri,
     }),
     ssrMode: typeof window === "undefined",
     cache: new InMemoryCache(),
