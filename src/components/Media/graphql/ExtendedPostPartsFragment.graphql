@@ -4,4 +4,6 @@ fragment ExtendedPostParts on Post {
         pl
         en
     }
+    createdAt
+    updatedAt
 }

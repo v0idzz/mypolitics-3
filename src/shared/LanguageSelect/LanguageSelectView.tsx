@@ -23,18 +23,34 @@ const LanguageSelect: React.FC = () => {
   const [showFull, setShowFull] = useState<boolean>(false);
   const toggleShowFull = () => setShowFull(!showFull);
 
-  const toLanguageLinks = ({ id, name }: Language) => (
-    <Link href={router.asPath} locale={id} key={id} passHref>
-      <LanguageImage
-        onClick={toggleShowFull}
-        key={id}
-        title={name}
-        /* eslint-disable-next-line import/no-dynamic-require */
-        image={require(`@assets/images/langs/${id}.png`)}
-        disabled={id === lang}
-      />
-    </Link>
-  );
+  const toLanguageLinks = ({ id, name }: Language) => {
+    const languageSelected = id === lang;
+
+    if (languageSelected) {
+      return (
+        <LanguageImage
+          onClick={toggleShowFull}
+          key={id}
+          title={name}
+          /* eslint-disable-next-line import/no-dynamic-require */
+          image={require(`@assets/images/langs/${id}.png`)}
+          as="button"
+        />
+      );
+    }
+
+    return (
+      <Link href={router.asPath} locale={id} key={id} passHref={id !== lang}>
+        <LanguageImage
+          onClick={toggleShowFull}
+          key={id}
+          title={name}
+          /* eslint-disable-next-line import/no-dynamic-require */
+          image={require(`@assets/images/langs/${id}.png`)}
+        />
+      </Link>
+    );
+  };
 
   const languagesSelectedFirst = languages.sort((x, y) => {
     if (x.id === lang) {

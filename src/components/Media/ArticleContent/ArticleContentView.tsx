@@ -2,8 +2,8 @@ import React from "react";
 import { ExtendedPostPartsFragment } from "@generated/graphql";
 import { Title, Lead } from "@shared/Typography";
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import {
   Container,
   Header,
@@ -18,12 +18,11 @@ interface Props {
 }
 
 const ArticleContent: React.FC<Props> = ({ post }) => {
-  const router = useRouter();
   const { t, lang } = useTranslation("articles");
+  const { url } = useCanonicalUrl();
   const { published_at: publishedAt } = post;
   const title = post.title[lang];
   const content = post.content[lang];
-  const url = encodeURI(`https://mypolitics.pl/${lang}${router.asPath}`);
   const titleEncoded = encodeURI(title);
 
   return (
@@ -32,7 +31,7 @@ const ArticleContent: React.FC<Props> = ({ post }) => {
         <Title>{title}</Title>
         <Lead as="div">{new Date(publishedAt).toLocaleDateString()}</Lead>
       </Header>
-      <ThumbnailImage src={post.thumbnail.formats.large.url} />
+      <ThumbnailImage src={post.thumbnail.formats.large.url} alt={title} />
       <Content dangerouslySetInnerHTML={{ __html: content }} />
       <ShareContent>
         <Title as="div">{t("share.title")}</Title>

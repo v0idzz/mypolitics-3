@@ -30,7 +30,7 @@ export const Container = styled.div<{ showFull: boolean }>`
     `}
 `;
 
-export const LanguageImage = styled.a<{ image: string; disabled: boolean }>`
+export const LanguageImage = styled.a<{ image: string }>`
   border-radius: 0.125rem;
   height: 1rem;
   width: 1.6rem;
@@ -40,10 +40,6 @@ export const LanguageImage = styled.a<{ image: string; disabled: boolean }>`
   background-size: cover;
   background-repeat: no-repeat;
   padding: 0;
-
-  ${({ disabled }) => disabled && css`
-    pointer-events: none;
-  `}
 `;
 
 export const DropdownButton = styled.button`

@@ -6,14 +6,18 @@ import {
   BasicPostPartsFragment,
   ExtendedPostPartsFragment,
   PostByIdDocument,
-  PostByIdQuery, PostsByFilterDocument, PostsByFilterQuery,
-} from '@generated/graphql';
+  PostByIdQuery,
+  PostsByFilterDocument,
+  PostsByFilterQuery,
+} from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 import { NextPageContext } from "next";
 import { paths } from "@constants";
 import Head from "next/head";
-import { ArticleContent, MoreArticlesSection } from '@components/Media';
+import { ArticleContent, MoreArticlesSection } from "@components/Media";
 import DisqusComments from "@shared/DisqusComments";
+import { NextSeo } from "next-seo";
+import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 
 interface Props {
   post: ExtendedPostPartsFragment;
@@ -22,8 +26,10 @@ interface Props {
 
 const Article: React.FC<Props> = ({ post, morePosts }) => {
   const { lang } = useTranslation("articles");
+  const { url } = useCanonicalUrl();
   const title = post.title[lang];
   const slug = post.slug[lang];
+  const thumbnail = post.thumbnail.formats.medium;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -37,14 +43,29 @@ const Article: React.FC<Props> = ({ post, morePosts }) => {
 
   return (
     <PageContainer className="container">
-      <Head>
-        <title>{title} – myPolitics</title>
-        <meta
-          name="og:title"
-          property="og:title"
-          content={`${title} – myPolitics`}
-        />
-      </Head>
+      <NextSeo
+        title={title}
+        description="Sprawdź artykuł na myPolitics!"
+        openGraph={{
+          title,
+          description: "Sprawdź artykuł na myPolitics!",
+          url,
+          type: "article",
+          article: {
+            publishedTime: post.createdAt,
+            modifiedTime: post.updatedAt,
+            section: post.category,
+          },
+          images: [
+            {
+              url: thumbnail.url,
+              width: thumbnail.width,
+              height: thumbnail.height,
+              alt: title,
+            },
+          ],
+        }}
+      />
       <ArticleContent post={post} />
       <DisqusComments post={post} />
       <MoreArticlesSection posts={morePosts} />

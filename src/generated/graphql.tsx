@@ -1712,6 +1712,7 @@ export type BasicPostPartsFragment = (
 
 export type ExtendedPostPartsFragment = (
   { __typename?: 'Post' }
+  & Pick<Post, 'createdAt' | 'updatedAt'>
   & { content?: Maybe<(
     { __typename?: 'ComponentTranslationRichTextTranslation' }
     & Pick<ComponentTranslationRichTextTranslation, 'pl' | 'en'>
@@ -1865,6 +1866,8 @@ export const ExtendedPostPartsFragmentDoc = gql`
     pl
     en
   }
+  createdAt
+  updatedAt
 }
     ${BasicPostPartsFragmentDoc}`;
 export const BasicTalkPartsFragmentDoc = gql`

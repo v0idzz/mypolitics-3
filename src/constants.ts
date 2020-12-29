@@ -1,3 +1,5 @@
+export const BASE_PATH = "https://beta.mypolitics.pl";
+
 export const paths = {
   privacy: "/privacy",
   rules: "/rules",

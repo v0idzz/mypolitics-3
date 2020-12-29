@@ -5,9 +5,7 @@ import {
   BasicPostPartsFragment,
   PostsByFilterDocument,
   PostsByFilterQuery,
-  PostsByFilterQueryResult,
 } from "@generated/graphql";
-import Head from "next/head";
 import { PageContainer } from "@shared/Page";
 import {
   ArticlesHero,
@@ -17,6 +15,8 @@ import {
 import { ApolloQueryResult } from "@apollo/client";
 import Trans from "next-translate/Trans";
 import ContactActionSection from "@shared/ContactActionSection";
+import { NextSeo } from "next-seo";
+import useTranslation from "next-translate/useTranslation";
 
 interface Props {
   posts: {
@@ -26,24 +26,26 @@ interface Props {
   };
 }
 
-const Articles: React.FC<Props> = ({ posts }) => (
-  <PageContainer>
-    <Head>
-      <title>myPolitics – Wiadomości i opinie</title>
-    </Head>
-    <ArticlesHero featuredPosts={posts.featured} />
-    <NewsArticlesSection posts={posts.news} />
-    <ViewArticlesSection posts={posts.view} />
-    <ContactActionSection
-      title={
-        <Trans
-          i18nKey="articles:contact.title"
-          components={[<React.Fragment key="0" />, <b key="1" />]}
-        />
-      }
-    />
-  </PageContainer>
-);
+const Articles: React.FC<Props> = ({ posts }) => {
+  const { t } = useTranslation("articles");
+
+  return (
+    <PageContainer>
+      <NextSeo title={t("SEO.title")} description={t("SEO.description")} />
+      <ArticlesHero featuredPosts={posts.featured} />
+      <NewsArticlesSection posts={posts.news} />
+      <ViewArticlesSection posts={posts.view} />
+      <ContactActionSection
+        title={
+          <Trans
+            i18nKey="articles:contact.title"
+            components={[<React.Fragment key="0" />, <b key="1" />]}
+          />
+        }
+      />
+    </PageContainer>
+  );
+};
 
 export const getServerSideProps = async (): Promise<{ props: Props }> => {
   const client = initializeApollo();

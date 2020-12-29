@@ -72,7 +72,7 @@ export const ButtonsWrapper = styled.div`
 
   & > button,
   & > a {
-    display: inline;
+    display: inline-block;
     margin-bottom: 0.5rem;
 
     &:first-child {

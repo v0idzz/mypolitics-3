@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import { Title } from "@shared/Typography";
 
 export const Content = styled.div`
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1.5rem;
   width: 100%;
+
+  ${breakpoint("md")`
+    ${Title} {
+      display: none;
+    }
+  `};
 `;
 
 export const Row = styled.div`

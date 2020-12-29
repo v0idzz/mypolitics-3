@@ -2,7 +2,7 @@ import React from "react";
 import { Title } from "@shared/Typography";
 import Trans from "next-translate/Trans";
 import ContactActionSection from "@shared/ContactActionSection";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { Container, Content, ContactWrapper, Inner } from "./DocumentPageStyle";
 
 interface Props {
@@ -12,9 +12,7 @@ interface Props {
 
 const DocumentPage: React.FC<Props> = ({ document, name }) => (
   <Container>
-    <Head>
-      <title>{name} – myPolitics</title>
-    </Head>
+    <NextSeo title={name} titleTemplate="%s – myPolitics" />
     <div className="container">
       <Inner>
         <Title>{name}</Title>
