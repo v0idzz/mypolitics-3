@@ -52,9 +52,10 @@ export const Container = styled.section`
   display: flex;
   justify-content: center;
   height: 90vh;
+  position: relative;
 
   ${breakpoint("md")`
-    height: 75vh;
+    height: max(75vh, 48rem);
     &, ${Inner}, ${Overlay}, ${BackgroundImage} {
       max-height: 768px;
     };

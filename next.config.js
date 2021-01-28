@@ -19,17 +19,7 @@ const nextConfig = {
     return [
       {
         source: "/talks",
-        destination: "https://www.facebook.com/myPoliticsTest/live",
-        permanent: false,
-      },
-      {
-        source: "/quizzes",
-        destination: "/quizzes/mypolitics",
-        permanent: false,
-      },
-      {
-        source: "/quizzes/mypolitics",
-        destination: "https://mypolitics.pl/quiz",
+        destination: "https://youtube.com/myPolitics",
         permanent: false,
       },
     ];

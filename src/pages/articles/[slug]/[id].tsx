@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { PageContainer } from "@shared/Page";
-import getT from "next-translate/getT";
 import { initializeApollo } from "@services/apollo";
 import {
   BasicPostPartsFragment,
@@ -13,11 +12,11 @@ import {
 import useTranslation from "next-translate/useTranslation";
 import { NextPageContext } from "next";
 import { paths } from "@constants";
-import Head from "next/head";
 import { ArticleContent, MoreArticlesSection } from "@components/Media";
 import DisqusComments from "@shared/DisqusComments";
 import { NextSeo } from "next-seo";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
+import { scrapeDescription } from "@components/Media/utils/scrape-description";
 
 interface Props {
   post: ExtendedPostPartsFragment;
@@ -29,7 +28,11 @@ const Article: React.FC<Props> = ({ post, morePosts }) => {
   const { url } = useCanonicalUrl();
   const title = post.title[lang];
   const slug = post.slug[lang];
-  const thumbnail = post.thumbnail.formats.medium;
+  const thumbFormats = post.thumbnail.formats;
+  const thumbnail = thumbFormats.medium
+    ? thumbFormats.medium
+    : thumbFormats.small;
+  const description = scrapeDescription(post.content[lang]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -45,10 +48,10 @@ const Article: React.FC<Props> = ({ post, morePosts }) => {
     <PageContainer className="container">
       <NextSeo
         title={title}
-        description="Sprawdź artykuł na myPolitics!"
+        description={description}
         openGraph={{
           title,
-          description: "Sprawdź artykuł na myPolitics!",
+          description,
           url,
           type: "article",
           article: {

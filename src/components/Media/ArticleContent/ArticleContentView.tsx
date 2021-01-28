@@ -24,6 +24,10 @@ const ArticleContent: React.FC<Props> = ({ post }) => {
   const title = post.title[lang];
   const content = post.content[lang];
   const titleEncoded = encodeURI(title);
+  const thumbFormats = post.thumbnail.formats;
+  const thumbnail = thumbFormats.medium
+    ? thumbFormats.medium
+    : thumbFormats.small;
 
   return (
     <Container>
@@ -31,7 +35,7 @@ const ArticleContent: React.FC<Props> = ({ post }) => {
         <Title>{title}</Title>
         <Lead as="div">{new Date(publishedAt).toLocaleDateString()}</Lead>
       </Header>
-      <ThumbnailImage src={post.thumbnail.formats.large.url} alt={title} />
+      <ThumbnailImage src={thumbnail.url} alt={title} />
       <Content dangerouslySetInnerHTML={{ __html: content }} />
       <ShareContent>
         <Title as="div">{t("share.title")}</Title>

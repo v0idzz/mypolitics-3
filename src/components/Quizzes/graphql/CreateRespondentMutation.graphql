@@ -1,0 +1,6 @@
+mutation CreateRespondent($lang: Language!) {
+    createRespondent(createRespondentInput: { lang: $lang }) {
+        id
+        code
+    }
+}

@@ -8,7 +8,7 @@ export const Inner = styled.article`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: ${({ theme }) => theme.colors.backgroundLighten};
   font-weight: ${({ theme }) => theme.fontWeight.primary.bold};
   font-family: ${({ theme }) => theme.fontFamily.primary};
@@ -36,6 +36,9 @@ export const Divider = styled.span`
 
 export const SubCategory = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.secondary.light};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Container = styled.a<{ imageUrl: string; large: boolean }>`

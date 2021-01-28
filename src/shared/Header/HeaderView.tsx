@@ -7,6 +7,8 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { paths } from "@constants";
+import useTranslation from "next-translate/useTranslation";
+import { useLogo } from "@shared/Header/HeaderUtilts";
 import {
   Container,
   DesktopNavigation,
@@ -18,7 +20,6 @@ import {
   MobileNavigationWrapper,
   MobileNavigationInner,
 } from "./HeaderStyle";
-import useTranslation from 'next-translate/useTranslation';
 
 library.add(faBars, faTimes);
 
@@ -30,6 +31,7 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   const { t } = useTranslation("common");
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
   const [mounted, setMounted] = React.useState<boolean>(false);
+  const logo = useLogo();
   const { scrollY } = useWindowScroll(false);
   const scrolled = scrollY > 60;
   const highlighted = scrolled || showMenu || forceHighlight;
@@ -47,10 +49,7 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
       <Inner>
         <Link href="/">
           <a>
-            <Logo
-              src={require("@assets/images/logos/group.png")}
-              alt="myPolitics Group"
-            />
+            <Logo src={logo.url} alt={logo.name} />
           </a>
         </Link>
         <ActionsWrapper>
