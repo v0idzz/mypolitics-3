@@ -41,6 +41,7 @@ export const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 3rem;
 
   a {
     transition: 0.2s ease-in-out;
