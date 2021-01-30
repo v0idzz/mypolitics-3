@@ -15,9 +15,9 @@ export const Container = styled.main`
 `;
 
 export const Inner = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 1rem;
   margin: auto;
   padding: 5% 0;
 `;

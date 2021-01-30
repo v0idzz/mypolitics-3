@@ -11,6 +11,8 @@ import { paths } from "@constants";
 import Link from "next/link";
 import * as R from "ramda";
 import { useRouter } from "next/router";
+import { useHandleErrors } from "@utils/hooks/useHandleErrors";
+import GoogleAd from "@shared/GoogleAd";
 import {
   TopText,
   Content,
@@ -19,7 +21,6 @@ import {
   ActionsWrapper,
 } from "./QuizAdvInitPageStyle";
 import { defaultData } from "./QuizAdvInitPageUtils";
-import { useHandleErrors } from '@utils/hooks/useHandleErrors';
 
 const QuizPreInitPage: React.FC = () => {
   const router = useRouter();
@@ -63,6 +64,7 @@ const QuizPreInitPage: React.FC = () => {
   return (
     <CenteredPage>
       <NextSeo title="Witaj, weteranie" titleTemplate="%s – myPolitics" />
+      <GoogleAd id="myp3-standard-top" />
       <InitStep title="Witaj, weteranie!">
         <Content>
           <TopText>

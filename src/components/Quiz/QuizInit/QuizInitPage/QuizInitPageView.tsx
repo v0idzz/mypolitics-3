@@ -5,11 +5,13 @@ import Button from "@shared/Button";
 import CenteredPage from "@shared/CenteredPage";
 import Link from "next/link";
 import { paths } from "@constants";
+import GoogleAd from "@shared/GoogleAd";
 import { ButtonChips, Content } from "./QuizInitPageStyle";
 
 const QuizInitPage: React.FC = () => (
   <CenteredPage>
     <NextSeo title="Zaczynamy!" titleTemplate="%s – myPolitics" />
+    <GoogleAd id="myp3-standard-top" />
     <InitStep
       title="Zaczynamy!"
       lead="Czy pierwszy raz wykonujesz test poglądów?"

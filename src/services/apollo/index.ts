@@ -9,8 +9,13 @@ import { useMemo } from "react";
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function createApolloClient() {
+  const domain =
+    process.env.NODE_ENV === "production"
+      ? "https://mypolitics"
+      : "http://localhost:3000";
+
   const httpLink = createHttpLink({
-    uri: "/admin/graphql",
+    uri: `${domain}/admin/graphql`,
   });
 
   return new ApolloClient({
