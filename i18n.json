@@ -5,6 +5,7 @@
     "*": ["common"],
     "/": ["home"],
     "/articles": ["articles"],
-    "/articles/[slug]/[id]": ["articles"]
+    "/articles/[slug]/[id]": ["articles"],
+    "/quizzes/initialize/advanced": ["quiz"]
   }
 }

@@ -4,7 +4,7 @@ import breakpoints from "@theme/breakpoints";
 import { darken } from "polished";
 
 export const Container = styled.footer`
-  background: ${({ theme }) => theme.colors.backgroundDarken};
+  background: ${({ theme }) => theme.colors.primaryDarken};
   padding: 2rem 0;
 
   ${breakpoint("xs", "xl")`
@@ -62,7 +62,7 @@ export const MainLogo = styled.img`
 `;
 
 export const CopyrightGroup = styled.div`
-  background: ${({ theme }) => darken(0.025, theme.colors.backgroundDarken)};
+  background: ${({ theme }) => darken(0.025, theme.colors.primaryDarken)};
   display: flex;
   padding: 0.75rem;
   border-radius: 0.5rem;
@@ -101,7 +101,7 @@ export const SocialLink = styled.a`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: ${({ theme }) => darken(0.05, theme.colors.backgroundDarken)};
+  background: ${({ theme }) => darken(0.05, theme.colors.primaryDarken)};
   color: ${({ theme }) => theme.colors.backgroundLighten};
   border-radius: 0.5rem;
   width: 2.5rem;
@@ -115,7 +115,7 @@ export const SocialLink = styled.a`
   `};
 
   &:hover {
-    background: ${({ theme }) => darken(0.075, theme.colors.backgroundDarken)};
+    background: ${({ theme }) => darken(0.075, theme.colors.primaryDarken)};
   }
 
   svg {

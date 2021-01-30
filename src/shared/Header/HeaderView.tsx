@@ -57,7 +57,7 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
             <Link href={paths.articles}>{t("header.articles")}</Link>
             <Link href={paths.talks}>{t("header.talks")}</Link>
             {(scrolled || forceHighlight) && (
-              <Link href={paths.quiz("mypolitics")} passHref>
+              <Link href={paths.quizzesPreInitialize} passHref>
                 <Button as="a">{t("header.quiz")}</Button>
               </Link>
             )}

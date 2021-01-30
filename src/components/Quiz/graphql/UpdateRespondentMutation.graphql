@@ -1,0 +1,5 @@
+mutation UpdateRespondent($values: UpdateRespondentInput!) {
+    updateRespondent(updateRespondentInput: $values) {
+        id
+    }
+}

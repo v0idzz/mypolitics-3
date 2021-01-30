@@ -34,8 +34,10 @@ const HeroView: React.FC = () => {
           />
           <SubTitle>{t("hero.subTitle")}</SubTitle>
           <ButtonsWrapper>
-            <Link href={paths.quiz("mypolitics")} passHref>
-              <Button as="a" showShadow>{t("hero.quizLink")}</Button>
+            <Link href={paths.quizzesPreInitialize} passHref>
+              <Button as="a" showShadow>
+                {t("hero.quizLink")}
+              </Button>
             </Link>
             <Button onClick={handleCta} background="black">
               {t("hero.learnMore")}

@@ -25,6 +25,13 @@ export const Container = styled.button<StyleProps>`
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   border: 0;
   cursor: pointer;
+  transition: background 0.2s ease-in-out;
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &[href]:hover {
     text-decoration: none;

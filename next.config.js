@@ -28,7 +28,10 @@ const nextConfig = {
     return [
       {
         source: "/admin/graphql",
-        destination: `https://admin.mypolitics.pl/graphql`,
+        destination:
+          process.env.NODE_ENV !== "production"
+            ? "http://localhost:5000/graphql"
+            : "https://api.v3.mypolitics.pl/graphql",
       },
     ];
   },
