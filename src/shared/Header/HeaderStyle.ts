@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { darken, transparentize } from 'polished';
+import { darken, transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
 
 export const Container = styled.div<{
@@ -41,7 +41,10 @@ export const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
+
+  ${breakpoint("md")`
+    height: 3rem;
+  `}
 
   a {
     transition: 0.2s ease-in-out;

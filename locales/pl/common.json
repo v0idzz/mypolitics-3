@@ -21,5 +21,13 @@
     "articles": "Artykuły",
     "talks": "Debaty",
     "quiz": "Test poglądów politycznych"
+  },
+  "errorMessages": {
+    "0": "Nie znaleziono zasobu",
+    "1": "Nieautoryzowane",
+    "2": "Nie podano nagłówka respondenta",
+    "3": "Ankieta już się zakończyła",
+    "4": "Ankieta jeszcze się nie zakończyła",
+    "default": "Nieznany błąd"
   }
 }

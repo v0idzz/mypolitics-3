@@ -28,6 +28,8 @@ declare module "styled-components" {
       primaryDarken: string;
       text: string;
       textMuted: string;
+      red: string;
+      green: string;
     };
     breakpoints: {
       [name in DefaultBreakpointName]: number;

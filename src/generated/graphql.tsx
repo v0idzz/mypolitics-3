@@ -33,6 +33,125 @@ export type AdminUser = {
   lastname: Scalars['String'];
 };
 
+export type Author = {
+  __typename?: 'Author';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  name?: Maybe<Scalars['String']>;
+  image?: Maybe<UploadFile>;
+  description?: Maybe<ComponentTranslationLongTextTranslation>;
+  socials?: Maybe<ComponentCommonSocials>;
+  posts?: Maybe<Array<Maybe<Post>>>;
+};
+
+
+export type AuthorPostsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type AuthorAggregator = {
+  __typename?: 'AuthorAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type AuthorConnection = {
+  __typename?: 'AuthorConnection';
+  values?: Maybe<Array<Maybe<Author>>>;
+  groupBy?: Maybe<AuthorGroupBy>;
+  aggregate?: Maybe<AuthorAggregator>;
+};
+
+export type AuthorConnection_Id = {
+  __typename?: 'AuthorConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<AuthorConnection>;
+};
+
+export type AuthorConnectionCreatedAt = {
+  __typename?: 'AuthorConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<AuthorConnection>;
+};
+
+export type AuthorConnectionDescription = {
+  __typename?: 'AuthorConnectionDescription';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<AuthorConnection>;
+};
+
+export type AuthorConnectionId = {
+  __typename?: 'AuthorConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<AuthorConnection>;
+};
+
+export type AuthorConnectionImage = {
+  __typename?: 'AuthorConnectionImage';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<AuthorConnection>;
+};
+
+export type AuthorConnectionName = {
+  __typename?: 'AuthorConnectionName';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<AuthorConnection>;
+};
+
+export type AuthorConnectionSocials = {
+  __typename?: 'AuthorConnectionSocials';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<AuthorConnection>;
+};
+
+export type AuthorConnectionUpdatedAt = {
+  __typename?: 'AuthorConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<AuthorConnection>;
+};
+
+export type AuthorGroupBy = {
+  __typename?: 'AuthorGroupBy';
+  id?: Maybe<Array<Maybe<AuthorConnectionId>>>;
+  _id?: Maybe<Array<Maybe<AuthorConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<AuthorConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<AuthorConnectionUpdatedAt>>>;
+  name?: Maybe<Array<Maybe<AuthorConnectionName>>>;
+  image?: Maybe<Array<Maybe<AuthorConnectionImage>>>;
+  description?: Maybe<Array<Maybe<AuthorConnectionDescription>>>;
+  socials?: Maybe<Array<Maybe<AuthorConnectionSocials>>>;
+};
+
+export type AuthorInput = {
+  name?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['ID']>;
+  description?: Maybe<ComponentTranslationLongTextTranslationInput>;
+  socials?: Maybe<ComponentCommonSocialInput>;
+  posts?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type ComponentCommonSocialInput = {
+  facebook?: Maybe<Scalars['String']>;
+  twitter?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+};
+
+export type ComponentCommonSocials = {
+  __typename?: 'ComponentCommonSocials';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  facebook?: Maybe<Scalars['String']>;
+  twitter?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+};
+
 export type ComponentPersonPartner = {
   __typename?: 'ComponentPersonPartner';
   id: Scalars['ID'];
@@ -102,6 +221,24 @@ export type ComponentTranslationShortTextTranslationInput = {
   en?: Maybe<Scalars['String']>;
 };
 
+export type CreateAuthorInput = {
+  data?: Maybe<AuthorInput>;
+};
+
+export type CreateAuthorPayload = {
+  __typename?: 'createAuthorPayload';
+  author?: Maybe<Author>;
+};
+
+export type CreatePoliticianInput = {
+  data?: Maybe<PoliticianInput>;
+};
+
+export type CreatePoliticianPayload = {
+  __typename?: 'createPoliticianPayload';
+  politician?: Maybe<Politician>;
+};
+
 export type CreatePoliticianResultInput = {
   data?: Maybe<PoliticianResultInput>;
 };
@@ -140,6 +277,15 @@ export type CreateUserPayload = {
 
 
 
+export type DeleteAuthorInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteAuthorPayload = {
+  __typename?: 'deleteAuthorPayload';
+  author?: Maybe<Author>;
+};
+
 export type DeleteDocumentPayload = {
   __typename?: 'deleteDocumentPayload';
   document?: Maybe<Documents>;
@@ -148,6 +294,15 @@ export type DeleteDocumentPayload = {
 export type DeletePartnerPayload = {
   __typename?: 'deletePartnerPayload';
   partner?: Maybe<Partners>;
+};
+
+export type DeletePoliticianInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeletePoliticianPayload = {
+  __typename?: 'deletePoliticianPayload';
+  politician?: Maybe<Politician>;
 };
 
 export type DeletePoliticianResultInput = {
@@ -196,6 +351,23 @@ export type Documents = {
   gdpr?: Maybe<ComponentTranslationRichTextTranslation>;
 };
 
+export type EditAuthorInput = {
+  name?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['ID']>;
+  description?: Maybe<EditComponentTranslationLongTextTranslationInput>;
+  socials?: Maybe<EditComponentCommonSocialInput>;
+  posts?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditComponentCommonSocialInput = {
+  id?: Maybe<Scalars['ID']>;
+  facebook?: Maybe<Scalars['String']>;
+  twitter?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+};
+
 export type EditComponentPersonPartnerInput = {
   id?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
@@ -242,13 +414,23 @@ export type EditPartnerInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditPoliticianInput = {
+  image?: Maybe<Scalars['ID']>;
+  biography?: Maybe<EditComponentTranslationLongTextTranslationInput>;
+  name?: Maybe<Scalars['String']>;
+  politician_results?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  talks?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditPoliticianResultInput = {
   rid?: Maybe<Scalars['String']>;
   category?: Maybe<Enum_Politicianresults_Category>;
   featured?: Maybe<Scalars['Boolean']>;
-  politician?: Maybe<EditComponentPersonPoliticianInput>;
   slug?: Maybe<Scalars['String']>;
-  published_at?: Maybe<Scalars['DateTime']>;
+  politician?: Maybe<Scalars['ID']>;
+  quiz_slug?: Maybe<Enum_Politicianresults_Quiz_Slug>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -261,6 +443,8 @@ export type EditPostInput = {
   content?: Maybe<EditComponentTranslationRichTextTranslationInput>;
   subcategory?: Maybe<EditComponentTranslationShortTextTranslationInput>;
   slug?: Maybe<EditComponentTranslationShortTextTranslationInput>;
+  authors?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  default_title?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -274,6 +458,7 @@ export type EditTalkInput = {
   url?: Maybe<Scalars['String']>;
   thumbnail?: Maybe<Scalars['ID']>;
   lang?: Maybe<Enum_Talk_Lang>;
+  politicians?: Maybe<Array<Maybe<Scalars['ID']>>>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -297,6 +482,10 @@ export enum Enum_Politicianresults_Category {
   Politician = 'politician',
   Commentator = 'commentator',
   Youth = 'youth'
+}
+
+export enum Enum_Politicianresults_Quiz_Slug {
+  Mypolitics = 'mypolitics'
 }
 
 export enum Enum_Post_Category {
@@ -327,7 +516,7 @@ export type InputId = {
 
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Documents | UpdateDocumentPayload | DeleteDocumentPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPublished_At | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | CreateUserPayload | UpdateUserPayload | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Author | AuthorConnection | AuthorAggregator | AuthorGroupBy | AuthorConnectionId | AuthorConnection_Id | AuthorConnectionCreatedAt | AuthorConnectionUpdatedAt | AuthorConnectionName | AuthorConnectionImage | AuthorConnectionDescription | AuthorConnectionSocials | CreateAuthorPayload | UpdateAuthorPayload | DeleteAuthorPayload | Documents | UpdateDocumentPayload | DeleteDocumentPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionQuiz_Slug | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Politician | PoliticianConnection | PoliticianAggregator | PoliticianGroupBy | PoliticianConnectionId | PoliticianConnection_Id | PoliticianConnectionCreatedAt | PoliticianConnectionUpdatedAt | PoliticianConnectionImage | PoliticianConnectionBiography | PoliticianConnectionName | CreatePoliticianPayload | UpdatePoliticianPayload | DeletePoliticianPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionDefault_Title | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | CreateUserPayload | UpdateUserPayload | ComponentCommonSocials | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
 
 export type PartnerInput = {
   partners?: Maybe<Array<Maybe<ComponentPersonPartnerInput>>>;
@@ -344,13 +533,118 @@ export type Partners = {
   partners?: Maybe<Array<Maybe<ComponentPersonPartner>>>;
 };
 
+export type Politician = {
+  __typename?: 'Politician';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  image?: Maybe<UploadFile>;
+  biography?: Maybe<ComponentTranslationLongTextTranslation>;
+  name?: Maybe<Scalars['String']>;
+  politician_results?: Maybe<Array<Maybe<PoliticianResults>>>;
+  talks?: Maybe<Array<Maybe<Talk>>>;
+};
+
+
+export type PoliticianPolitician_ResultsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type PoliticianTalksArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type PoliticianAggregator = {
+  __typename?: 'PoliticianAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type PoliticianConnection = {
+  __typename?: 'PoliticianConnection';
+  values?: Maybe<Array<Maybe<Politician>>>;
+  groupBy?: Maybe<PoliticianGroupBy>;
+  aggregate?: Maybe<PoliticianAggregator>;
+};
+
+export type PoliticianConnection_Id = {
+  __typename?: 'PoliticianConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<PoliticianConnection>;
+};
+
+export type PoliticianConnectionBiography = {
+  __typename?: 'PoliticianConnectionBiography';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<PoliticianConnection>;
+};
+
+export type PoliticianConnectionCreatedAt = {
+  __typename?: 'PoliticianConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<PoliticianConnection>;
+};
+
+export type PoliticianConnectionId = {
+  __typename?: 'PoliticianConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<PoliticianConnection>;
+};
+
+export type PoliticianConnectionImage = {
+  __typename?: 'PoliticianConnectionImage';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<PoliticianConnection>;
+};
+
+export type PoliticianConnectionName = {
+  __typename?: 'PoliticianConnectionName';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<PoliticianConnection>;
+};
+
+export type PoliticianConnectionUpdatedAt = {
+  __typename?: 'PoliticianConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<PoliticianConnection>;
+};
+
+export type PoliticianGroupBy = {
+  __typename?: 'PoliticianGroupBy';
+  id?: Maybe<Array<Maybe<PoliticianConnectionId>>>;
+  _id?: Maybe<Array<Maybe<PoliticianConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<PoliticianConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<PoliticianConnectionUpdatedAt>>>;
+  image?: Maybe<Array<Maybe<PoliticianConnectionImage>>>;
+  biography?: Maybe<Array<Maybe<PoliticianConnectionBiography>>>;
+  name?: Maybe<Array<Maybe<PoliticianConnectionName>>>;
+};
+
+export type PoliticianInput = {
+  image?: Maybe<Scalars['ID']>;
+  biography?: Maybe<ComponentTranslationLongTextTranslationInput>;
+  name?: Maybe<Scalars['String']>;
+  politician_results?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  talks?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type PoliticianResultInput = {
   rid?: Maybe<Scalars['String']>;
   category?: Maybe<Enum_Politicianresults_Category>;
   featured?: Maybe<Scalars['Boolean']>;
-  politician?: Maybe<ComponentPersonPoliticianInput>;
   slug?: Maybe<Scalars['String']>;
-  published_at?: Maybe<Scalars['DateTime']>;
+  politician?: Maybe<Scalars['ID']>;
+  quiz_slug?: Maybe<Enum_Politicianresults_Quiz_Slug>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -364,9 +658,9 @@ export type PoliticianResults = {
   rid?: Maybe<Scalars['String']>;
   category?: Maybe<Enum_Politicianresults_Category>;
   featured?: Maybe<Scalars['Boolean']>;
-  politician?: Maybe<ComponentPersonPolitician>;
   slug?: Maybe<Scalars['String']>;
-  published_at?: Maybe<Scalars['DateTime']>;
+  politician?: Maybe<Politician>;
+  quiz_slug?: Maybe<Enum_Politicianresults_Quiz_Slug>;
 };
 
 export type PoliticianResultsAggregator = {
@@ -418,9 +712,9 @@ export type PoliticianResultsConnectionPolitician = {
   connection?: Maybe<PoliticianResultsConnection>;
 };
 
-export type PoliticianResultsConnectionPublished_At = {
-  __typename?: 'PoliticianResultsConnectionPublished_at';
-  key?: Maybe<Scalars['DateTime']>;
+export type PoliticianResultsConnectionQuiz_Slug = {
+  __typename?: 'PoliticianResultsConnectionQuiz_slug';
+  key?: Maybe<Scalars['String']>;
   connection?: Maybe<PoliticianResultsConnection>;
 };
 
@@ -451,9 +745,9 @@ export type PoliticianResultsGroupBy = {
   rid?: Maybe<Array<Maybe<PoliticianResultsConnectionRid>>>;
   category?: Maybe<Array<Maybe<PoliticianResultsConnectionCategory>>>;
   featured?: Maybe<Array<Maybe<PoliticianResultsConnectionFeatured>>>;
-  politician?: Maybe<Array<Maybe<PoliticianResultsConnectionPolitician>>>;
   slug?: Maybe<Array<Maybe<PoliticianResultsConnectionSlug>>>;
-  published_at?: Maybe<Array<Maybe<PoliticianResultsConnectionPublished_At>>>;
+  politician?: Maybe<Array<Maybe<PoliticianResultsConnectionPolitician>>>;
+  quiz_slug?: Maybe<Array<Maybe<PoliticianResultsConnectionQuiz_Slug>>>;
 };
 
 export type Post = {
@@ -469,7 +763,17 @@ export type Post = {
   content?: Maybe<ComponentTranslationRichTextTranslation>;
   subcategory?: Maybe<ComponentTranslationShortTextTranslation>;
   slug?: Maybe<ComponentTranslationShortTextTranslation>;
+  default_title?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
+  authors?: Maybe<Array<Maybe<Author>>>;
+};
+
+
+export type PostAuthorsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type PostAggregator = {
@@ -506,6 +810,12 @@ export type PostConnectionContent = {
 export type PostConnectionCreatedAt = {
   __typename?: 'PostConnectionCreatedAt';
   key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<PostConnection>;
+};
+
+export type PostConnectionDefault_Title = {
+  __typename?: 'PostConnectionDefault_title';
+  key?: Maybe<Scalars['String']>;
   connection?: Maybe<PostConnection>;
 };
 
@@ -570,6 +880,7 @@ export type PostGroupBy = {
   content?: Maybe<Array<Maybe<PostConnectionContent>>>;
   subcategory?: Maybe<Array<Maybe<PostConnectionSubcategory>>>;
   slug?: Maybe<Array<Maybe<PostConnectionSlug>>>;
+  default_title?: Maybe<Array<Maybe<PostConnectionDefault_Title>>>;
   published_at?: Maybe<Array<Maybe<PostConnectionPublished_At>>>;
 };
 
@@ -581,6 +892,8 @@ export type PostInput = {
   content: ComponentTranslationRichTextTranslationInput;
   subcategory: ComponentTranslationShortTextTranslationInput;
   slug: ComponentTranslationShortTextTranslationInput;
+  authors?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  default_title?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -605,6 +918,15 @@ export type Talk = {
   thumbnail?: Maybe<UploadFile>;
   lang?: Maybe<Enum_Talk_Lang>;
   published_at?: Maybe<Scalars['DateTime']>;
+  politicians?: Maybe<Array<Maybe<Politician>>>;
+};
+
+
+export type TalkPoliticiansArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type TalkAggregator = {
@@ -716,11 +1038,22 @@ export type TalkInput = {
   url?: Maybe<Scalars['String']>;
   thumbnail?: Maybe<Scalars['ID']>;
   lang?: Maybe<Enum_Talk_Lang>;
+  politicians?: Maybe<Array<Maybe<Scalars['ID']>>>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+
+export type UpdateAuthorInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditAuthorInput>;
+};
+
+export type UpdateAuthorPayload = {
+  __typename?: 'updateAuthorPayload';
+  author?: Maybe<Author>;
+};
 
 export type UpdateDocumentInput = {
   data?: Maybe<EditDocumentInput>;
@@ -738,6 +1071,16 @@ export type UpdatePartnerInput = {
 export type UpdatePartnerPayload = {
   __typename?: 'updatePartnerPayload';
   partner?: Maybe<Partners>;
+};
+
+export type UpdatePoliticianInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditPoliticianInput>;
+};
+
+export type UpdatePoliticianPayload = {
+  __typename?: 'updatePoliticianPayload';
+  politician?: Maybe<Politician>;
 };
 
 export type UpdatePoliticianResultInput = {
@@ -946,8 +1289,10 @@ export type CreateQuestionInput = {
 
 export type CreateQuizInput = {
   slug: Scalars['String'];
+  logoUrl: Scalars['String'];
   title: TextTranslationInput;
   description: TextTranslationInput;
+  meta: QuizMetaInput;
 };
 
 export type CreateQuizVersionInput = {
@@ -1039,10 +1384,23 @@ export type Quiz = {
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
   slug: Scalars['String'];
+  logoUrl: Scalars['String'];
   title: TextTranslation;
   description: TextTranslation;
+  meta: QuizMeta;
   currentVersion: QuizVersion;
   versions: Array<Maybe<QuizVersion>>;
+};
+
+export type QuizAuthor = {
+  __typename?: 'QuizAuthor';
+  name: Scalars['String'];
+  url: Scalars['String'];
+};
+
+export type QuizAuthorInput = {
+  name: Scalars['String'];
+  url: Scalars['String'];
 };
 
 export type QuizAxis = {
@@ -1094,6 +1452,47 @@ export type QuizCompassModeInput = {
   horizontal: QuizCompassAxisInput;
   vertical: QuizCompassAxisInput;
   third?: Maybe<QuizCompassAxisInput>;
+};
+
+export type QuizFeatures = {
+  __typename?: 'QuizFeatures';
+  compass: Scalars['Boolean'];
+  axesNumber: Scalars['Int'];
+  questionsNumber: Scalars['Int'];
+  authorizedParties: Array<Maybe<Party>>;
+};
+
+export type QuizFeaturesInput = {
+  authorizedParties: Array<Scalars['String']>;
+};
+
+export enum QuizLicense {
+  Commercial = 'COMMERCIAL',
+  Mit = 'MIT'
+}
+
+export type QuizMeta = {
+  __typename?: 'QuizMeta';
+  features: QuizFeatures;
+  statistics: QuizStatistics;
+  author: QuizAuthor;
+  license: QuizLicense;
+};
+
+export type QuizMetaInput = {
+  features: QuizFeaturesInput;
+  statistics: QuizStatisticsInput;
+  author: QuizAuthorInput;
+  license: QuizLicense;
+};
+
+export type QuizStatistics = {
+  __typename?: 'QuizStatistics';
+  surveysNumber: Scalars['Int'];
+};
+
+export type QuizStatisticsInput = {
+  surveysNumber: Scalars['Int'];
 };
 
 export type QuizVersion = {
@@ -1238,8 +1637,10 @@ export type UpdateQuestionInput = {
 
 export type UpdateQuizInput = {
   title?: Maybe<TextTranslationInput>;
+  logoUrl: Scalars['String'];
   description?: Maybe<TextTranslationInput>;
   currentVersion?: Maybe<Scalars['String']>;
+  meta: QuizMetaInput;
 };
 
 export type UpdateQuizVersionInput = {
@@ -1260,11 +1661,17 @@ export type UpdateSurveyInput = {
 
 export type Query = {
   __typename?: 'Query';
+  author?: Maybe<Author>;
+  authors?: Maybe<Array<Maybe<Author>>>;
+  authorsConnection?: Maybe<AuthorConnection>;
   document?: Maybe<Documents>;
   partner?: Maybe<Partners>;
   politicianResult?: Maybe<PoliticianResults>;
   politicianResults?: Maybe<Array<Maybe<PoliticianResults>>>;
   politicianResultsConnection?: Maybe<PoliticianResultsConnection>;
+  politician?: Maybe<Politician>;
+  politicians?: Maybe<Array<Maybe<Politician>>>;
+  politiciansConnection?: Maybe<PoliticianConnection>;
   post?: Maybe<Post>;
   posts?: Maybe<Array<Maybe<Post>>>;
   postsConnection?: Maybe<PostConnection>;
@@ -1276,8 +1683,32 @@ export type Query = {
   meRespondent: Respondent;
   survey: Survey;
   quiz: Quiz;
+  featuredQuizzes: Array<Quiz>;
   quizVersion: QuizVersion;
   results: Results;
+};
+
+
+export type QueryAuthorArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryAuthorsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryAuthorsConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 
@@ -1307,6 +1738,29 @@ export type QueryPoliticianResultsArgs = {
 
 
 export type QueryPoliticianResultsConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryPoliticianArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryPoliticiansArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryPoliticiansConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -1386,6 +1840,12 @@ export type QueryResultsArgs = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createAuthor?: Maybe<CreateAuthorPayload>;
+  updateAuthor?: Maybe<UpdateAuthorPayload>;
+  deleteAuthor?: Maybe<DeleteAuthorPayload>;
+  createPolitician?: Maybe<CreatePoliticianPayload>;
+  updatePolitician?: Maybe<UpdatePoliticianPayload>;
+  deletePolitician?: Maybe<DeletePoliticianPayload>;
   upload: UploadFile;
   multipleUpload: Array<Maybe<UploadFile>>;
   updateFileInfo: UploadFile;
@@ -1410,6 +1870,36 @@ export type Mutation = {
   createQuestion: Question;
   createManyQuestions: Array<Question>;
   updateQuestion: Question;
+};
+
+
+export type MutationCreateAuthorArgs = {
+  input?: Maybe<CreateAuthorInput>;
+};
+
+
+export type MutationUpdateAuthorArgs = {
+  input?: Maybe<UpdateAuthorInput>;
+};
+
+
+export type MutationDeleteAuthorArgs = {
+  input?: Maybe<DeleteAuthorInput>;
+};
+
+
+export type MutationCreatePoliticianArgs = {
+  input?: Maybe<CreatePoliticianInput>;
+};
+
+
+export type MutationUpdatePoliticianArgs = {
+  input?: Maybe<UpdatePoliticianInput>;
+};
+
+
+export type MutationDeletePoliticianArgs = {
+  input?: Maybe<DeletePoliticianInput>;
 };
 
 
@@ -1615,6 +2105,19 @@ export type CreateRespondentMutation = (
   & { createRespondent: (
     { __typename?: 'Respondent' }
     & Pick<Respondent, 'id' | 'code'>
+  ) }
+);
+
+export type UpdateRespondentMutationVariables = Exact<{
+  values: UpdateRespondentInput;
+}>;
+
+
+export type UpdateRespondentMutation = (
+  { __typename?: 'Mutation' }
+  & { updateRespondent: (
+    { __typename?: 'Respondent' }
+    & Pick<Respondent, 'id'>
   ) }
 );
 
@@ -1861,6 +2364,38 @@ export function useCreateRespondentMutation(baseOptions?: Apollo.MutationHookOpt
 export type CreateRespondentMutationHookResult = ReturnType<typeof useCreateRespondentMutation>;
 export type CreateRespondentMutationResult = Apollo.MutationResult<CreateRespondentMutation>;
 export type CreateRespondentMutationOptions = Apollo.BaseMutationOptions<CreateRespondentMutation, CreateRespondentMutationVariables>;
+export const UpdateRespondentDocument = gql`
+    mutation UpdateRespondent($values: UpdateRespondentInput!) {
+  updateRespondent(updateRespondentInput: $values) {
+    id
+  }
+}
+    `;
+export type UpdateRespondentMutationFn = Apollo.MutationFunction<UpdateRespondentMutation, UpdateRespondentMutationVariables>;
+
+/**
+ * __useUpdateRespondentMutation__
+ *
+ * To run a mutation, you first call `useUpdateRespondentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateRespondentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateRespondentMutation, { data, loading, error }] = useUpdateRespondentMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *   },
+ * });
+ */
+export function useUpdateRespondentMutation(baseOptions?: Apollo.MutationHookOptions<UpdateRespondentMutation, UpdateRespondentMutationVariables>) {
+        return Apollo.useMutation<UpdateRespondentMutation, UpdateRespondentMutationVariables>(UpdateRespondentDocument, baseOptions);
+      }
+export type UpdateRespondentMutationHookResult = ReturnType<typeof useUpdateRespondentMutation>;
+export type UpdateRespondentMutationResult = Apollo.MutationResult<UpdateRespondentMutation>;
+export type UpdateRespondentMutationOptions = Apollo.BaseMutationOptions<UpdateRespondentMutation, UpdateRespondentMutationVariables>;
 export const TalksByFilterDocument = gql`
     query TalksByFilter($sort: String, $limit: Int, $start: Int, $where: JSON, $publicationState: PublicationState) {
   talks(

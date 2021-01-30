@@ -3,22 +3,6 @@ import { Title } from "@shared/Typography";
 
 import breakpoint from "styled-components-breakpoint";
 
-export const Container = styled.main`
-  text-align: left;
-  padding: 2rem 0;
-
-  ${Title} {
-    margin-bottom: 2rem;
-  }
-`;
-
-export const Inner = styled.div`
-  padding: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 export const Content = styled.div`
   width: 100%;
   max-width: 60rem;

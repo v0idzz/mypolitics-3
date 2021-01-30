@@ -1,7 +1,8 @@
 export const BASE_PATH = "https://beta.mypolitics.pl";
 
-export const localStorageTokens = {
-  respondent: "mypolitics-respondent",
+export const Cookies = {
+  RESPONDENT: "mypolitics-respondent",
+  INITIALIZED: "mypolitics-initialized",
 };
 
 export const paths = {

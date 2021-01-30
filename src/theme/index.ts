@@ -21,11 +21,13 @@ const theme: DefaultTheme = {
   colors: {
     backgroundLighten: "#F9FBFB",
     background: "#EEF2F3",
-    backgroundDarken: "#005669",
+    backgroundDarken: "#E2E9EB",
     primary: "#00B3DB",
     primaryDarken: "#005669",
     text: "#001E24",
     textMuted: "#324C52",
+    red: "#EB5760",
+    green: "#2CD598",
   },
   breakpoints,
 };

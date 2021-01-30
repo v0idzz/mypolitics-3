@@ -2,6 +2,7 @@ import * as React from "react";
 import { AppProps } from "next/app";
 import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "@services/apollo";
+import { ToastProvider } from "react-toast-notifications";
 import Layout from "@layout";
 import Router from "next/router";
 import NProgress from "nprogress";
@@ -18,7 +19,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ApolloProvider client={apolloClient}>
       <Layout>
-        <Component {...pageProps} />
+        <ToastProvider>
+          <Component {...pageProps} />
+        </ToastProvider>
       </Layout>
     </ApolloProvider>
   );
