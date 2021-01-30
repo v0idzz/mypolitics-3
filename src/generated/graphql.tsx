@@ -1856,6 +1856,7 @@ export type Mutation = {
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
   createRespondent: Respondent;
   updateRespondent: Respondent;
+  changeCode: Respondent;
   removeMe: Respondent;
   createSurvey: Survey;
   updateSurvey: Survey;
@@ -1961,6 +1962,11 @@ export type MutationCreateRespondentArgs = {
 
 export type MutationUpdateRespondentArgs = {
   updateRespondentInput: UpdateRespondentInput;
+};
+
+
+export type MutationChangeCodeArgs = {
+  code: Array<Scalars['String']>;
 };
 
 
@@ -2103,6 +2109,17 @@ export type CreateRespondentMutationVariables = Exact<{
 export type CreateRespondentMutation = (
   { __typename?: 'Mutation' }
   & { createRespondent: (
+    { __typename?: 'Respondent' }
+    & Pick<Respondent, 'id' | 'code'>
+  ) }
+);
+
+export type MeRespondentQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MeRespondentQuery = (
+  { __typename?: 'Query' }
+  & { meRespondent: (
     { __typename?: 'Respondent' }
     & Pick<Respondent, 'id' | 'code'>
   ) }
@@ -2364,6 +2381,39 @@ export function useCreateRespondentMutation(baseOptions?: Apollo.MutationHookOpt
 export type CreateRespondentMutationHookResult = ReturnType<typeof useCreateRespondentMutation>;
 export type CreateRespondentMutationResult = Apollo.MutationResult<CreateRespondentMutation>;
 export type CreateRespondentMutationOptions = Apollo.BaseMutationOptions<CreateRespondentMutation, CreateRespondentMutationVariables>;
+export const MeRespondentDocument = gql`
+    query MeRespondent {
+  meRespondent {
+    id
+    code
+  }
+}
+    `;
+
+/**
+ * __useMeRespondentQuery__
+ *
+ * To run a query within a React component, call `useMeRespondentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMeRespondentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMeRespondentQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMeRespondentQuery(baseOptions?: Apollo.QueryHookOptions<MeRespondentQuery, MeRespondentQueryVariables>) {
+        return Apollo.useQuery<MeRespondentQuery, MeRespondentQueryVariables>(MeRespondentDocument, baseOptions);
+      }
+export function useMeRespondentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeRespondentQuery, MeRespondentQueryVariables>) {
+          return Apollo.useLazyQuery<MeRespondentQuery, MeRespondentQueryVariables>(MeRespondentDocument, baseOptions);
+        }
+export type MeRespondentQueryHookResult = ReturnType<typeof useMeRespondentQuery>;
+export type MeRespondentLazyQueryHookResult = ReturnType<typeof useMeRespondentLazyQuery>;
+export type MeRespondentQueryResult = Apollo.QueryResult<MeRespondentQuery, MeRespondentQueryVariables>;
 export const UpdateRespondentDocument = gql`
     mutation UpdateRespondent($values: UpdateRespondentInput!) {
   updateRespondent(updateRespondentInput: $values) {
