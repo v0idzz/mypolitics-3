@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+export const Container = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 3rem;
-  padding: 3rem;
+  padding: 2rem;
+  grid-gap: 2rem;
+  text-align: center;
+  background: ${({ theme }) => theme.colors.backgroundDarken};
   border-radius: 0.5rem;
-  background: ${({ theme }) => theme.colors.background};
 `;
 
-export const Header = styled.header`
+export const Header = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+
+  & > div {
+    display: flex;
+  }
 `;
 
 export const IconWrapper = styled.div`
@@ -35,6 +40,7 @@ export const Title = styled.h2`
 `;
 
 export const Content = styled.div`
-  display: grid;
-  grid-gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

@@ -1,0 +1,34 @@
+query SingleQuiz($slug: String!) {
+    quiz(slug: $slug) {
+        id
+        logoUrl
+        title {
+            pl
+            en
+        }
+        description {
+            pl
+            en
+        }
+        currentVersion {
+            id
+        }
+        meta {
+            features {
+                compass
+                parties
+                politiciansResults
+                axesNumber
+                questionsNumber
+            }
+            statistics {
+                surveysNumber
+            }
+            author {
+                url
+                name
+            }
+            license
+        }
+    }
+}

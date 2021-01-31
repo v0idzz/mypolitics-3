@@ -7,7 +7,7 @@ import { faPollH, faHistory } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { History as SurveysHistory } from "@components/Survey";
-import { Inner, Content } from "./QuizzesPageStyle";
+import StandardPage from '@shared/StandardPage';
 
 interface Props {
   featuredQuizzes: FeaturedQuizzesQuery["featuredQuizzes"];
@@ -20,36 +20,30 @@ const QuizzesPage: React.FC<Props> = ({ featuredQuizzes }) => {
   const clientSide = typeof window !== "undefined";
 
   return (
-    <PageContainer>
-      <div className="container">
-        <Inner>
-          <Content>
-            <GoogleAd id="myp3-standard-top" />
-            <Link quiz={firstQuiz} featured />
-            <Section
-              title="Sprawdź inne quizy"
-              icon={<FontAwesomeIcon icon={faPollH} />}
-            >
-              <Link quiz={firstQuiz} />
-              <Link quiz={firstQuiz} />
-              <Link quiz={firstQuiz} />
-            </Section>
-            {clientSide && (
-              <>
-                <Section
-                  title="Historia wyników"
-                  icon={<FontAwesomeIcon icon={faHistory} />}
-                >
-                  <SurveysHistory />
-                </Section>
-                <Respondent />
-              </>
-            )}
-            <GoogleAd id="myp3-standard-middle" />
-          </Content>
-        </Inner>
-      </div>
-    </PageContainer>
+    <StandardPage>
+      <GoogleAd id="myp3-standard-top" />
+      <Link quiz={firstQuiz} featured />
+      <Section
+        title="Sprawdź inne quizy"
+        icon={<FontAwesomeIcon icon={faPollH} />}
+      >
+        <Link quiz={firstQuiz} />
+        <Link quiz={firstQuiz} />
+        <Link quiz={firstQuiz} />
+      </Section>
+      {clientSide && (
+        <>
+          <Section
+            title="Historia wyników"
+            icon={<FontAwesomeIcon icon={faHistory} />}
+          >
+            <SurveysHistory />
+          </Section>
+          <Respondent />
+        </>
+      )}
+      <GoogleAd id="myp3-standard-middle" />
+    </StandardPage>
   );
 };
 

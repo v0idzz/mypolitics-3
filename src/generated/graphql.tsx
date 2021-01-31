@@ -2177,6 +2177,42 @@ export type MeRespondentSurveysQuery = (
   ) }
 );
 
+export type SingleQuizQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type SingleQuizQuery = (
+  { __typename?: 'Query' }
+  & { quiz: (
+    { __typename?: 'Quiz' }
+    & Pick<Quiz, 'id' | 'logoUrl'>
+    & { title: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ), description: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ), currentVersion: (
+      { __typename?: 'QuizVersion' }
+      & Pick<QuizVersion, 'id'>
+    ), meta: (
+      { __typename?: 'QuizMeta' }
+      & Pick<QuizMeta, 'license'>
+      & { features: (
+        { __typename?: 'QuizFeatures' }
+        & Pick<QuizFeatures, 'compass' | 'parties' | 'politiciansResults' | 'axesNumber' | 'questionsNumber'>
+      ), statistics: (
+        { __typename?: 'QuizStatistics' }
+        & Pick<QuizStatistics, 'surveysNumber'>
+      ), author: (
+        { __typename?: 'QuizAuthor' }
+        & Pick<QuizAuthor, 'url' | 'name'>
+      ) }
+    ) }
+  ) }
+);
+
 export type UpdateRespondentMutationVariables = Exact<{
   values: UpdateRespondentInput;
 }>;
@@ -2187,6 +2223,19 @@ export type UpdateRespondentMutation = (
   & { updateRespondent: (
     { __typename?: 'Respondent' }
     & Pick<Respondent, 'id'>
+  ) }
+);
+
+export type CreateSurveyMutationVariables = Exact<{
+  values: CreateSurveyInput;
+}>;
+
+
+export type CreateSurveyMutation = (
+  { __typename?: 'Mutation' }
+  & { createSurvey: (
+    { __typename?: 'Survey' }
+    & Pick<Survey, 'id'>
   ) }
 );
 
@@ -2559,6 +2608,68 @@ export function useMeRespondentSurveysLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type MeRespondentSurveysQueryHookResult = ReturnType<typeof useMeRespondentSurveysQuery>;
 export type MeRespondentSurveysLazyQueryHookResult = ReturnType<typeof useMeRespondentSurveysLazyQuery>;
 export type MeRespondentSurveysQueryResult = Apollo.QueryResult<MeRespondentSurveysQuery, MeRespondentSurveysQueryVariables>;
+export const SingleQuizDocument = gql`
+    query SingleQuiz($slug: String!) {
+  quiz(slug: $slug) {
+    id
+    logoUrl
+    title {
+      pl
+      en
+    }
+    description {
+      pl
+      en
+    }
+    currentVersion {
+      id
+    }
+    meta {
+      features {
+        compass
+        parties
+        politiciansResults
+        axesNumber
+        questionsNumber
+      }
+      statistics {
+        surveysNumber
+      }
+      author {
+        url
+        name
+      }
+      license
+    }
+  }
+}
+    `;
+
+/**
+ * __useSingleQuizQuery__
+ *
+ * To run a query within a React component, call `useSingleQuizQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSingleQuizQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSingleQuizQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useSingleQuizQuery(baseOptions: Apollo.QueryHookOptions<SingleQuizQuery, SingleQuizQueryVariables>) {
+        return Apollo.useQuery<SingleQuizQuery, SingleQuizQueryVariables>(SingleQuizDocument, baseOptions);
+      }
+export function useSingleQuizLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SingleQuizQuery, SingleQuizQueryVariables>) {
+          return Apollo.useLazyQuery<SingleQuizQuery, SingleQuizQueryVariables>(SingleQuizDocument, baseOptions);
+        }
+export type SingleQuizQueryHookResult = ReturnType<typeof useSingleQuizQuery>;
+export type SingleQuizLazyQueryHookResult = ReturnType<typeof useSingleQuizLazyQuery>;
+export type SingleQuizQueryResult = Apollo.QueryResult<SingleQuizQuery, SingleQuizQueryVariables>;
 export const UpdateRespondentDocument = gql`
     mutation UpdateRespondent($values: UpdateRespondentInput!) {
   updateRespondent(updateRespondentInput: $values) {
@@ -2591,6 +2702,38 @@ export function useUpdateRespondentMutation(baseOptions?: Apollo.MutationHookOpt
 export type UpdateRespondentMutationHookResult = ReturnType<typeof useUpdateRespondentMutation>;
 export type UpdateRespondentMutationResult = Apollo.MutationResult<UpdateRespondentMutation>;
 export type UpdateRespondentMutationOptions = Apollo.BaseMutationOptions<UpdateRespondentMutation, UpdateRespondentMutationVariables>;
+export const CreateSurveyDocument = gql`
+    mutation CreateSurvey($values: CreateSurveyInput!) {
+  createSurvey(createSurveyInput: $values) {
+    id
+  }
+}
+    `;
+export type CreateSurveyMutationFn = Apollo.MutationFunction<CreateSurveyMutation, CreateSurveyMutationVariables>;
+
+/**
+ * __useCreateSurveyMutation__
+ *
+ * To run a mutation, you first call `useCreateSurveyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateSurveyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createSurveyMutation, { data, loading, error }] = useCreateSurveyMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *   },
+ * });
+ */
+export function useCreateSurveyMutation(baseOptions?: Apollo.MutationHookOptions<CreateSurveyMutation, CreateSurveyMutationVariables>) {
+        return Apollo.useMutation<CreateSurveyMutation, CreateSurveyMutationVariables>(CreateSurveyDocument, baseOptions);
+      }
+export type CreateSurveyMutationHookResult = ReturnType<typeof useCreateSurveyMutation>;
+export type CreateSurveyMutationResult = Apollo.MutationResult<CreateSurveyMutation>;
+export type CreateSurveyMutationOptions = Apollo.BaseMutationOptions<CreateSurveyMutation, CreateSurveyMutationVariables>;
 export const TalksByFilterDocument = gql`
     query TalksByFilter($sort: String, $limit: Int, $start: Int, $where: JSON, $publicationState: PublicationState) {
   talks(

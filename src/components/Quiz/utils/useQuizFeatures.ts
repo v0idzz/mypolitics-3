@@ -2,7 +2,7 @@ import { QuizFeatures } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 
 export const useQuizFeatures = (
-  features: Omit<QuizFeatures, "authorizedParties">
+  features: Omit<QuizFeatures, "authorizedParties" | "SingleQuizQuery">
 ): string[] => {
   const { t } = useTranslation("quiz");
   const quizFeatures = [];

@@ -5,3 +5,4 @@ export { default as Respondent } from "./QuizRespondent";
 export { default as ListPage } from "./QuizzesPage";
 export { default as Link } from "./QuizLink";
 export { default as Section } from "./QuizzesSection";
+export { default as SinglePage } from "./SingleQuizPage";
