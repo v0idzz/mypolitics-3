@@ -3,3 +3,5 @@ export { default as CompassInput } from "./QuizCompassInput";
 export { default as IdeologyInput } from "./QuizIdeologyInput";
 export { default as Respondent } from "./QuizRespondent";
 export { default as ListPage } from "./QuizzesPage";
+export { default as Link } from "./QuizLink";
+export { default as Section } from "./QuizzesSection";

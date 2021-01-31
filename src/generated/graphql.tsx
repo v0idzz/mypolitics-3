@@ -1459,11 +1459,15 @@ export type QuizFeatures = {
   compass: Scalars['Boolean'];
   axesNumber: Scalars['Int'];
   questionsNumber: Scalars['Int'];
+  parties: Scalars['Boolean'];
+  politiciansResults: Scalars['Boolean'];
   authorizedParties: Array<Maybe<Party>>;
 };
 
 export type QuizFeaturesInput = {
   authorizedParties: Array<Scalars['String']>;
+  parties: Scalars['Boolean'];
+  politiciansResults: Scalars['Boolean'];
 };
 
 export enum QuizLicense {
@@ -1505,6 +1509,7 @@ export type QuizVersion = {
   parent?: Maybe<QuizVersion>;
   questions: Array<Maybe<Question>>;
   compassModes: Array<Maybe<QuizCompassMode>>;
+  quiz: Quiz;
 };
 
 export type Respondent = {
@@ -1637,10 +1642,10 @@ export type UpdateQuestionInput = {
 
 export type UpdateQuizInput = {
   title?: Maybe<TextTranslationInput>;
-  logoUrl: Scalars['String'];
+  logoUrl?: Maybe<Scalars['String']>;
   description?: Maybe<TextTranslationInput>;
   currentVersion?: Maybe<Scalars['String']>;
-  meta: QuizMetaInput;
+  meta?: Maybe<QuizMetaInput>;
 };
 
 export type UpdateQuizVersionInput = {
@@ -2114,6 +2119,31 @@ export type CreateRespondentMutation = (
   ) }
 );
 
+export type FeaturedQuizzesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FeaturedQuizzesQuery = (
+  { __typename?: 'Query' }
+  & { featuredQuizzes: Array<(
+    { __typename?: 'Quiz' }
+    & Pick<Quiz, 'id' | 'slug' | 'logoUrl'>
+    & { meta: (
+      { __typename?: 'QuizMeta' }
+      & { features: (
+        { __typename?: 'QuizFeatures' }
+        & Pick<QuizFeatures, 'compass' | 'parties' | 'politiciansResults' | 'axesNumber' | 'questionsNumber'>
+        & { authorizedParties: Array<Maybe<(
+          { __typename?: 'Party' }
+          & Pick<Party, 'id'>
+        )>> }
+      ) }
+    ), title: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ) }
+  )> }
+);
+
 export type MeRespondentQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2122,6 +2152,28 @@ export type MeRespondentQuery = (
   & { meRespondent: (
     { __typename?: 'Respondent' }
     & Pick<Respondent, 'id' | 'code'>
+  ) }
+);
+
+export type MeRespondentSurveysQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MeRespondentSurveysQuery = (
+  { __typename?: 'Query' }
+  & { meRespondent: (
+    { __typename?: 'Respondent' }
+    & Pick<Respondent, 'id'>
+    & { surveys: Array<Maybe<(
+      { __typename?: 'Survey' }
+      & Pick<Survey, 'id' | 'updatedAt' | 'finished'>
+      & { quizVersion: (
+        { __typename?: 'QuizVersion' }
+        & { quiz: (
+          { __typename?: 'Quiz' }
+          & Pick<Quiz, 'id' | 'logoUrl'>
+        ) }
+      ) }
+    )>> }
   ) }
 );
 
@@ -2381,6 +2433,56 @@ export function useCreateRespondentMutation(baseOptions?: Apollo.MutationHookOpt
 export type CreateRespondentMutationHookResult = ReturnType<typeof useCreateRespondentMutation>;
 export type CreateRespondentMutationResult = Apollo.MutationResult<CreateRespondentMutation>;
 export type CreateRespondentMutationOptions = Apollo.BaseMutationOptions<CreateRespondentMutation, CreateRespondentMutationVariables>;
+export const FeaturedQuizzesDocument = gql`
+    query FeaturedQuizzes {
+  featuredQuizzes {
+    id
+    slug
+    logoUrl
+    meta {
+      features {
+        compass
+        parties
+        politiciansResults
+        axesNumber
+        questionsNumber
+        authorizedParties {
+          id
+        }
+      }
+    }
+    title {
+      pl
+      en
+    }
+  }
+}
+    `;
+
+/**
+ * __useFeaturedQuizzesQuery__
+ *
+ * To run a query within a React component, call `useFeaturedQuizzesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeaturedQuizzesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeaturedQuizzesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFeaturedQuizzesQuery(baseOptions?: Apollo.QueryHookOptions<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>) {
+        return Apollo.useQuery<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>(FeaturedQuizzesDocument, baseOptions);
+      }
+export function useFeaturedQuizzesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>) {
+          return Apollo.useLazyQuery<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>(FeaturedQuizzesDocument, baseOptions);
+        }
+export type FeaturedQuizzesQueryHookResult = ReturnType<typeof useFeaturedQuizzesQuery>;
+export type FeaturedQuizzesLazyQueryHookResult = ReturnType<typeof useFeaturedQuizzesLazyQuery>;
+export type FeaturedQuizzesQueryResult = Apollo.QueryResult<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>;
 export const MeRespondentDocument = gql`
     query MeRespondent {
   meRespondent {
@@ -2414,6 +2516,49 @@ export function useMeRespondentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type MeRespondentQueryHookResult = ReturnType<typeof useMeRespondentQuery>;
 export type MeRespondentLazyQueryHookResult = ReturnType<typeof useMeRespondentLazyQuery>;
 export type MeRespondentQueryResult = Apollo.QueryResult<MeRespondentQuery, MeRespondentQueryVariables>;
+export const MeRespondentSurveysDocument = gql`
+    query MeRespondentSurveys {
+  meRespondent {
+    id
+    surveys {
+      id
+      updatedAt
+      finished
+      quizVersion {
+        quiz {
+          id
+          logoUrl
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useMeRespondentSurveysQuery__
+ *
+ * To run a query within a React component, call `useMeRespondentSurveysQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMeRespondentSurveysQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMeRespondentSurveysQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMeRespondentSurveysQuery(baseOptions?: Apollo.QueryHookOptions<MeRespondentSurveysQuery, MeRespondentSurveysQueryVariables>) {
+        return Apollo.useQuery<MeRespondentSurveysQuery, MeRespondentSurveysQueryVariables>(MeRespondentSurveysDocument, baseOptions);
+      }
+export function useMeRespondentSurveysLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeRespondentSurveysQuery, MeRespondentSurveysQueryVariables>) {
+          return Apollo.useLazyQuery<MeRespondentSurveysQuery, MeRespondentSurveysQueryVariables>(MeRespondentSurveysDocument, baseOptions);
+        }
+export type MeRespondentSurveysQueryHookResult = ReturnType<typeof useMeRespondentSurveysQuery>;
+export type MeRespondentSurveysLazyQueryHookResult = ReturnType<typeof useMeRespondentSurveysLazyQuery>;
+export type MeRespondentSurveysQueryResult = Apollo.QueryResult<MeRespondentSurveysQuery, MeRespondentSurveysQueryVariables>;
 export const UpdateRespondentDocument = gql`
     mutation UpdateRespondent($values: UpdateRespondentInput!) {
   updateRespondent(updateRespondentInput: $values) {

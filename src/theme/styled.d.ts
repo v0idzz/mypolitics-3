@@ -30,6 +30,7 @@ declare module "styled-components" {
       textMuted: string;
       red: string;
       green: string;
+      yellow: string;
     };
     breakpoints: {
       [name in DefaultBreakpointName]: number;

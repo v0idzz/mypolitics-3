@@ -21,5 +21,12 @@
     "72f8fe391101c447cc467ee2dcdcd9e8": "Liberalizm",
     "652cbd1d722c2fcd8e06aa34f8aa22fe": "Libertarianizm",
     "6410ff914a95dfcb1359e16f005b8abc": "Anarchokapitalizm"
+  },
+  "features": {
+    "compass": "Kompas",
+    "questionsNumber": "{{number}} pytań",
+    "parties": "Partie",
+    "axesNumber": "{{number}} osi",
+    "politiciansResults": "Politycy"
   }
 }

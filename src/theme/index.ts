@@ -28,6 +28,7 @@ const theme: DefaultTheme = {
     textMuted: "#324C52",
     red: "#EB5760",
     green: "#2CD598",
+    yellow: "#F2C94C",
   },
   breakpoints,
 };

@@ -1,0 +1,23 @@
+query FeaturedQuizzes {
+    featuredQuizzes {
+        id
+        slug
+        logoUrl
+        meta {
+            features {
+                compass
+                parties
+                politiciansResults
+                axesNumber
+                questionsNumber
+                authorizedParties {
+                    id
+                }
+            }
+        }
+        title {
+            pl
+            en
+        }
+    }
+}
