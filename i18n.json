@@ -4,8 +4,7 @@
   "pages": {
     "*": ["common"],
     "/": ["home"],
-    "/articles": ["articles"],
-    "/articles/[slug]/[id]": ["articles"],
-    "/quizzes/initialize/advanced": ["quiz"]
+    "rgx:/articles$": ["articles"],
+    "rgx:/quizzes$": ["quiz"]
   }
 }

@@ -75,6 +75,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: ${({ theme }) => theme.breakpoints.xl}px;
     margin: 0 1rem;
     position: relative;
+    width: 100%;
   
     ${breakpoint("xl")`
       margin: auto;

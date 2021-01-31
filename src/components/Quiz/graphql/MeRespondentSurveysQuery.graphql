@@ -1,0 +1,16 @@
+query MeRespondentSurveys {
+    meRespondent {
+        id
+        surveys {
+            id
+            updatedAt
+            finished
+            quizVersion {
+                quiz {
+                    id
+                    logoUrl
+                }
+            }
+        }
+    }
+}
