@@ -9,10 +9,10 @@ import { Container, Info, Image, Feature, FeaturesList } from "./QuizLinkStyle";
 
 interface Props {
   quiz: FeaturedQuizzesQuery["featuredQuizzes"][0];
-  featured: boolean;
+  featured?: boolean;
 }
 
-const QuizLink: React.FC<Props> = ({ quiz, featured }) => {
+const QuizLink: React.FC<Props> = ({ quiz, featured = false }) => {
   const { slug, meta, logoUrl, title } = quiz;
   const { lang } = useTranslation();
   const quizFeatures = useQuizFeatures(meta.features);

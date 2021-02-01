@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { paths } from "@constants";
 import useTranslation from "next-translate/useTranslation";
 import { useLogo } from "@shared/Header/HeaderUtilts";
+import { useRouter } from "next/router";
 import {
   Container,
   DesktopNavigation,
@@ -28,6 +29,7 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ forceHighlight = false }) => {
+  const { asPath } = useRouter();
   const { t } = useTranslation("common");
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
   const [mounted, setMounted] = React.useState<boolean>(false);
@@ -35,6 +37,8 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   const { scrollY } = useWindowScroll(false);
   const scrolled = scrollY > 60;
   const highlighted = scrolled || showMenu || forceHighlight;
+  const pathNotInQuiz =
+    !asPath.includes("quizzes") && !asPath.includes("surveys");
 
   const toggleMenu = () => setShowMenu(!showMenu);
 
@@ -56,7 +60,7 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
           <DesktopNavigation>
             <Link href={paths.articles}>{t("header.articles")}</Link>
             <Link href={paths.talks}>{t("header.talks")}</Link>
-            {(scrolled || forceHighlight) && (
+            {(scrolled || forceHighlight) && pathNotInQuiz && (
               <Link href={paths.quizzesPreInitialize} passHref>
                 <Button as="a">{t("header.quiz")}</Button>
               </Link>

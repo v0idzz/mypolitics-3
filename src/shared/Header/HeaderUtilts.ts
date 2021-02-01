@@ -27,7 +27,7 @@ const logos: Logo[] = [
   {
     url: require("@assets/images/logos/quiz.png"),
     name: "myPolitics Quiz",
-    paths: [paths.quizzes],
+    paths: [paths.quizzes, paths.survey(""), paths.results("")],
   },
 ];
 

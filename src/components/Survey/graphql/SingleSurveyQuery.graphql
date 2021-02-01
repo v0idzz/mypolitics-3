@@ -1,0 +1,5 @@
+query SingleSurvey($id: String!) {
+    survey(id: $id) {
+        ...BasicSurveyParts,
+    }
+}
