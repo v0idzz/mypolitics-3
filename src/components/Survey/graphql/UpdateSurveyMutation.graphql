@@ -1,0 +1,5 @@
+mutation UpdateSurvey($values: UpdateSurveyInput!, $id: String!) {
+    updateSurvey(updateSurveyInput: $values, id: $id) {
+        ...BasicSurveyParts,
+    }
+}

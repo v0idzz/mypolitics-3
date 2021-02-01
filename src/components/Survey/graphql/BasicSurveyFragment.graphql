@@ -1,0 +1,21 @@
+fragment BasicSurveyParts on Survey {
+    quizVersion {
+        questions {
+            id
+            text {
+                pl
+                en
+            }
+        }
+        quiz {
+            logoUrl
+        }
+    }
+    answers {
+        type
+        weight
+        question {
+            id
+        }
+    }
+}

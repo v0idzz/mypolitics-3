@@ -2226,6 +2226,31 @@ export type UpdateRespondentMutation = (
   ) }
 );
 
+export type BasicSurveyPartsFragment = (
+  { __typename?: 'Survey' }
+  & { quizVersion: (
+    { __typename?: 'QuizVersion' }
+    & { questions: Array<Maybe<(
+      { __typename?: 'Question' }
+      & Pick<Question, 'id'>
+      & { text: (
+        { __typename?: 'TextTranslation' }
+        & Pick<TextTranslation, 'pl' | 'en'>
+      ) }
+    )>>, quiz: (
+      { __typename?: 'Quiz' }
+      & Pick<Quiz, 'logoUrl'>
+    ) }
+  ), answers: Array<(
+    { __typename?: 'SurveyAnswer' }
+    & Pick<SurveyAnswer, 'type' | 'weight'>
+    & { question: (
+      { __typename?: 'Question' }
+      & Pick<Question, 'id'>
+    ) }
+  )> }
+);
+
 export type CreateSurveyMutationVariables = Exact<{
   values: CreateSurveyInput;
 }>;
@@ -2236,6 +2261,33 @@ export type CreateSurveyMutation = (
   & { createSurvey: (
     { __typename?: 'Survey' }
     & Pick<Survey, 'id'>
+  ) }
+);
+
+export type SingleSurveyQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type SingleSurveyQuery = (
+  { __typename?: 'Query' }
+  & { survey: (
+    { __typename?: 'Survey' }
+    & BasicSurveyPartsFragment
+  ) }
+);
+
+export type UpdateSurveyMutationVariables = Exact<{
+  values: UpdateSurveyInput;
+  id: Scalars['String'];
+}>;
+
+
+export type UpdateSurveyMutation = (
+  { __typename?: 'Mutation' }
+  & { updateSurvey: (
+    { __typename?: 'Survey' }
+    & BasicSurveyPartsFragment
   ) }
 );
 
@@ -2359,6 +2411,29 @@ export const ExtendedPostPartsFragmentDoc = gql`
   updatedAt
 }
     ${BasicPostPartsFragmentDoc}`;
+export const BasicSurveyPartsFragmentDoc = gql`
+    fragment BasicSurveyParts on Survey {
+  quizVersion {
+    questions {
+      id
+      text {
+        pl
+        en
+      }
+    }
+    quiz {
+      logoUrl
+    }
+  }
+  answers {
+    type
+    weight
+    question {
+      id
+    }
+  }
+}
+    `;
 export const BasicTalkPartsFragmentDoc = gql`
     fragment BasicTalkParts on Talk {
   id
@@ -2734,6 +2809,72 @@ export function useCreateSurveyMutation(baseOptions?: Apollo.MutationHookOptions
 export type CreateSurveyMutationHookResult = ReturnType<typeof useCreateSurveyMutation>;
 export type CreateSurveyMutationResult = Apollo.MutationResult<CreateSurveyMutation>;
 export type CreateSurveyMutationOptions = Apollo.BaseMutationOptions<CreateSurveyMutation, CreateSurveyMutationVariables>;
+export const SingleSurveyDocument = gql`
+    query SingleSurvey($id: String!) {
+  survey(id: $id) {
+    ...BasicSurveyParts
+  }
+}
+    ${BasicSurveyPartsFragmentDoc}`;
+
+/**
+ * __useSingleSurveyQuery__
+ *
+ * To run a query within a React component, call `useSingleSurveyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSingleSurveyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSingleSurveyQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSingleSurveyQuery(baseOptions: Apollo.QueryHookOptions<SingleSurveyQuery, SingleSurveyQueryVariables>) {
+        return Apollo.useQuery<SingleSurveyQuery, SingleSurveyQueryVariables>(SingleSurveyDocument, baseOptions);
+      }
+export function useSingleSurveyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SingleSurveyQuery, SingleSurveyQueryVariables>) {
+          return Apollo.useLazyQuery<SingleSurveyQuery, SingleSurveyQueryVariables>(SingleSurveyDocument, baseOptions);
+        }
+export type SingleSurveyQueryHookResult = ReturnType<typeof useSingleSurveyQuery>;
+export type SingleSurveyLazyQueryHookResult = ReturnType<typeof useSingleSurveyLazyQuery>;
+export type SingleSurveyQueryResult = Apollo.QueryResult<SingleSurveyQuery, SingleSurveyQueryVariables>;
+export const UpdateSurveyDocument = gql`
+    mutation UpdateSurvey($values: UpdateSurveyInput!, $id: String!) {
+  updateSurvey(updateSurveyInput: $values, id: $id) {
+    ...BasicSurveyParts
+  }
+}
+    ${BasicSurveyPartsFragmentDoc}`;
+export type UpdateSurveyMutationFn = Apollo.MutationFunction<UpdateSurveyMutation, UpdateSurveyMutationVariables>;
+
+/**
+ * __useUpdateSurveyMutation__
+ *
+ * To run a mutation, you first call `useUpdateSurveyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSurveyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSurveyMutation, { data, loading, error }] = useUpdateSurveyMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUpdateSurveyMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSurveyMutation, UpdateSurveyMutationVariables>) {
+        return Apollo.useMutation<UpdateSurveyMutation, UpdateSurveyMutationVariables>(UpdateSurveyDocument, baseOptions);
+      }
+export type UpdateSurveyMutationHookResult = ReturnType<typeof useUpdateSurveyMutation>;
+export type UpdateSurveyMutationResult = Apollo.MutationResult<UpdateSurveyMutation>;
+export type UpdateSurveyMutationOptions = Apollo.BaseMutationOptions<UpdateSurveyMutation, UpdateSurveyMutationVariables>;
 export const TalksByFilterDocument = gql`
     query TalksByFilter($sort: String, $limit: Int, $start: Int, $where: JSON, $publicationState: PublicationState) {
   talks(

@@ -9,8 +9,6 @@ interface Props {
 const SEO: React.FC<Props> = ({ data }) => {
   const { t, lang } = useTranslation("home");
 
-  console.log("abc" + t("SEO.description"))
-
   const defaultData: SEOData = {
     title: t("SEO.title"),
     description: t("SEO.description"),

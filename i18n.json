@@ -1,10 +1,10 @@
 {
-  "locales": ["pl", "en"],
+  "locales": ["pl"],
   "defaultLocale": "pl",
   "pages": {
     "*": ["common"],
     "/": ["home"],
-    "rgx:^\\/articles.+": ["articles"],
-    "rgx:^\\/quizzes.+": ["quiz"]
+    "rgx:^\\/articles|.+": ["articles"],
+    "rgx:^\\/quizzes$|.+": ["quiz"]
   }
 }
