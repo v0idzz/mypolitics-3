@@ -1,10 +1,6 @@
 import React from "react";
 import GoogleAd from "@shared/GoogleAd";
-import {
-  SingleQuizQuery,
-  useCreateRespondentMutation,
-  useCreateSurveyMutation,
-} from "@generated/graphql";
+import { SingleQuizQuery, useCreateSurveyMutation } from "@generated/graphql";
 import { faStar, faChartBar } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

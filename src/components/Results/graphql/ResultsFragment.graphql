@@ -1,0 +1,17 @@
+fragment ResultsParts on Results {
+    id
+    createdAt
+    updatedAt
+    axes {
+        ...ResultsAxisParts
+    }
+    parties {
+        ...ResultsPartyParts
+    }
+    compasses {
+        ...ResultsCompassParts
+    }
+    quiz {
+        ...ResultsQuiz
+    }
+}

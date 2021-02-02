@@ -1,0 +1,12 @@
+query SingleResults ($surveyId: String!){
+    results(surveyId: $surveyId) {
+        ...ResultsParts
+    }
+    politicianResultsConnection(where: { rid: $surveyId }) {
+        values {
+            politician {
+                ...ResultsPoliticianParts
+            }
+        }
+    }
+}

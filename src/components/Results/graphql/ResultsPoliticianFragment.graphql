@@ -1,0 +1,11 @@
+fragment ResultsPoliticianParts on Politician {
+    id
+    name
+    image {
+        url
+    }
+    biography {
+        pl
+        en
+    }
+}

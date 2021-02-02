@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faUndoAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -6,6 +6,7 @@ import {
   UseSurveyActions,
   UseSurveyData,
 } from "@components/Survey/utils/useSurvey";
+import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 import { Container, Info, Actions, Button } from "./SurveyHeaderStyle";
 
 library.add(faArrowLeft, faUndoAlt);
@@ -16,8 +17,16 @@ interface Props {
 }
 
 const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
+  const { value: firstTimer, setValue: setFirstTimer } = useFirstTimer();
   const { previousQuestion, deleteSurvey } = actions;
   const { answers, questions } = data;
+  const answeredMany = answers.length > 15;
+
+  useEffect(() => {
+    if (answeredMany) {
+      setFirstTimer(false);
+    }
+  }, [answeredMany]);
 
   return (
     <Container>
@@ -32,7 +41,8 @@ const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
       <Info>
         Pytanie&nbsp;
         <span>
-          {answers.length + 1}/{questions.length}
+          {answers.length + 1}
+          {!firstTimer && `/${questions.length}`}
         </span>
       </Info>
     </Container>

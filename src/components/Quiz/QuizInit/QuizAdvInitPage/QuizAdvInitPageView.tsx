@@ -13,6 +13,7 @@ import * as R from "ramda";
 import { useRouter } from "next/router";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import GoogleAd from "@shared/GoogleAd";
+import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 import {
   TopText,
   Content,
@@ -24,6 +25,7 @@ import { defaultData } from "./QuizAdvInitPageUtils";
 
 const QuizPreInitPage: React.FC = () => {
   const router = useRouter();
+  const { setValue: setFirstTimer } = useFirstTimer();
   const handleErrors = useHandleErrors();
   const [updateRespondent, { loading }] = useUpdateRespondentMutation();
   const [data, setData] = useState<UpdateRespondentInput>(defaultData);
@@ -49,6 +51,7 @@ const QuizPreInitPage: React.FC = () => {
 
   const handleSave = async () => {
     try {
+      setFirstTimer(false);
       await updateRespondent({
         variables: {
           values: data,

@@ -1,0 +1,8 @@
+fragment ResultsQuiz on Quiz {
+    id
+    logoUrl
+    title {
+        pl
+        en
+    }
+}
