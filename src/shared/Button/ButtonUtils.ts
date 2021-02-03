@@ -63,4 +63,34 @@ export const getBackgrounds = (
       box-shadow: 0px 0px 24px rgba(0, 179, 219, 0.33);
     `}
   `,
+  white: css`
+    background: ${theme.colors.background};
+    color: ${theme.colors.primary};
+    border: none;
+
+    &:hover {
+      background: ${darken(0.0125, theme.colors.background)};
+    }
+
+    // TODO: Implement proper box-shadow
+    ${showShadow &&
+    `
+      box-shadow: 0px 0px 24px ${theme.colors.background};
+    `}
+  `,
+  discord: css`
+    background: #6f87e3;
+    color: ${theme.colors.background};
+    border: none;
+
+    &:hover {
+      background: ${darken(0.0125, "#6f87e3")};
+    }
+
+    // TODO: Implement proper box-shadow
+    ${showShadow &&
+    `
+      box-shadow: 0px 0px 24px #6f87e3;
+    `}
+  `,
 });
