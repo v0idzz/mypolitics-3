@@ -8,26 +8,31 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { useToasts } from "react-toast-notifications";
+import useTranslation from "next-translate/useTranslation";
 import { Wrapper, Container, ButtonGroup } from "./ShareSocialStyle";
 
 interface Props {
   url: string;
+  message: string;
 }
 
-const ShareSocial: React.FC<Props> = ({ url }) => {
+const ShareSocial: React.FC<Props> = ({ url, message }) => {
+  const { t, lang } = useTranslation("common");
   const { addToast } = useToasts();
 
   return (
     <Wrapper>
       <Container>
-        <h5>Udostępnij</h5>
+        <h5>{t("share.share")}</h5>
         <ButtonGroup>
-          <a href="">
+          <a
+            href={`https://twitter.com/intent/tweet?url=${url}&via=mypolitics__&text=${message}&hashtags=myPolitics`}
+          >
             <Button background="white">
               <FontAwesomeIcon icon={faTwitter} />
             </Button>
           </a>
-          <a href="">
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}>
             <Button background="white">
               <FontAwesomeIcon
                 icon={faFacebookF}
@@ -40,42 +45,44 @@ const ShareSocial: React.FC<Props> = ({ url }) => {
             background="white"
             onClick={async () => {
               await navigator.clipboard.writeText(url);
-              addToast("Copied URL to clipboard", { appearance: "success" });
+              addToast(t("share.copied"), { appearance: "success" });
             }}
           >
             <FontAwesomeIcon icon={faLink} />
           </Button>
         </ButtonGroup>
       </Container>
-      <Container>
-        <h5>Społeczność</h5>
-        <ButtonGroup>
-          <a href="https://discord.gg/k9MbvxapuM">
-            <Button
-              background="discord"
-              beforeIcon={<FontAwesomeIcon icon={faDiscord} />}
-            >
-              Discord
-            </Button>
-          </a>
-          <a href="facebook.com/groups/sztabmypolitics">
-            <Button
-              background="white"
-              beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
-            >
-              Sztab
-            </Button>
-          </a>
-          <a href="facebook.com/groups/polemika">
-            <Button
-              background="white"
-              beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
-            >
-              Polemika
-            </Button>
-          </a>
-        </ButtonGroup>
-      </Container>
+      {lang === "pl" && (
+        <Container>
+          <h5>Społeczność</h5>
+          <ButtonGroup>
+            <a href="https://discord.gg/k9MbvxapuM">
+              <Button
+                background="discord"
+                beforeIcon={<FontAwesomeIcon icon={faDiscord} />}
+              >
+                Discord
+              </Button>
+            </a>
+            <a href="facebook.com/groups/sztabmypolitics">
+              <Button
+                background="white"
+                beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
+              >
+                Sztab
+              </Button>
+            </a>
+            <a href="facebook.com/groups/polemika">
+              <Button
+                background="white"
+                beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
+              >
+                Polemika
+              </Button>
+            </a>
+          </ButtonGroup>
+        </Container>
+      )}
     </Wrapper>
   );
 };
