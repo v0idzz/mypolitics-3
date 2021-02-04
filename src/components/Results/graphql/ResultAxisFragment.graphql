@@ -1,0 +1,35 @@
+fragment ResultsAxisParts on ResultsAxis {
+    maxPoints
+    left {
+        name {
+            pl
+            en
+        }
+        description {
+            pl
+            en
+        }
+        icon {
+            type
+            value
+        }
+        color
+        points
+    }
+    right {
+        name {
+            pl
+            en
+        }
+        description {
+            pl
+            en
+        }
+        icon {
+            type
+            value
+        }
+        color
+        points
+    }
+}

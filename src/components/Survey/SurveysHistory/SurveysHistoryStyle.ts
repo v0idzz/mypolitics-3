@@ -5,8 +5,7 @@ export const Container = styled.div`
   padding: 3rem;
   border-radius: 0.5rem;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -14,7 +13,6 @@ export const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
 `;
 
 export const Logo = styled.img`
@@ -30,7 +28,7 @@ export const List = styled.div`
 `;
 
 export const ListElement = styled.a`
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.background};
   padding: 1rem;
   border-radius: 0.5rem;
   display: flex;
@@ -40,7 +38,7 @@ export const ListElement = styled.a`
 
 export const Text = styled.div`
   font-size: 1.1rem;
-  color: ${({ theme }) => theme.colors.backgroundLighten};
+  color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
 `;

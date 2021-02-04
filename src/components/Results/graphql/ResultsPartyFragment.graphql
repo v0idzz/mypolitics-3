@@ -1,0 +1,6 @@
+fragment ResultsPartyParts on ResultsParty {
+    id
+    name
+    logoUrl
+    percentAgreement
+}

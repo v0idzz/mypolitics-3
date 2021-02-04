@@ -5,6 +5,7 @@
     "*": ["common"],
     "/": ["home"],
     "rgx:^\\/articles|.+": ["articles"],
-    "rgx:^\\/quizzes$|.+": ["quiz"]
+    "rgx:^\\/quizzes$|.+": ["quiz"],
+    "rgx:^\\/results|.+": ["quiz"]
   }
 }

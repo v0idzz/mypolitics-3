@@ -1,0 +1,29 @@
+fragment ResultsCompassParts on ResultsCompass {
+    name {
+        pl
+        en
+    }
+    horizontal {
+        name {
+            pl
+            en
+        }
+    }
+    vertical {
+        name {
+            pl
+            en
+        }
+    }
+    third {
+        name {
+            pl
+            en
+        }
+    }
+    point {
+        horizontal
+        vertical
+        third
+    }
+}

@@ -14,6 +14,8 @@ export const Container = styled.div<{
   z-index: 100;
   transition: 0.2s ease-in-out;
   padding: 1.25rem 1rem;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
 
   ${breakpoint("xl")`
     border-radius: 1rem;
@@ -31,6 +33,8 @@ export const Container = styled.div<{
       `};
       max-width: ${theme.breakpoints.xl + 32}px;
       box-shadow: 0 0 16px rgba(0, 86, 105, 0.25);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
       background: ${noTransparent
         ? theme.colors.primaryDarken
         : transparentize(0.05, theme.colors.primaryDarken)};

@@ -9,7 +9,7 @@ import GoogleAd from "@shared/GoogleAd";
 import { ButtonChips, Content } from "./QuizInitPageStyle";
 
 const QuizInitPage: React.FC = () => (
-  <CenteredPage>
+  <CenteredPage fullWidth={false}>
     <NextSeo title="Zaczynamy!" titleTemplate="%s – myPolitics" />
     <GoogleAd id="myp3-standard-top" />
     <InitStep

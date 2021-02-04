@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NextSeo } from "next-seo";
-import { CompassInput, IdeologyInput, InitStep } from "@components/Quiz";
+import { IdeologyInput, InitStep } from "@components/Quiz";
 import CenteredPage from "@shared/CenteredPage";
 import {
   UpdateRespondentInput,
@@ -13,6 +13,8 @@ import * as R from "ramda";
 import { useRouter } from "next/router";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import GoogleAd from "@shared/GoogleAd";
+import { useFirstTimer } from "@utils/hooks/useFirstTimer";
+import Compass from "@shared/Compass";
 import {
   TopText,
   Content,
@@ -24,6 +26,7 @@ import { defaultData } from "./QuizAdvInitPageUtils";
 
 const QuizPreInitPage: React.FC = () => {
   const router = useRouter();
+  const { setValue: setFirstTimer } = useFirstTimer();
   const handleErrors = useHandleErrors();
   const [updateRespondent, { loading }] = useUpdateRespondentMutation();
   const [data, setData] = useState<UpdateRespondentInput>(defaultData);
@@ -49,6 +52,7 @@ const QuizPreInitPage: React.FC = () => {
 
   const handleSave = async () => {
     try {
+      setFirstTimer(false);
       await updateRespondent({
         variables: {
           values: data,
@@ -62,7 +66,7 @@ const QuizPreInitPage: React.FC = () => {
   };
 
   return (
-    <CenteredPage>
+    <CenteredPage fullWidth={false}>
       <NextSeo title="Witaj, weteranie" titleTemplate="%s – myPolitics" />
       <GoogleAd id="myp3-standard-top" />
       <InitStep title="Witaj, weteranie!">
@@ -77,7 +81,7 @@ const QuizPreInitPage: React.FC = () => {
                 value={data.details.ideology}
                 onChange={handleIdeologyChange}
               />
-              <CompassInput
+              <Compass
                 value={data.details.compassPoint}
                 onChange={handleCompassChange}
               />

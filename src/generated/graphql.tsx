@@ -1419,13 +1419,15 @@ export type QuizAxisInput = {
 
 export type QuizCompassAxis = {
   __typename?: 'QuizCompassAxis';
-  name: TextTranslation;
-  ideologies: Array<QuizCompassIdeology>;
+  name?: Maybe<TextTranslation>;
+  leftIdeologies: Array<QuizCompassIdeology>;
+  rightIdeologies: Array<QuizCompassIdeology>;
 };
 
 export type QuizCompassAxisInput = {
   name: TextTranslationInput;
-  ideologies: Array<QuizCompassIdeologyInput>;
+  leftIdeologies: Array<QuizCompassIdeologyInput>;
+  rightIdeologies: Array<QuizCompassIdeologyInput>;
 };
 
 export type QuizCompassIdeology = {
@@ -1457,6 +1459,7 @@ export type QuizCompassModeInput = {
 export type QuizFeatures = {
   __typename?: 'QuizFeatures';
   compass: Scalars['Boolean'];
+  traits: Scalars['Boolean'];
   axesNumber: Scalars['Int'];
   questionsNumber: Scalars['Int'];
   parties: Scalars['Boolean'];
@@ -1509,6 +1512,7 @@ export type QuizVersion = {
   parent?: Maybe<QuizVersion>;
   questions: Array<Maybe<Question>>;
   compassModes: Array<Maybe<QuizCompassMode>>;
+  traits: Array<Maybe<Ideology>>;
   quiz: Quiz;
 };
 
@@ -1535,9 +1539,14 @@ export type RespondentDetailsInput = {
 
 export type Results = {
   __typename?: 'Results';
+  id: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
   axes: Array<ResultsAxis>;
   parties: Array<ResultsParty>;
   compasses: Array<ResultsCompass>;
+  quiz: Quiz;
+  traits: Array<Ideology>;
 };
 
 export type ResultsAxis = {
@@ -1545,6 +1554,7 @@ export type ResultsAxis = {
   name?: Maybe<TextTranslation>;
   left: ResultsIdeology;
   right: ResultsIdeology;
+  maxPoints: Scalars['Int'];
 };
 
 export type ResultsCompass = {
@@ -1553,7 +1563,14 @@ export type ResultsCompass = {
   horizontal: QuizCompassAxis;
   vertical: QuizCompassAxis;
   third?: Maybe<QuizCompassAxis>;
-  point: Array<Scalars['Int']>;
+  point: ResultsCompassPoint;
+};
+
+export type ResultsCompassPoint = {
+  __typename?: 'ResultsCompassPoint';
+  horizontal: Scalars['Float'];
+  vertical: Scalars['Float'];
+  third?: Maybe<Scalars['Float']>;
 };
 
 export type ResultsIdeology = {
@@ -1566,6 +1583,7 @@ export type ResultsIdeology = {
   color: Scalars['String'];
   icon: IdeologyIcon;
   points: Scalars['Int'];
+  maxPoints: Scalars['Int'];
 };
 
 export type ResultsParty = {
@@ -1576,7 +1594,9 @@ export type ResultsParty = {
   name: Scalars['String'];
   logoUrl: Scalars['String'];
   country: Country;
-  points: Scalars['Int'];
+  agreementPoints: Scalars['Int'];
+  disagreementPoints: Scalars['Int'];
+  percentAgreement: Scalars['Int'];
 };
 
 export type Survey = {
@@ -1650,9 +1670,10 @@ export type UpdateQuizInput = {
 
 export type UpdateQuizVersionInput = {
   publishedOn?: Maybe<Scalars['DateTime']>;
-  axes: Array<Maybe<QuizAxisInput>>;
+  axes?: Maybe<Array<QuizAxisInput>>;
   parent?: Maybe<Scalars['String']>;
   compassModes: Array<Maybe<QuizCompassModeInput>>;
+  traits: Array<Maybe<Scalars['String']>>;
 };
 
 export type UpdateRespondentInput = {
@@ -2131,7 +2152,7 @@ export type FeaturedQuizzesQuery = (
       { __typename?: 'QuizMeta' }
       & { features: (
         { __typename?: 'QuizFeatures' }
-        & Pick<QuizFeatures, 'compass' | 'parties' | 'politiciansResults' | 'axesNumber' | 'questionsNumber'>
+        & Pick<QuizFeatures, 'compass' | 'parties' | 'politiciansResults' | 'axesNumber' | 'questionsNumber' | 'traits'>
         & { authorizedParties: Array<Maybe<(
           { __typename?: 'Party' }
           & Pick<Party, 'id'>
@@ -2224,6 +2245,151 @@ export type UpdateRespondentMutation = (
     { __typename?: 'Respondent' }
     & Pick<Respondent, 'id'>
   ) }
+);
+
+export type ResultsAxisPartsFragment = (
+  { __typename?: 'ResultsAxis' }
+  & Pick<ResultsAxis, 'maxPoints'>
+  & { left: (
+    { __typename?: 'ResultsIdeology' }
+    & Pick<ResultsIdeology, 'color' | 'points'>
+    & { name: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ), description: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ), icon: (
+      { __typename?: 'IdeologyIcon' }
+      & Pick<IdeologyIcon, 'type' | 'value'>
+    ) }
+  ), right: (
+    { __typename?: 'ResultsIdeology' }
+    & Pick<ResultsIdeology, 'color' | 'points'>
+    & { name: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ), description: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ), icon: (
+      { __typename?: 'IdeologyIcon' }
+      & Pick<IdeologyIcon, 'type' | 'value'>
+    ) }
+  ) }
+);
+
+export type ResultsCompassPartsFragment = (
+  { __typename?: 'ResultsCompass' }
+  & { name: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), horizontal: (
+    { __typename?: 'QuizCompassAxis' }
+    & { name?: Maybe<(
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    )> }
+  ), vertical: (
+    { __typename?: 'QuizCompassAxis' }
+    & { name?: Maybe<(
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    )> }
+  ), third?: Maybe<(
+    { __typename?: 'QuizCompassAxis' }
+    & { name?: Maybe<(
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    )> }
+  )>, point: (
+    { __typename?: 'ResultsCompassPoint' }
+    & Pick<ResultsCompassPoint, 'horizontal' | 'vertical' | 'third'>
+  ) }
+);
+
+export type ResultsPartsFragment = (
+  { __typename?: 'Results' }
+  & Pick<Results, 'id' | 'createdAt' | 'updatedAt'>
+  & { axes: Array<(
+    { __typename?: 'ResultsAxis' }
+    & ResultsAxisPartsFragment
+  )>, parties: Array<(
+    { __typename?: 'ResultsParty' }
+    & ResultsPartyPartsFragment
+  )>, compasses: Array<(
+    { __typename?: 'ResultsCompass' }
+    & ResultsCompassPartsFragment
+  )>, quiz: (
+    { __typename?: 'Quiz' }
+    & ResultsQuizFragment
+  ), traits: Array<(
+    { __typename?: 'Ideology' }
+    & ResultsTraitPartsFragment
+  )> }
+);
+
+export type ResultsPartyPartsFragment = (
+  { __typename?: 'ResultsParty' }
+  & Pick<ResultsParty, 'id' | 'name' | 'logoUrl' | 'percentAgreement'>
+);
+
+export type ResultsPoliticianPartsFragment = (
+  { __typename?: 'Politician' }
+  & Pick<Politician, 'id' | 'name'>
+  & { image?: Maybe<(
+    { __typename?: 'UploadFile' }
+    & Pick<UploadFile, 'url'>
+  )>, biography?: Maybe<(
+    { __typename?: 'ComponentTranslationLongTextTranslation' }
+    & Pick<ComponentTranslationLongTextTranslation, 'pl' | 'en'>
+  )> }
+);
+
+export type ResultsQuizFragment = (
+  { __typename?: 'Quiz' }
+  & Pick<Quiz, 'id' | 'logoUrl'>
+  & { title: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ) }
+);
+
+export type ResultsTraitPartsFragment = (
+  { __typename?: 'Ideology' }
+  & Pick<Ideology, 'id' | 'color'>
+  & { name: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), description: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), icon: (
+    { __typename?: 'IdeologyIcon' }
+    & Pick<IdeologyIcon, 'type' | 'value'>
+  ) }
+);
+
+export type SingleResultsQueryVariables = Exact<{
+  surveyId: Scalars['String'];
+}>;
+
+
+export type SingleResultsQuery = (
+  { __typename?: 'Query' }
+  & { results: (
+    { __typename?: 'Results' }
+    & ResultsPartsFragment
+  ), politicianResultsConnection?: Maybe<(
+    { __typename?: 'PoliticianResultsConnection' }
+    & { values?: Maybe<Array<Maybe<(
+      { __typename?: 'PoliticianResults' }
+      & { politician?: Maybe<(
+        { __typename?: 'Politician' }
+        & ResultsPoliticianPartsFragment
+      )> }
+    )>>> }
+  )> }
 );
 
 export type BasicSurveyPartsFragment = (
@@ -2411,6 +2577,149 @@ export const ExtendedPostPartsFragmentDoc = gql`
   updatedAt
 }
     ${BasicPostPartsFragmentDoc}`;
+export const ResultsAxisPartsFragmentDoc = gql`
+    fragment ResultsAxisParts on ResultsAxis {
+  maxPoints
+  left {
+    name {
+      pl
+      en
+    }
+    description {
+      pl
+      en
+    }
+    icon {
+      type
+      value
+    }
+    color
+    points
+  }
+  right {
+    name {
+      pl
+      en
+    }
+    description {
+      pl
+      en
+    }
+    icon {
+      type
+      value
+    }
+    color
+    points
+  }
+}
+    `;
+export const ResultsPartyPartsFragmentDoc = gql`
+    fragment ResultsPartyParts on ResultsParty {
+  id
+  name
+  logoUrl
+  percentAgreement
+}
+    `;
+export const ResultsCompassPartsFragmentDoc = gql`
+    fragment ResultsCompassParts on ResultsCompass {
+  name {
+    pl
+    en
+  }
+  horizontal {
+    name {
+      pl
+      en
+    }
+  }
+  vertical {
+    name {
+      pl
+      en
+    }
+  }
+  third {
+    name {
+      pl
+      en
+    }
+  }
+  point {
+    horizontal
+    vertical
+    third
+  }
+}
+    `;
+export const ResultsQuizFragmentDoc = gql`
+    fragment ResultsQuiz on Quiz {
+  id
+  logoUrl
+  title {
+    pl
+    en
+  }
+}
+    `;
+export const ResultsTraitPartsFragmentDoc = gql`
+    fragment ResultsTraitParts on Ideology {
+  id
+  name {
+    pl
+    en
+  }
+  description {
+    pl
+    en
+  }
+  icon {
+    type
+    value
+  }
+  color
+}
+    `;
+export const ResultsPartsFragmentDoc = gql`
+    fragment ResultsParts on Results {
+  id
+  createdAt
+  updatedAt
+  axes {
+    ...ResultsAxisParts
+  }
+  parties {
+    ...ResultsPartyParts
+  }
+  compasses {
+    ...ResultsCompassParts
+  }
+  quiz {
+    ...ResultsQuiz
+  }
+  traits {
+    ...ResultsTraitParts
+  }
+}
+    ${ResultsAxisPartsFragmentDoc}
+${ResultsPartyPartsFragmentDoc}
+${ResultsCompassPartsFragmentDoc}
+${ResultsQuizFragmentDoc}
+${ResultsTraitPartsFragmentDoc}`;
+export const ResultsPoliticianPartsFragmentDoc = gql`
+    fragment ResultsPoliticianParts on Politician {
+  id
+  name
+  image {
+    url
+  }
+  biography {
+    pl
+    en
+  }
+}
+    `;
 export const BasicSurveyPartsFragmentDoc = gql`
     fragment BasicSurveyParts on Survey {
   quizVersion {
@@ -2570,6 +2879,7 @@ export const FeaturedQuizzesDocument = gql`
         politiciansResults
         axesNumber
         questionsNumber
+        traits
         authorizedParties {
           id
         }
@@ -2777,6 +3087,47 @@ export function useUpdateRespondentMutation(baseOptions?: Apollo.MutationHookOpt
 export type UpdateRespondentMutationHookResult = ReturnType<typeof useUpdateRespondentMutation>;
 export type UpdateRespondentMutationResult = Apollo.MutationResult<UpdateRespondentMutation>;
 export type UpdateRespondentMutationOptions = Apollo.BaseMutationOptions<UpdateRespondentMutation, UpdateRespondentMutationVariables>;
+export const SingleResultsDocument = gql`
+    query SingleResults($surveyId: String!) {
+  results(surveyId: $surveyId) {
+    ...ResultsParts
+  }
+  politicianResultsConnection(where: {rid: $surveyId}) {
+    values {
+      politician {
+        ...ResultsPoliticianParts
+      }
+    }
+  }
+}
+    ${ResultsPartsFragmentDoc}
+${ResultsPoliticianPartsFragmentDoc}`;
+
+/**
+ * __useSingleResultsQuery__
+ *
+ * To run a query within a React component, call `useSingleResultsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSingleResultsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSingleResultsQuery({
+ *   variables: {
+ *      surveyId: // value for 'surveyId'
+ *   },
+ * });
+ */
+export function useSingleResultsQuery(baseOptions: Apollo.QueryHookOptions<SingleResultsQuery, SingleResultsQueryVariables>) {
+        return Apollo.useQuery<SingleResultsQuery, SingleResultsQueryVariables>(SingleResultsDocument, baseOptions);
+      }
+export function useSingleResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SingleResultsQuery, SingleResultsQueryVariables>) {
+          return Apollo.useLazyQuery<SingleResultsQuery, SingleResultsQueryVariables>(SingleResultsDocument, baseOptions);
+        }
+export type SingleResultsQueryHookResult = ReturnType<typeof useSingleResultsQuery>;
+export type SingleResultsLazyQueryHookResult = ReturnType<typeof useSingleResultsLazyQuery>;
+export type SingleResultsQueryResult = Apollo.QueryResult<SingleResultsQuery, SingleResultsQueryVariables>;
 export const CreateSurveyDocument = gql`
     mutation CreateSurvey($values: CreateSurveyInput!) {
   createSurvey(createSurveyInput: $values) {

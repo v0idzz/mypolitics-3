@@ -20,13 +20,26 @@
     "0e9c1fda905589e201751d712e8bc147": "Agoryzm",
     "72f8fe391101c447cc467ee2dcdcd9e8": "Liberalizm",
     "652cbd1d722c2fcd8e06aa34f8aa22fe": "Libertarianizm",
-    "6410ff914a95dfcb1359e16f005b8abc": "Anarchokapitalizm"
+    "6410ff914a95dfcb1359e16f005b8abc": "Anarchokapitalizm",
+    "default": "Brak ideologii"
   },
   "features": {
     "compass": "Kompas",
     "questionsNumber": "{{number}} pytań",
     "parties": "Partie",
     "axesNumber": "{{number}} osi",
-    "politiciansResults": "Politycy"
+    "politiciansResults": "Politycy",
+    "traits": "Cechy"
+  },
+  "axesIdeologyGrades": {
+    "center": "Centrum",
+    "moderate": "Umiarkowany {{ideology}}",
+    "hard": "Mocny {{ideology}}",
+    "radical": "Skrajny {{ideology}}"
+  },
+  "compass": {
+    "left": "Lewica",
+    "center": "Centrum",
+    "right": "Prawica"
   }
 }
