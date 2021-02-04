@@ -22,6 +22,10 @@
     "talks": "Debaty",
     "quiz": "Test poglądów politycznych"
   },
+  "share": {
+      "share": "Udostępnij",
+    "copied": "Skopiowano link do schowka!"
+  },
   "errorMessages": {
     "0": "Nie znaleziono zasobu",
     "1": "Nieautoryzowane",
