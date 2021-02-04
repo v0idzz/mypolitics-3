@@ -11,6 +11,13 @@ export const Icon = styled.div<{ background: string }>`
   color: ${({ theme }) => theme.colors.backgroundLighten};
   background: ${({ background }) => background};
 
+  & > img {
+    display: block;
+    height: 1.5rem;
+    width: 1.5rem;
+    object-fit: contain;
+  }
+
   &:first-child {
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
@@ -20,13 +27,6 @@ export const Icon = styled.div<{ background: string }>`
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
   }
-`;
-
-export const IconImage = styled.img`
-  display: block;
-  height: 1.5rem;
-  width: 1.5rem;
-  object-fit: contain;
 `;
 
 export const Bar = styled.div<{ background?: string }>`

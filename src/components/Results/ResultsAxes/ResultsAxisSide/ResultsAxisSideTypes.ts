@@ -1,9 +1,9 @@
 import { ResultsAxisPartsFragment } from "@generated/graphql";
 
-type ResultsAxisSide = ResultsAxisPartsFragment["left"];
+export type ResultsAxisSideData = ResultsAxisPartsFragment["left"];
 
 export interface AxisSide {
-  data?: ResultsAxisSide;
+  data?: ResultsAxisSideData;
   percentage: number;
 }
 

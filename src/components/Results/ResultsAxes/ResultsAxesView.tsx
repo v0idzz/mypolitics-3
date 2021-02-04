@@ -13,12 +13,12 @@ interface Props {
 
 const ResultsAxes: React.FC<Props> = ({ results }) => {
   const toAxis = (axis: ResultsAxisPartsFragment) => (
-    <ResultsAxis axis={axis} />
+    <ResultsAxis key={axis.right.icon.value} axis={axis} />
   );
 
   const axisList = R.map(toAxis, results.axes);
 
-  return <Container>{axisList}</Container>;
+  return <Container className="abc">{axisList}</Container>;
 };
 
 export default ResultsAxes;

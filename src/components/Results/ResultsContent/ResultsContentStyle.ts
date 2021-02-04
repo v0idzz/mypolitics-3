@@ -10,3 +10,20 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.background};
   text-align: center;
 `;
+
+export const Row = styled.div`
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  width: 100%;
+  grid-gap: 1.5rem;
+`;
+
+export const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  & > div:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+`;

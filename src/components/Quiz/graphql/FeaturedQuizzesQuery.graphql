@@ -10,6 +10,7 @@ query FeaturedQuizzes {
                 politiciansResults
                 axesNumber
                 questionsNumber
+                traits
                 authorizedParties {
                     id
                 }

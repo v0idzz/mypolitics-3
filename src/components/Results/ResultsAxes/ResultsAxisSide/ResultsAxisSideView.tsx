@@ -1,6 +1,7 @@
 import React from "react";
+import IdeologyIcon from "@shared/IdeologyIcon";
 import { AxisSide, Side } from "./ResultsAxisSideTypes";
-import { Bar, Icon, IconImage } from "./ResultsAxisSideStyle";
+import { Bar, Icon } from "./ResultsAxisSideStyle";
 
 interface Props {
   side: AxisSide;
@@ -14,15 +15,12 @@ const ResultsAxisSide: React.FC<Props> = ({ side, type }) => {
     }
 
     const { icon, color } = side.data;
-    const { type: iconType, value } = icon;
-    const iconContent =
-      iconType === "font-awesome" ? (
-        <span className={`fa ${value}`} />
-      ) : (
-        <IconImage src={value} alt={value} />
-      );
 
-    return <Icon background={color}>{iconContent}</Icon>;
+    return (
+      <Icon background={color}>
+        <IdeologyIcon icon={icon} />
+      </Icon>
+    );
   };
 
   const AxisBar = () => {

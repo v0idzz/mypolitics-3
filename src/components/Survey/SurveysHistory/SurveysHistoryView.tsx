@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMeRespondentSurveysQuery } from "@generated/graphql";
 import * as R from "ramda";
 import { SurveyHistory } from "@components/Survey/SurveysHistory/SurveysHistoryTypes";
 import Link from "next/link";
 import { paths } from "@constants";
+import Button from "@shared/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import {
   Container,
   Header,
@@ -14,8 +18,14 @@ import {
   Chips,
 } from "./SurveysHistoryStyle";
 
+library.add(faArrowDown);
+
 const SurveyHistoryElement: React.FC<{ data: SurveyHistory }> = ({ data }) => {
   const { quiz, surveys } = data;
+  const BASE_LIMIT = 3;
+  const [limit, setLimit] = useState<number>(BASE_LIMIT);
+
+  const handleShowMore = () => setLimit(limit + BASE_LIMIT);
 
   const toListElement = (survey) => {
     const href = survey.finished
@@ -33,14 +43,26 @@ const SurveyHistoryElement: React.FC<{ data: SurveyHistory }> = ({ data }) => {
     );
   };
 
-  const listElements = R.map(toListElement, surveys);
+  const limitedSurveys = surveys.filter((_, i) => i < limit);
+  const listElements = R.map(toListElement, limitedSurveys);
+  const showButton = limitedSurveys.length < surveys.length;
 
   return (
     <Container>
       <Header>
         <Logo src={quiz.logoUrl} alt={quiz.id} />
       </Header>
-      <List>{listElements}</List>
+      <List>
+        {listElements}
+        {showButton && (
+          <Button
+            onClick={handleShowMore}
+            beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
+          >
+            Pokaż więcej
+          </Button>
+        )}
+      </List>
     </Container>
   );
 };

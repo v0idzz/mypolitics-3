@@ -24,7 +24,7 @@ export const BackgroundImage = styled.img`
 `;
 
 export const Overlay = styled(BackgroundImage)`
-  background: linear-gradient(90deg, #002a33 0%, rgba(0, 42, 51, 0) 100%);
+  background: linear-gradient(135deg, #002a33 0%, rgba(0, 42, 51, 0) 100%);
   margin-left: -1px;
 `;
 

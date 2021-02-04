@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NextSeo } from "next-seo";
-import { CompassInput, IdeologyInput, InitStep } from "@components/Quiz";
+import { IdeologyInput, InitStep } from "@components/Quiz";
 import CenteredPage from "@shared/CenteredPage";
 import {
   UpdateRespondentInput,
@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import GoogleAd from "@shared/GoogleAd";
 import { useFirstTimer } from "@utils/hooks/useFirstTimer";
+import Compass from "@shared/Compass";
 import {
   TopText,
   Content,
@@ -65,7 +66,7 @@ const QuizPreInitPage: React.FC = () => {
   };
 
   return (
-    <CenteredPage>
+    <CenteredPage fullWidth={false}>
       <NextSeo title="Witaj, weteranie" titleTemplate="%s – myPolitics" />
       <GoogleAd id="myp3-standard-top" />
       <InitStep title="Witaj, weteranie!">
@@ -80,7 +81,7 @@ const QuizPreInitPage: React.FC = () => {
                 value={data.details.ideology}
                 onChange={handleIdeologyChange}
               />
-              <CompassInput
+              <Compass
                 value={data.details.compassPoint}
                 onChange={handleCompassChange}
               />

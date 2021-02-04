@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
-export const CompassSelect = styled.div`
+export const Container = styled.div<{ clickable: boolean }>`
   display: block;
-  width: 10rem;
-  border-radius: 0.5rem;
-  height: 10rem;
+  width: 9.75rem;
+  height: 9.75rem;
   background-image: url(${require("@assets/images/compass_chart.png")});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   position: relative;
-  cursor: pointer;
+
+  ${({ clickable }) => clickable && `cursor: pointer;`}
 `;
 
-export const CompassPoint = styled.img<{ position: number[] }>`
+export const Point = styled.div<{ position: number[] }>`
   position: absolute;
   display: block;
   height: 1rem;
@@ -24,7 +24,7 @@ export const CompassPoint = styled.img<{ position: number[] }>`
   transform: translate(-50%, -50%);
   ${({ position }) => {
     const x = (position[0] + 1) / 2;
-    const y = (position[1] + 1) / 2;
+    const y = (-position[1] + 1) / 2;
     return `
       left: ${x * 100}%;
       top: ${y * 100}%;

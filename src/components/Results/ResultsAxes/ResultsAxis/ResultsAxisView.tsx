@@ -2,9 +2,9 @@ import React from "react";
 import { ResultsAxisPartsFragment } from "@generated/graphql";
 import * as R from "ramda";
 import ResultsAxisSide from "@components/Results/ResultsAxes/ResultsAxisSide";
-import { getSides } from "./ResultsAxisUtils";
+import { getSides, useAxisTitle } from "./ResultsAxisUtils";
 import { Side } from "../ResultsAxisSide/ResultsAxisSideTypes";
-import { Container } from "./ResultsAxisStyle";
+import { Container, Title, Inner } from "./ResultsAxisStyle";
 
 interface Props {
   axis: ResultsAxisPartsFragment;
@@ -12,6 +12,7 @@ interface Props {
 
 const ResultsAxis: React.FC<Props> = ({ axis }) => {
   const sides = getSides(axis);
+  const title = useAxisTitle(sides);
 
   const toPercentageEntry = (type: Side): [Side, number] => [
     type,
@@ -28,7 +29,12 @@ const ResultsAxis: React.FC<Props> = ({ axis }) => {
   };
   const sidesElements = R.map(toSide, R.keys(sides));
 
-  return <Container percentages={percentages}>{sidesElements}</Container>;
+  return (
+    <Container>
+      {title && <Title>{title}</Title>}
+      <Inner percentages={percentages}>{sidesElements}</Inner>
+    </Container>
+  );
 };
 
 export default ResultsAxis;

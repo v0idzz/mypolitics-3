@@ -14,4 +14,7 @@ fragment ResultsParts on Results {
     quiz {
         ...ResultsQuiz
     }
+    traits {
+        ...ResultsTraitParts
+    }
 }

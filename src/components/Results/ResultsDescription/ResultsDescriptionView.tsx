@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from "react";
-import Button from "@shared/Button";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Title, Paragraph } from "./ResultsDescriptionStyle";
-
-library.add(faTimes);
 
 const token = `mypolitics-results-description-v1`;
 
 const ResultsDescription: React.FC = () => {
-  const [show, setShow] = useState<boolean>(true);
-
-  const handleCloseClick = () => {
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(token, new Date().toISOString());
-    }
-    setShow(false);
-  };
+  const [show, setShow] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const notViewed = !window.localStorage.getItem(token);
       setShow(notViewed);
+
+      window.localStorage.setItem(token, new Date().toISOString());
     }
   }, []);
 
-  if (!show || typeof window === "undefined") {
+  if (!show) {
     return null;
   }
 
@@ -43,12 +32,6 @@ const ResultsDescription: React.FC = () => {
         lub trzyosiowej przestrzeni politycznej. Położenie w każdej osi wykresu
         odpowiada wartościom w osiach ideologicznych z wagami.
       </Paragraph>
-      <Button
-        onClick={handleCloseClick}
-        beforeIcon={<FontAwesomeIcon icon={faTimes} />}
-      >
-        Zamknij
-      </Button>
     </Container>
   );
 };

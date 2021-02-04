@@ -4,3 +4,7 @@ export { default as Content } from "./ResultsContent";
 export { default as PoliticianInfo } from "./ResultsPoliticianInfo";
 export { default as Description } from "./ResultsDescription";
 export { default as Axes } from "./ResultsAxes";
+export { default as Ideology } from "./ResultsIdeology";
+export { default as Compass } from "./ResultsCompass";
+export { default as Party } from "./ResultsParty";
+export { default as Traits } from "./ResultsTraits";

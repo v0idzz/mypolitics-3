@@ -1459,6 +1459,7 @@ export type QuizCompassModeInput = {
 export type QuizFeatures = {
   __typename?: 'QuizFeatures';
   compass: Scalars['Boolean'];
+  traits: Scalars['Boolean'];
   axesNumber: Scalars['Int'];
   questionsNumber: Scalars['Int'];
   parties: Scalars['Boolean'];
@@ -1511,6 +1512,7 @@ export type QuizVersion = {
   parent?: Maybe<QuizVersion>;
   questions: Array<Maybe<Question>>;
   compassModes: Array<Maybe<QuizCompassMode>>;
+  traits: Array<Maybe<Ideology>>;
   quiz: Quiz;
 };
 
@@ -1544,6 +1546,7 @@ export type Results = {
   parties: Array<ResultsParty>;
   compasses: Array<ResultsCompass>;
   quiz: Quiz;
+  traits: Array<Ideology>;
 };
 
 export type ResultsAxis = {
@@ -1670,6 +1673,7 @@ export type UpdateQuizVersionInput = {
   axes?: Maybe<Array<QuizAxisInput>>;
   parent?: Maybe<Scalars['String']>;
   compassModes: Array<Maybe<QuizCompassModeInput>>;
+  traits: Array<Maybe<Scalars['String']>>;
 };
 
 export type UpdateRespondentInput = {
@@ -2148,7 +2152,7 @@ export type FeaturedQuizzesQuery = (
       { __typename?: 'QuizMeta' }
       & { features: (
         { __typename?: 'QuizFeatures' }
-        & Pick<QuizFeatures, 'compass' | 'parties' | 'politiciansResults' | 'axesNumber' | 'questionsNumber'>
+        & Pick<QuizFeatures, 'compass' | 'parties' | 'politiciansResults' | 'axesNumber' | 'questionsNumber' | 'traits'>
         & { authorizedParties: Array<Maybe<(
           { __typename?: 'Party' }
           & Pick<Party, 'id'>
@@ -2319,7 +2323,10 @@ export type ResultsPartsFragment = (
   )>, quiz: (
     { __typename?: 'Quiz' }
     & ResultsQuizFragment
-  ) }
+  ), traits: Array<(
+    { __typename?: 'Ideology' }
+    & ResultsTraitPartsFragment
+  )> }
 );
 
 export type ResultsPartyPartsFragment = (
@@ -2345,6 +2352,21 @@ export type ResultsQuizFragment = (
   & { title: (
     { __typename?: 'TextTranslation' }
     & Pick<TextTranslation, 'pl' | 'en'>
+  ) }
+);
+
+export type ResultsTraitPartsFragment = (
+  { __typename?: 'Ideology' }
+  & Pick<Ideology, 'id' | 'color'>
+  & { name: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), description: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), icon: (
+    { __typename?: 'IdeologyIcon' }
+    & Pick<IdeologyIcon, 'type' | 'value'>
   ) }
 );
 
@@ -2641,6 +2663,24 @@ export const ResultsQuizFragmentDoc = gql`
   }
 }
     `;
+export const ResultsTraitPartsFragmentDoc = gql`
+    fragment ResultsTraitParts on Ideology {
+  id
+  name {
+    pl
+    en
+  }
+  description {
+    pl
+    en
+  }
+  icon {
+    type
+    value
+  }
+  color
+}
+    `;
 export const ResultsPartsFragmentDoc = gql`
     fragment ResultsParts on Results {
   id
@@ -2658,11 +2698,15 @@ export const ResultsPartsFragmentDoc = gql`
   quiz {
     ...ResultsQuiz
   }
+  traits {
+    ...ResultsTraitParts
+  }
 }
     ${ResultsAxisPartsFragmentDoc}
 ${ResultsPartyPartsFragmentDoc}
 ${ResultsCompassPartsFragmentDoc}
-${ResultsQuizFragmentDoc}`;
+${ResultsQuizFragmentDoc}
+${ResultsTraitPartsFragmentDoc}`;
 export const ResultsPoliticianPartsFragmentDoc = gql`
     fragment ResultsPoliticianParts on Politician {
   id
@@ -2835,6 +2879,7 @@ export const FeaturedQuizzesDocument = gql`
         politiciansResults
         axesNumber
         questionsNumber
+        traits
         authorizedParties {
           id
         }

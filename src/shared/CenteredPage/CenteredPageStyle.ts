@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Title } from "@shared/Typography";
 
-export const Container = styled.main`
+export const Container = styled.main<{ fullWidth: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,6 +12,14 @@ export const Container = styled.main`
   & > ${Title} {
     margin-bottom: 2rem;
   }
+
+  ${({ fullWidth }) =>
+    !fullWidth &&
+    `
+    .container {
+      width: auto;
+    }
+  `}
 `;
 
 export const Inner = styled.div`

@@ -20,6 +20,10 @@ export const FormContainer = styled(TopText)`
   padding: 1.5rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
   border-radius: 0.5rem;
+
+  .compass {
+    border-radius: 0.5rem;
+  }
 `;
 
 export const Content = styled.div`

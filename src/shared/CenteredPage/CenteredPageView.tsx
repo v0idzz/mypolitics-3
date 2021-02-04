@@ -1,8 +1,12 @@
 import React from "react";
 import { Container, Inner } from "./CenteredPageStyle";
 
-const CenteredPage: React.FC = ({ children }) => (
-  <Container>
+interface Props {
+  fullWidth?: boolean;
+}
+
+const CenteredPage: React.FC<Props> = ({ children, fullWidth = true }) => (
+  <Container fullWidth={fullWidth}>
     <div className="container">
       <Inner>{children}</Inner>
     </div>

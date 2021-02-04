@@ -1,15 +1,21 @@
 import React from "react";
-import { CompassPoint, CompassSelect } from "./QuizCompassInputStyle";
+import { Container, Point } from "./CompassStyle";
 
-type Point = number[];
+type PointType = number[];
 
 interface Props {
-  value: Point;
-  onChange(point: Point): void;
+  value: PointType;
+  onChange?(point: PointType): void;
 }
 
 const QuizCompassInput: React.FC<Props> = ({ value, onChange }) => {
+  const clickable = typeof onChange !== "undefined";
+
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!onChange) {
+      return;
+    }
+
     const round = (num) => Math.round((num + Number.EPSILON) * 100) / 100;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -21,13 +27,13 @@ const QuizCompassInput: React.FC<Props> = ({ value, onChange }) => {
     const x = roundedX * 2 - 1;
     const y = roundedY * 2 - 1;
 
-    onChange([x, y]);
+    onChange([x, -y]);
   };
 
   return (
-    <CompassSelect onClick={handleClick}>
-      <CompassPoint position={value} />
-    </CompassSelect>
+    <Container className="compass" clickable={clickable} onClick={handleClick}>
+      <Point position={value} />
+    </Container>
   );
 };
 
