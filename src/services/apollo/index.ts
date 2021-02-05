@@ -11,7 +11,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 function createApolloClient() {
   const domain =
     process.env.NODE_ENV === "production"
-      ? "https://mypolitics"
+      ? "https://mypolitics.pl"
       : "http://localhost:3000";
 
   const httpLink = createHttpLink({
