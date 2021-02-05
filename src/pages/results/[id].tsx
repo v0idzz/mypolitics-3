@@ -32,7 +32,7 @@ export const getServerSideProps = async ({
   const { results, politicianResultsConnection } = data;
   const politicianData = politicianResultsConnection.values[0];
   const politician =
-    typeof politicianData !== "undefined" ? politicianData : null;
+    typeof politicianData !== "undefined" ? politicianData.politician : null;
 
   return {
     props: {

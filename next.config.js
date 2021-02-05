@@ -31,7 +31,7 @@ const nextConfig = {
         destination:
           process.env.NODE_ENV !== "production"
             ? "http://localhost:5000/graphql"
-            : "https://api.v3.mypolitics.pl/graphql",
+            : "https://api-v3.mypolitics.pl/graphql",
       },
     ];
   },

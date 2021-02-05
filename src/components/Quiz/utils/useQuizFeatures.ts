@@ -3,7 +3,10 @@ import useTranslation from "next-translate/useTranslation";
 import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 
 export const useQuizFeatures = (
-  features: Omit<QuizFeatures, "authorizedParties" | "SingleQuizQuery">
+  features: Omit<
+    QuizFeatures,
+    "authorizedParties" | "SingleQuizQuery" | "traits"
+  >
 ): string[] => {
   const { value: firstTimer } = useFirstTimer();
   const { t } = useTranslation("quiz");
