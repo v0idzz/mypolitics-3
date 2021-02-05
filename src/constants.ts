@@ -1,4 +1,4 @@
-export const BASE_PATH = "https://beta.mypolitics.pl";
+export const BASE_PATH = process.env.BASE_PATH;
 
 export const Cookies = {
   RESPONDENT: "mypolitics-respondent",

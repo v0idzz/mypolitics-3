@@ -5,14 +5,13 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client";
 import { useMemo } from "react";
+import { BASE_PATH } from "@constants";
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function createApolloClient() {
   const domain =
-    process.env.NODE_ENV === "production"
-      ? "https://mypolitics.pl"
-      : "http://localhost:3000";
+    process.env.NODE_ENV === "production" ? BASE_PATH : "http://localhost:3000";
 
   const httpLink = createHttpLink({
     uri: `${domain}/admin/graphql`,
