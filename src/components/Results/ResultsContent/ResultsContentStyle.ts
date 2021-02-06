@@ -1,21 +1,33 @@
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 1.5rem;
-  padding: 3rem;
+  grid-gap: 1rem;
+  padding: 0.75rem;
   width: 100%;
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.background};
   text-align: center;
+
+  ${breakpoint("md")`
+    grid-gap: 1.5rem;
+    padding: 3rem;
+  `}
 `;
 
 export const Row = styled.div`
   display: grid;
-  grid-template-columns: 55fr 45fr;
+  grid-template-columns: 100%;
   width: 100%;
-  grid-gap: 1.5rem;
+  grid-gap: 1rem;
+
+  ${breakpoint("md")`
+    grid-template-columns: 55fr 45fr;
+    width: 100%;
+    grid-gap: 1.5rem;
+  `}
 `;
 
 export const Col = styled.div`

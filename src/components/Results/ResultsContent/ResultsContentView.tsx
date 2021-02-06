@@ -44,7 +44,7 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
               />
             </>
           )}
-          <Party parties={results.parties} />
+          {results.parties.length > 0 && <Party parties={results.parties} />}
           {results.traits.length > 0 && <Traits traits={results.traits} />}
         </Col>
       </Row>

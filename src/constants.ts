@@ -9,6 +9,7 @@ export const Cookies = {
 };
 
 export const paths = {
+  home: "/",
   privacy: "/privacy",
   rules: "/rules",
   gdpr: "/gdpr",

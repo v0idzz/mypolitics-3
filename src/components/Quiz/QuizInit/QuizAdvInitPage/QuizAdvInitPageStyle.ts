@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 export const TopText = styled.p`
   margin: 0;
@@ -14,14 +15,22 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormContainer = styled(TopText)`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 1.5rem;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 0.5rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
   border-radius: 0.5rem;
 
+  ${breakpoint("md")`
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  `}
+
   .compass {
+    margin: auto;
     border-radius: 0.5rem;
   }
 `;

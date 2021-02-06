@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 import { Side } from "../ResultsAxisSide/ResultsAxisSideTypes";
 
 export const Container = styled.div`
@@ -32,7 +33,11 @@ export const Title = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   padding: 0.5rem;
   margin: auto;
-  width: calc(100% - 7rem);
+  width: calc(100% - 3.5rem);
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
+
+  ${breakpoint("md")`
+    width: calc(100% - 7rem);
+  `}
 `;

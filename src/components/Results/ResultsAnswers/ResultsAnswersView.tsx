@@ -5,7 +5,6 @@ import Button from "@shared/Button";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   SingleSurveyExtendedLazyQueryHookResult,
-  SingleSurveyExtendedQuery,
   useSingleSurveyExtendedLazyQuery,
 } from "@generated/graphql";
 import * as R from "ramda";

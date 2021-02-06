@@ -51,7 +51,7 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   return (
     <Container highlighted={highlighted} noTransparent={showMenu}>
       <Inner>
-        <Link href="/">
+        <Link href={logo.homepage}>
           <a>
             <Logo src={logo.url} alt={logo.name} />
           </a>
@@ -72,7 +72,7 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
               <FontAwesomeIcon icon={showMenu ? faTimes : faBars} />
             </MobileNavigationButton>
             <MobileNavigation show={showMenu}>
-              <MobileNavigationInner>
+              <MobileNavigationInner onClick={toggleMenu}>
                 <Link href={paths.articles}>{t("header.articles")}</Link>
                 <Link href={paths.talks}>{t("header.talks")}</Link>
                 <Link href={paths.quiz("mypolitics")} passHref>

@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import { useSurvey } from "@components/Survey/utils/useSurvey";
 import useTranslation from "next-translate/useTranslation";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
+import Loading from "@shared/Loading";
 import SurveyHeader from "./SurveyHeader";
 import SurveyAnswers from "./SurveyAnswers";
 import {
@@ -31,7 +32,11 @@ const SurveyPage: React.FC = () => {
   const { currentQuestion, quiz } = data;
 
   if (!currentQuestion) {
-    return null;
+    return (
+      <StandardPage>
+        <Loading />
+      </StandardPage>
+    );
   }
 
   return (
