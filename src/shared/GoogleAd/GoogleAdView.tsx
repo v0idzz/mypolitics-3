@@ -10,14 +10,16 @@ const GoogleAd: React.FC<Props> = ({ id }) => {
   const slot = adsIdsSlots[id];
 
   useEffect(() => {
-    try {
-      document.querySelectorAll(".adsbygoogle").forEach(() => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      });
-    } catch (e) {
-      console.error(e);
+    if (typeof window !== "undefined") {
+      try {
+        document.querySelectorAll(".adsbygoogle").forEach(() => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
   }, []);
 
