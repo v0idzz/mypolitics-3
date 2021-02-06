@@ -121,7 +121,7 @@ export const MobileNavigation = styled.div<{ show: boolean }>`
   transition: right 0.3s ease-in-out;
   box-shadow: 0 0 16px rgba(0, 86, 105, 0.25);
   background: ${({ theme }) => darken(0.05, theme.colors.primaryDarken)};
-  height: calc(100% - 4.5rem);
+  height: calc(100vh - 4.5rem);
   padding: 1.5rem;
   width: min(90%, 25rem);
 

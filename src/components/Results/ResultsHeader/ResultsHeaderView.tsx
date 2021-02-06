@@ -4,6 +4,7 @@ import {
   ResultsPoliticianPartsFragment,
 } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
+import dayjs from "dayjs";
 import {
   Info,
   Header,
@@ -29,7 +30,9 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
           <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />
         </div>
         <Info>
-          <Date>{updatedAt}</Date>
+          <Date>
+            <span>Ukończono</span>&nbsp;{dayjs(updatedAt).locale(lang).format("DD.MM.YYYY, HH:MM")}
+          </Date>
           <Id>
             <span>ID:</span>
             {id}

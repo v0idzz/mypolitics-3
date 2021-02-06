@@ -17,7 +17,7 @@ export const Actions = styled.div`
   align-items: center;
 `;
 
-export const Button = styled.div<{ warning?: boolean }>`
+export const Button = styled.div<{ warning?: boolean; hasText?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,23 +25,35 @@ export const Button = styled.div<{ warning?: boolean }>`
   background: ${({ theme }) =>
     transparentize(0.66, theme.colors.backgroundDarken)};
   margin-right: 0.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: ${({ hasText }) => (hasText ? "auto" : "2.5rem")};
+  padding: 0 1rem;
   transition: 0.2s ease-in-out;
+  height: 2.5rem;
   cursor: pointer;
+  color: ${({ theme, warning }) =>
+    warning ? theme.colors.red : theme.colors.backgroundDarken};
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
+  font-family: ${({ theme }) => theme.fontFamily.secondary};
 
   svg {
     font-size: 1rem;
     width: 1rem;
     height: 1rem;
-    color: ${({ theme, warning }) =>
-      warning ? theme.colors.red : theme.colors.backgroundDarken};
+    color: inherit;
   }
 
   &:hover {
     background: ${({ theme }) =>
       transparentize(0.5, theme.colors.backgroundDarken)};
   }
+
+  ${({ hasText }) =>
+    hasText &&
+    `
+    color: ${({ theme }) => transparentize(0.5, theme.colors.backgroundDarken)};
+    background: ${({ theme, warning }) =>
+      warning ? theme.colors.red : theme.colors.backgroundDarken};
+  `}
 `;
 
 export const Info = styled.div`

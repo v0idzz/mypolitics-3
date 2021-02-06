@@ -56,7 +56,7 @@ const ShareSocial: React.FC<Props> = ({ url, message }) => {
         <Container>
           <h5>Społeczność</h5>
           <ButtonGroup>
-            <a href="https://discord.gg/k9MbvxapuM">
+            <a href="https://discord.gg/k9MbvxapuM" rel="noreferrer">
               <Button
                 background="discord"
                 beforeIcon={<FontAwesomeIcon icon={faDiscord} />}
@@ -64,7 +64,11 @@ const ShareSocial: React.FC<Props> = ({ url, message }) => {
                 Discord
               </Button>
             </a>
-            <a href="facebook.com/groups/sztabmypolitics">
+            <a
+              href="https://facebook.com/groups/sztabmypolitics"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Button
                 background="white"
                 beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
@@ -72,7 +76,11 @@ const ShareSocial: React.FC<Props> = ({ url, message }) => {
                 Sztab
               </Button>
             </a>
-            <a href="facebook.com/groups/polemika">
+            <a
+              href="https://facebook.com/groups/polemika"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Button
                 background="white"
                 beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}

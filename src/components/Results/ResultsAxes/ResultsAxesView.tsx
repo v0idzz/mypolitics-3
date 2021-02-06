@@ -18,7 +18,7 @@ const ResultsAxes: React.FC<Props> = ({ results }) => {
 
   const axisList = R.map(toAxis, results.axes);
 
-  return <Container className="abc">{axisList}</Container>;
+  return <Container>{axisList}</Container>;
 };
 
 export default ResultsAxes;

@@ -1,0 +1,59 @@
+query SingleSurveyExtended ($id: String!){
+    survey(id: $id) {
+        answers {
+            id
+            weight
+            type
+            question {
+                text {
+                    pl
+                    en
+                }
+                effects {
+                    agree {
+                        parties {
+                            name
+                            logoUrl
+                        }
+                        ideologies {
+                            name {
+                                pl
+                                en
+                            }
+                            description {
+                                pl
+                                en
+                            }
+                            icon {
+                                type
+                                value
+                            }
+                            color
+                        }
+                    }
+                    disagree {
+                        parties {
+                            name
+                            logoUrl
+                        }
+                        ideologies {
+                            name {
+                                pl
+                                en
+                            }
+                            description {
+                                pl
+                                en
+                            }
+                            icon {
+                                type
+                                value
+                            }
+                            color
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

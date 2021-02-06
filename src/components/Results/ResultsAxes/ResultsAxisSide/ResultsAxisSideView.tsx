@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import IdeologyIcon from "@shared/IdeologyIcon";
+import { IdeologyModal } from "@components/Results";
 import { AxisSide, Side } from "./ResultsAxisSideTypes";
-import { Bar, Icon } from "./ResultsAxisSideStyle";
+import { Bar, IconButton } from "./ResultsAxisSideStyle";
 
 interface Props {
   side: AxisSide;
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const ResultsAxisSide: React.FC<Props> = ({ side, type }) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
   const AxisIcon = () => {
     if (!side.data) {
       return null;
@@ -17,9 +20,16 @@ const ResultsAxisSide: React.FC<Props> = ({ side, type }) => {
     const { icon, color } = side.data;
 
     return (
-      <Icon background={color}>
-        <IdeologyIcon icon={icon} />
-      </Icon>
+      <>
+        <IdeologyModal
+          data={side.data}
+          show={showModal}
+          onClose={() => setShowModal(false)}
+        />
+        <IconButton onClick={() => setShowModal(true)} background={color}>
+          <IdeologyIcon icon={icon} />
+        </IconButton>
+      </>
     );
   };
 

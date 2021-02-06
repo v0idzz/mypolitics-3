@@ -6,6 +6,7 @@ import styled, {
 import { lighten, transparentize } from "polished";
 import { SurveyAnswerType } from "@generated/graphql";
 import { SlimAnswer } from "@components/Survey/utils/useSurvey";
+import breakpoint from "styled-components-breakpoint";
 
 export const Container = styled.div`
   display: flex;
@@ -22,9 +23,17 @@ export const Answers = styled.div`
     margin-bottom: 1rem;
   }
 
-  button:not(:last-child) {
-    margin-right: 1rem;
-  }
+  ${breakpoint("md")`
+    button:not(:last-child) {
+      margin-right: 1rem;
+    }
+  `}
+
+  ${breakpoint("xs", "md")`
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 0.5rem;
+  `}
 `;
 
 const buttonStyle = ({

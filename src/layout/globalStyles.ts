@@ -73,14 +73,32 @@ const GlobalStyle = createGlobalStyle`
 
   .container {
     max-width: ${({ theme }) => theme.breakpoints.xl}px;
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     position: relative;
-    width: 100%;
+    width: calc(100% - 1rem);
   
     ${breakpoint("xl")`
       margin: auto;
     `};
   }
+  
+  .fade-enter {
+    opacity: 0;
+    }
+    
+    .fade-enter-active {
+        opacity: 1;
+        transition: opacity 200ms;
+    }
+    
+    .fade-exit {
+        opacity: 1;
+    }
+    
+    .fade-exit-active {
+        opacity: 0;
+        transition: opacity 200ms;
+    }
 `;
 
 export default GlobalStyle;

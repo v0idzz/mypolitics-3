@@ -22,6 +22,7 @@ export const Point = styled.div<{ position: number[] }>`
   border: 1px solid ${({ theme }) => theme.colors.primaryDarken};
   border-radius: 100%;
   transform: translate(-50%, -50%);
+  transition: 0.2s ease-in-out;
   ${({ position }) => {
     const x = (position[0] + 1) / 2;
     const y = (-position[1] + 1) / 2;

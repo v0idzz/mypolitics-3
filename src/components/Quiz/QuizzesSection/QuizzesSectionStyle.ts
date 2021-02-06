@@ -1,18 +1,28 @@
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 export const Container = styled.section`
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 3rem;
-  padding: 3rem;
+  grid-gap: 1.5rem;
+  padding: 1.5rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.background};
+
+  ${breakpoint("md")`
+    grid-gap: 3rem;
+    padding: 3rem;
+  `}
 `;
 
 export const Header = styled.header`
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+
+  ${breakpoint("md")`
+    font-size: 1.5rem;
+  `}
 `;
 
 export const IconWrapper = styled.div`
@@ -28,7 +38,7 @@ export const IconWrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 1.5rem;
+  font-size: inherit;
   color: ${({ theme }) => theme.colors.textMuted};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};

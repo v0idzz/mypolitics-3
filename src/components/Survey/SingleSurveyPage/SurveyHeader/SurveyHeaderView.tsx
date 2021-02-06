@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faUndoAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -17,6 +17,7 @@ interface Props {
 }
 
 const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
+  const [confirmReset, setConfirmReset] = useState<boolean>(false);
   const { value: firstTimer, setValue: setFirstTimer } = useFirstTimer();
   const { previousQuestion, deleteSurvey } = actions;
   const { answers, questions } = data;
@@ -28,14 +29,32 @@ const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
     }
   }, [answeredMany]);
 
+  const handleConfirmReset = () => {
+    if (confirmReset) {
+      deleteSurvey();
+    } else {
+      setConfirmReset(true);
+
+      setTimeout(() => {
+        setConfirmReset(false);
+      }, 2000);
+    }
+  };
+
   return (
     <Container>
       <Actions>
         <Button onClick={previousQuestion} title="Poprzednie pytanie">
           <FontAwesomeIcon icon={faArrowLeft} />
         </Button>
-        <Button onClick={deleteSurvey} title="Rozpocznij od nowa" warning>
-          <FontAwesomeIcon icon={faUndoAlt} />
+        <Button
+          hasText={confirmReset}
+          onClick={handleConfirmReset}
+          title="Rozpocznij od nowa"
+          warning
+        >
+          {confirmReset && "Resetuj"}
+          {!confirmReset && <FontAwesomeIcon icon={faUndoAlt} />}
         </Button>
       </Actions>
       <Info>

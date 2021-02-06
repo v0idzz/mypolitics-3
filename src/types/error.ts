@@ -1,4 +1,4 @@
-export const enum ErrorCode {
+export enum ErrorCode {
   NOT_FOUND,
   NOT_AUTHORIZED,
   RESPONDENT_HEADER_NOT_PROVIDED,

@@ -1,4 +1,7 @@
-export const BASE_PATH = process.env.BASE_PATH || "";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+export const BASE_PATH = publicRuntimeConfig.BASE_PATH || "";
 
 export const Cookies = {
   RESPONDENT: "mypolitics-respondent",
@@ -6,6 +9,7 @@ export const Cookies = {
 };
 
 export const paths = {
+  home: "/",
   privacy: "/privacy",
   rules: "/rules",
   gdpr: "/gdpr",

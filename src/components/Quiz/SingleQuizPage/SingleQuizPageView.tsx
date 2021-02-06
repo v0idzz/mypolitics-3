@@ -35,7 +35,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   const { logoUrl, title, description, meta, currentVersion } = quiz;
   const router = useRouter();
   const handleErrors = useHandleErrors();
-  const [createSurvey] = useCreateSurveyMutation();
+  const [createSurvey, { loading }] = useCreateSurveyMutation();
   const quizFeatures = useQuizFeatures(meta.features);
   const { lang } = useTranslation();
 
@@ -61,7 +61,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
       <Container>
         <Header>
           <Logo src={logoUrl} alt={title[lang]} />
-          <Button onClick={handleStartClick} showShadow>
+          <Button onClick={handleStartClick} loading={loading} showShadow>
             Rozpocznij
           </Button>
         </Header>
@@ -105,7 +105,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
             </div>
           </Box>
           <ButtonWrapper>
-            <Button onClick={handleStartClick} showShadow>
+            <Button loading={loading} onClick={handleStartClick} showShadow>
               Rozpocznij
             </Button>
           </ButtonWrapper>

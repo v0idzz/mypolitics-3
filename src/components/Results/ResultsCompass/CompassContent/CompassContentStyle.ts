@@ -1,11 +1,15 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { transparentize } from "polished";
 
 export const ThirdAxisContainer = styled.div`
   padding: 0.5rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
-  width: 2.5rem;
+  width: 100%;
   height: 100%;
+
+  @media only screen and (max-width: 400px) {
+    border-top-right-radius: 0.5rem;
+  }
 `;
 
 export const ThirdAxisInner = styled.div`
@@ -37,6 +41,12 @@ export const Description = styled.div`
   padding: 0.5rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
   border-top-right-radius: 0.5rem;
+
+  @media only screen and (max-width: 400px) {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 0.5rem;
+  }
 `;
 
 export const DescriptionElementContainer = styled.div`
@@ -64,17 +74,31 @@ export const Container = styled.div<{ hasThird: boolean }>`
   display: grid;
   grid-template-columns: 8.5rem ${({ hasThird }) => hasThird && `2.5rem`} auto;
 
+  @media only screen and (max-width: 400px) {
+    grid-template-columns: ${({ hasThird }) =>
+      hasThird ? `auto 3rem` : `6rem auto`};
+  }
+
   .compass {
     border-top-left-radius: 0.5rem;
-    height: 8.5rem;
-    width: 8.5rem;
+    width: 100%;
+    height: auto;
+    padding-top: 100%;
   }
 
   ${({ hasThird }) =>
-    !hasThird &&
-    `
-    ${Description} {
-      padding: 1rem;
-    }
-  `}
+    hasThird
+      ? css`
+          ${Description} {
+            @media only screen and (max-width: 400px) {
+              grid-column: 1 / 3;
+              border-top-right-radius: 0;
+            }
+          }
+        `
+      : css`
+          ${Description} {
+            padding: 1rem;
+          }
+        `}
 `;

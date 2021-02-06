@@ -11,6 +11,9 @@ import {
 import { useApolloClient } from "@apollo/client";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import { useEffect } from "react";
+import { ErrorCode } from "@typeDefs/error";
+import { useRouter } from "next/router";
+import { paths } from "@constants";
 
 export type SlimQuestion = Pick<Question, "id" | "text">;
 export type SlimAnswer = Pick<
@@ -66,6 +69,7 @@ const useServerData = (id: string): Omit<UseSurveyData, "currentQuestion"> => {
 
 export const useSurvey = (id: string): UseSurvey => {
   const client = useApolloClient();
+  const router = useRouter();
   const handleErrors = useHandleErrors();
   const [updateSurvey, { loading }] = useUpdateSurveyMutation();
   const { questions, answers, quiz } = useServerData(id);
@@ -91,6 +95,14 @@ export const useSurvey = (id: string): UseSurvey => {
       });
     } catch (e) {
       handleErrors(e);
+
+      const notAuthorized = e.graphQLErrors.some(
+        ({ message }) => message.code === ErrorCode.NOT_AUTHORIZED
+      );
+
+      if (notAuthorized) {
+        await router.push(paths.quizzes);
+      }
     }
   };
 

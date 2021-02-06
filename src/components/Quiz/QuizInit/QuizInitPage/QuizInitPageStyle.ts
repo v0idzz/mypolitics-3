@@ -1,9 +1,16 @@
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 export const Content = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+
+  ${breakpoint("md")`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  `}
 `;
 
 export const ButtonChips = styled.span<{ background: "blue" | "gray" }>`

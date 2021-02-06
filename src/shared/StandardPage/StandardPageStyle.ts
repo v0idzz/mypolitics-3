@@ -1,11 +1,17 @@
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 export const Inner = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 4rem;
-  margin-top: 4rem;
+  grid-gap: 2rem;
+  margin-top: 2rem;
   width: 100%;
+
+  ${breakpoint("md")`
+    grid-gap: 4rem;
+    margin-top: 4rem;
+  `}
 `;
 
 export const Content = styled.div`
@@ -13,6 +19,10 @@ export const Content = styled.div`
   margin: auto;
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
   width: 100%;
+
+  ${breakpoint("md")`
+    grid-gap: 2rem;
+  `}
 `;

@@ -1,12 +1,19 @@
 import styled, { css } from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 export const Container = styled.article<{ featured: boolean }>`
   background: ${({ theme }) => theme.colors.backgroundDarken};
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-gap: 1rem;
+
+  ${breakpoint("md")`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  `}
 
   ${({ featured, theme }) =>
     featured &&
@@ -26,10 +33,20 @@ export const Image = styled.img`
   height: 2rem;
   width: auto;
   display: block;
+
+  ${breakpoint("xs", "md")`
+    margin: auto;
+  `}
 `;
 
 export const FeaturesList = styled.div`
   display: flex;
+
+  ${breakpoint("xs", "md")`
+    display: block;
+    margin-bottom: -0.5rem;
+    text-align: center;
+  `}
 `;
 
 export const Feature = styled.div`
@@ -41,4 +58,10 @@ export const Feature = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   line-height: 1rem;
   margin-right: 0.5rem;
+
+  ${breakpoint("xs", "md")`
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+  `}
 `;
