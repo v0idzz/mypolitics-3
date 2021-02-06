@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { darken, mix } from "polished";
 
-export const Icon = styled.div<{ background: string }>`
+export const IconButton = styled.button<{ background: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,14 @@ export const Icon = styled.div<{ background: string }>`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.backgroundLighten};
   background: ${({ background }) => background};
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  border: 0;
+  margin: 0;
+
+  &:hover {
+    background: ${({ background }) => mix(0.1, "#FFF", background)};
+  }
 
   & > img {
     display: block;
@@ -33,12 +41,21 @@ export const Bar = styled.div<{ background?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${({ background, theme }) =>
-    background ? mix(0.1, "#000", background) : theme.colors.backgroundDarken};
-  color: ${({ background, theme }) =>
-    background ? theme.colors.backgroundLighten : theme.colors.textMuted};
   font-size: 1rem;
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   height: 100%;
+
+  ${({ background, theme }) =>
+    background
+      ? `
+    background: ${mix(0.1, "#000", background)};
+    color: ${theme.colors.backgroundLighten};
+  `
+      : `
+  background: ${theme.colors.backgroundDarken};
+    color: ${theme.colors.textMuted};
+    border-top: 1px solid rgba(0, 0, 0, 0.025);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.025);
+  `};
 `;

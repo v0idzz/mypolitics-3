@@ -54,11 +54,12 @@ interface Props {
 const CompassContent: React.FC<Props> = ({ selectedCompass }) => {
   const { lang } = useTranslation("quiz");
   const { point, horizontal, vertical } = selectedCompass;
+  const hasThird = selectedCompass.third?.name !== null;
 
   return (
-    <Container hasThird={!!point.third}>
+    <Container hasThird={hasThird}>
       <Compass value={[point.horizontal, point.vertical]} />
-      {point.third && <ThirdAxis position={point.third} />}
+      {hasThird && <ThirdAxis position={point.third} />}
       <Description>
         <DescriptionElement
           position={point.horizontal}
@@ -68,7 +69,7 @@ const CompassContent: React.FC<Props> = ({ selectedCompass }) => {
           position={point.vertical}
           name={vertical.name[lang]}
         />
-        {point.third && (
+        {hasThird && (
           <DescriptionElement
             position={point.third}
             name={selectedCompass.third.name[lang]}

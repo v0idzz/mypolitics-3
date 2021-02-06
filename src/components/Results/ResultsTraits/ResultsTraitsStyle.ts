@@ -30,7 +30,7 @@ export const Content = styled.div`
   margin-bottom: -0.5rem;
 `;
 
-export const TraitContainer = styled.div<{ background: string }>`
+export const TraitContainer = styled.button<{ background: string }>`
   padding: 0.75rem;
   border-radius: 0.5rem;
   vertical-align: top;
@@ -38,6 +38,8 @@ export const TraitContainer = styled.div<{ background: string }>`
   justify-content: center;
   align-items: center;
   font-size: 1rem;
+  border: 0;
+  cursor: pointer;
   color: ${({ theme }) => theme.colors.backgroundLighten};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};

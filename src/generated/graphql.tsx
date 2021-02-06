@@ -2430,6 +2430,70 @@ export type CreateSurveyMutation = (
   ) }
 );
 
+export type SingleSurveyExtendedQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type SingleSurveyExtendedQuery = (
+  { __typename?: 'Query' }
+  & { survey: (
+    { __typename?: 'Survey' }
+    & { answers: Array<(
+      { __typename?: 'SurveyAnswer' }
+      & Pick<SurveyAnswer, 'id' | 'weight' | 'type'>
+      & { question: (
+        { __typename?: 'Question' }
+        & { text: (
+          { __typename?: 'TextTranslation' }
+          & Pick<TextTranslation, 'pl' | 'en'>
+        ), effects: (
+          { __typename?: 'QuestionEffects' }
+          & { agree: (
+            { __typename?: 'QuestionPositiveEffect' }
+            & { parties: Array<Maybe<(
+              { __typename?: 'Party' }
+              & Pick<Party, 'name' | 'logoUrl'>
+            )>>, ideologies: Array<Maybe<(
+              { __typename?: 'Ideology' }
+              & Pick<Ideology, 'color'>
+              & { name: (
+                { __typename?: 'TextTranslation' }
+                & Pick<TextTranslation, 'pl' | 'en'>
+              ), description: (
+                { __typename?: 'TextTranslation' }
+                & Pick<TextTranslation, 'pl' | 'en'>
+              ), icon: (
+                { __typename?: 'IdeologyIcon' }
+                & Pick<IdeologyIcon, 'type' | 'value'>
+              ) }
+            )>> }
+          ), disagree: (
+            { __typename?: 'QuestionPositiveEffect' }
+            & { parties: Array<Maybe<(
+              { __typename?: 'Party' }
+              & Pick<Party, 'name' | 'logoUrl'>
+            )>>, ideologies: Array<Maybe<(
+              { __typename?: 'Ideology' }
+              & Pick<Ideology, 'color'>
+              & { name: (
+                { __typename?: 'TextTranslation' }
+                & Pick<TextTranslation, 'pl' | 'en'>
+              ), description: (
+                { __typename?: 'TextTranslation' }
+                & Pick<TextTranslation, 'pl' | 'en'>
+              ), icon: (
+                { __typename?: 'IdeologyIcon' }
+                & Pick<IdeologyIcon, 'type' | 'value'>
+              ) }
+            )>> }
+          ) }
+        ) }
+      ) }
+    )> }
+  ) }
+);
+
 export type SingleSurveyQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
@@ -3160,6 +3224,93 @@ export function useCreateSurveyMutation(baseOptions?: Apollo.MutationHookOptions
 export type CreateSurveyMutationHookResult = ReturnType<typeof useCreateSurveyMutation>;
 export type CreateSurveyMutationResult = Apollo.MutationResult<CreateSurveyMutation>;
 export type CreateSurveyMutationOptions = Apollo.BaseMutationOptions<CreateSurveyMutation, CreateSurveyMutationVariables>;
+export const SingleSurveyExtendedDocument = gql`
+    query SingleSurveyExtended($id: String!) {
+  survey(id: $id) {
+    answers {
+      id
+      weight
+      type
+      question {
+        text {
+          pl
+          en
+        }
+        effects {
+          agree {
+            parties {
+              name
+              logoUrl
+            }
+            ideologies {
+              name {
+                pl
+                en
+              }
+              description {
+                pl
+                en
+              }
+              icon {
+                type
+                value
+              }
+              color
+            }
+          }
+          disagree {
+            parties {
+              name
+              logoUrl
+            }
+            ideologies {
+              name {
+                pl
+                en
+              }
+              description {
+                pl
+                en
+              }
+              icon {
+                type
+                value
+              }
+              color
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useSingleSurveyExtendedQuery__
+ *
+ * To run a query within a React component, call `useSingleSurveyExtendedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSingleSurveyExtendedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSingleSurveyExtendedQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSingleSurveyExtendedQuery(baseOptions: Apollo.QueryHookOptions<SingleSurveyExtendedQuery, SingleSurveyExtendedQueryVariables>) {
+        return Apollo.useQuery<SingleSurveyExtendedQuery, SingleSurveyExtendedQueryVariables>(SingleSurveyExtendedDocument, baseOptions);
+      }
+export function useSingleSurveyExtendedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SingleSurveyExtendedQuery, SingleSurveyExtendedQueryVariables>) {
+          return Apollo.useLazyQuery<SingleSurveyExtendedQuery, SingleSurveyExtendedQueryVariables>(SingleSurveyExtendedDocument, baseOptions);
+        }
+export type SingleSurveyExtendedQueryHookResult = ReturnType<typeof useSingleSurveyExtendedQuery>;
+export type SingleSurveyExtendedLazyQueryHookResult = ReturnType<typeof useSingleSurveyExtendedLazyQuery>;
+export type SingleSurveyExtendedQueryResult = Apollo.QueryResult<SingleSurveyExtendedQuery, SingleSurveyExtendedQueryVariables>;
 export const SingleSurveyDocument = gql`
     query SingleSurvey($id: String!) {
   survey(id: $id) {

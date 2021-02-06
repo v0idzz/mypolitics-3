@@ -8,6 +8,8 @@ import Button from "@shared/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import dayjs from "dayjs";
+import useTranslation from "next-translate/useTranslation";
 import {
   Container,
   Header,
@@ -21,6 +23,7 @@ import {
 library.add(faArrowDown);
 
 const SurveyHistoryElement: React.FC<{ data: SurveyHistory }> = ({ data }) => {
+  const { lang } = useTranslation();
   const { quiz, surveys } = data;
   const BASE_LIMIT = 3;
   const [limit, setLimit] = useState<number>(BASE_LIMIT);
@@ -35,7 +38,9 @@ const SurveyHistoryElement: React.FC<{ data: SurveyHistory }> = ({ data }) => {
     return (
       <Link href={href} passHref>
         <ListElement>
-          <Text>{survey.updatedAt}</Text>
+          <Text>
+            {dayjs(survey.updatedAt).locale(lang).format("DD.MM.YYYY HH:MM")}
+          </Text>
           {survey.finished && <Chips background="green">ukończone</Chips>}
           {!survey.finished && <Chips background="yellow">w trakcie</Chips>}
         </ListElement>
@@ -43,7 +48,10 @@ const SurveyHistoryElement: React.FC<{ data: SurveyHistory }> = ({ data }) => {
     );
   };
 
-  const limitedSurveys = surveys.filter((_, i) => i < limit);
+  const sortedSurveys = surveys.sort(
+    (a, b) => dayjs(b.updatedAt).unix() - dayjs(a.updatedAt).unix()
+  );
+  const limitedSurveys = sortedSurveys.filter((_, i) => i < limit);
   const listElements = R.map(toListElement, limitedSurveys);
   const showButton = limitedSurveys.length < surveys.length;
 

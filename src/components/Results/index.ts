@@ -7,4 +7,6 @@ export { default as Axes } from "./ResultsAxes";
 export { default as Ideology } from "./ResultsIdeology";
 export { default as Compass } from "./ResultsCompass";
 export { default as Party } from "./ResultsParty";
+export { default as IdeologyModal } from "./ResultsIdeologyModal";
 export { default as Traits } from "./ResultsTraits";
+export { default as Answers } from "./ResultsAnswers";

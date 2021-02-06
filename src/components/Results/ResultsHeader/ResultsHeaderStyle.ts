@@ -42,6 +42,10 @@ export const Date = styled.div`
   color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
+
+  span {
+    font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
+  }
 `;
 
 export const Id = styled(Date)`

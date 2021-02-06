@@ -29,15 +29,24 @@ export const getSides = ({
 });
 
 export const useAxisTitle = ({
-  left,
-  right,
   center,
+  ...sides
 }: AxisSides): string | undefined => {
   const { t, lang } = useTranslation("quiz");
 
   if (center.percentage === 1) {
     return undefined;
   }
+
+  const halfCenter = center.percentage / 2;
+  const right = {
+    ...sides.right,
+    percentage: sides.right.percentage + halfCenter,
+  };
+  const left = {
+    ...sides.left,
+    percentage: sides.left.percentage + halfCenter,
+  };
 
   const side: AxisSide = R.cond([
     [R.gte(left.percentage), R.always(left)],

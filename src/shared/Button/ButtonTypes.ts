@@ -18,4 +18,5 @@ export interface ButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement> {
   beforeIcon?: React.ReactNode;
   as?: any;
+  loading?: boolean;
 }

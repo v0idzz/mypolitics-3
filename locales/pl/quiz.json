@@ -41,5 +41,14 @@
     "left": "Lewica",
     "center": "Centrum",
     "right": "Prawica"
+  },
+  "answers": {
+    "NEUTRAL": "Brak odpowiedzi",
+    "AGREE": "Zgadzam się",
+    "DISAGREE": "Nie zgadzam się"
+  },
+  "weight": {
+    "1": "Częściowo",
+    "2": "Zdecydowanie"
   }
 }
