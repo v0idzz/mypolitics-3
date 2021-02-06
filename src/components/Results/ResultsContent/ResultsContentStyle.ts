@@ -10,6 +10,7 @@ export const Container = styled.div`
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.background};
   text-align: center;
+  overflow: hidden;
 
   ${breakpoint("md")`
     grid-gap: 1.5rem;

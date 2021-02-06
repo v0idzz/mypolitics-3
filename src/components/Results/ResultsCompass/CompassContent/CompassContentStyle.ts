@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { transparentize } from "polished";
 
 export const ThirdAxisContainer = styled.div`
   padding: 0.5rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
-  width: 2.5rem;
+  width: 100%;
   height: 100%;
 
   @media only screen and (max-width: 400px) {
@@ -76,7 +76,7 @@ export const Container = styled.div<{ hasThird: boolean }>`
 
   @media only screen and (max-width: 400px) {
     grid-template-columns: ${({ hasThird }) =>
-      hasThird ? `auto 2.5rem` : `6rem auto`};
+      hasThird ? `auto 3rem` : `6rem auto`};
   }
 
   .compass {
@@ -88,16 +88,17 @@ export const Container = styled.div<{ hasThird: boolean }>`
 
   ${({ hasThird }) =>
     hasThird
-      ? `
-    ${Description} {
-      @media only screen and (max-width: 400px) {
-        grid-column: 1 / 3;
-        border-top-right-radius: 0;
-      }
-    }`
-      : `
-    ${Description} {
-      padding: 1rem;
-    }
-  `}
+      ? css`
+          ${Description} {
+            @media only screen and (max-width: 400px) {
+              grid-column: 1 / 3;
+              border-top-right-radius: 0;
+            }
+          }
+        `
+      : css`
+          ${Description} {
+            padding: 1rem;
+          }
+        `}
 `;

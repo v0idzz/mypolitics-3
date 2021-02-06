@@ -7,7 +7,6 @@ import {
   faUndoAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import StandardPage from "@shared/StandardPage";
 import { useRouter } from "next/router";
 import { useSurvey } from "@components/Survey/utils/useSurvey";
 import useTranslation from "next-translate/useTranslation";
@@ -32,40 +31,32 @@ const SurveyPage: React.FC = () => {
   const { currentQuestion, quiz } = data;
 
   if (!currentQuestion) {
-    return (
-      <StandardPage>
-        <Loading />
-      </StandardPage>
-    );
+    return <Loading />;
   }
 
   return (
-    <StandardPage>
-      <GoogleAd id="myp3-standard-top" />
-      <Container>
-        <Header>
-          <Logo src={quiz.logoUrl} alt="Quiz logo" />
-        </Header>
-        <Inner>
-          <SurveyHeader actions={actions} data={data} />
-          <SwitchTransition>
-            <CSSTransition
-              key={currentQuestion.id}
-              classNames="fade"
-              addEndListener={(node, done) => {
-                node.addEventListener("transitionend", done, false);
-              }}
-            >
-              <span>
-                <FormQuestion>{currentQuestion.text[lang]}</FormQuestion>
-              </span>
-            </CSSTransition>
-          </SwitchTransition>
-          <SurveyAnswers data={data} actions={actions} />
-        </Inner>
-      </Container>
-      <GoogleAd id="myp3-standard-middle" />
-    </StandardPage>
+    <Container>
+      <Header>
+        <Logo src={quiz.logoUrl} alt="Quiz logo" />
+      </Header>
+      <Inner>
+        <SurveyHeader actions={actions} data={data} />
+        <SwitchTransition>
+          <CSSTransition
+            key={currentQuestion.id}
+            classNames="fade"
+            addEndListener={(node, done) => {
+              node.addEventListener("transitionend", done, false);
+            }}
+          >
+            <span>
+              <FormQuestion>{currentQuestion.text[lang]}</FormQuestion>
+            </span>
+          </CSSTransition>
+        </SwitchTransition>
+        <SurveyAnswers data={data} actions={actions} />
+      </Inner>
+    </Container>
   );
 };
 

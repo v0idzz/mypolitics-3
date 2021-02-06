@@ -13,6 +13,8 @@ import {
   Party,
   Traits,
 } from "@components/Results";
+import ShareSocial from "@shared/ShareSocial";
+import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import { Container, Col, Row } from "./ResultsContentStyle";
 
 interface Props {
@@ -21,6 +23,7 @@ interface Props {
 }
 
 const ResultsContent: React.FC<Props> = ({ results, politician }) => {
+  const { url } = useCanonicalUrl();
   const [compass, setCompass] = useState<
     ResultsCompassPartsFragment | undefined
   >(results.compasses[0]);
@@ -48,6 +51,20 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
           {results.traits.length > 0 && <Traits traits={results.traits} />}
         </Col>
       </Row>
+      <ShareSocial
+        url={url}
+        message="Sprawdź moje poglądy polityczne w myPolitics!"
+      />
+      <iframe
+        title="like-fb-results"
+        src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FmyPoliticsTest&width=450&layout=standard&action=like&size=small&share=false&height=35&appId=4144384798967211"
+        width="450"
+        height="35"
+        scrolling="no"
+        frameBorder="0"
+        allowFullScreen
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      />
     </Container>
   );
 };
