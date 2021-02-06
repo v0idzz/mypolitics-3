@@ -23,14 +23,16 @@ const QuizzesPage: React.FC<Props> = ({ featuredQuizzes }) => {
     <StandardPage>
       <GoogleAd id="myp3-standard-top" />
       <Link quiz={firstQuiz} featured />
-      <Section
-        title="Sprawdź inne quizy"
-        icon={<FontAwesomeIcon icon={faPollH} />}
-      >
-        <Link quiz={firstQuiz} />
-        <Link quiz={firstQuiz} />
-        <Link quiz={firstQuiz} />
-      </Section>
+      {quizzes.length > 0 && (
+        <Section
+          title="Sprawdź inne quizy"
+          icon={<FontAwesomeIcon icon={faPollH} />}
+        >
+          {quizzes.map((quiz) => (
+            <Link key={quiz.id} quiz={quiz} />
+          ))}
+        </Section>
+      )}
       {clientSide && (
         <>
           <Section

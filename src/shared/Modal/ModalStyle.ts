@@ -86,6 +86,7 @@ export const Inner = styled.div`
   grid-gap: 1rem;
   padding: 1rem;
   background: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.textMuted};
 
   ${breakpoint("sm")`
       padding: 1.25rem;
