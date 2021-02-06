@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Respondent, Section } from "@components/Quiz";
-import { PageContainer } from "@shared/Page";
 import GoogleAd from "@shared/GoogleAd";
 import { FeaturedQuizzesQuery } from "@generated/graphql";
 import { faPollH, faHistory } from "@fortawesome/free-solid-svg-icons";
