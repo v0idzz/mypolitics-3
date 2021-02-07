@@ -27,6 +27,9 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
   const [compass, setCompass] = useState<
     ResultsCompassPartsFragment | undefined
   >(results.compasses[0]);
+  const authorizedPartiesIds = results.quiz.meta.features.authorizedParties.map(
+    (p) => p.id
+  );
 
   return (
     <Container>
@@ -47,7 +50,12 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
               />
             </>
           )}
-          {results.parties.length > 0 && <Party parties={results.parties} />}
+          {results.parties.length > 0 && (
+            <Party
+              authorizedPartiesIds={authorizedPartiesIds}
+              parties={results.parties}
+            />
+          )}
           {results.traits.length > 0 && <Traits traits={results.traits} />}
         </Col>
       </Row>

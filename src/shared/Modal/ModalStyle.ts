@@ -36,6 +36,7 @@ export const Header = styled.div<{ background: string }>`
   padding: 1rem;
   font-size: 1rem;
   background: ${({ background }) => background};
+  text-align: left;
 
   img {
     height: 1rem;
@@ -86,6 +87,9 @@ export const Inner = styled.div`
   grid-gap: 1rem;
   padding: 1rem;
   background: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.textMuted};
+  text-align: left;
+  line-height: 1.3;
 
   ${breakpoint("sm")`
       padding: 1.25rem;

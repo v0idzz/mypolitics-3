@@ -8,15 +8,27 @@ import {
   ResultsPoliticianPartsFragment,
 } from "@generated/graphql";
 import { SinglePage } from "@components/Results";
+import { NextSeo } from "next-seo";
+import useTranslation from "next-translate/useTranslation";
 
 interface Props {
   results: ResultsPartsFragment;
   politician: ResultsPoliticianPartsFragment | null;
 }
 
-const ResultsPage: React.FC<Props> = ({ results, politician }) => (
-  <SinglePage results={results} politician={politician} />
-);
+const ResultsPage: React.FC<Props> = ({ results, politician }) => {
+  const { lang } = useTranslation();
+
+  return (
+    <>
+      <NextSeo
+        title={`Sprawdź moje poglądy w ${results.quiz.title[lang]}!`}
+        description="Nowoczesna platforma testów politycznych i wyborczych"
+      />
+      <SinglePage results={results} politician={politician} />
+    </>
+  );
+};
 
 export const getServerSideProps = async ({
   query,

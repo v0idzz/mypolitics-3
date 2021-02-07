@@ -149,7 +149,7 @@ export const useSurvey = (id: string): UseSurvey => {
   const currentQuestion = questions && questions[answers.length];
 
   useEffect(() => {
-    if (questions.length > 0) {
+    if (questions.length > 0 && answers.length % 10 === 0) {
       persist(answers);
     }
   }, [answers]);

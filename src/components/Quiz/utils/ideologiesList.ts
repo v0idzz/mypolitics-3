@@ -13,6 +13,7 @@ export const ideologiesIds: string[] = [
   "2776bcfeeeadaae581c2283dea68516f",
   "71506c04f97f716e2d8b6537eb3bb93b",
   "d2d1c8ba3fd291fb122cd3315b848ea9",
+  "7115a02b1eaff53a8ddfe3d11a070034",
   "9042e3760f1dd9e27dd7a32d3ab05399",
   "18ddec23a18de5352780b95eebd814fa",
   "37e56f7a2b1b9ddfe5c9963c9d61fc37",
