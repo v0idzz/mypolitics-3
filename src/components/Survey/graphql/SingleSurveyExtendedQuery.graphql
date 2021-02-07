@@ -12,6 +12,7 @@ query SingleSurveyExtended ($id: String!){
                 effects {
                     agree {
                         parties {
+                            id
                             name
                             logoUrl
                         }
@@ -33,6 +34,7 @@ query SingleSurveyExtended ($id: String!){
                     }
                     disagree {
                         parties {
+                            id
                             name
                             logoUrl
                         }

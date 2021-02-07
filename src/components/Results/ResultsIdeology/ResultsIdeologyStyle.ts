@@ -17,9 +17,20 @@ export const Info = styled.div`
 `;
 
 export const Version = styled.div`
-  font-size: 0.75rem;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
+
+  span:not(:last-child) {
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  button {
+    font-size: 1rem;
+    color: ${({ theme }) => theme.colors.textMuted};
+  }
 `;

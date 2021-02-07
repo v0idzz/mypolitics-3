@@ -4,26 +4,31 @@ import { faArrowDown, faEye, faPollH } from "@fortawesome/free-solid-svg-icons";
 import Button from "@shared/Button";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
+  Party,
   SingleSurveyExtendedLazyQueryHookResult,
   useSingleSurveyExtendedLazyQuery,
 } from "@generated/graphql";
 import * as R from "ramda";
 import Answer from "@components/Results/ResultsAnswers/Answer";
+import { Option } from "@components/Quiz/QuizIdeologyInput/QuizIdeologyInputStyle";
 import {
   Content,
   IconWrapper,
   Header,
   Title,
   Container,
+  Select,
 } from "./ResultsAnswersStyle";
 
 library.add(faEye, faArrowDown, faPollH);
 
 interface Props {
   surveyId: string;
+  parties: Pick<Party, "id" | "name" | "logoUrl">[];
 }
 
-const ResultsAnswers: React.FC<Props> = ({ surveyId }) => {
+const ResultsAnswers: React.FC<Props> = ({ surveyId, parties }) => {
+  const [party, setParty] = useState(undefined);
   const [
     loadAnswers,
     { data, loading },
@@ -43,10 +48,13 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId }) => {
   const showButton = limitedAnswers.length < answers.length;
 
   const toListElement = (answer, index) => (
-    <Answer key={answer.id} data={answer} num={index + 1} />
+    <Answer key={answer.id} data={answer} party={party} num={index + 1} />
   );
   const mapIndexed = R.addIndex(R.map);
   const listElements = mapIndexed(toListElement, limitedAnswers);
+
+  const handlePartyChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+    setParty(parties.find(({ id }) => id === e.target.value));
 
   return (
     <Container>
@@ -57,6 +65,16 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId }) => {
           </IconWrapper>
           <Title>Analiza odpowiedzi</Title>
         </div>
+        <Select value={party?.id || typeof party} onChange={handlePartyChange}>
+          <option value="undefined" disabled hidden>
+            Porównaj z partią
+          </option>
+          {parties.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </Select>
       </Header>
       <Content>
         {listElements}

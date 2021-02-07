@@ -1,5 +1,7 @@
 import styled, { css, SimpleInterpolation } from "styled-components";
 import { SurveyAnswerType } from "@generated/graphql";
+import { transparentize } from "polished";
+import breakpoint from "styled-components-breakpoint";
 
 export const Header = styled.div`
   padding: 1rem;
@@ -24,10 +26,11 @@ export const Number = styled.div`
 `;
 
 export const Question = styled(Number)`
-  max-width: 40rem;
+  max-width: 35rem;
   font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
   line-height: 1.3;
   margin-bottom: 0;
+  margin-right: 1rem;
 `;
 
 export const HeaderButton = styled.button<{ opened: boolean }>`
@@ -157,9 +160,56 @@ export const PartyImage = styled.img`
   display: block;
 `;
 
-export const NeutralChip = styled.div`
+export const Chip = styled.div<{ variant: "neutral" | "agree" | "disagree" }>`
+  display: flex;
+  align-items: center;
   padding: 0.75rem;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   background: ${({ theme }) => theme.colors.background};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
+  text-align: right;
+
+  ${breakpoint("xs", "md")`
+    padding: 0.5rem;
+    font-size: 1rem;
+  `}
+
+  img {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 0.125rem;
+    margin-left: 0.5rem;
+  }
+
+  ${({ variant }) => {
+    const variants = {
+      netural: css`
+        background: ${({ theme }) =>
+          transparentize(0.5, theme.colors.background)};
+        color: ${({ theme }) => theme.colors.textMuted};
+        text-align: center;
+      `,
+      agree: css`
+        background: ${({ theme }) => transparentize(0.85, theme.colors.green)};
+        color: ${({ theme }) => theme.colors.green};
+        flex-shrink: 0;
+      `,
+      disagree: css`
+        background: ${({ theme }) => transparentize(0.85, theme.colors.red)};
+        color: ${({ theme }) => theme.colors.red};
+        flex-shrink: 0;
+      `,
+    };
+
+    return variants[variant];
+  }}
+`;
+
+export const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > *:not(:last-child) {
+    margin-right: 1rem;
+  }
 `;

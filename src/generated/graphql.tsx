@@ -1263,6 +1263,11 @@ export type UsersPermissionsUser = {
   role?: Maybe<UsersPermissionsRole>;
 };
 
+export type AddPartyAnswersInput = {
+  questionText: TextTranslationInput;
+  answer: SurveyAnswerType;
+};
+
 export enum Country {
   Poland = 'POLAND',
   England = 'ENGLAND',
@@ -1897,6 +1902,7 @@ export type Mutation = {
   createQuestion: Question;
   createManyQuestions: Array<Question>;
   updateQuestion: Question;
+  addPartyAnswers: Scalars['Boolean'];
 };
 
 
@@ -2067,6 +2073,12 @@ export type MutationCreateManyQuestionsArgs = {
 export type MutationUpdateQuestionArgs = {
   updateQuestionInput: UpdateQuestionInput;
   id: Scalars['String'];
+};
+
+
+export type MutationAddPartyAnswersArgs = {
+  addPartyAnswersInput: Array<AddPartyAnswersInput>;
+  partyId: Scalars['String'];
 };
 
 export type BasicPostPartsFragment = (
@@ -2352,6 +2364,15 @@ export type ResultsQuizFragment = (
   & { title: (
     { __typename?: 'TextTranslation' }
     & Pick<TextTranslation, 'pl' | 'en'>
+  ), meta: (
+    { __typename?: 'QuizMeta' }
+    & { features: (
+      { __typename?: 'QuizFeatures' }
+      & { authorizedParties: Array<Maybe<(
+        { __typename?: 'Party' }
+        & Pick<Party, 'id'>
+      )>> }
+    ) }
   ) }
 );
 
@@ -2453,7 +2474,7 @@ export type SingleSurveyExtendedQuery = (
             { __typename?: 'QuestionPositiveEffect' }
             & { parties: Array<Maybe<(
               { __typename?: 'Party' }
-              & Pick<Party, 'name' | 'logoUrl'>
+              & Pick<Party, 'id' | 'name' | 'logoUrl'>
             )>>, ideologies: Array<Maybe<(
               { __typename?: 'Ideology' }
               & Pick<Ideology, 'color'>
@@ -2472,7 +2493,7 @@ export type SingleSurveyExtendedQuery = (
             { __typename?: 'QuestionPositiveEffect' }
             & { parties: Array<Maybe<(
               { __typename?: 'Party' }
-              & Pick<Party, 'name' | 'logoUrl'>
+              & Pick<Party, 'id' | 'name' | 'logoUrl'>
             )>>, ideologies: Array<Maybe<(
               { __typename?: 'Ideology' }
               & Pick<Ideology, 'color'>
@@ -2724,6 +2745,13 @@ export const ResultsQuizFragmentDoc = gql`
   title {
     pl
     en
+  }
+  meta {
+    features {
+      authorizedParties {
+        id
+      }
+    }
   }
 }
     `;
@@ -3239,6 +3267,7 @@ export const SingleSurveyExtendedDocument = gql`
         effects {
           agree {
             parties {
+              id
               name
               logoUrl
             }
@@ -3260,6 +3289,7 @@ export const SingleSurveyExtendedDocument = gql`
           }
           disagree {
             parties {
+              id
               name
               logoUrl
             }

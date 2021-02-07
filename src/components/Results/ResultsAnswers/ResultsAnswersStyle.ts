@@ -17,12 +17,14 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   font-size: 1.25rem;
 
   ${breakpoint("md")`
     font-size: 1.5rem;
+    justify-content: space-between;
+    flex-direction: row;
   `}
 
   & > div {
@@ -56,5 +58,38 @@ export const Content = styled.div`
 
   ${breakpoint("md")`
     grid-gap: 1rem;
+  `}
+`;
+
+export const Select = styled.select`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  padding-right: 2rem;
+  border-radius: 0.5rem;
+  color: ${({ theme }) => theme.colors.primaryDarken};
+  background: ${({ theme }) => theme.colors.backgroundDarken};
+  border: 0;
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
+  font-family: ${({ theme }) => theme.fontFamily.secondary};
+  line-height: 1.4;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  font-size: 1rem;
+  cursor: pointer;
+  background-image: url(${require("@assets/images/icons/fa-solid_angle-down.png")});
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 0.5rem);
+  background-position-y: 50%;
+
+  ::-ms-expand {
+    display: none;
+  }
+  
+  ${breakpoint("xs", "md")`
+    margin-top: 1rem;
   `}
 `;
