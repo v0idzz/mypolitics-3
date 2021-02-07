@@ -119,7 +119,7 @@ const Answer: React.FC<Props> = ({ data, num, party }) => {
               <img src={party.logoUrl} alt={party.name} />
             </Chip>
           )}
-          {isNeutral && <Chip variant="netural">{t(`answers.${type}`)}</Chip>}
+          {isNeutral && <Chip variant="neutral">{t(`answers.${type}`)}</Chip>}
           {!isNeutral && (
             <HeaderButton onClick={handleToggleOpen} opened={opened}>
               <FontAwesomeIcon icon={faChevronDown} />
