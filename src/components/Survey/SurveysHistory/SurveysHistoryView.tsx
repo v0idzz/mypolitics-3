@@ -84,16 +84,10 @@ const SurveysHistory: React.FC = () => {
 
   const { surveys } = data.meRespondent;
   const byQuizId = R.groupBy((survey) => survey.quizVersion.quiz.id);
-  const toQuizzesSurveys = (surveysList, key) => {
-    const surveyWithQuiz = R.find(R.propEq("quizVersion.quiz.id", key))(
-      surveys
-    );
-
-    return {
-      quiz: surveyWithQuiz.quizVersion.quiz,
-      surveys: surveysList,
-    };
-  };
+  const toQuizzesSurveys = (surveysList, key) => ({
+    quiz: surveysList[0].quizVersion.quiz,
+    surveys: surveysList,
+  });
   const quizzesSurveys: SurveyHistory[] = R.values(
     R.map(toQuizzesSurveys, byQuizId(surveys))
   );

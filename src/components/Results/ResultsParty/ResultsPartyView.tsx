@@ -46,6 +46,8 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
     </InformationButton>
   );
 
+  return null;
+
   return (
     <Container>
       <Header>

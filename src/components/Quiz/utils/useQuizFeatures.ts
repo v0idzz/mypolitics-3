@@ -15,7 +15,7 @@ export const useQuizFeatures = (
   const featuresData = firstTimer ? featuresWoQuestionsNumber : features;
 
   Object.entries(featuresData).forEach(([key, featureValue]) => {
-    if (featureValue < 0) {
+    if (featureValue <= 0) {
       return;
     }
 

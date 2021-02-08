@@ -113,3 +113,23 @@ export const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const MetaWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  ${breakpoint("xs", "md")`
+    justify-content: center;
+    flex-direction: column;
+    
+    & > ${Chips}:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  `}
+
+  ${breakpoint("md")`
+    & > ${Chips}:not(:last-child) {
+      margin-right: 1rem;
+    }
+  `}
+`;

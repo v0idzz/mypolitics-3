@@ -24,40 +24,45 @@ interface Props {
 
 const ResultsContent: React.FC<Props> = ({ results, politician }) => {
   const { url } = useCanonicalUrl();
+  const hasParties = results.parties.length > 0;
+  const hasTraits = results.traits.length > 0;
   const [compass, setCompass] = useState<
     ResultsCompassPartsFragment | undefined
   >(results.compasses[0]);
   const authorizedPartiesIds = results.quiz.meta.features.authorizedParties.map(
     (p) => p.id
   );
+  const hasAnyAdditionalFeatures = compass || hasParties || hasTraits;
 
   return (
     <Container>
       {politician && <PoliticianInfo politician={politician} />}
       <Description />
-      <Row>
+      <Row cols={hasAnyAdditionalFeatures ? 2 : 1}>
         <Col>
           <Axes results={results} />
         </Col>
-        <Col>
-          {compass && (
-            <>
-              <Ideology compassMode={compass} />
-              <Compass
-                selectedCompass={compass}
-                onChange={setCompass}
-                compasses={results.compasses}
+        {hasAnyAdditionalFeatures && (
+          <Col>
+            {compass && (
+              <>
+                <Ideology compassMode={compass} />
+                <Compass
+                  selectedCompass={compass}
+                  onChange={setCompass}
+                  compasses={results.compasses}
+                />
+              </>
+            )}
+            {hasParties && (
+              <Party
+                authorizedPartiesIds={authorizedPartiesIds}
+                parties={results.parties}
               />
-            </>
-          )}
-          {results.parties.length > 0 && (
-            <Party
-              authorizedPartiesIds={authorizedPartiesIds}
-              parties={results.parties}
-            />
-          )}
-          {results.traits.length > 0 && <Traits traits={results.traits} />}
-        </Col>
+            )}
+            {hasTraits && <Traits traits={results.traits} />}
+          </Col>
+        )}
       </Row>
       <ShareSocial
         url={url}
