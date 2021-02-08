@@ -105,8 +105,12 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
         }}
       >
         <Answers>
-          <Button onClick={() => handleWeightAnswer(1)}>Częściowo</Button>
-          <Button onClick={() => handleWeightAnswer(2)}>Zdecydowanie</Button>
+          <Button isFullWidth onClick={() => handleWeightAnswer(1)}>
+            Częściowo
+          </Button>
+          <Button isFullWidth onClick={() => handleWeightAnswer(2)}>
+            Zdecydowanie
+          </Button>
         </Answers>
       </CSSTransition>
     </Container>
