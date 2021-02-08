@@ -124,8 +124,13 @@ export const AnswerElementContent = styled(AnswerElementTitle)`
   border-bottom-left-radius: 0.5rem;
   display: grid;
   grid-gap: 0.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(32px, 1fr));
-  color: ${({ theme }) => theme.colors.primary};
+  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+  color: ${({theme}) => theme.colors.primary};
+
+  p {
+    margin: 0;
+    white-space: nowrap;
+  }
 `;
 
 export const Col = styled.div`
