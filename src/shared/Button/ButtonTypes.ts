@@ -11,6 +11,7 @@ export interface StyleProps {
   size?: Size;
   background?: Background;
   showShadow?: boolean;
+  isFullWidth?: boolean;
 }
 
 export interface ButtonProps
