@@ -2,6 +2,7 @@ import { ResultsAxisPartsFragment } from "@generated/graphql";
 import * as R from "ramda";
 import useTranslation from "next-translate/useTranslation";
 import { AxisSide } from "@components/Results/ResultsAxes/ResultsAxisSide/ResultsAxisSideTypes";
+import useAdjectiveDeclination from "@utils/hooks/useAdjectiveDeclination";
 import { AxisSides } from "./ResultsAxisTypes";
 
 const defaultIfNaN = (value: number, defaultNumber: number) =>
@@ -33,6 +34,7 @@ export const useAxisTitle = ({
   ...sides
 }: AxisSides): string | undefined => {
   const { t, lang } = useTranslation("quiz");
+  const { decline } = useAdjectiveDeclination();
 
   if (center.percentage === 1) {
     return undefined;
@@ -54,8 +56,12 @@ export const useAxisTitle = ({
   ])(right.percentage);
 
   const ideologyName = side.data.name[lang].toLowerCase();
+  const declineIfAdj = (text: string) => {
+    const adjVerb = text.split(" ");
+    return adjVerb.length > 1 ? decline(adjVerb[0], adjVerb[1]) : text;
+  };
   const textTranslation = (type: string) =>
-    t(`axesIdeologyGrades.${type}`, { ideology: ideologyName });
+    declineIfAdj(t(`axesIdeologyGrades.${type}`, { ideology: ideologyName }));
 
   return R.cond([
     [R.gte(R.__, 90), R.always(textTranslation("radical"))],
