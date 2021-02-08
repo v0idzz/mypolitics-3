@@ -28,7 +28,7 @@ const SingleResultsPage: React.FC<Props> = ({ results, politician }) => (
       <Content results={results} politician={politician} />
     </div>
     <GoogleAd id="myp3-standard-middle" />
-    <Answers parties={results.parties} surveyId={results.id} />
+    {/*<Answers parties={results.parties} surveyId={results.id} />*/}
   </StandardPage>
 );
 

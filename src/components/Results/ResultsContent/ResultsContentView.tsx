@@ -54,12 +54,12 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
                 />
               </>
             )}
-            {hasParties && (
-              <Party
-                authorizedPartiesIds={authorizedPartiesIds}
-                parties={results.parties}
-              />
-            )}
+            {/*{hasParties && (*/}
+            {/*  <Party*/}
+            {/*    authorizedPartiesIds={authorizedPartiesIds}*/}
+            {/*    parties={results.parties}*/}
+            {/*  />*/}
+            {/*)}*/}
             {hasTraits && <Traits traits={results.traits} />}
           </Col>
         )}
