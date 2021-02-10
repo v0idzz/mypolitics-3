@@ -138,10 +138,10 @@ const Answer: React.FC<Props> = ({ data, num, party }) => {
         <Content>
           <Col>
             <AnswerElement title="Odpowiedź">
-              {t(`answers.${type}`)}
+              <p>{t(`answers.${type}`)}</p>
             </AnswerElement>
             <AnswerElement title="Rodzaj">
-              {t(`weight.${weight}`)}
+              <p>{t(`weight.${weight}`)}</p>
             </AnswerElement>
           </Col>
           <Col>
