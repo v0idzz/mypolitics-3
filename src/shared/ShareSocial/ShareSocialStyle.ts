@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
   ${breakpoint("xs", "lg")`
     flex-direction: column;
     justify-content: center;
-    
+
     & > *:not(:last-child) {
       margin-bottom: 1rem;
     }
@@ -58,6 +58,7 @@ export const Container = styled.div`
 export const ButtonGroup = styled.div`
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
 
   button {
     padding: 1rem;
@@ -66,11 +67,11 @@ export const ButtonGroup = styled.div`
   ${breakpoint("xs", "sm")`
     justify-content: center;
     margin-bottom: -1rem;
-    
+
     & > * {
       margin-bottom: 1rem;
     }
-    
+
     & > *:not(:last-child) {
       margin-right: 1rem;
     }
