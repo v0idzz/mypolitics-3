@@ -8,6 +8,6 @@ export const PageContainer = styled.main`
   overflow: hidden;
 
   ${breakpoint("md")`
-    grid-gap: 6rem;
+    grid-gap: 1rem;
   `};
 `;

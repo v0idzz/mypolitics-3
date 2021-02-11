@@ -18,7 +18,7 @@ export const Container = styled.div`
 export const Answers = styled.div`
   display: flex;
   align-items: center;
-  width: calc(100% - 5rem);
+  width: calc(100% - 15rem);
 
   &:not(:last-child) {
     margin-bottom: 1rem;

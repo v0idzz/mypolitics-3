@@ -23,6 +23,7 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
   const { nextQuestion } = actions;
   const { currentQuestion } = data;
   const [tempAnswer, setTempAnswer] = React.useState<SlimAnswer | undefined>();
+  const [isHover, setHover] = React.useState<boolean>(false);
 
   const pushAnswer = async (answer: SlimAnswer) => {
     if (await nextQuestion(answer)) {
@@ -89,11 +90,19 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
           variant={SurveyAnswerType.Agree}
           answer={tempAnswer}
           onClick={() => handleMainAnswer(SurveyAnswerType.Agree)}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
         >
           <span>
             <FontAwesomeIcon icon={faCheck} />
           </span>
-          <span>Zgadzam się</span>
+          <span>
+            {tempAnswer?.type === SurveyAnswerType.Agree
+              ? isHover
+                ? "Kliknij, by anulować"
+                : "Wybierz rodzaj poniżej"
+              : "Zgadzam się"}
+          </span>
         </AnswerButton>
       </Answers>
       <CSSTransition
