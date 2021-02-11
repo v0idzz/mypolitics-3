@@ -13,6 +13,10 @@ export const Content = styled.div`
       display: none;
     }
   `};
+
+  ${breakpoint("xs", "md")`
+    padding-top: 10rem;
+  `};
 `;
 
 export const Row = styled.div`
