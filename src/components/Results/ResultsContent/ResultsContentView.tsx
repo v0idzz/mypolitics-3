@@ -12,6 +12,7 @@ import {
   Compass,
   Party,
   Traits,
+  Answers,
 } from "@components/Results";
 import ShareSocial from "@shared/ShareSocial";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
@@ -26,23 +27,27 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
   const { url } = useCanonicalUrl();
   const hasParties = results.parties.length > 0;
   const hasTraits = results.traits.length > 0;
+  const hasAxes = results.axes.length > 0;
   const [compass, setCompass] = useState<
     ResultsCompassPartsFragment | undefined
   >(results.compasses[0]);
   const authorizedPartiesIds = results.quiz.meta.features.authorizedParties.map(
     (p) => p.id
   );
-  const hasAnyAdditionalFeatures = compass || hasParties || hasTraits;
+  const hasAdditional = hasParties || compass || hasTraits;
+  const hasAxesAndAdditional = hasAxes && hasAdditional;
 
   return (
     <Container>
       {politician && <PoliticianInfo politician={politician} />}
       <Description />
-      <Row cols={hasAnyAdditionalFeatures ? 2 : 1}>
-        <Col>
-          <Axes results={results} />
-        </Col>
-        {hasAnyAdditionalFeatures && (
+      <Row cols={hasAxesAndAdditional ? 2 : 1}>
+        {hasAxes && (
+          <Col>
+            <Axes results={results} />
+          </Col>
+        )}
+        {hasAdditional && (
           <Col>
             {compass && (
               <>
@@ -54,12 +59,12 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
                 />
               </>
             )}
-            {/*{hasParties && (*/}
-            {/*  <Party*/}
-            {/*    authorizedPartiesIds={authorizedPartiesIds}*/}
-            {/*    parties={results.parties}*/}
-            {/*  />*/}
-            {/*)}*/}
+            {results.quiz.title.pl !== "myPolitics" && hasParties && (
+              <Party
+                authorizedPartiesIds={authorizedPartiesIds}
+                parties={results.parties}
+              />
+            )}
             {hasTraits && <Traits traits={results.traits} />}
           </Col>
         )}
