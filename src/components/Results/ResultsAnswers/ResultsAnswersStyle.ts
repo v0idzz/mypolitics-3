@@ -82,8 +82,9 @@ export const Select = styled.select`
   cursor: pointer;
   background-image: url(${require("@assets/images/icons/fa-solid_angle-down.png")});
   background-repeat: no-repeat;
-  background-position-x: calc(100% - 0.5rem);
+  background-position-x: calc(100% - 1rem);
   background-position-y: 50%;
+  font-family: inherit;
 
   ::-ms-expand {
     display: none;

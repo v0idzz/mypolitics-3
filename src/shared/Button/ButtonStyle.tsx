@@ -26,6 +26,7 @@ export const Container = styled.button<StyleProps>`
   border: 0;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
+  width: ${({ isFullWidth }) => (isFullWidth ? "100%" : "auto")};
 
   span {
     display: flex;

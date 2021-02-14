@@ -18,10 +18,15 @@ export const Container = styled.div`
 export const Answers = styled.div`
   display: flex;
   align-items: center;
+  width: calc(100% - 15rem);
 
   &:not(:last-child) {
     margin-bottom: 1rem;
   }
+
+  ${breakpoint("xs", "sm")`
+      width: 100%;
+  `}
 
   ${breakpoint("md")`
     button:not(:last-child) {
@@ -98,6 +103,7 @@ export const AnswerButton = styled.button<AnswerButtonProps>`
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  width: 100%;
 
   span:not(:last-child) {
     margin-right: 0.5rem;
