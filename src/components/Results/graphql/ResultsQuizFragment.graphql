@@ -5,6 +5,10 @@ fragment ResultsQuiz on Quiz {
         pl
         en
     }
+    description {
+        pl
+        en
+    }
     meta {
         features {
             authorizedParties {

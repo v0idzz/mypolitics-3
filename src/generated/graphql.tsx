@@ -2078,6 +2078,7 @@ export type MutationUpdateQuestionArgs = {
 
 export type MutationAddPartyAnswersArgs = {
   addPartyAnswersInput: Array<AddPartyAnswersInput>;
+  quizVersionId: Scalars['String'];
   partyId: Scalars['String'];
 };
 
@@ -2362,6 +2363,9 @@ export type ResultsQuizFragment = (
   { __typename?: 'Quiz' }
   & Pick<Quiz, 'id' | 'logoUrl'>
   & { title: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), description: (
     { __typename?: 'TextTranslation' }
     & Pick<TextTranslation, 'pl' | 'en'>
   ), meta: (
@@ -2743,6 +2747,10 @@ export const ResultsQuizFragmentDoc = gql`
   id
   logoUrl
   title {
+    pl
+    en
+  }
+  description {
     pl
     en
   }

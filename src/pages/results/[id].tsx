@@ -18,12 +18,14 @@ interface Props {
 
 const ResultsPage: React.FC<Props> = ({ results, politician }) => {
   const { lang } = useTranslation();
+  const title = results.quiz.title[lang];
+  const description = results.quiz.description[lang];
 
   return (
     <>
       <NextSeo
-        title={`Sprawdź moje poglądy w ${results.quiz.title[lang]}!`}
-        description="Nowoczesna platforma testów politycznych i wyborczych"
+        title={`Sprawdź moje poglądy w ${title}!`}
+        description={`Nowoczesna platforma testów politycznych i wyborczych. ${description}`}
       />
       <SinglePage results={results} politician={politician} />
     </>
