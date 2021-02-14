@@ -65,16 +65,21 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId, parties }) => {
           </IconWrapper>
           <Title>Analiza odpowiedzi</Title>
         </div>
-        <Select value={party?.id || typeof party} onChange={handlePartyChange}>
-          <option value="undefined" disabled hidden>
-            Porównaj z partią
-          </option>
-          {parties.map(({ id, name }) => (
-            <option key={id} value={id}>
-              {name}
+        {parties.length > 0 && (
+          <Select
+            value={party?.id || typeof party}
+            onChange={handlePartyChange}
+          >
+            <option value="undefined" disabled hidden>
+              Porównaj z partią
             </option>
-          ))}
-        </Select>
+            {parties.map(({ id, name }) => (
+              <option key={id} value={id}>
+                {name}
+              </option>
+            ))}
+          </Select>
+        )}
       </Header>
       <Content>
         {listElements}

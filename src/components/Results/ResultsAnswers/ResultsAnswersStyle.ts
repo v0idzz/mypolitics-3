@@ -88,7 +88,7 @@ export const Select = styled.select`
   ::-ms-expand {
     display: none;
   }
-  
+
   ${breakpoint("xs", "md")`
     margin-top: 1rem;
   `}

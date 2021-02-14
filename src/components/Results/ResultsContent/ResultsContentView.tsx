@@ -59,7 +59,7 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
                 />
               </>
             )}
-            {results.quiz.title.pl !== "myPolitics" && hasParties && (
+            {hasParties && (
               <Party
                 authorizedPartiesIds={authorizedPartiesIds}
                 parties={results.parties}

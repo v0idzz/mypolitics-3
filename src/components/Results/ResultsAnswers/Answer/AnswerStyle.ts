@@ -1,4 +1,4 @@
-import styled, { css, SimpleInterpolation } from "styled-components";
+import styled, { css } from "styled-components";
 import { SurveyAnswerType } from "@generated/graphql";
 import { transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
@@ -9,12 +9,20 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   text-align: left;
+
+  ${breakpoint("xs", "sm")`
+    flex-direction: column;
+  `}
 `;
 
 export const HeaderInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  ${breakpoint("xs", "sm")`
+    margin-bottom: 1rem;
+  `}
 `;
 
 export const Number = styled.div`
@@ -54,7 +62,7 @@ export const HeaderButton = styled.button<{ opened: boolean }>`
 export const Content = styled(Header)`
   display: grid;
   align-items: flex-start;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   width: 100%;
   grid-gap: 1rem;
 `;
@@ -65,39 +73,45 @@ export const Container = styled.div<{ type: SurveyAnswerType }>`
   width: 100%;
   border-radius: 0.5rem;
   overflow: hidden;
+  background: ${({ theme }) => theme.colors.backgroundDarken};
 
   ${({ type, theme }) => {
-    const backgroundColor: Record<SurveyAnswerType, SimpleInterpolation> = {
-      [SurveyAnswerType.Agree]: css`
-        background: #e8fbf4;
-        color: ${theme.colors.green};
-
-        ${Content} {
-          border-top: 1px solid #a2ebd1;
-        }
-      `,
-      [SurveyAnswerType.Disagree]: css`
-        background: #fbe8e9;
-        color: ${theme.colors.red};
-
-        ${Content} {
-          border-top: 1px solid #eba2a7;
-        }
-      `,
-      [SurveyAnswerType.Neutral]: css`
-        background: ${theme.colors.backgroundDarken};
-        color: ${theme.colors.textMuted};
-      `,
+    const borderColor: Record<SurveyAnswerType, string> = {
+      [SurveyAnswerType.Agree]: theme.colors.green,
+      [SurveyAnswerType.Disagree]: theme.colors.red,
+      [SurveyAnswerType.Neutral]: "transparent",
     };
 
-    return backgroundColor[type];
+    return `border: 1px solid ${borderColor[type]}`;
   }};
 `;
 
-export const AnswerElementContainer = styled.div`
+export const SubHeader = styled.div<{ type: SurveyAnswerType }>`
   display: flex;
-  flex-direction: column;
-  justify-content: left;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: ${({ theme }) => theme.colors.backgroundLighten};
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
+  font-family: ${({ theme }) => theme.fontFamily.secondary};
+  
+  ${breakpoint("xs", "sm")`
+    flex-direction: column;
+  `}
+
+  span {
+    font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
+  }
+
+  ${({ type, theme }) => {
+    const backgroundColor: Record<SurveyAnswerType, string> = {
+      [SurveyAnswerType.Agree]: theme.colors.green,
+      [SurveyAnswerType.Disagree]: theme.colors.red,
+      [SurveyAnswerType.Neutral]: theme.colors.textMuted,
+    };
+
+    return `background: ${backgroundColor[type]}`;
+  }};
 `;
 
 export const AnswerElementTitleWrapper = styled.div`
@@ -128,9 +142,36 @@ export const AnswerElementContent = styled(AnswerElementTitle)`
   color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const Col = styled.div`
+export const AnswerElementContainer = styled.div<{ type: SurveyAnswerType }>`
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  max-width: 15rem;
+
+  ${({ type, theme }) => {
+    const backgroundColorVariants: Record<SurveyAnswerType, string> = {
+      [SurveyAnswerType.Agree]: theme.colors.green,
+      [SurveyAnswerType.Disagree]: theme.colors.red,
+      [SurveyAnswerType.Neutral]: theme.colors.textMuted,
+    };
+    const backgroundColor = backgroundColorVariants[type];
+
+    return `
+      ${AnswerElementTitle} {
+        background: ${backgroundColor};
+      }
+      
+      ${AnswerElementContent} {
+        border: 2px solid ${backgroundColor};
+        background: ${theme.colors.background};
+      }
+    `;
+  }};
+`;
+
+export const Row = styled.div`
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
 `;
 
@@ -190,12 +231,12 @@ export const Chip = styled.div<{ variant: "neutral" | "agree" | "disagree" }>`
         text-align: center;
       `,
       agree: css`
-        background: ${({ theme }) => transparentize(0.85, theme.colors.green)};
+        background: ${({ theme }) => transparentize(0.9, theme.colors.green)};
         color: ${({ theme }) => theme.colors.green};
         flex-shrink: 0;
       `,
       disagree: css`
-        background: ${({ theme }) => transparentize(0.85, theme.colors.red)};
+        background: ${({ theme }) => transparentize(0.9, theme.colors.red)};
         color: ${({ theme }) => theme.colors.red};
         flex-shrink: 0;
       `,
