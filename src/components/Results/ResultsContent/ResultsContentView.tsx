@@ -12,6 +12,7 @@ import {
   Compass,
   Party,
   Traits,
+  Answers,
 } from "@components/Results";
 import ShareSocial from "@shared/ShareSocial";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
@@ -24,40 +25,49 @@ interface Props {
 
 const ResultsContent: React.FC<Props> = ({ results, politician }) => {
   const { url } = useCanonicalUrl();
+  const hasParties = results.parties.length > 0;
+  const hasTraits = results.traits.length > 0;
+  const hasAxes = results.axes.length > 0;
   const [compass, setCompass] = useState<
     ResultsCompassPartsFragment | undefined
   >(results.compasses[0]);
   const authorizedPartiesIds = results.quiz.meta.features.authorizedParties.map(
     (p) => p.id
   );
+  const hasAdditional = hasParties || compass || hasTraits;
+  const hasAxesAndAdditional = hasAxes && hasAdditional;
 
   return (
     <Container>
       {politician && <PoliticianInfo politician={politician} />}
       <Description />
-      <Row>
-        <Col>
-          <Axes results={results} />
-        </Col>
-        <Col>
-          {compass && (
-            <>
-              <Ideology compassMode={compass} />
-              <Compass
-                selectedCompass={compass}
-                onChange={setCompass}
-                compasses={results.compasses}
+      <Row cols={hasAxesAndAdditional ? 2 : 1}>
+        {hasAxes && (
+          <Col>
+            <Axes results={results} />
+          </Col>
+        )}
+        {hasAdditional && (
+          <Col>
+            {compass && (
+              <>
+                <Ideology compassMode={compass} />
+                <Compass
+                  selectedCompass={compass}
+                  onChange={setCompass}
+                  compasses={results.compasses}
+                />
+              </>
+            )}
+            {hasParties && (
+              <Party
+                authorizedPartiesIds={authorizedPartiesIds}
+                parties={results.parties}
               />
-            </>
-          )}
-          {results.parties.length > 0 && (
-            <Party
-              authorizedPartiesIds={authorizedPartiesIds}
-              parties={results.parties}
-            />
-          )}
-          {results.traits.length > 0 && <Traits traits={results.traits} />}
-        </Col>
+            )}
+            {hasTraits && <Traits traits={results.traits} />}
+          </Col>
+        )}
       </Row>
       <ShareSocial
         url={url}

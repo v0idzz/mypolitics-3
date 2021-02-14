@@ -18,14 +18,14 @@ export const Container = styled.div`
   `}
 `;
 
-export const Row = styled.div`
+export const Row = styled.div<{ cols: number }>`
   display: grid;
   grid-template-columns: 100%;
   width: 100%;
   grid-gap: 1rem;
 
   ${breakpoint("md")`
-    grid-template-columns: 55fr 45fr;
+    grid-template-columns: ${({ cols }) => (cols === 1 ? "100%" : "55fr 45fr")};
     width: 100%;
     grid-gap: 1.5rem;
   `}

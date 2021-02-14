@@ -1,7 +1,11 @@
 import React from "react";
 import GoogleAd from "@shared/GoogleAd";
-import { SingleQuizQuery, useCreateSurveyMutation } from "@generated/graphql";
-import { faStar, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import {
+  QuizLicense,
+  SingleQuizQuery,
+  useCreateSurveyMutation,
+} from "@generated/graphql";
+import { faChartBar, faStar } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StandardPage from "@shared/StandardPage";
@@ -12,17 +16,19 @@ import Link from "next/link";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import { useRouter } from "next/router";
 import { paths } from "@constants";
+import { LicenseLinks } from "@components/Quiz/SingleQuizPage/SingleQuizPageUtils";
 import Box from "./SingleQuizPageBox";
 import {
+  ButtonWrapper,
+  Chips,
   Container,
-  Logo,
+  Description,
+  Feature,
+  FeaturesList,
   Header,
   Inner,
-  Description,
-  FeaturesList,
-  Feature,
-  Chips,
-  ButtonWrapper,
+  Logo,
+  MetaWrapper,
 } from "./SingleQuizPageStyle";
 
 interface Props {
@@ -95,14 +101,22 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
             </div>
           </Box>
           <Box>
-            <div>
+            <MetaWrapper>
               <Link href={meta.author.url} passHref>
                 <Chips as="a" target="_blank">
                   <span>Twórca:</span>&nbsp;
                   {meta.author.name}
                 </Chips>
               </Link>
-            </div>
+              {meta.license !== QuizLicense.Commercial && (
+                <Link href={LicenseLinks[meta.license]} passHref>
+                  <Chips as="a" target="_blank">
+                    <span>Licencja:</span>&nbsp;
+                    {meta.license}
+                  </Chips>
+                </Link>
+              )}
+            </MetaWrapper>
           </Box>
           <ButtonWrapper>
             <Button loading={loading} onClick={handleStartClick} showShadow>
