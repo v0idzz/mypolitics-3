@@ -3,29 +3,23 @@ import * as R from "ramda";
 import DefaultLink from "next/link";
 import { Section } from "@components/Home";
 import Button from "@shared/Button";
-import {
-  BasicTalkPartsFragment,
-  useTalksByFilterQuery,
-} from "@generated/graphql";
+import { BasicTalkPartsFragment } from "@generated/graphql";
 import { Link } from "@components/Talk";
 import useTranslation from "next-translate/useTranslation";
+import { paths } from "@constants";
 import { AdditionalContentWrapper } from "./HomeTalkSectionStyle";
-import { paths } from '@constants';
 
-const HomeTalkSection: React.FC = () => {
+interface Props {
+  talks: BasicTalkPartsFragment[];
+}
+
+const HomeTalkSection: React.FC<Props> = ({ talks }) => {
   const { t } = useTranslation("home");
-  const { data } = useTalksByFilterQuery({
-    variables: {
-      limit: 2,
-      sort: "end:desc",
-    },
-  });
 
   const toTalkLink = (talk: BasicTalkPartsFragment) => (
     <Link key={talk.id} data={talk} />
   );
-
-  const talksLinks = R.map(toTalkLink, data?.talks || []);
+  const talksLinks = R.map(toTalkLink, talks);
 
   return (
     <Section

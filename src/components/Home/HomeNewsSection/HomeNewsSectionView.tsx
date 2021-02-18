@@ -2,30 +2,21 @@ import React from "react";
 import * as R from "ramda";
 import { Section } from "@components/Home";
 import Button from "@shared/Button";
-import {
-  BasicPostPartsFragment,
-  usePostsByFilterQuery,
-} from "@generated/graphql";
 import { Link } from "@components/Media";
 import useTranslation from "next-translate/useTranslation";
 import DefaultLink from "next/dist/client/link";
 import { paths } from "@constants";
+import { PostOrPage, PostsOrPages } from "@tryghost/content-api";
 import { AdditionalContentWrapper } from "./HomeNewsSectionStyle";
 
-const HomeNewsSection: React.FC = () => {
+interface Props {
+  posts: PostsOrPages;
+}
+
+const HomeNewsSection: React.FC<Props> = ({ posts }) => {
   const { t } = useTranslation("home");
-  const { data } = usePostsByFilterQuery({
-    variables: {
-      limit: 2,
-      sort: "published_at:desc",
-    },
-  });
-
-  const toPostLink = (post: BasicPostPartsFragment) => (
-    <Link key={post.id} data={post} />
-  );
-
-  const postsList = R.map(toPostLink, data?.posts || []);
+  const toPostLink = (post: PostOrPage) => <Link key={post.id} data={post} />;
+  const postsList = R.map(toPostLink, posts);
 
   return (
     <Section

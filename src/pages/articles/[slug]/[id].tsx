@@ -17,88 +17,79 @@ import DisqusComments from "@shared/DisqusComments";
 import { NextSeo } from "next-seo";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import { scrapeDescription } from "@components/Media/utils/scrape-description";
+import { PostOrPage } from "@tryghost/content-api";
+import { useCategory } from "@components/Media/utils/useCategory";
+import { getSinglePost } from "@services/ghost";
+import { useRouter } from "next/router";
+import StandardPage, { getStandardPageProps, StandardPageProps } from '@shared/StandardPage';
+import GoogleAd from "@shared/GoogleAd";
 
 interface Props {
-  post: ExtendedPostPartsFragment;
-  morePosts: BasicPostPartsFragment[];
+  post: PostOrPage;
+  standardPageProps: StandardPageProps;
 }
 
-const Article: React.FC<Props> = ({ post, morePosts }) => {
+const Article: React.FC<Props> = ({ post, standardPageProps }) => {
+  const router = useRouter();
   const { lang } = useTranslation("articles");
   const { url } = useCanonicalUrl();
-  const title = post.title[lang];
-  const slug = post.slug[lang];
-  const thumbFormats = post.thumbnail.formats;
-  const thumbnail = thumbFormats.medium
-    ? thumbFormats.medium
-    : thumbFormats.small;
-  const description = scrapeDescription(post.content[lang]);
+  const { id, title, slug, tags, feature_image: featureImage, excerpt } = post;
+  const { category } = useCategory(tags);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      window.history.replaceState(
-        null,
-        null,
-        `/${lang}${paths.article(slug, post.id)}`
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { slug, id },
+        },
+        undefined,
+        { shallow: true }
       );
     }
   }, [post.id, lang, slug]);
 
   return (
-    <PageContainer className="container">
+    <StandardPage fullWidth {...standardPageProps}>
       <NextSeo
         title={title}
-        description={description}
+        description={excerpt}
         openGraph={{
           title,
-          description,
+          description: excerpt,
           url,
           type: "article",
           article: {
-            publishedTime: post.createdAt,
-            modifiedTime: post.updatedAt,
-            section: post.category,
+            publishedTime: post.created_at,
+            modifiedTime: post.updated_at,
+            section: category,
           },
           images: [
             {
-              url: thumbnail.url,
-              width: thumbnail.width,
-              height: thumbnail.height,
+              url: featureImage,
               alt: title,
             },
           ],
         }}
       />
+      <GoogleAd id="myp3-standard-top" />
       <ArticleContent post={post} />
-      <DisqusComments post={post} />
-      <MoreArticlesSection posts={morePosts} />
-    </PageContainer>
+      <GoogleAd id="myp3-standard-middle" />
+    </StandardPage>
   );
 };
 
-export const getServerSideProps = async ({
-  query,
-}: NextPageContext): Promise<{ props: Props }> => {
-  const client = initializeApollo();
-  const { data: singlePostData } = await client.query<PostByIdQuery>({
-    query: PostByIdDocument,
-    variables: {
-      id: query.id,
-    },
+export const getServerSideProps = async ({ query }: NextPageContext) => {
+  const post = await getSinglePost({
+    id: `${query.id}`,
   });
 
-  const { data: manyPostData } = await client.query<PostsByFilterQuery>({
-    query: PostsByFilterDocument,
-    variables: {
-      limit: 6,
-      sort: "published_at:desc",
-    },
-  });
+  const standardPageProps = await getStandardPageProps();
 
   return {
     props: {
-      post: singlePostData.post,
-      morePosts: manyPostData.posts,
+      post,
+      standardPageProps,
     },
   };
 };

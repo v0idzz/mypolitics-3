@@ -94,7 +94,7 @@ export const SubHeader = styled.div<{ type: SurveyAnswerType }>`
   color: ${({ theme }) => theme.colors.backgroundLighten};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
-  
+
   ${breakpoint("xs", "sm")`
     flex-direction: column;
   `}
@@ -139,7 +139,8 @@ export const AnswerElementContent = styled(AnswerElementTitle)`
   display: grid;
   grid-gap: 0.5rem;
   grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
 
   p {
     margin: 0;

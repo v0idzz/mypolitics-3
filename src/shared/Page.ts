@@ -7,7 +7,7 @@ export const PageContainer = styled.main`
   grid-gap: 4rem;
   overflow: hidden;
 
-  ${breakpoint("md")`
+  ${breakpoint("xs", "md")`
     grid-gap: 1rem;
   `};
 `;

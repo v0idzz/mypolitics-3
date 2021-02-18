@@ -19,7 +19,7 @@ const QuizzesPage: React.FC<Props> = ({ featuredQuizzes }) => {
   const clientSide = typeof window !== "undefined";
 
   return (
-    <StandardPage>
+    <>
       <GoogleAd id="myp3-standard-top" />
       <Link quiz={firstQuiz} featured />
       {quizzes.length > 0 && (
@@ -44,7 +44,7 @@ const QuizzesPage: React.FC<Props> = ({ featuredQuizzes }) => {
         </>
       )}
       <GoogleAd id="myp3-standard-middle" />
-    </StandardPage>
+    </>
   );
 };
 

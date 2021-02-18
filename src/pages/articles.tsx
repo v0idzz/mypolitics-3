@@ -1,28 +1,19 @@
 import React from "react";
-import * as R from "ramda";
-import { initializeApollo } from "@services/apollo";
-import {
-  BasicPostPartsFragment,
-  PostsByFilterDocument,
-  PostsByFilterQuery,
-} from "@generated/graphql";
 import { PageContainer } from "@shared/Page";
-import {
-  ArticlesHero,
-  ViewArticlesSection,
-  NewsArticlesSection,
-} from "@components/Media";
-import { ApolloQueryResult } from "@apollo/client";
+import { ArticlesHero, ArticlesListSection } from "@components/Media";
 import Trans from "next-translate/Trans";
 import ContactActionSection from "@shared/ContactActionSection";
 import { NextSeo } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
+import { categoriesConfig } from "@components/Media/utils/useCategory";
+import { getManyPosts } from "@services/ghost";
+import { PostOrPage } from "@tryghost/content-api";
 
 interface Props {
   posts: {
-    featured: BasicPostPartsFragment[];
-    news: BasicPostPartsFragment[];
-    view: BasicPostPartsFragment[];
+    featured: PostOrPage[];
+    news: PostOrPage[];
+    view: PostOrPage[];
   };
 }
 
@@ -33,8 +24,8 @@ const Articles: React.FC<Props> = ({ posts }) => {
     <PageContainer>
       <NextSeo title={t("SEO.title")} description={t("SEO.description")} />
       <ArticlesHero featuredPosts={posts.featured} />
-      <NewsArticlesSection posts={posts.news} />
-      <ViewArticlesSection posts={posts.view} />
+      <ArticlesListSection posts={posts.news} type="news" />
+      <ArticlesListSection posts={posts.view} type="view" />
       <ContactActionSection
         title={
           <Trans
@@ -47,49 +38,32 @@ const Articles: React.FC<Props> = ({ posts }) => {
   );
 };
 
-export const getServerSideProps = async (): Promise<{ props: Props }> => {
-  const client = initializeApollo();
+export const getServerSideProps = async ({
+  locale,
+}): Promise<{ props: Props }> => {
+  const [viewTag, newsTag] = categoriesConfig[locale];
 
-  const variables: Record<string, Record<string, any>> = {
-    featured: {
-      limit: 3,
-      sort: "published_at:desc",
-    },
-    news: {
-      sort: "published_at:desc",
-      where: {
-        category: "news",
-      },
-    },
-    view: {
-      sort: "published_at:desc",
-      where: {
-        category: "view",
-      },
-    },
-  };
+  const getView = getManyPosts({
+    limit: 7,
+    filter: `tag:${viewTag}`,
+  });
 
-  const toQuery = (
-    key: string
-  ): Promise<ApolloQueryResult<PostsByFilterQuery>> =>
-    client.query<PostsByFilterQuery>({
-      query: PostsByFilterDocument,
-      variables: variables[key],
-    });
+  const getNews = getManyPosts({
+    limit: 8,
+    filter: `tag:${newsTag}`,
+  });
 
-  const queries: Promise<ApolloQueryResult<PostsByFilterQuery>>[] = R.map(
-    toQuery,
-    Object.keys(variables)
-  );
-
-  const [featured, news, view] = await Promise.all(queries);
+  const [newsData, viewData] = await Promise.all([getNews, getView]);
+  const news = newsData || [];
+  const view = viewData || [];
+  const featured = [news.pop(), news.pop(), view.pop()];
 
   return {
     props: {
       posts: {
-        featured: featured.data.posts,
-        news: news.data.posts,
-        view: view.data.posts,
+        featured,
+        news,
+        view,
       },
     },
   };

@@ -2,6 +2,7 @@ import React from "react";
 import GoogleAd from "@shared/GoogleAd";
 import {
   QuizLicense,
+  QuizType,
   SingleQuizQuery,
   useCreateSurveyMutation,
 } from "@generated/graphql";
@@ -44,6 +45,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   const [createSurvey, { loading }] = useCreateSurveyMutation();
   const quizFeatures = useQuizFeatures(meta.features);
   const { lang } = useTranslation();
+  const isClassic = quiz.type === QuizType.Classic;
 
   const handleStartClick = async () => {
     try {
@@ -62,14 +64,16 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   };
 
   return (
-    <StandardPage>
+    <>
       <GoogleAd id="myp3-standard-top" />
       <Container>
         <Header>
           <Logo src={logoUrl} alt={title[lang]} />
-          <Button onClick={handleStartClick} loading={loading} showShadow>
-            Rozpocznij
-          </Button>
+          {!isClassic && (
+            <Button onClick={handleStartClick} loading={loading} showShadow>
+              Rozpocznij
+            </Button>
+          )}
         </Header>
         <Inner>
           <Box>
@@ -118,15 +122,17 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
               )}
             </MetaWrapper>
           </Box>
-          <ButtonWrapper>
-            <Button loading={loading} onClick={handleStartClick} showShadow>
-              Rozpocznij
-            </Button>
-          </ButtonWrapper>
+          {!isClassic && (
+            <ButtonWrapper>
+              <Button loading={loading} onClick={handleStartClick} showShadow>
+                Rozpocznij
+              </Button>
+            </ButtonWrapper>
+          )}
         </Inner>
       </Container>
       <GoogleAd id="myp3-standard-middle" />
-    </StandardPage>
+    </>
   );
 };
 

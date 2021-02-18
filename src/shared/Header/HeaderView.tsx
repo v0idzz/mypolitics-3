@@ -8,8 +8,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { paths } from "@constants";
 import useTranslation from "next-translate/useTranslation";
-import { useLogo } from "@shared/Header/HeaderUtilts";
 import { useRouter } from "next/router";
+import { useLogo } from "@utils/hooks/useLogo";
 import {
   Container,
   DesktopNavigation,

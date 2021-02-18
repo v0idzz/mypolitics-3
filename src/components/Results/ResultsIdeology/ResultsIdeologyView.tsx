@@ -2,6 +2,7 @@ import React from "react";
 import { ResultsCompassPartsFragment } from "@generated/graphql";
 import { useIdeology } from "@components/Results/ResultsIdeology/ResultsIdeologyUtils";
 import InformationButton from "@shared/InformationButton";
+import { useCurrentResults } from "@components/Results";
 import { Container, Info, Version } from "./ResultsIdeologyStyle";
 
 interface Props {
@@ -12,6 +13,7 @@ const ResultsIdeology: React.FC<Props> = ({ compassMode }) => {
   const { point } = compassMode;
   const pointArray = [point.horizontal, point.vertical];
   const ideology = useIdeology(pointArray);
+  const { isClassic } = useCurrentResults();
 
   const information = (
     <InformationButton title="Jak działa dopasowanie ideologii?">
@@ -29,10 +31,12 @@ const ResultsIdeology: React.FC<Props> = ({ compassMode }) => {
   return (
     <Container>
       <Info>{ideology}</Info>
-      <Version>
-        <span>alpha</span>
-        <span>{information}</span>
-      </Version>
+      {!isClassic && (
+        <Version>
+          <span>alpha</span>
+          <span>{information}</span>
+        </Version>
+      )}
     </Container>
   );
 };

@@ -14,7 +14,11 @@ export const Inner = styled.div<{ percentages: Record<Side, number> }>`
   grid-template-rows: auto auto;
   width: 100%;
   ${({ percentages }) => {
-    const { left, center, right } = percentages;
+    const absPercentagesEntries = Object.keys(percentages).map((k) => [
+      k,
+      Math.abs(percentages[k]),
+    ]);
+    const { left, center, right } = Object.fromEntries(absPercentagesEntries);
 
     return css`
       grid-template-columns: 3.5rem ${left}fr ${center}fr ${right}fr 3.5rem;

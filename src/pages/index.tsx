@@ -9,14 +9,30 @@ import {
   PartnersSection,
   TalkSection,
 } from "@components/Home";
+import { getManyPosts } from "@services/ghost";
+import {
+  BasicTalkPartsFragment,
+  ComponentPersonPartner,
+  PartnersDocument,
+  TalksByFilterDocument,
+  TalksByFilterQuery,
+} from "@generated/graphql";
+import { initializeApollo } from "@services/apollo";
+import ShareSocial from "@shared/ShareSocial";
 
-const Home: React.FC = () => (
+interface Props {
+  posts: any;
+  talks: BasicTalkPartsFragment[];
+  partners: ComponentPersonPartner[];
+}
+
+const Home: React.FC<Props> = ({ posts, talks, partners }) => (
   <PageContainer>
     <Hero />
     <QuizSection />
-    <NewsSection />
-    <TalkSection />
-    <PartnersSection />
+    <NewsSection posts={posts} />
+    <TalkSection talks={talks} />
+    <PartnersSection partners={partners} />
     <ContactActionSection
       title={
         <Trans
@@ -25,7 +41,44 @@ const Home: React.FC = () => (
         />
       }
     />
+    <div style={{ maxWidth: 850, margin: "auto" }}>
+      <ShareSocial />
+    </div>
   </PageContainer>
 );
+
+export const getServerSideProps = async (): Promise<{ props: Props }> => {
+  const client = initializeApollo();
+
+  const postsQuery = getManyPosts({
+    limit: 2,
+  });
+
+  const talksQuery = client.query<TalksByFilterQuery>({
+    query: TalksByFilterDocument,
+    variables: {
+      limit: 2,
+      sort: "end:desc",
+    },
+  });
+
+  const partnersQuery = client.query({
+    query: PartnersDocument,
+  });
+
+  const [posts, talks, partners] = await Promise.all([
+    postsQuery,
+    talksQuery,
+    partnersQuery,
+  ]);
+
+  return {
+    props: {
+      posts: posts || [],
+      talks: talks?.data?.talks || [],
+      partners: partners?.data.partner.partners || [],
+    },
+  };
+};
 
 export default Home;

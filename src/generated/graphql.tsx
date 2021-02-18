@@ -1390,6 +1390,7 @@ export type Quiz = {
   updatedAt: Scalars['DateTime'];
   slug: Scalars['String'];
   logoUrl: Scalars['String'];
+  type: QuizType;
   title: TextTranslation;
   description: TextTranslation;
   meta: QuizMeta;
@@ -1506,6 +1507,12 @@ export type QuizStatistics = {
 export type QuizStatisticsInput = {
   surveysNumber: Scalars['Int'];
 };
+
+export enum QuizType {
+  Official = 'OFFICIAL',
+  Community = 'COMMUNITY',
+  Classic = 'CLASSIC'
+}
 
 export type QuizVersion = {
   __typename?: 'QuizVersion';
@@ -2220,7 +2227,7 @@ export type SingleQuizQuery = (
   { __typename?: 'Query' }
   & { quiz: (
     { __typename?: 'Quiz' }
-    & Pick<Quiz, 'id' | 'logoUrl'>
+    & Pick<Quiz, 'id' | 'logoUrl' | 'type'>
     & { title: (
       { __typename?: 'TextTranslation' }
       & Pick<TextTranslation, 'pl' | 'en'>
@@ -2361,7 +2368,7 @@ export type ResultsPoliticianPartsFragment = (
 
 export type ResultsQuizFragment = (
   { __typename?: 'Quiz' }
-  & Pick<Quiz, 'id' | 'logoUrl'>
+  & Pick<Quiz, 'id' | 'logoUrl' | 'type'>
   & { title: (
     { __typename?: 'TextTranslation' }
     & Pick<TextTranslation, 'pl' | 'en'>
@@ -2593,7 +2600,7 @@ export type PartnersQuery = (
   { __typename?: 'Query' }
   & { partner?: Maybe<(
     { __typename?: 'Partners' }
-    & Pick<Partners, 'id'>
+    & Pick<Partners, '_id'>
     & { partners?: Maybe<Array<Maybe<(
       { __typename?: 'ComponentPersonPartner' }
       & Pick<ComponentPersonPartner, 'name' | 'url'>
@@ -2746,6 +2753,7 @@ export const ResultsQuizFragmentDoc = gql`
     fragment ResultsQuiz on Quiz {
   id
   logoUrl
+  type
   title {
     pl
     en
@@ -3098,6 +3106,7 @@ export const SingleQuizDocument = gql`
   quiz(slug: $slug) {
     id
     logoUrl
+    type
     title {
       pl
       en
@@ -3192,7 +3201,7 @@ export const SingleResultsDocument = gql`
   results(surveyId: $surveyId) {
     ...ResultsParts
   }
-  politicianResultsConnection(where: {rid: $surveyId}) {
+  politicianResultsConnection(where: {_or: [{rid: $surveyId}, {slug: $surveyId}]}) {
     values {
       politician {
         ...ResultsPoliticianParts
@@ -3496,7 +3505,7 @@ export type GdprDocumentQueryResult = Apollo.QueryResult<GdprDocumentQuery, Gdpr
 export const PartnersDocument = gql`
     query Partners {
   partner {
-    id
+    _id
     partners {
       name
       image {

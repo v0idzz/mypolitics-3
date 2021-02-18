@@ -10,3 +10,4 @@ export { default as Party } from "./ResultsParty";
 export { default as IdeologyModal } from "./ResultsIdeologyModal";
 export { default as Traits } from "./ResultsTraits";
 export { default as Answers } from "./ResultsAnswers";
+export * from "./utils";

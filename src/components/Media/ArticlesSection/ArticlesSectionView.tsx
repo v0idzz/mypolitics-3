@@ -1,16 +1,27 @@
 import React from "react";
-import * as R from "ramda";
 import { Title, Lead } from "@shared/Typography";
-import { BasicPostPartsFragment } from "@generated/graphql";
-import { Link } from "@components/Media";
-import { Container, Header, Image, Content } from "./ArticlesSectionStyle";
+import { PostOrPage } from "@tryghost/content-api";
+import { Link as PostLink } from "@components/Media";
+import { Link as TalkLink } from "@components/Talk";
+import { BasicTalkPartsFragment } from "@generated/graphql";
+import * as R from "ramda";
+import {
+  Container,
+  Header,
+  Image,
+  Content,
+  List,
+  Background,
+  ImageTitleWrapper,
+} from "./ArticlesSectionStyle";
 
 interface Props {
-  title: string;
+  title: React.ReactNode;
   lead?: string;
   imageSrc: string;
   align?: "left" | "center";
-  posts: BasicPostPartsFragment[];
+  posts: PostOrPage[];
+  talks: BasicTalkPartsFragment[];
 }
 
 const ArticlesSection: React.FC<Props> = ({
@@ -18,22 +29,38 @@ const ArticlesSection: React.FC<Props> = ({
   lead,
   imageSrc,
   posts,
+  talks,
   align = "left",
 }) => {
-  const toPostLink = (post: BasicPostPartsFragment) => (
-    <Link key={post.id} data={post} />
+  const toPostLink = (post: PostOrPage) => (
+    <PostLink key={post.id} data={post} />
   );
+  const toTalkLink = (talk: BasicTalkPartsFragment) => (
+    <TalkLink key={talk.id} data={talk} />
+  );
+  const isPost = posts.length > 0;
+  const toListElement = isPost ? toPostLink : toTalkLink;
+  const elements = isPost ? posts : talks;
+  const elementsList = R.map(toListElement, elements);
 
-  const postsList = R.map(toPostLink, posts);
+  const isStringTitle = typeof title === "string";
+  const titleElement = isStringTitle ? (
+    <Title>{title}</Title>
+  ) : (
+    <ImageTitleWrapper>{title}</ImageTitleWrapper>
+  );
 
   return (
     <Container className="container">
       <Header align={align}>
         <Image src={imageSrc} alt={title} />
-        <Title>{title}</Title>
+        {titleElement}
         {lead && <Lead>{lead}</Lead>}
       </Header>
-      <Content>{postsList}</Content>
+      <Content>
+        <Background />
+        <List>{elementsList}</List>
+      </Content>
     </Container>
   );
 };

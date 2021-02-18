@@ -12,10 +12,10 @@ import {
   Compass,
   Party,
   Traits,
-  Answers,
 } from "@components/Results";
 import ShareSocial from "@shared/ShareSocial";
-import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
+import { Like } from "react-facebook";
+import useTranslation from "next-translate/useTranslation";
 import { Container, Col, Row } from "./ResultsContentStyle";
 
 interface Props {
@@ -24,7 +24,7 @@ interface Props {
 }
 
 const ResultsContent: React.FC<Props> = ({ results, politician }) => {
-  const { url } = useCanonicalUrl();
+  const { lang } = useTranslation();
   const hasParties = results.parties.length > 0;
   const hasTraits = results.traits.length > 0;
   const hasAxes = results.axes.length > 0;
@@ -70,18 +70,12 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
         )}
       </Row>
       <ShareSocial
-        url={url}
-        message="Sprawdź moje poglądy polityczne w myPolitics!"
+        message={`Sprawdź moje poglądy polityczne w ${results.quiz.title[lang]}!`}
       />
-      <iframe
-        title="like-fb-results"
-        src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FmyPoliticsTest&width=450&layout=standard&action=like&size=small&share=false&height=35&appId=4144384798967211"
+      <Like
+        href="http://www.facebook.com/myPoliticsTest"
         width="450"
-        height="35"
-        scrolling="no"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        size="large"
       />
     </Container>
   );
