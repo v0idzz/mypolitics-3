@@ -1,8 +1,7 @@
 import GhostContentAPI from "@tryghost/content-api";
-import { GHOST_KEY, GHOST_URL } from "@constants";
 
 export const ghost = new GhostContentAPI({
-  url: GHOST_URL,
-  key: GHOST_KEY,
+  url: "https://editor.mypolitics.pl",
+  key: "7ed662114c3e77ec9261adf81b",
   version: "v3",
 });
