@@ -296,6 +296,11 @@ export type DeletePartnerPayload = {
   partner?: Maybe<Partners>;
 };
 
+export type DeletePatreonPayload = {
+  __typename?: 'deletePatreonPayload';
+  patreon?: Maybe<Patreons>;
+};
+
 export type DeletePoliticianInput = {
   where?: Maybe<InputId>;
 };
@@ -414,6 +419,13 @@ export type EditPartnerInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditPatreonInput = {
+  list?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditPoliticianInput = {
   image?: Maybe<Scalars['ID']>;
   biography?: Maybe<EditComponentTranslationLongTextTranslationInput>;
@@ -516,7 +528,7 @@ export type InputId = {
 
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Author | AuthorConnection | AuthorAggregator | AuthorGroupBy | AuthorConnectionId | AuthorConnection_Id | AuthorConnectionCreatedAt | AuthorConnectionUpdatedAt | AuthorConnectionName | AuthorConnectionImage | AuthorConnectionDescription | AuthorConnectionSocials | CreateAuthorPayload | UpdateAuthorPayload | DeleteAuthorPayload | Documents | UpdateDocumentPayload | DeleteDocumentPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionQuiz_Slug | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Politician | PoliticianConnection | PoliticianAggregator | PoliticianGroupBy | PoliticianConnectionId | PoliticianConnection_Id | PoliticianConnectionCreatedAt | PoliticianConnectionUpdatedAt | PoliticianConnectionImage | PoliticianConnectionBiography | PoliticianConnectionName | CreatePoliticianPayload | UpdatePoliticianPayload | DeletePoliticianPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionDefault_Title | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | CreateUserPayload | UpdateUserPayload | ComponentCommonSocials | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Author | AuthorConnection | AuthorAggregator | AuthorGroupBy | AuthorConnectionId | AuthorConnection_Id | AuthorConnectionCreatedAt | AuthorConnectionUpdatedAt | AuthorConnectionName | AuthorConnectionImage | AuthorConnectionDescription | AuthorConnectionSocials | CreateAuthorPayload | UpdateAuthorPayload | DeleteAuthorPayload | Documents | UpdateDocumentPayload | DeleteDocumentPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | Patreons | UpdatePatreonPayload | DeletePatreonPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionQuiz_Slug | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Politician | PoliticianConnection | PoliticianAggregator | PoliticianGroupBy | PoliticianConnectionId | PoliticianConnection_Id | PoliticianConnectionCreatedAt | PoliticianConnectionUpdatedAt | PoliticianConnectionImage | PoliticianConnectionBiography | PoliticianConnectionName | CreatePoliticianPayload | UpdatePoliticianPayload | DeletePoliticianPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionDefault_Title | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | CreateUserPayload | UpdateUserPayload | ComponentCommonSocials | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
 
 export type PartnerInput = {
   partners?: Maybe<Array<Maybe<ComponentPersonPartnerInput>>>;
@@ -531,6 +543,23 @@ export type Partners = {
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
   partners?: Maybe<Array<Maybe<ComponentPersonPartner>>>;
+};
+
+export type PatreonInput = {
+  list?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type Patreons = {
+  __typename?: 'Patreons';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  list?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type Politician = {
@@ -1071,6 +1100,15 @@ export type UpdatePartnerInput = {
 export type UpdatePartnerPayload = {
   __typename?: 'updatePartnerPayload';
   partner?: Maybe<Partners>;
+};
+
+export type UpdatePatreonInput = {
+  data?: Maybe<EditPatreonInput>;
+};
+
+export type UpdatePatreonPayload = {
+  __typename?: 'updatePatreonPayload';
+  patreon?: Maybe<Patreons>;
 };
 
 export type UpdatePoliticianInput = {
@@ -1704,6 +1742,7 @@ export type Query = {
   authorsConnection?: Maybe<AuthorConnection>;
   document?: Maybe<Documents>;
   partner?: Maybe<Partners>;
+  patreon?: Maybe<Patreons>;
   politicianResult?: Maybe<PoliticianResults>;
   politicianResults?: Maybe<Array<Maybe<PoliticianResults>>>;
   politicianResultsConnection?: Maybe<PoliticianResultsConnection>;
@@ -1756,6 +1795,11 @@ export type QueryDocumentArgs = {
 
 
 export type QueryPartnerArgs = {
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryPatreonArgs = {
   publicationState?: Maybe<PublicationState>;
 };
 
@@ -1881,6 +1925,8 @@ export type Mutation = {
   createAuthor?: Maybe<CreateAuthorPayload>;
   updateAuthor?: Maybe<UpdateAuthorPayload>;
   deleteAuthor?: Maybe<DeleteAuthorPayload>;
+  updatePatreon?: Maybe<UpdatePatreonPayload>;
+  deletePatreon?: Maybe<DeletePatreonPayload>;
   createPolitician?: Maybe<CreatePoliticianPayload>;
   updatePolitician?: Maybe<UpdatePoliticianPayload>;
   deletePolitician?: Maybe<DeletePoliticianPayload>;
@@ -1925,6 +1971,11 @@ export type MutationUpdateAuthorArgs = {
 
 export type MutationDeleteAuthorArgs = {
   input?: Maybe<DeleteAuthorInput>;
+};
+
+
+export type MutationUpdatePatreonArgs = {
+  input?: Maybe<UpdatePatreonInput>;
 };
 
 
@@ -2265,6 +2316,30 @@ export type UpdateRespondentMutation = (
     { __typename?: 'Respondent' }
     & Pick<Respondent, 'id'>
   ) }
+);
+
+export type PoliticiansResultsQueryVariables = Exact<{
+  quizSlug: Scalars['String'];
+}>;
+
+
+export type PoliticiansResultsQuery = (
+  { __typename?: 'Query' }
+  & { politicianResultsConnection?: Maybe<(
+    { __typename?: 'PoliticianResultsConnection' }
+    & { values?: Maybe<Array<Maybe<(
+      { __typename?: 'PoliticianResults' }
+      & Pick<PoliticianResults, 'rid'>
+      & { politician?: Maybe<(
+        { __typename?: 'Politician' }
+        & Pick<Politician, 'name'>
+        & { image?: Maybe<(
+          { __typename?: 'UploadFile' }
+          & Pick<UploadFile, 'url'>
+        )> }
+      )> }
+    )>>> }
+  )> }
 );
 
 export type ResultsAxisPartsFragment = (
@@ -3196,12 +3271,56 @@ export function useUpdateRespondentMutation(baseOptions?: Apollo.MutationHookOpt
 export type UpdateRespondentMutationHookResult = ReturnType<typeof useUpdateRespondentMutation>;
 export type UpdateRespondentMutationResult = Apollo.MutationResult<UpdateRespondentMutation>;
 export type UpdateRespondentMutationOptions = Apollo.BaseMutationOptions<UpdateRespondentMutation, UpdateRespondentMutationVariables>;
+export const PoliticiansResultsDocument = gql`
+    query PoliticiansResults($quizSlug: String!) {
+  politicianResultsConnection(
+    sort: "featured:desc"
+    where: {quiz_slug: $quizSlug}
+  ) {
+    values {
+      rid
+      politician {
+        name
+        image {
+          url
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __usePoliticiansResultsQuery__
+ *
+ * To run a query within a React component, call `usePoliticiansResultsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePoliticiansResultsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePoliticiansResultsQuery({
+ *   variables: {
+ *      quizSlug: // value for 'quizSlug'
+ *   },
+ * });
+ */
+export function usePoliticiansResultsQuery(baseOptions: Apollo.QueryHookOptions<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>) {
+        return Apollo.useQuery<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>(PoliticiansResultsDocument, baseOptions);
+      }
+export function usePoliticiansResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>) {
+          return Apollo.useLazyQuery<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>(PoliticiansResultsDocument, baseOptions);
+        }
+export type PoliticiansResultsQueryHookResult = ReturnType<typeof usePoliticiansResultsQuery>;
+export type PoliticiansResultsLazyQueryHookResult = ReturnType<typeof usePoliticiansResultsLazyQuery>;
+export type PoliticiansResultsQueryResult = Apollo.QueryResult<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>;
 export const SingleResultsDocument = gql`
     query SingleResults($surveyId: String!) {
   results(surveyId: $surveyId) {
     ...ResultsParts
   }
-  politicianResultsConnection(where: {_or: [{rid: $surveyId}, {slug: $surveyId}]}) {
+  politicianResultsConnection(where: {rid: $surveyId}) {
     values {
       politician {
         ...ResultsPoliticianParts
