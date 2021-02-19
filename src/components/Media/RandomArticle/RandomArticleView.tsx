@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { PostOrPage } from "@tryghost/content-api";
 import { getSinglePost } from "@services/ghost";
 import { ArticleContent } from "@components/Media";
 import Loading from "@shared/Loading";
+import { useInView } from "react-hook-inview";
 import { useRandomContent } from "./RandomArticleUtils";
+import { RandomContentWrapper } from "./RandomArticleStyle";
 
 interface Props {
   post: PostOrPage;
@@ -12,8 +14,10 @@ interface Props {
 const RandomArticle: React.FC<Props> = ({ post }) => {
   const { id } = post;
   const [fullData, setFullData] = useState<PostOrPage | undefined>(undefined);
-  const ref = useRef<HTMLDivElement>(null);
-  const RandomContent = useRandomContent();
+  const RandomContent = useCallback(useRandomContent, [id])();
+  const [ref, inView] = useInView({
+    unobserveOnEnter: true,
+  });
 
   const getAndSetPostData = async () => {
     const postData = await getSinglePost(
@@ -27,31 +31,11 @@ const RandomArticle: React.FC<Props> = ({ post }) => {
     setFullData({ ...post, ...postData });
   };
 
-  const isInViewport = () => {
-    if (!ref.current || typeof window === "undefined") {
-      return false;
-    }
-
-    const { top } = ref.current.getBoundingClientRect();
-    return top >= 0 && top <= window.innerHeight;
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      if (typeof window !== "undefined") {
-        if (isInViewport()) {
-          window.removeEventListener("scroll", handleScroll);
-          getAndSetPostData();
-        }
-      }
-    };
-
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", handleScroll);
+    if (inView) {
+      getAndSetPostData();
     }
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [inView]);
 
   return (
     <>
@@ -59,17 +43,11 @@ const RandomArticle: React.FC<Props> = ({ post }) => {
         {!fullData && <Loading />}
         {fullData && <ArticleContent post={fullData} commentsType="facebook" />}
       </div>
-      <div
-        style={{
-          margin: "auto",
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <RandomContent />
-      </div>
+      {fullData && (
+        <RandomContentWrapper>
+          <RandomContent />
+        </RandomContentWrapper>
+      )}
     </>
   );
 };

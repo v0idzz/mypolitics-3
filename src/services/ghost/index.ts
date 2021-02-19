@@ -1,2 +1,1 @@
-export * from "./getManyPosts";
-export * from "./getSinglePost";
+export * from "./queries";

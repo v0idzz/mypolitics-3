@@ -4,3 +4,4 @@ export { default as ArticlesSection } from "./ArticlesSection";
 export { default as ArticlesListSection } from "./ArticlesListSection";
 export { default as ArticleContent } from "./ArticleContent";
 export { default as RandomArticle } from "./RandomArticle";
+export { default as ArticleHead } from "./ArticleHead";

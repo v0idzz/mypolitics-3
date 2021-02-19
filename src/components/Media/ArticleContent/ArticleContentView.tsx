@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Title, Lead } from "@shared/Typography";
 import Comments from "@shared/Comments";
 import ShareSocial from "@shared/ShareSocial";
@@ -7,8 +7,11 @@ import GoogleAd from "@shared/GoogleAd";
 import dayjs from "dayjs";
 import AuthorHeader from "@components/Media/ArticleContent/AuthorHeader";
 import AuthorInfo from "@components/Media/ArticleContent/AuthorInfo";
-import { paths } from "@constants";
 import { Like } from "react-facebook";
+import { ArticleHead } from "@components/Media";
+import { paths } from "@constants";
+import { useInView } from "react-hook-inview";
+import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import {
   Container,
   Inner,
@@ -30,11 +33,12 @@ const ArticleContent: React.FC<Props> = ({ post, commentsType = "disqus" }) => {
     html,
     title,
   } = post;
-
   const path = paths.article(post.slug, post.id);
+  const [ref, inView] = useInView();
 
   return (
-    <Container>
+    <Container ref={ref}>
+      <ArticleHead inView={inView} post={post} />
       <Inner>
         <ContentWrapper>
           <Header>

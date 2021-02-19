@@ -6,7 +6,7 @@ import {
   TalksByFilterQuery,
 } from "@generated/graphql";
 import { initializeApollo } from "@services/apollo";
-import { getManyPosts } from "@services/ghost";
+import { getRandomPosts } from '@services/ghost';
 import { PostOrPage } from "@tryghost/content-api";
 
 export interface StandardPageProps {
@@ -18,8 +18,8 @@ export interface StandardPageProps {
 export const getStandardPageProps = async (): Promise<StandardPageProps> => {
   const client = initializeApollo();
 
-  const articlesQuery = getManyPosts({
-    limit: 3,
+  const articlesQuery = getRandomPosts({
+    limit: 6,
   });
 
   const talksQuery = client.query<TalksByFilterQuery>({

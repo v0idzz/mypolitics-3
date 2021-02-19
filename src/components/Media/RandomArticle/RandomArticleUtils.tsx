@@ -1,26 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import GroupAd from "@shared/GroupAd";
 
-import { Group } from "react-facebook";
-
-const randomContentsConfig = (): React.FC[] => [
-  () => (
-    <Group
-      key="1"
-      href="https://www.facebook.com/groups/Polemika/"
-      skin="light"
-      showSocialContext
-      showMetaData
-    />
-  ),
-  () => (
-    <Group
-      key="2"
-      href="https://www.facebook.com/groups/sztabmypolitics/"
-      skin="light"
-      showSocialContext
-      showMetaData
-    />
-  ),
+const useRandomContentsConfig = (): React.FC[] => [
+  () => <GroupAd name="polemika" />,
+  () => <GroupAd name="sztab" />,
   () => (
     <iframe
       title="discord-myp"
@@ -36,8 +19,12 @@ const randomContentsConfig = (): React.FC[] => [
 ];
 
 export const useRandomContent = (): React.FC => {
-  const randomContents = randomContentsConfig();
-  const [id] = useState(Math.floor(Math.random() * randomContents.length));
+  const randomContents = useRandomContentsConfig();
+  const [id, setId] = useState(0);
+
+  useEffect(() => {
+    setId(Math.floor(Math.random() * randomContents.length));
+  }, []);
 
   return randomContents[id];
 };
