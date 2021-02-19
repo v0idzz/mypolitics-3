@@ -1,10 +1,8 @@
 import GhostContentAPI from "@tryghost/content-api";
-import getConfig from "next/config";
-
-const { publicRuntimeConfig } = getConfig();
+import { GHOST_KEY, GHOST_URL } from "@constants";
 
 export const ghost = new GhostContentAPI({
-  url: publicRuntimeConfig.GHOST_URL,
-  key: publicRuntimeConfig.GHOST_KEY,
+  url: GHOST_URL,
+  key: GHOST_KEY,
   version: "v3",
 });

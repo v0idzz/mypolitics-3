@@ -2,6 +2,8 @@ import getConfig from "next/config";
 
 const { publicRuntimeConfig } = getConfig();
 export const BASE_PATH = publicRuntimeConfig.BASE_PATH || "";
+export const GHOST_URL = publicRuntimeConfig.GHOST_URL || "";
+export const GHOST_KEY = publicRuntimeConfig.GHOST_KEY || "";
 
 export const Cookies = {
   RESPONDENT: "mypolitics-respondent",
