@@ -102,7 +102,7 @@ export type AuthorConnectionName = {
   key?: Maybe<Scalars['String']>;
   connection?: Maybe<AuthorConnection>;
 };
-
+ 
 export type AuthorConnectionSocials = {
   __typename?: 'AuthorConnectionSocials';
   key?: Maybe<Scalars['ID']>;
