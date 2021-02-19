@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useInView } from "react-hook-inview";
 import { AdId, adsIdsSlots } from "./GoogleAdUtils";
 import { MockupAd, Text } from "./GoogleAdStyle";
 
@@ -8,9 +9,12 @@ interface Props {
 
 const GoogleAd: React.FC<Props> = ({ id }) => {
   const slot = adsIdsSlots[id];
+  const [ref, inView] = useInView({
+    unobserveOnEnter: true,
+  });
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && inView) {
       try {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -19,7 +23,7 @@ const GoogleAd: React.FC<Props> = ({ id }) => {
         console.error(e);
       }
     }
-  }, []);
+  }, [inView]);
 
   if (process.env.NODE_ENV !== "production") {
     return (
@@ -34,6 +38,7 @@ const GoogleAd: React.FC<Props> = ({ id }) => {
 
   return (
     <ins
+      ref={ref}
       style={{
         display: "block",
         width: "100%",
