@@ -25,7 +25,7 @@ const Article: React.FC<Props> = ({ post, standardPageProps }) => (
 
 export const getServerSideProps = async ({ query }: NextPageContext) => {
   const post = await getSinglePost({
-    id: `${query.id}`,
+    slug: `${query.slug}`,
   });
 
   const standardPageProps = await getStandardPageProps();

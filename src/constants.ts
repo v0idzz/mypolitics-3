@@ -15,7 +15,7 @@ export const paths = {
   gdpr: "/gdpr",
   articles: "/articles",
   article(slug: string, id?: string): string {
-    return `/articles/${slug}${id ? `/${id}` : ""}`;
+    return `/articles/${slug}`;
   },
   quizzes: "/quizzes",
   quizzesPreInitialize: "/quizzes/initialize/pre",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PageContainer } from "@shared/Page";
 import { ArticlesListSection, RandomArticle } from "@components/Media";
 import ShareSocial from "@shared/ShareSocial";
@@ -12,6 +12,8 @@ import {
   FeaturedQuizzesQuery,
 } from "@generated/graphql";
 import GoogleAd from "@shared/GoogleAd";
+import { useInView } from "react-hook-inview";
+import { useRouter } from "next/router";
 import { Content, Inner } from "./StandardPageStyle";
 
 library.add(faPollH);
@@ -31,8 +33,16 @@ const StandardPage: React.FC<Props> = ({
   talks,
   quizzes,
 }) => {
+  const { asPath } = useRouter();
   const shortenedArticles = articles.filter((_, k) => k < 3);
   const lastArticles = articles.filter((v) => !shortenedArticles.includes(v));
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (!inView) {
+      window.history.pushState({}, null, asPath);
+    }
+  }, [inView]);
 
   return (
     <PageContainer>
@@ -59,9 +69,11 @@ const StandardPage: React.FC<Props> = ({
             <ShareSocial />
           </Inner>
           <GoogleAd id="myp3-standard-bottom" />
-          {articles.map((article) => (
-            <RandomArticle key={article.id} post={article} />
-          ))}
+          <Inner ref={ref}>
+            {articles.map((article) => (
+              <RandomArticle key={article.id} post={article} />
+            ))}
+          </Inner>
           <ArticlesListSection posts={lastArticles} type="short-news" />
         </Inner>
       </div>

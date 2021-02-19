@@ -6,7 +6,7 @@ import ContactActionSection from "@shared/ContactActionSection";
 import { NextSeo } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
 import { categoriesConfig } from "@components/Media/utils/useCategory";
-import { getManyPosts } from "@services/ghost";
+import { getRandomPosts } from "@services/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 
 interface Props {
@@ -43,12 +43,12 @@ export const getServerSideProps = async ({
 }): Promise<{ props: Props }> => {
   const [viewTag, newsTag] = categoriesConfig[locale];
 
-  const getView = getManyPosts({
+  const getView = getRandomPosts({
     limit: 7,
     filter: `tag:${viewTag}`,
   });
 
-  const getNews = getManyPosts({
+  const getNews = getRandomPosts({
     limit: 8,
     filter: `tag:${newsTag}`,
   });

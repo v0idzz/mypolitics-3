@@ -4,24 +4,28 @@ import { getManyPosts } from "@services/ghost/queries/getManyPosts";
 
 const BASE_LIMIT = 6;
 
+const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+
 export const getRandomPosts = async (
   options: Params
 ): Promise<void | PostsOrPages> => {
-  const { limit: optLimit } = options;
+  const { limit: optLimit, filter } = options;
   const limit = optLimit ? parseInt(`${optLimit}`, 10) : BASE_LIMIT;
   const ids = await ghost.posts.browse({
     fields: ["id"],
     limit: limit * 10,
+    filter,
   });
 
-  const shuffledIds = ids.sort(() => Math.random() - 0.5).map((p) => p.id);
+  const shuffledIds = shuffle(ids).map((p) => p.id);
   const idsFiltered = shuffledIds.filter((_, i) => i < limit);
-  const defaultOptions = {
+
+  const defaultOptions: Params = {
     filter: `id:[${idsFiltered.toString()}]`,
   };
 
   return getManyPosts({
     ...defaultOptions,
     ...options,
-  });
+  }).then(shuffle);
 };

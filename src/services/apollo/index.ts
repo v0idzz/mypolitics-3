@@ -2,11 +2,13 @@ import {
   ApolloClient,
   createHttpLink,
   InMemoryCache,
+  ApolloLink,
   NormalizedCacheObject,
 } from "@apollo/client";
 import { useMemo } from "react";
 import { BASE_PATH } from "@constants";
 import getConfig from "next/config";
+import { onError } from "@apollo/client/link/error";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -22,8 +24,12 @@ function createApolloClient() {
     uri: `${domain}/admin/graphql`,
   });
 
+  const errorLink = onError(({ graphQLErrors }) => {
+    if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
+  });
+
   return new ApolloClient({
-    link: httpLink,
+    link: ApolloLink.from([errorLink, httpLink]),
     ssrMode: typeof window === "undefined",
     cache: new InMemoryCache(),
   });
