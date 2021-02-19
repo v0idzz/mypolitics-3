@@ -53,7 +53,7 @@ const ArticlesSection: React.FC<Props> = ({
   return (
     <Container className="container">
       <Header align={align}>
-        <Image src={imageSrc} alt={title} />
+        <Image src={imageSrc} alt="section-title" />
         {titleElement}
         {lead && <Lead>{lead}</Lead>}
       </Header>
