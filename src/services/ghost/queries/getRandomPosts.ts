@@ -12,6 +12,7 @@ export const getRandomPosts = async (
   const { limit: optLimit, filter } = options;
   const limit = optLimit ? parseInt(`${optLimit}`, 10) : BASE_LIMIT;
   const ids = await ghost.posts.browse({
+    order: "published_at DESC",
     fields: ["id"],
     limit: limit * 10,
     filter,

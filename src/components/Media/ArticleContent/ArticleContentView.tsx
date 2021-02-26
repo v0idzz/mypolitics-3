@@ -32,6 +32,8 @@ const ArticleContent: React.FC<Props> = ({ post, commentsType = "disqus" }) => {
     feature_image: featureImage,
     html,
     title,
+    excerpt,
+    custom_excerpt: customExcerpt,
   } = post;
   const path = paths.article(post.slug, post.id);
   const [ref, inView] = useInView();
@@ -50,7 +52,12 @@ const ArticleContent: React.FC<Props> = ({ post, commentsType = "disqus" }) => {
         <ThumbnailImage src={featureImage} alt={title} />
         <ContentWrapper>
           <GoogleAd id="myp3-article-before" />
-          <Content dangerouslySetInnerHTML={{ __html: html }} />
+          <div>
+            <Content>
+              <b>{excerpt || customExcerpt}</b>
+            </Content>
+            <Content dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
           <GoogleAd id="myp3-article-after" />
           {post.authors.map((author) => (
             <AuthorInfo key={author.id} author={author} />

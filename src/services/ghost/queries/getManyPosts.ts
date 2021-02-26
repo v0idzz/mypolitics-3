@@ -4,7 +4,7 @@ import { Params, PostsOrPages } from "@tryghost/content-api";
 const defaultOptions: Params = {
   fields: ["id", "title", "slug", "feature_image"],
   include: "tags",
-  order: "published_at ASC",
+  order: "published_at DESC",
 };
 
 export const getManyPosts = async (

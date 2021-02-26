@@ -67,7 +67,7 @@ export const getServerSideProps = async ({
   ]);
   const news = newsData || [];
   const view = viewData || [];
-  const featured = [news.pop(), ...(newViewData || [])];
+  const featured = [news.shift(), ...(newViewData || [])];
 
   return {
     props: {
