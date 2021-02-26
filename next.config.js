@@ -15,11 +15,12 @@ const nextConfig = {
 
     return config;
   },
+  serverRuntimeConfig: {
+    CONTENT_ADMIN_API_KEY: process.env.CONTENT_ADMIN_API_KEY,
+  },
   publicRuntimeConfig: {
     NODE_ENV: process.env.NODE_ENV,
     BASE_PATH: process.env.BASE_PATH,
-    GHOST_URL: process.env.GHOST_URL,
-    GHOST_KEY: process.env.GHOST_KEY,
   },
   async redirects() {
     return [

@@ -8,6 +8,7 @@ import StandardPage, {
   StandardPageProps,
 } from "@shared/StandardPage";
 import GoogleAd from "@shared/GoogleAd";
+import { getSinglePostAsAdmin } from "@services/ghost/admin";
 
 interface Props {
   post: PostOrPage;
@@ -24,9 +25,17 @@ const Article: React.FC<Props> = ({ post, standardPageProps }) => (
 );
 
 export const getServerSideProps = async ({ query }: NextPageContext) => {
-  const post = await getSinglePost({
+  let post = await getSinglePost({
     slug: `${query.slug}`,
   });
+
+  if (!post) {
+    post = await getSinglePostAsAdmin({
+      slug: `${query.slug}`,
+    });
+
+    console.log(post)
+  }
 
   const standardPageProps = await getStandardPageProps();
 

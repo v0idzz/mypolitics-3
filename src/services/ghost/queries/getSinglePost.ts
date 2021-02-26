@@ -1,4 +1,4 @@
-import { Nullable, Params, PostOrPage } from "@tryghost/content-api";
+import { GhostAPI, Nullable, Params, PostOrPage } from "@tryghost/content-api";
 import { ghost } from "@services/ghost/connect";
 
 const defaultOptions: Params = {
@@ -13,12 +13,14 @@ const defaultOptions: Params = {
   ],
   include: ["tags", "authors"],
   order: "published_at DESC",
+  formats: "html",
 };
 
 export const getSinglePost = async (
   data: { id: Nullable<string> } | { slug: Nullable<string> },
-  options?: Params
+  options?: Params,
+  ghostApi: GhostAPI = ghost
 ): Promise<void | PostOrPage> =>
-  ghost.posts.read(data, { ...defaultOptions, ...options }).catch((err) => {
+  ghostApi.posts.read(data, { ...defaultOptions, ...options }).catch((err) => {
     console.error(err);
   });
