@@ -33,7 +33,8 @@ const SingleQuizPage: React.FC<Props> = ({ quiz, standardPageProps }) => {
 
 export const getServerSideProps = async ({
   query,
-}: NextPageContext): Promise<{ props: Props }> => {
+  ...context
+}: NextPageContext & { locale: string }): Promise<{ props: Props }> => {
   const client = initializeApollo();
   const { data } = await client.query<SingleQuizQuery>({
     query: SingleQuizDocument,
@@ -42,7 +43,7 @@ export const getServerSideProps = async ({
     },
   });
 
-  const standardPageProps = await getStandardPageProps();
+  const standardPageProps = await getStandardPageProps({ query, ...context });
 
   return {
     props: {

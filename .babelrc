@@ -29,6 +29,14 @@
           "@constants": "./src/constants.ts"
         }
       }
+    ],
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": false,
+        "preprocess": false
+      }
     ]
   ]
 }

@@ -24,13 +24,15 @@ const QuizzesPage: React.FC<Props> = ({
   </StandardPage>
 );
 
-export const getServerSideProps = async (): Promise<{ props: Props }> => {
+export const getServerSideProps = async (
+  context
+): Promise<{ props: Props }> => {
   const client = initializeApollo();
   const { data } = await client.query<FeaturedQuizzesQuery>({
     query: FeaturedQuizzesDocument,
   });
 
-  const standardPageProps = await getStandardPageProps();
+  const standardPageProps = await getStandardPageProps(context);
 
   return {
     props: {

@@ -24,7 +24,10 @@ const Article: React.FC<Props> = ({ post, standardPageProps }) => (
   </StandardPage>
 );
 
-export const getServerSideProps = async ({ query }: NextPageContext) => {
+export const getServerSideProps = async ({
+  query,
+  ...context
+}: NextPageContext & { locale: string }) => {
   let post = await getSinglePost({
     slug: `${query.slug}`,
   });
@@ -33,11 +36,9 @@ export const getServerSideProps = async ({ query }: NextPageContext) => {
     post = await getSinglePostAsAdmin({
       slug: `${query.slug}`,
     });
-
-    console.log(post)
   }
 
-  const standardPageProps = await getStandardPageProps();
+  const standardPageProps = await getStandardPageProps({ query, ...context });
 
   return {
     props: {

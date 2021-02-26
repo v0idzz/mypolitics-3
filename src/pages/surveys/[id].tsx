@@ -20,8 +20,10 @@ const SurveyPage: React.FC<Props> = ({ standardPageProps }) => (
   </StandardPage>
 );
 
-export const getServerSideProps = async (): Promise<{ props: Props }> => {
-  const standardPageProps = await getStandardPageProps();
+export const getServerSideProps = async (
+  context
+): Promise<{ props: Props }> => {
+  const standardPageProps = await getStandardPageProps(context);
 
   return {
     props: {

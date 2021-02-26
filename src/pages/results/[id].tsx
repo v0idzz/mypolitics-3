@@ -73,7 +73,8 @@ const ResultsPage: React.FC<Props> = ({
 
 export const getServerSideProps = async ({
   query,
-}: NextPageContext): Promise<{ props: Props }> => {
+  ...context
+}: NextPageContext & { locale: string }): Promise<{ props: Props }> => {
   const client = initializeApollo();
   const { data } = await client.query<SingleResultsQuery>({
     query: SingleResultsDocument,
@@ -87,7 +88,7 @@ export const getServerSideProps = async ({
   const politician =
     typeof politicianData !== "undefined" ? politicianData.politician : null;
 
-  const standardPageProps = await getStandardPageProps();
+  const standardPageProps = await getStandardPageProps({ query, ...context });
 
   return {
     props: {

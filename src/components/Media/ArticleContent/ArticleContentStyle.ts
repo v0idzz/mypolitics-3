@@ -75,9 +75,22 @@ export const Header = styled.header`
 
 export const ThumbnailImage = styled.img`
   width: 100%;
-  height: auto;
   display: block;
   border-radius: 1rem;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+
+  @supports not (aspect-ratio: 4/3) {
+    height: 15rem;
+
+    ${breakpoint("sm")`
+      height: 30rem;
+    `};
+
+    ${breakpoint("md")`
+      height: 40rem;
+    `};
+  }
 
   ${breakpoint("md")`
     border-radius: 2rem;

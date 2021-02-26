@@ -10,6 +10,8 @@ import {
 import { initializeApollo } from "@services/apollo";
 import { getRandomPosts } from "@services/ghost";
 import { PostOrPage } from "@tryghost/content-api";
+import { categoriesConfig } from "@components/Media/utils/useCategory";
+import { NextPageContext } from "next";
 
 export interface StandardPageProps {
   articles: PostOrPage[];
@@ -18,11 +20,22 @@ export interface StandardPageProps {
   patreons: PatreonQuery["patreon"];
 }
 
-export const getStandardPageProps = async (): Promise<StandardPageProps> => {
+export const getStandardPageProps = async ({
+  locale,
+  query,
+}: NextPageContext & { locale: string }): Promise<StandardPageProps> => {
   const client = initializeApollo();
+  const [viewTag, newsTag] = categoriesConfig[locale];
+  const notCurrentFilter = `slug:-['${query.slug}']`;
 
-  const articlesQuery = getRandomPosts({
-    limit: 6,
+  const newsQuery = getRandomPosts({
+    limit: 2,
+    filter: `tag:${newsTag}+${notCurrentFilter}`,
+  });
+
+  const viewQuery = getRandomPosts({
+    limit: 4,
+    filter: `tag:${viewTag}+${notCurrentFilter}`,
   });
 
   const talksQuery = client.query<TalksByFilterQuery>({
@@ -41,15 +54,16 @@ export const getStandardPageProps = async (): Promise<StandardPageProps> => {
     query: PatreonDocument,
   });
 
-  const [articles, talks, quizzes, patreons] = await Promise.all([
-    articlesQuery,
+  const [news, view, talks, quizzes, patreons] = await Promise.all([
+    newsQuery,
+    viewQuery,
     talksQuery,
     quizzesQuery,
     patreonQuery,
   ]);
 
   return {
-    articles: articles || [],
+    articles: (news || []).concat(view || []),
     talks: talks?.data.talks || [],
     quizzes: quizzes?.data.featuredQuizzes || [],
     patreons: patreons?.data.patreon,
