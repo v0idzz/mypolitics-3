@@ -6,9 +6,10 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client";
 import { useMemo } from "react";
-import { BASE_PATH } from "@constants";
+import { BASE_PATH, Headers } from "@constants";
 import getConfig from "next/config";
 import { onError } from "@apollo/client/link/error";
+import { setContext } from "@apollo/client/link/context";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -20,6 +21,28 @@ function createApolloClient() {
       ? BASE_PATH
       : "http://localhost:3000";
 
+  const authLink = setContext((_, { headers }) => {
+    if (typeof window === "undefined") {
+      return { headers };
+    }
+
+    const keyExists = (key) => localStorage.getItem(Headers[key]) !== null;
+    const toKeyEntry = (key) => [
+      Headers[key],
+      localStorage.getItem(Headers[key]),
+    ];
+    const headersEntries = Object.keys(Headers)
+      .filter(keyExists)
+      .map(toKeyEntry);
+
+    return {
+      headers: {
+        ...headers,
+        ...Object.fromEntries(headersEntries),
+      },
+    };
+  });
+
   const httpLink = createHttpLink({
     uri: `${domain}/admin/graphql`,
   });
@@ -29,7 +52,7 @@ function createApolloClient() {
   });
 
   return new ApolloClient({
-    link: ApolloLink.from([errorLink, httpLink]),
+    link: ApolloLink.from([authLink, errorLink, httpLink]),
     ssrMode: typeof window === "undefined",
     cache: new InMemoryCache(),
   });

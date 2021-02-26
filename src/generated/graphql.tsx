@@ -137,6 +137,39 @@ export type AuthorInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type ComponentCommonDepartment = {
+  __typename?: 'ComponentCommonDepartment';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  title?: Maybe<Scalars['String']>;
+  logo?: Maybe<UploadFile>;
+  leaders?: Maybe<Array<Maybe<Member>>>;
+  members?: Maybe<Array<Maybe<Member>>>;
+};
+
+
+export type ComponentCommonDepartmentLeadersArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type ComponentCommonDepartmentMembersArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ComponentCommonDepartmentInput = {
+  title?: Maybe<Scalars['String']>;
+  leaders?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  members?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  logo?: Maybe<Scalars['ID']>;
+};
+
 export type ComponentCommonSocialInput = {
   facebook?: Maybe<Scalars['String']>;
   twitter?: Maybe<Scalars['String']>;
@@ -150,6 +183,16 @@ export type ComponentCommonSocials = {
   facebook?: Maybe<Scalars['String']>;
   twitter?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
+};
+
+export type ComponentPersonMember = {
+  __typename?: 'ComponentPersonMember';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+};
+
+export type ComponentPersonMemberInput = {
+  _?: Maybe<Scalars['String']>;
 };
 
 export type ComponentPersonPartner = {
@@ -230,6 +273,15 @@ export type CreateAuthorPayload = {
   author?: Maybe<Author>;
 };
 
+export type CreateMemberInput = {
+  data?: Maybe<MemberInput>;
+};
+
+export type CreateMemberPayload = {
+  __typename?: 'createMemberPayload';
+  member?: Maybe<Member>;
+};
+
 export type CreatePoliticianInput = {
   data?: Maybe<PoliticianInput>;
 };
@@ -291,6 +343,15 @@ export type DeleteDocumentPayload = {
   document?: Maybe<Documents>;
 };
 
+export type DeleteMemberInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteMemberPayload = {
+  __typename?: 'deleteMemberPayload';
+  member?: Maybe<Member>;
+};
+
 export type DeletePartnerPayload = {
   __typename?: 'deletePartnerPayload';
   partner?: Maybe<Partners>;
@@ -337,6 +398,11 @@ export type DeleteTalkPayload = {
   talk?: Maybe<Talk>;
 };
 
+export type DeleteTeamPayload = {
+  __typename?: 'deleteTeamPayload';
+  team?: Maybe<Team>;
+};
+
 export type DocumentInput = {
   rules?: Maybe<ComponentTranslationRichTextTranslationInput>;
   privacy?: Maybe<ComponentTranslationRichTextTranslationInput>;
@@ -366,11 +432,23 @@ export type EditAuthorInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditComponentCommonDepartmentInput = {
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  leaders?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  members?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  logo?: Maybe<Scalars['ID']>;
+};
+
 export type EditComponentCommonSocialInput = {
   id?: Maybe<Scalars['ID']>;
   facebook?: Maybe<Scalars['String']>;
   twitter?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
+};
+
+export type EditComponentPersonMemberInput = {
+  id?: Maybe<Scalars['ID']>;
 };
 
 export type EditComponentPersonPartnerInput = {
@@ -409,6 +487,14 @@ export type EditDocumentInput = {
   rules?: Maybe<EditComponentTranslationRichTextTranslationInput>;
   privacy?: Maybe<EditComponentTranslationRichTextTranslationInput>;
   gdpr?: Maybe<EditComponentTranslationRichTextTranslationInput>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditMemberInput = {
+  name?: Maybe<Scalars['String']>;
+  role?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['ID']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -471,7 +557,14 @@ export type EditTalkInput = {
   thumbnail?: Maybe<Scalars['ID']>;
   lang?: Maybe<Enum_Talk_Lang>;
   politicians?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  moderators?: Maybe<Array<Maybe<Scalars['ID']>>>;
   published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditTeamInput = {
+  departments?: Maybe<Array<Maybe<EditComponentCommonDepartmentInput>>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -513,7 +606,9 @@ export enum Enum_Talk_Lang {
 export enum Enum_Talk_Type {
   Classic = 'classic',
   Mvsp = 'mvsp',
-  Interview = 'interview'
+  Interview = 'interview',
+  Expert = 'expert',
+  Ring = 'ring'
 }
 
 export type FileInfoInput = {
@@ -528,7 +623,92 @@ export type InputId = {
 
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Author | AuthorConnection | AuthorAggregator | AuthorGroupBy | AuthorConnectionId | AuthorConnection_Id | AuthorConnectionCreatedAt | AuthorConnectionUpdatedAt | AuthorConnectionName | AuthorConnectionImage | AuthorConnectionDescription | AuthorConnectionSocials | CreateAuthorPayload | UpdateAuthorPayload | DeleteAuthorPayload | Documents | UpdateDocumentPayload | DeleteDocumentPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | Patreons | UpdatePatreonPayload | DeletePatreonPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionQuiz_Slug | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Politician | PoliticianConnection | PoliticianAggregator | PoliticianGroupBy | PoliticianConnectionId | PoliticianConnection_Id | PoliticianConnectionCreatedAt | PoliticianConnectionUpdatedAt | PoliticianConnectionImage | PoliticianConnectionBiography | PoliticianConnectionName | CreatePoliticianPayload | UpdatePoliticianPayload | DeletePoliticianPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionDefault_Title | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | CreateUserPayload | UpdateUserPayload | ComponentCommonSocials | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
+export type Member = {
+  __typename?: 'Member';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  name?: Maybe<Scalars['String']>;
+  role?: Maybe<Scalars['String']>;
+  image?: Maybe<UploadFile>;
+};
+
+export type MemberAggregator = {
+  __typename?: 'MemberAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type MemberConnection = {
+  __typename?: 'MemberConnection';
+  values?: Maybe<Array<Maybe<Member>>>;
+  groupBy?: Maybe<MemberGroupBy>;
+  aggregate?: Maybe<MemberAggregator>;
+};
+
+export type MemberConnection_Id = {
+  __typename?: 'MemberConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MemberConnection>;
+};
+
+export type MemberConnectionCreatedAt = {
+  __typename?: 'MemberConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<MemberConnection>;
+};
+
+export type MemberConnectionId = {
+  __typename?: 'MemberConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MemberConnection>;
+};
+
+export type MemberConnectionImage = {
+  __typename?: 'MemberConnectionImage';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MemberConnection>;
+};
+
+export type MemberConnectionName = {
+  __typename?: 'MemberConnectionName';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<MemberConnection>;
+};
+
+export type MemberConnectionRole = {
+  __typename?: 'MemberConnectionRole';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<MemberConnection>;
+};
+
+export type MemberConnectionUpdatedAt = {
+  __typename?: 'MemberConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<MemberConnection>;
+};
+
+export type MemberGroupBy = {
+  __typename?: 'MemberGroupBy';
+  id?: Maybe<Array<Maybe<MemberConnectionId>>>;
+  _id?: Maybe<Array<Maybe<MemberConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<MemberConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<MemberConnectionUpdatedAt>>>;
+  name?: Maybe<Array<Maybe<MemberConnectionName>>>;
+  role?: Maybe<Array<Maybe<MemberConnectionRole>>>;
+  image?: Maybe<Array<Maybe<MemberConnectionImage>>>;
+};
+
+export type MemberInput = {
+  name?: Maybe<Scalars['String']>;
+  role?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['ID']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Author | AuthorConnection | AuthorAggregator | AuthorGroupBy | AuthorConnectionId | AuthorConnection_Id | AuthorConnectionCreatedAt | AuthorConnectionUpdatedAt | AuthorConnectionName | AuthorConnectionImage | AuthorConnectionDescription | AuthorConnectionSocials | CreateAuthorPayload | UpdateAuthorPayload | DeleteAuthorPayload | Documents | UpdateDocumentPayload | DeleteDocumentPayload | Member | MemberConnection | MemberAggregator | MemberGroupBy | MemberConnectionId | MemberConnection_Id | MemberConnectionCreatedAt | MemberConnectionUpdatedAt | MemberConnectionName | MemberConnectionRole | MemberConnectionImage | CreateMemberPayload | UpdateMemberPayload | DeleteMemberPayload | Partners | UpdatePartnerPayload | DeletePartnerPayload | Patreons | UpdatePatreonPayload | DeletePatreonPayload | PoliticianResults | PoliticianResultsConnection | PoliticianResultsAggregator | PoliticianResultsGroupBy | PoliticianResultsConnectionId | PoliticianResultsConnection_Id | PoliticianResultsConnectionCreatedAt | PoliticianResultsConnectionUpdatedAt | PoliticianResultsConnectionRid | PoliticianResultsConnectionCategory | PoliticianResultsConnectionFeatured | PoliticianResultsConnectionSlug | PoliticianResultsConnectionPolitician | PoliticianResultsConnectionQuiz_Slug | CreatePoliticianResultPayload | UpdatePoliticianResultPayload | DeletePoliticianResultPayload | Politician | PoliticianConnection | PoliticianAggregator | PoliticianGroupBy | PoliticianConnectionId | PoliticianConnection_Id | PoliticianConnectionCreatedAt | PoliticianConnectionUpdatedAt | PoliticianConnectionImage | PoliticianConnectionBiography | PoliticianConnectionName | CreatePoliticianPayload | UpdatePoliticianPayload | DeletePoliticianPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_Id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionThumbnail | PostConnectionCategory | PostConnectionFeatured | PostConnectionTitle | PostConnectionContent | PostConnectionSubcategory | PostConnectionSlug | PostConnectionDefault_Title | PostConnectionPublished_At | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Talk | TalkConnection | TalkAggregator | TalkGroupBy | TalkConnectionId | TalkConnection_Id | TalkConnectionCreatedAt | TalkConnectionUpdatedAt | TalkConnectionTitle | TalkConnectionStart | TalkConnectionEnd | TalkConnectionType | TalkConnectionUrl | TalkConnectionThumbnail | TalkConnectionLang | TalkConnectionPublished_At | CreateTalkPayload | UpdateTalkPayload | DeleteTalkPayload | Team | UpdateTeamPayload | DeleteTeamPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | CreateUserPayload | UpdateUserPayload | ComponentCommonDepartment | ComponentCommonSocials | ComponentPersonMember | ComponentPersonPartner | ComponentPersonPolitician | ComponentTranslationLongTextTranslation | ComponentTranslationRichTextTranslation | ComponentTranslationShortTextTranslation;
 
 export type PartnerInput = {
   partners?: Maybe<Array<Maybe<ComponentPersonPartnerInput>>>;
@@ -948,10 +1128,19 @@ export type Talk = {
   lang?: Maybe<Enum_Talk_Lang>;
   published_at?: Maybe<Scalars['DateTime']>;
   politicians?: Maybe<Array<Maybe<Politician>>>;
+  moderators?: Maybe<Array<Maybe<Member>>>;
 };
 
 
 export type TalkPoliticiansArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type TalkModeratorsArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -1068,7 +1257,23 @@ export type TalkInput = {
   thumbnail?: Maybe<Scalars['ID']>;
   lang?: Maybe<Enum_Talk_Lang>;
   politicians?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  moderators?: Maybe<Array<Maybe<Scalars['ID']>>>;
   published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type Team = {
+  __typename?: 'Team';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  departments?: Maybe<Array<Maybe<ComponentCommonDepartment>>>;
+};
+
+export type TeamInput = {
+  departments?: Maybe<Array<Maybe<ComponentCommonDepartmentInput>>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -1091,6 +1296,16 @@ export type UpdateDocumentInput = {
 export type UpdateDocumentPayload = {
   __typename?: 'updateDocumentPayload';
   document?: Maybe<Documents>;
+};
+
+export type UpdateMemberInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditMemberInput>;
+};
+
+export type UpdateMemberPayload = {
+  __typename?: 'updateMemberPayload';
+  member?: Maybe<Member>;
 };
 
 export type UpdatePartnerInput = {
@@ -1149,6 +1364,15 @@ export type UpdateTalkInput = {
 export type UpdateTalkPayload = {
   __typename?: 'updateTalkPayload';
   talk?: Maybe<Talk>;
+};
+
+export type UpdateTeamInput = {
+  data?: Maybe<EditTeamInput>;
+};
+
+export type UpdateTeamPayload = {
+  __typename?: 'updateTeamPayload';
+  team?: Maybe<Team>;
 };
 
 export type UpdateUserInput = {
@@ -1433,6 +1657,7 @@ export type Quiz = {
   description: TextTranslation;
   meta: QuizMeta;
   currentVersion: QuizVersion;
+  lastUpdatedVersion: QuizVersion;
   versions: Array<Maybe<QuizVersion>>;
 };
 
@@ -1563,6 +1788,8 @@ export type QuizVersion = {
   questions: Array<Maybe<Question>>;
   compassModes: Array<Maybe<QuizCompassMode>>;
   traits: Array<Maybe<Ideology>>;
+  ideologies: Array<Maybe<Ideology>>;
+  parties: Array<Maybe<Party>>;
   quiz: Quiz;
 };
 
@@ -1724,6 +1951,9 @@ export type UpdateQuizVersionInput = {
   parent?: Maybe<Scalars['String']>;
   compassModes: Array<Maybe<QuizCompassModeInput>>;
   traits: Array<Maybe<Scalars['String']>>;
+  questions: Array<Maybe<Scalars['String']>>;
+  ideologies: Array<Maybe<Scalars['String']>>;
+  parties: Array<Maybe<Scalars['String']>>;
 };
 
 export type UpdateRespondentInput = {
@@ -1741,6 +1971,9 @@ export type Query = {
   authors?: Maybe<Array<Maybe<Author>>>;
   authorsConnection?: Maybe<AuthorConnection>;
   document?: Maybe<Documents>;
+  member?: Maybe<Member>;
+  members?: Maybe<Array<Maybe<Member>>>;
+  membersConnection?: Maybe<MemberConnection>;
   partner?: Maybe<Partners>;
   patreon?: Maybe<Patreons>;
   politicianResult?: Maybe<PoliticianResults>;
@@ -1755,9 +1988,11 @@ export type Query = {
   talk?: Maybe<Talk>;
   talks?: Maybe<Array<Maybe<Talk>>>;
   talksConnection?: Maybe<TalkConnection>;
+  team?: Maybe<Team>;
   me?: Maybe<UsersPermissionsMe>;
   respondent: Respondent;
   meRespondent: Respondent;
+  verifyAdmin: Scalars['Boolean'];
   survey: Survey;
   quiz: Quiz;
   featuredQuizzes: Array<Quiz>;
@@ -1791,6 +2026,29 @@ export type QueryAuthorsConnectionArgs = {
 
 export type QueryDocumentArgs = {
   publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryMemberArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryMembersArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryMembersConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 
@@ -1896,6 +2154,11 @@ export type QueryTalksConnectionArgs = {
 };
 
 
+export type QueryTeamArgs = {
+  publicationState?: Maybe<PublicationState>;
+};
+
+
 export type QueryRespondentArgs = {
   code: Array<Scalars['String']>;
 };
@@ -1925,11 +2188,16 @@ export type Mutation = {
   createAuthor?: Maybe<CreateAuthorPayload>;
   updateAuthor?: Maybe<UpdateAuthorPayload>;
   deleteAuthor?: Maybe<DeleteAuthorPayload>;
+  createMember?: Maybe<CreateMemberPayload>;
+  updateMember?: Maybe<UpdateMemberPayload>;
+  deleteMember?: Maybe<DeleteMemberPayload>;
   updatePatreon?: Maybe<UpdatePatreonPayload>;
   deletePatreon?: Maybe<DeletePatreonPayload>;
   createPolitician?: Maybe<CreatePoliticianPayload>;
   updatePolitician?: Maybe<UpdatePoliticianPayload>;
   deletePolitician?: Maybe<DeletePoliticianPayload>;
+  updateTeam?: Maybe<UpdateTeamPayload>;
+  deleteTeam?: Maybe<DeleteTeamPayload>;
   upload: UploadFile;
   multipleUpload: Array<Maybe<UploadFile>>;
   updateFileInfo: UploadFile;
@@ -1944,11 +2212,13 @@ export type Mutation = {
   removeMe: Respondent;
   createSurvey: Survey;
   updateSurvey: Survey;
+  deleteSurvey: Scalars['Boolean'];
   createQuiz: Quiz;
   updateQuiz: Quiz;
   createIdeology: Ideology;
   updateIdeology: Ideology;
   createQuizVersion: QuizVersion;
+  saveQuizVersion: QuizVersion;
   updateQuizVersion: QuizVersion;
   createParty: Party;
   updateParty: Party;
@@ -1974,6 +2244,21 @@ export type MutationDeleteAuthorArgs = {
 };
 
 
+export type MutationCreateMemberArgs = {
+  input?: Maybe<CreateMemberInput>;
+};
+
+
+export type MutationUpdateMemberArgs = {
+  input?: Maybe<UpdateMemberInput>;
+};
+
+
+export type MutationDeleteMemberArgs = {
+  input?: Maybe<DeleteMemberInput>;
+};
+
+
 export type MutationUpdatePatreonArgs = {
   input?: Maybe<UpdatePatreonInput>;
 };
@@ -1991,6 +2276,11 @@ export type MutationUpdatePoliticianArgs = {
 
 export type MutationDeletePoliticianArgs = {
   input?: Maybe<DeletePoliticianInput>;
+};
+
+
+export type MutationUpdateTeamArgs = {
+  input?: Maybe<UpdateTeamInput>;
 };
 
 
@@ -2071,6 +2361,11 @@ export type MutationUpdateSurveyArgs = {
 };
 
 
+export type MutationDeleteSurveyArgs = {
+  id: Scalars['String'];
+};
+
+
 export type MutationCreateQuizArgs = {
   createQuizInput: CreateQuizInput;
 };
@@ -2096,6 +2391,13 @@ export type MutationUpdateIdeologyArgs = {
 export type MutationCreateQuizVersionArgs = {
   createQuizVersionInput: CreateQuizVersionInput;
   quizId: Scalars['String'];
+};
+
+
+export type MutationSaveQuizVersionArgs = {
+  saveQuizVersionInput: UpdateQuizVersionInput;
+  publish: Scalars['Boolean'];
+  id: Scalars['String'];
 };
 
 
@@ -2139,6 +2441,205 @@ export type MutationAddPartyAnswersArgs = {
   quizVersionId: Scalars['String'];
   partyId: Scalars['String'];
 };
+
+export type CompassAxisPartsFragment = (
+  { __typename?: 'QuizCompassAxis' }
+  & { leftIdeologies: Array<(
+    { __typename?: 'QuizCompassIdeology' }
+    & Pick<QuizCompassIdeology, 'weight'>
+    & { ideology: (
+      { __typename?: 'Ideology' }
+      & Pick<Ideology, 'id'>
+    ) }
+  )>, rightIdeologies: Array<(
+    { __typename?: 'QuizCompassIdeology' }
+    & Pick<QuizCompassIdeology, 'weight'>
+    & { ideology: (
+      { __typename?: 'Ideology' }
+      & Pick<Ideology, 'id'>
+    ) }
+  )> }
+);
+
+export type CreateQuestionMutationVariables = Exact<{
+  values: CreateQuestionInput;
+  quizVersion: Scalars['String'];
+}>;
+
+
+export type CreateQuestionMutation = (
+  { __typename?: 'Mutation' }
+  & { createQuestion: (
+    { __typename?: 'Question' }
+    & EditorQuestionPartsFragment
+  ) }
+);
+
+export type EditorIdeologyPartsFragment = (
+  { __typename?: 'Ideology' }
+  & Pick<Ideology, 'id' | 'color'>
+  & { name: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), description: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), icon: (
+    { __typename?: 'IdeologyIcon' }
+    & Pick<IdeologyIcon, 'type' | 'value'>
+  ) }
+);
+
+export type EditorPartyPartsFragment = (
+  { __typename?: 'Party' }
+  & Pick<Party, 'id' | 'name' | 'logoUrl' | 'country'>
+);
+
+export type EditorQuestionPartsFragment = (
+  { __typename?: 'Question' }
+  & Pick<Question, 'id'>
+  & { text: (
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
+  ), effects: (
+    { __typename?: 'QuestionEffects' }
+    & { disagree: (
+      { __typename?: 'QuestionPositiveEffect' }
+      & { ideologies: Array<Maybe<(
+        { __typename?: 'Ideology' }
+        & Pick<Ideology, 'id'>
+      )>>, parties: Array<Maybe<(
+        { __typename?: 'Party' }
+        & Pick<Party, 'id'>
+      )>> }
+    ), agree: (
+      { __typename?: 'QuestionPositiveEffect' }
+      & { ideologies: Array<Maybe<(
+        { __typename?: 'Ideology' }
+        & Pick<Ideology, 'id'>
+      )>>, parties: Array<Maybe<(
+        { __typename?: 'Party' }
+        & Pick<Party, 'id'>
+      )>> }
+    ) }
+  ) }
+);
+
+export type EditorQuizQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type EditorQuizQuery = (
+  { __typename?: 'Query' }
+  & { quiz: (
+    { __typename?: 'Quiz' }
+    & Pick<Quiz, 'id' | 'slug' | 'logoUrl'>
+    & { title: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ), description: (
+      { __typename?: 'TextTranslation' }
+      & Pick<TextTranslation, 'pl' | 'en'>
+    ), lastUpdatedVersion: (
+      { __typename?: 'QuizVersion' }
+      & Pick<QuizVersion, 'id' | 'publishedOn'>
+      & { questions: Array<Maybe<(
+        { __typename?: 'Question' }
+        & EditorQuestionPartsFragment
+      )>>, compassModes: Array<Maybe<(
+        { __typename?: 'QuizCompassMode' }
+        & { name: (
+          { __typename?: 'TextTranslation' }
+          & Pick<TextTranslation, 'pl' | 'en'>
+        ), horizontal: (
+          { __typename?: 'QuizCompassAxis' }
+          & CompassAxisPartsFragment
+        ), vertical: (
+          { __typename?: 'QuizCompassAxis' }
+          & CompassAxisPartsFragment
+        ), third?: Maybe<(
+          { __typename?: 'QuizCompassAxis' }
+          & CompassAxisPartsFragment
+        )> }
+      )>>, traits: Array<Maybe<(
+        { __typename?: 'Ideology' }
+        & EditorIdeologyPartsFragment
+      )>>, ideologies: Array<Maybe<(
+        { __typename?: 'Ideology' }
+        & EditorIdeologyPartsFragment
+      )>>, parties: Array<Maybe<(
+        { __typename?: 'Party' }
+        & EditorPartyPartsFragment
+      )>> }
+    ) }
+  ) }
+);
+
+export type SaveQuizVersionMutationVariables = Exact<{
+  values: UpdateQuizVersionInput;
+  id: Scalars['String'];
+  publish: Scalars['Boolean'];
+}>;
+
+
+export type SaveQuizVersionMutation = (
+  { __typename?: 'Mutation' }
+  & { saveQuizVersion: (
+    { __typename?: 'QuizVersion' }
+    & Pick<QuizVersion, 'id'>
+  ) }
+);
+
+export type UpdateQuestionMutationVariables = Exact<{
+  values: UpdateQuestionInput;
+  id: Scalars['String'];
+}>;
+
+
+export type UpdateQuestionMutation = (
+  { __typename?: 'Mutation' }
+  & { updateQuestion: (
+    { __typename?: 'Question' }
+    & EditorQuestionPartsFragment
+  ) }
+);
+
+export type UpdateQuizMutationVariables = Exact<{
+  values: UpdateQuizInput;
+  id: Scalars['String'];
+}>;
+
+
+export type UpdateQuizMutation = (
+  { __typename?: 'Mutation' }
+  & { updateQuiz: (
+    { __typename?: 'Quiz' }
+    & Pick<Quiz, 'id'>
+  ) }
+);
+
+export type UpdateQuizVersionMutationVariables = Exact<{
+  values: UpdateQuizVersionInput;
+  id: Scalars['String'];
+}>;
+
+
+export type UpdateQuizVersionMutation = (
+  { __typename?: 'Mutation' }
+  & { updateQuizVersion: (
+    { __typename?: 'QuizVersion' }
+    & Pick<QuizVersion, 'id'>
+  ) }
+);
+
+export type VerifyAdminQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type VerifyAdminQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'verifyAdmin'>
+);
 
 export type BasicPostPartsFragment = (
   { __typename?: 'Post' }
@@ -2262,7 +2763,7 @@ export type MeRespondentSurveysQuery = (
         { __typename?: 'QuizVersion' }
         & { quiz: (
           { __typename?: 'Quiz' }
-          & Pick<Quiz, 'id' | 'logoUrl'>
+          & Pick<Quiz, 'id' | 'logoUrl' | 'slug'>
         ) }
       ) }
     )>> }
@@ -2278,7 +2779,7 @@ export type SingleQuizQuery = (
   { __typename?: 'Query' }
   & { quiz: (
     { __typename?: 'Quiz' }
-    & Pick<Quiz, 'id' | 'logoUrl' | 'type'>
+    & Pick<Quiz, 'id' | 'logoUrl' | 'type' | 'slug'>
     & { title: (
       { __typename?: 'TextTranslation' }
       & Pick<TextTranslation, 'pl' | 'en'>
@@ -2319,7 +2820,8 @@ export type UpdateRespondentMutation = (
 );
 
 export type PoliticiansResultsQueryVariables = Exact<{
-  quizSlug: Scalars['String'];
+  quizSlug?: Maybe<Scalars['String']>;
+  category?: Maybe<Enum_Politicianresults_Category>;
 }>;
 
 
@@ -2443,7 +2945,7 @@ export type ResultsPoliticianPartsFragment = (
 
 export type ResultsQuizFragment = (
   { __typename?: 'Quiz' }
-  & Pick<Quiz, 'id' | 'logoUrl' | 'type'>
+  & Pick<Quiz, 'id' | 'logoUrl' | 'type' | 'slug'>
   & { title: (
     { __typename?: 'TextTranslation' }
     & Pick<TextTranslation, 'pl' | 'en'>
@@ -2537,6 +3039,16 @@ export type CreateSurveyMutation = (
   ) }
 );
 
+export type DeleteSurveyMutationVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type DeleteSurveyMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteSurvey'>
+);
+
 export type SingleSurveyExtendedQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
@@ -2628,6 +3140,25 @@ export type UpdateSurveyMutation = (
   ) }
 );
 
+export type CurrentTalkQueryVariables = Exact<{
+  date: Scalars['String'];
+}>;
+
+
+export type CurrentTalkQuery = (
+  { __typename?: 'Query' }
+  & { talksConnection?: Maybe<(
+    { __typename?: 'TalkConnection' }
+    & { values?: Maybe<Array<Maybe<(
+      { __typename?: 'Talk' }
+      & Pick<Talk, 'id' | 'published_at' | 'title' | 'url' | 'type' | 'lang'>
+    )>>>, aggregate?: Maybe<(
+      { __typename?: 'TalkAggregator' }
+      & Pick<TalkAggregator, 'count'>
+    )> }
+  )> }
+);
+
 export type BasicTalkPartsFragment = (
   { __typename?: 'Talk' }
   & Pick<Talk, 'id' | 'published_at' | 'title' | 'url' | 'lang' | 'start' | 'end'>
@@ -2652,6 +3183,44 @@ export type TalksByFilterQuery = (
     { __typename?: 'Talk' }
     & BasicTalkPartsFragment
   )>>> }
+);
+
+export type DepartmentPartsFragment = (
+  { __typename?: 'ComponentCommonDepartment' }
+  & Pick<ComponentCommonDepartment, 'id' | 'title'>
+  & { logo?: Maybe<(
+    { __typename?: 'UploadFile' }
+    & Pick<UploadFile, 'url'>
+  )>, leaders?: Maybe<Array<Maybe<(
+    { __typename?: 'Member' }
+    & MemberPartsFragment
+  )>>>, members?: Maybe<Array<Maybe<(
+    { __typename?: 'Member' }
+    & MemberPartsFragment
+  )>>> }
+);
+
+export type MemberPartsFragment = (
+  { __typename?: 'Member' }
+  & Pick<Member, 'id' | 'name' | 'role'>
+  & { image?: Maybe<(
+    { __typename?: 'UploadFile' }
+    & Pick<UploadFile, 'formats'>
+  )> }
+);
+
+export type TeamQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TeamQuery = (
+  { __typename?: 'Query' }
+  & { team?: Maybe<(
+    { __typename?: 'Team' }
+    & { departments?: Maybe<Array<Maybe<(
+      { __typename?: 'ComponentCommonDepartment' }
+      & DepartmentPartsFragment
+    )>>> }
+  )> }
 );
 
 export type GdprDocumentQueryVariables = Exact<{ [key: string]: never; }>;
@@ -2687,6 +3256,17 @@ export type PartnersQuery = (
   )> }
 );
 
+export type PatreonQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PatreonQuery = (
+  { __typename?: 'Query' }
+  & { patreon?: Maybe<(
+    { __typename?: 'Patreons' }
+    & Pick<Patreons, 'updatedAt' | 'list'>
+  )> }
+);
+
 export type PrivacyDocumentQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2715,6 +3295,75 @@ export type RulesDocumentQuery = (
   )> }
 );
 
+export const CompassAxisPartsFragmentDoc = gql`
+    fragment CompassAxisParts on QuizCompassAxis {
+  leftIdeologies {
+    ideology {
+      id
+    }
+    weight
+  }
+  rightIdeologies {
+    ideology {
+      id
+    }
+    weight
+  }
+}
+    `;
+export const EditorIdeologyPartsFragmentDoc = gql`
+    fragment EditorIdeologyParts on Ideology {
+  id
+  name {
+    pl
+    en
+  }
+  description {
+    pl
+    en
+  }
+  icon {
+    type
+    value
+  }
+  color
+}
+    `;
+export const EditorPartyPartsFragmentDoc = gql`
+    fragment EditorPartyParts on Party {
+  id
+  name
+  logoUrl
+  country
+}
+    `;
+export const EditorQuestionPartsFragmentDoc = gql`
+    fragment EditorQuestionParts on Question {
+  id
+  text {
+    pl
+    en
+  }
+  effects {
+    disagree {
+      ideologies {
+        id
+      }
+      parties {
+        id
+      }
+    }
+    agree {
+      ideologies {
+        id
+      }
+      parties {
+        id
+      }
+    }
+  }
+}
+    `;
 export const BasicPostPartsFragmentDoc = gql`
     fragment BasicPostParts on Post {
   id
@@ -2829,6 +3478,7 @@ export const ResultsQuizFragmentDoc = gql`
   id
   logoUrl
   type
+  slug
   title {
     pl
     en
@@ -2940,6 +3590,304 @@ export const BasicTalkPartsFragmentDoc = gql`
   }
 }
     `;
+export const MemberPartsFragmentDoc = gql`
+    fragment MemberParts on Member {
+  id
+  name
+  role
+  image {
+    formats
+  }
+}
+    `;
+export const DepartmentPartsFragmentDoc = gql`
+    fragment DepartmentParts on ComponentCommonDepartment {
+  id
+  title
+  logo {
+    url
+  }
+  leaders {
+    ...MemberParts
+  }
+  members {
+    ...MemberParts
+  }
+}
+    ${MemberPartsFragmentDoc}`;
+export const CreateQuestionDocument = gql`
+    mutation CreateQuestion($values: CreateQuestionInput!, $quizVersion: String!) {
+  createQuestion(createQuestionInput: $values, quizVersion: $quizVersion) {
+    ...EditorQuestionParts
+  }
+}
+    ${EditorQuestionPartsFragmentDoc}`;
+export type CreateQuestionMutationFn = Apollo.MutationFunction<CreateQuestionMutation, CreateQuestionMutationVariables>;
+
+/**
+ * __useCreateQuestionMutation__
+ *
+ * To run a mutation, you first call `useCreateQuestionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateQuestionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createQuestionMutation, { data, loading, error }] = useCreateQuestionMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      quizVersion: // value for 'quizVersion'
+ *   },
+ * });
+ */
+export function useCreateQuestionMutation(baseOptions?: Apollo.MutationHookOptions<CreateQuestionMutation, CreateQuestionMutationVariables>) {
+        return Apollo.useMutation<CreateQuestionMutation, CreateQuestionMutationVariables>(CreateQuestionDocument, baseOptions);
+      }
+export type CreateQuestionMutationHookResult = ReturnType<typeof useCreateQuestionMutation>;
+export type CreateQuestionMutationResult = Apollo.MutationResult<CreateQuestionMutation>;
+export type CreateQuestionMutationOptions = Apollo.BaseMutationOptions<CreateQuestionMutation, CreateQuestionMutationVariables>;
+export const EditorQuizDocument = gql`
+    query EditorQuiz($slug: String!) {
+  quiz(slug: $slug) {
+    id
+    slug
+    title {
+      pl
+      en
+    }
+    description {
+      pl
+      en
+    }
+    logoUrl
+    lastUpdatedVersion {
+      id
+      publishedOn
+      questions {
+        ...EditorQuestionParts
+      }
+      compassModes {
+        name {
+          pl
+          en
+        }
+        horizontal {
+          ...CompassAxisParts
+        }
+        vertical {
+          ...CompassAxisParts
+        }
+        third {
+          ...CompassAxisParts
+        }
+      }
+      traits {
+        ...EditorIdeologyParts
+      }
+      ideologies {
+        ...EditorIdeologyParts
+      }
+      parties {
+        ...EditorPartyParts
+      }
+    }
+  }
+}
+    ${EditorQuestionPartsFragmentDoc}
+${CompassAxisPartsFragmentDoc}
+${EditorIdeologyPartsFragmentDoc}
+${EditorPartyPartsFragmentDoc}`;
+
+/**
+ * __useEditorQuizQuery__
+ *
+ * To run a query within a React component, call `useEditorQuizQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEditorQuizQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useEditorQuizQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useEditorQuizQuery(baseOptions: Apollo.QueryHookOptions<EditorQuizQuery, EditorQuizQueryVariables>) {
+        return Apollo.useQuery<EditorQuizQuery, EditorQuizQueryVariables>(EditorQuizDocument, baseOptions);
+      }
+export function useEditorQuizLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EditorQuizQuery, EditorQuizQueryVariables>) {
+          return Apollo.useLazyQuery<EditorQuizQuery, EditorQuizQueryVariables>(EditorQuizDocument, baseOptions);
+        }
+export type EditorQuizQueryHookResult = ReturnType<typeof useEditorQuizQuery>;
+export type EditorQuizLazyQueryHookResult = ReturnType<typeof useEditorQuizLazyQuery>;
+export type EditorQuizQueryResult = Apollo.QueryResult<EditorQuizQuery, EditorQuizQueryVariables>;
+export const SaveQuizVersionDocument = gql`
+    mutation SaveQuizVersion($values: UpdateQuizVersionInput!, $id: String!, $publish: Boolean!) {
+  saveQuizVersion(saveQuizVersionInput: $values, id: $id, publish: $publish) {
+    id
+  }
+}
+    `;
+export type SaveQuizVersionMutationFn = Apollo.MutationFunction<SaveQuizVersionMutation, SaveQuizVersionMutationVariables>;
+
+/**
+ * __useSaveQuizVersionMutation__
+ *
+ * To run a mutation, you first call `useSaveQuizVersionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSaveQuizVersionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [saveQuizVersionMutation, { data, loading, error }] = useSaveQuizVersionMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      id: // value for 'id'
+ *      publish: // value for 'publish'
+ *   },
+ * });
+ */
+export function useSaveQuizVersionMutation(baseOptions?: Apollo.MutationHookOptions<SaveQuizVersionMutation, SaveQuizVersionMutationVariables>) {
+        return Apollo.useMutation<SaveQuizVersionMutation, SaveQuizVersionMutationVariables>(SaveQuizVersionDocument, baseOptions);
+      }
+export type SaveQuizVersionMutationHookResult = ReturnType<typeof useSaveQuizVersionMutation>;
+export type SaveQuizVersionMutationResult = Apollo.MutationResult<SaveQuizVersionMutation>;
+export type SaveQuizVersionMutationOptions = Apollo.BaseMutationOptions<SaveQuizVersionMutation, SaveQuizVersionMutationVariables>;
+export const UpdateQuestionDocument = gql`
+    mutation UpdateQuestion($values: UpdateQuestionInput!, $id: String!) {
+  updateQuestion(updateQuestionInput: $values, id: $id) {
+    ...EditorQuestionParts
+  }
+}
+    ${EditorQuestionPartsFragmentDoc}`;
+export type UpdateQuestionMutationFn = Apollo.MutationFunction<UpdateQuestionMutation, UpdateQuestionMutationVariables>;
+
+/**
+ * __useUpdateQuestionMutation__
+ *
+ * To run a mutation, you first call `useUpdateQuestionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateQuestionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateQuestionMutation, { data, loading, error }] = useUpdateQuestionMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUpdateQuestionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateQuestionMutation, UpdateQuestionMutationVariables>) {
+        return Apollo.useMutation<UpdateQuestionMutation, UpdateQuestionMutationVariables>(UpdateQuestionDocument, baseOptions);
+      }
+export type UpdateQuestionMutationHookResult = ReturnType<typeof useUpdateQuestionMutation>;
+export type UpdateQuestionMutationResult = Apollo.MutationResult<UpdateQuestionMutation>;
+export type UpdateQuestionMutationOptions = Apollo.BaseMutationOptions<UpdateQuestionMutation, UpdateQuestionMutationVariables>;
+export const UpdateQuizDocument = gql`
+    mutation UpdateQuiz($values: UpdateQuizInput!, $id: String!) {
+  updateQuiz(updateQuizInput: $values, id: $id) {
+    id
+  }
+}
+    `;
+export type UpdateQuizMutationFn = Apollo.MutationFunction<UpdateQuizMutation, UpdateQuizMutationVariables>;
+
+/**
+ * __useUpdateQuizMutation__
+ *
+ * To run a mutation, you first call `useUpdateQuizMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateQuizMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateQuizMutation, { data, loading, error }] = useUpdateQuizMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUpdateQuizMutation(baseOptions?: Apollo.MutationHookOptions<UpdateQuizMutation, UpdateQuizMutationVariables>) {
+        return Apollo.useMutation<UpdateQuizMutation, UpdateQuizMutationVariables>(UpdateQuizDocument, baseOptions);
+      }
+export type UpdateQuizMutationHookResult = ReturnType<typeof useUpdateQuizMutation>;
+export type UpdateQuizMutationResult = Apollo.MutationResult<UpdateQuizMutation>;
+export type UpdateQuizMutationOptions = Apollo.BaseMutationOptions<UpdateQuizMutation, UpdateQuizMutationVariables>;
+export const UpdateQuizVersionDocument = gql`
+    mutation UpdateQuizVersion($values: UpdateQuizVersionInput!, $id: String!) {
+  updateQuizVersion(updateQuizVersionInput: $values, id: $id) {
+    id
+  }
+}
+    `;
+export type UpdateQuizVersionMutationFn = Apollo.MutationFunction<UpdateQuizVersionMutation, UpdateQuizVersionMutationVariables>;
+
+/**
+ * __useUpdateQuizVersionMutation__
+ *
+ * To run a mutation, you first call `useUpdateQuizVersionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateQuizVersionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateQuizVersionMutation, { data, loading, error }] = useUpdateQuizVersionMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUpdateQuizVersionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateQuizVersionMutation, UpdateQuizVersionMutationVariables>) {
+        return Apollo.useMutation<UpdateQuizVersionMutation, UpdateQuizVersionMutationVariables>(UpdateQuizVersionDocument, baseOptions);
+      }
+export type UpdateQuizVersionMutationHookResult = ReturnType<typeof useUpdateQuizVersionMutation>;
+export type UpdateQuizVersionMutationResult = Apollo.MutationResult<UpdateQuizVersionMutation>;
+export type UpdateQuizVersionMutationOptions = Apollo.BaseMutationOptions<UpdateQuizVersionMutation, UpdateQuizVersionMutationVariables>;
+export const VerifyAdminDocument = gql`
+    query VerifyAdmin {
+  verifyAdmin
+}
+    `;
+
+/**
+ * __useVerifyAdminQuery__
+ *
+ * To run a query within a React component, call `useVerifyAdminQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVerifyAdminQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVerifyAdminQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useVerifyAdminQuery(baseOptions?: Apollo.QueryHookOptions<VerifyAdminQuery, VerifyAdminQueryVariables>) {
+        return Apollo.useQuery<VerifyAdminQuery, VerifyAdminQueryVariables>(VerifyAdminDocument, baseOptions);
+      }
+export function useVerifyAdminLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VerifyAdminQuery, VerifyAdminQueryVariables>) {
+          return Apollo.useLazyQuery<VerifyAdminQuery, VerifyAdminQueryVariables>(VerifyAdminDocument, baseOptions);
+        }
+export type VerifyAdminQueryHookResult = ReturnType<typeof useVerifyAdminQuery>;
+export type VerifyAdminLazyQueryHookResult = ReturnType<typeof useVerifyAdminLazyQuery>;
+export type VerifyAdminQueryResult = Apollo.QueryResult<VerifyAdminQuery, VerifyAdminQueryVariables>;
 export const PostByIdDocument = gql`
     query PostById($id: ID!) {
   post(id: $id) {
@@ -3145,6 +4093,7 @@ export const MeRespondentSurveysDocument = gql`
         quiz {
           id
           logoUrl
+          slug
         }
       }
     }
@@ -3182,6 +4131,7 @@ export const SingleQuizDocument = gql`
     id
     logoUrl
     type
+    slug
     title {
       pl
       en
@@ -3272,10 +4222,10 @@ export type UpdateRespondentMutationHookResult = ReturnType<typeof useUpdateResp
 export type UpdateRespondentMutationResult = Apollo.MutationResult<UpdateRespondentMutation>;
 export type UpdateRespondentMutationOptions = Apollo.BaseMutationOptions<UpdateRespondentMutation, UpdateRespondentMutationVariables>;
 export const PoliticiansResultsDocument = gql`
-    query PoliticiansResults($quizSlug: String!) {
+    query PoliticiansResults($quizSlug: String, $category: ENUM_POLITICIANRESULTS_CATEGORY) {
   politicianResultsConnection(
     sort: "featured:desc"
-    where: {quiz_slug: $quizSlug}
+    where: {quiz_slug: $quizSlug, category: $category}
   ) {
     values {
       rid
@@ -3303,10 +4253,11 @@ export const PoliticiansResultsDocument = gql`
  * const { data, loading, error } = usePoliticiansResultsQuery({
  *   variables: {
  *      quizSlug: // value for 'quizSlug'
+ *      category: // value for 'category'
  *   },
  * });
  */
-export function usePoliticiansResultsQuery(baseOptions: Apollo.QueryHookOptions<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>) {
+export function usePoliticiansResultsQuery(baseOptions?: Apollo.QueryHookOptions<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>) {
         return Apollo.useQuery<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>(PoliticiansResultsDocument, baseOptions);
       }
 export function usePoliticiansResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PoliticiansResultsQuery, PoliticiansResultsQueryVariables>) {
@@ -3388,6 +4339,36 @@ export function useCreateSurveyMutation(baseOptions?: Apollo.MutationHookOptions
 export type CreateSurveyMutationHookResult = ReturnType<typeof useCreateSurveyMutation>;
 export type CreateSurveyMutationResult = Apollo.MutationResult<CreateSurveyMutation>;
 export type CreateSurveyMutationOptions = Apollo.BaseMutationOptions<CreateSurveyMutation, CreateSurveyMutationVariables>;
+export const DeleteSurveyDocument = gql`
+    mutation DeleteSurvey($id: String!) {
+  deleteSurvey(id: $id)
+}
+    `;
+export type DeleteSurveyMutationFn = Apollo.MutationFunction<DeleteSurveyMutation, DeleteSurveyMutationVariables>;
+
+/**
+ * __useDeleteSurveyMutation__
+ *
+ * To run a mutation, you first call `useDeleteSurveyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteSurveyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteSurveyMutation, { data, loading, error }] = useDeleteSurveyMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteSurveyMutation(baseOptions?: Apollo.MutationHookOptions<DeleteSurveyMutation, DeleteSurveyMutationVariables>) {
+        return Apollo.useMutation<DeleteSurveyMutation, DeleteSurveyMutationVariables>(DeleteSurveyDocument, baseOptions);
+      }
+export type DeleteSurveyMutationHookResult = ReturnType<typeof useDeleteSurveyMutation>;
+export type DeleteSurveyMutationResult = Apollo.MutationResult<DeleteSurveyMutation>;
+export type DeleteSurveyMutationOptions = Apollo.BaseMutationOptions<DeleteSurveyMutation, DeleteSurveyMutationVariables>;
 export const SingleSurveyExtendedDocument = gql`
     query SingleSurveyExtended($id: String!) {
   survey(id: $id) {
@@ -3543,6 +4524,49 @@ export function useUpdateSurveyMutation(baseOptions?: Apollo.MutationHookOptions
 export type UpdateSurveyMutationHookResult = ReturnType<typeof useUpdateSurveyMutation>;
 export type UpdateSurveyMutationResult = Apollo.MutationResult<UpdateSurveyMutation>;
 export type UpdateSurveyMutationOptions = Apollo.BaseMutationOptions<UpdateSurveyMutation, UpdateSurveyMutationVariables>;
+export const CurrentTalkDocument = gql`
+    query CurrentTalk($date: String!) {
+  talksConnection(where: {start_lt: $date, end_gt: $date}) {
+    values {
+      id
+      published_at
+      title
+      url
+      type
+      lang
+    }
+    aggregate {
+      count
+    }
+  }
+}
+    `;
+
+/**
+ * __useCurrentTalkQuery__
+ *
+ * To run a query within a React component, call `useCurrentTalkQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentTalkQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCurrentTalkQuery({
+ *   variables: {
+ *      date: // value for 'date'
+ *   },
+ * });
+ */
+export function useCurrentTalkQuery(baseOptions: Apollo.QueryHookOptions<CurrentTalkQuery, CurrentTalkQueryVariables>) {
+        return Apollo.useQuery<CurrentTalkQuery, CurrentTalkQueryVariables>(CurrentTalkDocument, baseOptions);
+      }
+export function useCurrentTalkLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentTalkQuery, CurrentTalkQueryVariables>) {
+          return Apollo.useLazyQuery<CurrentTalkQuery, CurrentTalkQueryVariables>(CurrentTalkDocument, baseOptions);
+        }
+export type CurrentTalkQueryHookResult = ReturnType<typeof useCurrentTalkQuery>;
+export type CurrentTalkLazyQueryHookResult = ReturnType<typeof useCurrentTalkLazyQuery>;
+export type CurrentTalkQueryResult = Apollo.QueryResult<CurrentTalkQuery, CurrentTalkQueryVariables>;
 export const TalksByFilterDocument = gql`
     query TalksByFilter($sort: String, $limit: Int, $start: Int, $where: JSON, $publicationState: PublicationState) {
   talks(
@@ -3586,6 +4610,40 @@ export function useTalksByFilterLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type TalksByFilterQueryHookResult = ReturnType<typeof useTalksByFilterQuery>;
 export type TalksByFilterLazyQueryHookResult = ReturnType<typeof useTalksByFilterLazyQuery>;
 export type TalksByFilterQueryResult = Apollo.QueryResult<TalksByFilterQuery, TalksByFilterQueryVariables>;
+export const TeamDocument = gql`
+    query Team {
+  team {
+    departments {
+      ...DepartmentParts
+    }
+  }
+}
+    ${DepartmentPartsFragmentDoc}`;
+
+/**
+ * __useTeamQuery__
+ *
+ * To run a query within a React component, call `useTeamQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTeamQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTeamQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTeamQuery(baseOptions?: Apollo.QueryHookOptions<TeamQuery, TeamQueryVariables>) {
+        return Apollo.useQuery<TeamQuery, TeamQueryVariables>(TeamDocument, baseOptions);
+      }
+export function useTeamLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamQuery, TeamQueryVariables>) {
+          return Apollo.useLazyQuery<TeamQuery, TeamQueryVariables>(TeamDocument, baseOptions);
+        }
+export type TeamQueryHookResult = ReturnType<typeof useTeamQuery>;
+export type TeamLazyQueryHookResult = ReturnType<typeof useTeamLazyQuery>;
+export type TeamQueryResult = Apollo.QueryResult<TeamQuery, TeamQueryVariables>;
 export const GdprDocumentDocument = gql`
     query GdprDocument {
   document {
@@ -3660,6 +4718,39 @@ export function usePartnersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<P
 export type PartnersQueryHookResult = ReturnType<typeof usePartnersQuery>;
 export type PartnersLazyQueryHookResult = ReturnType<typeof usePartnersLazyQuery>;
 export type PartnersQueryResult = Apollo.QueryResult<PartnersQuery, PartnersQueryVariables>;
+export const PatreonDocument = gql`
+    query Patreon {
+  patreon {
+    updatedAt
+    list
+  }
+}
+    `;
+
+/**
+ * __usePatreonQuery__
+ *
+ * To run a query within a React component, call `usePatreonQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePatreonQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePatreonQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePatreonQuery(baseOptions?: Apollo.QueryHookOptions<PatreonQuery, PatreonQueryVariables>) {
+        return Apollo.useQuery<PatreonQuery, PatreonQueryVariables>(PatreonDocument, baseOptions);
+      }
+export function usePatreonLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PatreonQuery, PatreonQueryVariables>) {
+          return Apollo.useLazyQuery<PatreonQuery, PatreonQueryVariables>(PatreonDocument, baseOptions);
+        }
+export type PatreonQueryHookResult = ReturnType<typeof usePatreonQuery>;
+export type PatreonLazyQueryHookResult = ReturnType<typeof usePatreonLazyQuery>;
+export type PatreonQueryResult = Apollo.QueryResult<PatreonQuery, PatreonQueryVariables>;
 export const PrivacyDocumentDocument = gql`
     query PrivacyDocument {
   document {

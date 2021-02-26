@@ -5,6 +5,8 @@ import {
 } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 import dayjs from "dayjs";
+import Link from "next/link";
+import { paths } from "@constants";
 import {
   Info,
   Header,
@@ -22,16 +24,22 @@ interface Props {
 const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
   const { lang } = useTranslation();
   const { quiz, updatedAt, id } = results;
+  const path = paths.quiz(quiz.slug);
 
   return (
     <div>
       <Header>
         <div>
-          <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />
+          <Link href={path}>
+            <a>
+              <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />
+            </a>
+          </Link>
         </div>
         <Info>
           <Date>
-            <span>Ukończono</span>&nbsp;{dayjs(updatedAt).locale(lang).format("DD.MM.YYYY, HH:MM")}
+            <span>Ukończono</span>&nbsp;
+            {dayjs(updatedAt).locale(lang).format("DD.MM.YYYY, HH:MM")}
           </Date>
           <Id>
             <span>ID:</span>

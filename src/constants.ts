@@ -8,8 +8,13 @@ export const Cookies = {
   INITIALIZED: "mypolitics-initialized",
 };
 
+export const Headers = {
+  ADMIN: "mypolitics-admin",
+};
+
 export const paths = {
   home: "/",
+  team: "/team",
   privacy: "/privacy",
   rules: "/rules",
   gdpr: "/gdpr",

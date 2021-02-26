@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 export const Container = styled.div<{ backgroundUrl: string }>`
   display: flex;
@@ -14,6 +15,10 @@ export const Container = styled.div<{ backgroundUrl: string }>`
   background-image: url(${({ backgroundUrl }) => backgroundUrl});
   background-size: cover;
   background-position: center;
+
+  ${breakpoint("md")`
+    border-radius: 1rem;
+  `};
 `;
 
 export const Logo = styled.img`
@@ -21,4 +26,8 @@ export const Logo = styled.img`
   height: 3rem;
   width: auto;
   margin-bottom: 1.5rem;
+
+  ${breakpoint("md")`
+    height: 4.5rem;
+  `};
 `;

@@ -5,6 +5,7 @@ import StandardPage, {
   StandardPageProps,
 } from "@shared/StandardPage";
 import GoogleAd from "@shared/GoogleAd";
+import { PoliticiansResults } from "@components/Quiz";
 
 interface Props {
   standardPageProps: StandardPageProps;
@@ -15,6 +16,7 @@ const SurveyPage: React.FC<Props> = ({ standardPageProps }) => (
     <GoogleAd id="myp3-standard-top" />
     <SinglePage />
     <GoogleAd id="myp3-standard-middle" />
+    <PoliticiansResults />
   </StandardPage>
 );
 

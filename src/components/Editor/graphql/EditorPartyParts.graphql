@@ -1,0 +1,6 @@
+fragment EditorPartyParts on Party {
+    id
+    name
+    logoUrl
+    country
+}

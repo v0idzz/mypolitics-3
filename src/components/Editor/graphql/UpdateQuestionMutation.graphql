@@ -1,0 +1,5 @@
+mutation UpdateQuestion ($values: UpdateQuestionInput!, $id: String!) {
+    updateQuestion(updateQuestionInput: $values, id: $id) {
+        ...EditorQuestionParts
+    }
+}

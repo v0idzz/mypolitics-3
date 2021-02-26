@@ -6,8 +6,9 @@ import ContactActionSection from "@shared/ContactActionSection";
 import { NextSeo } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
 import { categoriesConfig } from "@components/Media/utils/useCategory";
-import { getRandomPosts } from "@services/ghost";
+import { getManyPosts, getRandomPosts } from "@services/ghost";
 import { PostOrPage } from "@tryghost/content-api";
+import { CurrentTalk } from "@components/Talk";
 
 interface Props {
   posts: {
@@ -34,6 +35,7 @@ const Articles: React.FC<Props> = ({ posts }) => {
           />
         }
       />
+      <CurrentTalk />
     </PageContainer>
   );
 };
@@ -44,19 +46,28 @@ export const getServerSideProps = async ({
   const [viewTag, newsTag] = categoriesConfig[locale];
 
   const getView = getRandomPosts({
-    limit: 7,
+    limit: 6,
     filter: `tag:${viewTag}`,
   });
 
-  const getNews = getRandomPosts({
-    limit: 8,
+  const getNewView = getManyPosts({
+    limit: 2,
+    filter: `tag:${viewTag}`,
+  });
+
+  const getNews = getManyPosts({
+    limit: 7,
     filter: `tag:${newsTag}`,
   });
 
-  const [newsData, viewData] = await Promise.all([getNews, getView]);
+  const [newsData, viewData, newViewData] = await Promise.all([
+    getNews,
+    getView,
+    getNewView,
+  ]);
   const news = newsData || [];
   const view = viewData || [];
-  const featured = [news.pop(), news.pop(), view.pop()];
+  const featured = [news.pop(), ...(newViewData || [])];
 
   return {
     props: {

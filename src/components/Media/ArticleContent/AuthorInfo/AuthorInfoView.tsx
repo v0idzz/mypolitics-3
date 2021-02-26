@@ -38,14 +38,18 @@ const AuthorInfo: React.FC<Props> = ({ author }) => {
           {author.facebook && (
             <SocialLink
               variant="facebook"
-              href={author.facebook}
+              href={`https://www.facebook.com/${author.facebook}`}
               target="_blank"
             >
               <FontAwesomeIcon icon={faFacebookF} />
             </SocialLink>
           )}
           {author.twitter && (
-            <SocialLink variant="twitter" href={author.twitter} target="_blank">
+            <SocialLink
+              variant="twitter"
+              href={`https://www.twitter.com/${author.twitter}`}
+              target="_blank"
+            >
               <FontAwesomeIcon icon={faTwitter} />
             </SocialLink>
           )}

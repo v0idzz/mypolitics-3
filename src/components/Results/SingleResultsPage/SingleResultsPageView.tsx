@@ -6,6 +6,7 @@ import {
 } from "@generated/graphql";
 import { Header, Content, Answers, ResultsContext } from "@components/Results";
 import GoogleAd from "@shared/GoogleAd";
+import QuizPoliticiansResults from "@components/Quiz/QuizPoliticiansResults";
 
 interface Props {
   results: ResultsPartsFragment;
@@ -27,6 +28,7 @@ const SingleResultsPage: React.FC<Props> = ({ results, politician }) => {
         {!isClassic && (
           <Answers parties={results.parties} surveyId={results.id} />
         )}
+        <QuizPoliticiansResults />
       </>
     </ResultsContext.Provider>
   );

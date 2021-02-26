@@ -33,5 +33,10 @@
     "3": "Ankieta już się zakończyła",
     "4": "Ankieta jeszcze się nie zakończyła",
     "default": "Nieznany błąd"
+  },
+  "talkType": {
+    "classic": "Debata młodzieżówek",
+    "mvsp": "Młodzież vs. Politycy",
+    "interview": "Wywiad"
   }
 }

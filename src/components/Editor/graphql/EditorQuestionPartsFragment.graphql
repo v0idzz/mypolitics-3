@@ -1,0 +1,25 @@
+fragment EditorQuestionParts on Question {
+    id
+    text {
+        pl
+        en
+    }
+    effects {
+        disagree {
+            ideologies {
+                id
+            }
+            parties {
+                id
+            }
+        }
+        agree {
+            ideologies {
+                id
+            }
+            parties {
+                id
+            }
+        }
+    }
+}

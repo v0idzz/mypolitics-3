@@ -1,5 +1,5 @@
-query PoliticiansResults($quizSlug: String!) {
-    politicianResultsConnection(sort: "featured:desc", where: { quiz_slug: $quizSlug } ) {
+query PoliticiansResults($quizSlug: String, $category: ENUM_POLITICIANRESULTS_CATEGORY ) {
+    politicianResultsConnection(sort: "featured:desc", where: { quiz_slug: $quizSlug, category: $category } ) {
         values {
             rid
             politician {

@@ -3,6 +3,7 @@ query SingleQuiz($slug: String!) {
         id
         logoUrl
         type
+        slug
         title {
             pl
             en

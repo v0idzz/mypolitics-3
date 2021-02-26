@@ -1,0 +1,16 @@
+fragment EditorIdeologyParts on Ideology {
+    id
+    name {
+        pl
+        en
+    }
+    description {
+        pl
+        en
+    }
+    icon {
+        type
+        value
+    }
+    color
+}

@@ -1,6 +1,7 @@
-import { Quiz, Survey } from "@generated/graphql";
+import { Quiz } from "@generated/graphql";
+import { LeanSurvey } from "@components/Survey";
 
 export interface SurveyHistory {
-  quiz: Pick<Quiz, "id" | "logoUrl">;
-  surveys: Array<Pick<Survey, "id" | "finished" | "updatedAt">>;
+  quiz: Pick<Quiz, "id" | "logoUrl" | "slug">;
+  surveys: LeanSurvey[];
 }

@@ -1,0 +1,3 @@
+query VerifyAdmin {
+    verifyAdmin
+}

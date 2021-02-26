@@ -1,0 +1,5 @@
+mutation CreateQuestion ($values: CreateQuestionInput!, $quizVersion: String!) {
+    createQuestion(createQuestionInput: $values, quizVersion: $quizVersion) {
+        ...EditorQuestionParts
+    }
+}

@@ -2,17 +2,20 @@ import {
   BasicTalkPartsFragment,
   FeaturedQuizzesDocument,
   FeaturedQuizzesQuery,
+  PatreonDocument,
+  PatreonQuery,
   TalksByFilterDocument,
   TalksByFilterQuery,
 } from "@generated/graphql";
 import { initializeApollo } from "@services/apollo";
-import { getRandomPosts } from '@services/ghost';
+import { getRandomPosts } from "@services/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 
 export interface StandardPageProps {
   articles: PostOrPage[];
   talks: BasicTalkPartsFragment[];
   quizzes: FeaturedQuizzesQuery["featuredQuizzes"];
+  patreons: PatreonQuery["patreon"];
 }
 
 export const getStandardPageProps = async (): Promise<StandardPageProps> => {
@@ -34,15 +37,21 @@ export const getStandardPageProps = async (): Promise<StandardPageProps> => {
     query: FeaturedQuizzesDocument,
   });
 
-  const [articles, talks, quizzes] = await Promise.all([
+  const patreonQuery = client.query<PatreonQuery>({
+    query: PatreonDocument,
+  });
+
+  const [articles, talks, quizzes, patreons] = await Promise.all([
     articlesQuery,
     talksQuery,
     quizzesQuery,
+    patreonQuery,
   ]);
 
   return {
     articles: articles || [],
     talks: talks?.data.talks || [],
     quizzes: quizzes?.data.featuredQuizzes || [],
+    patreons: patreons?.data.patreon,
   };
 };

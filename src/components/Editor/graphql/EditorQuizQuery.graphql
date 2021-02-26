@@ -1,0 +1,46 @@
+query EditorQuiz ($slug: String!) {
+    quiz(slug: $slug) {
+        id
+        slug
+        title {
+            pl
+            en
+        }
+        description {
+            pl
+            en
+        }
+        logoUrl
+        lastUpdatedVersion {
+            id
+            publishedOn
+            questions {
+                ...EditorQuestionParts
+            }
+            compassModes {
+                name {
+                    pl
+                    en
+                }
+                horizontal {
+                    ...CompassAxisParts
+                }
+                vertical {
+                    ...CompassAxisParts
+                }
+                third {
+                    ...CompassAxisParts
+                }
+            }
+            traits {
+                ...EditorIdeologyParts
+            }
+            ideologies {
+                ...EditorIdeologyParts
+            }
+            parties {
+                ...EditorPartyParts
+            }
+        }
+    }
+}

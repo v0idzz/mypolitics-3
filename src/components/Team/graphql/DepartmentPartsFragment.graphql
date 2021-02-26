@@ -1,0 +1,13 @@
+fragment DepartmentParts on ComponentCommonDepartment {
+    id
+    title
+    logo {
+        url
+    }
+    leaders {
+        ...MemberParts
+    }
+    members {
+        ...MemberParts
+    }
+}

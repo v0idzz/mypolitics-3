@@ -1,5 +1,4 @@
 import React from "react";
-import GoogleAd from "@shared/GoogleAd";
 import {
   faArrowLeft,
   faCheck,
@@ -20,6 +19,7 @@ import {
   Header,
   Inner,
   Logo,
+  BottomInfo,
 } from "./SingleSurveyPageStyle";
 
 library.add(faArrowLeft, faUndoAlt, faTimes, faCheck);
@@ -56,6 +56,7 @@ const SurveyPage: React.FC = () => {
         </SwitchTransition>
         <SurveyAnswers data={data} actions={actions} />
       </Inner>
+      <BottomInfo>Test możesz przerwać w każdym momencie, Twoje postępy są zapisywane</BottomInfo>
     </Container>
   );
 };

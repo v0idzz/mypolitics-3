@@ -10,10 +10,13 @@ import { PostOrPage } from "@tryghost/content-api";
 import {
   BasicTalkPartsFragment,
   FeaturedQuizzesQuery,
+  PatreonQuery,
 } from "@generated/graphql";
 import GoogleAd from "@shared/GoogleAd";
 import { useInView } from "react-hook-inview";
 import { useRouter } from "next/router";
+import { CurrentTalk } from "@components/Talk";
+import Patreon from "@shared/Patreon";
 import { Content, Inner } from "./StandardPageStyle";
 
 library.add(faPollH);
@@ -24,6 +27,7 @@ interface Props {
   articles: PostOrPage[];
   talks: BasicTalkPartsFragment[];
   quizzes: FeaturedQuizzesQuery["featuredQuizzes"];
+  patreons: PatreonQuery["patreon"];
 }
 
 const StandardPage: React.FC<Props> = ({
@@ -32,6 +36,7 @@ const StandardPage: React.FC<Props> = ({
   articles,
   talks,
   quizzes,
+  patreons,
 }) => {
   const { asPath } = useRouter();
   const shortenedArticles = articles.filter((_, k) => k < 3);
@@ -50,6 +55,7 @@ const StandardPage: React.FC<Props> = ({
         <Inner>
           <Content fullWidth={fullWidth}>{children}</Content>
           <ArticlesListSection posts={shortenedArticles} type="short-news" />
+          <CurrentTalk />
           <ArticlesListSection talks={talks} type="short-talk" />
           <Inner style={{ maxWidth: 850, margin: "auto" }}>
             {quizzes.length > 0 && (
@@ -75,6 +81,7 @@ const StandardPage: React.FC<Props> = ({
             ))}
           </Inner>
           <ArticlesListSection posts={lastArticles} type="short-news" />
+          <Patreon patreons={patreons} />
         </Inner>
       </div>
     </PageContainer>
