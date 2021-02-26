@@ -48,7 +48,6 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
         <Link href="https://patronite.pl/mypolitics" passHref>
           <Button
             as="a"
-            target="_blank"
             beforeIcon={<FontAwesomeIcon icon={faSeedling} />}
             showShadow
           >
