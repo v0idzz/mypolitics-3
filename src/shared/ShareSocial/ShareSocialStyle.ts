@@ -58,7 +58,6 @@ export const Container = styled.div`
 export const ButtonGroup = styled.div`
   display: flex;
   justify-content: flex-end;
-  flex-wrap: wrap;
 
   button {
     padding: 1rem;
@@ -67,6 +66,7 @@ export const ButtonGroup = styled.div`
   ${breakpoint("xs", "sm")`
     justify-content: center;
     margin-bottom: -1rem;
+    flex-wrap: wrap;
 
     & > * {
       margin-bottom: 1rem;
@@ -81,5 +81,11 @@ export const ButtonGroup = styled.div`
     & > *:not(:last-child) {
       margin-right: 1rem;
     }
+  `}
+`;
+
+export const TitleCommunity = styled.h5`
+  ${breakpoint("lg")`
+    display: none;
   `}
 `;

@@ -1,24 +1,56 @@
 import styled from "styled-components";
-import { Lead } from "@shared/Typography";
+import { Lead, Title } from "@shared/Typography";
 import breakpoint from "styled-components-breakpoint";
 
 export const Container = styled.article`
+  max-width: ${({ theme }) => theme.breakpoints.xl}px;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.colors.backgroundDarken};
+  background: #fff;
+
+  ${breakpoint("lg")`
+    padding: 2rem;
+    grid-gap: 2rem;
+    border-radius: 16px;
+  `};
+
+  ${breakpoint("md")`
+    padding: 4rem;
+    grid-gap: 4rem;
+    border-radius: 32px;
+  `};
+`;
+
+export const Inner = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  padding: 1.5rem 0;
   grid-gap: 1.5rem;
   max-width: ${({ theme }) => theme.breakpoints.lg}px;
   width: 100%;
   margin: auto;
 
   ${breakpoint("lg")`
-    padding: 2rem 0;
     grid-gap: 2rem;
   `};
 
   ${breakpoint("md")`
-    padding: 4rem 0;
     grid-gap: 4rem;
+  `};
+`;
+
+export const ContentWrapper = styled(Inner)`
+  max-width: ${({ theme }) => theme.breakpoints.md}px;
+  margin: auto;
+  grid-gap: 1rem;
+
+  ${breakpoint("lg")`
+    grid-gap: 1.5rem;
+  `};
+
+  ${breakpoint("md")`
+    grid-gap: 2rem;
   `};
 `;
 
@@ -26,10 +58,13 @@ export const Header = styled.header`
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 0.5rem;
-  max-width: ${({ theme }) => theme.breakpoints.md}px;
   width: 100%;
   margin: auto;
   text-align: left;
+
+  ${Title} {
+    line-height: 1.3;
+  }
 
   ${Lead} {
     color: ${({ theme }) => theme.colors.textMuted};
@@ -40,9 +75,22 @@ export const Header = styled.header`
 
 export const ThumbnailImage = styled.img`
   width: 100%;
-  height: auto;
   display: block;
   border-radius: 1rem;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+
+  @supports not (aspect-ratio: 4/3) {
+    height: 15rem;
+
+    ${breakpoint("sm")`
+      height: 30rem;
+    `};
+
+    ${breakpoint("md")`
+      height: 40rem;
+    `};
+  }
 
   ${breakpoint("md")`
     border-radius: 2rem;
@@ -50,16 +98,25 @@ export const ThumbnailImage = styled.img`
 `;
 
 export const Content = styled.div`
-  line-height: 1.2;
+  line-height: 1.4;
   color: ${({ theme }) => theme.colors.textMuted};
   font-size: 1rem;
-  max-width: ${({ theme }) => theme.breakpoints.md}px;
   width: 100%;
-  margin: auto;
 
   ${breakpoint("md")`
     font-size: 1.1rem;
   `};
+
+  hr {
+    height: 1px;
+    background: ${({ theme }) => theme.colors.backgroundDarken};
+    border: 0;
+  }
+
+  a {
+    text-decoration: underline;
+    color: ${({ theme }) => theme.colors.primaryDarken};
+  }
 
   p {
     font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
@@ -133,40 +190,4 @@ export const Content = styled.div`
       overflow: auto;
     }
   }
-`;
-
-export const ShareContent = styled.div`
-  display: flex;
-  justify-content: center;
-
-  ${breakpoint("xs", "md")`
-    flex-direction: column;
-    text-align: center;
-  `};
-`;
-
-export const ShareLink = styled.a<{ type: "facebook" | "twitter" }>`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  color: ${({ theme }) => theme.colors.backgroundLighten};
-  margin-left: 1.5rem;
-
-  ${breakpoint("xs", "md")`
-    margin-left: 0;
-    margin-top: 1rem;
-  `};
-
-  ${({ type }) => {
-    const variants = {
-      facebook: `background: #1773EA;`,
-      twitter: `background: #009DEB;`,
-    };
-
-    return variants[type];
-  }};
 `;

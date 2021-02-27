@@ -125,11 +125,31 @@ export const MetaWrapper = styled.div`
     & > ${Chips}:not(:last-child) {
       margin-bottom: 1rem;
     }
-  `}
+  `};
 
   ${breakpoint("md")`
     & > ${Chips}:not(:last-child) {
       margin-right: 1rem;
     }
   `}
+`;
+
+export const PoliticiansResultsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+  width: 100%;
+`;
+
+export const SurveysHistoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > a,
+  & > button,
+  & > div {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
 `;

@@ -18,9 +18,12 @@ import {
 
 const backgroundImage = require("@assets/images/home-hero.png?resize&sizes[]=600&sizes[]=1200&sizes[]=1440");
 
-const HomePartnersSection: React.FC = () => {
+interface Props {
+  partners: ComponentPersonPartner[];
+}
+
+const HomePartnersSection: React.FC<Props> = ({ partners }) => {
   const { t } = useTranslation("home");
-  const { data } = usePartnersQuery();
   const toPartnerLink = (partner: ComponentPersonPartner) => (
     <PartnerLink
       key={partner.id}
@@ -35,7 +38,7 @@ const HomePartnersSection: React.FC = () => {
     </PartnerLink>
   );
 
-  const partnersLinks = R.map(toPartnerLink, data?.partner.partners || []);
+  const partnersLinks = R.map(toPartnerLink, partners);
 
   return (
     <Container>

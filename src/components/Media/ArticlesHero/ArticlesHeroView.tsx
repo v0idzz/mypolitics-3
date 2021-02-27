@@ -2,12 +2,12 @@ import React from "react";
 import useTranslation from "next-translate/useTranslation";
 import HeroSection from "@shared/HeroSection";
 import { Title } from "@shared/Typography";
-import { BasicPostPartsFragment } from "@generated/graphql";
 import { Link } from "@components/Media";
+import { PostOrPage } from "@tryghost/content-api";
 import { Content, Row, Col } from "./ArticlesHeroStyle";
 
 interface Props {
-  featuredPosts: BasicPostPartsFragment[];
+  featuredPosts: PostOrPage[];
 }
 
 const ArticlesHero: React.FC<Props> = ({ featuredPosts }) => {

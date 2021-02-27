@@ -10,7 +10,6 @@ import {
 } from "@generated/graphql";
 import * as R from "ramda";
 import Answer from "@components/Results/ResultsAnswers/Answer";
-import { Option } from "@components/Quiz/QuizIdeologyInput/QuizIdeologyInputStyle";
 import {
   Content,
   IconWrapper,

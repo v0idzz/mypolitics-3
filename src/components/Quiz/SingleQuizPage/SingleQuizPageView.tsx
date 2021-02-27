@@ -2,13 +2,18 @@ import React from "react";
 import GoogleAd from "@shared/GoogleAd";
 import {
   QuizLicense,
+  QuizType,
   SingleQuizQuery,
   useCreateSurveyMutation,
 } from "@generated/graphql";
-import { faChartBar, faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChartBar,
+  faHistory,
+  faLandmark,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import StandardPage from "@shared/StandardPage";
 import useTranslation from "next-translate/useTranslation";
 import Button from "@shared/Button";
 import { useQuizFeatures } from "@components/Quiz/utils/useQuizFeatures";
@@ -17,6 +22,8 @@ import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import { useRouter } from "next/router";
 import { paths } from "@constants";
 import { LicenseLinks } from "@components/Quiz/SingleQuizPage/SingleQuizPageUtils";
+import { PoliticiansResults } from "@components/Quiz";
+import SurveysHistory from "@components/Survey/SurveysHistory";
 import Box from "./SingleQuizPageBox";
 import {
   ButtonWrapper,
@@ -29,13 +36,15 @@ import {
   Inner,
   Logo,
   MetaWrapper,
+  PoliticiansResultsWrapper,
+  SurveysHistoryWrapper,
 } from "./SingleQuizPageStyle";
 
 interface Props {
   quiz: SingleQuizQuery["quiz"];
 }
 
-library.add(faStar, faChartBar);
+library.add(faStar, faChartBar, faLandmark, faHistory);
 
 const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   const { logoUrl, title, description, meta, currentVersion } = quiz;
@@ -44,6 +53,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   const [createSurvey, { loading }] = useCreateSurveyMutation();
   const quizFeatures = useQuizFeatures(meta.features);
   const { lang } = useTranslation();
+  const isClassic = quiz.type === QuizType.Classic;
 
   const handleStartClick = async () => {
     try {
@@ -62,14 +72,16 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   };
 
   return (
-    <StandardPage>
+    <>
       <GoogleAd id="myp3-standard-top" />
       <Container>
         <Header>
           <Logo src={logoUrl} alt={title[lang]} />
-          <Button onClick={handleStartClick} loading={loading} showShadow>
-            Rozpocznij
-          </Button>
+          {!isClassic && (
+            <Button onClick={handleStartClick} loading={loading} showShadow>
+              Rozpocznij
+            </Button>
+          )}
         </Header>
         <Inner>
           <Box>
@@ -100,6 +112,26 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
               </Chips>
             </div>
           </Box>
+          <Box
+            header={{
+              title: "Wyniki znanych osób",
+              icon: <FontAwesomeIcon icon={faLandmark} />,
+            }}
+          >
+            <PoliticiansResultsWrapper>
+              <PoliticiansResults quizSlug={quiz.slug} onlyContent />
+            </PoliticiansResultsWrapper>
+          </Box>
+          <Box
+            header={{
+              title: "Historia wyników",
+              icon: <FontAwesomeIcon icon={faHistory} />,
+            }}
+          >
+            <SurveysHistoryWrapper>
+              <SurveysHistory quizSlug={quiz.slug} onlyContent />
+            </SurveysHistoryWrapper>
+          </Box>
           <Box>
             <MetaWrapper>
               <Link href={meta.author.url} passHref>
@@ -118,15 +150,17 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
               )}
             </MetaWrapper>
           </Box>
-          <ButtonWrapper>
-            <Button loading={loading} onClick={handleStartClick} showShadow>
-              Rozpocznij
-            </Button>
-          </ButtonWrapper>
+          {!isClassic && (
+            <ButtonWrapper>
+              <Button loading={loading} onClick={handleStartClick} showShadow>
+                Rozpocznij
+              </Button>
+            </ButtonWrapper>
+          )}
         </Inner>
       </Container>
       <GoogleAd id="myp3-standard-middle" />
-    </StandardPage>
+    </>
   );
 };
 

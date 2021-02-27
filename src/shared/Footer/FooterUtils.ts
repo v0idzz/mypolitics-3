@@ -8,6 +8,7 @@ import {
   IconDefinition,
 } from "@fortawesome/free-brands-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { ReactNode } from "react";
 
 library.add(
   faFacebookF,
@@ -20,7 +21,8 @@ library.add(
 
 export interface SocialLink {
   url: string;
-  icon: IconDefinition;
+  icon: any;
+  customColor?: string;
 }
 
 export const socialLinks: SocialLink[] = [
@@ -47,5 +49,10 @@ export const socialLinks: SocialLink[] = [
   {
     url: "http://github.com/mypolitics",
     icon: faGithub,
+  },
+  {
+    url: "https://patronite.pl/mypolitics",
+    icon: require("@assets/images/patronite.png"),
+    customColor: "#ED1B2D",
   },
 ];

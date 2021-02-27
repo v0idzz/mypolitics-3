@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
 import breakpoints from "@theme/breakpoints";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
 
 export const Container = styled.footer`
   background: ${({ theme }) => theme.colors.primaryDarken};
@@ -85,7 +85,7 @@ export const Links = styled.section`
 
 export const SocialLinksWrapper = styled.div`
   justify-content: flex-end;
-  display: inline-flex;
+  display: inline;
   text-align: center;
   margin-bottom: 0.5rem;
   margin-right: -0.5rem;
@@ -97,7 +97,7 @@ export const SocialLinksWrapper = styled.div`
   `};
 `;
 
-export const SocialLink = styled.a`
+export const SocialLink = styled.a<{ color?: string }>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -118,10 +118,23 @@ export const SocialLink = styled.a`
     background: ${({ theme }) => darken(0.075, theme.colors.primaryDarken)};
   }
 
-  svg {
+  svg,
+  img {
     height: 1rem;
     width: 1rem;
+    object-fit: contain;
   }
+
+  ${({ color }) =>
+    color &&
+    css`
+      background: ${color};
+      box-shadow: 0 0 24px 0 ${transparentize(0.67, color)};
+
+      &:hover {
+        background: ${darken(0.075, color)};
+      }
+    `}
 `;
 
 export const WebsiteLinksWrapper = styled.div`
@@ -149,5 +162,28 @@ export const WebsiteLinksWrapper = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+`;
+
+export const TeamContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.backgroundLighten};
+  font-weight: ${({ theme }) => theme.fontWeight.primary.light};
+  font-family: ${({ theme }) => theme.fontFamily.primary};
+  font-size: 1rem;
+  padding: 1rem;
+  width: 100%;
+
+  a {
+    text-decoration: none;
+    font-weight: ${({ theme }) => theme.fontWeight.primary.bold};
+  }
+
+  svg {
+    color: ${({ theme }) => theme.colors.red};
   }
 `;

@@ -1,0 +1,14 @@
+fragment CompassAxisParts on QuizCompassAxis {
+    leftIdeologies {
+        ideology {
+            id
+        }
+        weight
+    }
+    rightIdeologies {
+        ideology {
+            id
+        }
+        weight
+    }
+}

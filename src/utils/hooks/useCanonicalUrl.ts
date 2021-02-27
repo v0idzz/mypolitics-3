@@ -7,10 +7,10 @@ interface Output {
   getCustomLangUrl: (lang: string) => string;
 }
 
-const useCanonicalUrl = (): Output => {
+const useCanonicalUrl = (defaultPath?: string): Output => {
   const { lang } = useTranslation("common");
   const { asPath } = useRouter();
-  const path = asPath.split("?")[0];
+  const path = defaultPath || asPath.split("?")[0];
 
   return {
     url: `${BASE_PATH}/${lang}${path}`,

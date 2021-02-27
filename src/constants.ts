@@ -8,14 +8,24 @@ export const Cookies = {
   INITIALIZED: "mypolitics-initialized",
 };
 
+export const Headers = {
+  ADMIN: "mypolitics-admin",
+};
+
+export const itemTypes = {
+  party: "party",
+  ideology: "ideology",
+};
+
 export const paths = {
   home: "/",
+  team: "/team",
   privacy: "/privacy",
   rules: "/rules",
   gdpr: "/gdpr",
   articles: "/articles",
   article(slug: string, id?: string): string {
-    return `/articles/${slug}${id ? `/${id}` : ""}`;
+    return `/articles/${slug}`;
   },
   quizzes: "/quizzes",
   quizzesPreInitialize: "/quizzes/initialize/pre",

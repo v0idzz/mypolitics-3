@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { ResultsPartyPartsFragment } from "@generated/graphql";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckCircle,
+  faCheck,
+  faTimes,
+  faMinus,
+} from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import Modal from "@shared/Modal";
 import { useTheme } from "styled-components";
+import { useCurrentResults } from "@components/Results";
+import * as R from "ramda";
 import {
   Container,
   Header,
@@ -15,7 +22,7 @@ import {
   AuthorizedBackground,
 } from "./PartyInfoStyle";
 
-library.add(faCheckCircle);
+library.add(faCheckCircle, faCheck, faTimes, faMinus);
 
 interface Props {
   data: ResultsPartyPartsFragment;
@@ -26,6 +33,13 @@ const PartyInfo: React.FC<Props> = ({ data, authorized }) => {
   const theme = useTheme();
   const { logoUrl, name, percentAgreement } = data;
   const [showInfo, setShowInfo] = useState<boolean>(false);
+  const { isClassic } = useCurrentResults();
+
+  const classicAgreement = R.cond([
+    [R.gte(R.__, 85), R.always(<FontAwesomeIcon icon={faCheck} />)],
+    [R.gte(R.__, 70), R.always(<FontAwesomeIcon icon={faMinus} />)],
+    [R.T, R.always(<FontAwesomeIcon icon={faTimes} />)],
+  ])(percentAgreement);
 
   return (
     <>
@@ -61,13 +75,14 @@ const PartyInfo: React.FC<Props> = ({ data, authorized }) => {
         <Agreement
           onClick={() => setShowInfo(true)}
           percentage={percentAgreement}
+          isClassic={isClassic}
         >
           {authorized && (
             <AuthorizedIconWrapper title="Odpowiedź autoryzowana">
               <FontAwesomeIcon icon={faCheckCircle} />
             </AuthorizedIconWrapper>
           )}
-          {percentAgreement}%
+          {isClassic ? classicAgreement : `${percentAgreement}%`}
         </Agreement>
       </Container>
     </>

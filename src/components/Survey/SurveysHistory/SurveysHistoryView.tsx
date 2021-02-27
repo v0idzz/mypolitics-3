@@ -2,51 +2,42 @@ import React, { useState } from "react";
 import { useMeRespondentSurveysQuery } from "@generated/graphql";
 import * as R from "ramda";
 import { SurveyHistory } from "@components/Survey/SurveysHistory/SurveysHistoryTypes";
-import Link from "next/link";
-import { paths } from "@constants";
 import Button from "@shared/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
-import useTranslation from "next-translate/useTranslation";
+import { SurveyLink } from "@components/Survey";
+import Link from "next/link";
+import { paths } from "@constants";
 import {
   Container,
   Header,
-  Text,
   List,
-  ListElement,
   Logo,
-  Chips,
+  EmptyWrapper,
 } from "./SurveysHistoryStyle";
 
 library.add(faArrowDown);
 
-const SurveyHistoryElement: React.FC<{ data: SurveyHistory }> = ({ data }) => {
-  const { lang } = useTranslation();
+interface SurveyHistoryElementProps {
+  data: SurveyHistory;
+  contentOnly: boolean;
+}
+
+const SurveyHistoryElement: React.FC<SurveyHistoryElementProps> = ({
+  data,
+  contentOnly,
+}) => {
   const { quiz, surveys } = data;
   const BASE_LIMIT = 3;
   const [limit, setLimit] = useState<number>(BASE_LIMIT);
 
   const handleShowMore = () => setLimit(limit + BASE_LIMIT);
 
-  const toListElement = (survey) => {
-    const href = survey.finished
-      ? paths.results(survey.id)
-      : paths.survey(survey.id);
-
-    return (
-      <Link href={href} passHref>
-        <ListElement>
-          <Text>
-            {dayjs(survey.updatedAt).locale(lang).format("DD.MM.YYYY HH:MM")}
-          </Text>
-          {survey.finished && <Chips background="green">ukończone</Chips>}
-          {!survey.finished && <Chips background="yellow">w trakcie</Chips>}
-        </ListElement>
-      </Link>
-    );
-  };
+  const toListElement = (survey) => (
+    <SurveyLink key={survey.id} survey={survey} />
+  );
 
   const sortedSurveys = surveys.sort(
     (a, b) => dayjs(b.updatedAt).unix() - dayjs(a.updatedAt).unix()
@@ -54,28 +45,53 @@ const SurveyHistoryElement: React.FC<{ data: SurveyHistory }> = ({ data }) => {
   const limitedSurveys = sortedSurveys.filter((_, i) => i < limit);
   const listElements = R.map(toListElement, limitedSurveys);
   const showButton = limitedSurveys.length < surveys.length;
+  const path = paths.quiz(quiz.slug);
+
+  const baseContent = (
+    <>
+      {listElements}
+      {showButton && (
+        <Button
+          onClick={handleShowMore}
+          beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
+        >
+          Pokaż więcej
+        </Button>
+      )}
+    </>
+  );
+
+  const empty = listElements.length === 0;
+  const content = empty ? (
+    <EmptyWrapper>Historia jest pusta. Wykonaj quiz!</EmptyWrapper>
+  ) : (
+    baseContent
+  );
+
+  if (contentOnly) {
+    return content;
+  }
 
   return (
     <Container>
       <Header>
-        <Logo src={quiz.logoUrl} alt={quiz.id} />
+        <Link href={path}>
+          <a>
+            <Logo src={quiz.logoUrl} alt={quiz.id} />
+          </a>
+        </Link>
       </Header>
-      <List>
-        {listElements}
-        {showButton && (
-          <Button
-            onClick={handleShowMore}
-            beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
-          >
-            Pokaż więcej
-          </Button>
-        )}
-      </List>
+      <List>{content}</List>
     </Container>
   );
 };
 
-const SurveysHistory: React.FC = () => {
+interface Props {
+  quizSlug?: string;
+  onlyContent?: boolean;
+}
+
+const SurveysHistory: React.FC<Props> = ({ quizSlug, onlyContent = false }) => {
   const { data } = useMeRespondentSurveysQuery();
 
   if (!data) {
@@ -84,22 +100,37 @@ const SurveysHistory: React.FC = () => {
 
   const { surveys } = data.meRespondent;
   const byQuizId = R.groupBy((survey) => survey.quizVersion.quiz.id);
-  const toQuizzesSurveys = (surveysList, key) => ({
+  const toQuizzesSurveys = (surveysList) => ({
     quiz: surveysList[0].quizVersion.quiz,
     surveys: surveysList,
   });
   const quizzesSurveys: SurveyHistory[] = R.values(
     R.map(toQuizzesSurveys, byQuizId(surveys))
   );
+  const onlyProvidedSlug = ({ quiz }) => quiz.slug === quizSlug;
+  const quizzesSurveysFiltered = quizSlug
+    ? R.filter(onlyProvidedSlug, quizzesSurveys)
+    : quizzesSurveys;
 
   const quizzesSurveysElements = R.map(
     (quizSurvey) => (
-      <SurveyHistoryElement key={quizSurvey.quiz.id} data={quizSurvey} />
+      <SurveyHistoryElement
+        contentOnly={onlyContent}
+        key={quizSurvey.quiz.id}
+        data={quizSurvey}
+      />
     ),
-    quizzesSurveys
+    quizzesSurveysFiltered
   );
 
-  return <>{quizzesSurveysElements}</>;
+  const empty = quizzesSurveysElements.length === 0;
+  const content = empty ? (
+    <EmptyWrapper>Historia jest pusta. Wykonaj quiz!</EmptyWrapper>
+  ) : (
+    quizzesSurveysElements
+  );
+
+  return <>{content}</>;
 };
 
 export default SurveysHistory;

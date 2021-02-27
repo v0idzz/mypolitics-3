@@ -1,0 +1,6 @@
+mutation SaveQuizVersion ($values: UpdateQuizVersionInput!, $id: String!, $publish: Boolean!) {
+    saveQuizVersion(saveQuizVersionInput: $values, id: $id, publish: $publish) {
+        id
+        publishedOn
+    }
+}

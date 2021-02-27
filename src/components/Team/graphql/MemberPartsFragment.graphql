@@ -1,0 +1,8 @@
+fragment MemberParts on Member {
+    id
+    name
+    role
+    image {
+        formats
+    }
+}

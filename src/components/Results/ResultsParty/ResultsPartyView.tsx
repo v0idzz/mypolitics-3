@@ -4,6 +4,7 @@ import PartyInfo from "@components/Results/ResultsParty/PartyInfo";
 import Button from "@shared/Button";
 import * as R from "ramda";
 import InformationButton from "@shared/InformationButton";
+import { useCurrentResults } from "@components/Results";
 import {
   Container,
   List,
@@ -21,6 +22,7 @@ interface Props {
 const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const partiesList = showMore ? parties : parties.filter((_, i) => i === 0);
+  const { isClassic } = useCurrentResults();
 
   const handleShowMore = () => setShowMore(true);
 
@@ -50,7 +52,7 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
     <Container>
       <Header>
         <HeaderTitle>Partia</HeaderTitle>
-        {information}
+        {!isClassic && information}
       </Header>
       <List>{partiesInfoList}</List>
       {!showMore && (

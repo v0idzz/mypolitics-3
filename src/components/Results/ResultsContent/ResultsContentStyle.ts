@@ -12,6 +12,12 @@ export const Container = styled.div`
   text-align: center;
   overflow: hidden;
 
+  .fb-like {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+  }
+
   ${breakpoint("md")`
     grid-gap: 1.5rem;
     padding: 3rem;

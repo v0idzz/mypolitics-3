@@ -14,8 +14,9 @@ export const Inner = styled.div`
   `}
 `;
 
-export const Content = styled.div`
-  max-width: 900px;
+export const Content = styled.div<{ fullWidth?: boolean }>`
+  max-width: ${({ fullWidth, theme }) =>
+    fullWidth ? theme.breakpoints.xl : "900px"};
   margin: auto;
   display: grid;
   grid-template-columns: 100%;

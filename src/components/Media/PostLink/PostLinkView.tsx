@@ -3,6 +3,8 @@ import { BasicPostPartsFragment } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { paths } from "@constants";
+import { PostOrPage } from "@tryghost/content-api";
+import { useCategory } from "@components/Media/utils/useCategory";
 import {
   Container,
   Title,
@@ -14,18 +16,15 @@ import {
 } from "./PostLinkStyle";
 
 interface Props {
-  data: BasicPostPartsFragment;
+  data: PostOrPage;
   large?: boolean;
 }
 
 const PostLink: React.FC<Props> = ({ data, large = false }) => {
-  const { lang } = useTranslation();
-  const { id, category, thumbnail } = data;
-  const title = data.title[lang] || data.title.pl;
-  const slug = data.slug[lang] || data.slug.pl;
-  const subcategory = data.subcategory[lang] || data.subcategory.pl;
-  const thumbnailUrl = thumbnail.formats[large ? "medium" : "small"].url;
+  const { id, tags, title, slug, feature_image: thumbnailUrl } = data;
   const link = paths.article(slug, id);
+  const { category, subCategories } = useCategory(tags);
+  const hasSubcategories = subCategories.length > 0;
 
   return (
     <Link href={link} passHref>
@@ -33,9 +32,13 @@ const PostLink: React.FC<Props> = ({ data, large = false }) => {
         <Inner>
           <Title>{title}</Title>
           <Footer>
-            <Category>{category}</Category>
-            <Divider>|</Divider>
-            <SubCategory>{subcategory}</SubCategory>
+            {category && (
+              <>
+                <Category>{category}</Category>
+                {hasSubcategories && <Divider>|</Divider>}
+              </>
+            )}
+            <SubCategory>{subCategories.join(", ")}</SubCategory>
           </Footer>
         </Inner>
       </Container>

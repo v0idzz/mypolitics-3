@@ -100,3 +100,16 @@ export const FormQuestion = styled.div`
     font-size: 1.25rem;
   `}
 `;
+
+export const BottomInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme.colors.textMuted};
+  opacity: 0.5;
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
+  font-family: ${({ theme }) => theme.fontFamily.secondary};
+  width: 100%;
+  margin-top: 1rem;
+`;

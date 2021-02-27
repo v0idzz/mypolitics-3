@@ -1,7 +1,13 @@
 fragment ResultsQuiz on Quiz {
     id
     logoUrl
+    type
+    slug
     title {
+        pl
+        en
+    }
+    description {
         pl
         en
     }

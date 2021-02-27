@@ -29,7 +29,6 @@ export const useHandleErrors = (): HookFunction => {
 
     addToast(text, {
       appearance: "error",
-      placement: "bottom-right",
       autoDismiss: true,
     });
   };

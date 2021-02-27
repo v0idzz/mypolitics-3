@@ -1,12 +1,16 @@
 import React from "react";
-import { Link, Respondent, Section } from "@components/Quiz";
+import {
+  Link,
+  PoliticiansResults,
+  Respondent,
+  Section,
+} from "@components/Quiz";
 import GoogleAd from "@shared/GoogleAd";
 import { FeaturedQuizzesQuery } from "@generated/graphql";
 import { faPollH, faHistory } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { History as SurveysHistory } from "@components/Survey";
-import StandardPage from "@shared/StandardPage";
 
 interface Props {
   featuredQuizzes: FeaturedQuizzesQuery["featuredQuizzes"];
@@ -19,7 +23,7 @@ const QuizzesPage: React.FC<Props> = ({ featuredQuizzes }) => {
   const clientSide = typeof window !== "undefined";
 
   return (
-    <StandardPage>
+    <>
       <GoogleAd id="myp3-standard-top" />
       <Link quiz={firstQuiz} featured />
       {quizzes.length > 0 && (
@@ -43,8 +47,9 @@ const QuizzesPage: React.FC<Props> = ({ featuredQuizzes }) => {
           <Respondent />
         </>
       )}
+      <PoliticiansResults />
       <GoogleAd id="myp3-standard-middle" />
-    </StandardPage>
+    </>
   );
 };
 

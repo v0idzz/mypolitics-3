@@ -1,6 +1,6 @@
 query Partners {
     partner {
-        id
+        _id
         partners {
             name
             image {

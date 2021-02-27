@@ -9,6 +9,7 @@ query MeRespondentSurveys {
                 quiz {
                     id
                     logoUrl
+                    slug
                 }
             }
         }

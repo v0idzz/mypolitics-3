@@ -16,11 +16,16 @@ const QuizLink: React.FC<Props> = ({ quiz, featured = false }) => {
   const { slug, meta, logoUrl, title } = quiz;
   const { lang } = useTranslation();
   const quizFeatures = useQuizFeatures(meta.features);
+  const path = paths.quiz(slug);
 
   return (
     <Container featured={featured}>
       <Info>
-        <Image src={logoUrl} alt={title[lang]} />
+        <Link href={path}>
+          <a>
+            <Image src={logoUrl} alt={title[lang]} />
+          </a>
+        </Link>
         <FeaturesList>
           {quizFeatures.map((feature) => (
             <Feature key={feature}>{feature}</Feature>
@@ -28,7 +33,7 @@ const QuizLink: React.FC<Props> = ({ quiz, featured = false }) => {
         </FeaturesList>
       </Info>
       <div>
-        <Link href={paths.quiz(slug)} passHref>
+        <Link href={path} passHref>
           <Button as="a" showShadow>
             Rozpocznij
           </Button>

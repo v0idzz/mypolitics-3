@@ -2,6 +2,8 @@ query SingleQuiz($slug: String!) {
     quiz(slug: $slug) {
         id
         logoUrl
+        type
+        slug
         title {
             pl
             en

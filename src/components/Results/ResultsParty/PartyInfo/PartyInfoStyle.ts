@@ -39,7 +39,10 @@ export const Name = styled.div`
   text-align: left;
 `;
 
-export const Agreement = styled.div<{ percentage: number }>`
+export const Agreement = styled.div<{
+  percentage: number;
+  isClassic?: boolean;
+}>`
   padding: 0.5rem;
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.backgroundLighten};
@@ -50,10 +53,12 @@ export const Agreement = styled.div<{ percentage: number }>`
   cursor: pointer;
   transition: 0.2s ease-in-out;
 
-  ${({ percentage, theme }) => {
+  ${({ percentage, theme, isClassic }) => {
+    const [agree, partly] = isClassic ? [85, 70] : [80, 50];
+
     const background = R.cond([
-      [R.gte(R.__, 80), R.always(theme.colors.green)],
-      [R.gte(R.__, 50), R.always(theme.colors.yellow)],
+      [R.gte(R.__, agree), R.always(theme.colors.green)],
+      [R.gte(R.__, partly), R.always(theme.colors.yellow)],
       [R.T, R.always(theme.colors.red)],
     ])(percentage);
 
@@ -66,6 +71,13 @@ export const Agreement = styled.div<{ percentage: number }>`
       }
     `;
   }}
+
+  ${({ isClassic }) =>
+    isClassic &&
+    `
+    pointer-events: none;
+    width: 2.25rem;
+  `}
 `;
 
 export const AuthorizedIconWrapper = styled.div`

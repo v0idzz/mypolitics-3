@@ -17,19 +17,40 @@ import { Language, languages } from "./LanguageSelectUtils";
 
 library.add(faAngleDown, faAngleUp);
 
-const LanguageSelect: React.FC = () => {
+interface Props {
+  global?: boolean;
+  value?: string;
+  onChange?(value: string): void;
+  color?: "grayish" | "bluish";
+}
+
+const LanguageSelect: React.FC<Props> = ({
+  global = true,
+  color = "grayish",
+  value,
+  onChange,
+}) => {
   const router = useRouter();
   const { lang } = useTranslation();
   const [showFull, setShowFull] = useState<boolean>(false);
   const toggleShowFull = () => setShowFull(!showFull);
+  const currentLang = global ? lang : value;
 
   const toLanguageLinks = ({ id, name }: Language) => {
-    const languageSelected = id === lang;
+    const languageSelected = id === currentLang;
 
-    if (languageSelected) {
+    const handleClick = () => {
+      toggleShowFull();
+
+      if (!global) {
+        onChange(id);
+      }
+    };
+
+    if (languageSelected || !global) {
       return (
         <LanguageImage
-          onClick={toggleShowFull}
+          onClick={handleClick}
           key={id}
           title={name}
           /* eslint-disable-next-line import/no-dynamic-require */
@@ -42,7 +63,7 @@ const LanguageSelect: React.FC = () => {
     return (
       <Link href={router.asPath} locale={id} key={id} passHref={id !== lang}>
         <LanguageImage
-          onClick={toggleShowFull}
+          onClick={handleClick}
           key={id}
           title={name}
           /* eslint-disable-next-line import/no-dynamic-require */
@@ -53,18 +74,18 @@ const LanguageSelect: React.FC = () => {
   };
 
   const languagesSelectedFirst = languages.sort((x, y) => {
-    if (x.id === lang) {
+    if (x.id === currentLang) {
       return -1;
     }
 
-    return y.id === lang ? 1 : 0;
+    return y.id === currentLang ? 1 : 0;
   });
 
   const languageButtons = R.map(toLanguageLinks, languagesSelectedFirst);
 
   return (
     <Wrapper>
-      <Container showFull={showFull}>
+      <Container showFull={showFull} color={color}>
         <Inner>{languageButtons}</Inner>
         <DropdownButton onClick={toggleShowFull}>
           <FontAwesomeIcon icon={showFull ? faAngleUp : faAngleDown} />

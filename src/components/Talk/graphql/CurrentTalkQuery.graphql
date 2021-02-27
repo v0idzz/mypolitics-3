@@ -1,0 +1,15 @@
+query CurrentTalk ($date: String!) {
+    talksConnection(where:{ start_lt: $date, end_gt: $date }) {
+        values {
+            id
+            published_at
+            title
+            url
+            type
+            lang
+        }
+        aggregate {
+            count
+        }
+    }
+}

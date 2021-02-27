@@ -18,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
       R.includes(R.__, ["black", "blue"]),
       R.always(theme.colors.backgroundLighten),
     ],
+    [R.includes(R.__, ["bluish"]), R.always(theme.colors.primary)],
     [R.T, R.always(theme.colors.textMuted)],
   ])(background);
   const showIcon = loading || beforeIcon;

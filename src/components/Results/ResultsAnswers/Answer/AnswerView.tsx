@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  Party,
-  SurveyAnswerType,
-} from "@generated/graphql";
+import { Party, SurveyAnswerType } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

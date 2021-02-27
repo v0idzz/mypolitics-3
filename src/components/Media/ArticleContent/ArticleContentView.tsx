@@ -1,61 +1,76 @@
-import React from "react";
-import { ExtendedPostPartsFragment } from "@generated/graphql";
+import React, { useCallback } from "react";
 import { Title, Lead } from "@shared/Typography";
-import useTranslation from "next-translate/useTranslation";
-import Link from "next/link";
+import Comments from "@shared/Comments";
+import ShareSocial from "@shared/ShareSocial";
+import { PostOrPage } from "@tryghost/content-api";
+import GoogleAd from "@shared/GoogleAd";
+import dayjs from "dayjs";
+import AuthorHeader from "@components/Media/ArticleContent/AuthorHeader";
+import AuthorInfo from "@components/Media/ArticleContent/AuthorInfo";
+import { Like } from "react-facebook";
+import { ArticleHead } from "@components/Media";
+import { paths } from "@constants";
+import { useInView } from "react-hook-inview";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import {
   Container,
+  Inner,
   Header,
   ThumbnailImage,
   Content,
-  ShareContent,
-  ShareLink,
+  ContentWrapper,
 } from "./ArticleContentStyle";
 
 interface Props {
-  post: ExtendedPostPartsFragment;
+  post: PostOrPage;
+  commentsType?: "facebook" | "disqus";
 }
 
-const ArticleContent: React.FC<Props> = ({ post }) => {
-  const { t, lang } = useTranslation("articles");
-  const { url } = useCanonicalUrl();
-  const { published_at: publishedAt } = post;
-  const title = post.title[lang];
-  const content = post.content[lang];
-  const titleEncoded = encodeURI(title);
-  const thumbFormats = post.thumbnail.formats;
-  const thumbnail = thumbFormats.medium
-    ? thumbFormats.medium
-    : thumbFormats.small;
+const ArticleContent: React.FC<Props> = ({ post, commentsType = "disqus" }) => {
+  const {
+    published_at: publishedAt,
+    feature_image: featureImage,
+    html,
+    title,
+    excerpt,
+    custom_excerpt: customExcerpt,
+  } = post;
+  const path = paths.article(post.slug, post.id);
+  const [ref, inView] = useInView();
 
   return (
-    <Container>
-      <Header>
-        <Title>{title}</Title>
-        <Lead as="div">{new Date(publishedAt).toLocaleDateString()}</Lead>
-      </Header>
-      <ThumbnailImage src={thumbnail.url} alt={title} />
-      <Content dangerouslySetInnerHTML={{ __html: content }} />
-      <ShareContent>
-        <Title as="div">{t("share.title")}</Title>
-        <Link
-          href={`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${titleEncoded}`}
-          passHref
-        >
-          <ShareLink target="_blank" type="facebook">
-            {t("share.facebook")}
-          </ShareLink>
-        </Link>
-        <Link
-          href={`https://twitter.com/share?url=${url}&text=${titleEncoded}&via=myPolitics__&hashtags=myPolitics`}
-          passHref
-        >
-          <ShareLink target="_blank" type="twitter">
-            {t("share.twitter")}
-          </ShareLink>
-        </Link>
-      </ShareContent>
+    <Container ref={ref}>
+      <ArticleHead inView={inView} post={post} />
+      <Inner>
+        <ContentWrapper>
+          <Header>
+            <Title>{title}</Title>
+            <Lead as="div">{dayjs(publishedAt).format("DD.MM.YYYY")}</Lead>
+          </Header>
+          <AuthorHeader post={post} />
+        </ContentWrapper>
+        <ThumbnailImage src={featureImage} alt={title} />
+        <ContentWrapper>
+          <GoogleAd id="myp3-article-before" />
+          <div>
+            <Content>
+              <b>{excerpt || customExcerpt}</b>
+            </Content>
+            <Content dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
+          <GoogleAd id="myp3-article-after" />
+          {post.authors.map((author) => (
+            <AuthorInfo key={author.id} author={author} />
+          ))}
+          <ShareSocial defaultPath={path} />
+          <Comments post={post} type={commentsType} />
+          <Like
+            href="http://www.facebook.com/myPoliticsTest"
+            size="large"
+            share
+          />
+        </ContentWrapper>
+      </Inner>
     </Container>
   );
 };
