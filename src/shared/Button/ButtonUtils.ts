@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from "styled-components";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
 import { Sizes, Backgrounds } from "./ButtonTypes";
 
 export const sizes: Sizes = {
@@ -28,6 +28,20 @@ export const getBackgrounds = (
 
     &:hover {
       background: ${darken(0.0125, theme.colors.primary)};
+    }
+
+    ${showShadow &&
+    `
+      box-shadow: 0px 0px 24px rgba(0, 179, 219, 0.33);
+    `}
+  `,
+  bluish: css`
+    background: ${transparentize(0.9, theme.colors.primary)};
+    color: ${theme.colors.primary};
+    border: none;
+
+    &:hover {
+      background: ${transparentize(0.85, theme.colors.primary)};
     }
 
     ${showShadow &&

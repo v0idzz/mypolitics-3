@@ -32,8 +32,6 @@ export const useEditor = (): UseEditor => {
       return;
     }
 
-    console.log(versionInputDebounce)
-
     if (versionInputDebounce.publishedOn !== null) {
       await actions.saveVersion(versionInputDebounce, false);
       return;

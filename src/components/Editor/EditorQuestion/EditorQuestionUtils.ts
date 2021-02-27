@@ -5,33 +5,9 @@ import {
   UpdateQuestionInput,
   useUpdateQuestionMutation,
 } from "@generated/graphql";
-import { useApolloClient } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
-
-interface UseQuestionInit {
-  data: EditorQuestionPartsFragment;
-  update(value: EditorQuestionPartsFragment): void;
-}
-
-const useQuestionInit = (id: string): UseQuestionInit => {
-  const client = useApolloClient();
-  const fragment = {
-    id: `Question:${id}`,
-    fragment: EditorQuestionPartsFragmentDoc,
-  };
-  const update = (value) =>
-    client.writeFragment<EditorQuestionPartsFragment>({
-      ...fragment,
-      data: value,
-    });
-  const data = client.readFragment<EditorQuestionPartsFragment>(fragment);
-
-  return {
-    data,
-    update,
-  };
-};
+import useEntity from "@components/Editor/utils/useEntity";
 
 interface UseQuestion {
   data: EditorQuestionPartsFragment;
@@ -41,7 +17,11 @@ interface UseQuestion {
 }
 
 export const useQuestion = (id: string): UseQuestion => {
-  const { data, update } = useQuestionInit(id);
+  const { data, update } = useEntity<EditorQuestionPartsFragment>({
+    id,
+    name: "Question",
+    document: EditorQuestionPartsFragmentDoc,
+  });
   const [firstTime, setFirstTime] = useState(true);
   const [updateQuestion] = useUpdateQuestionMutation();
   const [dataDebounced] = useDebounce(data, 1000, {

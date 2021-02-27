@@ -35,6 +35,7 @@ const InternationalizedInput: React.FC<Props> = ({
         global={false}
         value={selectedLang}
         onChange={setSelectedLang}
+        color="bluish"
       />
       <Input value={value[selectedLang]} onChange={handleChange} />
     </Container>

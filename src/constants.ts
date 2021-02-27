@@ -12,6 +12,11 @@ export const Headers = {
   ADMIN: "mypolitics-admin",
 };
 
+export const itemTypes = {
+  party: "party",
+  ideology: "ideology",
+};
+
 export const paths = {
   home: "/",
   team: "/team",

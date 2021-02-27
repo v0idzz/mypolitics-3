@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Question, Basic, Toolbox } from "@components/Editor";
+import {
+  Box,
+  Question,
+  Basic,
+  Toolbox,
+  Parties,
+  Ideologies,
+} from "@components/Editor";
 import Loading from "@shared/Loading";
 import { useEditor } from "@components/Editor/utils/useEditor";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,8 +33,12 @@ const EditorContent: React.FC = () => {
       <Box header={<Title>Dane podstawowe</Title>}>
         <Basic />
       </Box>
-      <Box header={<Title>Partie</Title>}>//</Box>
-      <Box header={<Title>Ideologie</Title>}>//</Box>
+      <Box header={<Title>Partie</Title>}>
+        <Parties />
+      </Box>
+      <Box header={<Title>Ideologie</Title>}>
+        <Ideologies />
+      </Box>
       <Divider />
       <Row>
         <Col>
@@ -38,10 +49,13 @@ const EditorContent: React.FC = () => {
           {versionInput.questions.map((questionId, index) => (
             <Question key={questionId} questionId={questionId} index={index} />
           ))}
-          <CreateButton onClick={actions.question.add}>
-            <FontAwesomeIcon icon={faPlus} />
-            <span>Utwórz pytanie</span>
-          </CreateButton>
+          <Button
+            onClick={actions.question.add}
+            beforeIcon={<FontAwesomeIcon icon={faPlus} />}
+            background="bluish"
+          >
+            Utwórz pytanie
+          </Button>
         </Col>
         <Col>
           <Toolbox />
@@ -54,7 +68,9 @@ const EditorContent: React.FC = () => {
       {debug && (
         <Box>
           <pre>slug: {data.data.quiz.slug}</pre>
-          <pre>{JSON.stringify(data.data.quiz, null, 2)}</pre>
+          <pre style={{ overflow: "auto" }}>
+            {JSON.stringify(data.data.quiz, null, 2)}
+          </pre>
         </Box>
       )}
     </Col>

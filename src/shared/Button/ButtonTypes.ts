@@ -4,7 +4,13 @@ import React from "react";
 export type Size = "middle" | "large";
 export type Sizes = Record<Size, FlattenSimpleInterpolation>;
 
-export type Background = "blue" | "black" | "gray" | "white" | "discord";
+export type Background =
+  | "blue"
+  | "black"
+  | "gray"
+  | "white"
+  | "discord"
+  | "bluish";
 export type Backgrounds = Record<Background, FlattenSimpleInterpolation>;
 
 export interface StyleProps {

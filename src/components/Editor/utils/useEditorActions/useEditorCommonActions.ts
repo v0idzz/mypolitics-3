@@ -44,10 +44,13 @@ const useEditorCommonActions = (
           },
         });
 
+        const { id, publishedOn } = result.data.saveQuizVersion;
+
         update({
           quiz: {
             lastUpdatedVersion: {
-              id: result.data.saveQuizVersion.id,
+              id,
+              publishedOn,
             },
           },
         });

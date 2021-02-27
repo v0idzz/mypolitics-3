@@ -21,10 +21,12 @@ interface Props {
   global?: boolean;
   value?: string;
   onChange?(value: string): void;
+  color?: "grayish" | "bluish";
 }
 
 const LanguageSelect: React.FC<Props> = ({
   global = true,
+  color = "grayish",
   value,
   onChange,
 }) => {
@@ -83,7 +85,7 @@ const LanguageSelect: React.FC<Props> = ({
 
   return (
     <Wrapper>
-      <Container showFull={showFull}>
+      <Container showFull={showFull} color={color}>
         <Inner>{languageButtons}</Inner>
         <DropdownButton onClick={toggleShowFull}>
           <FontAwesomeIcon icon={showFull ? faAngleUp : faAngleDown} />

@@ -2587,7 +2587,7 @@ export type SaveQuizVersionMutation = (
   { __typename?: 'Mutation' }
   & { saveQuizVersion: (
     { __typename?: 'QuizVersion' }
-    & Pick<QuizVersion, 'id'>
+    & Pick<QuizVersion, 'id' | 'publishedOn'>
   ) }
 );
 
@@ -3729,6 +3729,7 @@ export const SaveQuizVersionDocument = gql`
     mutation SaveQuizVersion($values: UpdateQuizVersionInput!, $id: String!, $publish: Boolean!) {
   saveQuizVersion(saveQuizVersionInput: $values, id: $id, publish: $publish) {
     id
+    publishedOn
   }
 }
     `;
