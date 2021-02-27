@@ -1,5 +1,5 @@
 import * as React from "react";
-import Document, { DocumentContext, DocumentInitialProps } from 'next/document';
+import Document, { DocumentContext, DocumentInitialProps } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 class CustomDocument extends Document {

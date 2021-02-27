@@ -10,11 +10,12 @@ import {
 import { SinglePage } from "@components/Results";
 import { NextSeo, NextSeoProps } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
-import Head from "next/dist/next-server/lib/head";
+import Head from "next/head";
 import StandardPage, {
   getStandardPageProps,
   StandardPageProps,
 } from "@shared/StandardPage";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 interface Props {
   results: ResultsPartsFragment;
@@ -38,7 +39,7 @@ const ResultsPage: React.FC<Props> = ({
 
   const politicanSeo: NextSeoProps = politician && {
     title: `${politician.name} – wyniki w teście ${title}!`,
-    description: `Porównaj swoje poglądy! ${politician.biography}`,
+    description: `Porównaj swoje poglądy! ${politician.biography[lang]}`,
     openGraph: {
       images: [
         {
@@ -55,14 +56,8 @@ const ResultsPage: React.FC<Props> = ({
     <StandardPage {...standardPageProps}>
       <Head>
         <link
-          rel="preload"
-          href="https://kit.fontawesome.com/74320b0657.js"
-          as="script"
-        />
-        <script
-          src="https://kit.fontawesome.com/74320b0657.js"
-          crossOrigin="anonymous"
-          async
+          href="https://use.fontawesome.com/releases/v5.11.1/css/all.css"
+          rel="stylesheet"
         />
       </Head>
       <NextSeo {...seo} />

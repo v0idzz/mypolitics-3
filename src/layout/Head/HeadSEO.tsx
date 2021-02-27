@@ -43,6 +43,9 @@ const HeadSEO: React.FC = () => {
         site: "@myPolitics__",
         cardType: "summary",
       }}
+      facebook={{
+        appId: "4144384798967211",
+      }}
     />
   );
 };

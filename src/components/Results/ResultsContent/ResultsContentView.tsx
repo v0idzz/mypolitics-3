@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ResultsCompassPartsFragment,
   ResultsPartsFragment,
@@ -31,11 +31,18 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
   const [compass, setCompass] = useState<
     ResultsCompassPartsFragment | undefined
   >(results.compasses[0]);
+  const compassesString = JSON.stringify(results.compasses);
   const authorizedPartiesIds = results.quiz.meta.features.authorizedParties.map(
     (p) => p.id
   );
   const hasAdditional = hasParties || compass || hasTraits;
   const hasAxesAndAdditional = hasAxes && hasAdditional;
+
+  useEffect(() => {
+    if (results.compasses.length > 0) {
+      setCompass(results.compasses[0]);
+    }
+  }, [compassesString]);
 
   return (
     <Container>

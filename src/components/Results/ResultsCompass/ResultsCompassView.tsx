@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { ResultsCompassPartsFragment } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 import * as R from "ramda";
@@ -17,6 +17,7 @@ const ResultsCompass: React.FC<Props> = ({
   onChange,
 }) => {
   const { lang } = useTranslation();
+  const deps = JSON.stringify({ compasses, selectedCompass });
 
   const toListElement = (compass: ResultsCompassPartsFragment) => (
     <ListElement
@@ -29,11 +30,14 @@ const ResultsCompass: React.FC<Props> = ({
   );
   const elements = R.map(toListElement, compasses);
 
-  return (
-    <Container>
-      <CompassContent selectedCompass={selectedCompass} />
-      <List length={elements.length}>{elements}</List>
-    </Container>
+  return useMemo(
+    () => (
+      <Container>
+        <CompassContent selectedCompass={selectedCompass} />
+        <List length={elements.length}>{elements}</List>
+      </Container>
+    ),
+    [deps]
   );
 };
 
