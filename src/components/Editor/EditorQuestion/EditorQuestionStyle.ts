@@ -12,6 +12,12 @@ export const NumberWrapper = styled.div`
   }
 `;
 
+export const Row = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+`;
+
 export const ActionsWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -64,4 +70,16 @@ export const OpenButton = styled.button<{ opened: boolean }>`
     css`
       transform: rotate(180deg);
     `}
+`;
+
+export const Info = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / -1;
+  background: ${({ theme }) => transparentize(0.9, theme.colors.primary)};
+  color: ${({ theme }) => theme.colors.primary};
+  text-align: center;
+  border-radius: 0.25rem;
+  padding: 1rem;
 `;

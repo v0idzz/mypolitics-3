@@ -5,6 +5,7 @@ import {
   useUpdateQuizVersionMutation,
   useUpdateQuizMutation,
 } from "@generated/graphql";
+import { ErrorCode } from "@typeDefs/error";
 import {
   EditorGetCurrentDataFunction,
   EditorUpdateFunction,
@@ -16,76 +17,109 @@ export interface CommonActions {
   updateBasic(input: UpdateQuizInput): Promise<void>;
 }
 
+const stripTypename = (object: any) => {
+  const omitTypename = (key, value) =>
+    key === "__typename" ? undefined : value;
+
+  return JSON.parse(JSON.stringify(object), omitTypename);
+};
+
 const useEditorCommonActions = (
   getCurrentData: EditorGetCurrentDataFunction,
   update: EditorUpdateFunction
 ): CommonActions => {
-  const [saveVersion] = useSaveQuizVersionMutation();
-  const [updateVersion] = useUpdateQuizVersionMutation();
-  const [updateBasic] = useUpdateQuizMutation();
+  const [
+    saveVersionMutation,
+    { loading: versionSaveLoading },
+  ] = useSaveQuizVersionMutation();
+  const [
+    updateBasicMutation,
+    { loading: basicUpdateLoading },
+  ] = useUpdateQuizMutation();
+  const [
+    updateVersionMutation,
+    { loading: versionUpdateLoading },
+  ] = useUpdateQuizVersionMutation();
 
-  const stripTypename = (object: any) => {
-    const omitTypename = (key, value) =>
-      key === "__typename" ? undefined : value;
+  const saveVersion = async (values, publish) => {
+    if (versionSaveLoading) {
+      return;
+    }
 
-    return JSON.parse(JSON.stringify(object), omitTypename);
+    const currentData = getCurrentData();
+
+    try {
+      const result = await saveVersionMutation({
+        variables: {
+          id: currentData.quiz.lastUpdatedVersion.id,
+          values: stripTypename(values),
+          publish,
+        },
+      });
+
+      const { id, publishedOn } = result.data.saveQuizVersion;
+
+      update({
+        quiz: {
+          lastUpdatedVersion: {
+            id,
+            publishedOn,
+          },
+        },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const updateVersion = async (input: UpdateQuizVersionInput) => {
+    if (versionUpdateLoading) {
+      return;
+    }
+
+    const currentData = getCurrentData();
+
+    try {
+      await updateVersionMutation({
+        variables: {
+          id: currentData.quiz.lastUpdatedVersion.id,
+          values: stripTypename(input),
+        },
+      });
+    } catch (e) {
+      console.error(e);
+
+      if (
+        e.graphQLErrors[0]?.message?.code === ErrorCode.QUIZ_VERSION_PUBLISHED
+      ) {
+        await saveVersion(input, false);
+      }
+    }
+  };
+
+  const updateBasic = async (input: UpdateQuizInput) => {
+    if (basicUpdateLoading) {
+      return;
+    }
+
+    const currentData = getCurrentData();
+
+    try {
+      await updateBasicMutation({
+        variables: {
+          id: currentData.quiz.id,
+          values: stripTypename(input),
+        },
+      });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return {
-    saveVersion: async (values, publish) => {
-      const currentData = getCurrentData();
-
-      try {
-        const result = await saveVersion({
-          variables: {
-            id: currentData.quiz.lastUpdatedVersion.id,
-            values: stripTypename(values),
-            publish,
-          },
-        });
-
-        const { id, publishedOn } = result.data.saveQuizVersion;
-
-        update({
-          quiz: {
-            lastUpdatedVersion: {
-              id,
-              publishedOn,
-            },
-          },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    updateVersion: async (input: UpdateQuizVersionInput) => {
-      const currentData = getCurrentData();
-
-      try {
-        await updateVersion({
-          variables: {
-            id: currentData.quiz.lastUpdatedVersion.id,
-            values: stripTypename(input),
-          },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    updateBasic: async (input: UpdateQuizInput) => {
-      const currentData = getCurrentData();
-
-      try {
-        await updateBasic({
-          variables: {
-            id: currentData.quiz.id,
-            values: stripTypename(input),
-          },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
+    saveVersion,
+    updateVersion,
+    updateBasic,
   };
 };
 

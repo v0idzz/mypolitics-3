@@ -1676,14 +1676,14 @@ export type QuizAxis = {
   __typename?: 'QuizAxis';
   id: Scalars['String'];
   name?: Maybe<TextTranslation>;
-  left: Ideology;
-  right: Ideology;
+  left?: Maybe<Ideology>;
+  right?: Maybe<Ideology>;
 };
 
 export type QuizAxisInput = {
   name?: Maybe<TextTranslationInput>;
-  left: Scalars['String'];
-  right: Scalars['String'];
+  left?: Maybe<Scalars['String']>;
+  right?: Maybe<Scalars['String']>;
 };
 
 export type QuizCompassAxis = {
@@ -2458,6 +2458,9 @@ export type CompassAxisPartsFragment = (
       { __typename?: 'Ideology' }
       & Pick<Ideology, 'id'>
     ) }
+  )>, name?: Maybe<(
+    { __typename?: 'TextTranslation' }
+    & Pick<TextTranslation, 'pl' | 'en'>
   )> }
 );
 
@@ -2473,6 +2476,18 @@ export type CreateQuestionMutation = (
     { __typename?: 'Question' }
     & EditorQuestionPartsFragment
   ) }
+);
+
+export type EditorAxisPartsFragment = (
+  { __typename?: 'QuizAxis' }
+  & Pick<QuizAxis, 'id'>
+  & { left?: Maybe<(
+    { __typename?: 'Ideology' }
+    & Pick<Ideology, 'id'>
+  )>, right?: Maybe<(
+    { __typename?: 'Ideology' }
+    & Pick<Ideology, 'id'>
+  )> }
 );
 
 export type EditorIdeologyPartsFragment = (
@@ -2547,6 +2562,9 @@ export type EditorQuizQuery = (
       & { questions: Array<Maybe<(
         { __typename?: 'Question' }
         & EditorQuestionPartsFragment
+      )>>, axes: Array<Maybe<(
+        { __typename?: 'QuizAxis' }
+        & EditorAxisPartsFragment
       )>>, compassModes: Array<Maybe<(
         { __typename?: 'QuizCompassMode' }
         & { name: (
@@ -2630,6 +2648,10 @@ export type UpdateQuizVersionMutation = (
   & { updateQuizVersion: (
     { __typename?: 'QuizVersion' }
     & Pick<QuizVersion, 'id'>
+    & { axes: Array<Maybe<(
+      { __typename?: 'QuizAxis' }
+      & EditorAxisPartsFragment
+    )>> }
   ) }
 );
 
@@ -3015,6 +3037,10 @@ export type BasicSurveyPartsFragment = (
     )>>, quiz: (
       { __typename?: 'Quiz' }
       & Pick<Quiz, 'logoUrl'>
+      & { title: (
+        { __typename?: 'TextTranslation' }
+        & Pick<TextTranslation, 'pl' | 'en'>
+      ) }
     ) }
   ), answers: Array<(
     { __typename?: 'SurveyAnswer' }
@@ -3309,6 +3335,21 @@ export const CompassAxisPartsFragmentDoc = gql`
     }
     weight
   }
+  name {
+    pl
+    en
+  }
+}
+    `;
+export const EditorAxisPartsFragmentDoc = gql`
+    fragment EditorAxisParts on QuizAxis {
+  id
+  left {
+    id
+  }
+  right {
+    id
+  }
 }
     `;
 export const EditorIdeologyPartsFragmentDoc = gql`
@@ -3565,6 +3606,10 @@ export const BasicSurveyPartsFragmentDoc = gql`
     }
     quiz {
       logoUrl
+      title {
+        pl
+        en
+      }
     }
   }
   answers {
@@ -3668,6 +3713,9 @@ export const EditorQuizDocument = gql`
       questions {
         ...EditorQuestionParts
       }
+      axes {
+        ...EditorAxisParts
+      }
       compassModes {
         name {
           pl
@@ -3696,6 +3744,7 @@ export const EditorQuizDocument = gql`
   }
 }
     ${EditorQuestionPartsFragmentDoc}
+${EditorAxisPartsFragmentDoc}
 ${CompassAxisPartsFragmentDoc}
 ${EditorIdeologyPartsFragmentDoc}
 ${EditorPartyPartsFragmentDoc}`;
@@ -3830,9 +3879,12 @@ export const UpdateQuizVersionDocument = gql`
     mutation UpdateQuizVersion($values: UpdateQuizVersionInput!, $id: String!) {
   updateQuizVersion(updateQuizVersionInput: $values, id: $id) {
     id
+    axes {
+      ...EditorAxisParts
+    }
   }
 }
-    `;
+    ${EditorAxisPartsFragmentDoc}`;
 export type UpdateQuizVersionMutationFn = Apollo.MutationFunction<UpdateQuizVersionMutation, UpdateQuizVersionMutationVariables>;
 
 /**

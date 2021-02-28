@@ -14,6 +14,7 @@ import {
   Date,
   Id,
   PoliticianSubHeader,
+  Title,
 } from "./ResultsHeaderStyle";
 
 interface Props {
@@ -32,7 +33,10 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
         <div>
           <Link href={path}>
             <a>
-              <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />
+              {quiz.logoUrl && (
+                <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />
+              )}
+              {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
             </a>
           </Link>
         </div>

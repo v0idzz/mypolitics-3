@@ -1,27 +1,32 @@
 import React, { useMemo, useState } from "react";
 import { Box } from "@components/Editor";
-import { useQuestion } from "@components/Editor/EditorQuestion/EditorQuestionUtils";
 import InternationalizedInput from "@shared/InternationalizedInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import useEditorActions from "@components/Editor/utils/useEditorActions";
+import IdeologiesInput from "@components/Editor/EditorQuestion/IdeologiesInput";
+import { UseEditor } from "@components/Editor/utils/useEditor";
+import useQuestion from "./utils/useQuestion";
 import {
   NumberWrapper,
   ActionsWrapper,
   DeleteButton,
   OpenButton,
+  Row,
 } from "./EditorQuestionStyle";
+import PartiesInput from "./PartiesInput";
 
 library.add(faChevronDown, faTrash);
 
 interface Props {
   questionId: string;
   index: number;
+  editor: UseEditor;
 }
 
-const EditorQuestion: React.FC<Props> = ({ questionId, index }) => {
-  const { question } = useEditorActions();
+const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
+  const { question } = editor.actions;
   const { data, handleChange } = useQuestion(questionId);
   const [deleteConfirmed, setDeleteConfirmed] = useState<boolean>(false);
   const [opened, setOpened] = useState<boolean>(false);
@@ -70,6 +75,10 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index }) => {
           value={data.text}
           onChange={handleChange.text}
         />
+        <Row>
+          <PartiesInput questionId={questionId} />
+          <IdeologiesInput questionId={questionId} />
+        </Row>
       </Box>
     ),
     [rerender]

@@ -41,6 +41,8 @@ export const CreateButton = styled.button`
 `;
 
 export const Title = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
@@ -51,4 +53,12 @@ export const Divider = styled.div`
   width: 100%;
   height: 1px;
   background: rgba(0, 0, 0, 0.1);
+`;
+
+export const CompassImage = styled.img`
+  height: 1em;
+  width: 1em;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-right: 0.5em;
 `;

@@ -47,12 +47,8 @@ function createApolloClient() {
     uri: `${domain}/admin/graphql`,
   });
 
-  const errorLink = onError(({ graphQLErrors }) => {
-    if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
-  });
-
   return new ApolloClient({
-    link: ApolloLink.from([authLink, errorLink, httpLink]),
+    link: ApolloLink.from([authLink, httpLink]),
     ssrMode: typeof window === "undefined",
     cache: new InMemoryCache(),
   });

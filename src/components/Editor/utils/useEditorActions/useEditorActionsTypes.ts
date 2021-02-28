@@ -1,8 +1,5 @@
 import { EditorQuizQuery } from "@generated/graphql";
-
-type DeepPartial<T> = {
-  [P in keyof T]?: DeepPartial<T[P]>;
-};
+import { DeepPartial } from "@typeDefs/common";
 
 export type EditorUpdateFunction = (
   updateData: DeepPartial<EditorQuizQuery>

@@ -10,12 +10,8 @@ import {
 import { CSSTransition } from "react-transition-group";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { LeanAnswer } from "@components/Results/ResultsAnswers/Answer/AnswerTypes";
+import { AnswerEffect } from "@components/Results";
 import {
-  AnswerElementContainer,
-  AnswerElementContent,
-  AnswerElementTitle,
-  AnswerElementTitleWrapper,
-  Row,
   Container,
   Content,
   Header,
@@ -30,19 +26,6 @@ import {
 import { useAnswerEffects } from "./AnwerUtils";
 
 library.add(faThumbsUp, faThumbsDown);
-
-const AnswerElement: React.FC<{
-  title: React.ReactNode;
-  children: React.ReactNode;
-  type: SurveyAnswerType;
-}> = ({ title, children, type }) => (
-  <AnswerElementContainer type={type}>
-    <AnswerElementTitleWrapper>
-      <AnswerElementTitle>{title}</AnswerElementTitle>
-    </AnswerElementTitleWrapper>
-    <AnswerElementContent>{children}</AnswerElementContent>
-  </AnswerElementContainer>
-);
 
 interface Props {
   data: LeanAnswer;
@@ -103,31 +86,31 @@ const Answer: React.FC<Props> = ({ data, num, party }) => {
           <Content>
             {ideologies.hasAny && (
               <>
-                <AnswerElement
+                <AnswerEffect
                   title="Ideologie za"
                   type={SurveyAnswerType.Agree}
                 >
                   {ideologies.agree}
-                </AnswerElement>
-                <AnswerElement
+                </AnswerEffect>
+                <AnswerEffect
                   title="Ideologie przeciw"
                   type={SurveyAnswerType.Disagree}
                 >
                   {ideologies.disagree}
-                </AnswerElement>
+                </AnswerEffect>
               </>
             )}
             {parties.hasAny && (
               <>
-                <AnswerElement title="Partie za" type={SurveyAnswerType.Agree}>
+                <AnswerEffect title="Partie za" type={SurveyAnswerType.Agree}>
                   {parties.agree}
-                </AnswerElement>
-                <AnswerElement
+                </AnswerEffect>
+                <AnswerEffect
                   title="Partie przeciw"
                   type={SurveyAnswerType.Disagree}
                 >
                   {parties.disagree}
-                </AnswerElement>
+                </AnswerEffect>
               </>
             )}
           </Content>

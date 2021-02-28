@@ -1,5 +1,5 @@
 import React from "react";
-import { useEditor } from "@components/Editor/utils/useEditor";
+import { UseEditor, useEditor } from '@components/Editor/utils/useEditor';
 import Button from "@shared/Button";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,8 +9,12 @@ import IdeologyButton from "./IdeologyButton";
 
 library.add(faPlus);
 
-const EditorIdeologies: React.FC = () => {
-  const { data } = useEditor();
+interface Props {
+  editor: UseEditor;
+}
+
+const EditorIdeologies: React.FC<Props> = ({ editor }) => {
+  const { data } = editor;
   const ideologies = data.data.quiz.lastUpdatedVersion.ideologies || [];
 
   return (

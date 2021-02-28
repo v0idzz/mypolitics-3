@@ -5,7 +5,7 @@ import {
   faToolbox,
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { useEditor } from "@components/Editor/utils/useEditor";
+import { UseEditor, useEditor } from '@components/Editor/utils/useEditor';
 import PartyItem from "./PartyItem";
 import IdeologyItem from "./IdeologyItem";
 import {
@@ -22,8 +22,12 @@ import {
 
 library.add(faToolbox, faExclamationTriangle);
 
-const EditorToolboxView: React.FC = () => {
-  const { versionInput } = useEditor();
+interface Props {
+  editor: UseEditor;
+}
+
+const EditorToolboxView: React.FC<Props> = ({ editor }) => {
+  const { versionInput } = editor;
   const { parties, traits } = versionInput;
   const ideologies = versionInput.ideologies.filter(
     (id) => !traits.includes(id)

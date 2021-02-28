@@ -113,3 +113,19 @@ export const BottomInfo = styled.div`
   width: 100%;
   margin-top: 1rem;
 `;
+
+export const Title = styled.div`
+  color: ${({ theme }) => theme.colors.textMuted};
+  font-weight: ${({ theme }) => theme.fontWeight.primary.bold};
+  font-family: ${({ theme }) => theme.fontFamily.primary};
+  font-size: 1rem;
+  text-align: center;
+
+  ${breakpoint("sm")`
+    font-size: 1.1rem;
+  `};
+
+  ${breakpoint("md")`
+    font-size: 1.25rem;
+  `};
+`;

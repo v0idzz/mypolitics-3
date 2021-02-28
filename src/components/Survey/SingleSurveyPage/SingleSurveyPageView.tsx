@@ -20,6 +20,7 @@ import {
   Inner,
   Logo,
   BottomInfo,
+  Title,
 } from "./SingleSurveyPageStyle";
 
 library.add(faArrowLeft, faUndoAlt, faTimes, faCheck);
@@ -37,7 +38,8 @@ const SurveyPage: React.FC = () => {
   return (
     <Container>
       <Header>
-        <Logo src={quiz.logoUrl} alt="Quiz logo" />
+        {quiz.logoUrl && <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />}
+        {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
       </Header>
       <Inner>
         <SurveyHeader actions={actions} data={data} />

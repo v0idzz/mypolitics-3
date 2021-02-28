@@ -1,6 +1,6 @@
 import React from "react";
 import LanguageSelect from "@shared/LanguageSelect";
-import { useEditor } from "@components/Editor/utils/useEditor";
+import { UseEditor } from "@components/Editor/utils/useEditor";
 import Button from "@shared/Button";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,8 +10,12 @@ import PartyButton from "./PartyButton";
 
 library.add(faPlus);
 
-const EditorParties: React.FC = () => {
-  const { data } = useEditor();
+interface Props {
+  editor: UseEditor;
+}
+
+const EditorParties: React.FC<Props> = ({ editor }) => {
+  const { data } = editor;
   const parties = data.data.quiz.lastUpdatedVersion.parties || [];
 
   return (

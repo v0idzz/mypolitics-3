@@ -87,3 +87,18 @@ export const Id = styled(Date)`
     margin-right: 0.25em;
   }
 `;
+
+export const Title = styled.div`
+  color: ${({ theme }) => theme.colors.textMuted};
+  font-weight: ${({ theme }) => theme.fontWeight.primary.bold};
+  font-family: ${({ theme }) => theme.fontFamily.primary};
+  font-size: 1rem;
+
+  ${breakpoint("sm")`
+    font-size: 1.1rem;
+  `};
+
+  ${breakpoint("md")`
+    font-size: 1.25rem;
+  `};
+`;

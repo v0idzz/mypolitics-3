@@ -9,30 +9,83 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import useEntity from "@components/Editor/utils/useEntity";
 
+export interface EffectInput {
+  type: "agree" | "disagree";
+  entity: "ideologies" | "parties";
+  op: "add" | "remove";
+  instance: any;
+}
+
 interface UseQuestion {
   data: EditorQuestionPartsFragment;
   handleChange: {
     text(value: TextTranslationInput): void;
+    effect(value: EffectInput): void;
   };
 }
 
-export const useQuestion = (id: string): UseQuestion => {
-  const { data, update } = useEntity<EditorQuestionPartsFragment>({
+const useQuestion = (id: string): UseQuestion => {
+  const {
+    data,
+    getCurrentData,
+    update,
+  } = useEntity<EditorQuestionPartsFragment>({
     id,
     name: "Question",
     document: EditorQuestionPartsFragmentDoc,
   });
   const [firstTime, setFirstTime] = useState(true);
-  const [updateQuestion] = useUpdateQuestionMutation();
+  const [updateQuestion, { loading }] = useUpdateQuestionMutation();
   const [dataDebounced] = useDebounce(data, 1000, {
     leading: true,
   });
 
   const handleTextChange = (text: TextTranslationInput) =>
     update({
-      ...data,
       text,
     });
+
+  const handleEffectChange = ({ type, entity, op, instance }: EffectInput) => {
+    const currentData = getCurrentData();
+    const getArray = (arrType) => currentData.effects[arrType][entity];
+    const oppositeType = type === "agree" ? "disagree" : "agree";
+    const currentArray: any[] = getArray(type);
+    const oppositeArray: any[] = getArray(oppositeType);
+    const addOp = op === "add";
+    const existsInCurrent = currentArray.map((i) => i.id).includes(instance.id);
+    const existsInOpposite = oppositeArray
+      .map((i) => i.id)
+      .includes(instance.id);
+
+    if (addOp && existsInCurrent) {
+      return;
+    }
+
+    if (addOp && existsInOpposite) {
+      const newData = oppositeArray.filter((i) => i.id !== instance.id);
+
+      update({
+        effects: {
+          [oppositeType]: {
+            [entity]: newData,
+          },
+        },
+      });
+    }
+
+    const newData =
+      op === "add"
+        ? currentArray.concat(instance)
+        : currentArray.filter((i) => i.id !== instance.id);
+
+    update({
+      effects: {
+        [type]: {
+          [entity]: newData,
+        },
+      },
+    });
+  };
 
   const convertDataToInput = (
     value: EditorQuestionPartsFragment
@@ -57,6 +110,10 @@ export const useQuestion = (id: string): UseQuestion => {
   };
 
   const handleUpdate = async () => {
+    if (loading) {
+      return;
+    }
+
     try {
       const result = await updateQuestion({
         variables: {
@@ -84,6 +141,9 @@ export const useQuestion = (id: string): UseQuestion => {
     data,
     handleChange: {
       text: handleTextChange,
+      effect: handleEffectChange,
     },
   };
 };
+
+export default useQuestion;

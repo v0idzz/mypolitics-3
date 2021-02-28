@@ -38,6 +38,7 @@ import {
   MetaWrapper,
   PoliticiansResultsWrapper,
   SurveysHistoryWrapper,
+  Title,
 } from "./SingleQuizPageStyle";
 
 interface Props {
@@ -47,7 +48,7 @@ interface Props {
 library.add(faStar, faChartBar, faLandmark, faHistory);
 
 const QuizzesPage: React.FC<Props> = ({ quiz }) => {
-  const { logoUrl, title, description, meta, currentVersion } = quiz;
+  const { description, meta, currentVersion } = quiz;
   const router = useRouter();
   const handleErrors = useHandleErrors();
   const [createSurvey, { loading }] = useCreateSurveyMutation();
@@ -76,7 +77,8 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
       <GoogleAd id="myp3-standard-top" />
       <Container>
         <Header>
-          <Logo src={logoUrl} alt={title[lang]} />
+          {quiz.logoUrl && <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />}
+          {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
           {!isClassic && (
             <Button onClick={handleStartClick} loading={loading} showShadow>
               Rozpocznij

@@ -12,9 +12,17 @@ import {
 import useEditorCommonActions, {
   CommonActions,
 } from "./useEditorCommonActions";
+import useEditorAxesActions, { AxesActions } from "./useEditorAxesActions";
+import useEditorTraitsActions, {
+  TraitsActions,
+} from "./useEditorTraitsActions";
+import useEditorCompassesActions, { CompassesActions } from './useEditorCompassesActions';
 
 export interface EditorActions extends CommonActions {
   question: QuestionActions;
+  compasses: CompassesActions;
+  axes: AxesActions;
+  traits: TraitsActions;
   update: EditorUpdateFunction;
   getCurrentData: EditorGetCurrentDataFunction;
 }
@@ -45,10 +53,16 @@ const useEditorActions = (): EditorActions => {
   };
 
   const question = useEditorQuestionActions(getCurrentData, update);
+  const axes = useEditorAxesActions(getCurrentData, update);
   const common = useEditorCommonActions(getCurrentData, update);
+  const traits = useEditorTraitsActions(getCurrentData, update);
+  const compasses = useEditorCompassesActions(getCurrentData, update);
 
   return {
     question,
+    axes,
+    traits,
+    compasses,
     ...common,
     update,
     getCurrentData,

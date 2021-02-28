@@ -1,8 +1,11 @@
 import { DocumentNode, useApolloClient } from "@apollo/client";
+import * as R from "ramda";
+import { DeepPartial } from "@typeDefs/common";
 
 interface UseEntity<T> {
   data: T;
-  update(value: T): void;
+  getCurrentData(): T;
+  update(value: DeepPartial<T>): void;
 }
 
 interface UseEntityInput {
@@ -11,25 +14,43 @@ interface UseEntityInput {
   document: DocumentNode;
 }
 
-const useEntity = <T>({ id, name, document }: UseEntityInput): UseEntity<T> => {
+export type UseEntityFunction = <T>(input: UseEntityInput) => UseEntity<T>;
+type UseEntityLazy = [UseEntityFunction];
+
+export const useEntityLazy = (): UseEntityLazy => {
   const client = useApolloClient();
-  const fragment = {
-    id: `${name}:${id}`,
-    fragment: document,
+  const getEntity: UseEntityFunction = <T>({ id, name, document }) => {
+    const fragment = {
+      id: `${name}:${id}`,
+      fragment: document,
+    };
+
+    const getCurrentData = () => client.readFragment<T>(fragment);
+
+    const update = (updateData: DeepPartial<T>) => {
+      const currentData = getCurrentData();
+      const data = R.mergeDeepRight(currentData, updateData);
+
+      client.writeFragment<T>({
+        ...fragment,
+        data,
+      });
+    };
+
+    return {
+      data: client.readFragment<T>(fragment),
+      update,
+      getCurrentData,
+    };
   };
 
-  const update = (value) =>
-    client.writeFragment<T>({
-      ...fragment,
-      data: value,
-    });
+  return [getEntity];
+};
 
-  const data = client.readFragment<T>(fragment);
+const useEntity: UseEntityFunction = <T>(input) => {
+  const [getEntity] = useEntityLazy();
 
-  return {
-    data,
-    update,
-  };
+  return getEntity(input);
 };
 
 export default useEntity;
