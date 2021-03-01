@@ -1,0 +1,5 @@
+mutation UpdateParty ($values: UpdatePartyInput!, $id: String!) {
+    updateParty(updatePartyInput: $values, id: $id) {
+        ...EditorPartyParts
+    }
+}

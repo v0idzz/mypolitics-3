@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import LanguageSelect from "@shared/LanguageSelect";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import Button from "@shared/Button";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import CountrySelect from "@shared/CountrySelect";
+import { Country } from "@generated/graphql";
 import { ListContainer } from "./EditorPartiesStyle";
-import PartyButton from "./PartyButton";
+import PartyCard from "./PartyCard";
+import PartyCreate from "./PartyCreate";
 
 library.add(faPlus);
 
@@ -15,22 +18,43 @@ interface Props {
 }
 
 const EditorParties: React.FC<Props> = ({ editor }) => {
+  const [country, setCountry] = useState<Country>(Country.Poland);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const { data } = editor;
   const parties = data.data.quiz.lastUpdatedVersion.parties || [];
+  const filteredParties = parties.filter((p) => p.country === country);
+  const partiesJson = JSON.stringify({ filteredParties });
+  const partiesList = useMemo(
+    () =>
+      filteredParties.map((party) => (
+        <PartyCard key={party.id} data={party} editor={editor} />
+      )),
+    [partiesJson]
+  );
 
   return (
     <>
-      <LanguageSelect global={false} />
+      <div style={{ display: "flex" }}>
+        <CountrySelect
+          value={country}
+          onChange={setCountry}
+          color="background"
+        />
+      </div>
       <ListContainer>
-        {parties.map((party) => (
-          <PartyButton key={party.id} data={party} />
-        ))}
+        {partiesList}
         <Button
+          onClick={() => setShowModal(true)}
           background="bluish"
           beforeIcon={<FontAwesomeIcon icon={faPlus} />}
         >
           Utwórz partię
         </Button>
+        <PartyCreate
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          editor={editor}
+        />
       </ListContainer>
     </>
   );

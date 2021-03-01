@@ -45,3 +45,11 @@ export const paths = {
     return `/talk/${slug}${id ? `/${id}` : ""}`;
   },
 };
+
+export const API_BASE = "/api";
+
+export const apiPaths = {
+  upload: {
+    icon: `${API_BASE}/upload/icon`,
+  },
+};

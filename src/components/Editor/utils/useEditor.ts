@@ -24,7 +24,7 @@ export const useEditor = (): UseEditor => {
   const basicInput = useBasicInput(data?.data);
   const [
     { versionInput: versionInputDebounce, basicInput: basicInputDebounce },
-  ] = useDebounce({ versionInput, basicInput }, 2000);
+  ] = useDebounce({ versionInput, basicInput }, 500);
   const versionInputDebounceJson = JSON.stringify({ versionInputDebounce });
   const basicInputDebounceJson = JSON.stringify({ basicInputDebounce });
 

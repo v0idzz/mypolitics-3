@@ -10,7 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import useEntity from "@components/Editor/utils/useEntity";
-import useEditorActions from "@components/Editor/utils/useEditorActions";
+import { UseEditor } from "@components/Editor/utils/useEditor";
+import ActionButton from "@shared/ActionButton";
 import { useAxisDrop, useIdeology } from "./AxisUtils";
 import {
   Container,
@@ -19,9 +20,7 @@ import {
   IdeologyDeleteButton,
   IdeologyName,
   Wrapper,
-  DeleteButton,
 } from "./AxisStyle";
-import { UseEditor } from '@components/Editor/utils/useEditor';
 
 library.add(faTimes);
 
@@ -56,9 +55,9 @@ const AxisIdeology: React.FC<{
     <IdeologyContainer color={color}>
       <IdeologyIcon icon={icon} />
       <IdeologyName>{name[lang]}</IdeologyName>
-      <IdeologyDeleteButton onClick={handleDelete}>
+      <ActionButton variant="white" onClick={handleDelete}>
         <FontAwesomeIcon icon={faTimes} />
-      </IdeologyDeleteButton>
+      </ActionButton>
     </IdeologyContainer>
   );
 };
@@ -70,20 +69,10 @@ interface Props {
 
 const Axis: React.FC<Props> = ({ data, editor }) => {
   const { axes } = editor.actions;
-  const [deleteConfirmed, setDeleteConfirmed] = useState<boolean>(false);
+  const [deleteConfirmed] = useState<boolean>(false);
   const leftIdeology = useIdeology(data?.left && data.left.id);
   const rightIdeology = useIdeology(data?.right && data.right.id);
   const dataJson = JSON.stringify({ data });
-
-  const handleDeleteConfirm = () => {
-    if (!deleteConfirmed) {
-      setDeleteConfirmed(true);
-      setTimeout(() => setDeleteConfirmed(false), 2000);
-      return;
-    }
-
-    axes.delete(data.id);
-  };
 
   return useMemo(
     () => (
@@ -92,13 +81,15 @@ const Axis: React.FC<Props> = ({ data, editor }) => {
           <AxisIdeology axisId={data.id} data={leftIdeology} side="left" />
           <AxisIdeology axisId={data.id} data={rightIdeology} side="right" />
         </Container>
-        <DeleteButton
-          onClick={handleDeleteConfirm}
-          deleteConfirmed={deleteConfirmed}
-          title={deleteConfirmed ? "Potwierdź usunięcie" : "Usuń pytanie"}
+        <ActionButton
+          onClick={() => axes.delete(data.id)}
+          title="Usuń oś"
+          mustConfirm
+          variant="red"
+          size="large"
         >
           <FontAwesomeIcon icon={faTrash} />
-        </DeleteButton>
+        </ActionButton>
       </Wrapper>
     ),
     [dataJson, deleteConfirmed]

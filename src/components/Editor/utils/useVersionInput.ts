@@ -1,12 +1,11 @@
 import {
   EditorQuizQuery,
   QuizCompassAxis,
-  QuizCompassAxisInput,
-  QuizCompassIdeology,
   QuizCompassIdeologyInput,
   QuizCompassMode,
   UpdateQuizVersionInput,
 } from "@generated/graphql";
+import { stripTypename } from '@utils/strip-typename';
 
 export const convertToInput = (
   quizData: EditorQuizQuery
@@ -41,8 +40,6 @@ export const convertToInput = (
     };
   };
 
-  console.log(quizCompassModes);
-
   const compassModeToInput = (data: QuizCompassMode) => {
     const { name, horizontal, vertical, third } = data;
 
@@ -66,7 +63,7 @@ export const convertToInput = (
     }));
 
   const toIds = (entity) => entity.id;
-  const compassModes = quizCompassModes.map(compassModeToInput);
+  const compassModes = stripTypename(quizCompassModes).map(compassModeToInput);
   const questions = quizQuestions.map(toIds);
   const traits = quizTraits.map(toIds);
   const parties = quizParties.map(toIds);

@@ -17,7 +17,8 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { useRouter } from "next/router";
 import Button from "@shared/Button";
-import { Col, Row, CompassImage, Title, Divider } from "./EditorContentStyle";
+import { Col, Row, Title } from "./EditorContentStyle";
+import { Divider } from '@shared/Common';
 
 library.add(faPlus);
 
@@ -57,19 +58,19 @@ const EditorContent: React.FC = () => {
               <Box header={<Title>Cechy</Title>}>
                 <Traits editor={editor} />
               </Box>
-              <Box
-                header={
-                  <Title>
-                    <CompassImage
-                      src={require("@assets/images/compass_chart.png")}
-                      alt="Kompas"
-                    />
-                    <span>Kompas</span>
-                  </Title>
-                }
-              >
-                <Compasses editor={editor} />
-              </Box>
+              {/* <Box */}
+              {/*  header={ */}
+              {/*    <Title> */}
+              {/*      <CompassImage */}
+              {/*        src={require("@assets/images/compass_chart.png")} */}
+              {/*        alt="Kompas" */}
+              {/*      /> */}
+              {/*      <span>Kompas</span> */}
+              {/*    </Title> */}
+              {/*  } */}
+              {/* > */}
+              {/*  <Compasses editor={editor} /> */}
+              {/* </Box> */}
               <Divider />
               {versionInput.questions.map((questionId, index) => (
                 <Question

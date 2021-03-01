@@ -18,8 +18,6 @@ export const Overlay = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 0.5rem;
-  overflow: hidden;
   max-width: 90vw;
   min-width: 80vw;
 
@@ -37,6 +35,8 @@ export const Header = styled.div<{ background: string }>`
   font-size: 1rem;
   background: ${({ background }) => background};
   text-align: left;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 
   img {
     height: 1rem;
@@ -90,6 +90,8 @@ export const Inner = styled.div`
   color: ${({ theme }) => theme.colors.textMuted};
   text-align: left;
   line-height: 1.3;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 
   ${breakpoint("sm")`
       padding: 1.25rem;

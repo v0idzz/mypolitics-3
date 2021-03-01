@@ -1,11 +1,10 @@
 import { ConnectDropTarget, useDrop } from "react-dnd";
-import { itemTypes } from "@constants";
 import { useEntityLazy } from "@components/Editor/utils/useEntity";
 import {
   EditorIdeologyPartsFragmentDoc,
   EditorPartyPartsFragmentDoc,
 } from "@generated/graphql";
-import useQuestion from "@components/Editor/EditorQuestion/utils/useQuestion";
+import { UseQuestion } from "./useQuestion";
 
 interface UseQuestionDrop {
   ref: ConnectDropTarget;
@@ -14,7 +13,7 @@ interface UseQuestionDrop {
 interface UseQuestionDropInput {
   item: string;
   type: "agree" | "disagree";
-  questionId: string;
+  question: UseQuestion;
 }
 
 const itemsConfig = {
@@ -33,10 +32,10 @@ const itemsConfig = {
 const useQuestionEffectsDrop = <T>({
   item,
   type,
-  questionId,
+  question,
 }: UseQuestionDropInput): UseQuestionDrop => {
-  const { handleChange } = useQuestion(questionId);
   const [getEntity] = useEntityLazy();
+  const { handleChange } = question;
   const { name, entity, document } = itemsConfig[item];
   const handleDrop = ({ id }: any) => {
     const { data: instance } = getEntity({

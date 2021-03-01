@@ -14,6 +14,7 @@ import {
   IconWrapper,
   Title,
   Input,
+  MobileInfo,
 } from "./EditorPageStyle";
 
 library.add(faPencilRuler);
@@ -39,31 +40,34 @@ const EditorPage: React.FC = () => {
   }, [code]);
 
   return (
-    <>
-      <Container>
-        <Header>
-          <div>
-            <IconWrapper>
-              <FontAwesomeIcon icon={faPencilRuler} />
-            </IconWrapper>
-            <Title>Edytor quizu</Title>
-          </div>
-          {!isAdmin && (
-            <Input
-              value={adminCode}
-              onChange={handleAdminCodeChange}
-              placeholder="Kod admina"
-            />
-          )}
-        </Header>
-        {loading && <Loading />}
-        {isAdmin && (
-          <ContentWrapper>
-            <Content />
-          </ContentWrapper>
+    <Container>
+      <Header>
+        <div>
+          <IconWrapper>
+            <FontAwesomeIcon icon={faPencilRuler} />
+          </IconWrapper>
+          <Title>Edytor quizu</Title>
+        </div>
+        {!isAdmin && (
+          <Input
+            value={adminCode}
+            onChange={handleAdminCodeChange}
+            placeholder="Kod admina"
+          />
         )}
-      </Container>
-    </>
+      </Header>
+      {loading && <Loading />}
+      {isAdmin && (
+        <ContentWrapper>
+          <Content />
+        </ContentWrapper>
+      )}
+      {isAdmin && (
+        <MobileInfo>
+          Edytor quizów jest dostępny tylko w wersji komputerowej.
+        </MobileInfo>
+      )}
+    </Container>
   );
 };
 

@@ -1,4 +1,6 @@
 import { QuizCompassMode } from "@generated/graphql";
+import { DeepPartial } from "@typeDefs/common";
+import * as R from "ramda";
 import {
   EditorGetCurrentDataFunction,
   EditorUpdateFunction,
@@ -7,6 +9,7 @@ import {
 export interface CompassesActions {
   delete(id: number);
   add(): Promise<void>;
+  update(index: number, data: DeepPartial<QuizCompassMode>);
 }
 
 const useEditorCompassesActions = (
@@ -22,6 +25,20 @@ const useEditorCompassesActions = (
       quiz: {
         lastUpdatedVersion: {
           compassModes,
+        },
+      },
+    });
+  },
+  update: (index: number, data: DeepPartial<QuizCompassMode>) => {
+    const currentData = getCurrentData();
+    const { compassModes } = currentData.quiz.lastUpdatedVersion;
+    const compasses = JSON.parse(JSON.stringify(compassModes));
+    compasses[index] = R.mergeDeepRight(compasses[index], data);
+
+    update({
+      quiz: {
+        lastUpdatedVersion: {
+          compassModes: compasses,
         },
       },
     });

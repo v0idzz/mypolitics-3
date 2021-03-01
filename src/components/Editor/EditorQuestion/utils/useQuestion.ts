@@ -16,7 +16,7 @@ export interface EffectInput {
   instance: any;
 }
 
-interface UseQuestion {
+export interface UseQuestion {
   data: EditorQuestionPartsFragment;
   handleChange: {
     text(value: TextTranslationInput): void;

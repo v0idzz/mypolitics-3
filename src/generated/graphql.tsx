@@ -1694,7 +1694,7 @@ export type QuizCompassAxis = {
 };
 
 export type QuizCompassAxisInput = {
-  name: TextTranslationInput;
+  name?: Maybe<TextTranslationInput>;
   leftIdeologies: Array<QuizCompassIdeologyInput>;
   rightIdeologies: Array<QuizCompassIdeologyInput>;
 };
@@ -1712,7 +1712,7 @@ export type QuizCompassIdeologyInput = {
 
 export type QuizCompassMode = {
   __typename?: 'QuizCompassMode';
-  name: TextTranslation;
+  name?: Maybe<TextTranslation>;
   horizontal: QuizCompassAxis;
   vertical: QuizCompassAxis;
   third?: Maybe<QuizCompassAxis>;
@@ -1836,7 +1836,7 @@ export type ResultsAxis = {
 
 export type ResultsCompass = {
   __typename?: 'ResultsCompass';
-  name: TextTranslation;
+  name?: Maybe<TextTranslation>;
   horizontal: QuizCompassAxis;
   vertical: QuizCompassAxis;
   third?: Maybe<QuizCompassAxis>;
@@ -2464,6 +2464,32 @@ export type CompassAxisPartsFragment = (
   )> }
 );
 
+export type CreateIdeologyMutationVariables = Exact<{
+  values: CreateIdeologyInput;
+}>;
+
+
+export type CreateIdeologyMutation = (
+  { __typename?: 'Mutation' }
+  & { createIdeology: (
+    { __typename?: 'Ideology' }
+    & EditorIdeologyPartsFragment
+  ) }
+);
+
+export type CreatePartyMutationVariables = Exact<{
+  values: CreatePartyInput;
+}>;
+
+
+export type CreatePartyMutation = (
+  { __typename?: 'Mutation' }
+  & { createParty: (
+    { __typename?: 'Party' }
+    & EditorPartyPartsFragment
+  ) }
+);
+
 export type CreateQuestionMutationVariables = Exact<{
   values: CreateQuestionInput;
   quizVersion: Scalars['String'];
@@ -2567,10 +2593,10 @@ export type EditorQuizQuery = (
         & EditorAxisPartsFragment
       )>>, compassModes: Array<Maybe<(
         { __typename?: 'QuizCompassMode' }
-        & { name: (
+        & { name?: Maybe<(
           { __typename?: 'TextTranslation' }
           & Pick<TextTranslation, 'pl' | 'en'>
-        ), horizontal: (
+        )>, horizontal: (
           { __typename?: 'QuizCompassAxis' }
           & CompassAxisPartsFragment
         ), vertical: (
@@ -2606,6 +2632,34 @@ export type SaveQuizVersionMutation = (
   & { saveQuizVersion: (
     { __typename?: 'QuizVersion' }
     & Pick<QuizVersion, 'id' | 'publishedOn'>
+  ) }
+);
+
+export type UpdateIdeologyMutationVariables = Exact<{
+  values: UpdateIdeologyInput;
+  id: Scalars['String'];
+}>;
+
+
+export type UpdateIdeologyMutation = (
+  { __typename?: 'Mutation' }
+  & { updateIdeology: (
+    { __typename?: 'Ideology' }
+    & EditorIdeologyPartsFragment
+  ) }
+);
+
+export type UpdatePartyMutationVariables = Exact<{
+  values: UpdatePartyInput;
+  id: Scalars['String'];
+}>;
+
+
+export type UpdatePartyMutation = (
+  { __typename?: 'Mutation' }
+  & { updateParty: (
+    { __typename?: 'Party' }
+    & EditorPartyPartsFragment
   ) }
 );
 
@@ -2900,10 +2954,10 @@ export type ResultsAxisPartsFragment = (
 
 export type ResultsCompassPartsFragment = (
   { __typename?: 'ResultsCompass' }
-  & { name: (
+  & { name?: Maybe<(
     { __typename?: 'TextTranslation' }
     & Pick<TextTranslation, 'pl' | 'en'>
-  ), horizontal: (
+  )>, horizontal: (
     { __typename?: 'QuizCompassAxis' }
     & { name?: Maybe<(
       { __typename?: 'TextTranslation' }
@@ -3660,6 +3714,70 @@ export const DepartmentPartsFragmentDoc = gql`
   }
 }
     ${MemberPartsFragmentDoc}`;
+export const CreateIdeologyDocument = gql`
+    mutation CreateIdeology($values: CreateIdeologyInput!) {
+  createIdeology(createIdeologyInput: $values) {
+    ...EditorIdeologyParts
+  }
+}
+    ${EditorIdeologyPartsFragmentDoc}`;
+export type CreateIdeologyMutationFn = Apollo.MutationFunction<CreateIdeologyMutation, CreateIdeologyMutationVariables>;
+
+/**
+ * __useCreateIdeologyMutation__
+ *
+ * To run a mutation, you first call `useCreateIdeologyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateIdeologyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createIdeologyMutation, { data, loading, error }] = useCreateIdeologyMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *   },
+ * });
+ */
+export function useCreateIdeologyMutation(baseOptions?: Apollo.MutationHookOptions<CreateIdeologyMutation, CreateIdeologyMutationVariables>) {
+        return Apollo.useMutation<CreateIdeologyMutation, CreateIdeologyMutationVariables>(CreateIdeologyDocument, baseOptions);
+      }
+export type CreateIdeologyMutationHookResult = ReturnType<typeof useCreateIdeologyMutation>;
+export type CreateIdeologyMutationResult = Apollo.MutationResult<CreateIdeologyMutation>;
+export type CreateIdeologyMutationOptions = Apollo.BaseMutationOptions<CreateIdeologyMutation, CreateIdeologyMutationVariables>;
+export const CreatePartyDocument = gql`
+    mutation CreateParty($values: CreatePartyInput!) {
+  createParty(createPartyInput: $values) {
+    ...EditorPartyParts
+  }
+}
+    ${EditorPartyPartsFragmentDoc}`;
+export type CreatePartyMutationFn = Apollo.MutationFunction<CreatePartyMutation, CreatePartyMutationVariables>;
+
+/**
+ * __useCreatePartyMutation__
+ *
+ * To run a mutation, you first call `useCreatePartyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreatePartyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createPartyMutation, { data, loading, error }] = useCreatePartyMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *   },
+ * });
+ */
+export function useCreatePartyMutation(baseOptions?: Apollo.MutationHookOptions<CreatePartyMutation, CreatePartyMutationVariables>) {
+        return Apollo.useMutation<CreatePartyMutation, CreatePartyMutationVariables>(CreatePartyDocument, baseOptions);
+      }
+export type CreatePartyMutationHookResult = ReturnType<typeof useCreatePartyMutation>;
+export type CreatePartyMutationResult = Apollo.MutationResult<CreatePartyMutation>;
+export type CreatePartyMutationOptions = Apollo.BaseMutationOptions<CreatePartyMutation, CreatePartyMutationVariables>;
 export const CreateQuestionDocument = gql`
     mutation CreateQuestion($values: CreateQuestionInput!, $quizVersion: String!) {
   createQuestion(createQuestionInput: $values, quizVersion: $quizVersion) {
@@ -3809,6 +3927,72 @@ export function useSaveQuizVersionMutation(baseOptions?: Apollo.MutationHookOpti
 export type SaveQuizVersionMutationHookResult = ReturnType<typeof useSaveQuizVersionMutation>;
 export type SaveQuizVersionMutationResult = Apollo.MutationResult<SaveQuizVersionMutation>;
 export type SaveQuizVersionMutationOptions = Apollo.BaseMutationOptions<SaveQuizVersionMutation, SaveQuizVersionMutationVariables>;
+export const UpdateIdeologyDocument = gql`
+    mutation UpdateIdeology($values: UpdateIdeologyInput!, $id: String!) {
+  updateIdeology(updateIdeologyInput: $values, id: $id) {
+    ...EditorIdeologyParts
+  }
+}
+    ${EditorIdeologyPartsFragmentDoc}`;
+export type UpdateIdeologyMutationFn = Apollo.MutationFunction<UpdateIdeologyMutation, UpdateIdeologyMutationVariables>;
+
+/**
+ * __useUpdateIdeologyMutation__
+ *
+ * To run a mutation, you first call `useUpdateIdeologyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateIdeologyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateIdeologyMutation, { data, loading, error }] = useUpdateIdeologyMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUpdateIdeologyMutation(baseOptions?: Apollo.MutationHookOptions<UpdateIdeologyMutation, UpdateIdeologyMutationVariables>) {
+        return Apollo.useMutation<UpdateIdeologyMutation, UpdateIdeologyMutationVariables>(UpdateIdeologyDocument, baseOptions);
+      }
+export type UpdateIdeologyMutationHookResult = ReturnType<typeof useUpdateIdeologyMutation>;
+export type UpdateIdeologyMutationResult = Apollo.MutationResult<UpdateIdeologyMutation>;
+export type UpdateIdeologyMutationOptions = Apollo.BaseMutationOptions<UpdateIdeologyMutation, UpdateIdeologyMutationVariables>;
+export const UpdatePartyDocument = gql`
+    mutation UpdateParty($values: UpdatePartyInput!, $id: String!) {
+  updateParty(updatePartyInput: $values, id: $id) {
+    ...EditorPartyParts
+  }
+}
+    ${EditorPartyPartsFragmentDoc}`;
+export type UpdatePartyMutationFn = Apollo.MutationFunction<UpdatePartyMutation, UpdatePartyMutationVariables>;
+
+/**
+ * __useUpdatePartyMutation__
+ *
+ * To run a mutation, you first call `useUpdatePartyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdatePartyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updatePartyMutation, { data, loading, error }] = useUpdatePartyMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUpdatePartyMutation(baseOptions?: Apollo.MutationHookOptions<UpdatePartyMutation, UpdatePartyMutationVariables>) {
+        return Apollo.useMutation<UpdatePartyMutation, UpdatePartyMutationVariables>(UpdatePartyDocument, baseOptions);
+      }
+export type UpdatePartyMutationHookResult = ReturnType<typeof useUpdatePartyMutation>;
+export type UpdatePartyMutationResult = Apollo.MutationResult<UpdatePartyMutation>;
+export type UpdatePartyMutationOptions = Apollo.BaseMutationOptions<UpdatePartyMutation, UpdatePartyMutationVariables>;
 export const UpdateQuestionDocument = gql`
     mutation UpdateQuestion($values: UpdateQuestionInput!, $id: String!) {
   updateQuestion(updateQuestionInput: $values, id: $id) {

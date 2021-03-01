@@ -64,6 +64,7 @@ export const OpenButton = styled.button<{ opened: boolean }>`
   transition: 0.2s ease-in-out;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.primary};
+  margin-left: 0.5rem;
 
   ${({ opened }) =>
     opened &&

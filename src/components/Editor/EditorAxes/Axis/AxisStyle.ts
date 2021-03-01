@@ -104,4 +104,8 @@ export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto 2rem;
   grid-gap: 1rem;
+
+  & > button {
+    margin: auto;
+  }
 `;

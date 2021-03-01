@@ -16,12 +16,22 @@ import useEditorAxesActions, { AxesActions } from "./useEditorAxesActions";
 import useEditorTraitsActions, {
   TraitsActions,
 } from "./useEditorTraitsActions";
-import useEditorCompassesActions, { CompassesActions } from './useEditorCompassesActions';
+import useEditorCompassesActions, {
+  CompassesActions,
+} from "./useEditorCompassesActions";
+import useEditorPartiesActions, {
+  PartiesActions,
+} from "./useEditorPartiesActions";
+import useEditorIdeologiesActions, {
+  IdeologiesActions,
+} from "./useEditorIdeologiesActions";
 
 export interface EditorActions extends CommonActions {
   question: QuestionActions;
   compasses: CompassesActions;
   axes: AxesActions;
+  parties: PartiesActions;
+  ideologies: IdeologiesActions;
   traits: TraitsActions;
   update: EditorUpdateFunction;
   getCurrentData: EditorGetCurrentDataFunction;
@@ -57,13 +67,17 @@ const useEditorActions = (): EditorActions => {
   const common = useEditorCommonActions(getCurrentData, update);
   const traits = useEditorTraitsActions(getCurrentData, update);
   const compasses = useEditorCompassesActions(getCurrentData, update);
+  const parties = useEditorPartiesActions(getCurrentData, update);
+  const ideologies = useEditorIdeologiesActions(getCurrentData, update);
 
   return {
     question,
     axes,
     traits,
     compasses,
+    parties,
     ...common,
+    ideologies,
     update,
     getCurrentData,
   };

@@ -37,10 +37,11 @@ const useEditorTraitsActions = (
     },
     add: async (id: string) => {
       const currentData = getCurrentData();
+      const alreadyAdded = currentData.quiz.lastUpdatedVersion.traits
+        .map((t) => t.id)
+        .includes(id);
 
-      if (
-        currentData.quiz.lastUpdatedVersion.traits.map((t) => t.id).includes(id)
-      ) {
+      if (alreadyAdded) {
         return;
       }
 

@@ -25,27 +25,3 @@ export const Name = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   margin: 0 0.5rem;
 `;
-
-export const EditButton = styled.button`
-  border: 0;
-  border-radius: 0.125rem;
-  background: ${({ theme }) =>
-    transparentize(0.9, theme.colors.backgroundLighten)};
-  height: 1.5rem;
-  width: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-
-  &:hover {
-    background: ${({ theme }) =>
-      transparentize(0.8, theme.colors.backgroundLighten)};
-  }
-
-  svg {
-    font-size: 0.75rem;
-    color: ${({ theme }) => theme.colors.backgroundLighten};
-  }
-`;

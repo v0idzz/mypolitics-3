@@ -1,4 +1,4 @@
-fragment BasicSurveyParts on Survey {
+fragment BasicSurveyParts on User {
     quizVersion {
         questions {
             id

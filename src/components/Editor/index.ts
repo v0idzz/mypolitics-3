@@ -5,7 +5,7 @@ export { default as Content } from "./EditorContent";
 export { default as Basic } from "./EditorBasic";
 export { default as Toolbox, IdeologyItem, PartyItem } from "./EditorToolbox";
 export { default as Parties } from "./EditorParties";
-export { default as Ideologies } from "./EditorIdeologies";
+export { default as Ideologies, IdeologyCard } from "./EditorIdeologies";
 export { default as Axes } from "./EditorAxes";
 export { default as Traits } from "./EditorTraits";
 export { default as Compasses } from "./EditorCompasses";

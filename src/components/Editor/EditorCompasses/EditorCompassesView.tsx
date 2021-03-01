@@ -20,10 +20,10 @@ const EditorCompasses: React.FC<Props> = ({ editor }) => {
     <>
       {compassModes.map((compass, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <Compass key={index} compass={compass} />
+        <Compass key={index} index={index} compass={compass} editor={editor} />
       ))}
       <Button
-        onClick={actions.compasses.add}
+        onClick={() => actions.compasses.add()}
         background="bluish"
         beforeIcon={<FontAwesomeIcon icon={faPlus} />}
       >

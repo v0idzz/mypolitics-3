@@ -4,16 +4,16 @@ import { SurveyAnswerType } from "@generated/graphql";
 import { itemTypes } from "@constants";
 import { PartyItem } from "@components/Editor";
 import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
-import useQuestion from "../utils/useQuestion";
+import useQuestion, { UseQuestion } from "../utils/useQuestion";
 import { Info } from "../EditorQuestionStyle";
 
 interface Props {
-  questionId: string;
+  question: UseQuestion;
 }
 
-const PartiesInput: React.FC<Props> = ({ questionId }) => {
-  const { data, handleChange } = useQuestion(questionId);
-  const args = { questionId, item: itemTypes.party };
+const PartiesInput: React.FC<Props> = ({ question }) => {
+  const { data, handleChange } = question;
+  const args = { question, item: itemTypes.party };
   const { ref: agreeRef } = useQuestionEffectsDrop({
     type: "agree",
     ...args,

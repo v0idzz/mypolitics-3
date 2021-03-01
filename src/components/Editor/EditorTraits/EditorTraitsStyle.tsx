@@ -21,6 +21,7 @@ export const Info = styled.div`
   text-align: center;
   border-radius: 0.25rem;
   padding: 1rem;
+  grid-column: 1 / -1;
 `;
 
 export const TraitsWrapper = styled.div`

@@ -5,15 +5,15 @@ import { itemTypes } from "@constants";
 import { IdeologyItem } from "@components/Editor";
 import { Info } from "@components/Editor/EditorQuestion/EditorQuestionStyle";
 import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
-import useQuestion from "../utils/useQuestion";
+import { UseQuestion } from "../utils/useQuestion";
 
 interface Props {
-  questionId: string;
+  question: UseQuestion;
 }
 
-const IdeologiesInput: React.FC<Props> = ({ questionId }) => {
-  const { data, handleChange } = useQuestion(questionId);
-  const args = { questionId, item: itemTypes.ideology };
+const IdeologiesInput: React.FC<Props> = ({ question }) => {
+  const { data, handleChange } = question;
+  const args = { question, item: itemTypes.ideology };
   const { ref: agreeRef } = useQuestionEffectsDrop({
     type: "agree",
     ...args,
