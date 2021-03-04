@@ -3,7 +3,7 @@ import { SurveyAnswerType } from "@generated/graphql";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "@shared/Button";
-import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import { paths } from "@constants";
 import { useRouter } from "next/router";
 import {
@@ -11,7 +11,7 @@ import {
   UseSurveyActions,
   UseSurveyData,
 } from "@components/Survey/utils/useSurvey";
-import { Container, Answers, AnswerButton } from "./SurveyAnswersStyle";
+import { AnswerButton, Answers, Container } from "./SurveyAnswersStyle";
 
 interface Props {
   actions: UseSurveyActions;
@@ -34,11 +34,6 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
   };
 
   const handleMainAnswer = (type: SurveyAnswerType) => {
-    if (tempAnswer && type === tempAnswer.type) {
-      setTempAnswer(undefined);
-      return;
-    }
-
     const answer = {
       type,
       weight: 0,
@@ -64,49 +59,69 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
     pushAnswer(answer);
   };
 
+  const handleResetWeightAnswer = () => {
+    setTempAnswer(undefined);
+  };
+
   return (
     <Container>
-      <Answers>
-        <AnswerButton
-          variant={SurveyAnswerType.Disagree}
-          answer={tempAnswer}
-          onClick={() => handleMainAnswer(SurveyAnswerType.Disagree)}
-        >
-          <div>
+      {tempAnswer && (
+        <Answers>
+          <AnswerButton
+            onClick={handleResetWeightAnswer}
+            variant={tempAnswer.type}
+            answer={tempAnswer}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
             <span>
-              <FontAwesomeIcon icon={faTimes} />
+              <FontAwesomeIcon
+                icon={
+                  tempAnswer.type === SurveyAnswerType.Agree ? faCheck : faTimes
+                }
+              />
             </span>
-            <span>Nie zgadzam się</span>
-          </div>
-        </AnswerButton>
-        <AnswerButton
-          variant={SurveyAnswerType.Neutral}
-          answer={tempAnswer}
-          onClick={() => handleMainAnswer(SurveyAnswerType.Neutral)}
-        >
-          <span>Nie wiem</span>
-        </AnswerButton>
-        <AnswerButton
-          variant={SurveyAnswerType.Agree}
-          answer={tempAnswer}
-          onClick={() => handleMainAnswer(SurveyAnswerType.Agree)}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-        >
-          <span>
-            <FontAwesomeIcon icon={faCheck} />
-          </span>
-          <span>
-            {tempAnswer?.type === SurveyAnswerType.Agree
-              ? isHover
-                ? "Kliknij, by anulować"
-                : "Wybierz rodzaj poniżej"
-              : "Zgadzam się"}
-          </span>
-        </AnswerButton>
-      </Answers>
+            <span>
+              {isHover ? "Kliknij, by anulować" : "Wybierz rodzaj poniżej"}
+            </span>
+          </AnswerButton>
+        </Answers>
+      )}
+      {!tempAnswer && (
+        <Answers>
+          <AnswerButton
+            variant={SurveyAnswerType.Disagree}
+            answer={tempAnswer}
+            onClick={() => handleMainAnswer(SurveyAnswerType.Disagree)}
+          >
+            <div>
+              <span>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+              <span>Nie zgadzam się</span>
+            </div>
+          </AnswerButton>
+          <AnswerButton
+            variant={SurveyAnswerType.Neutral}
+            answer={tempAnswer}
+            onClick={() => handleMainAnswer(SurveyAnswerType.Neutral)}
+          >
+            <span>Nie wiem</span>
+          </AnswerButton>
+          <AnswerButton
+            variant={SurveyAnswerType.Agree}
+            answer={tempAnswer}
+            onClick={() => handleMainAnswer(SurveyAnswerType.Agree)}
+          >
+            <span>
+              <FontAwesomeIcon icon={faCheck} />
+            </span>
+            <span>Zgadzam się</span>
+          </AnswerButton>
+        </Answers>
+      )}
       <CSSTransition
-        in={tempAnswer && tempAnswer.type !== SurveyAnswerType.Neutral}
+        in={tempAnswer}
         classNames="fade"
         unmountOnExit
         addEndListener={(node, done) => {
