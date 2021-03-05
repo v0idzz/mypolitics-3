@@ -22,7 +22,7 @@ const ArticleHead: React.FC<Props> = ({ post, inView = true }) => {
     }
 
     if (inView) {
-      window.history.pushState({}, title, path);
+      window.history.replaceState({}, title, path);
     }
   }, [id, inView]);
 

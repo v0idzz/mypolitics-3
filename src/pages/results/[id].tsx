@@ -16,6 +16,7 @@ import StandardPage, {
   StandardPageProps,
 } from "@shared/StandardPage";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { getBackgroundImage } from "@components/Quiz/utils/getBackgroundImage";
 
 interface Props {
   results: ResultsPartsFragment;
@@ -31,16 +32,36 @@ const ResultsPage: React.FC<Props> = ({
   const { lang } = useTranslation();
   const title = results.quiz.title[lang];
   const description = results.quiz.description[lang];
+  const image = getBackgroundImage(title);
 
-  const standardSeo: NextSeoProps = {
+  const standardHeader = {
     title: `Sprawdź moje poglądy w ${title}!`,
     description: `Nowoczesna platforma testów politycznych i wyborczych. ${description}`,
   };
 
-  const politicanSeo: NextSeoProps = politician && {
+  const standardSeo: NextSeoProps = {
+    ...standardHeader,
+    openGraph: {
+      ...standardHeader,
+      images: [
+        {
+          height: 600,
+          width: 900,
+          url: image,
+        },
+      ],
+    },
+  };
+
+  const politicianHeader = {
     title: `${politician.name} – wyniki w teście ${title}!`,
     description: `Porównaj swoje poglądy! ${politician.biography[lang]}`,
+  };
+
+  const politicianSeo: NextSeoProps = politician && {
+    ...politicianHeader,
     openGraph: {
+      ...politicianHeader,
       images: [
         {
           url: politician.image.url,
@@ -50,7 +71,7 @@ const ResultsPage: React.FC<Props> = ({
     },
   };
 
-  const seo = politician ? politicanSeo : standardSeo;
+  const seo = politician ? politicianSeo : standardSeo;
 
   return (
     <StandardPage {...standardPageProps}>
