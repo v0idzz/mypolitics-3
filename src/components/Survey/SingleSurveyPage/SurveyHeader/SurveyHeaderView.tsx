@@ -46,12 +46,15 @@ const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
   return (
     <Container>
       <Actions>
-        {!isFirstQuestion && (
-          <Button onClick={previousQuestion} title="Poprzednie pytanie">
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </Button>
-        )}
         <Button
+          disabled={isFirstQuestion}
+          onClick={previousQuestion}
+          title="Poprzednie pytanie"
+        >
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Button>
+        <Button
+          disabled={isFirstQuestion}
           hasText={confirmReset}
           onClick={handleConfirmReset}
           title="Rozpocznij od nowa"
