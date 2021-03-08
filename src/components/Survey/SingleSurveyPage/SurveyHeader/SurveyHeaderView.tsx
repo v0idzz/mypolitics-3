@@ -20,7 +20,7 @@ const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
   const [confirmReset, setConfirmReset] = useState<boolean>(false);
   const { value: firstTimer, setValue: setFirstTimer } = useFirstTimer();
   const { previousQuestion, deleteSurvey } = actions;
-  const { answers, questions } = data;
+  const { currentQuestion, answers, questions } = data;
   const answeredMany = answers.length > 15;
 
   useEffect(() => {
@@ -41,13 +41,20 @@ const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
     }
   };
 
+  const isFirstQuestion = currentQuestion.id === questions[0].id;
+
   return (
     <Container>
       <Actions>
-        <Button onClick={previousQuestion} title="Poprzednie pytanie">
+        <Button
+          disabled={isFirstQuestion}
+          onClick={previousQuestion}
+          title="Poprzednie pytanie"
+        >
           <FontAwesomeIcon icon={faArrowLeft} />
         </Button>
         <Button
+          disabled={isFirstQuestion}
           hasText={confirmReset}
           onClick={handleConfirmReset}
           title="Rozpocznij od nowa"

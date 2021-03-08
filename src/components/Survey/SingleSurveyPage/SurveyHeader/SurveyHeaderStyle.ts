@@ -17,7 +17,11 @@ export const Actions = styled.div`
   align-items: center;
 `;
 
-export const Button = styled.div<{ warning?: boolean; hasText?: boolean }>`
+export const Button = styled.button<{
+  warning?: boolean;
+  hasText?: boolean;
+}>`
+  border: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +49,11 @@ export const Button = styled.div<{ warning?: boolean; hasText?: boolean }>`
   &:hover {
     background: ${({ theme }) =>
       transparentize(0.5, theme.colors.backgroundDarken)};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
   ${({ hasText }) =>
