@@ -35,7 +35,7 @@ const HeroView: React.FC = () => {
           <SubTitle>{t("hero.subTitle")}</SubTitle>
           <ButtonsWrapper>
             <Link href={paths.quizzesPreInitialize} passHref>
-              <Button as="a" showShadow>
+              <Button as="a" showShadow pulsating>
                 {t("hero.quizLink")}
               </Button>
             </Link>

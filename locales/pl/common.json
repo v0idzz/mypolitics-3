@@ -20,10 +20,12 @@
   "header": {
     "articles": "Artykuły",
     "talks": "Debaty",
-    "quiz": "Test poglądów politycznych"
+    "quiz": "Testy poglądów",
+    "history": "Historia",
+    "creator": "Panel twórcy"
   },
   "share": {
-      "share": "Udostępnij",
+    "share": "Udostępnij",
     "copied": "Skopiowano link do schowka!"
   },
   "errorMessages": {
@@ -32,11 +34,20 @@
     "2": "Nie podano nagłówka respondenta",
     "3": "Ankieta już się zakończyła",
     "4": "Ankieta jeszcze się nie zakończyła",
+    "5": "Wersja już została opublikowana",
+    "6": "Błędne dane logowania",
+    "7": "Taki użytkownik już istnieje",
+    "8": "Email weryfikacyjny został ponownie wysłany na Twój email",
+    "9": "Użytkownik nie istnieje",
+    "10": "Już oddałeś/oddałaś głos",
+    "11": "Email weryfikacyjny został już wysłany. Spróbuj ponownie za 15 minut",
     "default": "Nieznany błąd"
   },
   "talkType": {
     "classic": "Debata młodzieżówek",
     "mvsp": "Młodzież vs. Politycy",
-    "interview": "Wywiad"
+    "interview": "Wywiad",
+    "expert": "Okiem Eksperta",
+    "ring": "Ring Polityczny"
   }
 }

@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 import { darken, transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
+import { Wrapper as LanguageSelectWrapper } from "@shared/LanguageSelect/LanguageSelectStyle";
+import { Container as UserInfoContainer } from "@shared/UserInfo/UserInfoStyle";
 
 export const Container = styled.div<{
   highlighted: boolean;
@@ -71,7 +73,7 @@ export const DesktopNavigation = styled.nav`
   align-items: center;
   justify-content: right;
 
-  ${breakpoint("xs", "md")`
+  ${breakpoint("xs", "lg")`
     display: none;
   `}
 
@@ -80,7 +82,10 @@ export const DesktopNavigation = styled.nav`
     color: ${({ theme }) => theme.colors.backgroundLighten};
     font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
     font-family: ${({ theme }) => theme.fontFamily.secondary};
-    margin-right: 1.5rem;
+  }
+
+  & ~ ${LanguageSelectWrapper}, & ~ ${UserInfoContainer} {
+    margin-left: 0.75rem;
   }
 `;
 
@@ -95,7 +100,7 @@ export const MobileNavigationWrapper = styled.div`
   align-items: center;
   justify-content: right;
 
-  ${breakpoint("md")`
+  ${breakpoint("lg")`
     display: none;
   `}
 `;
@@ -114,14 +119,19 @@ export const MobileNavigationButton = styled.button`
   }
 `;
 
-export const MobileNavigation = styled.div<{ show: boolean }>`
+export const MobileNavigation = styled.div<{
+  show: boolean;
+  buttonPadding: boolean;
+}>`
   position: fixed;
-  top: 4.5rem;
+  top: ${({ buttonPadding }) => (buttonPadding ? "4.5rem" : "4rem")};
   right: -100%;
   transition: right 0.3s ease-in-out;
   box-shadow: 0 0 16px rgba(0, 86, 105, 0.25);
   background: ${({ theme }) => darken(0.05, theme.colors.primaryDarken)};
-  height: calc(100vh - 4.5rem);
+  height: calc(
+    100vh - ${({ buttonPadding }) => (buttonPadding ? "4.5rem" : "4rem")}
+  );
   padding: 1.5rem;
   width: min(90%, 25rem);
 
@@ -136,12 +146,53 @@ export const MobileNavigationInner = styled.div`
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 2rem;
+`;
 
-  a {
-    font-size: 1rem;
-    text-align: center;
-    color: ${({ theme }) => theme.colors.backgroundLighten};
-    font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
-    font-family: ${({ theme }) => theme.fontFamily.secondary};
+export const LinkContentWrapper = styled.div<{ current: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.backgroundLighten};
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
+  font-family: ${({ theme }) => theme.fontFamily.secondary};
+  transition: 0.2s ease-in-out;
+
+  & > span:first-child {
+    margin-right: 0.5rem;
   }
+
+  &:hover {
+    padding: 0.5rem;
+    margin: -0.5rem;
+    border-radius: 0.5rem;
+    background: rgba(0, 179, 219, 0.1);
+  }
+
+  ${({ current }) =>
+    current &&
+    `
+    padding: 0.5rem;
+    margin: -0.5rem;
+    border-radius: 0.5rem;
+    background: rgba(0, 179, 219, 0.1);
+  `}
+`;
+
+export const NavDivider = styled.div`
+  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 1px;
+
+  &:last-child {
+    display: none;
+  }
+
+  ${breakpoint("md")`
+    background: rgba(255, 255, 255, 0.25);
+    height: 1em;
+    width: 1px;
+    margin: 0 1rem;
+  `}
 `;

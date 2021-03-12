@@ -1,6 +1,7 @@
 import { ghost } from "@services/ghost/connect";
 import { Params, PostsOrPages } from "@tryghost/content-api";
 import { getManyPosts } from "@services/ghost/queries/getManyPosts";
+import { replaceHttpHttps } from "@services/ghost/utils/replace-http-https";
 
 const BASE_LIMIT = 6;
 
@@ -28,5 +29,7 @@ export const getRandomPosts = async (
   return getManyPosts({
     ...defaultOptions,
     ...options,
-  }).then(shuffle);
+  })
+    .then(shuffle)
+    .then(replaceHttpHttps);
 };

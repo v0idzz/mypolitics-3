@@ -87,6 +87,7 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId, parties }) => {
             onClick={() => loadAnswers()}
             beforeIcon={<FontAwesomeIcon icon={faEye} />}
             loading={loading}
+            pulsating
           >
             Pokaż
           </Button>

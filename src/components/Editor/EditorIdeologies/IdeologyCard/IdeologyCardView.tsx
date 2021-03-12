@@ -25,7 +25,7 @@ const IdeologyCard: React.FC<Props> = ({
 }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const { lang } = useTranslation();
-  const { name, icon, color } = data;
+  const { name, icon, color, viewerCanEdit } = data;
 
   return (
     <Container color={color}>
@@ -33,9 +33,11 @@ const IdeologyCard: React.FC<Props> = ({
       <Name>{name[lang]}</Name>
       {showActions && editor && (
         <>
-          <ActionButton onClick={() => setShowModal(true)} variant="white">
-            <FontAwesomeIcon icon={faPen} />
-          </ActionButton>
+          {viewerCanEdit && (
+            <ActionButton onClick={() => setShowModal(true)} variant="white">
+              <FontAwesomeIcon icon={faPen} />
+            </ActionButton>
+          )}
           <ActionButton
             onClick={() => editor.actions.ideologies.delete(data.id)}
             variant="white"

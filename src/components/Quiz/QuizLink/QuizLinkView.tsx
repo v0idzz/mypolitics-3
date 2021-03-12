@@ -1,41 +1,75 @@
 import React from "react";
 import Button from "@shared/Button";
-import { FeaturedQuizzesQuery } from "@generated/graphql";
+import { QuizBasicPartsFragment, QuizType } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { paths } from "@constants";
 import { useQuizFeatures } from "@components/Quiz/utils/useQuizFeatures";
-import { Container, Info, Image, Feature, FeaturesList } from "./QuizLinkStyle";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import VerifyState from "@components/Quiz/QuizLink/VerifyState";
+import {
+  Chip,
+  Container,
+  FeaturesList,
+  Image,
+  Info,
+  PointsChip,
+  Title,
+} from "./QuizLinkStyle";
+
+library.add(faPen);
 
 interface Props {
-  quiz: FeaturedQuizzesQuery["featuredQuizzes"][0];
+  quiz: QuizBasicPartsFragment;
   featured?: boolean;
+  editable?: boolean;
+  showState?: boolean;
 }
 
-const QuizLink: React.FC<Props> = ({ quiz, featured = false }) => {
-  const { slug, meta, logoUrl, title } = quiz;
+const QuizLink: React.FC<Props> = ({
+  quiz,
+  featured = false,
+  editable = false,
+  showState = false,
+}) => {
+  const { slug, meta, type } = quiz;
   const { lang } = useTranslation();
   const quizFeatures = useQuizFeatures(meta.features);
-  const path = paths.quiz(slug);
+  const path = editable ? paths.editor(slug) : paths.quiz(slug);
+  const showPoints = ![QuizType.Official, QuizType.Classic].includes(type);
+  const icon = editable ? <FontAwesomeIcon icon={faPen} /> : undefined;
+  const points = quiz.meta.votes.value;
 
   return (
     <Container featured={featured}>
       <Info>
         <Link href={path}>
           <a>
-            <Image src={logoUrl} alt={title[lang]} />
+            {quiz.logoUrl && (
+              <Image src={quiz.logoUrl} alt={quiz.title[lang]} />
+            )}
+            {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
           </a>
         </Link>
         <FeaturesList>
+          {showPoints && (
+            <PointsChip points={points}>
+              {points > 0 && "+"}
+              {points}
+            </PointsChip>
+          )}
           {quizFeatures.map((feature) => (
-            <Feature key={feature}>{feature}</Feature>
+            <Chip key={feature}>{feature}</Chip>
           ))}
+          {showState && <VerifyState quiz={quiz} />}
         </FeaturesList>
       </Info>
       <div>
         <Link href={path} passHref>
-          <Button as="a" showShadow>
-            Rozpocznij
+          <Button as="a" beforeIcon={icon} showShadow>
+            {editable ? "Edytuj" : "Rozpocznij"}
           </Button>
         </Link>
       </div>

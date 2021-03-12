@@ -23,11 +23,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <FacebookProvider appId="4144384798967211" language={facebookLanguage}>
       <ApolloProvider client={apolloClient}>
-        <Layout>
-          <ToastProvider>
+        <ToastProvider>
+          <Layout>
             <Component {...pageProps} />
-          </ToastProvider>
-        </Layout>
+          </Layout>
+        </ToastProvider>
       </ApolloProvider>
     </FacebookProvider>
   );

@@ -1,5 +1,6 @@
 import { GhostAPI, Nullable, Params, PostOrPage } from "@tryghost/content-api";
 import { ghost } from "@services/ghost/connect";
+import { replaceHttpHttps } from "@services/ghost/utils/replace-http-https";
 
 const defaultOptions: Params = {
   fields: [
@@ -21,6 +22,9 @@ export const getSinglePost = async (
   options?: Params,
   ghostApi: GhostAPI = ghost
 ): Promise<void | PostOrPage> =>
-  ghostApi.posts.read(data, { ...defaultOptions, ...options }).catch((err) => {
-    console.error(err);
-  });
+  ghostApi.posts
+    .read(data, { ...defaultOptions, ...options })
+    .catch((err) => {
+      console.error(err);
+    })
+    .then(replaceHttpHttps);

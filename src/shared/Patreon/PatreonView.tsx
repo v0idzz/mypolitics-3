@@ -49,7 +49,7 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
           <Button
             as="a"
             beforeIcon={<FontAwesomeIcon icon={faSeedling} />}
-            showShadow
+            pulsating
           >
             Zostań Patronem!
           </Button>

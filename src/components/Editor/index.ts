@@ -9,3 +9,4 @@ export { default as Ideologies, IdeologyCard } from "./EditorIdeologies";
 export { default as Axes } from "./EditorAxes";
 export { default as Traits } from "./EditorTraits";
 export { default as Compasses } from "./EditorCompasses";
+export { default as PanelPage } from "./EditorPanelPage";

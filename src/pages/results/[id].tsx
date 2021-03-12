@@ -54,8 +54,8 @@ const ResultsPage: React.FC<Props> = ({
   };
 
   const politicianHeader = {
-    title: `${politician.name} – wyniki w teście ${title}!`,
-    description: `Porównaj swoje poglądy! ${politician.biography[lang]}`,
+    title: `${politician?.name} – wyniki w teście ${title}!`,
+    description: `Porównaj swoje poglądy! ${politician?.biography[lang]}`,
   };
 
   const politicianSeo: NextSeoProps = politician && {

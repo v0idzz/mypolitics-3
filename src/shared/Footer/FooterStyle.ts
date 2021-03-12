@@ -148,12 +148,14 @@ export const WebsiteLinksWrapper = styled.div`
     flex-shrink: 0;
   `};
 
-  a {
+  & > a {
     display: inline;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.backgroundLighten};
     font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
     font-family: ${({ theme }) => theme.fontFamily.secondary};
+    margin-top: auto;
+    margin-bottom: auto;
 
     &:not(:last-child) {
       margin-right: 0.75rem;
@@ -162,6 +164,16 @@ export const WebsiteLinksWrapper = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ${breakpoint("xs", "md")`
+      margin-top: 0.5rem;
+    `};
   }
 `;
 

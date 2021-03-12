@@ -9,7 +9,7 @@ import Button from "@shared/Button";
 
 const NotFound: NextPage = () => (
   <CenteredPage fullWidth={false}>
-    <NextSeo title="Błąd 404" titleTemplate="%s – myPolitics" />
+    <NextSeo title="Błąd 404" titleTemplate="%s | myPolitics" />
     <Title>Strona nie została znaleziona</Title>
     <Image
       src="/static/404.jpg"

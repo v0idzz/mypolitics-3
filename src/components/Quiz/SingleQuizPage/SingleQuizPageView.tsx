@@ -136,12 +136,12 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
           </Box>
           <Box>
             <MetaWrapper>
-              <Link href={meta.author.url} passHref>
-                <Chips as="a" target="_blank">
+              {meta.authors.length > 0 && (
+                <Chips>
                   <span>Twórca:</span>&nbsp;
-                  {meta.author.name}
+                  {meta.authors[0].name}
                 </Chips>
-              </Link>
+              )}
               {meta.license !== QuizLicense.Commercial && (
                 <Link href={LicenseLinks[meta.license]} passHref>
                   <Chips as="a" target="_blank">

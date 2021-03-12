@@ -18,7 +18,7 @@ interface Props {
 
 const PartyCard: React.FC<Props> = ({ data, editor, showActions = true }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const { name, logoUrl } = data;
+  const { name, logoUrl, viewerCanEdit } = data;
 
   return (
     <Container>
@@ -26,9 +26,11 @@ const PartyCard: React.FC<Props> = ({ data, editor, showActions = true }) => {
       <Name>{name}</Name>
       {showActions && editor && (
         <>
-          <ActionButton variant="bluish" onClick={() => setShowModal(true)}>
-            <FontAwesomeIcon icon={faPen} />
-          </ActionButton>
+          {viewerCanEdit && (
+            <ActionButton variant="bluish" onClick={() => setShowModal(true)}>
+              <FontAwesomeIcon icon={faPen} />
+            </ActionButton>
+          )}
           <ActionButton
             onClick={() => editor.actions.parties.delete(data.id)}
             variant="red"

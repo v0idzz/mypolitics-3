@@ -7,9 +7,8 @@ import {
 } from "@apollo/client";
 import { useMemo } from "react";
 import { BASE_PATH, Headers } from "@constants";
-import getConfig from "next/config";
-import { onError } from "@apollo/client/link/error";
 import { setContext } from "@apollo/client/link/context";
+import getConfig from "next/config";
 
 const { publicRuntimeConfig } = getConfig();
 

@@ -23,14 +23,21 @@ export const paths = {
   privacy: "/privacy",
   rules: "/rules",
   gdpr: "/gdpr",
+  authLogin: "/auth",
+  authSignup: "/auth/signup",
   articles: "/articles",
   article(slug: string, id?: string): string {
     return `/articles/${slug}`;
   },
   quizzes: "/quizzes",
+  quizzesHistory: "/quizzes#history",
   quizzesPreInitialize: "/quizzes/initialize/pre",
   quizzesInitialize: "/quizzes/initialize",
   quizzesAdvancedInitialize: "/quizzes/initialize/advanced",
+  editorPanel: "/editor",
+  editor(slug: string): string {
+    return `/editor/${slug}`;
+  },
   quiz(slug: string, id?: string): string {
     return `/quizzes/${slug}${id ? `/${id}` : ""}`;
   },
@@ -51,5 +58,8 @@ export const API_BASE = "/api";
 export const apiPaths = {
   upload: {
     icon: `${API_BASE}/upload/icon`,
+  },
+  facebook: {
+    auth: `${API_BASE}/auth/facebook`,
   },
 };

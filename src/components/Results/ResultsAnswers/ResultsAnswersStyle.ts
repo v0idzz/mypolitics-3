@@ -59,6 +59,10 @@ export const Content = styled.div`
   ${breakpoint("md")`
     grid-gap: 1rem;
   `}
+
+  & > button:last-child {
+    padding: 1.5rem;
+  }
 `;
 
 export const Select = styled.select`

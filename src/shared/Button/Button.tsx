@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   const theme = useTheme();
   const spinnerColor = R.cond([
     [
-      R.includes(R.__, ["black", "blue"]),
+      R.includes(R.__, ["black", "blue", "facebook"]),
       R.always(theme.colors.backgroundLighten),
     ],
     [R.includes(R.__, ["bluish"]), R.always(theme.colors.primary)],

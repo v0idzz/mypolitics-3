@@ -11,10 +11,11 @@ interface Props {
   icon: React.ReactNode;
   title: string;
   children: React.ReactNode;
+  id?: string;
 }
 
-const QuizzesSection: React.FC<Props> = ({ icon, title, children }) => (
-  <Container>
+const QuizzesSection: React.FC<Props> = ({ icon, title, children, id }) => (
+  <Container id={id}>
     <Header>
       <IconWrapper>{icon}</IconWrapper>
       <Title>{title}</Title>
