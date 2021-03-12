@@ -3,6 +3,11 @@ import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 export const BASE_PATH = publicRuntimeConfig.BASE_PATH || "";
 
+export const recaptchaSiteKey =
+  publicRuntimeConfig.NODE_ENV === "production"
+    ? "6LdUjm0aAAAAAJqiyWXILXdWCqVnNUPTZ12a7zKe"
+    : "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
 export const Cookies = {
   RESPONDENT: "mypolitics-respondent",
   INITIALIZED: "mypolitics-initialized",
@@ -35,8 +40,11 @@ export const paths = {
   quizzesInitialize: "/quizzes/initialize",
   quizzesAdvancedInitialize: "/quizzes/initialize/advanced",
   editorPanel: "/editor",
-  editor(slug: string): string {
-    return `/editor/${slug}`;
+  editorAdmin: "/editor/admin",
+  editor(slug: string, verifyVersion?: string): string {
+    return `/editor/${slug}${
+      verifyVersion ? `?verifyVersion=${verifyVersion}` : ""
+    }`;
   },
   quiz(slug: string, id?: string): string {
     return `/quizzes/${slug}${id ? `/${id}` : ""}`;

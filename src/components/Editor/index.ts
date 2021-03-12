@@ -10,3 +10,7 @@ export { default as Axes } from "./EditorAxes";
 export { default as Traits } from "./EditorTraits";
 export { default as Compasses } from "./EditorCompasses";
 export { default as PanelPage } from "./EditorPanelPage";
+export { default as ModPage } from "./EditorModPage";
+export { default as Footer } from "./EditorFooter";
+export { default as AdminFooter } from "./EditorAdminFooter";
+export { default as EditorCTA } from "./EditorCTA";

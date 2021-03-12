@@ -7,10 +7,19 @@ import {
   faNewspaper,
   faPencilRuler,
   faPollH,
+  faShieldAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { useFirstTimer } from "@utils/hooks/useFirstTimer";
+import { useCurrentUserQuery, UserRole } from "@generated/graphql";
 
-library.add(faHistory, faMicrophone, faNewspaper, faPencilRuler, faPollH);
+library.add(
+  faHistory,
+  faMicrophone,
+  faNewspaper,
+  faPencilRuler,
+  faPollH,
+  faShieldAlt
+);
 
 export interface HeaderNavElement {
   text: string;
@@ -22,6 +31,9 @@ export interface HeaderNavElement {
 export const useHeaderNav = (): HeaderNavElement[] => {
   const { t } = useTranslation("common");
   const { value: firstTimer } = useFirstTimer();
+  const { data } = useCurrentUserQuery();
+  const isAdmin = [UserRole.Moderator, UserRole.Admin].includes(data?.me.role);
+
   const simple = [
     {
       text: t("header.quiz"),
@@ -30,6 +42,7 @@ export const useHeaderNav = (): HeaderNavElement[] => {
       highlighted: true,
     },
   ];
+
   const advanced = [
     {
       text: t("header.quiz"),
@@ -48,6 +61,14 @@ export const useHeaderNav = (): HeaderNavElement[] => {
     },
   ];
 
+  const admin = [
+    {
+      text: t("header.quizMod"),
+      path: paths.editorAdmin,
+      icon: faShieldAlt,
+    },
+  ];
+
   return [
     {
       text: t("header.articles"),
@@ -60,5 +81,6 @@ export const useHeaderNav = (): HeaderNavElement[] => {
       icon: faMicrophone,
     },
     ...(firstTimer ? simple : advanced),
+    ...(isAdmin ? admin : []),
   ];
 };

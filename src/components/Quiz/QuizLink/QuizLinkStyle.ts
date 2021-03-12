@@ -86,9 +86,9 @@ export const Title = styled.div`
 export const PointsChip = styled(Chip)<{ points: number }>`
   ${({ theme, points }) => {
     const background = {
+      T: theme.colors.primaryDarken,
       [points > 0 ? "T" : "F"]: theme.colors.green,
       [points < 0 ? "T" : "F"]: theme.colors.red,
-      T: theme.colors.primaryDarken,
     }.T;
 
     return `background: ${background} !important;`;

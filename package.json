@@ -40,6 +40,7 @@
     "node-html-parser": "^2.0.2",
     "normalize.min.css": "^8.0.1",
     "nprogress": "^0.2.0",
+    "object-hash": "^2.1.1",
     "polished": "^4.0.5",
     "ramda": "^0.27.1",
     "react": "17.0.1",

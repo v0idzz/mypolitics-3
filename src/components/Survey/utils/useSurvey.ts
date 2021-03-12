@@ -1,7 +1,7 @@
 import {
   BasicSurveyPartsFragment,
   Question,
-  Quiz,
+  QuizType,
   SingleSurveyDocument,
   SingleSurveyQuery,
   SurveyAnswer,
@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { ErrorCode } from "@typeDefs/error";
 import { useRouter } from "next/router";
 import { paths } from "@constants";
+import useTranslation from "next-translate/useTranslation";
 
 export type SlimQuestion = Pick<Question, "id" | "text">;
 export type SlimAnswer = Pick<
@@ -27,7 +28,7 @@ export interface UseSurveyData {
   currentQuestion?: SlimQuestion;
   questions: SlimQuestion[];
   answers: SlimAnswer[];
-  quiz: Pick<Quiz, "logoUrl">;
+  quiz: BasicSurveyPartsFragment["quizVersion"]["quiz"];
 }
 
 export interface UseSurveyActions {
@@ -43,16 +44,28 @@ interface UseSurvey {
 }
 
 const useServerData = (id: string): Omit<UseSurveyData, "currentQuestion"> => {
+  const { lang } = useTranslation();
   const { data: surveyData, loading } = useSingleSurveyQuery({
     variables: { id },
   });
 
-  if (loading) {
+  if (loading || !surveyData) {
     return {
       questions: [],
       answers: [],
       quiz: {
         logoUrl: "",
+        type: QuizType.Official,
+        title: {
+          [lang]: "",
+        },
+        meta: {
+          authors: [
+            {
+              name: "myPolitics",
+            },
+          ],
+        },
       },
     };
   }

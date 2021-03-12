@@ -5,7 +5,7 @@ import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { paths } from "@constants";
 import { useQuizFeatures } from "@components/Quiz/utils/useQuizFeatures";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faPen } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VerifyState from "@components/Quiz/QuizLink/VerifyState";
@@ -19,28 +19,46 @@ import {
   Title,
 } from "./QuizLinkStyle";
 
-library.add(faPen);
+library.add(faPen, faEye);
 
 interface Props {
   quiz: QuizBasicPartsFragment;
   featured?: boolean;
   editable?: boolean;
   showState?: boolean;
+  canVerify?: boolean;
 }
 
 const QuizLink: React.FC<Props> = ({
   quiz,
   featured = false,
   editable = false,
+  canVerify = false,
   showState = false,
 }) => {
-  const { slug, meta, type } = quiz;
+  const { slug, meta, type, verifyRequest } = quiz;
   const { lang } = useTranslation();
   const quizFeatures = useQuizFeatures(meta.features);
-  const path = editable ? paths.editor(slug) : paths.quiz(slug);
   const showPoints = ![QuizType.Official, QuizType.Classic].includes(type);
-  const icon = editable ? <FontAwesomeIcon icon={faPen} /> : undefined;
   const points = quiz.meta.votes.value;
+
+  const path = {
+    T: paths.quiz(slug),
+    [editable ? "T" : "F"]: paths.editor(slug),
+    [canVerify ? "T" : "F"]: paths.editor(slug, verifyRequest?.version.id),
+  }.T;
+
+  const [buttonIcon, buttonText] = {
+    T: [undefined, "Rozpocznij"],
+    [editable ? "T" : "F"]: [
+      <FontAwesomeIcon key="0" icon={faPen} />,
+      "Edytuj",
+    ],
+    [canVerify ? "T" : "F"]: [
+      <FontAwesomeIcon key="0" icon={faEye} />,
+      "Zobacz",
+    ],
+  }.T;
 
   return (
     <Container featured={featured}>
@@ -68,8 +86,8 @@ const QuizLink: React.FC<Props> = ({
       </Info>
       <div>
         <Link href={path} passHref>
-          <Button as="a" beforeIcon={icon} showShadow>
-            {editable ? "Edytuj" : "Rozpocznij"}
+          <Button as="a" beforeIcon={buttonIcon} showShadow>
+            {buttonText}
           </Button>
         </Link>
       </div>

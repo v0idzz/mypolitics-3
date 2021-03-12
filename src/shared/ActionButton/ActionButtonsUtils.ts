@@ -26,6 +26,11 @@ export const getVariants = (theme: DefaultTheme): Variants => ({
     color: ${theme.colors.red};
     border: none;
   `,
+  green: css`
+    background: ${transparentize(0.9, theme.colors.green)};
+    color: ${theme.colors.green};
+    border: none;
+  `,
 });
 
 export const getSizes = (theme: DefaultTheme): Sizes => ({

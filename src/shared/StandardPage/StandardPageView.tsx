@@ -4,7 +4,7 @@ import { ArticlesListSection, RandomArticle } from "@components/Media";
 import ShareSocial from "@shared/ShareSocial";
 import { Link, Section } from "@components/Quiz";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPollH } from "@fortawesome/free-solid-svg-icons";
+import { faPencilRuler, faPollH } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { PostOrPage } from "@tryghost/content-api";
 import {
@@ -17,9 +17,10 @@ import { useInView } from "react-hook-inview";
 import { useRouter } from "next/router";
 import { CurrentTalk } from "@components/Talk";
 import Patreon from "@shared/Patreon";
+import { EditorCTA } from "@components/Editor";
 import { Content, Inner } from "./StandardPageStyle";
 
-library.add(faPollH);
+library.add(faPollH, faPencilRuler);
 
 interface Props {
   children: React.ReactNode;
@@ -79,6 +80,7 @@ const StandardPage: React.FC<Props> = ({
                     />
                   ))}
                 </Section>
+                <EditorCTA />
                 <ShareSocial />
               </>
             )}

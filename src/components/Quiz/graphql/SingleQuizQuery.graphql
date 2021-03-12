@@ -30,6 +30,9 @@ query SingleQuiz($slug: String!) {
                 id
                 name
             }
+            votes {
+                value
+            }
             license
         }
     }

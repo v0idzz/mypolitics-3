@@ -9,6 +9,7 @@ interface Props {
   onClick?(e: React.MouseEvent);
   title?: string;
   size?: Size;
+  disabled?: boolean;
 }
 
 const ActionButton: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const ActionButton: React.FC<Props> = ({
   mustConfirm = false,
   onClick,
   title,
+  disabled,
   size = "regular",
 }) => {
   const [confirm, setConfirm] = useState<boolean>(false);
@@ -38,6 +40,7 @@ const ActionButton: React.FC<Props> = ({
       variant={variant}
       title={title}
       size={size}
+      disabled={disabled}
     >
       {children}
     </Container>

@@ -12,7 +12,7 @@ import {
 } from "./useEditorActionsTypes";
 
 export interface CommonActions {
-  saveVersion(input: UpdateQuizVersionInput, publish: boolean): Promise<void>;
+  saveVersion(input: UpdateQuizVersionInput, publish: boolean): Promise<string>;
   updateVersion(input: UpdateQuizVersionInput): Promise<void>;
   updateBasic(input: UpdateQuizInput): Promise<void>;
 }
@@ -43,7 +43,7 @@ const useEditorCommonActions = (
 
   const saveVersion = async (values, publish) => {
     if (versionSaveLoading) {
-      return;
+      return "";
     }
 
     const currentData = getCurrentData();
@@ -67,9 +67,13 @@ const useEditorCommonActions = (
           },
         },
       });
+
+      return id;
     } catch (e) {
       console.error(e);
     }
+
+    return "";
   };
 
   const updateVersion = async (input: UpdateQuizVersionInput) => {

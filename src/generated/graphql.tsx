@@ -2078,8 +2078,8 @@ export type Query = {
   currentUserQuizzes: Array<Quiz>;
   verifyQueueQuizzes: Array<Quiz>;
   quizVersion: QuizVersion;
-  results: Results;
   me: User;
+  results: Results;
 };
 
 
@@ -2295,6 +2295,9 @@ export type Mutation = {
   createQuizVersion: QuizVersion;
   saveQuizVersion: QuizVersion;
   updateQuizVersion: QuizVersion;
+  createUser: User;
+  loginUser: User;
+  logoutMe: Scalars['Boolean'];
   createIdeology: Ideology;
   updateIdeology: Ideology;
   createParty: Party;
@@ -2303,9 +2306,6 @@ export type Mutation = {
   createManyQuestions: Array<Question>;
   updateQuestion: Question;
   addPartyAnswers: Scalars['Boolean'];
-  createUser: User;
-  loginUser: User;
-  logoutMe: Scalars['Boolean'];
 };
 
 
@@ -2407,13 +2407,14 @@ export type MutationUpdateQuizArgs = {
 
 
 export type MutationRequestQuizVerifyArgs = {
-  id: Scalars['String'];
+  recaptcha: Scalars['String'];
+  quizVersion: Scalars['String'];
 };
 
 
 export type MutationVerifyQuizArgs = {
   verifyQuizInput: VerifyQuizInput;
-  id: Scalars['String'];
+  quizVersion: Scalars['String'];
 };
 
 
@@ -2439,6 +2440,16 @@ export type MutationSaveQuizVersionArgs = {
 export type MutationUpdateQuizVersionArgs = {
   updateQuizVersionInput: UpdateQuizVersionInput;
   id: Scalars['String'];
+};
+
+
+export type MutationCreateUserArgs = {
+  createUserInput: CreateUserInput;
+};
+
+
+export type MutationLoginUserArgs = {
+  loginUserInput: LoginUserInput;
 };
 
 
@@ -2485,16 +2496,6 @@ export type MutationAddPartyAnswersArgs = {
   addPartyAnswersInput: Array<AddPartyAnswersInput>;
   quizVersionId: Scalars['String'];
   partyId: Scalars['String'];
-};
-
-
-export type MutationCreateUserArgs = {
-  createUserInput: CreateUserInput;
-};
-
-
-export type MutationLoginUserArgs = {
-  loginUserInput: LoginUserInput;
 };
 
 export type CreateUserMutationVariables = Exact<{
@@ -2713,6 +2714,17 @@ export type EditorQuizQuery = (
   ) }
 );
 
+export type RequestQuizVerifyMutationVariables = Exact<{
+  quizVersion: Scalars['String'];
+  recaptcha: Scalars['String'];
+}>;
+
+
+export type RequestQuizVerifyMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'requestQuizVerify'>
+);
+
 export type SaveQuizVersionMutationVariables = Exact<{
   values: UpdateQuizVersionInput;
   id: Scalars['String'];
@@ -2808,6 +2820,28 @@ export type VerifyAdminQueryVariables = Exact<{ [key: string]: never; }>;
 export type VerifyAdminQuery = (
   { __typename?: 'Query' }
   & Pick<Query, 'verifyAdmin'>
+);
+
+export type VerifyQueueQuizzesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type VerifyQueueQuizzesQuery = (
+  { __typename?: 'Query' }
+  & { verifyQueueQuizzes: Array<(
+    { __typename?: 'Quiz' }
+    & QuizBasicPartsFragment
+  )> }
+);
+
+export type VerifyQuizMutationVariables = Exact<{
+  values: VerifyQuizInput;
+  quizVersion: Scalars['String'];
+}>;
+
+
+export type VerifyQuizMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'verifyQuiz'>
 );
 
 export type BasicPostPartsFragment = (
@@ -2996,7 +3030,10 @@ export type SingleQuizQuery = (
       ), authors: Array<(
         { __typename?: 'User' }
         & Pick<User, 'id' | 'name'>
-      )> }
+      )>, votes: (
+        { __typename?: 'QuizVotes' }
+        & Pick<QuizVotes, 'value'>
+      ) }
     ) }
   ) }
 );
@@ -3209,7 +3246,7 @@ export type BasicSurveyPartsFragment = (
       ) }
     )>>, quiz: (
       { __typename?: 'Quiz' }
-      & Pick<Quiz, 'logoUrl'>
+      & Pick<Quiz, 'logoUrl' | 'type'>
       & { title: (
         { __typename?: 'TextTranslation' }
         & Pick<TextTranslation, 'pl' | 'en'>
@@ -3835,6 +3872,7 @@ export const BasicSurveyPartsFragmentDoc = gql`
     }
     quiz {
       logoUrl
+      type
       title {
         pl
         en
@@ -4163,6 +4201,37 @@ export function useEditorQuizLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type EditorQuizQueryHookResult = ReturnType<typeof useEditorQuizQuery>;
 export type EditorQuizLazyQueryHookResult = ReturnType<typeof useEditorQuizLazyQuery>;
 export type EditorQuizQueryResult = Apollo.QueryResult<EditorQuizQuery, EditorQuizQueryVariables>;
+export const RequestQuizVerifyDocument = gql`
+    mutation RequestQuizVerify($quizVersion: String!, $recaptcha: String!) {
+  requestQuizVerify(quizVersion: $quizVersion, recaptcha: $recaptcha)
+}
+    `;
+export type RequestQuizVerifyMutationFn = Apollo.MutationFunction<RequestQuizVerifyMutation, RequestQuizVerifyMutationVariables>;
+
+/**
+ * __useRequestQuizVerifyMutation__
+ *
+ * To run a mutation, you first call `useRequestQuizVerifyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRequestQuizVerifyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [requestQuizVerifyMutation, { data, loading, error }] = useRequestQuizVerifyMutation({
+ *   variables: {
+ *      quizVersion: // value for 'quizVersion'
+ *      recaptcha: // value for 'recaptcha'
+ *   },
+ * });
+ */
+export function useRequestQuizVerifyMutation(baseOptions?: Apollo.MutationHookOptions<RequestQuizVerifyMutation, RequestQuizVerifyMutationVariables>) {
+        return Apollo.useMutation<RequestQuizVerifyMutation, RequestQuizVerifyMutationVariables>(RequestQuizVerifyDocument, baseOptions);
+      }
+export type RequestQuizVerifyMutationHookResult = ReturnType<typeof useRequestQuizVerifyMutation>;
+export type RequestQuizVerifyMutationResult = Apollo.MutationResult<RequestQuizVerifyMutation>;
+export type RequestQuizVerifyMutationOptions = Apollo.BaseMutationOptions<RequestQuizVerifyMutation, RequestQuizVerifyMutationVariables>;
 export const SaveQuizVersionDocument = gql`
     mutation SaveQuizVersion($values: UpdateQuizVersionInput!, $id: String!, $publish: Boolean!) {
   saveQuizVersion(saveQuizVersionInput: $values, id: $id, publish: $publish) {
@@ -4396,6 +4465,69 @@ export function useVerifyAdminLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type VerifyAdminQueryHookResult = ReturnType<typeof useVerifyAdminQuery>;
 export type VerifyAdminLazyQueryHookResult = ReturnType<typeof useVerifyAdminLazyQuery>;
 export type VerifyAdminQueryResult = Apollo.QueryResult<VerifyAdminQuery, VerifyAdminQueryVariables>;
+export const VerifyQueueQuizzesDocument = gql`
+    query VerifyQueueQuizzes {
+  verifyQueueQuizzes {
+    ...QuizBasicParts
+  }
+}
+    ${QuizBasicPartsFragmentDoc}`;
+
+/**
+ * __useVerifyQueueQuizzesQuery__
+ *
+ * To run a query within a React component, call `useVerifyQueueQuizzesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVerifyQueueQuizzesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVerifyQueueQuizzesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useVerifyQueueQuizzesQuery(baseOptions?: Apollo.QueryHookOptions<VerifyQueueQuizzesQuery, VerifyQueueQuizzesQueryVariables>) {
+        return Apollo.useQuery<VerifyQueueQuizzesQuery, VerifyQueueQuizzesQueryVariables>(VerifyQueueQuizzesDocument, baseOptions);
+      }
+export function useVerifyQueueQuizzesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VerifyQueueQuizzesQuery, VerifyQueueQuizzesQueryVariables>) {
+          return Apollo.useLazyQuery<VerifyQueueQuizzesQuery, VerifyQueueQuizzesQueryVariables>(VerifyQueueQuizzesDocument, baseOptions);
+        }
+export type VerifyQueueQuizzesQueryHookResult = ReturnType<typeof useVerifyQueueQuizzesQuery>;
+export type VerifyQueueQuizzesLazyQueryHookResult = ReturnType<typeof useVerifyQueueQuizzesLazyQuery>;
+export type VerifyQueueQuizzesQueryResult = Apollo.QueryResult<VerifyQueueQuizzesQuery, VerifyQueueQuizzesQueryVariables>;
+export const VerifyQuizDocument = gql`
+    mutation VerifyQuiz($values: VerifyQuizInput!, $quizVersion: String!) {
+  verifyQuiz(verifyQuizInput: $values, quizVersion: $quizVersion)
+}
+    `;
+export type VerifyQuizMutationFn = Apollo.MutationFunction<VerifyQuizMutation, VerifyQuizMutationVariables>;
+
+/**
+ * __useVerifyQuizMutation__
+ *
+ * To run a mutation, you first call `useVerifyQuizMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useVerifyQuizMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [verifyQuizMutation, { data, loading, error }] = useVerifyQuizMutation({
+ *   variables: {
+ *      values: // value for 'values'
+ *      quizVersion: // value for 'quizVersion'
+ *   },
+ * });
+ */
+export function useVerifyQuizMutation(baseOptions?: Apollo.MutationHookOptions<VerifyQuizMutation, VerifyQuizMutationVariables>) {
+        return Apollo.useMutation<VerifyQuizMutation, VerifyQuizMutationVariables>(VerifyQuizDocument, baseOptions);
+      }
+export type VerifyQuizMutationHookResult = ReturnType<typeof useVerifyQuizMutation>;
+export type VerifyQuizMutationResult = Apollo.MutationResult<VerifyQuizMutation>;
+export type VerifyQuizMutationOptions = Apollo.BaseMutationOptions<VerifyQuizMutation, VerifyQuizMutationVariables>;
 export const PostByIdDocument = gql`
     query PostById($id: ID!) {
   post(id: $id) {
@@ -4678,6 +4810,9 @@ export const SingleQuizDocument = gql`
       authors {
         id
         name
+      }
+      votes {
+        value
       }
       license
     }

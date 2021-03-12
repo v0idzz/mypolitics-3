@@ -56,7 +56,7 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
     highlighted: elHighlighted,
     path,
   }: HeaderNavElement) => {
-    const current = router.pathname.includes(path);
+    const current = router.pathname.startsWith(path);
 
     const content = (
       <LinkContentWrapper current={current}>
@@ -76,7 +76,6 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
       </React.Fragment>
     );
   };
-
   const navLinks = nav.map(toLink);
 
   return (

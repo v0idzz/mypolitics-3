@@ -9,7 +9,8 @@ import {
   Axes,
   Traits,
   Compasses,
-} from "@components/Editor";
+  Footer, AdminFooter,
+} from '@components/Editor';
 import Loading from "@shared/Loading";
 import { useEditor } from "@components/Editor/utils/useEditor";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,8 +18,9 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { useRouter } from "next/router";
 import Button from "@shared/Button";
+import { Divider } from "@shared/Common";
+import GoogleAd from "@shared/GoogleAd";
 import { Col, Row, Title } from "./EditorContentStyle";
-import { Divider } from '@shared/Common';
 
 library.add(faPlus);
 
@@ -28,6 +30,7 @@ const EditorContent: React.FC = () => {
   const { data, versionInput, basicInput, actions } = editor;
   const { loading } = data;
   const debug = "debug" in query;
+  const verifyVersion = "verifyVersion" in query;
   const dataJson = JSON.stringify({
     data: data.data,
     versionInput,
@@ -50,6 +53,7 @@ const EditorContent: React.FC = () => {
             <Ideologies editor={editor} />
           </Box>
           <Divider />
+          <GoogleAd id="myp3-standard-middle" />
           <Row>
             <Col>
               <Box header={<Title>Osie</Title>}>
@@ -93,9 +97,8 @@ const EditorContent: React.FC = () => {
             </Col>
           </Row>
           <Divider />
-          <Button onClick={() => actions.saveVersion(versionInput, true)}>
-            Zapisz
-          </Button>
+          {verifyVersion && <AdminFooter />}
+          {!verifyVersion && <Footer editor={editor} />}
           {debug && (
             <Box>
               <pre>slug: {data.data.quiz.slug}</pre>

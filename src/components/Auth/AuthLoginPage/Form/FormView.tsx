@@ -6,7 +6,7 @@ import {
   Content,
 } from "@components/Auth/AuthLoginPage/AuthLoginPageStyle";
 import Link from "next/link";
-import { paths } from "@constants";
+import { paths, recaptchaSiteKey } from '@constants';
 import Button from "@shared/Button";
 import getConfig from "next/config";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -45,11 +45,6 @@ const FormView: React.FC = () => {
     },
   });
 
-  const sitekey =
-    publicRuntimeConfig.NODE_ENV === "production"
-      ? "6LdUjm0aAAAAAJqiyWXILXdWCqVnNUPTZ12a7zKe"
-      : "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-
   return (
     <Content onSubmit={formik.handleSubmit}>
       <InputLabel title="Adres-email">
@@ -73,7 +68,7 @@ const FormView: React.FC = () => {
       </InputLabel>
       <ReCAPTCHA
         onChange={(value) => formik.setFieldValue("recaptcha", value)}
-        sitekey={sitekey}
+        sitekey={recaptchaSiteKey}
       />
       <ActionsWrapper>
         <Link href={paths.authSignup} passHref>

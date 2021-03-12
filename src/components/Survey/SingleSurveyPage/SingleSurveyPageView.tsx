@@ -11,6 +11,7 @@ import { useSurvey } from "@components/Survey/utils/useSurvey";
 import useTranslation from "next-translate/useTranslation";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import Loading from "@shared/Loading";
+import { QuizType } from "@generated/graphql";
 import SurveyHeader from "./SurveyHeader";
 import SurveyAnswers from "./SurveyAnswers";
 import {
@@ -21,6 +22,7 @@ import {
   Logo,
   BottomInfo,
   Title,
+  AuthorHeader,
 } from "./SingleSurveyPageStyle";
 
 library.add(faArrowLeft, faUndoAlt, faTimes, faCheck);
@@ -41,6 +43,9 @@ const SurveyPage: React.FC = () => {
         {quiz.logoUrl && <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />}
         {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
       </Header>
+      {quiz.type === QuizType.Community && (
+        <AuthorHeader>Quiz społecznościowy</AuthorHeader>
+      )}
       <Inner>
         <SurveyHeader actions={actions} data={data} />
         <SwitchTransition>

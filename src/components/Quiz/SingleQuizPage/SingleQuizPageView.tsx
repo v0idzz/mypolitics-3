@@ -39,6 +39,7 @@ import {
   PoliticiansResultsWrapper,
   SurveysHistoryWrapper,
   Title,
+  AuthorHeader,
 } from "./SingleQuizPageStyle";
 
 interface Props {
@@ -49,6 +50,7 @@ library.add(faStar, faChartBar, faLandmark, faHistory);
 
 const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   const { description, meta, currentVersion } = quiz;
+  const { authors } = meta;
   const router = useRouter();
   const handleErrors = useHandleErrors();
   const [createSurvey, { loading }] = useCreateSurveyMutation();
@@ -85,6 +87,11 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
             </Button>
           )}
         </Header>
+        {quiz.type === QuizType.Community && (
+          <AuthorHeader>
+            Quiz społecznościowy<span>{authors[0].name}</span>
+          </AuthorHeader>
+        )}
         <Inner>
           <Box>
             <Description>{description[lang]}</Description>

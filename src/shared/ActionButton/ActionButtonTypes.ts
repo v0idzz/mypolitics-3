@@ -1,6 +1,6 @@
 import { FlattenSimpleInterpolation } from "styled-components";
 
-export type Variant = "bluish" | "red" | "white";
+export type Variant = "bluish" | "red" | "white" | "green";
 export type Variants = Record<Variant, FlattenSimpleInterpolation>;
 
 export type Size = "regular" | "large";

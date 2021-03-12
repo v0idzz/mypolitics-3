@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  QuizType,
   ResultsPartsFragment,
   ResultsPoliticianPartsFragment,
 } from "@generated/graphql";
@@ -15,6 +16,7 @@ import {
   Id,
   PoliticianSubHeader,
   Title,
+  AuthorHeader,
 } from "./ResultsHeaderStyle";
 
 interface Props {
@@ -53,6 +55,9 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
       </Header>
       {politician && (
         <PoliticianSubHeader>{politician.name}</PoliticianSubHeader>
+      )}
+      {quiz.type === QuizType.Community && (
+        <AuthorHeader>Quiz społecznościowy</AuthorHeader>
       )}
     </div>
   );

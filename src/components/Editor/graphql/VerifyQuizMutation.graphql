@@ -1,0 +1,3 @@
+mutation VerifyQuiz ($values: VerifyQuizInput!, $quizVersion: String!) {
+    verifyQuiz(verifyQuizInput: $values, quizVersion: $quizVersion)
+}

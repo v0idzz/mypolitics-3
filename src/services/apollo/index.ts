@@ -8,6 +8,7 @@ import {
 import { useMemo } from "react";
 import { BASE_PATH, Headers } from "@constants";
 import { setContext } from "@apollo/client/link/context";
+import { onError } from "@apollo/client/link/error";
 import getConfig from "next/config";
 
 const { publicRuntimeConfig } = getConfig();
@@ -19,6 +20,17 @@ function createApolloClient() {
     publicRuntimeConfig.NODE_ENV === "production"
       ? BASE_PATH
       : "http://localhost:3000";
+
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+      graphQLErrors.forEach(({ message, locations, path }) => {
+        const messageText = JSON.stringify(message);
+        console.log(
+          `[GraphQL error]: Message: ${messageText}, Location: ${locations}, Path: ${path}`
+        );
+      });
+    if (networkError) console.log(`[Network error]: ${networkError}`);
+  });
 
   const authLink = setContext((_, { headers }) => {
     if (typeof window === "undefined") {
@@ -47,7 +59,7 @@ function createApolloClient() {
   });
 
   return new ApolloClient({
-    link: ApolloLink.from([authLink, httpLink]),
+    link: ApolloLink.from([authLink, errorLink, httpLink]),
     ssrMode: typeof window === "undefined",
     cache: new InMemoryCache(),
   });

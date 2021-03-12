@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { getSizes, getVariants } from "@shared/ActionButton/ActionButtonsUtils";
 import { darken } from "polished";
 import { Size, Variant } from "./ActionButtonTypes";
@@ -33,14 +33,19 @@ export const Container = styled.button<{
     color: inherit;
   }
 
-  ${({ theme, confirm }) =>
-    confirm &&
-    `
-    background: ${theme.colors.red};
-      color: ${theme.colors.backgroundLighten};
+  ${({ theme, confirm, variant }) => {
+    if (confirm) {
+      const color = variant === "green" ? theme.colors.green : theme.colors.red;
 
-    &:hover {
-      background: ${darken(0.05, theme.colors.red)};
+      return css`
+        background: ${color};
+        color: ${theme.colors.backgroundLighten};
+
+        &:hover {
+          background: ${darken(0.05, color)};
+        }
+      `;
     }
-  `}
+    return "";
+  }};
 `;
