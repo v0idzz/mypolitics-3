@@ -31,7 +31,9 @@ export interface HeaderNavElement {
 export const useHeaderNav = (): HeaderNavElement[] => {
   const { t } = useTranslation("common");
   const { value: firstTimer } = useFirstTimer();
-  const { data } = useCurrentUserQuery();
+  const { data } = useCurrentUserQuery({
+    errorPolicy: "ignore",
+  });
   const isAdmin = [UserRole.Moderator, UserRole.Admin].includes(data?.me.role);
 
   const simple = [

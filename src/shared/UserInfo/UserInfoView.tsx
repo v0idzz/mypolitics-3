@@ -30,7 +30,9 @@ library.add(faCrown, faShieldAlt, faSignOutAlt, faSignInAlt);
 const UserInfo: React.FC = () => {
   const router = useRouter();
   const { addToast } = useToasts();
-  const { data } = useCurrentUserQuery();
+  const { data } = useCurrentUserQuery({
+    errorPolicy: "ignore",
+  });
   const [logout] = useLogoutMeMutation({
     onError: () =>
       addToast("Wystąpił błąd przy wylogowaniu", { appearance: "error" }),
