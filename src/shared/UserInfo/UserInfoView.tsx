@@ -31,7 +31,8 @@ const UserInfo: React.FC = () => {
   const router = useRouter();
   const { addToast } = useToasts();
   const { data } = useCurrentUserQuery({
-    errorPolicy: "ignore",
+    errorPolicy: "all",
+    onError: () => null,
   });
   const [logout] = useLogoutMeMutation({
     onError: () =>
