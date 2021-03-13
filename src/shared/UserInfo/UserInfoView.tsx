@@ -1,7 +1,6 @@
 import React from "react";
 import {
   useCurrentUserQuery,
-  useLogoutMeMutation,
   UserRole,
 } from "@generated/graphql";
 import Link from "next/link";
