@@ -103,9 +103,9 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   );
 };
 
-export const HeaderWrapper: React.FC = () => (
+export const HeaderWrapper: React.FC<Props> = (props) => (
   <ClientWrapper>
-    <Header />
+    <Header {...props} />
   </ClientWrapper>
 );
 
