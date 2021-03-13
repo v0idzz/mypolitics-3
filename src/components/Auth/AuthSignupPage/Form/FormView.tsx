@@ -11,13 +11,10 @@ import Button from "@shared/Button";
 import getConfig from "next/config";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
-  CurrentUserDocument,
   useCreateUserMutation,
-  useLoginMutation,
 } from "@generated/graphql";
 import { useFormik } from "formik";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
-import { useRouter } from "next/router";
 import Alert from "@shared/Alert";
 import { initialValues } from "./FormUtils";
 
