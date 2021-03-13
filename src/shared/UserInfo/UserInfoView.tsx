@@ -16,6 +16,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { useRouter } from "next/router";
+import ClientWrapper from "@shared/ClientWrapper";
 import {
   Inner,
   Name,
@@ -79,6 +80,10 @@ const UserInfo: React.FC = () => {
   );
 };
 
-const ClientWrapper = (func) => (typeof window === "undefined" ? null : func);
+export const UserInfoWrapper: React.FC = () => (
+  <ClientWrapper>
+    <UserInfo />
+  </ClientWrapper>
+);
 
-export default ClientWrapper(UserInfo);
+export default UserInfoWrapper;

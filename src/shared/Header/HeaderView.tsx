@@ -10,6 +10,8 @@ import { useLogo } from "@utils/hooks/useLogo";
 import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 import { HeaderNavElement, useHeaderNav } from "@shared/Header/HeaderUtils";
 import UserInfo from "@shared/UserInfo";
+import { useRouter } from "next/router";
+import ClientWrapper from "@shared/ClientWrapper";
 import {
   Container,
   DesktopNavigation,
@@ -23,7 +25,6 @@ import {
   LinkContentWrapper,
   NavDivider,
 } from "./HeaderStyle";
-import { useRouter } from 'next/router';
 
 library.add(faBars, faTimes);
 
@@ -33,7 +34,6 @@ interface Props {
 
 const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
-  const [mounted, setMounted] = React.useState<boolean>(false);
   const router = useRouter();
   const logo = useLogo();
   const nav = useHeaderNav();
@@ -43,12 +43,6 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   const highlighted = scrolled || showMenu || forceHighlight;
 
   const toggleMenu = () => setShowMenu(!showMenu);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   const toLink = ({
     text,
@@ -109,4 +103,10 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   );
 };
 
-export default Header;
+export const HeaderWrapper: React.FC = () => (
+  <ClientWrapper>
+    <Header />
+  </ClientWrapper>
+);
+
+export default HeaderWrapper;
