@@ -70,4 +70,9 @@ export const apiPaths = {
   facebook: {
     auth: `${API_BASE}/auth/facebook`,
   },
+  auth: {
+    login: `${API_BASE}/auth/login`,
+    logout: `${API_BASE}/auth/logout`,
+    facebook: `${API_BASE}/auth/facebook`,
+  },
 };

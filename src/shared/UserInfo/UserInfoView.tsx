@@ -5,7 +5,7 @@ import {
   UserRole,
 } from "@generated/graphql";
 import Link from "next/link";
-import { paths } from "@constants";
+import { apiPaths, paths } from "@constants";
 import { useToasts } from "react-toast-notifications";
 import {
   faCrown,
@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { useRouter } from "next/router";
 import ClientWrapper from "@shared/ClientWrapper";
+import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import {
   Inner,
   Name,
@@ -29,19 +30,30 @@ library.add(faCrown, faShieldAlt, faSignOutAlt, faSignInAlt);
 
 const UserInfo: React.FC = () => {
   const router = useRouter();
+  const handleErrors = useHandleErrors();
   const { addToast } = useToasts();
   const { data } = useCurrentUserQuery({
     errorPolicy: "all",
     onError: () => null,
   });
-  const [logout] = useLogoutMeMutation({
-    onError: () =>
-      addToast("Wystąpił błąd przy wylogowaniu", { appearance: "error" }),
-    onCompleted: () => {
-      addToast("Poprawnie wylogowano", { appearance: "success" });
-      router.reload();
-    },
-  });
+
+  const handleLogout = async () => {
+    await fetch(apiPaths.auth.logout, {
+      method: "POST",
+      credentials: "include",
+    })
+      .then(async (r) => {
+        if (!r.ok) {
+          throw new Error(JSON.stringify(await r.json()));
+        }
+
+        addToast("Poprawnie wylogowano", { appearance: "success" });
+        router.reload();
+      })
+      .catch((e) => {
+        handleErrors(JSON.parse(e.message));
+      });
+  };
 
   if (!data) {
     return (
@@ -76,7 +88,7 @@ const UserInfo: React.FC = () => {
           </BadgeWrapper>
         )}
       </Name>
-      <LogoutButton as="button" onClick={() => logout()}>
+      <LogoutButton as="button" onClick={handleLogout}>
         <FontAwesomeIcon icon={faSignOutAlt} />
       </LogoutButton>
     </Container>

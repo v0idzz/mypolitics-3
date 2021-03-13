@@ -1,7 +1,11 @@
-import { LoginUserInput } from "@generated/graphql";
+export interface FormValues {
+  username: string;
+  password: string;
+  recaptcha: string;
+}
 
-export const initialValues: LoginUserInput = {
-  email: "",
+export const initialValues: FormValues = {
+  username: "",
   password: "",
   recaptcha: "",
 };

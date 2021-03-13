@@ -9,8 +9,8 @@ import {
   faPollH,
   faShieldAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 import { useCurrentUserQuery, UserRole } from "@generated/graphql";
+import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 
 library.add(
   faHistory,
@@ -34,6 +34,7 @@ export const useHeaderNav = (): HeaderNavElement[] => {
   const { data } = useCurrentUserQuery({
     errorPolicy: "all",
     onError: () => null,
+    ssr: false,
   });
   const isAdmin = [UserRole.Moderator, UserRole.Admin].includes(data?.me.role);
 

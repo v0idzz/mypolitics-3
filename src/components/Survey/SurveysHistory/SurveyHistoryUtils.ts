@@ -9,6 +9,10 @@ export const useClassicResults = (): any[] => {
     }
 
     const item = localStorage.getItem("persist:root");
+    if (!item) {
+      return;
+    }
+
     const { results } = JSON.parse(item);
     const { resultsHistory } = JSON.parse(results);
     const toNewResult = ({ id, additionDate }) => ({

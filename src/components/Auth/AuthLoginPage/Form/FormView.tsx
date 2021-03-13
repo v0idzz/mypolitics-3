@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import InputLabel from "@shared/InputLabel";
 import { Input } from "@shared/Common";
 import {
@@ -6,42 +6,55 @@ import {
   Content,
 } from "@components/Auth/AuthLoginPage/AuthLoginPageStyle";
 import Link from "next/link";
-import { paths, recaptchaSiteKey } from '@constants';
+import { apiPaths, paths, recaptchaSiteKey } from "@constants";
 import Button from "@shared/Button";
-import getConfig from "next/config";
 import ReCAPTCHA from "react-google-recaptcha";
-import { CurrentUserDocument, useLoginMutation } from "@generated/graphql";
 import { useFormik } from "formik";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import { useRouter } from "next/router";
-import { initialValues } from "./FormUtils";
-
-const { publicRuntimeConfig } = getConfig();
+import { useApolloClient } from "@apollo/client";
+import { CurrentUserDocument } from "@generated/graphql";
+import { useFirstTimer } from "@utils/hooks/useFirstTimer";
+import { FormValues, initialValues } from "./FormUtils";
 
 const FormView: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+  const { setValue } = useFirstTimer();
   const router = useRouter();
   const handleErrors = useHandleErrors();
-  const [login, { loading }] = useLoginMutation({
-    onCompleted: () => router.push(paths.editorPanel),
-  });
+  const client = useApolloClient();
 
-  const formik = useFormik({
+  const formik = useFormik<FormValues>({
     initialValues,
     onSubmit: async (values) => {
-      try {
-        await login({
-          variables: {
-            values,
-          },
-          refetchQueries: [
-            {
-              query: CurrentUserDocument,
-            },
-          ],
+      setLoading(true);
+
+      await fetch(apiPaths.auth.login, {
+        body: JSON.stringify(values),
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then(async (r) => {
+          if (!r.ok) {
+            throw new Error(JSON.stringify(await r.json()));
+          }
+
+          setValue(false);
+
+          await client.query({
+            query: CurrentUserDocument,
+          });
+
+          await router.push(paths.editorPanel);
+        })
+        .catch((e) => {
+          handleErrors(JSON.parse(e.message));
         });
-      } catch (e) {
-        handleErrors(e);
-      }
+
+      setLoading(false);
     },
   });
 
@@ -49,10 +62,10 @@ const FormView: React.FC = () => {
     <Content onSubmit={formik.handleSubmit}>
       <InputLabel title="Adres-email">
         <Input
-          name="email"
+          name="username"
           type="email"
           onChange={formik.handleChange}
-          value={formik.values.email}
+          value={formik.values.username}
           placeholder="john.doe@mypolitics.pl"
           required
         />

@@ -11,7 +11,6 @@ import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 import { HeaderNavElement, useHeaderNav } from "@shared/Header/HeaderUtils";
 import UserInfo from "@shared/UserInfo";
 import { useRouter } from "next/router";
-import ClientWrapper from "@shared/ClientWrapper";
 import {
   Container,
   DesktopNavigation,
@@ -103,10 +102,4 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   );
 };
 
-export const HeaderWrapper: React.FC<Props> = (props) => (
-  <ClientWrapper>
-    <Header {...props} />
-  </ClientWrapper>
-);
-
-export default HeaderWrapper;
+export default Header;
