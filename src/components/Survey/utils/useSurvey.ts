@@ -54,6 +54,7 @@ const useServerData = (id: string): Omit<UseSurveyData, "currentQuestion"> => {
       questions: [],
       answers: [],
       quiz: {
+        slug: "",
         logoUrl: "",
         type: QuizType.Official,
         title: {
