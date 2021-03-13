@@ -1,5 +1,0 @@
-mutation Login ($values: LoginUserInput!) {
-    loginUser(loginUserInput: $values) {
-        id
-    }
-}

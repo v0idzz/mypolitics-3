@@ -1650,12 +1650,6 @@ export enum Language {
   English = 'ENGLISH'
 }
 
-export type LoginUserInput = {
-  email: Scalars['String'];
-  password: Scalars['String'];
-  recaptcha: Scalars['String'];
-};
-
 export type Party = {
   __typename?: 'Party';
   id: Scalars['String'];
@@ -2296,8 +2290,6 @@ export type Mutation = {
   saveQuizVersion: QuizVersion;
   updateQuizVersion: QuizVersion;
   createUser: User;
-  loginUser: User;
-  logoutMe: Scalars['Boolean'];
   createIdeology: Ideology;
   updateIdeology: Ideology;
   createParty: Party;
@@ -2448,11 +2440,6 @@ export type MutationCreateUserArgs = {
 };
 
 
-export type MutationLoginUserArgs = {
-  loginUserInput: LoginUserInput;
-};
-
-
 export type MutationCreateIdeologyArgs = {
   createIdeologyInput: CreateIdeologyInput;
 };
@@ -2506,19 +2493,6 @@ export type CreateUserMutationVariables = Exact<{
 export type CreateUserMutation = (
   { __typename?: 'Mutation' }
   & { createUser: (
-    { __typename?: 'User' }
-    & Pick<User, 'id'>
-  ) }
-);
-
-export type LoginMutationVariables = Exact<{
-  values: LoginUserInput;
-}>;
-
-
-export type LoginMutation = (
-  { __typename?: 'Mutation' }
-  & { loginUser: (
     { __typename?: 'User' }
     & Pick<User, 'id'>
   ) }
@@ -3246,7 +3220,7 @@ export type BasicSurveyPartsFragment = (
       ) }
     )>>, quiz: (
       { __typename?: 'Quiz' }
-      & Pick<Quiz, 'logoUrl' | 'type'>
+      & Pick<Quiz, 'logoUrl' | 'type' | 'slug'>
       & { title: (
         { __typename?: 'TextTranslation' }
         & Pick<TextTranslation, 'pl' | 'en'>
@@ -3482,14 +3456,6 @@ export type GdprDocumentQuery = (
       & Pick<ComponentTranslationRichTextTranslation, 'pl' | 'en'>
     )> }
   )> }
-);
-
-export type LogoutMeMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LogoutMeMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'logoutMe'>
 );
 
 export type PartnersQueryVariables = Exact<{ [key: string]: never; }>;
@@ -3873,6 +3839,7 @@ export const BasicSurveyPartsFragmentDoc = gql`
     quiz {
       logoUrl
       type
+      slug
       title {
         pl
         en
@@ -3959,38 +3926,6 @@ export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<C
 export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
 export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
 export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
-export const LoginDocument = gql`
-    mutation Login($values: LoginUserInput!) {
-  loginUser(loginUserInput: $values) {
-    id
-  }
-}
-    `;
-export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
-
-/**
- * __useLoginMutation__
- *
- * To run a mutation, you first call `useLoginMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useLoginMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [loginMutation, { data, loading, error }] = useLoginMutation({
- *   variables: {
- *      values: // value for 'values'
- *   },
- * });
- */
-export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
-        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
-      }
-export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
-export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
-export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const CreateIdeologyDocument = gql`
     mutation CreateIdeology($values: CreateIdeologyInput!) {
   createIdeology(createIdeologyInput: $values) {
@@ -5369,35 +5304,6 @@ export function useGdprDocumentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type GdprDocumentQueryHookResult = ReturnType<typeof useGdprDocumentQuery>;
 export type GdprDocumentLazyQueryHookResult = ReturnType<typeof useGdprDocumentLazyQuery>;
 export type GdprDocumentQueryResult = Apollo.QueryResult<GdprDocumentQuery, GdprDocumentQueryVariables>;
-export const LogoutMeDocument = gql`
-    mutation LogoutMe {
-  logoutMe
-}
-    `;
-export type LogoutMeMutationFn = Apollo.MutationFunction<LogoutMeMutation, LogoutMeMutationVariables>;
-
-/**
- * __useLogoutMeMutation__
- *
- * To run a mutation, you first call `useLogoutMeMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useLogoutMeMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [logoutMeMutation, { data, loading, error }] = useLogoutMeMutation({
- *   variables: {
- *   },
- * });
- */
-export function useLogoutMeMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMeMutation, LogoutMeMutationVariables>) {
-        return Apollo.useMutation<LogoutMeMutation, LogoutMeMutationVariables>(LogoutMeDocument, baseOptions);
-      }
-export type LogoutMeMutationHookResult = ReturnType<typeof useLogoutMeMutation>;
-export type LogoutMeMutationResult = Apollo.MutationResult<LogoutMeMutation>;
-export type LogoutMeMutationOptions = Apollo.BaseMutationOptions<LogoutMeMutation, LogoutMeMutationVariables>;
 export const PartnersDocument = gql`
     query Partners {
   partner {

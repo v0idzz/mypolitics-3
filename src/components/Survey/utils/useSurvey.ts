@@ -107,7 +107,7 @@ export const useSurvey = (id: string): UseSurvey => {
       );
 
       if (notAuthorized) {
-        await router.push(paths.quizzes);
+        await router.push(paths.quiz(quiz.slug));
       }
     }
   };
