@@ -29,6 +29,11 @@ const nextConfig = {
         destination: "https://youtube.com/myPolitics",
         permanent: false,
       },
+      {
+        source: "/quizzes*",
+        destination: "https://classic.mypolitics.pl/quiz",
+        permanent: false,
+      },
     ];
   },
   async rewrites() {
