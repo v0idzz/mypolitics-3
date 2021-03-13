@@ -9,6 +9,7 @@ import { faEye, faPen } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VerifyState from "@components/Quiz/QuizLink/VerifyState";
+import * as R from "ramda";
 import {
   Chip,
   Container,
@@ -42,23 +43,23 @@ const QuizLink: React.FC<Props> = ({
   const showPoints = ![QuizType.Official, QuizType.Classic].includes(type);
   const points = quiz.meta.votes.value;
 
-  const path = {
-    T: paths.quiz(slug),
-    [editable ? "T" : "F"]: paths.editor(slug),
-    [canVerify ? "T" : "F"]: paths.editor(slug, verifyRequest?.version.id),
-  }.T;
+  const path = R.cond([
+    [() => editable, R.always(paths.editor(slug))],
+    [() => canVerify, R.always(paths.editor(slug, verifyRequest?.version.id))],
+    [R.T, R.always(paths.quiz(slug))],
+  ])();
 
-  const [buttonIcon, buttonText] = {
-    T: [undefined, "Rozpocznij"],
-    [editable ? "T" : "F"]: [
-      <FontAwesomeIcon key="0" icon={faPen} />,
-      "Edytuj",
+  const [buttonIcon, buttonText] = R.cond([
+    [
+      () => editable,
+      R.always([<FontAwesomeIcon key="0" icon={faPen} />, "Edytuj"]),
     ],
-    [canVerify ? "T" : "F"]: [
-      <FontAwesomeIcon key="0" icon={faEye} />,
-      "Zobacz",
+    [
+      () => canVerify,
+      R.always([<FontAwesomeIcon key="0" icon={faEye} />, "Zobacz"]),
     ],
-  }.T;
+    [R.T, R.always([undefined, "Rozpocznij"])],
+  ])();
 
   return (
     <Container featured={featured}>
