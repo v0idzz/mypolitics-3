@@ -30,7 +30,7 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: "/quizzes*",
+        source: "/quizzes/*",
         destination: "https://classic.mypolitics.pl/quiz",
         permanent: false,
       },
