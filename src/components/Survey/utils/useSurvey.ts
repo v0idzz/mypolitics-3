@@ -59,13 +59,6 @@ const useServerData = (id: string): Omit<UseSurveyData, "currentQuestion"> => {
         title: {
           [lang]: "",
         },
-        meta: {
-          authors: [
-            {
-              name: "myPolitics",
-            },
-          ],
-        },
       },
     };
   }

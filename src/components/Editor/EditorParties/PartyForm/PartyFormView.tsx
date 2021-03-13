@@ -57,7 +57,10 @@ const PartyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
       </InputLabel>
       <Divider />
       <div>
-        <PartyCard data={{ ...values, id: "new" }} showActions={false} />
+        <PartyCard
+          data={{ ...values, viewerCanEdit: false, id: "new" }}
+          showActions={false}
+        />
         <Button loading={isSubmitting} beforeIcon={button.icon}>
           {button.text}
         </Button>
