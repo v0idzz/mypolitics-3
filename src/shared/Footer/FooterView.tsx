@@ -5,6 +5,7 @@ import Link from "next/link";
 import { paths } from "@constants";
 import useTranslation from "next-translate/useTranslation";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import LanguageSelect from "@shared/LanguageSelect";
 import {
   Copyright,
   CopyrightGroup,
@@ -70,6 +71,9 @@ const Footer: React.FC = () => {
               <Link href={paths.rules}>{t("footer.rules")}</Link>
               <Link href={paths.privacy}>{t("footer.privacy")}</Link>
               <Link href={paths.gdpr}>{t("footer.gdpr")}</Link>
+              <div>
+                <LanguageSelect />
+              </div>
             </WebsiteLinksWrapper>
           </Links>
         </Inner>

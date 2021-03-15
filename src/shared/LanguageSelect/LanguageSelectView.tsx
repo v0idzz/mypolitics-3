@@ -39,7 +39,8 @@ const LanguageSelect: React.FC<Props> = ({
   const toLanguageLinks = ({ id, name }: Language) => {
     const languageSelected = id === currentLang;
 
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent) => {
+      e.preventDefault();
       toggleShowFull();
 
       if (!global) {
@@ -56,6 +57,7 @@ const LanguageSelect: React.FC<Props> = ({
           /* eslint-disable-next-line import/no-dynamic-require */
           image={require(`@assets/images/langs/${id}.png`)}
           as="button"
+          type="button"
         />
       );
     }
@@ -87,7 +89,7 @@ const LanguageSelect: React.FC<Props> = ({
     <Wrapper>
       <Container showFull={showFull} color={color}>
         <Inner>{languageButtons}</Inner>
-        <DropdownButton onClick={toggleShowFull}>
+        <DropdownButton onClick={toggleShowFull} type="button">
           <FontAwesomeIcon icon={showFull ? faAngleUp : faAngleDown} />
         </DropdownButton>
       </Container>

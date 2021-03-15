@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { StyleProps } from "./ButtonTypes";
 import { getBackgrounds, sizes } from "./ButtonUtils";
 
@@ -18,6 +18,7 @@ export const IconWrapper = styled.span`
 `;
 
 export const Container = styled.button<StyleProps>`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,8 +41,8 @@ export const Container = styled.button<StyleProps>`
 
   ${({ size }) => sizes[size]}
 
-  ${({ background, theme, showShadow }) => {
-    const backgrounds = getBackgrounds(theme, showShadow);
+  ${({ background, theme, showShadow, pulsating }) => {
+    const backgrounds = getBackgrounds(theme, { showShadow, pulsating });
     return backgrounds[background];
   }}
 `;

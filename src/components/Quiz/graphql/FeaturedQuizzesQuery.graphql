@@ -1,24 +1,5 @@
 query FeaturedQuizzes {
     featuredQuizzes {
-        id
-        slug
-        logoUrl
-        meta {
-            features {
-                compass
-                parties
-                politiciansResults
-                axesNumber
-                questionsNumber
-                traits
-                authorizedParties {
-                    id
-                }
-            }
-        }
-        title {
-            pl
-            en
-        }
+        ...QuizBasicParts
     }
 }

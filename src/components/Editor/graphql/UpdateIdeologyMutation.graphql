@@ -1,0 +1,5 @@
+mutation UpdateIdeology ($values: UpdateIdeologyInput!, $id: String!) {
+    updateIdeology(updateIdeologyInput: $values, id: $id) {
+        ...EditorIdeologyParts
+    }
+}

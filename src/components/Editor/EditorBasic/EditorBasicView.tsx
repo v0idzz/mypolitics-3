@@ -1,11 +1,16 @@
 import React from "react";
 import InternationalizedInput from "@shared/InternationalizedInput";
-import { useEditor } from "@components/Editor/utils/useEditor";
+import { UseEditor } from "@components/Editor/utils/useEditor";
 import { TextTranslationInput } from "@generated/graphql";
-import { Input, Container } from "./EditorBasicStyle";
+import InputLabel from "@shared/InputLabel";
+import { Container } from "./EditorBasicStyle";
 
-const EditorBasic: React.FC = () => {
-  const { actions, basicInput } = useEditor();
+interface Props {
+  editor: UseEditor;
+}
+
+const EditorBasic: React.FC<Props> = ({ editor }) => {
+  const { actions, basicInput } = editor;
   const { update } = actions;
 
   const handleTextChange = (
@@ -20,18 +25,18 @@ const EditorBasic: React.FC = () => {
 
   return (
     <Container>
-      <Input
-        value={basicInput.logoUrl}
-        onChange={(e) => handleTextChange(e.target.value, "logoUrl")}
-      />
-      <InternationalizedInput
-        value={basicInput.title}
-        onChange={(v) => handleTextChange(v, "title")}
-      />
-      <InternationalizedInput
-        value={basicInput.description}
-        onChange={(v) => handleTextChange(v, "description")}
-      />
+      <InputLabel title="Tytuł">
+        <InternationalizedInput
+          value={basicInput.title}
+          onChange={(v) => handleTextChange(v, "title")}
+        />
+      </InputLabel>
+      <InputLabel title="Opis">
+        <InternationalizedInput
+          value={basicInput.description}
+          onChange={(v) => handleTextChange(v, "description")}
+        />
+      </InputLabel>
     </Container>
   );
 };

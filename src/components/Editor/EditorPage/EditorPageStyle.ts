@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import { transparentize } from 'polished';
 
 export const Container = styled.section`
   display: grid;
@@ -65,4 +66,20 @@ export const Title = styled.h2`
 export const ContentWrapper = styled.div`
   display: grid;
   grid-gap: 1rem;
+
+  ${breakpoint("xs", "md")`
+    display: none;
+  `}
+`;
+
+export const MobileInfo = styled.div`
+  background: ${({ theme }) => transparentize(0.9, theme.colors.red)};
+  color: ${({ theme }) => theme.colors.red};
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+
+  ${breakpoint("md")`
+    display: none;
+  `}
 `;

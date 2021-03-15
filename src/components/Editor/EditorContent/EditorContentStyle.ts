@@ -41,14 +41,10 @@ export const CreateButton = styled.button`
 `;
 
 export const Title = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
-`;
-
-export const Divider = styled.div`
-  width: 100%;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.1);
 `;

@@ -1,0 +1,9 @@
+fragment EditorAxisParts on QuizAxis {
+    id
+    left {
+        id
+    }
+    right {
+        id
+    }
+}

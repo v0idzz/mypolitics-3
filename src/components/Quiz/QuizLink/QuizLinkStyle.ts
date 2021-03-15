@@ -49,7 +49,7 @@ export const FeaturesList = styled.div`
   `}
 `;
 
-export const Feature = styled.div`
+export const Chip = styled.div`
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.primaryDarken};
@@ -64,4 +64,33 @@ export const Feature = styled.div`
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
   `}
+`;
+
+export const Title = styled.div`
+  color: ${({ theme }) => theme.colors.textMuted};
+  font-weight: ${({ theme }) => theme.fontWeight.primary.bold};
+  font-family: ${({ theme }) => theme.fontFamily.primary};
+  font-size: 1rem;
+  text-align: center;
+
+  ${breakpoint("sm")`
+    font-size: 1.1rem;
+  `};
+
+  ${breakpoint("md")`
+    font-size: 1.25rem;
+    text-align: left;
+  `};
+`;
+
+export const PointsChip = styled(Chip)<{ points: number }>`
+  ${({ theme, points }) => {
+    const background = {
+      T: theme.colors.primaryDarken,
+      [points > 0 ? "T" : "F"]: theme.colors.green,
+      [points < 0 ? "T" : "F"]: theme.colors.red,
+    }.T;
+
+    return `background: ${background} !important;`;
+  }}
 `;

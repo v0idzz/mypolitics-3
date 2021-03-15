@@ -20,6 +20,8 @@ import {
   Content,
   ContentWrapper,
 } from "./ArticleContentStyle";
+import Trans from 'next-translate/Trans';
+import ContactActionSection from '@shared/ContactActionSection';
 
 interface Props {
   post: PostOrPage;
@@ -68,6 +70,14 @@ const ArticleContent: React.FC<Props> = ({ post, commentsType = "disqus" }) => {
             href="http://www.facebook.com/myPoliticsTest"
             size="large"
             share
+          />
+          <ContactActionSection
+            title={
+              <Trans
+                i18nKey="articles:contact.title"
+                components={[<React.Fragment key="0" />, <b key="1" />]}
+              />
+            }
           />
         </ContentWrapper>
       </Inner>

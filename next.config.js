@@ -34,11 +34,11 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/admin/graphql",
+        source: "/api/:path*",
         destination:
           process.env.NODE_ENV !== "production"
-            ? "http://localhost:5000/graphql"
-            : "https://api-v3.mypolitics.pl/graphql",
+            ? "http://localhost:5000/:path*"
+            : "https://api-v3.mypolitics.pl/:path*",
       },
     ];
   },

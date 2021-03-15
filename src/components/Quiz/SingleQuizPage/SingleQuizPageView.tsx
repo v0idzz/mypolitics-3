@@ -38,6 +38,8 @@ import {
   MetaWrapper,
   PoliticiansResultsWrapper,
   SurveysHistoryWrapper,
+  Title,
+  AuthorHeader,
 } from "./SingleQuizPageStyle";
 
 interface Props {
@@ -47,7 +49,8 @@ interface Props {
 library.add(faStar, faChartBar, faLandmark, faHistory);
 
 const QuizzesPage: React.FC<Props> = ({ quiz }) => {
-  const { logoUrl, title, description, meta, currentVersion } = quiz;
+  const { description, meta, currentVersion } = quiz;
+  const { authors } = meta;
   const router = useRouter();
   const handleErrors = useHandleErrors();
   const [createSurvey, { loading }] = useCreateSurveyMutation();
@@ -76,13 +79,19 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
       <GoogleAd id="myp3-standard-top" />
       <Container>
         <Header>
-          <Logo src={logoUrl} alt={title[lang]} />
+          {quiz.logoUrl && <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />}
+          {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
           {!isClassic && (
             <Button onClick={handleStartClick} loading={loading} showShadow>
               Rozpocznij
             </Button>
           )}
         </Header>
+        {quiz.type === QuizType.Community && (
+          <AuthorHeader>
+            Quiz społecznościowy<span>{authors[0].name}</span>
+          </AuthorHeader>
+        )}
         <Inner>
           <Box>
             <Description>{description[lang]}</Description>
@@ -134,12 +143,12 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
           </Box>
           <Box>
             <MetaWrapper>
-              <Link href={meta.author.url} passHref>
-                <Chips as="a" target="_blank">
+              {meta.authors.length > 0 && (
+                <Chips>
                   <span>Twórca:</span>&nbsp;
-                  {meta.author.name}
+                  {meta.authors[0].name}
                 </Chips>
-              </Link>
+              )}
               {meta.license !== QuizLicense.Commercial && (
                 <Link href={LicenseLinks[meta.license]} passHref>
                   <Chips as="a" target="_blank">

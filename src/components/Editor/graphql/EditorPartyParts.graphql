@@ -3,4 +3,5 @@ fragment EditorPartyParts on Party {
     name
     logoUrl
     country
+    viewerCanEdit
 }

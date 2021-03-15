@@ -10,6 +10,7 @@ import dayjs from "dayjs";
 import { SurveyLink } from "@components/Survey";
 import Link from "next/link";
 import { paths } from "@constants";
+import { useClassicResults } from "./SurveyHistoryUtils";
 import {
   Container,
   Header,
@@ -93,12 +94,13 @@ interface Props {
 
 const SurveysHistory: React.FC<Props> = ({ quizSlug, onlyContent = false }) => {
   const { data } = useMeRespondentSurveysQuery();
+  const classicResults = useClassicResults();
 
   if (!data) {
     return null;
   }
 
-  const { surveys } = data.meRespondent;
+  const surveys = [...classicResults, ...data.meRespondent.surveys];
   const byQuizId = R.groupBy((survey) => survey.quizVersion.quiz.id);
   const toQuizzesSurveys = (surveysList) => ({
     quiz: surveysList[0].quizVersion.quiz,

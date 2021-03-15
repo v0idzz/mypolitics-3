@@ -1,4 +1,4 @@
-import { css, DefaultTheme } from "styled-components";
+import { css, DefaultTheme, keyframes } from "styled-components";
 import { darken, transparentize } from "polished";
 import { Sizes, Backgrounds } from "./ButtonTypes";
 
@@ -17,9 +17,29 @@ export const sizes: Sizes = {
   `,
 };
 
+const pulse = (color) => keyframes`
+  0% {
+		box-shadow: 0 0 0 0 ${transparentize(0.3, color)};
+	}
+
+	70% {
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+`;
+
 export const getBackgrounds = (
   theme: DefaultTheme,
-  showShadow: boolean
+  {
+    showShadow,
+    pulsating,
+  }: {
+    showShadow?: boolean;
+    pulsating: boolean;
+  }
 ): Backgrounds => ({
   blue: css`
     background: ${theme.colors.primary};
@@ -33,6 +53,11 @@ export const getBackgrounds = (
     ${showShadow &&
     `
       box-shadow: 0px 0px 24px rgba(0, 179, 219, 0.33);
+    `};
+
+    ${pulsating &&
+    css`
+      animation: ${pulse(theme.colors.primary)} 2s infinite;
     `}
   `,
   bluish: css`
@@ -48,6 +73,11 @@ export const getBackgrounds = (
     `
       box-shadow: 0px 0px 24px rgba(0, 179, 219, 0.33);
     `}
+
+    ${pulsating &&
+    css`
+      animation: ${pulse(transparentize(0.9, theme.colors.primary))} 2s infinite;
+    `}
   `,
   black: css`
     background: rgba(0, 0, 0, 0.8);
@@ -62,6 +92,11 @@ export const getBackgrounds = (
     `
       box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.33);
     `}
+
+    ${pulsating &&
+    css`
+      animation: ${pulse("rgba(0, 0, 0, 0.8)")} 2s infinite;
+    `}
   `,
   gray: css`
     background: ${theme.colors.backgroundDarken};
@@ -75,6 +110,11 @@ export const getBackgrounds = (
     ${showShadow &&
     `
       box-shadow: 0px 0px 24px rgba(0, 179, 219, 0.33);
+    `}
+
+    ${pulsating &&
+    css`
+      animation: ${pulse(theme.colors.backgroundDarken)} 2s infinite;
     `}
   `,
   white: css`
@@ -105,6 +145,31 @@ export const getBackgrounds = (
     ${showShadow &&
     `
       box-shadow: 0px 0px 24px #6f87e3;
+    `}
+
+    ${pulsating &&
+    css`
+      animation: ${pulse("#6f87e3")} 2s infinite;
+    `}
+  `,
+  facebook: css`
+    background: #1773ea;
+    color: ${theme.colors.background};
+    border: none;
+
+    &:hover {
+      background: ${darken(0.0125, "#1773EA")};
+    }
+
+    // TODO: Implement proper box-shadow
+    ${showShadow &&
+    `
+      box-shadow: 0px 0px 24px #1773EA;
+    `}
+
+    ${pulsating &&
+    css`
+      animation: ${pulse("#1773EA")} 2s infinite;
     `}
   `,
 });

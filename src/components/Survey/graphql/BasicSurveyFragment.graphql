@@ -9,6 +9,12 @@ fragment BasicSurveyParts on Survey {
         }
         quiz {
             logoUrl
+            type
+            slug
+            title {
+                pl
+                en
+            }
         }
     }
     answers {

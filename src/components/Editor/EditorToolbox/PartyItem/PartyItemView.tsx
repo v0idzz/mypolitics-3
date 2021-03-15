@@ -10,9 +10,11 @@ import { Image } from "./PartyItemStyle";
 
 interface Props {
   id: string;
+  onClick?(): void;
+  title?: string;
 }
 
-const PartyItem: React.FC<Props> = ({ id }) => {
+const PartyItem: React.FC<Props> = ({ id, onClick, title }) => {
   const { data } = useEntity<EditorPartyPartsFragment>({
     id,
     name: "Party",
@@ -24,7 +26,14 @@ const PartyItem: React.FC<Props> = ({ id }) => {
   const { name, logoUrl } = data;
 
   return (
-    <Image ref={drag} src={logoUrl} alt={name} title={name} {...collected} />
+    <Image
+      onClick={onClick}
+      ref={drag}
+      src={logoUrl}
+      alt={name}
+      title={title || name}
+      {...collected}
+    />
   );
 };
 

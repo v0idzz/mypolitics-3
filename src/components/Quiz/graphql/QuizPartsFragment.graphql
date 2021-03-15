@@ -1,0 +1,33 @@
+fragment QuizBasicParts on Quiz {
+    id
+    slug
+    logoUrl
+    type
+    verifyRequest {
+        state
+        reason
+        version {
+            id
+        }
+    }
+    meta {
+        features {
+            compass
+            parties
+            politiciansResults
+            axesNumber
+            questionsNumber
+            traits
+            authorizedParties {
+                id
+            }
+        }
+        votes {
+            value
+        }
+    }
+    title {
+        pl
+        en
+    }
+}

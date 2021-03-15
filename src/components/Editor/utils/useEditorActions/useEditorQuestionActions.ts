@@ -55,7 +55,6 @@ const useEditorQuestionActions = (
       try {
         const newQuestion = await createQuestion({
           variables: {
-            quizVersion: currentData.quiz.lastUpdatedVersion.id,
             values,
           },
         });

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import { transparentize } from "polished";
 
 export const Container = styled.div`
   display: flex;
@@ -30,6 +31,42 @@ export const Logo = styled.img`
 
   ${breakpoint("md")`
     height: 2rem;
+  `}
+`;
+
+export const AuthorHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: ${({ theme }) => theme.colors.primaryDarken};
+  width: calc(100% - 1rem);
+  margin: auto;
+  color: ${({ theme }) => theme.colors.backgroundLighten};
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
+  font-family: ${({ theme }) => theme.fontFamily.secondary};
+  text-align: center;
+
+  span {
+    font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
+    background: ${({ theme }) =>
+      transparentize(0.9, theme.colors.backgroundLighten)};
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-left: 0.5rem;
+  }
+
+  ${breakpoint("xs", "sm")`
+    flex-direction: column;
+    
+    span {
+      margin-left: 0;
+      margin-top: 0.5rem;
+    }
+  `}
+
+  ${breakpoint("md")`
+    width: calc(100% - 6rem);
   `}
 `;
 
@@ -112,4 +149,20 @@ export const BottomInfo = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   width: 100%;
   margin-top: 1rem;
+`;
+
+export const Title = styled.div`
+  color: ${({ theme }) => theme.colors.textMuted};
+  font-weight: ${({ theme }) => theme.fontWeight.primary.bold};
+  font-family: ${({ theme }) => theme.fontFamily.primary};
+  font-size: 1rem;
+  text-align: center;
+
+  ${breakpoint("sm")`
+    font-size: 1.1rem;
+  `};
+
+  ${breakpoint("md")`
+    font-size: 1.25rem;
+  `};
 `;

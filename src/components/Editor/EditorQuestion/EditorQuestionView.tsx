@@ -1,28 +1,32 @@
 import React, { useMemo, useState } from "react";
 import { Box } from "@components/Editor";
-import { useQuestion } from "@components/Editor/EditorQuestion/EditorQuestionUtils";
 import InternationalizedInput from "@shared/InternationalizedInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import useEditorActions from "@components/Editor/utils/useEditorActions";
+import IdeologiesInput from "@components/Editor/EditorQuestion/IdeologiesInput";
+import { UseEditor } from "@components/Editor/utils/useEditor";
+import ActionButton from "@shared/ActionButton";
+import useQuestion from "./utils/useQuestion";
 import {
   NumberWrapper,
   ActionsWrapper,
-  DeleteButton,
   OpenButton,
+  Row,
 } from "./EditorQuestionStyle";
+import PartiesInput from "./PartiesInput";
 
 library.add(faChevronDown, faTrash);
 
 interface Props {
   questionId: string;
   index: number;
+  editor: UseEditor;
 }
 
-const EditorQuestion: React.FC<Props> = ({ questionId, index }) => {
-  const { question } = useEditorActions();
-  const { data, handleChange } = useQuestion(questionId);
+const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
+  const { actions } = editor;
+  const question = useQuestion(questionId);
   const [deleteConfirmed, setDeleteConfirmed] = useState<boolean>(false);
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -33,7 +37,7 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index }) => {
       return;
     }
 
-    question.delete(questionId);
+    actions.question.delete(questionId);
   };
 
   const header = (
@@ -42,13 +46,15 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index }) => {
         Pytanie&nbsp;<span>#{index + 1}</span>
       </NumberWrapper>
       <ActionsWrapper>
-        <DeleteButton
+        <ActionButton
           onClick={handleDeleteConfirm}
-          deleteConfirmed={deleteConfirmed}
-          title={deleteConfirmed ? "Potwierdź usunięcie" : "Usuń pytanie"}
+          title="Usuń pytanie"
+          mustConfirm
+          variant="red"
+          size="large"
         >
           <FontAwesomeIcon icon={faTrash} />
-        </DeleteButton>
+        </ActionButton>
         <OpenButton onClick={() => setOpened(!opened)} opened={opened}>
           <FontAwesomeIcon icon={faChevronDown} />
         </OpenButton>
@@ -57,21 +63,26 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index }) => {
   );
 
   const rerender = JSON.stringify({
-    data,
+    data: question.data,
     deleteConfirmed,
     opened,
     index,
   });
 
   return useMemo(
-    () => (
-      <Box header={header} hideContent={!opened}>
-        <InternationalizedInput
-          value={data.text}
-          onChange={handleChange.text}
-        />
-      </Box>
-    ),
+    () =>
+      !question?.data ? null : (
+        <Box header={header} hideContent={!opened}>
+          <InternationalizedInput
+            value={question.data.text}
+            onChange={question.handleChange.text}
+          />
+          <Row>
+            <PartiesInput question={question} />
+            <IdeologiesInput question={question} />
+          </Row>
+        </Box>
+      ),
     [rerender]
   );
 };

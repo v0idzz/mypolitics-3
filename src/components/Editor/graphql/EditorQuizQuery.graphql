@@ -17,6 +17,9 @@ query EditorQuiz ($slug: String!) {
             questions {
                 ...EditorQuestionParts
             }
+            axes {
+                ...EditorAxisParts
+            }
             compassModes {
                 name {
                     pl

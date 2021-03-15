@@ -8,8 +8,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 100%;
   position: sticky;
-  top: 40vh;
+  top: 35vh;
+`;
+
+export const Inner = styled.div`
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 100%;

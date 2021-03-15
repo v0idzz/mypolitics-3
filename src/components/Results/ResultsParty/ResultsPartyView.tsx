@@ -21,8 +21,11 @@ interface Props {
 
 const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
-  const partiesList = showMore ? parties : parties.filter((_, i) => i === 0);
   const { isClassic } = useCurrentResults();
+  const maxParties = isClassic ? 1 : 2;
+  const partiesList = showMore
+    ? parties
+    : parties.filter((_, i) => i < maxParties);
 
   const handleShowMore = () => setShowMore(true);
 

@@ -29,12 +29,12 @@ export const getStandardPageProps = async ({
   const notCurrentFilter = `slug:-['${query.slug}']`;
 
   const newsQuery = getRandomPosts({
-    limit: 2,
+    limit: 1,
     filter: `tag:${newsTag}+${notCurrentFilter}`,
   });
 
   const viewQuery = getRandomPosts({
-    limit: 4,
+    limit: 5,
     filter: `tag:${viewTag}+${notCurrentFilter}`,
   });
 

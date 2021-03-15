@@ -11,4 +11,8 @@ fragment CompassAxisParts on QuizCompassAxis {
         }
         weight
     }
+    name {
+        pl
+        en
+    }
 }

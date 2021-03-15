@@ -16,16 +16,6 @@ const ArticleHead: React.FC<Props> = ({ post, inView = true }) => {
   const path = paths.article(slug, id);
   const { url } = useCanonicalUrl(path);
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    if (inView) {
-      window.history.pushState({}, title, path);
-    }
-  }, [id, inView]);
-
   if (!inView) {
     return null;
   }

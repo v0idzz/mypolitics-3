@@ -10,6 +10,7 @@ export type Background =
   | "gray"
   | "white"
   | "discord"
+  | "facebook"
   | "bluish";
 export type Backgrounds = Record<Background, FlattenSimpleInterpolation>;
 
@@ -18,6 +19,7 @@ export interface StyleProps {
   background?: Background;
   showShadow?: boolean;
   isFullWidth?: boolean;
+  pulsating?: boolean;
 }
 
 export interface ButtonProps

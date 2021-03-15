@@ -26,9 +26,12 @@ query SingleQuiz($slug: String!) {
             statistics {
                 surveysNumber
             }
-            author {
-                url
+            authors {
+                id
                 name
+            }
+            votes {
+                value
             }
             license
         }

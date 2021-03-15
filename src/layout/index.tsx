@@ -3,12 +3,14 @@ import * as R from "ramda";
 import { ThemeProvider } from "styled-components";
 import theme from "@theme";
 import Footer from "@shared/Footer";
-import Header from "@shared/Header";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import GlobalStyle from "./globalStyles";
 import Head from "./Head";
 import { ContentWrapper } from "./style";
 import { pathsWithHero } from "./utils";
+
+const Header = dynamic(() => import("@shared/Header"), { ssr: false });
 
 interface Props {
   children: JSX.Element;

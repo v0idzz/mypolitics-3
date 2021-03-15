@@ -13,4 +13,5 @@ fragment EditorIdeologyParts on Ideology {
         value
     }
     color
+    viewerCanEdit
 }

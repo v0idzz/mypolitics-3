@@ -12,9 +12,11 @@ import { Container } from "./IdeologyItemStyle";
 
 interface Props {
   id: string;
+  onClick?(): void;
+  title?: string;
 }
 
-const IdeologyItem: React.FC<Props> = ({ id }) => {
+const IdeologyItem: React.FC<Props> = ({ id, onClick, title }) => {
   const { lang } = useTranslation();
   const { data } = useEntity<EditorIdeologyPartsFragment>({
     id,
@@ -23,11 +25,17 @@ const IdeologyItem: React.FC<Props> = ({ id }) => {
   });
   const { name, icon, color } = data;
   const [collected, drag] = useDrag(() => ({
-    item: { id, type: itemTypes.party },
+    item: { id, type: itemTypes.ideology },
   }));
 
   return (
-    <Container ref={drag} background={color} title={name[lang]} {...collected}>
+    <Container
+      ref={drag}
+      onClick={onClick}
+      background={color}
+      title={title || name[lang]}
+      {...collected}
+    >
       <IdeologyIcon icon={icon} />
     </Container>
   );

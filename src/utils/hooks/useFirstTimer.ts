@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const token = `mypolitics-first-timer`;
 
@@ -7,23 +7,12 @@ interface UseFirstTimer {
   setValue(value: boolean): void;
 }
 
+// TODO
 export const useFirstTimer = (): UseFirstTimer => {
-  const [value, setValue] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setValue(!window.localStorage.getItem(token));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && !value) {
-      window.localStorage.setItem(token, new Date().toISOString());
-    }
-  }, [value]);
+  const [value, setValue] = useState(false);
 
   return {
-    value,
-    setValue,
+    value: !!value,
+    setValue: () => null,
   };
 };

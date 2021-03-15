@@ -1,0 +1,5 @@
+mutation CreateParty ($values: CreatePartyInput!) {
+    createParty(createPartyInput: $values) {
+        ...EditorPartyParts
+    }
+}

@@ -9,6 +9,7 @@ import StandardPage, {
   getStandardPageProps,
   StandardPageProps,
 } from "@shared/StandardPage";
+import { getBackgroundImage } from "@components/Quiz/utils/getBackgroundImage";
 
 interface Props {
   quiz: SingleQuizQuery["quiz"];
@@ -19,12 +20,22 @@ const SingleQuizPage: React.FC<Props> = ({ quiz, standardPageProps }) => {
   const { lang } = useTranslation();
   const title = quiz.title[lang];
   const description = quiz.description[lang];
+  const image = getBackgroundImage(title);
 
   return (
     <StandardPage {...standardPageProps}>
       <NextSeo
         title={`Test polityczny ${title}`}
         description={`Sprawdź swoje poglądy polityczne w teście wyborczym ${title}! ${description}`}
+        openGraph={{
+          images: [
+            {
+              height: 600,
+              width: 900,
+              url: image,
+            },
+          ],
+        }}
       />
       <SinglePage quiz={quiz} />
     </StandardPage>

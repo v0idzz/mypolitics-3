@@ -1,0 +1,5 @@
+mutation CreateIdeology ($values: CreateIdeologyInput!) {
+    createIdeology(createIdeologyInput: $values) {
+        ...EditorIdeologyParts
+    }
+}

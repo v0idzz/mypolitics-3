@@ -4,6 +4,7 @@ import { Page } from "@components/Editor";
 import Head from "next/head";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import GoogleAd from "@shared/GoogleAd";
 
 const Editor: React.FC = () => (
   <CenteredPage>
@@ -13,9 +14,11 @@ const Editor: React.FC = () => (
         rel="stylesheet"
       />
     </Head>
+    <GoogleAd id="myp3-standard-top" />
     <DndProvider backend={HTML5Backend}>
       <Page />
     </DndProvider>
+    <GoogleAd id="myp3-standard-bottom" />
   </CenteredPage>
 );
 

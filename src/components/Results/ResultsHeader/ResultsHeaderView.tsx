@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  QuizType,
   ResultsPartsFragment,
   ResultsPoliticianPartsFragment,
 } from "@generated/graphql";
@@ -14,6 +15,8 @@ import {
   Date,
   Id,
   PoliticianSubHeader,
+  Title,
+  AuthorHeader,
 } from "./ResultsHeaderStyle";
 
 interface Props {
@@ -32,7 +35,10 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
         <div>
           <Link href={path}>
             <a>
-              <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />
+              {quiz.logoUrl && (
+                <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />
+              )}
+              {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
             </a>
           </Link>
         </div>
@@ -49,6 +55,9 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
       </Header>
       {politician && (
         <PoliticianSubHeader>{politician.name}</PoliticianSubHeader>
+      )}
+      {quiz.type === QuizType.Community && (
+        <AuthorHeader>Quiz społecznościowy</AuthorHeader>
       )}
     </div>
   );
