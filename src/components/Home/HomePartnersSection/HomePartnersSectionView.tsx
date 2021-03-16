@@ -1,6 +1,6 @@
 import React from "react";
 import * as R from "ramda";
-import { ComponentPersonPartner, usePartnersQuery } from "@generated/graphql";
+import { ComponentPersonPartner } from "@generated/graphql";
 import { Lead, Title } from "@shared/Typography";
 import useTranslation from "next-translate/useTranslation";
 import {
@@ -26,7 +26,7 @@ const HomePartnersSection: React.FC<Props> = ({ partners }) => {
   const { t } = useTranslation("home");
   const toPartnerLink = (partner: ComponentPersonPartner) => (
     <PartnerLink
-      key={partner.id}
+      key={partner.url}
       href={partner.url}
       target="_blank"
       rel="noreferrer"
