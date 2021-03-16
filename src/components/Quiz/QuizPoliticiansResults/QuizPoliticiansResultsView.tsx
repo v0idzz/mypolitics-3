@@ -53,7 +53,7 @@ const QuizPoliticiansResults: React.FC<Props> = ({
   const handleShowMore = () => setLimit(limit + BASE_LIMIT);
 
   const toPoliticianResults = ({ rid, politician }: PoliticianResults) => (
-    <Link href={paths.results(rid)} passHref>
+    <Link href={paths.results(rid)} passHref key={politician.name}>
       <PoliticianResultsLink>
         <PoliticianImage src={politician.image.url} alt={politician.name} />
         <PoliticianName>{politician.name}</PoliticianName>

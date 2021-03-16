@@ -27,7 +27,11 @@ const ResultsTraits: React.FC<Props> = ({ traits }) => {
   const onClose = () => setTrait(undefined);
 
   const toTrait = (trait: ResultsTraitPartsFragment) => (
-    <TraitContainer background={trait.color} onClick={() => onChange(trait)}>
+    <TraitContainer
+      key={trait.name[lang]}
+      background={trait.color}
+      onClick={() => onChange(trait)}
+    >
       <IdeologyIcon icon={trait.icon} />
       <span>{trait.name[lang]}</span>
     </TraitContainer>
