@@ -5,10 +5,8 @@ import {
   faTelegramPlane,
   faDiscord,
   faGithub,
-  IconDefinition,
 } from "@fortawesome/free-brands-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { ReactNode } from "react";
 
 library.add(
   faFacebookF,
@@ -21,11 +19,11 @@ library.add(
 
 export interface SocialLink {
   url: string;
-  icon: any;
+  icon: typeof faTwitter;
   customColor?: string;
 }
 
-export const socialLinks: SocialLink[] = [
+export const socialLinks = (lang: string): SocialLink[] => [
   {
     url: "https://facebook.com/myPoliticsTest",
     icon: faFacebookF,
@@ -51,8 +49,14 @@ export const socialLinks: SocialLink[] = [
     icon: faGithub,
   },
   {
-    url: "https://patronite.pl/mypolitics",
-    icon: require("@assets/images/patronite.png"),
-    customColor: "#ED1B2D",
+    url:
+      lang === "pl"
+        ? "https://patronite.pl/mypolitics"
+        : "https://patreon.com/mypolitics",
+    icon:
+      lang === "pl"
+        ? require("@assets/images/patronite.png")
+        : require("@assets/images/patreon.png"),
+    customColor: lang === "pl" ? "#ED1B2D" : "#FF424D",
   },
 ];
