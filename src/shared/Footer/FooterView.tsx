@@ -24,7 +24,7 @@ import {
 import { socialLinks, SocialLink as SocialLinkType } from "./FooterUtils";
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation("common");
+  const { t, lang } = useTranslation("common");
   const year = new Date().getFullYear();
   const toSocialLink = ({ url, icon, customColor }: SocialLinkType) => (
     <SocialLink key={url} href={url} color={customColor} target="_blank">
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
     </SocialLink>
   );
 
-  const socialLinksElements = R.map(toSocialLink, socialLinks);
+  const socialLinksElements = R.map(toSocialLink, socialLinks(lang));
 
   return (
     <>
