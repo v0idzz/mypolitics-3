@@ -24,6 +24,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
 
   const toOption = (category: PoliticianCategory) => (
     <Element
+      key={t(`politicianCategory.${category}`)}
       light={light}
       active={category === value}
       onClick={() => onChange(category)}
