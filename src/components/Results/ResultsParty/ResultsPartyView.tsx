@@ -29,7 +29,7 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
   const maxParties = isClassic ? 1 : 2;
   const partiesList = parties
     .filter((p) => p.country === country)
-    .slice(0, showMore ? -1 : maxParties);
+    .slice(0, showMore ? parties.length : maxParties);
 
   const handleShowMore = () => setShowMore(true);
 
