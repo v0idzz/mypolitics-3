@@ -25,7 +25,7 @@ const CurrentTalk: React.FC = () => {
     });
   }, []);
 
-  if (!data || data?.talksConnection.aggregate.count === 0) {
+  if (!data || data?.talksConnection.values.length === 0) {
     return null;
   }
 
