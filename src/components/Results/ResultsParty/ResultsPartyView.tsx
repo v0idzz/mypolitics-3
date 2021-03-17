@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ResultsPartyPartsFragment } from "@generated/graphql";
+import { Country, ResultsPartyPartsFragment } from "@generated/graphql";
 import PartyInfo from "@components/Results/ResultsParty/PartyInfo";
 import Button from "@shared/Button";
 import * as R from "ramda";
@@ -9,10 +9,12 @@ import {
   Container,
   List,
   Header,
-  CountrySelect,
   HeaderTitle,
   ButtonWrapper,
 } from "./ResultsPartyStyle";
+import CountrySelect from "@shared/CountrySelect";
+import useTranslation from "next-translate/useTranslation";
+import { langToCountry } from "@utils/langToCountry";
 
 interface Props {
   parties: ResultsPartyPartsFragment[];
@@ -22,10 +24,12 @@ interface Props {
 const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const { isClassic } = useCurrentResults();
+  const { lang } = useTranslation();
+  const [country, setCountry] = useState(langToCountry(lang));
   const maxParties = isClassic ? 1 : 2;
-  const partiesList = showMore
-    ? parties
-    : parties.filter((_, i) => i < maxParties);
+  const partiesList = parties
+    .filter((p) => p.country === country)
+    .slice(0, showMore ? -1 : maxParties);
 
   const handleShowMore = () => setShowMore(true);
 
@@ -37,6 +41,10 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
     />
   );
   const partiesInfoList = R.map(toPartyInfo, partiesList);
+
+  const handleCountryChange = (c: Country) => {
+    setCountry(c);
+  };
 
   const information = (
     <InformationButton title="Jak działa dopasowanie partii?">
@@ -56,6 +64,11 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
       <Header>
         <HeaderTitle>Partia</HeaderTitle>
         {!isClassic && information}
+        <CountrySelect
+          value={country}
+          onChange={handleCountryChange}
+          color="background"
+        />
       </Header>
       <List>{partiesInfoList}</List>
       {!showMore && (
