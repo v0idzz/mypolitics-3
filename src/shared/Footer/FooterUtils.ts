@@ -6,7 +6,7 @@ import {
   faDiscord,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { IconProp, library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(
   faFacebookF,
@@ -19,7 +19,7 @@ library.add(
 
 export interface SocialLink {
   url: string;
-  icon: typeof faTwitter;
+  icon: IconProp;
   customColor?: string;
 }
 
