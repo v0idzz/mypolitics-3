@@ -88,7 +88,7 @@ export const Container = styled.div<{
   ${({ showFull, theme }) =>
     showFull &&
     css`
-      border: 1px solid ${theme.colors.backgroundDarken};
+      outline: 1px solid ${theme.colors.backgroundDarken};
 
       ${DropdownButton} {
         border-bottom-right-radius: 0;
