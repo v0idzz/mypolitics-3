@@ -6,7 +6,7 @@ import {
   faDiscord,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { IconProp, library } from "@fortawesome/fontawesome-svg-core";
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(
   faFacebookF,
@@ -19,7 +19,8 @@ library.add(
 
 export interface SocialLink {
   url: string;
-  icon: IconProp;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon: any;
   customColor?: string;
 }
 
