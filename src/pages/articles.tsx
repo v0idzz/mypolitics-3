@@ -9,6 +9,7 @@ import { categoriesConfig } from "@components/Media/utils/useCategory";
 import { getManyPosts, getRandomPosts } from "@services/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 import { CurrentTalk } from "@components/Talk";
+import GoogleAd from "@shared/GoogleAd";
 
 interface Props {
   posts: {
@@ -25,7 +26,13 @@ const Articles: React.FC<Props> = ({ posts }) => {
     <PageContainer>
       <NextSeo title={t("SEO.title")} description={t("SEO.description")} />
       <ArticlesHero featuredPosts={posts.featured} />
+      <div className="container">
+        <GoogleAd id="myp3-standard-top" />
+      </div>
       <ArticlesListSection posts={posts.news} type="news" />
+      <div className="container">
+        <GoogleAd id="myp3-standard-top" />
+      </div>
       <ArticlesListSection posts={posts.view} type="view" />
       <ContactActionSection
         title={

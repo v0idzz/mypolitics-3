@@ -46,9 +46,11 @@ const EditorContent: React.FC = () => {
           <Box header={<Title>Dane podstawowe</Title>}>
             <Basic editor={editor} />
           </Box>
+          <GoogleAd id="myp3-standard-middle" />
           <Box header={<Title>Partie</Title>}>
             <Parties editor={editor} />
           </Box>
+          <GoogleAd id="myp3-standard-middle" />
           <Box header={<Title>Ideologie</Title>}>
             <Ideologies editor={editor} />
           </Box>

@@ -1,6 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { PageContainer } from "@shared/Page";
-import { ArticlesListSection, RandomArticle } from "@components/Media";
+import {
+  ArticleContent,
+  ArticlesListSection,
+} from "@components/Media";
 import ShareSocial from "@shared/ShareSocial";
 import { Link, Section } from "@components/Quiz";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,11 +16,10 @@ import {
   PatreonQuery,
 } from "@generated/graphql";
 import GoogleAd from "@shared/GoogleAd";
-import { useInView } from "react-hook-inview";
-import { useRouter } from "next/router";
 import { CurrentTalk } from "@components/Talk";
 import Patreon from "@shared/Patreon";
 import { EditorCTA } from "@components/Editor";
+import RandomContent from "@shared/StandardPage/RandomContent/RandomContentView";
 import { Content, Inner } from "./StandardPageStyle";
 
 library.add(faPollH, faPencilRuler);
@@ -39,32 +41,14 @@ const StandardPage: React.FC<Props> = ({
   quizzes = [],
   patreons,
 }) => {
-  const { asPath } = useRouter();
   const shortenedArticles = articles.filter((_, k) => k < 3);
-  const lastArticles = articles.filter((v) => !shortenedArticles.includes(v));
-  const [ref, inView] = useInView();
-
-  useEffect(() => {
-    if (!inView) {
-      window.history.pushState({}, null, asPath);
-    }
-  }, [inView]);
+  const randomArticle = articles.length > 0 && articles[articles.length - 1];
 
   return (
     <PageContainer>
       <div className="container">
         <Inner>
           <Content fullWidth={fullWidth}>{children}</Content>
-          {articles.length > 0 && (
-            <>
-              <ArticlesListSection
-                posts={shortenedArticles}
-                type="short-news"
-              />
-              <CurrentTalk />
-              <ArticlesListSection talks={talks} type="short-talk" />
-            </>
-          )}
           <Inner style={{ maxWidth: 850, margin: "auto" }}>
             {quizzes.length > 0 && (
               <>
@@ -85,16 +69,23 @@ const StandardPage: React.FC<Props> = ({
               </>
             )}
           </Inner>
-          <GoogleAd id="myp3-standard-bottom" />
-          <Inner ref={ref}>
-            {articles.map((article) => (
-              <RandomArticle key={article.id} post={article} />
-            ))}
-          </Inner>
           {articles.length > 0 && (
-            <ArticlesListSection posts={lastArticles} type="short-news" />
+            <>
+              <ArticlesListSection
+                posts={shortenedArticles}
+                type="short-news"
+              />
+              <GoogleAd id="myp3-standard-middle" />
+              <CurrentTalk />
+              <ArticlesListSection talks={talks} type="short-talk" />
+            </>
           )}
+          <GoogleAd id="myp3-standard-bottom" />
           {patreons && <Patreon patreons={patreons} />}
+          <RandomContent />
+          {randomArticle && (
+            <ArticleContent post={randomArticle} showFull={false} />
+          )}
         </Inner>
       </div>
     </PageContainer>

@@ -13,7 +13,7 @@ const Spinner: React.FC<Props> = ({ thickness = 4, gap = 4, color }) => {
   const defaultColor = theme.colors.textMuted;
 
   return (
-    <SpinnerIcon role="img" viewBox="0 0 32 32">
+    <SpinnerIcon role="img" viewBox="0 0 32 32" className="spinner">
       <circle
         role="presentation"
         cx={16}

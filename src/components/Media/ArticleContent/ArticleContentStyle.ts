@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Lead, Title } from "@shared/Typography";
 import breakpoint from "styled-components-breakpoint";
+import { transparentize } from "polished";
 
 export const Container = styled.article`
   max-width: ${({ theme }) => theme.breakpoints.xl}px;
@@ -9,6 +10,8 @@ export const Container = styled.article`
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.backgroundDarken};
   background: #fff;
+  position: relative;
+  overflow: hidden;
 
   ${breakpoint("lg")`
     padding: 2rem;
@@ -38,6 +41,31 @@ export const Inner = styled.div`
   ${breakpoint("md")`
     grid-gap: 4rem;
   `};
+`;
+
+export const ShowMoreOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, white 0%, transparent 75%);
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25%;
+
+  .CircularProgressbar {
+    width: max(25%, 15rem);
+    padding: 1rem;
+    border-radius: 17.5rem;
+    background: ${({
+      theme: {
+        colors: { backgroundDarken },
+      },
+    }) => transparentize(0.33, backgroundDarken)};
+  }
 `;
 
 export const ContentWrapper = styled(Inner)`

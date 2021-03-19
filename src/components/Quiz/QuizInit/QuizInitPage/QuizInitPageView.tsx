@@ -32,6 +32,7 @@ const QuizInitPage: React.FC = () => (
         </Link>
       </Content>
     </InitStep>
+    <GoogleAd id="myp3-standard-bottom" />
   </CenteredPage>
 );
 

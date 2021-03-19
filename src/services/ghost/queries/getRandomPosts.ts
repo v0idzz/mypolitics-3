@@ -19,7 +19,7 @@ export const getRandomPosts = async (
     filter,
   });
 
-  const shuffledIds = shuffle(ids).map((p) => p.id);
+  const shuffledIds = shuffle(ids.map((p) => p.id));
   const idsFiltered = shuffledIds.filter((_, i) => i < limit);
 
   const defaultOptions: Params = {
@@ -27,8 +27,8 @@ export const getRandomPosts = async (
   };
 
   return getManyPosts({
-    ...defaultOptions,
     ...options,
+    ...defaultOptions,
   })
     .then(shuffle)
     .then(replaceHttpHttps);

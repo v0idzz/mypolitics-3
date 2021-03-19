@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { AdId, adsIdsSlots } from "./GoogleAdUtils";
 import { MockupAd, Text } from "./GoogleAdStyle";
 
-interface Props {
+export interface Props {
   id: AdId;
 }
 
