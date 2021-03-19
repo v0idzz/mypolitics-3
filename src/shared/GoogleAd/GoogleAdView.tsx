@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import { AdId, adsIdsSlots } from "./GoogleAdUtils";
 import { MockupAd, Text } from "./GoogleAdStyle";
 
@@ -8,6 +9,7 @@ export interface Props {
 
 const GoogleAd: React.FC<Props> = ({ id }) => {
   const slot = adsIdsSlots[id];
+  const { url } = useCanonicalUrl();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -36,6 +38,7 @@ const GoogleAd: React.FC<Props> = ({ id }) => {
 
   return (
     <div
+      key={url}
       style={{
         width: "100%",
       }}
