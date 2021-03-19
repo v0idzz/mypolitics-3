@@ -23,7 +23,7 @@ const GoogleAd: React.FC<Props> = ({ id }) => {
         console.error(e);
       }
     }
-  }, []);
+  }, [url]);
 
   if (process.env.NODE_ENV !== "production") {
     return (
