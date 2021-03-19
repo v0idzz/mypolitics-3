@@ -34,8 +34,15 @@ export const getStandardPageProps = async ({
   });
 
   const viewQuery = getRandomPosts({
-    limit: 5,
+    limit: 2,
     filter: `tag:${viewTag}+${notCurrentFilter}`,
+  });
+
+  const randomArticleQuery = getRandomPosts({
+    limit: 1,
+    filter: `tag:${viewTag}+${notCurrentFilter}`,
+    fields: ["id", "title", "slug", "feature_image", "published_at"],
+    include: ["tags", "authors"],
   });
 
   const talksQuery = client.query<TalksByFilterQuery>({
@@ -54,16 +61,24 @@ export const getStandardPageProps = async ({
     query: PatreonDocument,
   });
 
-  const [news, view, talks, quizzes, patreons] = await Promise.all([
+  const [
+    news,
+    view,
+    randomArticles,
+    talks,
+    quizzes,
+    patreons,
+  ] = await Promise.all([
     newsQuery,
     viewQuery,
+    randomArticleQuery,
     talksQuery,
     quizzesQuery,
     patreonQuery,
   ]);
 
   return {
-    articles: (news || []).concat(view || []),
+    articles: [...(news || []), ...(view || []), ...(randomArticles || [])],
     talks: talks?.data.talks || [],
     quizzes: quizzes?.data.featuredQuizzes || [],
     patreons: patreons?.data.patreon,
