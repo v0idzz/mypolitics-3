@@ -1,1 +1,1 @@
-export { default } from "./RandomArticleView";
+export { default } from "./RandomContentView";
