@@ -10,6 +10,13 @@
     "title": "Wiadomości",
     "lead": "nie ominiesz żadnej informacji"
   },
+  "header": {
+    "readingTime": {
+      "one": "minuta czytania",
+      "few": "{{count}} minuty czytania",
+      "many": "{{count}} minut czytania"
+    }
+  },
   "view": {
     "title": "Opinie",
     "lead": "poznaj poglądy drugiej strony"
