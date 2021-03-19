@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { darken } from "polished";
 import breakpoint from "styled-components-breakpoint";
+import { Input as BaseInput } from "@shared/Common";
 
 export const Container = styled.section`
   padding: 1rem;
@@ -31,7 +32,7 @@ export const Title = styled.div`
   color: ${({ theme }) => theme.colors.backgroundLighten};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
-  
+
   ${breakpoint("xs", "md")`
     text-align: center;
   `}
@@ -85,4 +86,23 @@ export const Actions = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const InputGroup = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+export const Input = styled(BaseInput)`
+  width: 7rem;
+
+  ${breakpoint("xs", "sm")`
+        width: 100%;
+    `}
+`;
+
+export const Form = styled.form`
+  display: grid;
+  grid-gap: 1rem;
 `;
