@@ -37,7 +37,7 @@ const QuizRespondent: React.FC = () => {
   });
   const [isVisible, setVisible] = React.useState<boolean>(false);
 
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const handleCodeChange = async (values, { setSubmitting }) => {
     try {
       await changeCode({ variables: { code: values.code } });
     } catch (e) {
@@ -86,10 +86,10 @@ const QuizRespondent: React.FC = () => {
         onClose={() => setVisible(!isVisible)}
       >
         <Formik<{ code: string[] }>
+          onSubmit={handleCodeChange}
           initialValues={{
             code: [...Array(6)].map(() => ""),
           }}
-          onSubmit={handleSubmit}
         >
           {({ values, handleChange, handleSubmit, isSubmitting }) => (
             <Form onSubmit={handleSubmit}>
