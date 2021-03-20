@@ -172,9 +172,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -184,9 +182,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -196,9 +192,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -208,9 +202,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -237,9 +229,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -249,9 +239,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -261,9 +249,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -273,9 +259,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -320,9 +304,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "leaders",
@@ -336,9 +318,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "members",
@@ -352,9 +332,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "logo",
@@ -364,9 +342,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -387,9 +363,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "twitter",
@@ -399,9 +373,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "website",
@@ -411,9 +383,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -556,9 +526,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -658,9 +626,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "url",
@@ -670,9 +636,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "image",
@@ -682,9 +646,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -788,9 +750,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "biography",
@@ -800,9 +760,7 @@
               "name": "ComponentTranslationLongTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "name",
@@ -816,9 +774,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -906,9 +862,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "en",
@@ -918,9 +872,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1016,9 +968,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "en",
@@ -1028,9 +978,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1126,9 +1074,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "en",
@@ -1138,9 +1084,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1161,9 +1105,7 @@
               "name": "MemberInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1207,9 +1149,7 @@
               "name": "OrganisationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1253,9 +1193,7 @@
               "name": "PoliticianInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1299,9 +1237,7 @@
               "name": "PoliticianResultInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1345,9 +1281,7 @@
               "name": "PostInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1391,9 +1325,7 @@
               "name": "TalkInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1437,9 +1369,7 @@
               "name": "UserInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1526,9 +1456,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1572,9 +1500,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1664,9 +1590,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1710,9 +1634,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1756,9 +1678,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1802,9 +1722,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -1871,9 +1789,7 @@
               "name": "ComponentTranslationRichTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "privacy",
@@ -1883,9 +1799,7 @@
               "name": "ComponentTranslationRichTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "gdpr",
@@ -1895,9 +1809,7 @@
               "name": "ComponentTranslationRichTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -1907,9 +1819,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -1919,9 +1829,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2053,9 +1961,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "title",
@@ -2065,9 +1971,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "leaders",
@@ -2081,9 +1985,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "members",
@@ -2097,9 +1999,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "logo",
@@ -2109,9 +2009,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2132,9 +2030,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "facebook",
@@ -2144,9 +2040,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "twitter",
@@ -2156,9 +2050,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "website",
@@ -2168,9 +2060,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2191,9 +2081,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2214,9 +2102,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "name",
@@ -2226,9 +2112,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "url",
@@ -2238,9 +2122,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "image",
@@ -2250,9 +2132,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2273,9 +2153,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "image",
@@ -2285,9 +2163,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "biography",
@@ -2297,9 +2173,7 @@
               "name": "editComponentTranslationLongTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "name",
@@ -2309,9 +2183,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2332,9 +2204,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "pl",
@@ -2344,9 +2214,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "en",
@@ -2356,9 +2224,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2379,9 +2245,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "pl",
@@ -2391,9 +2255,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "en",
@@ -2403,9 +2265,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2426,9 +2286,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "pl",
@@ -2438,9 +2296,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "en",
@@ -2450,9 +2306,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2473,9 +2327,7 @@
               "name": "editComponentTranslationRichTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "privacy",
@@ -2485,9 +2337,7 @@
               "name": "editComponentTranslationRichTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "gdpr",
@@ -2497,9 +2347,7 @@
               "name": "editComponentTranslationRichTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -2509,9 +2357,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -2521,9 +2367,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2544,9 +2388,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "role",
@@ -2556,9 +2398,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "image",
@@ -2568,9 +2408,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -2580,9 +2418,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -2592,9 +2428,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2615,9 +2449,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "logo",
@@ -2627,9 +2459,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "talks",
@@ -2643,9 +2473,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "politicians",
@@ -2659,9 +2487,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "shortname",
@@ -2671,9 +2497,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "published_at",
@@ -2683,9 +2507,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -2695,9 +2517,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -2707,9 +2527,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2734,9 +2552,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -2746,9 +2562,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -2758,9 +2572,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2781,9 +2593,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "published_at",
@@ -2793,9 +2603,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -2805,9 +2613,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -2817,9 +2623,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2840,9 +2644,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "biography",
@@ -2852,9 +2654,7 @@
               "name": "editComponentTranslationLongTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "name",
@@ -2864,9 +2664,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "politician_results",
@@ -2880,9 +2678,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "talks",
@@ -2896,9 +2692,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "organisation",
@@ -2908,9 +2702,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -2920,9 +2712,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -2932,9 +2722,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -2955,9 +2743,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "category",
@@ -2967,9 +2753,7 @@
               "name": "ENUM_POLITICIANRESULTS_CATEGORY",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "featured",
@@ -2979,9 +2763,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "slug",
@@ -2991,9 +2773,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "politician",
@@ -3003,9 +2783,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "quiz_slug",
@@ -3015,9 +2793,7 @@
               "name": "ENUM_POLITICIANRESULTS_QUIZ_SLUG",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -3027,9 +2803,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -3039,9 +2813,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -3072,9 +2844,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "category",
@@ -3084,9 +2854,7 @@
               "name": "ENUM_POST_CATEGORY",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "featured",
@@ -3096,9 +2864,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "title",
@@ -3108,9 +2874,7 @@
               "name": "editComponentTranslationShortTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "content",
@@ -3120,9 +2884,7 @@
               "name": "editComponentTranslationRichTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "subcategory",
@@ -3132,9 +2894,7 @@
               "name": "editComponentTranslationShortTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "slug",
@@ -3144,9 +2904,7 @@
               "name": "editComponentTranslationShortTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "default_title",
@@ -3156,9 +2914,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "published_at",
@@ -3168,9 +2924,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -3180,9 +2934,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -3192,9 +2944,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -3215,9 +2965,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "start",
@@ -3227,9 +2975,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "end",
@@ -3239,9 +2985,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "type",
@@ -3251,9 +2995,7 @@
               "name": "ENUM_TALK_TYPE",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "url",
@@ -3263,9 +3005,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "thumbnail",
@@ -3275,9 +3015,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "lang",
@@ -3287,9 +3025,7 @@
               "name": "ENUM_TALK_LANG",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "politicians",
@@ -3303,9 +3039,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "moderators",
@@ -3319,9 +3053,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "organisations",
@@ -3335,9 +3067,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "streamyard_id",
@@ -3347,9 +3077,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "fb_post_id",
@@ -3359,9 +3087,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "tt_post_id",
@@ -3371,9 +3097,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "published_at",
@@ -3383,9 +3107,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -3395,9 +3117,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -3407,9 +3127,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -3434,9 +3152,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -3446,9 +3162,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -3458,9 +3172,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -3481,9 +3193,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "email",
@@ -3493,9 +3203,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "provider",
@@ -3505,9 +3213,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "password",
@@ -3517,9 +3223,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "resetPasswordToken",
@@ -3529,9 +3233,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "confirmationToken",
@@ -3541,9 +3243,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "confirmed",
@@ -3553,9 +3253,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "blocked",
@@ -3565,9 +3263,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "role",
@@ -3577,9 +3273,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -3589,9 +3283,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -3601,9 +3293,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -3757,9 +3447,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "alternativeText",
@@ -3769,9 +3457,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "caption",
@@ -3781,9 +3467,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -3808,9 +3492,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -4416,9 +4098,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "role",
@@ -4428,9 +4108,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "image",
@@ -4440,9 +4118,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -4452,9 +4128,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -4464,9 +4138,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -5273,9 +4945,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -5285,9 +4955,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -5297,9 +4965,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -5309,9 +4975,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -5338,9 +5002,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -5350,9 +5012,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -5362,9 +5022,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -5374,9 +5032,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -5916,9 +5572,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "logo",
@@ -5928,9 +5582,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "talks",
@@ -5944,9 +5596,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "politicians",
@@ -5960,9 +5610,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "shortname",
@@ -5972,9 +5620,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "published_at",
@@ -5984,9 +5630,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -5996,9 +5640,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -6008,9 +5650,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -6035,9 +5675,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -6047,9 +5685,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -6059,9 +5695,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -6173,9 +5807,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "published_at",
@@ -6185,9 +5817,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -6197,9 +5827,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -6209,9 +5837,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -6446,9 +6072,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -6458,9 +6082,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -6470,9 +6092,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -6482,9 +6102,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -6511,9 +6129,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -6523,9 +6139,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -6535,9 +6149,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -6547,9 +6159,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -7089,9 +6699,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "biography",
@@ -7101,9 +6709,7 @@
               "name": "ComponentTranslationLongTextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "name",
@@ -7113,9 +6719,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "politician_results",
@@ -7129,9 +6733,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "talks",
@@ -7145,9 +6747,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "organisation",
@@ -7157,9 +6757,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -7169,9 +6767,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -7181,9 +6777,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -7204,9 +6798,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "category",
@@ -7216,9 +6808,7 @@
               "name": "ENUM_POLITICIANRESULTS_CATEGORY",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "featured",
@@ -7228,9 +6818,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "slug",
@@ -7240,9 +6828,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "politician",
@@ -7252,9 +6838,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "quiz_slug",
@@ -7264,9 +6848,7 @@
               "name": "ENUM_POLITICIANRESULTS_QUIZ_SLUG",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -7276,9 +6858,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -7288,9 +6868,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -9016,9 +8594,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "category",
@@ -9032,9 +8608,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "featured",
@@ -9044,9 +8618,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "title",
@@ -9060,9 +8632,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "content",
@@ -9076,9 +8646,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "subcategory",
@@ -9092,9 +8660,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "slug",
@@ -9108,9 +8674,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "default_title",
@@ -9120,9 +8684,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "published_at",
@@ -9132,9 +8694,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -9144,9 +8704,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -9156,9 +8714,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -9389,9 +8945,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -9401,9 +8955,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -9413,9 +8965,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -9425,9 +8975,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -9454,9 +9002,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -9466,9 +9012,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -9478,9 +9022,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -9490,9 +9032,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -9519,9 +9059,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -9531,9 +9069,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -9543,9 +9079,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -9555,9 +9089,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -10403,9 +9935,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "start",
@@ -10415,9 +9945,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "end",
@@ -10427,9 +9955,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "type",
@@ -10439,9 +9965,7 @@
               "name": "ENUM_TALK_TYPE",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "url",
@@ -10451,9 +9975,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "thumbnail",
@@ -10463,9 +9985,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "lang",
@@ -10475,9 +9995,7 @@
               "name": "ENUM_TALK_LANG",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "politicians",
@@ -10491,9 +10009,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "moderators",
@@ -10507,9 +10023,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "organisations",
@@ -10523,9 +10037,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "streamyard_id",
@@ -10535,9 +10047,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "fb_post_id",
@@ -10547,9 +10057,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "tt_post_id",
@@ -10559,9 +10067,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "published_at",
@@ -10571,9 +10077,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -10583,9 +10087,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -10595,9 +10097,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -10713,9 +10213,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -10725,9 +10223,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -10737,9 +10233,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -10770,9 +10264,7 @@
               "name": "editDocumentInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -10816,9 +10308,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "data",
@@ -10828,9 +10318,7 @@
               "name": "editMemberInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -10874,9 +10362,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "data",
@@ -10886,9 +10372,7 @@
               "name": "editOrganisationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -10932,9 +10416,7 @@
               "name": "editPartnerInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -10978,9 +10460,7 @@
               "name": "editPatreonInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11024,9 +10504,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "data",
@@ -11036,9 +10514,7 @@
               "name": "editPoliticianInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11082,9 +10558,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "data",
@@ -11094,9 +10568,7 @@
               "name": "editPoliticianResultInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11140,9 +10612,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "data",
@@ -11152,9 +10622,7 @@
               "name": "editPostInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11198,9 +10666,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "data",
@@ -11210,9 +10676,7 @@
               "name": "editTalkInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11256,9 +10720,7 @@
               "name": "editTeamInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11302,9 +10764,7 @@
               "name": "InputID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "data",
@@ -11314,9 +10774,7 @@
               "name": "editUserInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11629,9 +11087,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -11641,9 +11097,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -11653,9 +11107,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -11665,9 +11117,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -11716,9 +11166,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "email",
@@ -11732,9 +11180,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "provider",
@@ -11744,9 +11190,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "password",
@@ -11756,9 +11200,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "resetPasswordToken",
@@ -11768,9 +11210,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "confirmationToken",
@@ -11780,9 +11220,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "confirmed",
@@ -11792,9 +11230,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "blocked",
@@ -11804,9 +11240,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "role",
@@ -11816,9 +11250,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "created_by",
@@ -11828,9 +11260,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "updated_by",
@@ -11840,9 +11270,7 @@
               "name": "ID",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11894,9 +11322,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "password",
@@ -11910,9 +11336,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "provider",
@@ -11922,9 +11346,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": "\"local\"",
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": "\"local\""
           }
         ],
         "interfaces": null,
@@ -12281,9 +11703,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "email",
@@ -12297,9 +11717,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "password",
@@ -12313,9 +11731,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -12411,9 +11827,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -12423,9 +11837,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -12435,9 +11847,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -12447,9 +11857,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -12476,9 +11884,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -12488,9 +11894,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -12500,9 +11904,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -12512,9 +11914,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -12708,9 +12108,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "answer",
@@ -12724,9 +12122,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -12780,9 +12176,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "description",
@@ -12796,9 +12190,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "color",
@@ -12812,9 +12204,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "icon",
@@ -12828,9 +12218,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -12855,9 +12243,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "logoUrl",
@@ -12871,9 +12257,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "country",
@@ -12887,9 +12271,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -12914,9 +12296,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "effects",
@@ -12930,9 +12310,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -12957,9 +12335,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "title",
@@ -12973,9 +12349,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "description",
@@ -12989,9 +12363,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -13012,9 +12384,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "axes",
@@ -13032,9 +12402,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "parent",
@@ -13044,9 +12412,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "compassModes",
@@ -13064,9 +12430,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -13091,9 +12455,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -13118,9 +12480,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -13145,9 +12505,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "email",
@@ -13161,9 +12519,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "password",
@@ -13177,9 +12533,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "recaptcha",
@@ -13193,9 +12547,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -13426,9 +12778,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "value",
@@ -13442,9 +12792,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -13797,9 +13145,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "disagree",
@@ -13813,9 +13159,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -13899,9 +13243,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "parties",
@@ -13923,9 +13265,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -14228,9 +13568,7 @@
               "name": "TextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "left",
@@ -14240,9 +13578,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "right",
@@ -14252,9 +13588,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -14346,9 +13680,7 @@
               "name": "TextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "leftIdeologies",
@@ -14370,9 +13702,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "rightIdeologies",
@@ -14394,9 +13724,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -14464,9 +13792,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "weight",
@@ -14480,9 +13806,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -14574,9 +13898,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "horizontal",
@@ -14590,9 +13912,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "vertical",
@@ -14606,9 +13926,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "third",
@@ -14618,9 +13936,7 @@
               "name": "QuizCompassAxisInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -15517,9 +14833,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "compassPoint",
@@ -15541,9 +14855,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -16560,9 +15872,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "type",
@@ -16576,9 +15886,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "weight",
@@ -16592,9 +15900,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -16679,9 +15985,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "en",
@@ -16691,9 +15995,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -16718,9 +16020,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "description",
@@ -16734,9 +16034,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "color",
@@ -16750,9 +16048,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "icon",
@@ -16766,9 +16062,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -16793,9 +16087,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "logoUrl",
@@ -16809,9 +16101,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "country",
@@ -16825,9 +16115,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -16852,9 +16140,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "effects",
@@ -16868,9 +16154,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -16891,9 +16175,7 @@
               "name": "TextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "logoUrl",
@@ -16903,9 +16185,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "description",
@@ -16915,9 +16195,7 @@
               "name": "TextTranslationInput",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "currentVersion",
@@ -16927,9 +16205,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -16950,9 +16226,7 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "axes",
@@ -16970,9 +16244,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "parent",
@@ -16982,9 +16254,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "compassModes",
@@ -17002,9 +16272,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "traits",
@@ -17022,9 +16290,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "questions",
@@ -17042,9 +16308,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "ideologies",
@@ -17062,9 +16326,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "parties",
@@ -17082,9 +16344,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -17109,9 +16369,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -17140,9 +16398,7 @@
                 }
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "finished",
@@ -17152,9 +16408,7 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -17331,9 +16585,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           },
           {
             "name": "reason",
@@ -17347,9 +16599,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -17373,9 +16623,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17402,9 +16650,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -17414,9 +16660,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17439,9 +16683,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -17451,9 +16693,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -17463,9 +16703,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -17475,9 +16713,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -17487,9 +16723,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17516,9 +16750,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -17528,9 +16760,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -17540,9 +16770,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -17552,9 +16780,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17581,9 +16807,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -17593,9 +16817,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17618,9 +16840,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -17630,9 +16850,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -17642,9 +16860,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -17654,9 +16870,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -17666,9 +16880,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17695,9 +16907,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -17707,9 +16917,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -17719,9 +16927,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -17731,9 +16937,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17756,9 +16960,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17781,9 +16983,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17810,9 +17010,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -17822,9 +17020,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17847,9 +17043,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -17859,9 +17053,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -17871,9 +17063,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -17883,9 +17073,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -17895,9 +17083,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17924,9 +17110,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -17936,9 +17120,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -17948,9 +17130,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -17960,9 +17140,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -17989,9 +17167,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -18001,9 +17177,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18026,9 +17200,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -18038,9 +17210,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -18050,9 +17220,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -18062,9 +17230,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -18074,9 +17240,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18103,9 +17267,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -18115,9 +17277,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -18127,9 +17287,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -18139,9 +17297,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18168,9 +17324,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -18180,9 +17334,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18205,9 +17357,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -18217,9 +17367,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -18229,9 +17377,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -18241,9 +17387,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -18253,9 +17397,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18282,9 +17424,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -18294,9 +17434,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -18306,9 +17444,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -18318,9 +17454,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18347,9 +17481,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -18359,9 +17491,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18384,9 +17514,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -18396,9 +17524,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -18408,9 +17534,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -18420,9 +17544,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publicationState",
@@ -18432,9 +17554,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18461,9 +17581,7 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "limit",
@@ -18473,9 +17591,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "start",
@@ -18485,9 +17601,7 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "where",
@@ -18497,9 +17611,7 @@
                   "name": "JSON",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18522,9 +17634,7 @@
                   "name": "PublicationState",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18559,9 +17669,7 @@
                     }
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18624,9 +17732,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18657,9 +17763,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18762,9 +17866,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18811,9 +17913,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18851,9 +17951,7 @@
                   "name": "createMemberInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18876,9 +17974,7 @@
                   "name": "updateMemberInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18901,9 +17997,7 @@
                   "name": "deleteMemberInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18926,9 +18020,7 @@
                   "name": "createOrganisationInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18951,9 +18043,7 @@
                   "name": "updateOrganisationInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -18976,9 +18066,7 @@
                   "name": "deleteOrganisationInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19001,9 +18089,7 @@
                   "name": "updatePatreonInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19038,9 +18124,7 @@
                   "name": "createPoliticianInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19063,9 +18147,7 @@
                   "name": "updatePoliticianInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19088,9 +18170,7 @@
                   "name": "deletePoliticianInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19113,9 +18193,7 @@
                   "name": "updateTeamInput",
                   "ofType": null
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19154,9 +18232,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19187,9 +18263,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19228,9 +18302,7 @@
                     }
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19277,9 +18349,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19310,9 +18380,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "id",
@@ -19326,9 +18394,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19359,9 +18425,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19392,9 +18456,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19425,9 +18487,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "id",
@@ -19441,9 +18501,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19474,9 +18532,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "quizVersion",
@@ -19490,9 +18546,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19523,9 +18577,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "quizVersion",
@@ -19539,9 +18591,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19572,9 +18622,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "id",
@@ -19588,9 +18636,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19621,9 +18667,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "quizId",
@@ -19637,9 +18681,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19670,9 +18712,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "publish",
@@ -19686,9 +18726,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "id",
@@ -19702,9 +18740,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19735,9 +18771,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "id",
@@ -19751,9 +18785,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19784,9 +18816,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19817,9 +18847,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19850,9 +18878,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "id",
@@ -19866,9 +18892,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19899,9 +18923,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19932,9 +18954,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "id",
@@ -19948,9 +18968,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -19981,9 +18999,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -20022,9 +19038,7 @@
                     }
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "quizVersion",
@@ -20038,9 +19052,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -20079,9 +19091,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "id",
@@ -20095,9 +19105,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -20136,9 +19144,7 @@
                     }
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "quizVersionId",
@@ -20152,9 +19158,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               },
               {
                 "name": "partyId",
@@ -20168,9 +19172,7 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": null
               }
             ],
             "type": {
@@ -20371,9 +19373,7 @@
                   "name": "Boolean",
                   "ofType": null
                 },
-                "defaultValue": "false",
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": "false"
               }
             ],
             "type": {
@@ -20444,9 +19444,7 @@
                   "name": "Boolean",
                   "ofType": null
                 },
-                "defaultValue": "false",
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": "false"
               }
             ],
             "type": {
@@ -20477,9 +19475,7 @@
                   "name": "Boolean",
                   "ofType": null
                 },
-                "defaultValue": "false",
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": "false"
               }
             ],
             "type": {
@@ -20620,9 +19616,7 @@
                   "name": "Boolean",
                   "ofType": null
                 },
-                "defaultValue": "false",
-                "isDeprecated": false,
-                "deprecationReason": null
+                "defaultValue": "false"
               }
             ],
             "type": {
@@ -21109,9 +20103,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ]
       },
@@ -21137,9 +20129,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ]
       },
@@ -21162,9 +20152,7 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": "\"No longer supported\"",
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": "\"No longer supported\""
           }
         ]
       },
@@ -21188,9 +20176,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
           }
         ]
       }
