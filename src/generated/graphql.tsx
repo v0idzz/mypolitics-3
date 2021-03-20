@@ -2877,7 +2877,7 @@ export type PostsByFilterQuery = (
 );
 
 export type ChangeCodeMutationVariables = Exact<{
-  code: Array<Scalars['String']> | Scalars['String'];
+  code: Array<Scalars['String']>;
 }>;
 
 
@@ -3158,7 +3158,7 @@ export type ResultsPartsFragment = (
 
 export type ResultsPartyPartsFragment = (
   { __typename?: 'ResultsParty' }
-  & Pick<ResultsParty, 'id' | 'name' | 'logoUrl' | 'percentAgreement'>
+  & Pick<ResultsParty, 'id' | 'name' | 'logoUrl' | 'percentAgreement' | 'country'>
 );
 
 export type ResultsPoliticianPartsFragment = (
@@ -3740,6 +3740,7 @@ export const ResultsPartyPartsFragmentDoc = gql`
   name
   logoUrl
   percentAgreement
+  country
 }
     `;
 export const ResultsCompassPartsFragmentDoc = gql`
