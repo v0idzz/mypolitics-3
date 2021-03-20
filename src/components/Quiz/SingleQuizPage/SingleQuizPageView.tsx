@@ -22,7 +22,7 @@ import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import { useRouter } from "next/router";
 import { paths } from "@constants";
 import { LicenseLinks } from "@components/Quiz/SingleQuizPage/SingleQuizPageUtils";
-import { PoliticiansResults } from "@components/Quiz";
+import { PoliticiansResults, Vote } from "@components/Quiz";
 import SurveysHistory from "@components/Survey/SurveysHistory";
 import Box from "./SingleQuizPageBox";
 import {
@@ -57,6 +57,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   const quizFeatures = useQuizFeatures(meta.features);
   const { lang } = useTranslation();
   const isClassic = quiz.type === QuizType.Classic;
+  const isCommunity = quiz.type === QuizType.Community;
 
   const handleStartClick = async () => {
     try {
@@ -87,12 +88,15 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
             </Button>
           )}
         </Header>
-        {quiz.type === QuizType.Community && (
+        {isCommunity && (
           <AuthorHeader>
             Quiz społecznościowy<span>{authors[0].name}</span>
           </AuthorHeader>
         )}
         <Inner>
+          {isCommunity && (
+            <Vote quizId={quiz.id} value={quiz.meta.votes.value} />
+          )}
           <Box>
             <Description>{description[lang]}</Description>
           </Box>
