@@ -26,9 +26,17 @@
   },
   "features": {
     "compass": "Kompas",
-    "questionsNumber": "{{number}} pytań",
     "parties": "Partie",
-    "axesNumber": "{{number}} osi",
+    "questionsNumber": {
+      "one": "{{count}} pytanie",
+      "few": "{{count}} pytania",
+      "other": "{{count}} pytań"
+    },
+    "axesNumber": {
+      "one": "{{count}} oś",
+      "few": "{{count}} osie",
+      "other": "{{count}} osi"
+    },
     "politiciansResults": "Politycy",
     "traits": "Cechy"
   },

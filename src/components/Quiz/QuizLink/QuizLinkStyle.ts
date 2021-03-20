@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import * as R from "ramda";
+import { transparentize } from "polished";
 
 export const Container = styled.article<{ featured: boolean }>`
   background: ${({ theme }) => theme.colors.backgroundDarken};
@@ -26,7 +28,7 @@ export const Container = styled.article<{ featured: boolean }>`
 export const Info = styled.div`
   display: grid;
   grid-template-columns: auto;
-  grid-gap: 1.5rem;
+  grid-gap: 1.25rem;
 `;
 
 export const Image = styled.img`
@@ -85,12 +87,40 @@ export const Title = styled.div`
 
 export const PointsChip = styled(Chip)<{ points: number }>`
   ${({ theme, points }) => {
-    const background = {
-      T: theme.colors.primaryDarken,
-      [points > 0 ? "T" : "F"]: theme.colors.green,
-      [points < 0 ? "T" : "F"]: theme.colors.red,
-    }.T;
+    const background = R.cond([
+      [() => points < 0, R.always(theme.colors.red)],
+      [() => points > 0, R.always(theme.colors.green)],
+      [R.T, R.always(theme.colors.primaryDarken)],
+    ])();
 
     return `background: ${background} !important;`;
   }}
+`;
+
+export const Header = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  ${breakpoint("md")`
+    justify-content: flex-start;
+  `};
+`;
+
+export const TypeTitle = styled.div`
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background: ${({ theme }) => transparentize(0.9, theme.colors.primary)};
+  color: ${({ theme }) => theme.colors.primary};
+  display: inline-block;
+  margin: 0.5rem auto auto;
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
+
+  ${breakpoint("md")`
+    margin: 0.5rem auto auto 0;
+  `};
+
+  span {
+    margin-left: 0.5em;
+  }
 `;
