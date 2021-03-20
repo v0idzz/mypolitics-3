@@ -1,0 +1,5 @@
+mutation ChangeCode($code: [String!]!) {
+    changeCode(code: $code) {
+        id
+    }
+}

@@ -2876,6 +2876,19 @@ export type PostsByFilterQuery = (
   )>>> }
 );
 
+export type ChangeCodeMutationVariables = Exact<{
+  code: Array<Scalars['String']> | Scalars['String'];
+}>;
+
+
+export type ChangeCodeMutation = (
+  { __typename?: 'Mutation' }
+  & { changeCode: (
+    { __typename?: 'Respondent' }
+    & Pick<Respondent, 'id'>
+  ) }
+);
+
 export type CreateRespondentMutationVariables = Exact<{
   lang: Language;
 }>;
@@ -3145,7 +3158,7 @@ export type ResultsPartsFragment = (
 
 export type ResultsPartyPartsFragment = (
   { __typename?: 'ResultsParty' }
-  & Pick<ResultsParty, 'id' | 'name' | 'logoUrl' | 'percentAgreement' | 'country'>
+  & Pick<ResultsParty, 'id' | 'name' | 'logoUrl' | 'percentAgreement'>
 );
 
 export type ResultsPoliticianPartsFragment = (
@@ -3727,7 +3740,6 @@ export const ResultsPartyPartsFragmentDoc = gql`
   name
   logoUrl
   percentAgreement
-  country
 }
     `;
 export const ResultsCompassPartsFragmentDoc = gql`
@@ -4557,6 +4569,38 @@ export function usePostsByFilterLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type PostsByFilterQueryHookResult = ReturnType<typeof usePostsByFilterQuery>;
 export type PostsByFilterLazyQueryHookResult = ReturnType<typeof usePostsByFilterLazyQuery>;
 export type PostsByFilterQueryResult = Apollo.QueryResult<PostsByFilterQuery, PostsByFilterQueryVariables>;
+export const ChangeCodeDocument = gql`
+    mutation ChangeCode($code: [String!]!) {
+  changeCode(code: $code) {
+    id
+  }
+}
+    `;
+export type ChangeCodeMutationFn = Apollo.MutationFunction<ChangeCodeMutation, ChangeCodeMutationVariables>;
+
+/**
+ * __useChangeCodeMutation__
+ *
+ * To run a mutation, you first call `useChangeCodeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChangeCodeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [changeCodeMutation, { data, loading, error }] = useChangeCodeMutation({
+ *   variables: {
+ *      code: // value for 'code'
+ *   },
+ * });
+ */
+export function useChangeCodeMutation(baseOptions?: Apollo.MutationHookOptions<ChangeCodeMutation, ChangeCodeMutationVariables>) {
+        return Apollo.useMutation<ChangeCodeMutation, ChangeCodeMutationVariables>(ChangeCodeDocument, baseOptions);
+      }
+export type ChangeCodeMutationHookResult = ReturnType<typeof useChangeCodeMutation>;
+export type ChangeCodeMutationResult = Apollo.MutationResult<ChangeCodeMutation>;
+export type ChangeCodeMutationOptions = Apollo.BaseMutationOptions<ChangeCodeMutation, ChangeCodeMutationVariables>;
 export const CreateRespondentDocument = gql`
     mutation CreateRespondent($lang: Language!) {
   createRespondent(createRespondentInput: {lang: $lang}) {

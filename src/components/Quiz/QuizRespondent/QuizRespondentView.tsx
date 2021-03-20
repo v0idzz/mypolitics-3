@@ -1,7 +1,17 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { useMeRespondentQuery } from "@generated/graphql";
+import {
+  useMeRespondentQuery,
+  useChangeCodeMutation,
+} from "@generated/graphql";
+import Button from "@shared/Button";
+import Modal from "@shared/Modal";
+import { Formik } from "formik";
+import { changeCodePlaceholder } from "@components/Quiz/QuizRespondent/QuizRespondentUtils";
+import { useHandleErrors } from "@utils/hooks/useHandleErrors";
+import { useRouter } from "next/router";
 import {
   Container,
   Divider,
@@ -11,12 +21,30 @@ import {
   CodeElement,
   CodesWrapper,
   Actions,
+  Input,
+  InputGroup,
+  Form,
 } from "./QuizRespondentStyle";
 
 library.add(faPen);
 
 const QuizRespondent: React.FC = () => {
+  const router = useRouter();
+  const handleErrors = useHandleErrors();
   const { data, loading } = useMeRespondentQuery();
+  const [changeCode] = useChangeCodeMutation({
+    onCompleted: router.reload,
+  });
+  const [isVisible, setVisible] = React.useState<boolean>(false);
+
+  const handleCodeChange = async (values, { setSubmitting }) => {
+    try {
+      await changeCode({ variables: { code: values.code } });
+    } catch (e) {
+      handleErrors(e);
+    }
+    setSubmitting(false);
+  };
 
   if (loading || !data) {
     return null;
@@ -41,10 +69,53 @@ const QuizRespondent: React.FC = () => {
         </Description>
       </Info>
       <Actions>
-        {/*<Button beforeIcon={<FontAwesomeIcon icon={faPen} />} background="gray">*/}
-        {/*  Zmień*/}
-        {/*</Button>*/}
+        <Button
+          onClick={() => setVisible(!isVisible)}
+          beforeIcon={<FontAwesomeIcon icon={faPen} />}
+          background="gray"
+        >
+          Zmień
+        </Button>
       </Actions>
+      <Modal
+        header={{
+          title: "Zmiana kodu respondenta",
+          color: "#00B3DB",
+        }}
+        show={isVisible}
+        onClose={() => setVisible(!isVisible)}
+      >
+        <Formik<{ code: string[] }>
+          onSubmit={handleCodeChange}
+          initialValues={{
+            code: [...Array(6)].map(() => ""),
+          }}
+        >
+          {({ values, handleChange, handleSubmit, isSubmitting }) => (
+            <Form onSubmit={handleSubmit}>
+              <InputGroup>
+                {values.code.map((value, key) => (
+                  <Input
+                    key={changeCodePlaceholder[key]}
+                    name={`code[${key}]`}
+                    value={value}
+                    onChange={handleChange}
+                    placeholder={changeCodePlaceholder[key]}
+                    required
+                  />
+                ))}
+              </InputGroup>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                loading={isSubmitting}
+              >
+                Potwierdź
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      </Modal>
     </Container>
   );
 };
