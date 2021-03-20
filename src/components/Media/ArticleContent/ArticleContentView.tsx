@@ -11,6 +11,7 @@ import { Like } from "react-facebook";
 import { ArticleHead } from "@components/Media";
 import { paths } from "@constants";
 import Trans from "next-translate/Trans";
+import useTranslation from "next-translate/useTranslation";
 import ContactActionSection from "@shared/ContactActionSection";
 import { useInView } from "react-hook-inview";
 import { useRouter } from "next/router";
@@ -85,8 +86,10 @@ const ArticleContent: React.FC<Props> = ({
     title,
     excerpt,
     custom_excerpt: customExcerpt,
+    reading_time: readingTime,
   } = post;
   const router = useRouter();
+  const { t } = useTranslation("articles");
   const path = paths.article(post.slug, post.id);
   const [ref, inView] = useInView();
   const [timeout, setTimeoutValue] = useState<NodeJS.Timeout | undefined>();
@@ -130,7 +133,13 @@ const ArticleContent: React.FC<Props> = ({
         <ContentWrapper>
           <Header>
             <Title>{title}</Title>
-            <Lead as="div">{dayjs(publishedAt).format("DD.MM.YYYY")}</Lead>
+            <Lead as="div">
+              {[
+                dayjs(publishedAt).format("DD.MM.YYYY"),
+                "•",
+                t("header.readingTime", { count: readingTime }),
+              ].join(" ")}
+            </Lead>
           </Header>
           <AuthorHeader post={post} />
         </ContentWrapper>
