@@ -1,0 +1,3 @@
+mutation VoteQuiz ($type: QuizVoteType!, $id: String!) {
+    voteQuiz(type: $type, id: $id)
+}
