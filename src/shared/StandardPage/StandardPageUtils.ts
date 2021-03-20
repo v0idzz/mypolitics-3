@@ -80,7 +80,10 @@ export const getStandardPageProps = async ({
   return {
     articles: [...(news || []), ...(view || []), ...(randomArticles || [])],
     talks: talks?.data.talks || [],
-    quizzes: quizzes?.data.featuredQuizzes || [],
     patreons: patreons?.data.patreon,
+    quizzes: [
+      ...(quizzes?.data.featuredQuizzes || []),
+      ...(quizzes?.data.socialQuizzes.slice(0, 3) || []),
+    ],
   };
 };

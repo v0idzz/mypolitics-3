@@ -2,4 +2,7 @@ query FeaturedQuizzes {
     featuredQuizzes {
         ...QuizBasicParts
     }
+    socialQuizzes {
+        ...QuizBasicParts
+    }
 }

@@ -4,6 +4,7 @@ import { initializeApollo } from "@services/apollo";
 import {
   FeaturedQuizzesDocument,
   FeaturedQuizzesQuery,
+  QuizBasicPartsFragment,
 } from "@generated/graphql";
 import StandardPage, {
   getStandardPageProps,
@@ -11,16 +12,13 @@ import StandardPage, {
 } from "@shared/StandardPage";
 
 interface Props {
-  featuredQuizzes: FeaturedQuizzesQuery["featuredQuizzes"];
+  list: QuizBasicPartsFragment[];
   standardPageProps: StandardPageProps;
 }
 
-const QuizzesPage: React.FC<Props> = ({
-  featuredQuizzes,
-  standardPageProps,
-}) => (
+const QuizzesPage: React.FC<Props> = ({ list, standardPageProps }) => (
   <StandardPage {...standardPageProps}>
-    <ListPage featuredQuizzes={featuredQuizzes} />
+    <ListPage list={list} />
   </StandardPage>
 );
 
@@ -36,7 +34,7 @@ export const getServerSideProps = async (
 
   return {
     props: {
-      featuredQuizzes: data.featuredQuizzes,
+      list: [...data.featuredQuizzes, ...data.socialQuizzes],
       standardPageProps,
     },
   };

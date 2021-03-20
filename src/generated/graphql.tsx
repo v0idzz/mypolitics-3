@@ -2071,6 +2071,7 @@ export type Query = {
   featuredQuizzes: Array<Quiz>;
   currentUserQuizzes: Array<Quiz>;
   verifyQueueQuizzes: Array<Quiz>;
+  socialQuizzes: Array<Quiz>;
   quizVersion: QuizVersion;
   me: User;
   results: Results;
@@ -2919,6 +2920,9 @@ export type FeaturedQuizzesQueryVariables = Exact<{ [key: string]: never; }>;
 export type FeaturedQuizzesQuery = (
   { __typename?: 'Query' }
   & { featuredQuizzes: Array<(
+    { __typename?: 'Quiz' }
+    & QuizBasicPartsFragment
+  )>, socialQuizzes: Array<(
     { __typename?: 'Quiz' }
     & QuizBasicPartsFragment
   )> }
@@ -4670,6 +4674,9 @@ export type CurrentUserQuizzesQueryResult = Apollo.QueryResult<CurrentUserQuizze
 export const FeaturedQuizzesDocument = gql`
     query FeaturedQuizzes {
   featuredQuizzes {
+    ...QuizBasicParts
+  }
+  socialQuizzes {
     ...QuizBasicParts
   }
 }
