@@ -3038,6 +3038,17 @@ export type UpdateRespondentMutation = (
   ) }
 );
 
+export type VoteQuizMutationVariables = Exact<{
+  type: QuizVoteType;
+  id: Scalars['String'];
+}>;
+
+
+export type VoteQuizMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'voteQuiz'>
+);
+
 export type PoliticiansResultsQueryVariables = Exact<{
   quizSlug?: Maybe<Scalars['String']>;
   category?: Maybe<Enum_Politicianresults_Category>;
@@ -3179,6 +3190,9 @@ export type ResultsQuizFragment = (
         { __typename?: 'Party' }
         & Pick<Party, 'id'>
       )>> }
+    ), votes: (
+      { __typename?: 'QuizVotes' }
+      & Pick<QuizVotes, 'value'>
     ) }
   ) }
 );
@@ -3778,6 +3792,9 @@ export const ResultsQuizFragmentDoc = gql`
       authorizedParties {
         id
       }
+    }
+    votes {
+      value
     }
   }
 }
@@ -4857,6 +4874,37 @@ export function useUpdateRespondentMutation(baseOptions?: Apollo.MutationHookOpt
 export type UpdateRespondentMutationHookResult = ReturnType<typeof useUpdateRespondentMutation>;
 export type UpdateRespondentMutationResult = Apollo.MutationResult<UpdateRespondentMutation>;
 export type UpdateRespondentMutationOptions = Apollo.BaseMutationOptions<UpdateRespondentMutation, UpdateRespondentMutationVariables>;
+export const VoteQuizDocument = gql`
+    mutation VoteQuiz($type: QuizVoteType!, $id: String!) {
+  voteQuiz(type: $type, id: $id)
+}
+    `;
+export type VoteQuizMutationFn = Apollo.MutationFunction<VoteQuizMutation, VoteQuizMutationVariables>;
+
+/**
+ * __useVoteQuizMutation__
+ *
+ * To run a mutation, you first call `useVoteQuizMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useVoteQuizMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [voteQuizMutation, { data, loading, error }] = useVoteQuizMutation({
+ *   variables: {
+ *      type: // value for 'type'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useVoteQuizMutation(baseOptions?: Apollo.MutationHookOptions<VoteQuizMutation, VoteQuizMutationVariables>) {
+        return Apollo.useMutation<VoteQuizMutation, VoteQuizMutationVariables>(VoteQuizDocument, baseOptions);
+      }
+export type VoteQuizMutationHookResult = ReturnType<typeof useVoteQuizMutation>;
+export type VoteQuizMutationResult = Apollo.MutationResult<VoteQuizMutation>;
+export type VoteQuizMutationOptions = Apollo.BaseMutationOptions<VoteQuizMutation, VoteQuizMutationVariables>;
 export const PoliticiansResultsDocument = gql`
     query PoliticiansResults($quizSlug: String, $category: ENUM_POLITICIANRESULTS_CATEGORY) {
   politicianResultsConnection(

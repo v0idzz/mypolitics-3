@@ -101,6 +101,7 @@ const QuizPreInitPage: React.FC = () => {
           </ActionsWrapper>
         </Content>
       </InitStep>
+      <GoogleAd id="myp3-standard-bottom" />
     </CenteredPage>
   );
 };

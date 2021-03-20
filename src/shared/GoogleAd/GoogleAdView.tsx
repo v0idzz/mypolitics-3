@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
+import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import { AdId, adsIdsSlots } from "./GoogleAdUtils";
 import { MockupAd, Text } from "./GoogleAdStyle";
 
-interface Props {
+export interface Props {
   id: AdId;
 }
 
 const GoogleAd: React.FC<Props> = ({ id }) => {
   const slot = adsIdsSlots[id];
+  const { url } = useCanonicalUrl();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -21,7 +23,7 @@ const GoogleAd: React.FC<Props> = ({ id }) => {
         console.error(e);
       }
     }
-  }, []);
+  }, [url]);
 
   if (process.env.NODE_ENV !== "production") {
     return (
@@ -36,6 +38,7 @@ const GoogleAd: React.FC<Props> = ({ id }) => {
 
   return (
     <div
+      key={url}
       style={{
         width: "100%",
       }}

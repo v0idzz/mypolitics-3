@@ -16,6 +16,7 @@ import {
 import ShareSocial from "@shared/ShareSocial";
 import { Like } from "react-facebook";
 import useTranslation from "next-translate/useTranslation";
+import { Vote } from "@components/Quiz";
 import { Container, Col, Row } from "./ResultsContentStyle";
 
 interface Props {
@@ -76,6 +77,7 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
           </Col>
         )}
       </Row>
+      <Vote quizId={results.quiz.id} value={results.quiz.meta.votes.value} />
       <ShareSocial
         message={`Sprawdź moje poglądy polityczne w ${results.quiz.title[lang]}!`}
       />

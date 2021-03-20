@@ -5,6 +5,9 @@ import Button from "@shared/Button";
 import * as R from "ramda";
 import InformationButton from "@shared/InformationButton";
 import { useCurrentResults } from "@components/Results";
+import CountrySelect from "@shared/CountrySelect";
+import useTranslation from "next-translate/useTranslation";
+import { langToCountry } from "@utils/langToCountry";
 import {
   Container,
   List,
@@ -12,9 +15,6 @@ import {
   HeaderTitle,
   ButtonWrapper,
 } from "./ResultsPartyStyle";
-import CountrySelect from "@shared/CountrySelect";
-import useTranslation from "next-translate/useTranslation";
-import { langToCountry } from "@utils/langToCountry";
 
 interface Props {
   parties: ResultsPartyPartsFragment[];

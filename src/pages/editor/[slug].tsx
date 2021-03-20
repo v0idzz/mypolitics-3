@@ -2,7 +2,7 @@ import React from "react";
 import CenteredPage from "@shared/CenteredPage";
 import { Page } from "@components/Editor";
 import Head from "next/head";
-import { DndProvider } from "react-dnd";
+import ImageAwareDndProvider from "@shared/ImageAwareDndProvider";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import GoogleAd from "@shared/GoogleAd";
 
@@ -15,9 +15,9 @@ const Editor: React.FC = () => (
       />
     </Head>
     <GoogleAd id="myp3-standard-top" />
-    <DndProvider backend={HTML5Backend}>
+    <ImageAwareDndProvider backend={HTML5Backend}>
       <Page />
-    </DndProvider>
+    </ImageAwareDndProvider>
     <GoogleAd id="myp3-standard-bottom" />
   </CenteredPage>
 );

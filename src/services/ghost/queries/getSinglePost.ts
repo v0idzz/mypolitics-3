@@ -12,6 +12,7 @@ const defaultOptions: Params = {
     "custom_excerpt",
     "html",
     "published_at",
+    "reading_time",
   ],
   include: ["tags", "authors"],
   order: "published_at DESC",
