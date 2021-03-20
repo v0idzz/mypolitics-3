@@ -9,6 +9,9 @@ import {
 import Button from "@shared/Button";
 import Modal from "@shared/Modal";
 import { Formik } from "formik";
+import { changeCodePlaceholder } from "@components/Quiz/QuizRespondent/QuizRespondentUtils";
+import { useHandleErrors } from "@utils/hooks/useHandleErrors";
+import { useRouter } from "next/router";
 import {
   Container,
   Divider,
@@ -26,9 +29,22 @@ import {
 library.add(faPen);
 
 const QuizRespondent: React.FC = () => {
+  const router = useRouter();
+  const handleErrors = useHandleErrors();
   const { data, loading } = useMeRespondentQuery();
-  const [changeCode] = useChangeCodeMutation();
+  const [changeCode] = useChangeCodeMutation({
+    onCompleted: router.reload,
+  });
   const [isVisible, setVisible] = React.useState<boolean>(false);
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      await changeCode({ variables: { code: values.code } });
+    } catch (e) {
+      handleErrors(e);
+    }
+    setSubmitting(false);
+  };
 
   if (loading || !data) {
     return null;
@@ -67,68 +83,39 @@ const QuizRespondent: React.FC = () => {
           color: "#00B3DB",
         }}
         show={isVisible}
-        children={
-          <Formik
-            initialValues={{
-              first: "",
-              second: "",
-              third: "",
-              fourth: "",
-              fifth: "",
-            }}
-            onSubmit={(values, { setSubmitting }) => {
-              changeCode({ variables: { code: Object.values(values) } });
-              setSubmitting(false);
-            }}
-          >
-            {({ values, handleChange, handleSubmit, isSubmitting }) => (
-              <Form onSubmit={handleSubmit}>
-                <InputGroup>
-                  <Input
-                    required
-                    name="first"
-                    value={values.first}
-                    onChange={handleChange}
-                    placeholder="alpha"
-                  />
-                  <Input
-                    required
-                    name="second"
-                    value={values.second}
-                    onChange={handleChange}
-                    placeholder="dog"
-                  />
-                  <Input
-                    required
-                    name="third"
-                    value={values.third}
-                    onChange={handleChange}
-                    placeholder="generous"
-                  />
-                  <Input
-                    required
-                    name="fourth"
-                    value={values.fourth}
-                    onChange={handleChange}
-                    placeholder="entropy"
-                  />
-                  <Input
-                    required
-                    name="fifth"
-                    value={values.fifth}
-                    onChange={handleChange}
-                    placeholder="llama"
-                  />
-                </InputGroup>
-                <Button type="submit" disabled={isSubmitting}>
-                  Potwierdź
-                </Button>
-              </Form>
-            )}
-          </Formik>
-        }
         onClose={() => setVisible(!isVisible)}
-      />
+      >
+        <Formik<{ code: string[] }>
+          initialValues={{
+            code: [...Array(6)].map(() => ""),
+          }}
+          onSubmit={handleSubmit}
+        >
+          {({ values, handleChange, handleSubmit, isSubmitting }) => (
+            <Form onSubmit={handleSubmit}>
+              <InputGroup>
+                {values.code.map((value, key) => (
+                  <Input
+                    key={changeCodePlaceholder[key]}
+                    name={`code[${key}]`}
+                    value={value}
+                    onChange={handleChange}
+                    placeholder={changeCodePlaceholder[key]}
+                    required
+                  />
+                ))}
+              </InputGroup>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                loading={isSubmitting}
+              >
+                Potwierdź
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      </Modal>
     </Container>
   );
 };
