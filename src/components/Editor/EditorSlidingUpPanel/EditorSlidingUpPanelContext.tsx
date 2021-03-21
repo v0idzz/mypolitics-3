@@ -5,7 +5,7 @@ interface SlidingUpPanelContextType {
   setIsIn: (isIn: boolean) => void;
   isIn: boolean;
   type: ItemType;
-  setType?: (type: ItemType) => void;
+  setType: (type: ItemType) => void;
 }
 
 const EditorSlidingUpPanelContext = React.createContext<SlidingUpPanelContextType>(
