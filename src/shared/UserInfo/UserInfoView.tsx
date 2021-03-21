@@ -45,7 +45,7 @@ const UserInfo: React.FC = () => {
           throw new Error(JSON.stringify(await r.json()));
         }
 
-        addToast("Poprawnie wylogowano", { appearance: "success" });
+        addToast(t("userInfo.logoutSuccess"), { appearance: "success" });
         router.reload();
       })
       .catch((e) => {

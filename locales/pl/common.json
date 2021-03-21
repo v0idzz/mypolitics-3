@@ -87,6 +87,7 @@
     "button": "Wybierz plik"
   },
   "userInfo": {
-    "login": "Zaloguj się"
+    "login": "Zaloguj się",
+    "logoutSuccess": "Poprawnie wylogowano"
   }
 }

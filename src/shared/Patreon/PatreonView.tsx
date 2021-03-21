@@ -47,7 +47,7 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
         <Title>{t("patreon.list.title")}</Title>
         <ListWrapper dangerouslySetInnerHTML={{ __html: list }} />
         <Date>
-          {t("patreon.updatedAt")}&nbsp;{dayjs(updatedAt).format("YYYY-MM-DD")}
+          {t("patreon.list.updatedAt")}&nbsp;{dayjs(updatedAt).format("YYYY-MM-DD")}
         </Date>
       </Inner>
       <ButtonWrapper>
