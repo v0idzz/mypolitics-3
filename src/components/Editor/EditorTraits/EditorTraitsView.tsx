@@ -4,6 +4,8 @@ import { useDrop } from "react-dnd";
 import { itemTypes } from "@constants";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import { Description, Info, TraitsWrapper } from "./EditorTraitsStyle";
+import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
+import useBreakpoint from "@utils/hooks/useBreakpoint";
 
 interface Props {
   editor: UseEditor;
@@ -12,12 +14,25 @@ interface Props {
 const EditorTraits: React.FC<Props> = ({ editor }) => {
   const { actions, data } = editor;
   const { traits } = data.data.quiz.lastUpdatedVersion;
+
+  const handleAdd = async (id: any) => {
+    await actions.traits.add(id);
+  };
+
   const [_, drop] = useDrop(() => ({
     accept: itemTypes.ideology,
-    drop: ({ id }: any) => actions.traits.add(id),
+    drop: ({ id }: any) => handleAdd(id),
   }));
 
+  const { show } = useEditorSlidingUpPanel();
+
+  const handleClick = () => {
+    show("ideology", handleAdd);
+  };
+
   const handleRemove = (id) => actions.traits.delete(id);
+
+  const isClickable = useBreakpoint("sm");
 
   return (
     <Description>
@@ -40,7 +55,13 @@ const EditorTraits: React.FC<Props> = ({ editor }) => {
               id={trait.id}
             />
           ))}
-          {traits.length === 0 && <Info>Upuść tutaj ideologię</Info>}
+          {traits.length === 0 && (
+            <Info onClick={handleClick} disabled={!isClickable}>
+              {isClickable
+                ? "Kliknij, aby wybrać ideologię"
+                : "Upuść tutaj ideologię"}
+            </Info>
+          )}
         </TraitsWrapper>
       </div>
     </Description>

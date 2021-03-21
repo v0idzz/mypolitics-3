@@ -20,6 +20,7 @@ export const useIdeology = (id: string): EditorIdeologyPartsFragment => {
 
 interface UseAxisDrop {
   ref: ConnectDropTarget;
+  handleChange: ({ id }: any) => void;
 }
 
 interface UseAxisDropInput {
@@ -27,7 +28,7 @@ interface UseAxisDropInput {
   axisId?: string;
 }
 
-export const useAxisDrop = ({
+export const useAxisSelect = ({
   side,
   axisId,
 }: UseAxisDropInput): UseAxisDrop => {
@@ -37,17 +38,18 @@ export const useAxisDrop = ({
     document: EditorAxisPartsFragmentDoc,
   });
 
-  const handleDrop = ({ id }: any) =>
+  const handleChange = ({ id }: any) =>
     update({
       [side]: { id },
     });
 
   const [_, drop] = useDrop(() => ({
     accept: itemTypes.ideology,
-    drop: handleDrop,
+    drop: handleChange,
   }));
 
   return {
     ref: drop,
+    handleChange,
   };
 };

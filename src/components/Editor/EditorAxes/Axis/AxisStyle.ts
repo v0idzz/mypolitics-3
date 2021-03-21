@@ -9,7 +9,9 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 
-export const Info = styled.div`
+export const Info = styled.button`
+  border: 0;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,6 +20,10 @@ export const Info = styled.div`
   text-align: center;
   border-radius: 0.25rem;
   padding: 0.75rem;
+
+  &:disabled {
+    cursor: default;
+  }
 `;
 
 export const IdeologyContainer = styled.div<{ color: string }>`

@@ -12,7 +12,7 @@ interface Props {
 }
 
 const EditorSlidingUpPanel: React.FC<Props> = ({ editor }) => {
-  const { isIn, type } = useEditorSlidingUpPanel();
+  const { isIn, type, callback, hide } = useEditorSlidingUpPanel();
 
   const { versionInput } = editor;
   const { parties, traits } = versionInput;
@@ -26,13 +26,18 @@ const EditorSlidingUpPanel: React.FC<Props> = ({ editor }) => {
     [R.equals("trait"), R.always([traits, IdeologyItem])],
   ])(type);
 
+  const handleItemClick = (id: string) => {
+    callback(id);
+    hide();
+  };
+
   return (
     <Container slideIn={isIn}>
       <Inner>
         <Header>Opcje wyboru</Header>
         <Options>
           {items.map((id) => (
-            <Component key={id} id={id} />
+            <Component key={id} id={id} onClick={() => handleItemClick(id)} />
           ))}
         </Options>
       </Inner>
