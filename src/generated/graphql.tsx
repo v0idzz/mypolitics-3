@@ -2991,6 +2991,10 @@ export type MeRespondentSurveysQuery = (
         & { quiz: (
           { __typename?: 'Quiz' }
           & Pick<Quiz, 'id' | 'logoUrl' | 'slug'>
+          & { title: (
+            { __typename?: 'TextTranslation' }
+            & Pick<TextTranslation, 'pl' | 'en'>
+          ) }
         ) }
       ) }
     )>> }
@@ -4861,6 +4865,10 @@ export const MeRespondentSurveysDocument = gql`
           id
           logoUrl
           slug
+          title {
+            pl
+            en
+          }
         }
       }
     }
