@@ -21,6 +21,7 @@ import {
 } from "@generated/graphql";
 import hash from "object-hash";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 import {
   Container,
   RequirementContainer,
@@ -40,6 +41,7 @@ interface Props {
 }
 
 const EditorFooter: React.FC<Props> = ({ editor }) => {
+  const { t } = useTranslation("editor");
   const router = useRouter();
   const { addToast } = useToasts();
   const [loading, setLoading] = useState(false);
@@ -51,10 +53,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
   const quizPath = `${BASE_PATH}/quizzes/${data.data.quiz.slug}`;
   const [requestVerify] = useRequestQuizVerifyMutation({
     onCompleted: () =>
-      addToast(
-        "Pomyślnie przesłano test do weryfikacji. O jego statusie dowiesz się w panelu twórcy",
-        { appearance: "success" }
-      ),
+      addToast(t("footer.verifyToast"), { appearance: "success" }),
     refetchQueries: [
       {
         query: CurrentUserQuizzesDocument,
@@ -133,11 +132,11 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
     <Container>
       <div>
         <Info>
-          Link do quizu:&nbsp;
+          {t("footer.urlTitle")}&nbsp;
           <span
             onClick={() => {
               navigator.clipboard.writeText(quizPath);
-              addToast("Skopiowano do schowka", { appearance: "success" });
+              addToast(t("footer.urlToast"), { appearance: "success" });
             }}
           >
             {quizPath}&nbsp;
@@ -147,13 +146,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
       </div>
       <div>
         {!requirementsFullfilled && (
-          <Box
-            header={
-              <Title>
-                Spełnij poniższe wymagania, aby móc przesłać swój quiz
-              </Title>
-            }
-          >
+          <Box header={<Title>{t("footer.requirements.title")}</Title>}>
             {requirementsList}
           </Box>
         )}
@@ -166,7 +159,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
             disabled={loading}
             showShadow
           >
-            Przetestuj przed weryfikacją
+            {t("footer.testBeforeVerify")}
           </Button>
         )}
         {versionTested && !recaptcha && (
@@ -181,7 +174,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
             disabled={loading}
             pulsating
           >
-            Prześlij do weryfikacji
+            {t("footer.verifyRequest")}
           </Button>
         )}
       </div>

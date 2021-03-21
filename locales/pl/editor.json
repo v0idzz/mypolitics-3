@@ -1,0 +1,170 @@
+{
+  "SEO": {
+    "title": "Edytor quizu | myPolitics",
+    "description": "Stwórz własny quiz polityczny!"
+  },
+  "header": {
+    "title": "Edytor quizu"
+  },
+  "basic": {
+    "title": "Dane podstawowe",
+    "input": {
+      "title": "Tytuł",
+      "description": "Opis",
+      "logo": "Logo"
+    }
+  },
+  "parties": {
+    "title": "Partie",
+    "create": "Utwórz partię",
+    "import": "Importuj partie:",
+    "form": {
+      "logo": "Logo",
+      "country": "Państwo",
+      "name": "Nazwa"
+    },
+    "createModal": {
+      "title": "Utwórz partię",
+      "button": "Utwórz"
+    },
+    "editModal": {
+      "title": "Edytuj partię",
+      "button": "Zapisz"
+    }
+  },
+  "ideologies": {
+    "title": "Ideologie",
+    "create": "Utwórz ideologię",
+    "import": "Importuj ideologie:",
+    "importFromOther": "Z innego testu",
+    "form": {
+      "icon": "Symbol",
+      "name": "Nazwa",
+      "color": "Kolor",
+      "description": "Opis"
+    },
+    "createModal": {
+      "title": "Utwórz ideologię",
+      "button": "Utwórz"
+    },
+    "editModal": {
+      "title": "Edytuj ideologię",
+      "button": "Zapisz"
+    },
+    "importModal": {
+      "title": "Importuj ideologie",
+      "url": "Link do strony testu",
+      "button": "Importuj"
+    }
+  },
+  "axes": {
+    "title": "Osie",
+    "deleteButton": "Usuń oś",
+    "createButton": "Utwórz oś"
+  },
+  "traits": {
+    "title": "Cechy",
+    "description": {
+      "0": "Cechy służą ukazaniu indywidualnych cech użytkownika, które nie mogą być zaprezentowane na osiach. Upuść tutaj ideologię, aby ona stała się cechą.",
+      "1": "Zostanie przypisana do użytkownika tylko wtedy gdy ten na wszystkie pytania odpowie zdecydowanie i zgodnie z cechą."
+    },
+    "dropHere": "Upuść tutaj ideologię",
+    "clickToDelete": "Kliknij, aby usunąć",
+    "dropHereIdeology": "Upuść tutaj ideologię"
+  },
+  "question": {
+    "title": "Pytanie",
+    "deleteButton": "Usuń pytanie",
+    "partiesFor": "Partie za",
+    "partiesAgainst": "Partie przeciw",
+    "ideologiesFor": "Ideologie za",
+    "ideologiesAgainst": "Ideologie przeciw",
+    "dropHereParty": "Upuść tutaj partię",
+    "dropHereIdeology": "Upuść tutaj ideologię",
+    "createNew": "Utwórz pytanie",
+    "clickToDelete": "Kliknij, aby usunąć"
+  },
+  "toolbox": {
+    "title": "Przybornik",
+    "cta": "Podnieś i upuść w odpowiednie pole",
+    "section": {
+      "parties": "Partie",
+      "ideologies": "Ideologie",
+      "traits": "Cechy"
+    }
+  },
+  "admin": {
+    "title": "Panel moderacji",
+    "section": {
+      "verifyRequests": "Quizy do weryfikacji"
+    }
+  },
+  "footer": {
+    "urlTitle": "Link do quizu:",
+    "urlToast": "Skopiowano do schowka",
+    "testBeforeVerify": "Przetestuj przed weryfikacją",
+    "verifyRequest": "Prześlij do weryfikacji",
+    "verifyToast": "Pomyślnie przesłano test do weryfikacji. O jego statusie dowiesz się w panelu twórcy",
+    "requirements": {
+      "title": "Spełnij poniższe wymagania, aby móc przesłać swój quiz",
+      "list": {
+        "titleAndDescription": "Tytuł i opis",
+        "minQuestions": "Minimum {{count}} pytań",
+        "minIdeologiesOrParties": "Minimum {{count}} ideologie lub partie",
+        "allQuestionsHaveEffects": "Każde pytanie ma efekt"
+      }
+    }
+  },
+  "adminFooter": {
+    "title": "Zweryfikuj:",
+    "discard": "Odrzuć",
+    "accept": "Akceptuj",
+    "discardModal": {
+      "title": "Powód odrzucenia",
+      "input": {
+        "label": "Powód odrzucenia",
+        "placeholder": "Nieodpowiednie słowa"
+      },
+      "button": "Odrzuć quiz"
+    }
+  },
+  "panel": {
+    "title": "Panel twórcy",
+    "section": {
+      "quizzes": {
+        "title": "Twoje quizy",
+        "createButton": "Stwórz nowy"
+      }
+    },
+    "defaultQuizValues": {
+      "title": "Mój nowy quiz",
+      "description": "Tu będzie fajny opis"
+    }
+  },
+  "verifyRequested": {
+    "title": "Przesłano do weryfikacji!",
+    "section": {
+      "url": {
+        "title": "Indywidualny link do Twojego quizu",
+        "description": "Poprzez ten link można go wykonać przed weryfikacją (również przez osoby niezalogowane)",
+        "urlToast": "Skopiowano do schowka"
+      },
+      "meaning": {
+        "title": "Co to oznacza?",
+        "description": "Dzięki weryfikacji Twój quiz będzie mógł pojawić się w liście wyróżnionej twórczości na stronie głównej :)"
+      },
+      "edit": {
+        "title": "Czy mogę edytować swój quiz?",
+        "description": "Jak najbardziej! Tylko pamiętaj żeby po wprowadzeniu zmian ponownie przesłać go do weryfikacji."
+      },
+      "vote": {
+        "title": "Co mogę zrobić żeby mój quiz został szybciej zaakceptowany?",
+        "description": "Szybkość weryfikacji zależy od liczby głosów jakie posiada każdy z quizów. Prześlij link do niego znajomym i poproś o głos!"
+      }
+    },
+    "footer": {
+      "returnButton": "Powrót do edycji",
+      "panelButton": "Panel twórcy"
+    }
+  }
+}

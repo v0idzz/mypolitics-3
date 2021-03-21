@@ -24,10 +24,12 @@ import GoogleAd from "@shared/GoogleAd";
 import { IdeologiesImport } from "@components/Editor/EditorIdeologies";
 import { PartiesImport } from "@components/Editor/EditorParties";
 import { Col, Row, Title } from "./EditorContentStyle";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPlus);
 
 const EditorContent: React.FC = () => {
+  const { t } = useTranslation("editor");
   const { query } = useRouter();
   const editor = useEditor();
   const { data, versionInput, basicInput, actions } = editor;
@@ -46,17 +48,17 @@ const EditorContent: React.FC = () => {
         <Loading />
       ) : (
         <Col>
-          <Box header={<Title>Dane podstawowe</Title>}>
+          <Box header={<Title>{t("basic.title")}</Title>}>
             <Basic editor={editor} />
           </Box>
           <GoogleAd id="myp3-standard-middle" />
-          <Box header={<Title>Partie</Title>}>
+          <Box header={<Title>{t("parties.title")}</Title>}>
             <Parties editor={editor} />
             <Divider />
             <PartiesImport editor={editor} />
           </Box>
           <GoogleAd id="myp3-standard-middle" />
-          <Box header={<Title>Ideologie</Title>}>
+          <Box header={<Title>{t("ideologies.title")}</Title>}>
             <Ideologies editor={editor} />
             <Divider />
             <IdeologiesImport editor={editor} />
@@ -65,10 +67,10 @@ const EditorContent: React.FC = () => {
           <GoogleAd id="myp3-standard-middle" />
           <Row>
             <Col>
-              <Box header={<Title>Osie</Title>}>
+              <Box header={<Title>{t("axes.title")}</Title>}>
                 <Axes editor={editor} />
               </Box>
-              <Box header={<Title>Cechy</Title>}>
+              <Box header={<Title>{t("traits.title")}</Title>}>
                 <Traits editor={editor} />
               </Box>
               {/* <Box */}
@@ -98,7 +100,7 @@ const EditorContent: React.FC = () => {
                 beforeIcon={<FontAwesomeIcon icon={faPlus} />}
                 background="bluish"
               >
-                Utwórz pytanie
+                {t("question.createNew")}
               </Button>
             </Col>
             <Col>

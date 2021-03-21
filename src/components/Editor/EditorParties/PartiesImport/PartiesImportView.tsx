@@ -8,6 +8,7 @@ import { UseEditor } from "@components/Editor/utils/useEditor";
 import * as R from "ramda";
 import { CountryImage } from "@shared/CountrySelect/CountrySelectStyle";
 import { Container } from "./PartiesImportStyle";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPlus);
 
@@ -16,6 +17,7 @@ interface Props {
 }
 
 const IdeologiesImport: React.FC<Props> = ({ editor }) => {
+  const { t } = useTranslation("editor");
   const { data } = useEditorStandardPartiesQuery();
   const { actions } = editor;
   const parties = data?.quiz.currentVersion.parties || [];
@@ -24,7 +26,7 @@ const IdeologiesImport: React.FC<Props> = ({ editor }) => {
 
   return (
     <Container>
-      <span>Importuj partie:</span>
+      <span>{t("parties.import")}</span>
       {Object.keys(countryParties).map((country) => (
         <Button
           key={country}

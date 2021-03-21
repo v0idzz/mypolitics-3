@@ -3,6 +3,7 @@ import InternationalizedInput from "@shared/InternationalizedInput";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import { TextTranslationInput } from "@generated/graphql";
 import InputLabel from "@shared/InputLabel";
+import useTranslation from "next-translate/useTranslation";
 import { Container } from "./EditorBasicStyle";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const EditorBasic: React.FC<Props> = ({ editor }) => {
+  const { t } = useTranslation("editor");
   const { actions, basicInput } = editor;
   const { update } = actions;
 
@@ -25,13 +27,13 @@ const EditorBasic: React.FC<Props> = ({ editor }) => {
 
   return (
     <Container>
-      <InputLabel title="Tytuł">
+      <InputLabel title={t("basic.input.title")}>
         <InternationalizedInput
           value={basicInput.title}
           onChange={(v) => handleTextChange(v, "title")}
         />
       </InputLabel>
-      <InputLabel title="Opis">
+      <InputLabel title={t("basic.input.description")}>
         <InternationalizedInput
           value={basicInput.description}
           onChange={(v) => handleTextChange(v, "description")}

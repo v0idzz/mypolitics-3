@@ -7,6 +7,7 @@ import {
   EditorPartyPartsFragmentDoc,
 } from "@generated/graphql";
 import { Image } from "./PartyItemStyle";
+import useTranslation from 'next-translate/useTranslation';
 
 interface Props {
   id: string;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const PartyItem: React.FC<Props> = ({ id, onClick, title }) => {
+  const { t } = useTranslation("editor");
   const { data } = useEntity<EditorPartyPartsFragment>({
     id,
     name: "Party",

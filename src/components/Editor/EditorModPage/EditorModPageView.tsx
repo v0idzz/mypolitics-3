@@ -15,10 +15,12 @@ import { ErrorCode } from "@typeDefs/error";
 import { paths } from "@constants";
 import { useRouter } from "next/router";
 import { Title } from "./EditorModPageStyle";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faShieldAlt, faPollH, faPlus);
 
 const EditorListPage: React.FC = () => {
+  const { t } = useTranslation("editor");
   const router = useRouter();
   const { data, loading } = useVerifyQueueQuizzesQuery({
     onError: (error) => {
@@ -37,11 +39,11 @@ const EditorListPage: React.FC = () => {
     <StandardPage>
       <Title>
         <FontAwesomeIcon icon={faShieldAlt} />
-        <span>Panel moderacji</span>
+        <span>{t("admin.title")}</span>
       </Title>
       <QuizzesSection
         icon={<FontAwesomeIcon icon={faPollH} />}
-        title="Quizy do weryfikacji"
+        title={t("admin.section.verifyRequests")}
       >
         {loading && <Loading />}
         {quizzes.map((quiz) => (

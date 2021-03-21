@@ -12,6 +12,7 @@ import { useTheme } from "styled-components";
 import InputLabel from "@shared/InputLabel";
 import { Input } from "@shared/Common";
 import { parseUrl } from "@components/Editor/EditorIdeologies/IdeologiesImport/IdeologiesImportUtils";
+import useTranslation from "next-translate/useTranslation";
 import { Container } from "./IdeologiesImportStyle";
 
 library.add(faPlus);
@@ -21,6 +22,7 @@ interface Props {
 }
 
 const IdeologiesImport: React.FC<Props> = ({ editor }) => {
+  const { t } = useTranslation("editor");
   const { actions } = editor;
   const [getIdeologies, { loading }] = useEditorQuizIdeologiesLazyQuery({
     onCompleted: (data) =>
@@ -51,11 +53,11 @@ const IdeologiesImport: React.FC<Props> = ({ editor }) => {
         onClose={() => setShowModal(false)}
         show={showModal}
         header={{
-          title: "Importuj ideologie",
+          title: t("ideologies.importModal.title"),
           color: theme.colors.primaryDarken,
         }}
       >
-        <InputLabel title="Link do strony testu">
+        <InputLabel title={t("ideologies.importModal.url")}>
           <Input
             value={url}
             onChange={({ target: { value } }) => setUrl(value)}
@@ -69,13 +71,13 @@ const IdeologiesImport: React.FC<Props> = ({ editor }) => {
               loading={loading}
               disabled={loading}
             >
-              Importuj
+              {t("ideologies.importModal.button")}
             </Button>
           )}
         </InputLabel>
       </Modal>
       <Container>
-        <span>Importuj ideologie:</span>
+        <span>{t("ideologies.import")}</span>
         {loading && <Loading />}
         {!loading && (
           <>
@@ -94,7 +96,7 @@ const IdeologiesImport: React.FC<Props> = ({ editor }) => {
               beforeIcon={<FontAwesomeIcon icon={faPlus} />}
               onClick={() => setShowModal(true)}
             >
-              Z innego testu
+              {t("ideologies.importFromOther")}
             </Button>
           </>
         )}

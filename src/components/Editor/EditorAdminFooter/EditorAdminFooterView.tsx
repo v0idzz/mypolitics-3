@@ -17,11 +17,13 @@ import {
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import { Spinner } from "@shared/Loading";
 import { paths } from "@constants";
+import useTranslation from "next-translate/useTranslation";
 import { Container, Inner } from "./EditorAdminFooterStyle";
 
 library.add(faCheck, faTimes);
 
 const EditorAdminFooter: React.FC = () => {
+  const { t } = useTranslation("editor");
   const [showReasonModal, setShowReasonModal] = useState<boolean>(false);
   const handleErrors = useHandleErrors();
   const [reason, setReason] = useState("");
@@ -59,15 +61,15 @@ const EditorAdminFooter: React.FC = () => {
         show={showReasonModal}
         onClose={() => setShowReasonModal(false)}
         header={{
-          title: "Odrzuć",
+          title: t("adminFooter.discardModal.title"),
           color: colors.red,
         }}
       >
-        <InputLabel title="Powód odrzucenia">
+        <InputLabel title={t("adminFooter.discardModal.input.label")}>
           <Input
             name="reason"
             value={reason}
-            placeholder="Nieodpowiednie słowa"
+            placeholder={t("adminFooter.discardModal.input.placeholder")}
             onChange={({ target: { value } }) => setReason(value)}
           />
         </InputLabel>
@@ -77,16 +79,16 @@ const EditorAdminFooter: React.FC = () => {
           beforeIcon={<FontAwesomeIcon icon={faTimes} />}
           onClick={() => handleVerify(QuizVerificationState.Declined)}
         >
-          Odrzuć quiz
+          {t("adminFooter.discardModal.button")}
         </Button>
       </Modal>
       <Container>
         <Inner>
-          <span>Zweryfikuj:</span>
+          <span>{t("adminFooter.title")}</span>
           <ActionButton
             variant="green"
             size="large"
-            title="Akceptuj"
+            title={t("adminFooter.accept")}
             mustConfirm
             onClick={() => handleVerify(QuizVerificationState.Accepted)}
           >
@@ -97,7 +99,7 @@ const EditorAdminFooter: React.FC = () => {
             onClick={() => setShowReasonModal(true)}
             variant="red"
             size="large"
-            title="Odrzuć"
+            title={t("adminFooter.discard")}
           >
             <FontAwesomeIcon icon={faTimes} />
           </ActionButton>

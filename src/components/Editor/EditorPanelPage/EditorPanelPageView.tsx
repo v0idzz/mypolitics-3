@@ -27,6 +27,7 @@ import { Title, ButtonWrapper } from "./EditorPanelPageStyle";
 library.add(faPencilRuler, faPollH, faPlus);
 
 const EditorListPage: React.FC = () => {
+  const { t } = useTranslation("editor");
   const router = useRouter();
   const { lang } = useTranslation();
   const { data, loading } = useCurrentUserQuizzesQuery({
@@ -45,10 +46,10 @@ const EditorListPage: React.FC = () => {
     variables: {
       values: {
         title: {
-          [lang]: "Mój nowy quiz",
+          [lang]: t("panel.defaultQuizValues.title"),
         },
         description: {
-          [lang]: "Tu będzie fajny opis",
+          [lang]: t("panel.defaultQuizValues.description"),
         },
         logoUrl: "",
       },
@@ -68,11 +69,11 @@ const EditorListPage: React.FC = () => {
       <GoogleAd id="myp3-standard-top" />
       <Title>
         <FontAwesomeIcon icon={faPencilRuler} />
-        <span>Panel twórcy</span>
+        <span>{t("panel.title")}</span>
       </Title>
       <QuizzesSection
         icon={<FontAwesomeIcon icon={faPollH} />}
-        title="Twoje quizy"
+        title={t("panel.section.quizzes.title")}
       >
         {loading && <Loading />}
         {quizzes.map((quiz) => (
@@ -88,7 +89,7 @@ const EditorListPage: React.FC = () => {
             disabled={createQuizLoading}
             pulsating
           >
-            Stwórz nowy
+            {t("panel.section.quizzes.createButton")}
           </Button>
         </ButtonWrapper>
       </QuizzesSection>

@@ -17,6 +17,7 @@ interface Props {
 }
 
 const IdeologyItem: React.FC<Props> = ({ id, onClick, title }) => {
+  const { t } = useTranslation("editor");
   const { lang } = useTranslation();
   const { data } = useEntity<EditorIdeologyPartsFragment>({
     id,

@@ -20,6 +20,7 @@ interface Props {
 }
 
 const PartyEdit: React.FC<Props> = ({ onClose, show, editor, ...props }) => {
+  const { t } = useTranslation("editor");
   // eslint-disable-next-line react/destructuring-assignment
   const { id, ...data } = props.data;
   const { actions } = editor;
@@ -29,7 +30,7 @@ const PartyEdit: React.FC<Props> = ({ onClose, show, editor, ...props }) => {
     title: (
       <>
         <FontAwesomeIcon style={{ marginRight: "0.5rem" }} icon={faPen} />
-        Edytuj partię
+        {t("parties.editModal.title")}
       </>
     ),
     color: theme.colors.primaryDarken,
@@ -47,7 +48,7 @@ const PartyEdit: React.FC<Props> = ({ onClose, show, editor, ...props }) => {
           onSubmit={handleSubmit}
           initialValues={data}
           button={{
-            text: "Zapisz",
+            text: t("parties.editModal.button"),
             icon: <FontAwesomeIcon icon={faSave} />,
           }}
         />

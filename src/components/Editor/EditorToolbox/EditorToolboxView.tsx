@@ -21,6 +21,7 @@ import {
   ListInner,
   ListTitle,
 } from "./EditorToolboxStyle";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faToolbox, faExclamationTriangle);
 
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const EditorToolboxView: React.FC<Props> = ({ editor }) => {
+  const { t } = useTranslation("editor");
   const { versionInput } = editor;
   const { parties, traits } = versionInput;
   const ideologies = versionInput.ideologies.filter(
@@ -42,15 +44,15 @@ const EditorToolboxView: React.FC<Props> = ({ editor }) => {
           <Header>
             <Title>
               <FontAwesomeIcon icon={faToolbox} />
-              <span>Przybornik</span>
+              <span>{t("toolbox.title")}</span>
             </Title>
             <HeaderInfo>
               <FontAwesomeIcon icon={faExclamationTriangle} />
-              <span>Podnieś i upuść w odpowiednie pole</span>
+              <span>{t("toolbox.cta")}</span>
             </HeaderInfo>
           </Header>
           <ListContainer>
-            <ListTitle>Partie</ListTitle>
+            <ListTitle>{t("toolbox.section.parties")}</ListTitle>
             <ListDivider />
             <ListInner>
               {parties.map((id) => (
@@ -59,7 +61,7 @@ const EditorToolboxView: React.FC<Props> = ({ editor }) => {
             </ListInner>
           </ListContainer>
           <ListContainer>
-            <ListTitle>Ideologie</ListTitle>
+            <ListTitle>{t("toolbox.section.ideologies")}</ListTitle>
             <ListDivider />
             <ListInner>
               {ideologies.map((id) => (
@@ -68,7 +70,7 @@ const EditorToolboxView: React.FC<Props> = ({ editor }) => {
             </ListInner>
           </ListContainer>
           <ListContainer>
-            <ListTitle>Cechy</ListTitle>
+            <ListTitle>{t("toolbox.section.traits")}</ListTitle>
             <ListDivider />
             <ListInner>
               {traits.map((id) => (

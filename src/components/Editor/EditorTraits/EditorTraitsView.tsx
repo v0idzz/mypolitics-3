@@ -3,6 +3,7 @@ import { IdeologyItem } from "@components/Editor";
 import { useDrop } from "react-dnd";
 import { itemTypes } from "@constants";
 import { UseEditor } from "@components/Editor/utils/useEditor";
+import useTranslation from "next-translate/useTranslation";
 import { Description, Info, TraitsWrapper } from "./EditorTraitsStyle";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const EditorTraits: React.FC<Props> = ({ editor }) => {
+  const { t } = useTranslation("editor");
   const { actions, data } = editor;
   const { traits } = data.data.quiz.lastUpdatedVersion;
   const [_, drop] = useDrop(() => ({
@@ -21,26 +23,19 @@ const EditorTraits: React.FC<Props> = ({ editor }) => {
 
   return (
     <Description>
-      <span>
-        Cechy służą ukazaniu indywidualnych cech użytkownika, które nie mogą być
-        zaprezentowane na osiach. Upuść tutaj ideologię, aby ona stała się
-        cechą.
-      </span>
-      <span>
-        Zostanie przypisana do użytkownika tylko wtedy gdy ten na wszystkie
-        pytania odpowie zdecydowanie i zgodnie z cechą.
-      </span>
+      <span>{t("traits.description.0")}</span>
+      <span>{t("traits.description.1")}</span>
       <div ref={drop}>
         <TraitsWrapper>
           {traits.map((trait) => (
             <IdeologyItem
               onClick={() => handleRemove(trait.id)}
-              title="Kliknij, aby usunąć"
+              title={t("traits.clickToDelete")}
               key={trait.id}
               id={trait.id}
             />
           ))}
-          {traits.length === 0 && <Info>Upuść tutaj ideologię</Info>}
+          {traits.length === 0 && <Info>{t("traits.dropHereIdeology")}</Info>}
         </TraitsWrapper>
       </div>
     </Description>
