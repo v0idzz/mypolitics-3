@@ -42,7 +42,7 @@ const QuizLink: React.FC<Props> = ({
   showState = false,
 }) => {
   const { slug, meta, type, verifyRequest } = quiz;
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation("quiz");
   const quizFeatures = useQuizFeatures(meta.features);
   const showPoints = ![QuizType.Official, QuizType.Classic].includes(type);
   const points = quiz.meta.votes.value;
@@ -56,13 +56,13 @@ const QuizLink: React.FC<Props> = ({
   const [buttonIcon, buttonText] = R.cond([
     [
       () => editable,
-      R.always([<FontAwesomeIcon key="0" icon={faPen} />, "Edytuj"]),
+      R.always([<FontAwesomeIcon key="0" icon={faPen} />, t("link.edit")]),
     ],
     [
       () => canVerify,
-      R.always([<FontAwesomeIcon key="0" icon={faEye} />, "Zobacz"]),
+      R.always([<FontAwesomeIcon key="0" icon={faEye} />, t("link.view")]),
     ],
-    [R.T, R.always([undefined, "Rozpocznij"])],
+    [R.T, R.always([undefined, t("link.begin")])],
   ])();
 
   return (
@@ -80,7 +80,7 @@ const QuizLink: React.FC<Props> = ({
           {quiz.type === QuizType.Community && showType && (
             <TypeTitle>
               <FontAwesomeIcon icon={faUsers} />
-              <span>Społecznościowy</span>
+              <span>{t("link.social")}</span>
             </TypeTitle>
           )}
         </Header>

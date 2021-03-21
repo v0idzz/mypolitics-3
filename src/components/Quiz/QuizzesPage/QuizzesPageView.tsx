@@ -16,7 +16,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { History as SurveysHistory } from "@components/Survey";
 import Button from "@shared/Button";
-import { EditorCTA } from '@components/Editor';
+import { EditorCTA } from "@components/Editor";
+import useTranslation from "next-translate/useTranslation";
 
 interface Props {
   list: QuizBasicPartsFragment[];
@@ -27,6 +28,7 @@ const BASE_LIMIT = 6;
 
 const QuizzesPage: React.FC<Props> = ({ list }) => {
   const [limit, setLimit] = useState<number>(BASE_LIMIT);
+  const { t } = useTranslation("quiz");
   const [firstQuiz, ...quizzes] = list;
   const clientSide = typeof window !== "undefined";
 
@@ -40,7 +42,7 @@ const QuizzesPage: React.FC<Props> = ({ list }) => {
       <Link quiz={firstQuiz} featured />
       {quizzes.length > 0 && (
         <Section
-          title="Sprawdź inne quizy"
+          title={t("quizzes.other")}
           icon={<FontAwesomeIcon icon={faPollH} />}
         >
           {limitedQuizzes.map((quiz, key) => (
@@ -49,9 +51,7 @@ const QuizzesPage: React.FC<Props> = ({ list }) => {
               {(key + 1) % BASE_LIMIT === 0 && (
                 <>
                   <GoogleAd id="myp3-standard-middle" />
-                  {key === limitedQuizzes.length-1 && (
-                    <EditorCTA />
-                  )}
+                  {key === limitedQuizzes.length - 1 && <EditorCTA />}
                 </>
               )}
             </>
@@ -61,7 +61,7 @@ const QuizzesPage: React.FC<Props> = ({ list }) => {
               onClick={handleShowMore}
               beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
             >
-              Pokaż więcej
+              {t("results.showMore")}
             </Button>
           )}
         </Section>
@@ -69,7 +69,7 @@ const QuizzesPage: React.FC<Props> = ({ list }) => {
       {clientSide && (
         <>
           <Section
-            title="Historia wyników"
+            title={t("quizzes.history")}
             icon={<FontAwesomeIcon icon={faHistory} />}
           >
             <SurveysHistory />

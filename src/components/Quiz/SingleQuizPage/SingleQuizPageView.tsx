@@ -57,7 +57,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
   const handleErrors = useHandleErrors();
   const [createSurvey, { loading }] = useCreateSurveyMutation();
   const quizFeatures = useQuizFeatures(meta.features);
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation("quiz");
   const isClassic = quiz.type === QuizType.Classic;
   const isCommunity = quiz.type === QuizType.Community;
 
@@ -86,13 +86,14 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
           {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
           {!isClassic && (
             <Button onClick={handleStartClick} loading={loading} showShadow>
-              Rozpocznij
+              {t("link.begin")}
             </Button>
           )}
         </Header>
         {isCommunity && (
           <AuthorHeader>
-            Quiz społecznościowy<span>{authors[0].name}</span>
+            {t("single.social")}
+            <span>{authors[0].name}</span>
           </AuthorHeader>
         )}
         <Inner>
@@ -104,7 +105,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
           </Box>
           <Box
             header={{
-              title: "Funkcje",
+              title: t("single.functions"),
               icon: <FontAwesomeIcon icon={faStar} />,
             }}
           >
@@ -116,20 +117,20 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
           </Box>
           <Box
             header={{
-              title: "Statystyki",
+              title: t("single.stats"),
               icon: <FontAwesomeIcon icon={faChartBar} />,
             }}
           >
             <div>
               <Chips>
                 {meta.statistics.surveysNumber.toLocaleString()}&nbsp;
-                <span>testów</span>
+                <span>{t("single.tests")}</span>
               </Chips>
             </div>
           </Box>
           <Box
             header={{
-              title: "Wyniki znanych osób",
+              title: t("single.famous"),
               icon: <FontAwesomeIcon icon={faLandmark} />,
             }}
           >
@@ -139,7 +140,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
           </Box>
           <Box
             header={{
-              title: "Historia wyników",
+              title: t("quizzes.history"),
               icon: <FontAwesomeIcon icon={faHistory} />,
             }}
           >
@@ -151,14 +152,14 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
             <MetaWrapper>
               {meta.authors.length > 0 && (
                 <Chips>
-                  <span>Twórca:</span>&nbsp;
+                  <span>{t("single.author")}</span>&nbsp;
                   {meta.authors[0].name}
                 </Chips>
               )}
               {meta.license !== QuizLicense.Commercial && (
                 <Link href={LicenseLinks[meta.license]} passHref>
                   <Chips as="a" target="_blank">
-                    <span>Licencja:</span>&nbsp;
+                    <span>{t("single.license")}</span>&nbsp;
                     {meta.license}
                   </Chips>
                 </Link>
@@ -168,7 +169,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
           {isCommunity && (
             <Box
               header={{
-                title: "Komentarze",
+                title: t("single.comments"),
                 icon: <FontAwesomeIcon icon={faComment} />,
               }}
             >
@@ -178,7 +179,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
           {!isClassic && (
             <ButtonWrapper>
               <Button loading={loading} onClick={handleStartClick} showShadow>
-                Rozpocznij
+                {t("link.begin")}
               </Button>
             </ButtonWrapper>
           )}
