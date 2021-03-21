@@ -54,7 +54,7 @@ const AxisIdeology: React.FC<{
     });
   };
 
-  const isClickable = useBreakpoint("sm");
+  const isClickable = useBreakpoint("md");
 
   if (!data) {
     return (

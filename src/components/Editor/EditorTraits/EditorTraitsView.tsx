@@ -42,7 +42,7 @@ const EditorTraits: React.FC<Props> = ({ editor }) => {
 
   const handleRemove = (id) => actions.traits.delete(id);
 
-  const isClickable = useBreakpoint("sm");
+  const isClickable = useBreakpoint("md");
 
   return (
     <Description>
