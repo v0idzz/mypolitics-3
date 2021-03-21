@@ -127,5 +127,36 @@
     "author": "Twórca:",
     "license": "Licencja:",
     "comments": "Komentarze"
+  },
+  "surveyHistory": {
+    "title": "Historia wyników",
+    "showMore": "Pokaż więcej",
+    "emptyInfo": "Historia jest pusta. Wykonaj quiz!",
+    "type": {
+      "finished": "Ukończone",
+      "notFinishedYet": "W trakcie"
+    }
+  },
+  "survey": {
+    "bottomInfo": "Test możesz przerwać w każdym momencie, Twoje postępy są zapisywane.",
+    "question": "Pytanie",
+    "actions": {
+      "previousQuestion": "Poprzednie pytanie",
+      "reset": "Rozpocznij od nowa",
+      "resetConfirm": "Resetuj",
+      "main": {
+        "hover": "Kliknij, by anulować",
+        "notHover": "Wybierz rodzaj poniżej"
+      },
+      "answer": {
+        "neutral": "Nie wiem",
+        "agree": "Zgadzam się",
+        "disagree": "Nie zgadzam się"
+      },
+      "weight": {
+        "1": "Częściowo",
+        "2": "Zdecydowanie"
+      }
+    }
   }
 }

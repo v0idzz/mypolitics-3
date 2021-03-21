@@ -11,6 +11,7 @@ import {
   UseSurveyActions,
   UseSurveyData,
 } from "@components/Survey/utils/useSurvey";
+import useTranslation from "next-translate/useTranslation";
 import { AnswerButton, Answers, Container } from "./SurveyAnswersStyle";
 
 interface Props {
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
+  const { t } = useTranslation("quiz");
   const { query, ...router } = useRouter();
   const { nextQuestion } = actions;
   const { currentQuestion } = data;
@@ -82,7 +84,9 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
               />
             </span>
             <span>
-              {isHover ? "Kliknij, by anulować" : "Wybierz rodzaj poniżej"}
+              {isHover
+                ? t("survey.actions.main.hover")
+                : t("survey.actions.main.notHober")}
             </span>
           </AnswerButton>
         </Answers>
@@ -98,7 +102,7 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
               <span>
                 <FontAwesomeIcon icon={faTimes} />
               </span>
-              <span>Nie zgadzam się</span>
+              <span>{t("survey.actions.answer.disagree")}</span>
             </div>
           </AnswerButton>
           <AnswerButton
@@ -106,7 +110,7 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
             answer={tempAnswer}
             onClick={() => handleMainAnswer(SurveyAnswerType.Neutral)}
           >
-            <span>Nie wiem</span>
+            <span>{t("survey.actions.answer.neutral")}</span>
           </AnswerButton>
           <AnswerButton
             variant={SurveyAnswerType.Agree}
@@ -116,7 +120,7 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
             <span>
               <FontAwesomeIcon icon={faCheck} />
             </span>
-            <span>Zgadzam się</span>
+            <span>{t("survey.actions.answer.agree")}</span>
           </AnswerButton>
         </Answers>
       )}
@@ -130,10 +134,10 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
       >
         <Answers>
           <Button isFullWidth onClick={() => handleWeightAnswer(1)}>
-            Częściowo
+            {t("survey.actions.weight.1")}
           </Button>
           <Button isFullWidth onClick={() => handleWeightAnswer(2)}>
-            Zdecydowanie
+            {t("survey.actions.weight.2")}
           </Button>
         </Answers>
       </CSSTransition>

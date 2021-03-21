@@ -28,6 +28,7 @@ import {
 library.add(faArrowLeft, faUndoAlt, faTimes, faCheck);
 
 const SurveyPage: React.FC = () => {
+  const { t } = useTranslation("quiz");
   const { query } = useRouter();
   const { lang } = useTranslation();
   const { data, actions } = useSurvey(`${query.id}`);
@@ -44,7 +45,7 @@ const SurveyPage: React.FC = () => {
         {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
       </Header>
       {quiz.type === QuizType.Community && (
-        <AuthorHeader>Quiz społecznościowy</AuthorHeader>
+        <AuthorHeader>{t("single.social")}</AuthorHeader>
       )}
       <Inner>
         <SurveyHeader actions={actions} data={data} />
@@ -63,9 +64,7 @@ const SurveyPage: React.FC = () => {
         </SwitchTransition>
         <SurveyAnswers data={data} actions={actions} />
       </Inner>
-      <BottomInfo>
-        Test możesz przerwać w każdym momencie, Twoje postępy są zapisywane
-      </BottomInfo>
+      <BottomInfo>{t("survey.bottomInfo")}</BottomInfo>
     </Container>
   );
 };

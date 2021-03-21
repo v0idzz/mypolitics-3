@@ -16,6 +16,7 @@ import { Chips, ListElement, RemoveButton, Text } from "./SurveyLinkStyle";
 library.add(faTrash);
 
 const SurveyLink: React.FC<{ survey: LeanSurvey }> = ({ survey }) => {
+  const { t } = useTranslation("quiz");
   const { lang } = useTranslation();
   const [remove] = useDeleteSurveyMutation({
     variables: { id: survey.id },
@@ -46,10 +47,16 @@ const SurveyLink: React.FC<{ survey: LeanSurvey }> = ({ survey }) => {
     <Link href={href} passHref>
       <ListElement>
         <Text>
-          {dayjs(survey.updatedAt).locale(lang).format("DD.MM.YYYY HH:MM")}
+          {dayjs(survey.updatedAt).locale(lang).format("YYYY-MM-DD HH:MM")}
         </Text>
-        {survey.finished && <Chips background="green">ukończone</Chips>}
-        {!survey.finished && <Chips background="yellow">w trakcie</Chips>}
+        {survey.finished && (
+          <Chips background="green">{t("surveyHistory.type.finished")}</Chips>
+        )}
+        {!survey.finished && (
+          <Chips background="yellow">
+            {t("surveyHistory.type.notFinishedYet")}
+          </Chips>
+        )}
         <RemoveButton clicked={removeClicked} onClick={handleRemoveClick}>
           <FontAwesomeIcon icon={faTrash} />
         </RemoveButton>
