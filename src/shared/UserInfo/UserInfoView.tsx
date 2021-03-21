@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  useCurrentUserQuery,
-  UserRole,
-} from "@generated/graphql";
+import { useCurrentUserQuery, UserRole } from "@generated/graphql";
 import Link from "next/link";
 import { apiPaths, paths } from "@constants";
 import { useToasts } from "react-toast-notifications";
@@ -17,6 +14,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { useRouter } from "next/router";
 import ClientWrapper from "@shared/ClientWrapper";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
+import useTranslation from "next-translate/useTranslation";
 import {
   Inner,
   Name,
@@ -28,6 +26,7 @@ import {
 library.add(faCrown, faShieldAlt, faSignOutAlt, faSignInAlt);
 
 const UserInfo: React.FC = () => {
+  const { t } = useTranslation("common");
   const router = useRouter();
   const handleErrors = useHandleErrors();
   const { addToast } = useToasts();
@@ -59,7 +58,7 @@ const UserInfo: React.FC = () => {
       <Container cols={1}>
         <Link href={paths.authLogin} passHref>
           <Inner as="a">
-            <span>Zaloguj się</span>
+            <span>{t("userInfo.login")}</span>
             <span>
               <FontAwesomeIcon icon={faSignInAlt} />
             </span>

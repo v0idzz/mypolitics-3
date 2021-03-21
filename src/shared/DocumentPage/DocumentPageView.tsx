@@ -13,7 +13,7 @@ interface Props {
 
 const DocumentPage: React.FC<Props> = ({ document, name }) => (
   <>
-    <NextSeo title={name} titleTemplate="%s – myPolitics" />
+    <NextSeo title={name} titleTemplate="%s | myPolitics" />
     <CenteredPage>
       <Title>{name}</Title>
       <Content dangerouslySetInnerHTML={{ __html: document }} />

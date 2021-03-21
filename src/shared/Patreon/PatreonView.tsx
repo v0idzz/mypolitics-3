@@ -26,8 +26,8 @@ interface Props {
 }
 
 const Patreon: React.FC<Props> = ({ patreons }) => {
+  const { t } = useTranslation("common");
   const { updatedAt, list } = patreons;
-
   const { lang } = useTranslation();
 
   return (
@@ -39,18 +39,16 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
               ? require("@assets/images/patronite-full.png")
               : require("@assets/images/patreon-full.png")
           }
-          alt={lang === "pl" ? "Patronite" : "Patreon"}
+          alt={t("patreon.title")}
         />
-        {/* TODO: Translate and change Patronite -> Patreon */}
-        <HeaderText>
-          Nie mamy powiązania z żadną opcją wpływu i nikt nas nie finansuje.
-          Możesz wesprzeć nasze działania poprzez Patronite
-        </HeaderText>
+        <HeaderText>{t("patreon.description")}</HeaderText>
       </Header>
       <Inner>
-        <Title>Patroni myPolitics</Title>
+        <Title>{t("patreon.list.title")}</Title>
         <ListWrapper dangerouslySetInnerHTML={{ __html: list }} />
-        <Date>Stan na dzień&nbsp;{dayjs(updatedAt).format("DD.MM.YYYY")}</Date>
+        <Date>
+          {t("patreon.updatedAt")}&nbsp;{dayjs(updatedAt).format("YYYY-MM-DD")}
+        </Date>
       </Inner>
       <ButtonWrapper>
         <Link
@@ -66,7 +64,7 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
             beforeIcon={<FontAwesomeIcon icon={faSeedling} />}
             pulsating
           >
-            Zostań Patronem!
+            {t("patreon.button")}
           </Button>
         </Link>
       </ButtonWrapper>

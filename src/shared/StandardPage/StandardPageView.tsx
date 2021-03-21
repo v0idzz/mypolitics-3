@@ -25,6 +25,7 @@ import Link from "next/link";
 import Button from "@shared/Button";
 import { paths } from "@constants";
 import { Content, Inner } from "./StandardPageStyle";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPollH, faPencilRuler);
 
@@ -45,6 +46,7 @@ const StandardPage: React.FC<Props> = ({
   quizzes = [],
   patreons,
 }) => {
+  const { t } = useTranslation("common");
   const shortenedArticles = articles.filter((_, k) => k < 3);
   const randomArticle = articles.length > 0 && articles[articles.length - 1];
 
@@ -57,7 +59,7 @@ const StandardPage: React.FC<Props> = ({
             {quizzes.length > 0 && (
               <>
                 <Section
-                  title="Testy poglądów politycznych"
+                  title={t("standardPage.section.quizzes.title")}
                   icon={<FontAwesomeIcon icon={faPollH} />}
                 >
                   {quizzes.map((quiz) => (
@@ -73,7 +75,7 @@ const StandardPage: React.FC<Props> = ({
                       as="a"
                       beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
                     >
-                      Pokaż więcej
+                      {t("standardPage.section.quizzes.button")}
                     </Button>
                   </Link>
                 </Section>
