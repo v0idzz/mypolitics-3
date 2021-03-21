@@ -86,7 +86,7 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
             <span>
               {isHover
                 ? t("survey.actions.main.hover")
-                : t("survey.actions.main.notHober")}
+                : t("survey.actions.main.notHover")}
             </span>
           </AnswerButton>
         </Answers>

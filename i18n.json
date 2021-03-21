@@ -9,6 +9,6 @@
     "rgx:^\\/results|.+": ["quiz", "results"],
     "rgx:^\\/editor|.+": ["editor"],
     "rgx:^\\/auth|.+": ["auth"],
-    "rgx:^\\/survey|.+": ["survey"]
+    "rgx:^\\/survey|.+": ["quiz"]
   }
 }
