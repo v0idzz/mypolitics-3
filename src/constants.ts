@@ -41,6 +41,9 @@ export const paths = {
   quizzesAdvancedInitialize: "/quizzes/initialize/advanced",
   editorPanel: "/editor",
   editorAdmin: "/editor/admin",
+  editorVerifyRequested(slug: string): string {
+    return `/editor/${slug}/verify-requested`;
+  },
   editor(slug: string, verifyVersion?: string): string {
     return `/editor/${slug}${
       verifyVersion ? `?verifyVersion=${verifyVersion}` : ""

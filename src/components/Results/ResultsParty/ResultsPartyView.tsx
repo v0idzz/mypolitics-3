@@ -30,6 +30,8 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
   const partiesList = parties
     .filter((p) => p.country === country)
     .slice(0, showMore ? parties.length : maxParties);
+  const byCountry = R.groupBy(R.prop("country"));
+  const countriesList = R.keys(byCountry(parties));
 
   const handleShowMore = () => setShowMore(true);
 
@@ -64,11 +66,14 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
       <Header>
         <HeaderTitle>Partia</HeaderTitle>
         {!isClassic && information}
-        <CountrySelect
-          value={country}
-          onChange={handleCountryChange}
-          color="background"
-        />
+        {countriesList.length > 1 && (
+          <CountrySelect
+            value={country}
+            onChange={handleCountryChange}
+            color="background"
+            list={countriesList}
+          />
+        )}
       </Header>
       <List>{partiesInfoList}</List>
       {!showMore && (

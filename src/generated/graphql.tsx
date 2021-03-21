@@ -2635,6 +2635,25 @@ export type EditorQuestionPartsFragment = (
   ) }
 );
 
+export type EditorQuizIdeologiesQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type EditorQuizIdeologiesQuery = (
+  { __typename?: 'Query' }
+  & { quiz: (
+    { __typename?: 'Quiz' }
+    & { currentVersion: (
+      { __typename?: 'QuizVersion' }
+      & { ideologies: Array<Maybe<(
+        { __typename?: 'Ideology' }
+        & EditorIdeologyPartsFragment
+      )>> }
+    ) }
+  ) }
+);
+
 export type EditorQuizQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
@@ -2682,6 +2701,23 @@ export type EditorQuizQuery = (
         { __typename?: 'Ideology' }
         & EditorIdeologyPartsFragment
       )>>, parties: Array<Maybe<(
+        { __typename?: 'Party' }
+        & EditorPartyPartsFragment
+      )>> }
+    ) }
+  ) }
+);
+
+export type EditorStandardPartiesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EditorStandardPartiesQuery = (
+  { __typename?: 'Query' }
+  & { quiz: (
+    { __typename?: 'Quiz' }
+    & { currentVersion: (
+      { __typename?: 'QuizVersion' }
+      & { parties: Array<Maybe<(
         { __typename?: 'Party' }
         & EditorPartyPartsFragment
       )>> }
@@ -4090,6 +4126,43 @@ export function useCreateQuizMutation(baseOptions?: Apollo.MutationHookOptions<C
 export type CreateQuizMutationHookResult = ReturnType<typeof useCreateQuizMutation>;
 export type CreateQuizMutationResult = Apollo.MutationResult<CreateQuizMutation>;
 export type CreateQuizMutationOptions = Apollo.BaseMutationOptions<CreateQuizMutation, CreateQuizMutationVariables>;
+export const EditorQuizIdeologiesDocument = gql`
+    query EditorQuizIdeologies($slug: String!) {
+  quiz(slug: $slug) {
+    currentVersion {
+      ideologies {
+        ...EditorIdeologyParts
+      }
+    }
+  }
+}
+    ${EditorIdeologyPartsFragmentDoc}`;
+
+/**
+ * __useEditorQuizIdeologiesQuery__
+ *
+ * To run a query within a React component, call `useEditorQuizIdeologiesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEditorQuizIdeologiesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useEditorQuizIdeologiesQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useEditorQuizIdeologiesQuery(baseOptions: Apollo.QueryHookOptions<EditorQuizIdeologiesQuery, EditorQuizIdeologiesQueryVariables>) {
+        return Apollo.useQuery<EditorQuizIdeologiesQuery, EditorQuizIdeologiesQueryVariables>(EditorQuizIdeologiesDocument, baseOptions);
+      }
+export function useEditorQuizIdeologiesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EditorQuizIdeologiesQuery, EditorQuizIdeologiesQueryVariables>) {
+          return Apollo.useLazyQuery<EditorQuizIdeologiesQuery, EditorQuizIdeologiesQueryVariables>(EditorQuizIdeologiesDocument, baseOptions);
+        }
+export type EditorQuizIdeologiesQueryHookResult = ReturnType<typeof useEditorQuizIdeologiesQuery>;
+export type EditorQuizIdeologiesLazyQueryHookResult = ReturnType<typeof useEditorQuizIdeologiesLazyQuery>;
+export type EditorQuizIdeologiesQueryResult = Apollo.QueryResult<EditorQuizIdeologiesQuery, EditorQuizIdeologiesQueryVariables>;
 export const EditorQuizDocument = gql`
     query EditorQuiz($slug: String!) {
   quiz(slug: $slug) {
@@ -4171,6 +4244,42 @@ export function useEditorQuizLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type EditorQuizQueryHookResult = ReturnType<typeof useEditorQuizQuery>;
 export type EditorQuizLazyQueryHookResult = ReturnType<typeof useEditorQuizLazyQuery>;
 export type EditorQuizQueryResult = Apollo.QueryResult<EditorQuizQuery, EditorQuizQueryVariables>;
+export const EditorStandardPartiesDocument = gql`
+    query EditorStandardParties {
+  quiz(slug: "mypolitics") {
+    currentVersion {
+      parties {
+        ...EditorPartyParts
+      }
+    }
+  }
+}
+    ${EditorPartyPartsFragmentDoc}`;
+
+/**
+ * __useEditorStandardPartiesQuery__
+ *
+ * To run a query within a React component, call `useEditorStandardPartiesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEditorStandardPartiesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useEditorStandardPartiesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useEditorStandardPartiesQuery(baseOptions?: Apollo.QueryHookOptions<EditorStandardPartiesQuery, EditorStandardPartiesQueryVariables>) {
+        return Apollo.useQuery<EditorStandardPartiesQuery, EditorStandardPartiesQueryVariables>(EditorStandardPartiesDocument, baseOptions);
+      }
+export function useEditorStandardPartiesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EditorStandardPartiesQuery, EditorStandardPartiesQueryVariables>) {
+          return Apollo.useLazyQuery<EditorStandardPartiesQuery, EditorStandardPartiesQueryVariables>(EditorStandardPartiesDocument, baseOptions);
+        }
+export type EditorStandardPartiesQueryHookResult = ReturnType<typeof useEditorStandardPartiesQuery>;
+export type EditorStandardPartiesLazyQueryHookResult = ReturnType<typeof useEditorStandardPartiesLazyQuery>;
+export type EditorStandardPartiesQueryResult = Apollo.QueryResult<EditorStandardPartiesQuery, EditorStandardPartiesQueryVariables>;
 export const RequestQuizVerifyDocument = gql`
     mutation RequestQuizVerify($quizVersion: String!, $recaptcha: String!) {
   requestQuizVerify(quizVersion: $quizVersion, recaptcha: $recaptcha)

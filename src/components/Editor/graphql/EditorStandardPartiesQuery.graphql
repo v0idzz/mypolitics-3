@@ -1,0 +1,9 @@
+query EditorStandardParties {
+    quiz(slug: "mypolitics") {
+        currentVersion {
+            parties {
+                ...EditorPartyParts
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import Button from "@shared/Button";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import IdeologyCreate from "@components/Editor/EditorIdeologies/IdeologyCreate";

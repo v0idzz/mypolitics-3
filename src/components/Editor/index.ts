@@ -14,3 +14,4 @@ export { default as ModPage } from "./EditorModPage";
 export { default as Footer } from "./EditorFooter";
 export { default as AdminFooter } from "./EditorAdminFooter";
 export { default as EditorCTA } from "./EditorCTA";
+export { default as VerifyRequested } from "./EditorVerifyRequested";
