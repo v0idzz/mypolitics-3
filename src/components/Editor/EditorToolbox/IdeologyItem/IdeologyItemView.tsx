@@ -14,9 +14,10 @@ interface Props {
   id: string;
   onClick?(): void;
   title?: string;
+  xl?: boolean;
 }
 
-const IdeologyItem: React.FC<Props> = ({ id, onClick, title }) => {
+const IdeologyItem: React.FC<Props> = ({ id, onClick, title, xl }) => {
   const { lang } = useTranslation();
   const { data } = useEntity<EditorIdeologyPartsFragment>({
     id,
@@ -34,6 +35,7 @@ const IdeologyItem: React.FC<Props> = ({ id, onClick, title }) => {
       onClick={onClick}
       background={color}
       title={title || name[lang]}
+      xl={xl}
       {...collected}
     >
       <IdeologyIcon icon={icon} />

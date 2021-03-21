@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
+import Button from "@shared/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 
 export const Description = styled.div`
   font-size: 1rem;
@@ -12,7 +16,8 @@ export const Description = styled.div`
   grid-gap: 1rem;
 `;
 
-export const Info = styled.div`
+export const Info = styled.button`
+  border: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,4 +38,11 @@ export const TraitsWrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
   color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
+`;
+
+export const AddButton = styled(Button).attrs({
+  background: "bluish",
+  beforeIcon: <FontAwesomeIcon icon={faPlus} />,
+})`
+  padding: 0;
 `;

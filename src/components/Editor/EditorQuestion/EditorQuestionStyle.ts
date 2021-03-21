@@ -73,7 +73,8 @@ export const OpenButton = styled.button<{ opened: boolean }>`
     `}
 `;
 
-export const Info = styled.div`
+export const Info = styled.button`
+  border: 0;
   display: flex;
   justify-content: center;
   align-items: center;

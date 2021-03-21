@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
+import breakpoint from "styled-components-breakpoint";
 
 export const Row = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
+
+  ${breakpoint("xs", "md")`
+    grid-template-columns: 100%;
+  `};
 `;
 
 export const Col = styled.div`
@@ -15,6 +20,12 @@ export const Col = styled.div`
   & & {
     grid-gap: 1rem;
   }
+`;
+
+export const ToolboxCol = styled(Col)`
+  ${breakpoint("xs", "md")`
+    display: none;
+  `};
 `;
 
 export const CreateButton = styled.button`

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const Image = styled.img`
+export const Image = styled.img<{ xl: boolean }>`
   display: block;
-  height: 2rem;
-  width: 2rem;
+  height: ${({ xl }) => (xl ? 3 : 2)}rem;
+  width: ${({ xl }) => (xl ? 3 : 2)}rem;
   border-radius: 0.25rem;
   object-fit: cover;
   transition: 0.2s ease-in-out;
