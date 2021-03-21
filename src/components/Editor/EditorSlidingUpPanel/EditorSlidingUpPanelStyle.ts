@@ -38,6 +38,13 @@ export const Header = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.secondary};
 `;
 
+export const CollapseButton = styled.button`
+  border: 0;
+  background: inherit;
+  color: inherit;
+  cursor: pointer;
+`;
+
 export const Options = styled.div`
   display: flex;
   flex-wrap: wrap;

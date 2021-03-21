@@ -1,9 +1,17 @@
 import { UseEditor } from "@components/Editor/utils/useEditor";
-import { Container, Inner, Header, Options } from "./EditorSlidingUpPanelStyle";
+import {
+  Container,
+  Inner,
+  Header,
+  Options,
+  CollapseButton,
+} from "./EditorSlidingUpPanelStyle";
 import React from "react";
 import * as R from "ramda";
 import { useEditorSlidingUpPanel } from "./EditorSlidingUpPanelContext";
 import { IdeologyItem, PartyItem } from "@components/Editor";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export type ItemType = "party" | "ideology" | "trait";
 
@@ -34,7 +42,12 @@ const EditorSlidingUpPanel: React.FC<Props> = ({ editor }) => {
   return (
     <Container slideIn={isIn}>
       <Inner>
-        <Header>Opcje wyboru</Header>
+        <Header>
+          Opcje wyboru
+          <CollapseButton aria-label="zwiń" onClick={hide}>
+            <FontAwesomeIcon icon={faChevronDown} />
+          </CollapseButton>
+        </Header>
         <Options>
           {items.map((id) => (
             <Component
