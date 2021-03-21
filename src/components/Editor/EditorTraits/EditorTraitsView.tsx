@@ -3,9 +3,17 @@ import { IdeologyItem } from "@components/Editor";
 import { useDrop } from "react-dnd";
 import { itemTypes } from "@constants";
 import { UseEditor } from "@components/Editor/utils/useEditor";
-import { Description, Info, TraitsWrapper } from "./EditorTraitsStyle";
+import {
+  AddButton,
+  Description,
+  Info,
+  TraitsWrapper,
+} from "./EditorTraitsStyle";
 import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
 import useBreakpoint from "@utils/hooks/useBreakpoint";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import Button from "@shared/Button";
 
 interface Props {
   editor: UseEditor;
@@ -55,6 +63,13 @@ const EditorTraits: React.FC<Props> = ({ editor }) => {
               id={trait.id}
             />
           ))}
+          {traits.length > 0 && isClickable && (
+            <AddButton
+              onClick={handleClick}
+              background="bluish"
+              beforeIcon={<FontAwesomeIcon icon={faPlus} />}
+            />
+          )}
           {traits.length === 0 && (
             <Info onClick={handleClick} disabled={!isClickable}>
               {isClickable

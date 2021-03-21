@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
+import Button from "@shared/Button";
 
 export const Description = styled.div`
   font-size: 1rem;
@@ -39,4 +40,8 @@ export const TraitsWrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
   color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
+`;
+
+export const AddButton = styled(Button)`
+  padding: 0;
 `;
