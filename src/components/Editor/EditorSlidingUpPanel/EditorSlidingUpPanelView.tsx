@@ -37,7 +37,12 @@ const EditorSlidingUpPanel: React.FC<Props> = ({ editor }) => {
         <Header>Opcje wyboru</Header>
         <Options>
           {items.map((id) => (
-            <Component key={id} id={id} onClick={() => handleItemClick(id)} />
+            <Component
+              key={id}
+              id={id}
+              onClick={() => handleItemClick(id)}
+              xl
+            />
           ))}
         </Options>
       </Inner>

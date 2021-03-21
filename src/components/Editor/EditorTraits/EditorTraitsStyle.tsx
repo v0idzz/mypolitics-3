@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
 import Button from "@shared/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 
 export const Description = styled.div`
   font-size: 1rem;
@@ -42,6 +45,9 @@ export const TraitsWrapper = styled.div`
   font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
 `;
 
-export const AddButton = styled(Button)`
+export const AddButton = styled(Button).attrs({
+  background: "bluish",
+  beforeIcon: <FontAwesomeIcon icon={faPlus} />,
+})`
   padding: 0;
 `;

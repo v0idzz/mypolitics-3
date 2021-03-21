@@ -40,5 +40,10 @@ export const Header = styled.div`
 
 export const Options = styled.div`
   display: flex;
-  flex-wrap: 1;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+
+  & > * {
+    margin: 4px;
+  }
 `;

@@ -12,9 +12,10 @@ interface Props {
   id: string;
   onClick?(): void;
   title?: string;
+  xl?: boolean;
 }
 
-const PartyItem: React.FC<Props> = ({ id, onClick, title }) => {
+const PartyItem: React.FC<Props> = ({ id, onClick, title, xl }) => {
   const { data } = useEntity<EditorPartyPartsFragment>({
     id,
     name: "Party",
@@ -32,6 +33,7 @@ const PartyItem: React.FC<Props> = ({ id, onClick, title }) => {
       src={logoUrl}
       alt={name}
       title={title || name}
+      xl={xl}
       {...collected}
     />
   );
