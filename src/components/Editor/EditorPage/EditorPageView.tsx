@@ -8,7 +8,7 @@ import {
   ContentWrapper,
   Header,
   IconWrapper,
-  Title
+  Title,
 } from "./EditorPageStyle";
 
 library.add(faPencilRuler);

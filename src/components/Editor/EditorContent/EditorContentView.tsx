@@ -22,7 +22,7 @@ import { Divider } from "@shared/Common";
 import GoogleAd from "@shared/GoogleAd";
 import { IdeologiesImport } from "@components/Editor/EditorIdeologies";
 import { PartiesImport } from "@components/Editor/EditorParties";
-import { Col, Row, Title } from "./EditorContentStyle";
+import { Col, Row, Title, ToolboxCol } from "./EditorContentStyle";
 import EditorSlidingUpPanel, {
   EditorSlidingUpPanelProvider,
 } from "@components/Editor/EditorSlidingUpPanel";
@@ -105,9 +105,9 @@ const EditorContent: React.FC = () => {
                   Utwórz pytanie
                 </Button>
               </Col>
-              <Col>
+              <ToolboxCol>
                 <Toolbox editor={editor} />
-              </Col>
+              </ToolboxCol>
             </Row>
             <Divider />
             {verifyVersion && <AdminFooter />}
