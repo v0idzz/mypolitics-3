@@ -29,8 +29,8 @@ import { Link, Section } from "@components/Quiz";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { CurrentTalk } from "@components/Talk";
 import Patreon from "@shared/Patreon";
-import styled from 'styled-components';
-import { EditorCTA } from '@components/Editor';
+import styled from "styled-components";
+import { EditorCTA } from "@components/Editor";
 
 library.add(faPollH);
 
@@ -73,6 +73,7 @@ const Home: React.FC<Props> = ({
             featured={quiz.slug === "mypolitics"}
             key={quiz.id}
             quiz={quiz}
+            showType
           />
         ))}
       </Section>
@@ -136,7 +137,10 @@ export const getServerSideProps = async (): Promise<{ props: Props }> => {
       posts: posts || [],
       talks: talks?.data?.talks || [],
       partners: partners?.data.partner.partners || [],
-      featuredQuizzes: quizzes?.data.featuredQuizzes || [],
+      featuredQuizzes: [
+        ...(quizzes?.data.featuredQuizzes || []),
+        ...(quizzes?.data.socialQuizzes || []).slice(0, 2),
+      ],
       patreons: patreons?.data.patreon,
     },
   };

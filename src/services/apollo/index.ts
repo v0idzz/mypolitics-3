@@ -10,6 +10,7 @@ import { BASE_PATH, Headers } from "@constants";
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import getConfig from "next/config";
+import graphqlFragments from "@generated/graphql-fragments";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -61,7 +62,7 @@ function createApolloClient() {
   return new ApolloClient({
     link: ApolloLink.from([authLink, errorLink, httpLink]),
     ssrMode: typeof window === "undefined",
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({ possibleTypes: graphqlFragments.possibleTypes }),
   });
 }
 

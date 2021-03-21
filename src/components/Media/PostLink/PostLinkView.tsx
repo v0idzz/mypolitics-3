@@ -22,7 +22,7 @@ interface Props {
 
 const PostLink: React.FC<Props> = ({ data, large = false }) => {
   const { id, tags, title, slug, feature_image: thumbnailUrl } = data;
-  const link = paths.article(slug, id);
+  const link = paths.article(slug);
   const { category, subCategories } = useCategory(tags);
   const hasSubcategories = subCategories.length > 0;
 

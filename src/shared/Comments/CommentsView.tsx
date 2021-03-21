@@ -18,7 +18,7 @@ const DisqusComments: React.FC<Props> = ({ post, quiz, type = "disqus" }) => {
   const disqusShortname = "mypolitics";
   const { lang } = useTranslation();
   const { url } = useCanonicalUrl(
-    post ? paths.article(post.slug, post.id) : paths.quiz(quiz.slug)
+    post ? paths.article(post.slug) : paths.quiz(quiz.slug)
   );
 
   const disqusConfig = {

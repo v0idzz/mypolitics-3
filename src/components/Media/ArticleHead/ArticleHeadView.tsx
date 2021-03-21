@@ -10,9 +10,9 @@ interface Props {
 }
 
 const ArticleHead: React.FC<Props> = ({ post }) => {
-  const { id, title, slug, tags, feature_image: featureImage, excerpt } = post;
+  const { title, slug, tags, feature_image: featureImage, excerpt } = post;
   const { category } = useCategory(tags);
-  const path = paths.article(slug, id);
+  const path = paths.article(slug);
   const { url } = useCanonicalUrl(path);
 
   return (

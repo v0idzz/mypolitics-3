@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "generate-init": "graphql-codegen init",
-    "generate": "graphql-codegen --config codegen.yml"
+    "generate": "graphql-codegen --config codegen.yml --stack-size=8500"
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
@@ -66,6 +66,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@graphql-codegen/cli": "^1.19.4",
+    "@graphql-codegen/fragment-matcher": "^2.0.1",
     "@graphql-codegen/introspection": "^1.18.1",
     "@graphql-codegen/typescript": "^1.19.0",
     "@graphql-codegen/typescript-operations": "^1.17.12",
