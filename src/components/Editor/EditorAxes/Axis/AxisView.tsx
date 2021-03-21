@@ -17,7 +17,6 @@ import {
   Container,
   Info,
   IdeologyContainer,
-  IdeologyDeleteButton,
   IdeologyName,
   Wrapper,
 } from "./AxisStyle";
@@ -37,7 +36,7 @@ const AxisIdeology: React.FC<{
     document: EditorAxisPartsFragmentDoc,
   });
   const { lang } = useTranslation();
-  const { ref, handleChange } = useAxisSelect({
+  const { ref, handleDrop } = useAxisSelect({
     side,
     axisId,
   });
@@ -50,7 +49,7 @@ const AxisIdeology: React.FC<{
 
   const handleClick = () => {
     show("ideology", (id) => {
-      handleChange({ id });
+      handleDrop({ id });
     });
   };
 
