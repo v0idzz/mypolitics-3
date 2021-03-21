@@ -12,15 +12,16 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import useEntity from "@components/Editor/utils/useEntity";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import ActionButton from "@shared/ActionButton";
-import { useAxisDrop, useIdeology } from "./AxisUtils";
+import { useAxisSelect, useIdeology } from "./AxisUtils";
 import {
   Container,
   Info,
   IdeologyContainer,
-  IdeologyDeleteButton,
   IdeologyName,
   Wrapper,
 } from "./AxisStyle";
+import useBreakpoint from "@utils/hooks/useBreakpoint";
+import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
 
 library.add(faTimes);
 
@@ -36,18 +37,31 @@ const AxisIdeology: React.FC<{
     document: EditorAxisPartsFragmentDoc,
   });
   const { lang } = useTranslation();
-  const { ref } = useAxisDrop({
+  const { ref, handleDrop } = useAxisSelect({
     side,
     axisId,
   });
+  const { show } = useEditorSlidingUpPanel();
 
   const handleDelete = () =>
     update({
       [side]: null,
     });
 
+  const handleClick = () => {
+    show("ideology", (id) => {
+      handleDrop({ id });
+    });
+  };
+
+  const isClickable = useBreakpoint("sm");
+
   if (!data) {
-    return <Info ref={ref}>Upuść ideologię</Info>;
+    return (
+      <Info onClick={handleClick} disabled={!isClickable} ref={ref}>
+        {isClickable ? "Kliknij, aby wybrać ideologię" : "Upuść ideologię"}
+      </Info>
+    );
   }
 
   const { name, icon, color } = data;

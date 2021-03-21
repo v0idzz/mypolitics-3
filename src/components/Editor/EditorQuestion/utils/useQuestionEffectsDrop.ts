@@ -8,6 +8,7 @@ import { UseQuestion } from "./useQuestion";
 
 interface UseQuestionDrop {
   ref: ConnectDropTarget;
+  handleDrop: ({ id }: any) => void;
 }
 
 interface UseQuestionDropInput {
@@ -59,6 +60,7 @@ const useQuestionEffectsDrop = <T>({
 
   return {
     ref: drop,
+    handleDrop,
   };
 };
 

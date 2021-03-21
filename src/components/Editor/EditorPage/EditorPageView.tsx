@@ -10,7 +10,6 @@ import {
   Header,
   IconWrapper,
   Title,
-  MobileInfo,
 } from "./EditorPageStyle";
 
 library.add(faPencilRuler);
@@ -31,11 +30,8 @@ const EditorPage: React.FC = () => {
       <ContentWrapper>
         <Content />
       </ContentWrapper>
-      <MobileInfo>
-        Edytor quizów jest dostępny tylko w wersji komputerowej.
-      </MobileInfo>
     </Container>
   );
-};
+}
 
 export default EditorPage;

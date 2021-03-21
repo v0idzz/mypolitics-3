@@ -13,9 +13,10 @@ interface Props {
   id: string;
   onClick?(): void;
   title?: string;
+  xl?: boolean;
 }
 
-const PartyItem: React.FC<Props> = ({ id, onClick, title }) => {
+const PartyItem: React.FC<Props> = ({ id, onClick, title, xl }) => {
   const { t } = useTranslation("editor");
   const { data } = useEntity<EditorPartyPartsFragment>({
     id,
@@ -34,6 +35,7 @@ const PartyItem: React.FC<Props> = ({ id, onClick, title }) => {
       src={logoUrl}
       alt={name}
       title={title || name}
+      xl={xl}
       {...collected}
     />
   );

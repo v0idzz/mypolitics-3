@@ -7,6 +7,9 @@ import { Info } from "@components/Editor/EditorQuestion/EditorQuestionStyle";
 import useTranslation from "next-translate/useTranslation";
 import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
 import { UseQuestion } from "../utils/useQuestion";
+import useBreakpoint from "@utils/hooks/useBreakpoint";
+import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
+import { AddButton } from "@components/Editor/EditorTraits/EditorTraitsStyle";
 
 interface Props {
   question: UseQuestion;
@@ -16,15 +19,22 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
   const { t } = useTranslation("editor");
   const { data, handleChange } = question;
   const args = { question, item: itemTypes.ideology };
-  const { ref: agreeRef } = useQuestionEffectsDrop({
-    type: "agree",
-    ...args,
-  });
+  const { ref: agreeRef, handleDrop: handleAgreeDrop } = useQuestionEffectsDrop(
+    {
+      type: "agree",
+      ...args,
+    }
+  );
 
-  const { ref: disagreeRef } = useQuestionEffectsDrop({
+  const {
+    ref: disagreeRef,
+    handleDrop: handleDisagreeDrop,
+  } = useQuestionEffectsDrop({
     type: "disagree",
     ...args,
   });
+
+  const { show } = useEditorSlidingUpPanel();
 
   const agreeIdeologies = data.effects.agree.ideologies || [];
   const disagreeIdeologies = data.effects.disagree.ideologies || [];
@@ -36,6 +46,15 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
       op: "remove",
       entity: "ideologies",
     });
+
+  const handlePickClick = (type: "agree" | "disagree") => {
+    show("ideology", (id: string) => {
+      const handler = type === "agree" ? handleAgreeDrop : handleDisagreeDrop;
+      handler({ id });
+    });
+  };
+
+  const isClickable = useBreakpoint("sm");
 
   return (
     <>
@@ -52,8 +71,18 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
               id={id}
             />
           ))}
+          {agreeIdeologies.length > 0 && isClickable && (
+            <AddButton onClick={() => handlePickClick("agree")} />
+          )}
           {agreeIdeologies.length === 0 && (
-            <Info>{t("question.dropHereIdeology")}</Info>
+            <Info
+              as={isClickable ? "button" : "div"}
+              onClick={() => handlePickClick("agree")}
+            >
+              {isClickable
+                ? t("question.clickHereIdeology")
+                : t("question.dropHereIdeology")}
+            </Info>
           )}
         </AnswerEffect>
       </div>
@@ -70,8 +99,18 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
               id={id}
             />
           ))}
+          {disagreeIdeologies.length > 0 && isClickable && (
+            <AddButton onClick={() => handlePickClick("disagree")} />
+          )}
           {disagreeIdeologies.length === 0 && (
-            <Info>{t("question.dropHereIdeology")}</Info>
+            <Info
+              as={isClickable ? "button" : "div"}
+              onClick={() => handlePickClick("disagree")}
+            >
+              {isClickable
+                ? t("question.clickHereIdeology")
+                : t("question.dropHereIdeology")}
+            </Info>
           )}
         </AnswerEffect>
       </div>
