@@ -70,7 +70,8 @@
     },
     "dropHere": "Upuść tutaj ideologię",
     "clickToDelete": "Kliknij, aby usunąć",
-    "dropHereIdeology": "Upuść tutaj ideologię"
+    "dropHereIdeology": "Upuść tutaj ideologię",
+    "clickHereIdeology": "Kliknij, aby wybrać ideologię"
   },
   "question": {
     "title": "Pytanie",
@@ -80,7 +81,9 @@
     "ideologiesFor": "Ideologie za",
     "ideologiesAgainst": "Ideologie przeciw",
     "dropHereParty": "Upuść tutaj partię",
+    "clickHereParty": "Kliknij, aby wybrać partię",
     "dropHereIdeology": "Upuść tutaj ideologię",
+    "clickHereIdeology": "Kliknij, aby wybrać ideologię",
     "createNew": "Utwórz pytanie",
     "clickToDelete": "Kliknij, aby usunąć"
   },
