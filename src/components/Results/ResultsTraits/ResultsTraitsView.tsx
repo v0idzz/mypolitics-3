@@ -21,7 +21,7 @@ const ResultsTraits: React.FC<Props> = ({ traits }) => {
   const [traitSelected, setTrait] = useState<
     ResultsTraitPartsFragment | undefined
   >();
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation("results");
 
   const onChange = (trait) => setTrait(trait);
   const onClose = () => setTrait(undefined);
@@ -40,15 +40,9 @@ const ResultsTraits: React.FC<Props> = ({ traits }) => {
   const traitsElements = R.map(toTrait, traits);
 
   const information = (
-    <InformationButton title="Jak działają cechy?">
-      <div>
-        Cechy to indywidualne poglądy użytkownika, które nie mogą być ukazane na
-        osiach.
-      </div>
-      <div>
-        Przyznawana jest ona wtedy gdy użytkownik w zdecydowany sposób odpowie
-        na określony dla danej cechy zestaw pytań i odpowiedzi.
-      </div>
+    <InformationButton title={t("trait.title")}>
+      <div>{t("trait.desc1")}</div>
+      <div>{t("trait.desc2")}</div>
     </InformationButton>
   );
 
@@ -61,7 +55,7 @@ const ResultsTraits: React.FC<Props> = ({ traits }) => {
       />
       <Container>
         <Header>
-          <HeaderTitle>Cechy</HeaderTitle>
+          <HeaderTitle>{t("trait.header")}</HeaderTitle>
           {information}
         </Header>
         <Content>{traitsElements}</Content>

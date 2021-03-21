@@ -10,6 +10,7 @@ import {
 } from "@generated/graphql";
 import * as R from "ramda";
 import Answer from "@components/Results/ResultsAnswers/Answer";
+import useTranslation from "next-translate/useTranslation";
 import {
   Content,
   IconWrapper,
@@ -41,6 +42,7 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId, parties }) => {
   const answers = data?.survey?.answers || [];
   const BASE_LIMIT = 25;
   const [limit, setLimit] = useState<number>(BASE_LIMIT);
+  const { t } = useTranslation("results");
   const handleShowMore = () => setLimit(limit + BASE_LIMIT);
 
   const limitedAnswers = answers.filter((_, i) => i < limit);
@@ -62,7 +64,7 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId, parties }) => {
           <IconWrapper>
             <FontAwesomeIcon icon={faPollH} />
           </IconWrapper>
-          <Title>Analiza odpowiedzi</Title>
+          <Title>{t("answers.analyze")}</Title>
         </div>
         {parties.length > 0 && (
           <Select
@@ -70,7 +72,7 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId, parties }) => {
             onChange={handlePartyChange}
           >
             <option value="undefined" disabled hidden>
-              Porównaj z partią
+              {t("answers.compare")}
             </option>
             {parties.map(({ id, name }) => (
               <option key={id} value={id}>
@@ -89,7 +91,7 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId, parties }) => {
             loading={loading}
             pulsating
           >
-            Pokaż
+            {t("answers.show")}
           </Button>
         )}
         {showButton && (
@@ -98,7 +100,7 @@ const ResultsAnswers: React.FC<Props> = ({ surveyId, parties }) => {
             beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
             loading={loading}
           >
-            Pokaż więcej
+            {t("answers.showMore")}
           </Button>
         )}
       </Content>

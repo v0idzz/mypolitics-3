@@ -26,7 +26,7 @@ interface Props {
 }
 
 const ResultsContent: React.FC<Props> = ({ results, politician }) => {
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation("results");
   const hasParties = results.parties.length > 0;
   const hasTraits = results.traits.length > 0;
   const hasAxes = results.axes.length > 0;
@@ -81,7 +81,7 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
       <Vote quizId={results.quiz.id} value={results.quiz.meta.votes.value} />
       <EditorCTA />
       <ShareSocial
-        message={`Sprawdź moje poglądy polityczne w ${results.quiz.title[lang]}!`}
+        message={`${t("content.checkOut")} ${results.quiz.title[lang]}!`}
       />
       <Like
         href="http://www.facebook.com/myPoliticsTest"
