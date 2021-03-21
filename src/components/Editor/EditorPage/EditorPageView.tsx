@@ -8,8 +8,7 @@ import {
   ContentWrapper,
   Header,
   IconWrapper,
-  Title,
-  MobileInfo,
+  Title
 } from "./EditorPageStyle";
 
 library.add(faPencilRuler);
@@ -27,9 +26,6 @@ const EditorPage: React.FC = () => (
     <ContentWrapper>
       <Content />
     </ContentWrapper>
-    <MobileInfo>
-      Edytor quizów jest dostępny tylko w wersji komputerowej.
-    </MobileInfo>
   </Container>
 );
 
