@@ -5,24 +5,27 @@ import { PostOrPage } from "@tryghost/content-api";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import { paths } from "@constants";
 import { Comments } from "react-facebook";
+import { QuizBasicPartsFragment } from "@generated/graphql";
 import { Container } from "./CommentsStyle";
 
 interface Props {
-  post: PostOrPage;
+  post?: PostOrPage;
+  quiz?: Pick<QuizBasicPartsFragment, "title" | "slug">;
   type?: "disqus" | "facebook";
 }
 
-const DisqusComments: React.FC<Props> = ({ post, type = "disqus" }) => {
-  const { lang } = useTranslation();
-  const { id, title } = post;
-  const { url } = useCanonicalUrl(paths.article(post.slug, post.id));
-
+const DisqusComments: React.FC<Props> = ({ post, quiz, type = "disqus" }) => {
   const disqusShortname = "mypolitics";
+  const { lang } = useTranslation();
+  const { url } = useCanonicalUrl(
+    post ? paths.article(post.slug, post.id) : paths.quiz(quiz.slug)
+  );
+
   const disqusConfig = {
-    identifier: id,
+    identifier: post ? post.id : quiz.slug,
+    title: post ? post.title[lang] : quiz.title[lang],
     language: lang,
     url,
-    title,
   };
 
   return (

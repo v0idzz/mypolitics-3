@@ -8,6 +8,7 @@ import {
 } from "@generated/graphql";
 import {
   faChartBar,
+  faComment,
   faHistory,
   faLandmark,
   faStar,
@@ -24,6 +25,7 @@ import { paths } from "@constants";
 import { LicenseLinks } from "@components/Quiz/SingleQuizPage/SingleQuizPageUtils";
 import { PoliticiansResults, Vote } from "@components/Quiz";
 import SurveysHistory from "@components/Survey/SurveysHistory";
+import DisqusComments from "@shared/Comments";
 import Box from "./SingleQuizPageBox";
 import {
   ButtonWrapper,
@@ -163,6 +165,16 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
               )}
             </MetaWrapper>
           </Box>
+          {isCommunity && (
+            <Box
+              header={{
+                title: "Komentarze",
+                icon: <FontAwesomeIcon icon={faComment} />,
+              }}
+            >
+              <DisqusComments quiz={quiz} />
+            </Box>
+          )}
           {!isClassic && (
             <ButtonWrapper>
               <Button loading={loading} onClick={handleStartClick} showShadow>

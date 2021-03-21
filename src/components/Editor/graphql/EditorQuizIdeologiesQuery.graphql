@@ -1,0 +1,9 @@
+query EditorQuizIdeologies ($slug: String!) {
+    quiz(slug: $slug) {
+        currentVersion {
+            ideologies {
+                ...EditorIdeologyParts
+            }
+        }
+    }
+}

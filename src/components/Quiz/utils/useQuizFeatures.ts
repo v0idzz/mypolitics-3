@@ -14,16 +14,8 @@ export const useQuizFeatures = (
   const { questionsNumber, ...featuresWoQuestionsNumber } = features;
   const featuresData = firstTimer ? featuresWoQuestionsNumber : features;
 
-  const getTranslatedName = (
-    key: string,
-    options?: Record<string, any>,
-    fallback = true
-  ) =>
-    t(`features.${key}`, options, {
-      fallback: fallback
-        ? getTranslatedName(`${key}.other`, options, false)
-        : `features.${key}`,
-    });
+  const getTranslatedName = (key: string, options?: Record<string, any>) =>
+    t(`features.${key}`, options, { fallback: `quiz:features.${key}.other` });
 
   Object.entries(featuresData).forEach(([key, featureValue]) => {
     if (featureValue <= 0) {

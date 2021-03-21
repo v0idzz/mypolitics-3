@@ -20,6 +20,7 @@ import {
   useRequestQuizVerifyMutation,
 } from "@generated/graphql";
 import hash from "object-hash";
+import { useRouter } from "next/router";
 import {
   Container,
   RequirementContainer,
@@ -39,6 +40,7 @@ interface Props {
 }
 
 const EditorFooter: React.FC<Props> = ({ editor }) => {
+  const router = useRouter();
   const { addToast } = useToasts();
   const [loading, setLoading] = useState(false);
   const { actions, versionInput, basicInput, data } = editor;
@@ -119,6 +121,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
 
       setTestedVersion(null);
       setRecaptcha("");
+      await router.push(paths.editorVerifyRequested(data.data.quiz.slug));
     } catch (e) {
       console.error(e);
     }

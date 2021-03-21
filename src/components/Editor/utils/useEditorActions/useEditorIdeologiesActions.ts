@@ -3,6 +3,7 @@ import {
   CreatePartyInput,
   EditorAxisPartsFragment,
   EditorAxisPartsFragmentDoc,
+  EditorIdeologyPartsFragment,
   EditorIdeologyPartsFragmentDoc,
   EditorQuestionPartsFragment,
   EditorQuestionPartsFragmentDoc,
@@ -28,6 +29,7 @@ import {
 export interface IdeologiesActions {
   delete(id: string);
   add(data: CreateIdeologyInput): Promise<void>;
+  import(data: EditorIdeologyPartsFragment[]): void;
   update(id: string, data: UpdateIdeologyInput);
 }
 
@@ -147,6 +149,22 @@ const useEditorIdeologiesActions = (
       } catch (e) {
         console.error(e);
       }
+    },
+    import: async (values) => {
+      const currentData = getCurrentData();
+      const currentIdeologies = currentData.quiz.lastUpdatedVersion.ideologies;
+      const currentIdeologiesIds = currentIdeologies.map((i) => i.id);
+      const filteredIdeologies = values.filter(
+        ({ id }) => !currentIdeologiesIds.includes(id)
+      );
+
+      update({
+        quiz: {
+          lastUpdatedVersion: {
+            ideologies: [...currentIdeologies, ...filteredIdeologies],
+          },
+        },
+      });
     },
   };
 };

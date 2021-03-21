@@ -9,8 +9,9 @@ import {
   Axes,
   Traits,
   Compasses,
-  Footer, AdminFooter,
-} from '@components/Editor';
+  Footer,
+  AdminFooter,
+} from "@components/Editor";
 import Loading from "@shared/Loading";
 import { useEditor } from "@components/Editor/utils/useEditor";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,6 +21,8 @@ import { useRouter } from "next/router";
 import Button from "@shared/Button";
 import { Divider } from "@shared/Common";
 import GoogleAd from "@shared/GoogleAd";
+import { IdeologiesImport } from "@components/Editor/EditorIdeologies";
+import { PartiesImport } from "@components/Editor/EditorParties";
 import { Col, Row, Title } from "./EditorContentStyle";
 
 library.add(faPlus);
@@ -49,10 +52,14 @@ const EditorContent: React.FC = () => {
           <GoogleAd id="myp3-standard-middle" />
           <Box header={<Title>Partie</Title>}>
             <Parties editor={editor} />
+            <Divider />
+            <PartiesImport editor={editor} />
           </Box>
           <GoogleAd id="myp3-standard-middle" />
           <Box header={<Title>Ideologie</Title>}>
             <Ideologies editor={editor} />
+            <Divider />
+            <IdeologiesImport editor={editor} />
           </Box>
           <Divider />
           <GoogleAd id="myp3-standard-middle" />

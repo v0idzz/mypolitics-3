@@ -20,10 +20,11 @@ interface Props {
   value: Country;
   onChange(value: Country): void;
   color: "background" | "backgroundDarken";
+  list?: Country[];
 }
 
-const CountrySelect: React.FC<Props> = ({ color, value, onChange }) => {
-  const countries = useCountries();
+const CountrySelect: React.FC<Props> = ({ color, value, onChange, list }) => {
+  const countries = useCountries(list);
   const [showFull, setShowFull] = useState<boolean>(false);
   const toggleShowFull = () => setShowFull(!showFull);
 
