@@ -24,7 +24,7 @@ interface Props {
 const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const { isClassic } = useCurrentResults();
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation("results");
   const [country, setCountry] = useState(langToCountry(lang));
   const maxParties = isClassic ? 1 : 2;
   const partiesList = parties
@@ -49,22 +49,16 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
   };
 
   const information = (
-    <InformationButton title="Jak działa dopasowanie partii?">
-      <div>
-        Procent oznacza ważoną kategoriami pytań zgodność odpowiedzi użytkownika
-        ze stanowiskami partii.
-      </div>
-      <div>
-        Pod wynikami, w sekcji "Analiza odpowiedzi", możesz sprawdzić z czym
-        konkretnie się zgadzasz (bądź nie) z daną opcją.
-      </div>
+    <InformationButton title={t("party.title")}>
+      <div>{t("party.desc1")}</div>
+      <div>{t("party.desc2")}</div>
     </InformationButton>
   );
 
   return (
     <Container>
       <Header>
-        <HeaderTitle>Partia</HeaderTitle>
+        <HeaderTitle>{t("party.header")}</HeaderTitle>
         {!isClassic && information}
         {countriesList.length > 1 && (
           <CountrySelect
@@ -78,7 +72,7 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
       <List>{partiesInfoList}</List>
       {!showMore && (
         <ButtonWrapper>
-          <Button onClick={handleShowMore}>Pokaż więcej</Button>
+          <Button onClick={handleShowMore}>{t("answers.showMore")}</Button>
         </ButtonWrapper>
       )}
     </Container>

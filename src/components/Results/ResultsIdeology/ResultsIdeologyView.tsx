@@ -3,6 +3,7 @@ import { ResultsCompassPartsFragment } from "@generated/graphql";
 import { useIdeology } from "@components/Results/ResultsIdeology/ResultsIdeologyUtils";
 import InformationButton from "@shared/InformationButton";
 import { useCurrentResults } from "@components/Results";
+import useTranslation from "next-translate/useTranslation";
 import { Container, Info, Version } from "./ResultsIdeologyStyle";
 
 interface Props {
@@ -14,17 +15,12 @@ const ResultsIdeology: React.FC<Props> = ({ compassMode }) => {
   const pointArray = [point.horizontal, point.vertical];
   const ideology = useIdeology(pointArray);
   const { isClassic } = useCurrentResults();
+  const { t } = useTranslation("results");
 
   const information = (
-    <InformationButton title="Jak działa dopasowanie ideologii?">
-      <div>
-        W wersji Alpha dopasowanie ideologii opiera się tylko i wyłącznie na
-        pozycji na kompasie.
-      </div>
-      <div>
-        Na podstawie przygotowanej wcześniej mapki ideologii, algorytm dobiera
-        tę na której znajdujesz się w danym momencie.
-      </div>
+    <InformationButton title={t("ideology.title")}>
+      <div>{t("ideology.desc1")}</div>
+      <div>{t("ideology.desc2")}</div>
     </InformationButton>
   );
 
