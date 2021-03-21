@@ -10,6 +10,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import PartyCard from "@components/Editor/EditorParties/PartyCard";
 import CountrySelect from "@shared/CountrySelect";
+import useTranslation from "next-translate/useTranslation";
 import { initialValues as defaultInitialValues } from "./PartyFormUtils";
 import { Input } from "./PartyFormStyle";
 
@@ -25,6 +26,7 @@ interface Props {
 }
 
 const PartyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
+  const { t } = useTranslation("editor");
   const {
     handleSubmit,
     handleChange,
@@ -38,21 +40,28 @@ const PartyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputLabel title="Logo" preventDefault={false} as="div">
+      <InputLabel
+        title={t("parties.form.logo")}
+        preventDefault={false}
+        as="div"
+      >
         <UploadInput
           endpoint={apiPaths.upload.icon}
           value={values.logoUrl}
           onChange={(value) => setFieldValue("logoUrl", value)}
         />
       </InputLabel>
-      <InputLabel title="Państwo">
+      <InputLabel title={t("parties.form.country")}>
         <CountrySelect
           value={values.country}
           onChange={(value) => setFieldValue("country", value)}
           color="backgroundDarken"
         />
       </InputLabel>
-      <InputLabel style={{ gridColumn: "1 / -1" }} title="Nazwa">
+      <InputLabel
+        style={{ gridColumn: "1 / -1" }}
+        title={t("parties.form.name")}
+      >
         <Input name="name" onChange={handleChange} value={values.name} />
       </InputLabel>
       <Divider />

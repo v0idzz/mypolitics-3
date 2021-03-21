@@ -7,6 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import PartyForm from "../PartyForm";
 import { Container } from "./PartyCreateStyle";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPlus);
 
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const PartyCreate: React.FC<Props> = ({ onClose, show, editor }) => {
+  const { t } = useTranslation("editor");
   const { actions } = editor;
   const theme = useTheme();
 
@@ -24,7 +26,7 @@ const PartyCreate: React.FC<Props> = ({ onClose, show, editor }) => {
     title: (
       <>
         <FontAwesomeIcon style={{ marginRight: "0.5rem" }} icon={faPlus} />
-        Utwórz partię
+        {t("parties.createModal.title")}
       </>
     ),
     color: theme.colors.primaryDarken,
@@ -41,7 +43,7 @@ const PartyCreate: React.FC<Props> = ({ onClose, show, editor }) => {
         <PartyForm
           onSubmit={handleSubmit}
           button={{
-            text: "Utwórz",
+            text: t("parties.createModal.button"),
             icon: <FontAwesomeIcon icon={faPlus} />,
           }}
         />

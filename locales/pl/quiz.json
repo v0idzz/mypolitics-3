@@ -22,7 +22,8 @@
     "72f8fe391101c447cc467ee2dcdcd9e8": "Liberalizm",
     "652cbd1d722c2fcd8e06aa34f8aa22fe": "Libertarianizm",
     "6410ff914a95dfcb1359e16f005b8abc": "Anarchokapitalizm",
-    "default": "Brak ideologii"
+    "default": "Brak ideologii",
+    "select": "Wybierz z listy"
   },
   "features": {
     "compass": "Kompas",
@@ -64,5 +65,98 @@
     "politician": "Polityka",
     "youth": "Młodzieżówki",
     "commentator": "Inne"
+  },
+  "init": {
+    "basic": "Zaczynamy!",
+    "lead": "Czy pierwszy raz wykonujesz test poglądów?",
+    "yes": "Tak",
+    "no": "Nie",
+    "simplified": "Uproszczony",
+    "advancedVariant": "Zaawansowany",
+    "advanced": "Witaj, weteranie!",
+    "top": "Prosimy Cię o podanie najbliższej ideologii i miejsca na kompasie dwuosiowym. Pozwoli to nam na udoskonalenie aplikacji.",
+    "skip": "Pomiń",
+    "save": "Zapisz dane"
+  },
+  "preInit": {
+    "before": "Przed quizem",
+    "hey": "Cześć!",
+    "beforeWeStart": "Zanim przejdziesz do quizów...",
+    "top": "Twoja prywatność jest dla nas priorytetem. Tutaj prosto opisaliśmy jak i w jakich celach przechowujemy Twoje dane.",
+    "privacy": "Twoje wyniki są <0>anonimowe</0> i nie ma możliwości ich powiązania z Tobą (chyba że sam je upublicznisz)",
+    "data": "Dane są analizowane zbiorowo w celu poprawy dokładności aplikacji",
+    "next": "Przejdź dalej"
+  },
+  "link": {
+    "edit": "Edytuj",
+    "view": "Zobacz",
+    "begin": "Rozpocznij",
+    "social": "Społecznościowy",
+    "published": "Opublikowane",
+    "denied": "Odrzucone",
+    "inVerification": "W weryfikacji",
+    "reason1": "Powód odrzucenia",
+    "reason2": "Powód"
+  },
+  "results": {
+    "showMore": "Pokaż więcej",
+    "none": "Brak wyników",
+    "famous": "Wyniki znanych postaci"
+  },
+  "respondent": {
+    "title": "Kod respondenta",
+    "privacy": "Chronimy Twoją prywatność, nie przechowujemy powiązania pomiędzy Tobą, a Twoimi poglądami politycznymi. Ten unikalny kod umożliwia ci odczytywanie historii wyników na innych urządzeniach.",
+    "change": "Zmień",
+    "header": "Zmiana kodu respondenta",
+    "confirm": "Potwierdź"
+  },
+  "vote": {
+    "votes": "Głosy:",
+    "rate": "Oceń quiz:"
+  },
+  "quizzes": {
+    "other": "Sprawdź inne quizy",
+    "history": "Historia wyników"
+  },
+  "single": {
+    "social": "Quiz społecznościowy",
+    "functions": "Funkcje",
+    "stats": "Statystyki",
+    "tests": "testów",
+    "famous": "Wyniki znanych osób",
+    "author": "Twórca:",
+    "license": "Licencja:",
+    "comments": "Komentarze"
+  },
+  "surveyHistory": {
+    "title": "Historia wyników",
+    "showMore": "Pokaż więcej",
+    "emptyInfo": "Historia jest pusta. Wykonaj quiz!",
+    "type": {
+      "finished": "Ukończone",
+      "notFinishedYet": "W trakcie"
+    }
+  },
+  "survey": {
+    "bottomInfo": "Test możesz przerwać w każdym momencie, Twoje postępy są zapisywane.",
+    "question": "Pytanie",
+    "actions": {
+      "previousQuestion": "Poprzednie pytanie",
+      "reset": "Rozpocznij od nowa",
+      "resetConfirm": "Resetuj",
+      "main": {
+        "hover": "Kliknij, by anulować",
+        "notHover": "Wybierz rodzaj poniżej"
+      },
+      "answer": {
+        "neutral": "Nie wiem",
+        "agree": "Zgadzam się",
+        "disagree": "Nie zgadzam się"
+      },
+      "weight": {
+        "1": "Częściowo",
+        "2": "Zdecydowanie"
+      }
+    }
   }
 }

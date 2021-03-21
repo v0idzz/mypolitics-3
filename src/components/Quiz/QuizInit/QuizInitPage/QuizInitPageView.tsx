@@ -7,33 +7,38 @@ import Link from "next/link";
 import { paths } from "@constants";
 import GoogleAd from "@shared/GoogleAd";
 import { ButtonChips, Content } from "./QuizInitPageStyle";
+import useTranslation from "next-translate/useTranslation";
 
-const QuizInitPage: React.FC = () => (
-  <CenteredPage fullWidth={false}>
-    <NextSeo title="Zaczynamy!" titleTemplate="%s – myPolitics" />
-    <GoogleAd id="myp3-standard-top" />
-    <InitStep
-      title="Zaczynamy!"
-      lead="Czy pierwszy raz wykonujesz test poglądów?"
-      showDivider
-    >
-      <Content>
-        <Link href={paths.quiz("mypolitics")} passHref>
-          <Button as="a" size="large" showShadow>
-            Tak
-            <ButtonChips background="gray">Uproszczony</ButtonChips>
-          </Button>
-        </Link>
-        <Link href={paths.quizzesAdvancedInitialize} passHref>
-          <Button as="a" size="large" background="gray">
-            Nie
-            <ButtonChips background="blue">Zaawansowany</ButtonChips>
-          </Button>
-        </Link>
-      </Content>
-    </InitStep>
-    <GoogleAd id="myp3-standard-bottom" />
-  </CenteredPage>
-);
+const QuizInitPage: React.FC = () => {
+    const {t} = useTranslation('quiz');
+
+    return (
+        <CenteredPage fullWidth={false}>
+            <NextSeo title={t('init.basic')} titleTemplate="%s – myPolitics" />
+            <GoogleAd id="myp3-standard-top" />
+            <InitStep
+                title={t('init.basic')}
+                lead={t('init.lead')}
+                showDivider
+            >
+                <Content>
+                    <Link href={paths.quiz("mypolitics")} passHref>
+                        <Button as="a" size="large" showShadow>
+                            {t('init.yes')}
+                            <ButtonChips background="gray">{t('init.simplified')}</ButtonChips>
+                        </Button>
+                    </Link>
+                    <Link href={paths.quizzesAdvancedInitialize} passHref>
+                        <Button as="a" size="large" background="gray">
+                            {t('init.no')}
+                            <ButtonChips background="blue">{t('init.advancedVariant')}</ButtonChips>
+                        </Button>
+                    </Link>
+                </Content>
+            </InitStep>
+            <GoogleAd id="myp3-standard-bottom" />
+        </CenteredPage>
+    );
+}
 
 export default QuizInitPage;

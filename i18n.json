@@ -6,6 +6,9 @@
     "/": ["home"],
     "rgx:^\\/articles|.+": ["articles"],
     "rgx:^\\/quizzes$|.+": ["quiz"],
-    "rgx:^\\/results|.+": ["quiz"]
+    "rgx:^\\/results|.+": ["quiz", "results"],
+    "rgx:^\\/editor|.+": ["editor"],
+    "rgx:^\\/auth|.+": ["auth"],
+    "rgx:^\\/survey|.+": ["quiz"]
   }
 }

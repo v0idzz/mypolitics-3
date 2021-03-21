@@ -7,6 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import { Container } from "./EditorAxesStyle";
 import Axis from "./Axis";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPlus);
 
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const EditorAxes: React.FC<Props> = ({ editor }) => {
+  const { t } = useTranslation("editor");
   const { actions, data } = editor;
   const { axes } = data.data.quiz.lastUpdatedVersion;
   const handleNewAxis = () => actions.axes.add([null, null]);
@@ -33,7 +35,7 @@ const EditorAxes: React.FC<Props> = ({ editor }) => {
         background="bluish"
         beforeIcon={<FontAwesomeIcon icon={faPlus} />}
       >
-        Utwórz oś
+        {t("axes.createButton")}
       </Button>
     </Container>
   );

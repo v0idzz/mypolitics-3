@@ -12,6 +12,7 @@ import { Formik } from "formik";
 import { changeCodePlaceholder } from "@components/Quiz/QuizRespondent/QuizRespondentUtils";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 import {
   Container,
   Divider,
@@ -36,6 +37,7 @@ const QuizRespondent: React.FC = () => {
     onCompleted: router.reload,
   });
   const [isVisible, setVisible] = React.useState<boolean>(false);
+  const { t } = useTranslation("quiz");
 
   const handleCodeChange = async (values, { setSubmitting }) => {
     try {
@@ -55,17 +57,14 @@ const QuizRespondent: React.FC = () => {
   return (
     <Container>
       <Info>
-        <Title>Kod respondenta</Title>
+        <Title>{t("respondent.title")}</Title>
         <CodesWrapper>
           {respondent.code.map((code) => (
             <CodeElement key={code}>{code}</CodeElement>
           ))}
         </CodesWrapper>
         <Divider />
-        <Description>
-          Wpisz ten kod na innych urządzeniach, aby przesyłać między nimi wyniki
-          w&nbsp;quizach
-        </Description>
+        <Description>{t("respondent.privacy")}</Description>
       </Info>
       <Actions>
         <Button
@@ -73,12 +72,12 @@ const QuizRespondent: React.FC = () => {
           beforeIcon={<FontAwesomeIcon icon={faPen} />}
           background="gray"
         >
-          Zmień
+          {t("respondent.change")}
         </Button>
       </Actions>
       <Modal
         header={{
-          title: "Zmiana kodu respondenta",
+          title: t("respondent.header"),
           color: "#00B3DB",
         }}
         show={isVisible}
@@ -109,7 +108,7 @@ const QuizRespondent: React.FC = () => {
                 disabled={isSubmitting}
                 loading={isSubmitting}
               >
-                Potwierdź
+                {t("respondent.confirm")}
               </Button>
             </Form>
           )}

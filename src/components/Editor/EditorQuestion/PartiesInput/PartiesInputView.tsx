@@ -3,6 +3,7 @@ import { AnswerEffect } from "@components/Results";
 import { SurveyAnswerType } from "@generated/graphql";
 import { itemTypes } from "@constants";
 import { PartyItem } from "@components/Editor";
+import useTranslation from "next-translate/useTranslation";
 import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
 import { UseQuestion } from "../utils/useQuestion";
 import { Info } from "../EditorQuestionStyle";
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const PartiesInput: React.FC<Props> = ({ question }) => {
+  const { t } = useTranslation("editor");
   const { data, handleChange } = question;
   const args = { question, item: itemTypes.party };
   const { ref: agreeRef, handleDrop: handleAgreeDrop } = useQuestionEffectsDrop(
@@ -57,11 +59,14 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
   return (
     <>
       <div ref={agreeRef}>
-        <AnswerEffect title="Partie za" type={SurveyAnswerType.Agree}>
+        <AnswerEffect
+          title={t("question.partiesFor")}
+          type={SurveyAnswerType.Agree}
+        >
           {agreeParties.map(({ id }) => (
             <PartyItem
               onClick={() => handleRemove(id, "agree")}
-              title="Kliknij, aby usunąć"
+              title={t("question.clickToDelete")}
               key={id}
               id={id}
             />
@@ -75,18 +80,21 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
               onClick={() => handlePickClick("agree")}
             >
               {isClickable
-                ? "Kliknij, aby wybrać partię"
-                : "Upuść tutaj partię"}
+                ? t("question.clickHereParty")
+                : t("question.dropHereParty")}
             </Info>
           )}
         </AnswerEffect>
       </div>
       <div ref={disagreeRef}>
-        <AnswerEffect title="Partie przeciw" type={SurveyAnswerType.Disagree}>
+        <AnswerEffect
+          title={t("question.partiesAgainst")}
+          type={SurveyAnswerType.Disagree}
+        >
           {disagreeParties.map(({ id }) => (
             <PartyItem
               onClick={() => handleRemove(id, "disagree")}
-              title="Kliknij, aby usunąć"
+              title={t("question.clickToDelete")}
               key={id}
               id={id}
             />
@@ -100,8 +108,8 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
               as={isClickable ? "button" : "div"}
             >
               {isClickable
-                ? "Kliknij, aby wybrać partię"
-                : "Upuść tutaj partię"}
+                ? t("question.clickHereParty")
+                : t("question.dropHereParty")}
             </Info>
           )}
         </AnswerEffect>

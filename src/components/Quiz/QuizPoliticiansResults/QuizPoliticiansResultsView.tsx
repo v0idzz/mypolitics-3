@@ -13,6 +13,7 @@ import Loading from "@shared/Loading";
 import Link from "next/link";
 import { paths } from "@constants";
 import Button from "@shared/Button";
+import useTranslation from "next-translate/useTranslation";
 import CategorySelect from "./CategorySelect";
 import {
   PoliticianResultsLink,
@@ -45,6 +46,7 @@ const QuizPoliticiansResults: React.FC<Props> = ({
       ...props,
     },
   });
+  const { t } = useTranslation("quiz");
 
   const politiciansResults = data?.politicianResultsConnection.values || [];
   const resultsLimited = politiciansResults.filter((_, k) => k < limit);
@@ -76,7 +78,7 @@ const QuizPoliticiansResults: React.FC<Props> = ({
       {hasMore && (
         <ButtonWrapper>
           <Button onClick={handleShowMore} showShadow>
-            Pokaż więcej
+            {t("results.showMore")}
           </Button>
         </ButtonWrapper>
       )}
@@ -86,7 +88,7 @@ const QuizPoliticiansResults: React.FC<Props> = ({
   const empty = !loading && resultsList.length === 0;
 
   const content = empty ? (
-    <EmptyWrapper>Brak wyników</EmptyWrapper>
+    <EmptyWrapper>{t("results.none")}</EmptyWrapper>
   ) : (
     baseContent
   );
@@ -98,7 +100,7 @@ const QuizPoliticiansResults: React.FC<Props> = ({
   return (
     <QuizzesSection
       icon={<FontAwesomeIcon icon={faLandmark} />}
-      title="Wyniki znanych postaci"
+      title={t("results.famous")}
     >
       {content}
     </QuizzesSection>

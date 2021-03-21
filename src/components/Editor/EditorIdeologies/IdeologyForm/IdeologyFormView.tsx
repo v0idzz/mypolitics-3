@@ -11,6 +11,7 @@ import { IdeologyCard } from "@components/Editor";
 import Button from "@shared/Button";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import useTranslation from "next-translate/useTranslation";
 import { ColorInputWrapper, BlockPickerWrapper } from "./IdeologFormStyle";
 import {
   colors,
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
+  const { t } = useTranslation("editor");
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
 
   const {
@@ -44,7 +46,11 @@ const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputLabel title="Symbol" preventDefault={false} as="div">
+      <InputLabel
+        title={t("ideologies.form.icon")}
+        preventDefault={false}
+        as="div"
+      >
         <UploadInput
           endpoint={apiPaths.upload.icon}
           value={values.icon.value}
@@ -53,7 +59,7 @@ const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
           }}
         />
       </InputLabel>
-      <InputLabel title="Nazwa">
+      <InputLabel title={t("ideologies.form.name")}>
         <InternationalizedInput
           value={values.name}
           onChange={(value) => {
@@ -62,7 +68,7 @@ const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
         />
       </InputLabel>
       <ColorInputWrapper>
-        <InputLabel title="Kolor">
+        <InputLabel title={t("ideologies.form.color")}>
           <input
             name="color"
             type="color"
@@ -87,7 +93,7 @@ const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
           </BlockPickerWrapper>
         )}
       </ColorInputWrapper>
-      <InputLabel title="Opis">
+      <InputLabel title={t("ideologies.form.description")}>
         <InternationalizedInput
           value={values.name}
           onChange={(value) => {

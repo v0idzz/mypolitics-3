@@ -50,5 +50,44 @@
     "interview": "Wywiad",
     "expert": "Okiem Eksperta",
     "ring": "Ring Polityczny"
+  },
+  "country": {
+    "POLAND": "Polska",
+    "ENGLAND": "Wielka Brytania",
+    "UNITED_STATES": "USA"
+  },
+  "groupAd": {
+    "button": "Dołącz!"
+  },
+  "patreon": {
+    "title": "Patronite",
+    "description": "Nie mamy powiązania z żadną opcją wpływu i nikt nas nie finansuje. Możesz wesprzeć nasze działania poprzez Patronite",
+    "list": {
+      "title": "Patroni myPolitics",
+      "updatedAt": "Stan na dzień:"
+    },
+    "button": "Zostań Patronem!"
+  },
+  "editorCta": {
+    "button": "Panel twórcy",
+    "title": {
+      "0": "Słaby quiz?",
+      "1": "Stwórz lepszy w naszym edytorze!"
+    }
+  },
+  "standardPage": {
+    "section": {
+      "quizzes": {
+        "title": "Testy poglądów politycznych",
+        "button": "Pokaż więcej"
+      }
+    }
+  },
+  "uploadInput": {
+    "button": "Wybierz plik"
+  },
+  "userInfo": {
+    "login": "Zaloguj się",
+    "logoutSuccess": "Poprawnie wylogowano"
   }
 }

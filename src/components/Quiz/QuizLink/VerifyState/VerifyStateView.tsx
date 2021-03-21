@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp, library } from "@fortawesome/fontawesome-svg-core";
 import Modal from "@shared/Modal";
 import { useTheme } from "styled-components";
+import useTranslation from "next-translate/useTranslation";
 import { Container } from "./VerifyStateStyle";
 
 library.add(faCheck, faClock, faTimes, faQuestionCircle);
@@ -23,15 +24,16 @@ interface Props {
 
 const VerifyState: React.FC<Props> = ({ quiz }) => {
   const theme = useTheme();
+  const { t } = useTranslation("quiz");
   const [showModal, setShowModal] = useState(false);
   if (!quiz.verifyRequest) {
     return null;
   }
 
   const config: Record<QuizVerificationState, [IconProp, string]> = {
-    [QuizVerificationState.Accepted]: [faCheck, "Opublikowane"],
-    [QuizVerificationState.Declined]: [faTimes, "Odrzucone"],
-    [QuizVerificationState.Idle]: [faClock, "W weryfikacji"],
+    [QuizVerificationState.Accepted]: [faCheck, t("link.published")],
+    [QuizVerificationState.Declined]: [faTimes, t("link.denied")],
+    [QuizVerificationState.Idle]: [faClock, t("link.inVerification")],
   };
   const { reason, state } = quiz.verifyRequest;
   const [icon, text] = config[state];
@@ -42,7 +44,7 @@ const VerifyState: React.FC<Props> = ({ quiz }) => {
         show={showModal}
         onClose={() => setShowModal(false)}
         header={{
-          title: "Powód odrzucenia",
+          title: t("link.reason1"),
           color: theme.colors.red,
         }}
       >
@@ -54,7 +56,7 @@ const VerifyState: React.FC<Props> = ({ quiz }) => {
         {state === QuizVerificationState.Declined && (
           <button onClick={() => setShowModal(true)}>
             <FontAwesomeIcon icon={faQuestionCircle} />
-            Powód
+            {t("link.reason2")}
           </button>
         )}
       </Container>

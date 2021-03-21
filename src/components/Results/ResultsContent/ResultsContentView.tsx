@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import {
+  QuizType,
   ResultsCompassPartsFragment,
   ResultsPartsFragment,
   ResultsPoliticianPartsFragment,
 } from "@generated/graphql";
 import {
-  PoliticianInfo,
-  Description,
   Axes,
-  Ideology,
   Compass,
+  Description,
+  Ideology,
   Party,
+  PoliticianInfo,
   Traits,
 } from "@components/Results";
 import ShareSocial from "@shared/ShareSocial";
 import { Like } from "react-facebook";
 import useTranslation from "next-translate/useTranslation";
-import { Vote } from "@components/Quiz";
 import { EditorCTA } from "@components/Editor";
-import { Container, Col, Row } from "./ResultsContentStyle";
+import { Vote } from "@components/Quiz";
+import { Col, Container, Row } from "./ResultsContentStyle";
 
 interface Props {
   results: ResultsPartsFragment;
@@ -26,7 +27,7 @@ interface Props {
 }
 
 const ResultsContent: React.FC<Props> = ({ results, politician }) => {
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation("results");
   const hasParties = results.parties.length > 0;
   const hasTraits = results.traits.length > 0;
   const hasAxes = results.axes.length > 0;
@@ -78,10 +79,12 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
           </Col>
         )}
       </Row>
-      <Vote quizId={results.quiz.id} value={results.quiz.meta.votes.value} />
+      {results.quiz.type === QuizType.Community && (
+        <Vote quizId={results.quiz.id} value={results.quiz.meta.votes.value} />
+      )}
       <EditorCTA />
       <ShareSocial
-        message={`Sprawdź moje poglądy polityczne w ${results.quiz.title[lang]}!`}
+        message={`${t("content.checkOut")} ${results.quiz.title[lang]}!`}
       />
       <Like
         href="http://www.facebook.com/myPoliticsTest"

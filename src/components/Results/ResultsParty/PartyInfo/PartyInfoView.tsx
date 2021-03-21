@@ -12,6 +12,7 @@ import Modal from "@shared/Modal";
 import { useTheme } from "styled-components";
 import { useCurrentResults } from "@components/Results";
 import * as R from "ramda";
+import useTranslation from "next-translate/useTranslation";
 import {
   Container,
   Header,
@@ -34,6 +35,7 @@ const PartyInfo: React.FC<Props> = ({ data, authorized }) => {
   const { logoUrl, name, percentAgreement } = data;
   const [showInfo, setShowInfo] = useState<boolean>(false);
   const { isClassic } = useCurrentResults();
+  const { t } = useTranslation("results");
 
   const classicAgreement = R.cond([
     [R.gte(R.__, 85), R.always(<FontAwesomeIcon icon={faCheck} />)],
@@ -50,7 +52,7 @@ const PartyInfo: React.FC<Props> = ({ data, authorized }) => {
           title: (
             <Header>
               <Image src={logoUrl} alt={name} small />
-              <div>Zgodność odpowiedzi</div>
+              <div>{t("party.agreement")}</div>
             </Header>
           ),
           color: theme.colors.primaryDarken,
@@ -58,14 +60,10 @@ const PartyInfo: React.FC<Props> = ({ data, authorized }) => {
       >
         {authorized && (
           <AuthorizedBackground>
-            Niebieski znaczek informuje, że wyznaczona osoba reprezentująca
-            partię {name} autoryzowała jej odpowiedzi w teście.
+            {t("party.authorized", { name })}
           </AuthorizedBackground>
         )}
-        <div>
-          Procent oznacza ważoną kategoriami pytań zgodność odpowiedzi
-          użytkownika ze stanowiskami partii.
-        </div>
+        <div>{t("party.percentage")}</div>
       </Modal>
       <Container>
         <Header>
@@ -78,7 +76,7 @@ const PartyInfo: React.FC<Props> = ({ data, authorized }) => {
           isClassic={isClassic}
         >
           {authorized && (
-            <AuthorizedIconWrapper title="Odpowiedź autoryzowana">
+            <AuthorizedIconWrapper title={t("party.auth")}>
               <FontAwesomeIcon icon={faCheckCircle} />
             </AuthorizedIconWrapper>
           )}

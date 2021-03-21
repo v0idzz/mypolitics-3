@@ -7,6 +7,7 @@ import {
   UseSurveyData,
 } from "@components/Survey/utils/useSurvey";
 import { useFirstTimer } from "@utils/hooks/useFirstTimer";
+import useTranslation from "next-translate/useTranslation";
 import { Container, Info, Actions, Button } from "./SurveyHeaderStyle";
 
 library.add(faArrowLeft, faUndoAlt);
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
+  const { t } = useTranslation("quiz");
   const [confirmReset, setConfirmReset] = useState<boolean>(false);
   const { value: firstTimer, setValue: setFirstTimer } = useFirstTimer();
   const { previousQuestion, deleteSurvey } = actions;
@@ -49,7 +51,7 @@ const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
         <Button
           disabled={isFirstQuestion}
           onClick={previousQuestion}
-          title="Poprzednie pytanie"
+          title={t("survey.actions.previousQuestion")}
         >
           <FontAwesomeIcon icon={faArrowLeft} />
         </Button>
@@ -57,15 +59,15 @@ const SurveyHeader: React.FC<Props> = ({ actions, data }) => {
           disabled={isFirstQuestion}
           hasText={confirmReset}
           onClick={handleConfirmReset}
-          title="Rozpocznij od nowa"
+          title={t("survey.actions.reset")}
           warning
         >
-          {confirmReset && "Resetuj"}
+          {confirmReset && t("survey.actions.resetConfirm")}
           {!confirmReset && <FontAwesomeIcon icon={faUndoAlt} />}
         </Button>
       </Actions>
       <Info>
-        Pytanie&nbsp;
+        {t("survey.question")}&nbsp;
         <span>
           {answers.length + 1}
           {!firstTimer && `/${questions.length}`}

@@ -15,6 +15,7 @@ import {
   Row,
 } from "./EditorQuestionStyle";
 import PartiesInput from "./PartiesInput";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faChevronDown, faTrash);
 
@@ -25,6 +26,7 @@ interface Props {
 }
 
 const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
+  const { t } = useTranslation("editor");
   const { actions } = editor;
   const question = useQuestion(questionId);
   const [deleteConfirmed, setDeleteConfirmed] = useState<boolean>(false);
@@ -43,12 +45,12 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
   const header = (
     <>
       <NumberWrapper>
-        Pytanie&nbsp;<span>#{index + 1}</span>
+        {t("question.title")}&nbsp;<span>#{index + 1}</span>
       </NumberWrapper>
       <ActionsWrapper>
         <ActionButton
           onClick={handleDeleteConfirm}
-          title="Usuń pytanie"
+          title={t("question.deleteButton")}
           mustConfirm
           variant="red"
           size="large"

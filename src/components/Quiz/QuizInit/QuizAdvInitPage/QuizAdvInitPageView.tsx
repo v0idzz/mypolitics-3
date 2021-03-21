@@ -23,9 +23,11 @@ import {
   ActionsWrapper,
 } from "./QuizAdvInitPageStyle";
 import { defaultData } from "./QuizAdvInitPageUtils";
+import useTranslation from "next-translate/useTranslation";
 
 const QuizPreInitPage: React.FC = () => {
-  const router = useRouter();
+    const router = useRouter();
+    const {t} = useTranslation('quiz');
   const { setValue: setFirstTimer } = useFirstTimer();
   const handleErrors = useHandleErrors();
   const [updateRespondent, { loading }] = useUpdateRespondentMutation();
@@ -67,13 +69,12 @@ const QuizPreInitPage: React.FC = () => {
 
   return (
     <CenteredPage fullWidth={false}>
-      <NextSeo title="Witaj, weteranie" titleTemplate="%s – myPolitics" />
+      <NextSeo title={t('init.advanced')} titleTemplate="%s – myPolitics" />
       <GoogleAd id="myp3-standard-top" />
-      <InitStep title="Witaj, weteranie!">
+      <InitStep title={t('init.advanced')}>
         <Content>
           <TopText>
-            Prosimy Cię o podanie najbliższej ideologii i miejsca na kompasie
-            dwuosiowym. Pozwoli to nam na udoskonalenie aplikacji
+            {t('init.top')}
           </TopText>
           <FormWrapper>
             <FormContainer>
@@ -90,12 +91,12 @@ const QuizPreInitPage: React.FC = () => {
           <ActionsWrapper>
             <Link href={paths.quizzes} passHref>
               <Button as="a" background="gray">
-                Pomiń
+                {t('init.skip')}
               </Button>
             </Link>
             {dataChanged && (
               <Button onClick={handleSave} disabled={loading} showShadow>
-                Zapisz dane
+                {t('init.save')}
               </Button>
             )}
           </ActionsWrapper>

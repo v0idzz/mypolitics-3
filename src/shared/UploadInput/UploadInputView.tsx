@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import useTranslation from "next-translate/useTranslation";
 import { Label, ImageWrapper, ActionButton } from "./UploadInputStyle";
 
 library.add(faImage, faTimes);
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const UploadInput: React.FC<Props> = ({ endpoint, value, onChange }) => {
+  const { t } = useTranslation("common");
   const [selectedFile, setSelectedFile] = useState();
 
   const changeHandler = (event) => {
@@ -53,7 +55,7 @@ const UploadInput: React.FC<Props> = ({ endpoint, value, onChange }) => {
     <Label>
       <input type="file" name="file" onChange={changeHandler} />
       <FontAwesomeIcon icon={faImage} />
-      <span>Wybierz</span>
+      <span>{t("uploadInput.button")}</span>
     </Label>
   );
 };

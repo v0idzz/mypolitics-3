@@ -25,7 +25,7 @@ interface Props {
 }
 
 const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation("results");
   const { quiz, updatedAt, id } = results;
   const path = paths.quiz(quiz.slug);
 
@@ -44,11 +44,11 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
         </div>
         <Info>
           <Date>
-            <span>Ukończono</span>&nbsp;
+            <span>{t("header.finished")}</span>&nbsp;
             {dayjs(updatedAt).locale(lang).format("DD.MM.YYYY, HH:MM")}
           </Date>
           <Id>
-            <span>ID:</span>
+            <span>{t("header.id")}</span>
             {id}
           </Id>
         </Info>
@@ -57,7 +57,7 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
         <PoliticianSubHeader>{politician.name}</PoliticianSubHeader>
       )}
       {quiz.type === QuizType.Community && (
-        <AuthorHeader>Quiz społecznościowy</AuthorHeader>
+        <AuthorHeader>{t("header.social")}</AuthorHeader>
       )}
     </div>
   );

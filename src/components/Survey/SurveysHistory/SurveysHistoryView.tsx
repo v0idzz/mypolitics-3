@@ -32,7 +32,7 @@ const SurveyHistoryElement: React.FC<SurveyHistoryElementProps> = ({
   data,
   contentOnly,
 }) => {
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation("quiz");
   const { quiz, surveys } = data;
   const BASE_LIMIT = 3;
   const [limit, setLimit] = useState<number>(BASE_LIMIT);
@@ -59,7 +59,7 @@ const SurveyHistoryElement: React.FC<SurveyHistoryElementProps> = ({
           onClick={handleShowMore}
           beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
         >
-          Pokaż więcej
+          {t("surveyHistory.showMore")}
         </Button>
       )}
     </>
@@ -67,7 +67,7 @@ const SurveyHistoryElement: React.FC<SurveyHistoryElementProps> = ({
 
   const empty = listElements.length === 0;
   const content = empty ? (
-    <EmptyWrapper>Historia jest pusta. Wykonaj quiz!</EmptyWrapper>
+    <EmptyWrapper>{t("surveyHistory.emptyInfo")}</EmptyWrapper>
   ) : (
     baseContent
   );
@@ -104,6 +104,7 @@ interface Props {
 }
 
 const SurveysHistory: React.FC<Props> = ({ quizSlug, onlyContent = false }) => {
+  const { t } = useTranslation("quiz");
   const { data } = useMeRespondentSurveysQuery();
   const classicResults = useClassicResults();
 
@@ -138,7 +139,7 @@ const SurveysHistory: React.FC<Props> = ({ quizSlug, onlyContent = false }) => {
 
   const empty = quizzesSurveysElements.length === 0;
   const content = empty ? (
-    <EmptyWrapper>Historia jest pusta. Wykonaj quiz!</EmptyWrapper>
+    <EmptyWrapper>{t("surveyHistory.emptyInfo")}</EmptyWrapper>
   ) : (
     quizzesSurveysElements
   );

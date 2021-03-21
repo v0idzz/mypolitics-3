@@ -11,6 +11,7 @@ import {
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import { useRouter } from "next/router";
 import { paths } from "@constants";
+import useTranslation from "next-translate/useTranslation";
 import { Container, Value, VoteWrapper } from "./QuizVoteStyle";
 
 library.add(faThumbsUp, faThumbsDown);
@@ -27,6 +28,7 @@ const QuizVote: React.FC<Props> = ({ quizId, value }) => {
   const { data } = useCurrentUserQuery({
     fetchPolicy: "cache-only",
   });
+  const { t } = useTranslation("quiz");
   const positive = value > 0;
 
   const handleVote = async (type: QuizVoteType) => {
@@ -52,14 +54,14 @@ const QuizVote: React.FC<Props> = ({ quizId, value }) => {
   return (
     <Container>
       <Value positive={positive}>
-        <span>Głosy:</span>
+        <span>{t("vote.votes")}</span>
         <span>
           {positive && "+"}
           {value}
         </span>
       </Value>
       <VoteWrapper>
-        <span>Oceń quiz:</span>
+        <span>{t("vote.rate")}</span>
         <ActionButton
           variant="green"
           onClick={() => handleVote(QuizVoteType.For)}

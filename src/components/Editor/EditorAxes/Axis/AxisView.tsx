@@ -30,6 +30,7 @@ const AxisIdeology: React.FC<{
   side: "left" | "right";
   axisId: string;
 }> = ({ data, side, axisId }) => {
+  const { t } = useTranslation("editor");
   const { update } = useEntity({
     id: axisId,
     name: "QuizAxis",
@@ -82,6 +83,7 @@ interface Props {
 }
 
 const Axis: React.FC<Props> = ({ data, editor }) => {
+  const { t } = useTranslation("editor");
   const { axes } = editor.actions;
   const [deleteConfirmed] = useState<boolean>(false);
   const leftIdeology = useIdeology(data?.left && data.left.id);
@@ -97,7 +99,7 @@ const Axis: React.FC<Props> = ({ data, editor }) => {
         </Container>
         <ActionButton
           onClick={() => axes.delete(data.id)}
-          title="Usuń oś"
+          title={t("axes.deleteButton")}
           mustConfirm
           variant="red"
           size="large"

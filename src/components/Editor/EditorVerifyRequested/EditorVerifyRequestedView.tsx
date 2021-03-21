@@ -9,6 +9,7 @@ import { faCopy, faPencilRuler } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { useToasts } from "react-toast-notifications";
+import useTranslation from "next-translate/useTranslation";
 import {
   Container,
   Header,
@@ -22,6 +23,7 @@ import {
 library.add(faPencilRuler, faCopy);
 
 const EditorVerifyRequested: React.FC = () => {
+  const { t } = useTranslation("editor");
   const { addToast } = useToasts();
   const { query } = useRouter();
   const slug = `${query.slug}`;
@@ -30,20 +32,21 @@ const EditorVerifyRequested: React.FC = () => {
   return (
     <Container>
       <Header>
-        <Title>Przesłano do weryfikacji!</Title>
+        <Title>{t("verifyRequested.title")}</Title>
       </Header>
       <Divider />
       <Info highlighted>
-        <InfoTitle>Indywidualny link do Twojego quizu</InfoTitle>
+        <InfoTitle>{t("verifyRequested.section.url.title")}</InfoTitle>
         <InfoDescription>
-          Poprzez ten link można go wykonać przed weryfikacją (również przez
-          osoby niezalogowane)
+          {t("verifyRequested.section.url.description")}
         </InfoDescription>
         <UrlWrapper>
           <span
             onClick={() => {
               navigator.clipboard.writeText(quizPath);
-              addToast("Skopiowano do schowka", { appearance: "success" });
+              addToast(t("verifyRequested.section.url.urlToast"), {
+                appearance: "success",
+              });
             }}
           >
             {quizPath}&nbsp;
@@ -52,32 +55,27 @@ const EditorVerifyRequested: React.FC = () => {
         </UrlWrapper>
       </Info>
       <Info>
-        <InfoTitle>Co to oznacza?</InfoTitle>
+        <InfoTitle>{t("verifyRequested.section.meaning.title")}</InfoTitle>
         <InfoDescription>
-          Dzięki weryfikacji Twój quiz będzie mógł pojawić się w liście
-          wyróżnionej twórczości na stronie głównej :)
+          {t("verifyRequested.section.meaning.description")}
         </InfoDescription>
       </Info>
       <Info>
-        <InfoTitle>Czy mogę edytować swój quiz?</InfoTitle>
+        <InfoTitle>{t("verifyRequested.section.edit.title")}</InfoTitle>
         <InfoDescription>
-          Jak najbardziej! Tylko pamiętaj żeby po wprowadzeniu zmian ponownie
-          przesłać go do weryfikacji.
+          {t("verifyRequested.section.edit.description")}
         </InfoDescription>
       </Info>
       <Info>
-        <InfoTitle>
-          Co mogę zrobić żeby mój quiz został szybciej zaakceptowany?
-        </InfoTitle>
+        <InfoTitle>{t("verifyRequested.section.vote.title")}</InfoTitle>
         <InfoDescription>
-          Szybkość weryfikacji zależy od liczby głosów jakie posiada każdy z
-          quizów. Prześlij link do niego znajomym i poproś o głos!
+          {t("verifyRequested.section.vote.description")}
         </InfoDescription>
       </Info>
       <ActionsWrapper>
         <Link href={paths.editor(slug)} passHref>
           <Button as="a" background="gray">
-            Powrót do edycji
+            {t("verifyRequested.footer.returnButton")}
           </Button>
         </Link>
         <Link href={paths.editorPanel} passHref>
@@ -86,7 +84,7 @@ const EditorVerifyRequested: React.FC = () => {
             beforeIcon={<FontAwesomeIcon icon={faPencilRuler} />}
             showShadow
           >
-            Panel twórcy
+            {t("verifyRequested.footer.panelButton")}
           </Button>
         </Link>
       </ActionsWrapper>

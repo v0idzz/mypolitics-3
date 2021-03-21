@@ -1,0 +1,48 @@
+{
+  "answers": {
+    "analyze": "Analiza odpowiedzi",
+    "compare": "Porównaj z partią",
+    "show": "Pokaż",
+    "showMore": "Pokaż więcej",
+    "agree": "Zgoda z",
+    "disagree": "Niezgoda z",
+    "ideYes": "Ideologie za",
+    "ideNo": "Ideologie przeciw",
+    "parYes": "Partie za",
+    "parNo": "Partie przeciw"
+  },
+  "content": {
+    "checkOut": "Sprawdź moje poglądy polityczne w"
+  },
+  "description": {
+    "title": "Co oznaczają te wyniki?",
+    "axes": "Osie ideologiczne określają poglądy w odpowiednich sferach, zestawiając ze sobą poparcie użytkownika dla przeciwnych sobie idei. Kliknij na ikonę, aby dowiedzieć się co ona oznacza.",
+    "compass": "Kompas polityczny prezentuje graficznie położenie użytkownika na dwu- lub trzyosiowej przestrzeni politycznej. Położenie w każdej osi wykresu odpowiada wartościom w osiach ideologicznych z wagami."
+  },
+  "header": {
+    "finished": "Ukończono",
+    "id": "ID:",
+    "social": "Quiz społecznościowy"
+  },
+  "ideology": {
+    "title": "Jak działa dopasowanie ideologii?",
+    "desc1": "W wersji Alpha dopasowanie ideologii opiera się tylko i wyłącznie na pozycji na kompasie.",
+    "desc2": "Na podstawie przygotowanej wcześniej mapki ideologii, algorytm dobiera tę na której znajdujesz się w danym momencie."
+  },
+  "party": {
+    "title": "Jak działa dopasowanie partii?",
+    "desc1": "Procent oznacza ważoną kategoriami pytań zgodność odpowiedzi użytkownika ze stanowiskami partii.",
+    "desc2": "Pod wynikami, w sekcji \"Analiza odpowiedzi\", możesz sprawdzić z czym konkretnie się zgadzasz (bądź nie) z daną opcją.",
+    "header": "Partia",
+    "agreement": "Zgodność odpowiedzi",
+    "authorized": "Niebieski znaczek informuje, że wyznaczona osoba reprezentująca partię {{name}} autoryzowała jej odpowiedzi w teście.",
+    "percentage": "Procent oznacza ważoną kategoriami pytań zgodność odpowiedzi użytkownika ze stanowiskami partii.",
+    "auth": "Odpowiedź autoryzowana"
+  },
+  "trait": {
+    "title": "Jak działają cechy?",
+    "desc1": "Cechy to indywidualne poglądy użytkownika, które nie mogą być ukazane na osiach.",
+    "desc2": "Przyznawana jest ona wtedy gdy użytkownik w zdecydowany sposób odpowie na określony dla danej cechy zestaw pytań i odpowiedzi.",
+    "header": "Cechy"
+  }
+}

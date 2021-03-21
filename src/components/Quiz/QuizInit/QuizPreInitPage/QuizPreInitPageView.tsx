@@ -6,34 +6,39 @@ import Link from "next/link";
 import { paths } from "@constants";
 import CenteredPage from "@shared/CenteredPage";
 import GoogleAd from "@shared/GoogleAd";
+import useTranslation from "next-translate/useTranslation";
+import Trans from "next-translate/Trans";
 import { Chips, TopText, Content } from "./QuizPreInitPageStyle";
 
-const QuizPreInitPage: React.FC = () => (
-  <CenteredPage fullWidth={false}>
-    <NextSeo title="Przed quizem" titleTemplate="%s – myPolitics" />
-    <GoogleAd id="myp3-standard-top" />
-    <InitStep title="Cześć!" lead="Zanim przejdziesz do quizów..." showDivider>
-      <Content>
-        <TopText>
-          Twoja prywatność jest dla nas priorytetem. Tutaj prosto opisaliśmy jak
-          i w jakich celach przechowujemy Twoje dane.
-        </TopText>
-        <Chips>
-          Twoje wyniki są <span>anonimowe</span> i nie ma możliwości ich
-          powiązania z Tobą (chyba że sam je upublicznisz)
-        </Chips>
-        <Chips>
-          Dane są analizowane zbiorowo w celu poprawy dokładności aplikacji
-        </Chips>
-        <Link href={paths.quizzesInitialize} passHref>
-          <Button as="a" showShadow>
-            Przejdź dalej
-          </Button>
-        </Link>
-      </Content>
-    </InitStep>
-    <GoogleAd id="myp3-standard-bottom" />
-  </CenteredPage>
-);
+const QuizPreInitPage: React.FC = () => {
+  const { t } = useTranslation("quiz");
+
+  return (
+    <CenteredPage fullWidth={false}>
+      <NextSeo title={t("preInit.before")} titleTemplate="%s – myPolitics" />
+      <GoogleAd id="myp3-standard-top" />
+      <InitStep
+        title={t("preInit.hey")}
+        lead={t("preInit.beforeWeStart")}
+        showDivider
+      >
+        <Content>
+          <TopText>
+            {t("preInit.top")}
+            <Trans i18nKey="quiz:preInit.top" components={[<span />]} />
+          </TopText>
+          <Chips>{t("preInit.privacy")}</Chips>
+          <Chips>{t("preInit.data")}</Chips>
+          <Link href={paths.quizzesInitialize} passHref>
+            <Button as="a" showShadow>
+              {t("preInit.next")}
+            </Button>
+          </Link>
+        </Content>
+      </InitStep>
+      <GoogleAd id="myp3-standard-bottom" />
+    </CenteredPage>
+  );
+};
 
 export default QuizPreInitPage;

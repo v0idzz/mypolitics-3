@@ -10,6 +10,7 @@ import { Country } from "@generated/graphql";
 import { ListContainer } from "./EditorPartiesStyle";
 import PartyCard from "./PartyCard";
 import PartyCreate from "./PartyCreate";
+import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPlus);
 
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const EditorParties: React.FC<Props> = ({ editor }) => {
+  const { t } = useTranslation("editor");
   const [country, setCountry] = useState<Country>(Country.Poland);
   const [showModal, setShowModal] = useState<boolean>(false);
   const { data } = editor;
@@ -48,7 +50,7 @@ const EditorParties: React.FC<Props> = ({ editor }) => {
           background="bluish"
           beforeIcon={<FontAwesomeIcon icon={faPlus} />}
         >
-          Utwórz partię
+          {t("parties.create")}
         </Button>
         <PartyCreate
           show={showModal}
