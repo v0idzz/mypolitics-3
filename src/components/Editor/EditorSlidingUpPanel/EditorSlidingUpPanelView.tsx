@@ -40,7 +40,7 @@ const EditorSlidingUpPanel: React.FC<Props> = ({ editor }) => {
     hide();
   };
 
-  const canBeDisplayed = useBreakpoint("sm");
+  const canBeDisplayed = useBreakpoint("md");
 
   if (!canBeDisplayed) return null;
 

@@ -54,7 +54,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
     });
   };
 
-  const isClickable = useBreakpoint("sm");
+  const isClickable = useBreakpoint("md");
 
   return (
     <>
