@@ -1,21 +1,13 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div<{ slideIn: boolean }>`
   left: 0;
   bottom: 0;
   position: fixed;
+  transform: translateY(${({ slideIn }) => (slideIn ? "0" : "100%")});
   transition: transform 0.2s;
   z-index: 10;
   width: 100%;
-
-  ${({ slideIn }) =>
-    slideIn
-      ? css`
-          transform: translateY(0);
-        `
-      : css`
-          transform: translateY(100%);
-        `}
 `;
 
 export const Inner = styled.div`
