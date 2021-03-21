@@ -74,7 +74,6 @@ export const OpenButton = styled.button<{ opened: boolean }>`
 `;
 
 export const Info = styled.button`
-  cursor: pointer;
   border: 0;
   display: flex;
   justify-content: center;
@@ -85,8 +84,4 @@ export const Info = styled.button`
   text-align: center;
   border-radius: 0.25rem;
   padding: 1rem;
-
-  &:disabled {
-    cursor: default;
-  }
 `;

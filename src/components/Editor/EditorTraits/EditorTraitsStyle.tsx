@@ -18,7 +18,6 @@ export const Description = styled.div`
 
 export const Info = styled.button`
   border: 0;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,10 +27,6 @@ export const Info = styled.button`
   border-radius: 0.25rem;
   padding: 1rem;
   grid-column: 1 / -1;
-
-  &:disabled {
-    cursor: default;
-  }
 `;
 
 export const TraitsWrapper = styled.div`

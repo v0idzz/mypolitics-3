@@ -71,7 +71,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
           )}
           {agreeIdeologies.length === 0 && (
             <Info
-              disabled={!isClickable}
+              as={isClickable ? "button" : "div"}
               onClick={() => handlePickClick("agree")}
             >
               {isClickable
@@ -99,7 +99,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
           )}
           {disagreeIdeologies.length === 0 && (
             <Info
-              disabled={!isClickable}
+              as={isClickable ? "button" : "div"}
               onClick={() => handlePickClick("disagree")}
             >
               {isClickable

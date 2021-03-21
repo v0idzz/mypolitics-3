@@ -12,6 +12,7 @@ import { useEditorSlidingUpPanel } from "./EditorSlidingUpPanelContext";
 import { IdeologyItem, PartyItem } from "@components/Editor";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useBreakpoint from "@utils/hooks/useBreakpoint";
 
 export type ItemType = "party" | "ideology" | "trait";
 
@@ -38,6 +39,10 @@ const EditorSlidingUpPanel: React.FC<Props> = ({ editor }) => {
     callback(id);
     hide();
   };
+
+  const canBeDisplayed = useBreakpoint("sm");
+
+  if (!canBeDisplayed) return null;
 
   return (
     <Container slideIn={isIn}>

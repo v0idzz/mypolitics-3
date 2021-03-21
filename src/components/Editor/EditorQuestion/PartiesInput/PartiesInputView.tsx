@@ -71,8 +71,8 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
           )}
           {agreeParties.length === 0 && (
             <Info
+              as={isClickable ? "button" : "div"}
               onClick={() => handlePickClick("agree")}
-              disabled={!isClickable}
             >
               {isClickable
                 ? "Kliknij, aby wybrać partię"
@@ -97,7 +97,7 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
           {disagreeParties.length === 0 && (
             <Info
               onClick={() => handlePickClick("disagree")}
-              disabled={!isClickable}
+              as={isClickable ? "button" : "div"}
             >
               {isClickable
                 ? "Kliknij, aby wybrać partię"
