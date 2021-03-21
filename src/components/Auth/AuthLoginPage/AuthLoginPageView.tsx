@@ -11,16 +11,18 @@ import Alert from "@shared/Alert";
 import { useRouter } from "next/router";
 import { Container, Header } from "./AuthLoginPageStyle";
 import Form from "./Form";
+import useTranslation from 'next-translate/useTranslation'
 
 library.add(faFacebookF);
 
 const AuthLoginPage: React.FC = () => {
-  const { query } = useRouter();
+    const {query} = useRouter();
+    const {t} = useTranslation('auth');
 
   return (
     <Container>
       <Header>
-        <Title>Czas tworzyć.</Title>
+        <Title>{t('title')}</Title>
       </Header>
       <Divider />
       {!query?.state && (
@@ -31,7 +33,7 @@ const AuthLoginPage: React.FC = () => {
               beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
               pulsating
             >
-              Zaloguj przez Facebooka
+              {t('loginFb')}
             </Button>
           </Link>
           <Divider />
@@ -39,7 +41,7 @@ const AuthLoginPage: React.FC = () => {
       )}
       {query?.state === "verified" && (
         <Alert type="success">
-          E-mail zweryfikowany pomyślnie. Teraz możesz się zalogować
+          {t('verificationSuccess')}
         </Alert>
       )}
       <Form />
