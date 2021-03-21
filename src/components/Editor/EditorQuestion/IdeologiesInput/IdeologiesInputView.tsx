@@ -67,7 +67,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
             />
           ))}
           {agreeIdeologies.length > 0 && isClickable && (
-            <AddButton onClick={() => handleAgreeDrop("agree")} />
+            <AddButton onClick={() => handlePickClick("agree")} />
           )}
           {agreeIdeologies.length === 0 && (
             <Info
@@ -95,7 +95,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
             />
           ))}
           {disagreeIdeologies.length > 0 && isClickable && (
-            <AddButton onClick={() => handleAgreeDrop("disagree")} />
+            <AddButton onClick={() => handlePickClick("disagree")} />
           )}
           {disagreeIdeologies.length === 0 && (
             <Info
