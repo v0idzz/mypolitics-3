@@ -16,8 +16,10 @@ import { useApolloClient } from "@apollo/client";
 import { CurrentUserDocument } from "@generated/graphql";
 import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 import { FormValues, initialValues } from "./FormUtils";
+import useTranslation from 'next-translate/useTranslation';
 
 const FormView: React.FC = () => {
+  const { t } = useTranslation("auth");
   const [loading, setLoading] = useState(false);
   const { setValue } = useFirstTimer();
   const router = useRouter();
@@ -60,7 +62,7 @@ const FormView: React.FC = () => {
 
   return (
     <Content onSubmit={formik.handleSubmit}>
-      <InputLabel title="Adres-email">
+      <InputLabel title={t("form.email")}>
         <Input
           name="username"
           type="email"
@@ -70,7 +72,7 @@ const FormView: React.FC = () => {
           required
         />
       </InputLabel>
-      <InputLabel title="Hasło">
+      <InputLabel title={t("form.password")}>
         <Input
           name="password"
           type="password"
@@ -86,11 +88,11 @@ const FormView: React.FC = () => {
       <ActionsWrapper>
         <Link href={paths.authSignup} passHref>
           <Button as="a" background="gray">
-            Rejestracja
+            {t("loginActions.alternative")}
           </Button>
         </Link>
         <Button type="submit" disabled={loading} loading={loading} showShadow>
-          Zaloguj się
+          {t("loginActions.main")}
         </Button>
       </ActionsWrapper>
     </Content>

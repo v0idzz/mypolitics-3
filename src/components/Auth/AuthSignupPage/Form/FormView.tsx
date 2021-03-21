@@ -10,17 +10,18 @@ import { paths } from "@constants";
 import Button from "@shared/Button";
 import getConfig from "next/config";
 import ReCAPTCHA from "react-google-recaptcha";
-import {
-  useCreateUserMutation,
-} from "@generated/graphql";
+import { useCreateUserMutation } from "@generated/graphql";
 import { useFormik } from "formik";
 import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import Alert from "@shared/Alert";
+import Trans from "next-translate/Trans";
+import useTranslation from "next-translate/useTranslation";
 import { initialValues } from "./FormUtils";
 
 const { publicRuntimeConfig } = getConfig();
 
 const FormView: React.FC = () => {
+  const { t } = useTranslation("auth");
   const handleErrors = useHandleErrors();
   const [createUser, { loading, data }] = useCreateUserMutation();
 
@@ -46,7 +47,7 @@ const FormView: React.FC = () => {
 
   return (
     <Content onSubmit={formik.handleSubmit}>
-      <InputLabel title="Imię i nazwisko">
+      <InputLabel title={t("form.fullName")}>
         <Input
           name="name"
           type="text"
@@ -55,7 +56,7 @@ const FormView: React.FC = () => {
           required
         />
       </InputLabel>
-      <InputLabel title="Adres-email">
+      <InputLabel title={t("form.email")}>
         <Input
           name="email"
           type="email"
@@ -65,7 +66,7 @@ const FormView: React.FC = () => {
           required
         />
       </InputLabel>
-      <InputLabel title="Powtórz adres-email">
+      <InputLabel title={t("form.emailRepeat")}>
         <Input
           name="repeatEmail"
           type="email"
@@ -74,7 +75,7 @@ const FormView: React.FC = () => {
           required
         />
       </InputLabel>
-      <InputLabel title="Hasło">
+      <InputLabel title={t("form.password")}>
         <Input
           name="password"
           type="password"
@@ -89,20 +90,20 @@ const FormView: React.FC = () => {
       />
       {data?.createUser.id && (
         <Alert type="success">
-          <span>
-            Na Twoją skrzynkę e-mail został wysłany link weryfikacyjny.{" "}
-            <b>Sprawdź folder spam.</b>
-          </span>
+          <Trans
+            i18nKey="auth:createUserSuccess"
+            components={[<span key="0" />, <b key="1" />]}
+          />
         </Alert>
       )}
       <ActionsWrapper>
-        <Link href={paths.authSignup} passHref>
+        <Link href={paths.authLogin} passHref>
           <Button as="a" background="gray">
-            Logowanie
+            {t("signUpActions.alternative")}
           </Button>
         </Link>
         <Button type="submit" disabled={loading} loading={loading} showShadow>
-          Zarejestruj się
+          {t("signUpActions.main")}
         </Button>
       </ActionsWrapper>
     </Content>
