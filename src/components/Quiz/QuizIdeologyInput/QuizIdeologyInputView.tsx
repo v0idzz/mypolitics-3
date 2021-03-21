@@ -25,7 +25,7 @@ const QuizIdeologyInput: React.FC<Props> = ({ value, onChange }) => {
   return (
     <Select value={value} onChange={handleChange}>
       <Option value="" disabled hidden>
-        Wybierz z listy
+        {t('ideologies.select')}
       </Option>
       {options}
     </Select>

@@ -22,7 +22,8 @@
     "72f8fe391101c447cc467ee2dcdcd9e8": "Liberalizm",
     "652cbd1d722c2fcd8e06aa34f8aa22fe": "Libertarianizm",
     "6410ff914a95dfcb1359e16f005b8abc": "Anarchokapitalizm",
-    "default": "Brak ideologii"
+    "default": "Brak ideologii",
+    "select": "Wybierz z listy"
   },
   "features": {
     "compass": "Kompas",
@@ -64,5 +65,17 @@
     "politician": "Polityka",
     "youth": "Młodzieżówki",
     "commentator": "Inne"
+  },
+  "init": {
+    "basic": "Zaczynamy!",
+    "lead": "Czy pierwszy raz wykonujesz test poglądów?",
+    "yes": "Tak",
+    "no": "Nie",
+    "simplified": "Uproszczony",
+    "advancedVariant": "Zaawansowany",
+    "advanced": "Witaj, weteranie!",
+    "top": "Prosimy Cię o podanie najbliższej ideologii i miejsca na kompasie dwuosiowym. Pozwoli to nam na udoskonalenie aplikacji.",
+    "skip": "Pomiń",
+    "save": "Zapisz dane"
   }
 }
