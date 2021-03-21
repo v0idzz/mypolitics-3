@@ -63,9 +63,8 @@ const QuizRespondent: React.FC = () => {
         </CodesWrapper>
         <Divider />
         <Description>
-          Chronimy Twoją prywatność, nie przechowujemy powiązania pomiędzy Tobą,
-          a Twoimi poglądami politycznymi. Ten unikalny kod umożliwia ci
-          odczytywanie historii wyników na innych urządzeniach.
+          Wpisz ten kod na innych urządzeniach, aby przesyłać między nimi wyniki
+          w&nbsp;quizach
         </Description>
       </Info>
       <Actions>

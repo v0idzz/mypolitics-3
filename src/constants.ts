@@ -1,4 +1,5 @@
 import getConfig from "next/config";
+import { UrlObject } from 'url';
 
 const { publicRuntimeConfig } = getConfig();
 export const BASE_PATH = publicRuntimeConfig.BASE_PATH || "";

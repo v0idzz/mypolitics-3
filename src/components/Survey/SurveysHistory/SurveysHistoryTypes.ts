@@ -1,7 +1,7 @@
-import { Quiz } from "@generated/graphql";
+import { MeRespondentSurveysQuery } from "@generated/graphql";
 import { LeanSurvey } from "@components/Survey";
 
 export interface SurveyHistory {
-  quiz: Pick<Quiz, "id" | "logoUrl" | "slug">;
+  quiz: MeRespondentSurveysQuery["meRespondent"]["surveys"][0]["quizVersion"]["quiz"];
   surveys: LeanSurvey[];
 }

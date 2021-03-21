@@ -10,6 +10,8 @@ import dayjs from "dayjs";
 import { SurveyLink } from "@components/Survey";
 import Link from "next/link";
 import { paths } from "@constants";
+import { Title } from "@components/Quiz/QuizLink/QuizLinkStyle";
+import useTranslation from "next-translate/useTranslation";
 import { useClassicResults } from "./SurveyHistoryUtils";
 import {
   Container,
@@ -30,6 +32,7 @@ const SurveyHistoryElement: React.FC<SurveyHistoryElementProps> = ({
   data,
   contentOnly,
 }) => {
+  const { lang } = useTranslation();
   const { quiz, surveys } = data;
   const BASE_LIMIT = 3;
   const [limit, setLimit] = useState<number>(BASE_LIMIT);
@@ -78,7 +81,15 @@ const SurveyHistoryElement: React.FC<SurveyHistoryElementProps> = ({
       <Header>
         <Link href={path}>
           <a>
-            <Logo src={quiz.logoUrl} alt={quiz.id} />
+            {quiz.logoUrl && (
+              <Logo
+                src={quiz.logoUrl}
+                alt={quiz.title ? quiz.title[lang] : quiz.slug}
+              />
+            )}
+            {!quiz.logoUrl && (
+              <Title>{quiz.title ? quiz.title[lang] : quiz.slug}</Title>
+            )}
           </a>
         </Link>
       </Header>
