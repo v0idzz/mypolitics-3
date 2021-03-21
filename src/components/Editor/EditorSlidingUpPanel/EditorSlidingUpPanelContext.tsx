@@ -27,7 +27,7 @@ export const useEditorSlidingUpPanel = () => {
 };
 
 export const EditorSlidingUpPanelProvider: React.FC = ({ children }) => {
-  const [isIn, setIsIn] = useState(true);
+  const [isIn, setIsIn] = useState(false);
   const [type, setType] = useState<ItemType>("party");
   const [callback, setCallback] = useState<Callback>();
 
