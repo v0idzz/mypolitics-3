@@ -43,6 +43,7 @@ export const Image = styled.img`
 
 export const FeaturesList = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
   ${breakpoint("xs", "md")`
     display: block;
@@ -59,6 +60,7 @@ export const Chip = styled.div`
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   line-height: 1rem;
+  margin-bottom: 0.5rem;
   margin-right: 0.5rem;
 
   ${breakpoint("xs", "md")`
