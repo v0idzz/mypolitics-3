@@ -38,7 +38,7 @@ const nextConfig = {
         destination:
           process.env.NODE_ENV !== "production"
             ? "http://localhost:5000/:path*"
-            : "https://api-v3.mypolitics.pl/:path*",
+            : "http://mypolitics-v3-api.web.1:5000/:path*",
       },
     ];
   },
