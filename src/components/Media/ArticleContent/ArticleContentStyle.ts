@@ -126,7 +126,7 @@ export const ThumbnailImage = styled.img`
 `;
 
 export const Content = styled.div`
-  line-height: 1.4;
+  line-height: 1.6;
   color: ${({ theme }) => theme.colors.textMuted};
   font-size: 1rem;
   width: 100%;
