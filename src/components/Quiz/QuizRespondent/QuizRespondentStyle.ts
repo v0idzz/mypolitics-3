@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { darken } from "polished";
 import breakpoint from "styled-components-breakpoint";
 import { Input as BaseInput } from "@shared/Common";
+import { flexGap } from '@utils/stylesUtils';
 
 export const Container = styled.section`
   padding: 1rem;
@@ -91,7 +92,7 @@ export const Actions = styled.div`
 export const InputGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  ${flexGap(1)};
 `;
 
 export const Input = styled(BaseInput)`

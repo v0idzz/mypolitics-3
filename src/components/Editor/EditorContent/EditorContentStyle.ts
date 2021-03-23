@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
+import { flexGap } from '@utils/stylesUtils';
 
 export const Row = styled.div`
   display: grid;
@@ -13,12 +14,12 @@ export const Row = styled.div`
 `;
 
 export const Col = styled.div`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  ${flexGap(2)}
 
   & & {
-    grid-gap: 1rem;
+    ${flexGap(1)}
   }
 `;
 
