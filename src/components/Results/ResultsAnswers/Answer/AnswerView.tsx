@@ -111,7 +111,7 @@ const Answer: React.FC<Props> = ({ data, num, party }) => {
                   {parties.agree}
                 </AnswerEffect>
                 <AnswerEffect
-                  title={t("results:answers.paNo")}
+                  title={t("results:answers.parNo")}
                   type={SurveyAnswerType.Disagree}
                 >
                   {parties.disagree}
