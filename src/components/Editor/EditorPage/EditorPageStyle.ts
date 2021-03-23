@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import { flexGap } from '@utils/stylesUtils';
 
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  ${flexGap(1.5)}
   padding: 1.5rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.background};
 
   ${breakpoint("md")`
-    gap: 3rem;
+    ${flexGap(3)}
     padding: 3rem;
   `}
 `;
