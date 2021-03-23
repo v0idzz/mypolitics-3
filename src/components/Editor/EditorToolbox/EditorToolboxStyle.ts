@@ -8,17 +8,17 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   position: sticky;
   top: 35vh;
 `;
 
 export const Inner = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => transparentize(0.85, theme.colors.primary)};
