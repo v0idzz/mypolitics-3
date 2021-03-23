@@ -13,12 +13,12 @@ export const Row = styled.div`
 `;
 
 export const Col = styled.div`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   & & {
-    grid-gap: 1rem;
+    gap: 1rem;
   }
 `;
 

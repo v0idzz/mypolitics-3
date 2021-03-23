@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   padding: 1.5rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
@@ -22,7 +22,7 @@ export const Divider = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
