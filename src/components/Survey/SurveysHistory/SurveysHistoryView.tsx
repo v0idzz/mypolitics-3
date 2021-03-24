@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
+import {getUnixTime} from 'date-fns';
 import { SurveyLink } from "@components/Survey";
 import Link from "next/link";
 import { paths } from "@constants";
@@ -44,7 +45,7 @@ const SurveyHistoryElement: React.FC<SurveyHistoryElementProps> = ({
   );
 
   const sortedSurveys = surveys.sort(
-    (a, b) => dayjs(b.updatedAt).unix() - dayjs(a.updatedAt).unix()
+    (a, b) => getUnixTime(b.updatedAt) - getUnixTime(a.updatedAt)
   );
   const limitedSurveys = sortedSurveys.filter((_, i) => i < limit);
   const listElements = R.map(toListElement, limitedSurveys);

@@ -6,7 +6,6 @@ import {
 } from "@generated/graphql";
 import { paths } from "@constants";
 import Link from "next/link";
-import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { LeanSurvey } from "@components/Survey";
@@ -47,7 +46,14 @@ const SurveyLink: React.FC<{ survey: LeanSurvey }> = ({ survey }) => {
     <Link href={href} passHref>
       <ListElement>
         <Text>
-          {dayjs(survey.updatedAt).locale(lang).format("YYYY-MM-DD HH:MM")}
+            {new Date(survey.updatedAt).toLocaleString(undefined, {
+                hour12: false,
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric'
+            })}
         </Text>
         {survey.finished && (
           <Chips background="green">{t("surveyHistory.type.finished")}</Chips>
