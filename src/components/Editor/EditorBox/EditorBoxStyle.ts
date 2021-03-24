@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { flexGap } from '@utils/stylesUtils';
+import { spacingY } from '@utils/stylesUtils';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  ${flexGap(1)}
+  ${spacingY(1)}
   padding: 1.5rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
@@ -25,5 +23,5 @@ export const Divider = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  ${flexGap(1)}
+  ${spacingY(1)}
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
-import { flexGap } from '@utils/stylesUtils';
+import { spacingY } from '@utils/stylesUtils';
 
 export const Row = styled.div`
   display: grid;
@@ -14,12 +14,10 @@ export const Row = styled.div`
 `;
 
 export const Col = styled.div`
-  display: flex;
-  flex-direction: column;
-  ${flexGap(2)}
+  ${spacingY(2)}
 
   & & {
-    ${flexGap(1)}
+    ${spacingY(1)}
   }
 `;
 
