@@ -2,7 +2,7 @@ import React from "react";
 import { useCurrentUserQuery, UserRole } from "@generated/graphql";
 import Link from "next/link";
 import { apiPaths, paths } from "@constants";
-import { useToasts } from "react-toast-notifications";
+import {toast} from "react-hot-toast";
 import {
   faCrown,
   faShieldAlt,
@@ -29,7 +29,6 @@ const UserInfo: React.FC = () => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const handleErrors = useHandleErrors();
-  const { addToast } = useToasts();
   const { data } = useCurrentUserQuery({
     errorPolicy: "all",
     onError: () => null,
@@ -45,7 +44,7 @@ const UserInfo: React.FC = () => {
           throw new Error(JSON.stringify(await r.json()));
         }
 
-        addToast(t("userInfo.logoutSuccess"), { appearance: "success" });
+        toast.success(t("userInfo.logoutSuccess"));
         router.reload();
       })
       .catch((e) => {
