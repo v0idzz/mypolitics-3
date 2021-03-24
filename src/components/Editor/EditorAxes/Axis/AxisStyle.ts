@@ -2,8 +2,7 @@ import styled, { css } from "styled-components";
 import { mix, transparentize } from "polished";
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   width: 100%;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -19,6 +18,7 @@ export const Info = styled.button`
   text-align: center;
   border-radius: 0.25rem;
   padding: 0.75rem;
+  width: 50%;
 `;
 
 export const IdeologyContainer = styled.div<{ color: string }>`
@@ -28,7 +28,7 @@ export const IdeologyContainer = styled.div<{ color: string }>`
   padding: 0.75rem;
   background: ${({ color }) => color};
   vertical-align: middle;
-  width: 100%;
+  width: 50%;
 
   span,
   img {
@@ -44,6 +44,8 @@ export const IdeologyName = styled.div`
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
   margin: 0 0.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const IdeologyDeleteButton = styled.button`
