@@ -6,7 +6,6 @@ import Button from "@shared/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import dayjs from "dayjs";
 import {getUnixTime} from 'date-fns';
 import { SurveyLink } from "@components/Survey";
 import Link from "next/link";
