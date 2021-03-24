@@ -5,6 +5,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: -0.5rem;
+  
+  & > * {
+    margin: 0 0.5rem;
+  }
 `;
 
 export const Info = styled.div`
