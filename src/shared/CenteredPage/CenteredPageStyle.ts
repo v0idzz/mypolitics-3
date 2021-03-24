@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Title } from "@shared/Typography";
+import { spacingY } from '@utils/stylesUtils';
 
 export const Container = styled.main<{ fullWidth: boolean }>`
   display: flex;
@@ -23,9 +24,7 @@ export const Container = styled.main<{ fullWidth: boolean }>`
 `;
 
 export const Inner = styled.div`
-  display: grid;
-  grid-template-columns: auto;
-  grid-gap: 1rem;
+  ${spacingY(1)}
   margin: auto;
   padding: 5% 0;
 `;
