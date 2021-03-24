@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
+import breakpoint from "styled-components-breakpoint";
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: block;
   margin: -0.5rem;
+
+  ${breakpoint("sm")`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `}
   
   & > * {
-    margin: 0 0.5rem;
+    margin: 0.5rem;
   }
 `;
 

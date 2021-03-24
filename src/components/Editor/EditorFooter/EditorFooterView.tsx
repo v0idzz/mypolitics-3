@@ -158,6 +158,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
             loading={loading}
             disabled={loading}
             showShadow
+            isFullWidth
           >
             {t("footer.testBeforeVerify")}
           </Button>
@@ -173,6 +174,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
             loading={loading}
             disabled={loading}
             pulsating
+            isFullWidth
           >
             {t("footer.verifyRequest")}
           </Button>
