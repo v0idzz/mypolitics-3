@@ -3,12 +3,13 @@ import {
   UpdateQuizInput,
   UpdateQuizVersionInput,
 } from "@generated/graphql";
-import { useCallback, useEffect } from "react";
-import { useDebounce } from "use-debounce";
+import { useEffect } from "react";
+import { useDebounceCallback } from "@react-hook/debounce";
 import useBasicInput from "./useBasicInput";
 import useVersionInput from "./useVersionInput";
 import useEditorData from "./useEditorData";
 import useEditorActions, { EditorActions } from "./useEditorActions";
+import hash from "object-hash";
 
 export interface UseEditor {
   data: EditorQuizQueryHookResult;
@@ -22,35 +23,32 @@ export const useEditor = (): UseEditor => {
   const actions = useEditorActions();
   const versionInput = useVersionInput(data?.data);
   const basicInput = useBasicInput(data?.data);
-  const [
-    { versionInput: versionInputDebounce, basicInput: basicInputDebounce },
-  ] = useDebounce({ versionInput, basicInput }, 500);
-  const versionInputDebounceJson = JSON.stringify({ versionInputDebounce });
-  const basicInputDebounceJson = JSON.stringify({ basicInputDebounce });
+  const versionInputHash = hash({ versionInput });
+  const basicInputHash = hash({ basicInput });
 
-  const handleVersionInput = async () => {
-    if (typeof versionInputDebounce === "undefined") {
+  const handleVersionInput = useDebounceCallback(async () => {
+    if (typeof versionInput === "undefined") {
       return;
     }
 
-    await actions.updateVersion(versionInputDebounce);
-  };
+    await actions.updateVersion(versionInput);
+  }, 5000);
 
-  const handleBasicInput = async () => {
-    if (typeof basicInputDebounce === "undefined") {
+  const handleBasicInput = useDebounceCallback(async () => {
+    if (typeof basicInput === "undefined") {
       return;
     }
 
-    await actions.updateBasic(basicInputDebounce);
-  };
+    await actions.updateBasic(basicInput);
+  }, 5000);
 
   useEffect(() => {
     handleVersionInput();
-  }, [versionInputDebounceJson]);
+  }, [versionInputHash]);
 
   useEffect(() => {
     handleBasicInput();
-  }, [basicInputDebounceJson]);
+  }, [basicInputHash]);
 
   return {
     data,

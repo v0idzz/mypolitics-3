@@ -110,6 +110,9 @@ const useEditorIdeologiesActions = (
     },
     update: async (id, values) => {
       try {
+        // eslint-disable-next-line no-param-reassign
+        (values as any).viewerCanEdit = undefined;
+
         const { update: updateEntity } = getEntity({
           id,
           name: "Ideology",
@@ -139,10 +142,15 @@ const useEditorIdeologiesActions = (
           },
         });
 
+        const ideology = {
+          ...data.createIdeology,
+          viewerCanEdit: true,
+        };
+
         update({
           quiz: {
             lastUpdatedVersion: {
-              ideologies: [...currentIdeologies, data.createIdeology],
+              ideologies: [...currentIdeologies, ideology],
             },
           },
         });

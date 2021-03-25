@@ -44,4 +44,4 @@ const IdeologiesImport: React.FC<Props> = ({ editor }) => {
   );
 };
 
-export default IdeologiesImport;
+export default React.memo(IdeologiesImport, () => true);

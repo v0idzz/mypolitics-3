@@ -7,6 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import IdeologiesInput from "@components/Editor/EditorQuestion/IdeologiesInput";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import ActionButton from "@shared/ActionButton";
+import useTranslation from "next-translate/useTranslation";
 import useQuestion from "./utils/useQuestion";
 import {
   NumberWrapper,
@@ -15,7 +16,6 @@ import {
   Row,
 } from "./EditorQuestionStyle";
 import PartiesInput from "./PartiesInput";
-import useTranslation from 'next-translate/useTranslation';
 
 library.add(faChevronDown, faTrash);
 
@@ -81,6 +81,8 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
           />
           <Row>
             <PartiesInput question={question} />
+          </Row>
+          <Row>
             <IdeologiesInput question={question} />
           </Row>
         </Box>

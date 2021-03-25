@@ -1,5 +1,4 @@
-import { useUpdateQuizVersionMutation } from "@generated/graphql";
-import { convertToInput } from "@components/Editor/utils/useVersionInput";
+import { EditorAxisPartsFragment } from '@generated/graphql';
 import {
   EditorGetCurrentDataFunction,
   EditorUpdateFunction,
@@ -7,66 +6,48 @@ import {
 
 export interface AxesActions {
   delete(id: string);
-  add([left, right]: string[]): Promise<void>;
+  add(): Promise<void>;
 }
 
 const useEditorAxesActions = (
   getCurrentData: EditorGetCurrentDataFunction,
   update: EditorUpdateFunction
-): AxesActions => {
-  const [updateVersion, { loading }] = useUpdateQuizVersionMutation();
+): AxesActions => ({
+  delete: (id: string) => {
+    const currentData = getCurrentData();
+    const currentAxes = currentData.quiz.lastUpdatedVersion.axes;
+    const axes = currentAxes.filter((a) => a.id !== id);
 
-  return {
-    delete: (id: string) => {
-      const currentData = getCurrentData();
-      const currentAxes = currentData.quiz.lastUpdatedVersion.axes;
-      const axes = currentAxes.filter((a) => a.id !== id);
-
-      update({
-        quiz: {
-          lastUpdatedVersion: {
-            axes,
-          },
+    update({
+      quiz: {
+        lastUpdatedVersion: {
+          axes,
         },
-      });
-    },
-    add: async ([left, right]: (string | null)[]) => {
-      if (loading) {
-        return;
-      }
+      },
+    });
+  },
+  add: async () => {
+    const currentData = getCurrentData();
 
-      const currentData = getCurrentData();
-      const versionInput = convertToInput(currentData);
+    const axis: EditorAxisPartsFragment = {
+      __typename: "QuizAxis",
+      id: (Math.random() * new Date().getTime()).toString(),
+      left: {
+        id: "",
+      },
+      right: {
+        id: "",
+      },
+    };
 
-      try {
-        const { data } = await updateVersion({
-          variables: {
-            id: currentData.quiz.lastUpdatedVersion.id,
-            values: {
-              ...versionInput,
-              axes: [
-                ...versionInput.axes,
-                {
-                  left,
-                  right,
-                },
-              ],
-            },
-          },
-        });
-
-        update({
-          quiz: {
-            lastUpdatedVersion: {
-              axes: data.updateQuizVersion.axes,
-            },
-          },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
-  };
-};
+    update({
+      quiz: {
+        lastUpdatedVersion: {
+          axes: [...currentData.quiz.lastUpdatedVersion.axes, axis],
+        },
+      },
+    });
+  },
+});
 
 export default useEditorAxesActions;

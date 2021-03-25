@@ -4,12 +4,12 @@ import { SurveyAnswerType } from "@generated/graphql";
 import { itemTypes } from "@constants";
 import { PartyItem } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
-import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
-import { UseQuestion } from "../utils/useQuestion";
-import { Info } from "../EditorQuestionStyle";
 import useBreakpoint from "@utils/hooks/useBreakpoint";
 import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
 import { AddButton } from "@components/Editor/EditorTraits/EditorTraitsStyle";
+import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
+import { UseQuestion } from "../utils/useQuestion";
+import { Info } from "../EditorQuestionStyle";
 
 interface Props {
   question: UseQuestion;

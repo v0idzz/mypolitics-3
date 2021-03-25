@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { SurveyAnswerType } from "@generated/graphql";
-import { spacingY } from '@utils/stylesUtils';
+import breakpoint from "styled-components-breakpoint";
 
 export const AnswerElementTitleWrapper = styled.div`
   display: flex;
@@ -43,7 +43,6 @@ export const AnswerElementContainer = styled.div<{ type: SurveyAnswerType }>`
   display: flex;
   flex-direction: column;
   justify-content: left;
-  max-width: 15rem;
 
   ${({ type, theme }) => {
     const backgroundColorVariants: Record<SurveyAnswerType, string> = {

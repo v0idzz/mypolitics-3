@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import InternationalizedInput from "@shared/InternationalizedInput";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import { TextTranslationInput } from "@generated/graphql";
@@ -43,4 +43,4 @@ const EditorBasic: React.FC<Props> = ({ editor }) => {
   );
 };
 
-export default EditorBasic;
+export default React.memo(EditorBasic);

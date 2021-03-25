@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
-import { spacingY } from '@utils/stylesUtils';
+import { spacingY } from "@utils/stylesUtils";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -11,15 +11,19 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  ${spacingY(1)}
+  ${spacingY(1)};
   position: sticky;
   top: 35vh;
+
+  .adsbygoogle {
+    max-height: 200px;
+  }
 `;
 
 export const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  ${spacingY(1)}
+  ${spacingY(1)};
   padding: 1rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => transparentize(0.85, theme.colors.primary)};

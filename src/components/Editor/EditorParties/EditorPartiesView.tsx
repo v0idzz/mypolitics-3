@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-import LanguageSelect from "@shared/LanguageSelect";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import Button from "@shared/Button";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -7,10 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import CountrySelect from "@shared/CountrySelect";
 import { Country } from "@generated/graphql";
+import useTranslation from "next-translate/useTranslation";
 import { ListContainer } from "./EditorPartiesStyle";
 import PartyCard from "./PartyCard";
 import PartyCreate from "./PartyCreate";
-import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPlus);
 

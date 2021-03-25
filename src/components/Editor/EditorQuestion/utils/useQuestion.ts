@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import useEntity from "@components/Editor/utils/useEntity";
+import { useDebounceCallback } from "@react-hook/debounce";
 
 export interface EffectInput {
   type: "agree" | "disagree";
@@ -36,9 +37,6 @@ const useQuestion = (id: string): UseQuestion => {
   });
   const [firstTime, setFirstTime] = useState(true);
   const [updateQuestion, { loading }] = useUpdateQuestionMutation();
-  const [dataDebounced] = useDebounce(data, 1000, {
-    leading: true,
-  });
 
   const handleTextChange = (text: TextTranslationInput) =>
     update({
@@ -109,24 +107,28 @@ const useQuestion = (id: string): UseQuestion => {
     };
   };
 
-  const handleUpdate = async () => {
-    if (loading) {
-      return;
-    }
+  const handleUpdate = useDebounceCallback(
+    async () => {
+      if (loading) {
+        return;
+      }
 
-    try {
-      const result = await updateQuestion({
-        variables: {
-          id,
-          values: convertDataToInput(dataDebounced),
-        },
-      });
+      try {
+        const result = await updateQuestion({
+          variables: {
+            id,
+            values: convertDataToInput(data),
+          },
+        });
 
-      update(result.data.updateQuestion);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+        update(result.data.updateQuestion);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    5000,
+    false
+  );
 
   useEffect(() => {
     if (firstTime) {
@@ -135,7 +137,7 @@ const useQuestion = (id: string): UseQuestion => {
     }
 
     handleUpdate();
-  }, [dataDebounced]);
+  }, [data]);
 
   return {
     data,
