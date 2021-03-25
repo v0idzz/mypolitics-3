@@ -32,6 +32,6 @@ const EditorPage: React.FC = () => {
       </ContentWrapper>
     </Container>
   );
-}
+};
 
 export default EditorPage;

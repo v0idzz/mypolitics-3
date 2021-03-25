@@ -3,6 +3,7 @@ import LanguageSelect from "@shared/LanguageSelect";
 import useTranslation from "next-translate/useTranslation";
 import { TextTranslationInput } from "@generated/graphql";
 import { useDebounce } from "use-debounce";
+import { useDebounceCallback } from "@react-hook/debounce";
 import { Container, Input } from "./InternationalizedInputStyle";
 
 interface Props {
@@ -17,17 +18,17 @@ const InternationalizedInput: React.FC<Props> = ({
   const { lang } = useTranslation();
   const [value, setValue] = useState<TextTranslationInput>(defaultValue);
   const [selectedLang, setSelectedLang] = useState<string>(lang);
-  const [valueDebounced] = useDebounce(value, 500);
+  const handleChange = useDebounceCallback((v) => onChange(v), 1000);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setValue({
+  const handleLocalChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = {
       ...value,
       [selectedLang]: e.target.value,
-    });
+    };
 
-  useEffect(() => {
-    onChange(valueDebounced);
-  }, [valueDebounced]);
+    setValue(newValue);
+    handleChange(newValue);
+  };
 
   return (
     <Container>
@@ -37,7 +38,7 @@ const InternationalizedInput: React.FC<Props> = ({
         onChange={setSelectedLang}
         color="bluish"
       />
-      <Input value={value[selectedLang]} onChange={handleChange} />
+      <Input value={value[selectedLang]} onChange={handleLocalChange} />
     </Container>
   );
 };

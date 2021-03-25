@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import CountrySelect from "@shared/CountrySelect";
 import { Country } from "@generated/graphql";
+import useTranslation from "next-translate/useTranslation";
 import { ListContainer } from "./EditorPartiesStyle";
 import PartyCard from "./PartyCard";
 import PartyCreate from "./PartyCreate";
-import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPlus);
 

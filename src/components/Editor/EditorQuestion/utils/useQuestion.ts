@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import useEntity from "@components/Editor/utils/useEntity";
+import { useDebounceCallback } from "@react-hook/debounce";
 
 export interface EffectInput {
   type: "agree" | "disagree";
@@ -109,24 +110,28 @@ const useQuestion = (id: string): UseQuestion => {
     };
   };
 
-  const handleUpdate = async () => {
-    if (loading) {
-      return;
-    }
+  const handleUpdate = useDebounceCallback(
+    async () => {
+      if (loading) {
+        return;
+      }
 
-    try {
-      const result = await updateQuestion({
-        variables: {
-          id,
-          values: convertDataToInput(dataDebounced),
-        },
-      });
+      try {
+        const result = await updateQuestion({
+          variables: {
+            id,
+            values: convertDataToInput(dataDebounced),
+          },
+        });
 
-      update(result.data.updateQuestion);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+        update(result.data.updateQuestion);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    1000,
+    false
+  );
 
   useEffect(() => {
     if (firstTime) {

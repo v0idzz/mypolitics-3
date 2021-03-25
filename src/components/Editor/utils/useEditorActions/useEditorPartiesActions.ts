@@ -105,10 +105,15 @@ const useEditorPartiesActions = (
           },
         });
 
+        const party = {
+          ...data.createParty,
+          viewerCanEdit: true,
+        };
+
         update({
           quiz: {
             lastUpdatedVersion: {
-              parties: [...currentParties, data.createParty],
+              parties: [...currentParties, party],
             },
           },
         });

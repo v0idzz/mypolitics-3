@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import useWindowScroll from "@utils/hooks/useWindowScroll";
 import Button from "@shared/Button";
@@ -70,35 +70,39 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
     );
   };
   const navLinks = nav.map(toLink);
+  const rerender = JSON.stringify({ nav, highlighted, scrolled });
 
-  return (
-    <Container highlighted={highlighted} noTransparent={showMenu}>
-      <Inner>
-        <Link href={logo.homepage}>
-          <a>
-            <Logo src={logo.url} alt={logo.name} />
-          </a>
-        </Link>
-        <ActionsWrapper>
-          <DesktopNavigation>
-            {navLinks}
-            {!firstTimer && <UserInfo />}
-          </DesktopNavigation>
-          {firstTimer && <LanguageSelect />}
-          <MobileNavigationWrapper>
-            <MobileNavigationButton onClick={toggleMenu}>
-              <FontAwesomeIcon icon={showMenu ? faTimes : faBars} />
-            </MobileNavigationButton>
-            <MobileNavigation show={showMenu} buttonPadding={firstTimer}>
-              <MobileNavigationInner onClick={toggleMenu}>
-                {navLinks}
-                <UserInfo />
-              </MobileNavigationInner>
-            </MobileNavigation>
-          </MobileNavigationWrapper>
-        </ActionsWrapper>
-      </Inner>
-    </Container>
+  return useMemo(
+    () => (
+      <Container highlighted={highlighted} noTransparent={showMenu}>
+        <Inner>
+          <Link href={logo.homepage}>
+            <a>
+              <Logo src={logo.url} alt={logo.name} />
+            </a>
+          </Link>
+          <ActionsWrapper>
+            <DesktopNavigation>
+              {navLinks}
+              {!firstTimer && <UserInfo />}
+            </DesktopNavigation>
+            {firstTimer && <LanguageSelect />}
+            <MobileNavigationWrapper>
+              <MobileNavigationButton onClick={toggleMenu}>
+                <FontAwesomeIcon icon={showMenu ? faTimes : faBars} />
+              </MobileNavigationButton>
+              <MobileNavigation show={showMenu} buttonPadding={firstTimer}>
+                <MobileNavigationInner onClick={toggleMenu}>
+                  {navLinks}
+                  <UserInfo />
+                </MobileNavigationInner>
+              </MobileNavigation>
+            </MobileNavigationWrapper>
+          </ActionsWrapper>
+        </Inner>
+      </Container>
+    ),
+    [rerender]
   );
 };
 

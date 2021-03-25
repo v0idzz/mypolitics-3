@@ -12,6 +12,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import useEntity from "@components/Editor/utils/useEntity";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import ActionButton from "@shared/ActionButton";
+import useBreakpoint from "@utils/hooks/useBreakpoint";
+import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
 import { useAxisSelect, useIdeology } from "./AxisUtils";
 import {
   Container,
@@ -20,8 +22,6 @@ import {
   IdeologyName,
   Wrapper,
 } from "./AxisStyle";
-import useBreakpoint from "@utils/hooks/useBreakpoint";
-import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
 
 library.add(faTimes);
 
@@ -85,31 +85,29 @@ interface Props {
 const Axis: React.FC<Props> = ({ data, editor }) => {
   const { t } = useTranslation("editor");
   const { axes } = editor.actions;
-  const [deleteConfirmed] = useState<boolean>(false);
   const leftIdeology = useIdeology(data?.left && data.left.id);
   const rightIdeology = useIdeology(data?.right && data.right.id);
-  const dataJson = JSON.stringify({ data });
 
-  return useMemo(
-    () => (
-      <Wrapper>
-        <Container>
-          <AxisIdeology axisId={data.id} data={leftIdeology} side="left" />
-          <AxisIdeology axisId={data.id} data={rightIdeology} side="right" />
-        </Container>
-        <ActionButton
-          onClick={() => axes.delete(data.id)}
-          title={t("axes.deleteButton")}
-          mustConfirm
-          variant="red"
-          size="large"
-        >
-          <FontAwesomeIcon icon={faTrash} />
-        </ActionButton>
-      </Wrapper>
-    ),
-    [dataJson, deleteConfirmed]
+  return (
+    <Wrapper>
+      <Container>
+        <AxisIdeology axisId={data.id} data={leftIdeology} side="left" />
+        <AxisIdeology axisId={data.id} data={rightIdeology} side="right" />
+      </Container>
+      <ActionButton
+        onClick={() => axes.delete(data.id)}
+        title={t("axes.deleteButton")}
+        mustConfirm
+        variant="red"
+        size="large"
+      >
+        <FontAwesomeIcon icon={faTrash} />
+      </ActionButton>
+    </Wrapper>
   );
 };
 
-export default Axis;
+const areEqual = (prev: Props, next: Props) =>
+  JSON.stringify(prev.data) === JSON.stringify(next.data);
+
+export default React.memo(Axis, areEqual);

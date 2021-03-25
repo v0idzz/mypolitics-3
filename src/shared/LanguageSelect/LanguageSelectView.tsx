@@ -97,4 +97,6 @@ const LanguageSelect: React.FC<Props> = ({
   );
 };
 
-export default LanguageSelect;
+const areEqual = (prev: Props, next: Props) => prev.value === next.value;
+
+export default React.memo(LanguageSelect, areEqual);
