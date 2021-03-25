@@ -1,4 +1,4 @@
-export const flexGap = (gap: number) => `
+export const spacingY = (gap: number) => `
 & > *:not(:first-child) {
-  margin-top: ${gap}rem
+  margin-top: ${gap}rem;
 }`;

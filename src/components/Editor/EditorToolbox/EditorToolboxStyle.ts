@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
-import { flexGap } from '@utils/stylesUtils';
+import { spacingY } from '@utils/stylesUtils';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  ${flexGap(1)}
+  ${spacingY(1)}
   position: sticky;
   top: 35vh;
 `;
@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  ${flexGap(1)}
+  ${spacingY(1)}
   padding: 1rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => transparentize(0.85, theme.colors.primary)};
