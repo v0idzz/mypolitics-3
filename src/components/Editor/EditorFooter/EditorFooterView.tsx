@@ -13,7 +13,7 @@ import Button from "@shared/Button";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { BASE_PATH, paths, recaptchaSiteKey } from "@constants";
 import ReCAPTCHA from "react-google-recaptcha";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import {
   CurrentUserQuizzesDocument,
   useCreateSurveyMutation,
@@ -51,8 +51,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
   const { data: requirements } = useRequirements(editor);
   const quizPath = `${BASE_PATH}/quizzes/${data.data.quiz.slug}`;
   const [requestVerify] = useRequestQuizVerifyMutation({
-      onCompleted: () =>
-          toast.success(t("footer.verifyToast")),
+    onCompleted: () => toast.success(t("footer.verifyToast")),
     refetchQueries: [
       {
         query: CurrentUserQuizzesDocument,

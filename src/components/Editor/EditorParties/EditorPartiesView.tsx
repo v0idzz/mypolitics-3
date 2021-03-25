@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-import LanguageSelect from "@shared/LanguageSelect";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import Button from "@shared/Button";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";

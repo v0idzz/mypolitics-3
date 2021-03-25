@@ -9,7 +9,7 @@ export const Container = styled.div`
   
   ${breakpoint("xs", "md")`
     display: block;
-    ${spacingY(1)}
+    ${spacingY(1)};
   `};
 `;
 

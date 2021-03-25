@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
-import { spacingY } from '@utils/stylesUtils';
+import { spacingY } from "@utils/stylesUtils";
 
 export const Row = styled.div`
   display: grid;
@@ -17,8 +17,12 @@ export const Col = styled.div`
   ${spacingY(2)}
 
   & & {
-    ${spacingY(1)}
+    ${spacingY(1)};
   }
+
+  ${breakpoint("xs", "md")`
+    ${spacingY(1)};
+  `};
 `;
 
 export const ToolboxCol = styled(Col)`

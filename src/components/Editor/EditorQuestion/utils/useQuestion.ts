@@ -37,9 +37,6 @@ const useQuestion = (id: string): UseQuestion => {
   });
   const [firstTime, setFirstTime] = useState(true);
   const [updateQuestion, { loading }] = useUpdateQuestionMutation();
-  const [dataDebounced] = useDebounce(data, 1000, {
-    leading: true,
-  });
 
   const handleTextChange = (text: TextTranslationInput) =>
     update({
@@ -120,7 +117,7 @@ const useQuestion = (id: string): UseQuestion => {
         const result = await updateQuestion({
           variables: {
             id,
-            values: convertDataToInput(dataDebounced),
+            values: convertDataToInput(data),
           },
         });
 
@@ -129,7 +126,7 @@ const useQuestion = (id: string): UseQuestion => {
         console.error(e);
       }
     },
-    1000,
+    5000,
     false
   );
 
@@ -140,7 +137,7 @@ const useQuestion = (id: string): UseQuestion => {
     }
 
     handleUpdate();
-  }, [dataDebounced]);
+  }, [data]);
 
   return {
     data,

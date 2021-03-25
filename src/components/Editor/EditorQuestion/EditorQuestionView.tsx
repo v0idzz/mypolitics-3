@@ -81,6 +81,8 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
           />
           <Row>
             <PartiesInput question={question} />
+          </Row>
+          <Row>
             <IdeologiesInput question={question} />
           </Row>
         </Box>

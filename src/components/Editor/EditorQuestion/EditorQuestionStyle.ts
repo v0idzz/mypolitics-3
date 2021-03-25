@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components";
 import { mix, transparentize } from "polished";
+import breakpoint from "styled-components-breakpoint";
+import { spacingX, spacingY } from "@utils/stylesUtils";
+import { AnswerElementContainer } from "@components/Results/ResultsAnswerEffect/ResultsAnwerEffectStyle";
 
 export const NumberWrapper = styled.div`
   font-size: 1rem;
@@ -13,45 +16,26 @@ export const NumberWrapper = styled.div`
 `;
 
 export const Row = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
+  display: flex;
+
+  ${breakpoint("xs", "md")`
+    ${spacingY(1)};
+    flex-direction: column;
+  `};
+
+  ${breakpoint("md")`
+    ${spacingX(1)};
+    justify-content: space-between;
+    
+    & > div {
+      width: 50%;
+    }
+  `};
 `;
 
 export const ActionsWrapper = styled.div`
   display: flex;
   align-items: center;
-`;
-
-export const DeleteButton = styled.button<{ deleteConfirmed: boolean }>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  height: 2rem;
-  width: 2rem;
-  font-size: 1rem;
-  margin-right: 0.5rem;
-  color: ${({ theme }) => theme.colors.red};
-  background: ${({ theme }) => transparentize(0.9, theme.colors.red)};
-  border: 0;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-
-  &:hover {
-    background: ${({ theme }) => transparentize(0.8, theme.colors.red)};
-  }
-
-  ${({ deleteConfirmed }) =>
-    deleteConfirmed &&
-    css`
-      color: ${({ theme }) => theme.colors.backgroundLighten};
-      background: ${({ theme }) => theme.colors.red};
-
-      &:hover {
-        background: ${({ theme }) => mix(0.1, "#000", theme.colors.red)};
-      }
-    `}
 `;
 
 export const OpenButton = styled.button<{ opened: boolean }>`

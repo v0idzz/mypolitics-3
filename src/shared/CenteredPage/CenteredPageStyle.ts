@@ -24,7 +24,7 @@ export const Container = styled.main<{ fullWidth: boolean }>`
 `;
 
 export const Inner = styled.div`
-  ${spacingY(1)}
+  ${spacingY(1)};
   margin: auto;
   padding: 5% 0;
 `;

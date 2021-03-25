@@ -1,15 +1,21 @@
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import { spacingY } from '@utils/stylesUtils';
+import { spacingY } from "@utils/stylesUtils";
 
 export const Container = styled.section`
-  ${spacingY(1.5)}
-  padding: 1.5rem;
-  border-radius: 0.5rem;
+  ${spacingY(1)};
+  padding: 1rem;
+  border-radius: 0.25rem;
   background: ${({ theme }) => theme.colors.background};
 
+  ${breakpoint("sm")`
+     ${spacingY(1.5)};
+     padding: 1.5rem;
+     border-radius: 0.5rem;
+  `}
+
   ${breakpoint("md")`
-    ${spacingY(3)}
+    ${spacingY(3)};
     padding: 3rem;
   `}
 `;
@@ -46,11 +52,11 @@ export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 0.75rem;
+  margin-right: 0.75em;
 
   svg {
     color: ${({ theme }) => theme.colors.primary};
-    font-size: 1.5rem;
+    font-size: 1em;
   }
 `;
 

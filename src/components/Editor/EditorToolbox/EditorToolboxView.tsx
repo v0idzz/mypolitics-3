@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faExclamationTriangle,
@@ -7,6 +7,7 @@ import {
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import GoogleAd from "@shared/GoogleAd";
+import useTranslation from "next-translate/useTranslation";
 import PartyItem from "./PartyItem";
 import IdeologyItem from "./IdeologyItem";
 import {
@@ -21,7 +22,6 @@ import {
   ListInner,
   ListTitle,
 } from "./EditorToolboxStyle";
-import useTranslation from 'next-translate/useTranslation';
 
 library.add(faToolbox, faExclamationTriangle);
 
@@ -37,8 +37,24 @@ const EditorToolboxView: React.FC<Props> = ({ editor }) => {
     (id) => !traits.includes(id)
   );
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      ref.current.style.height = "";
+      ref.current.style.minHeight = "";
+    });
+
+    observer.observe(ref.current, {
+      attributes: true,
+      attributeFilter: ["style"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <Container>
         <Inner>
           <Header>

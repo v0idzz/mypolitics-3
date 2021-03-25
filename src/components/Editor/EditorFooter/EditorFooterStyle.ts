@@ -11,7 +11,7 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
   `}
-  
+
   & > * {
     margin: 0.5rem;
   }
@@ -24,6 +24,7 @@ export const Info = styled.div`
   color: ${({ theme }) => theme.colors.textMuted};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
+  word-break: break-all;
 
   span {
     font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
