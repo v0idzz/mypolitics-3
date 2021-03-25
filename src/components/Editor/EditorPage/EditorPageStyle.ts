@@ -1,16 +1,15 @@
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import { spacingY } from '@utils/stylesUtils';
 
 export const Container = styled.section`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 1.5rem;
+  ${spacingY(1.5)}
   padding: 1.5rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.background};
 
   ${breakpoint("md")`
-    grid-gap: 3rem;
+    ${spacingY(3)}
     padding: 3rem;
   `}
 `;
@@ -60,9 +59,4 @@ export const Title = styled.h2`
   color: ${({ theme }) => theme.colors.textMuted};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
-`;
-
-export const ContentWrapper = styled.div`
-  display: grid;
-  grid-gap: 1rem;
 `;

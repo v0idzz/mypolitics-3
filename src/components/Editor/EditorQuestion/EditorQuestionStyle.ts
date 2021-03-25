@@ -78,10 +78,10 @@ export const Info = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-column: 1 / -1;
   background: ${({ theme }) => transparentize(0.9, theme.colors.primary)};
   color: ${({ theme }) => theme.colors.primary};
   text-align: center;
   border-radius: 0.25rem;
   padding: 1rem;
+  width: 100%;
 `;

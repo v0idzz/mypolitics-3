@@ -5,14 +5,13 @@ import {
   ResultsPoliticianPartsFragment,
 } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
-import dayjs from "dayjs";
 import Link from "next/link";
 import { paths } from "@constants";
 import {
   Info,
   Header,
   Logo,
-  Date,
+  Date as HeaderDate,
   Id,
   PoliticianSubHeader,
   Title,
@@ -43,10 +42,17 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
           </Link>
         </div>
         <Info>
-          <Date>
+          <HeaderDate>
             <span>{t("header.finished")}</span>&nbsp;
-            {dayjs(updatedAt).locale(lang).format("DD.MM.YYYY, HH:MM")}
-          </Date>
+            {new Date(updatedAt).toLocaleString(undefined, {
+                hour12: false,
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric'
+            })}
+          </HeaderDate>
           <Id>
             <span>{t("header.id")}</span>
             {id}

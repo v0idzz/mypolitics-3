@@ -13,7 +13,7 @@ import Button from "@shared/Button";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { BASE_PATH, paths, recaptchaSiteKey } from "@constants";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useToasts } from "react-toast-notifications";
+import {toast} from "react-hot-toast";
 import {
   CurrentUserQuizzesDocument,
   useCreateSurveyMutation,
@@ -43,7 +43,6 @@ interface Props {
 const EditorFooter: React.FC<Props> = ({ editor }) => {
   const { t } = useTranslation("editor");
   const router = useRouter();
-  const { addToast } = useToasts();
   const [loading, setLoading] = useState(false);
   const { actions, versionInput, basicInput, data } = editor;
   const [testedVersion, setTestedVersion] = useState<TestedVersion>();
@@ -52,8 +51,8 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
   const { data: requirements } = useRequirements(editor);
   const quizPath = `${BASE_PATH}/quizzes/${data.data.quiz.slug}`;
   const [requestVerify] = useRequestQuizVerifyMutation({
-    onCompleted: () =>
-      addToast(t("footer.verifyToast"), { appearance: "success" }),
+      onCompleted: () =>
+          toast.success(t("footer.verifyToast")),
     refetchQueries: [
       {
         query: CurrentUserQuizzesDocument,
@@ -136,7 +135,8 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
           <span
             onClick={() => {
               navigator.clipboard.writeText(quizPath);
-              addToast(t("footer.urlToast"), { appearance: "success" });
+
+              toast.success(t("footer.urlToast"));
             }}
           >
             {quizPath}&nbsp;
@@ -158,6 +158,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
             loading={loading}
             disabled={loading}
             showShadow
+            isFullWidth
           >
             {t("footer.testBeforeVerify")}
           </Button>
@@ -173,6 +174,7 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
             loading={loading}
             disabled={loading}
             pulsating
+            isFullWidth
           >
             {t("footer.verifyRequest")}
           </Button>

@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faPencilRuler } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { useToasts } from "react-toast-notifications";
+import {toast} from "react-hot-toast";
 import useTranslation from "next-translate/useTranslation";
 import {
   Container,
@@ -24,7 +24,6 @@ library.add(faPencilRuler, faCopy);
 
 const EditorVerifyRequested: React.FC = () => {
   const { t } = useTranslation("editor");
-  const { addToast } = useToasts();
   const { query } = useRouter();
   const slug = `${query.slug}`;
   const quizPath = `${BASE_PATH}/quizzes/${slug}`;
@@ -43,10 +42,8 @@ const EditorVerifyRequested: React.FC = () => {
         <UrlWrapper>
           <span
             onClick={() => {
-              navigator.clipboard.writeText(quizPath);
-              addToast(t("verifyRequested.section.url.urlToast"), {
-                appearance: "success",
-              });
+                          navigator.clipboard.writeText(quizPath);
+              toast.success(t("verifyRequested.section.url.urlToast"));
             }}
           >
             {quizPath}&nbsp;

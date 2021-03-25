@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
 
@@ -21,6 +22,10 @@ export const Container = styled.div`
       width: auto;
       display: block;
     }
+  }
+
+  & > * {
+    margin-top: 0.5rem;
   }
 
   & > button:not(:last-child) {

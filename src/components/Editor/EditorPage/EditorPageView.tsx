@@ -6,7 +6,6 @@ import { Content } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
 import {
   Container,
-  ContentWrapper,
   Header,
   IconWrapper,
   Title,
@@ -27,9 +26,9 @@ const EditorPage: React.FC = () => {
           <Title>{t("header.title")}</Title>
         </div>
       </Header>
-      <ContentWrapper>
+      <div>
         <Content />
-      </ContentWrapper>
+      </div>
     </Container>
   );
 };

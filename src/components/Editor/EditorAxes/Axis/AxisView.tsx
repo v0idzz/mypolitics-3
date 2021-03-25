@@ -58,7 +58,7 @@ const AxisIdeology: React.FC<{
 
   if (!data) {
     return (
-      <Info onClick={handleClick} disabled={!isClickable} ref={ref}>
+      <Info as={isClickable ? "button" : "div"} onClick={handleClick} ref={ref}>
         {isClickable ? "Kliknij, aby wybrać ideologię" : "Upuść ideologię"}
       </Info>
     );

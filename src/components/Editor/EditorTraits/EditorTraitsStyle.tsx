@@ -45,4 +45,6 @@ export const AddButton = styled(Button).attrs({
   beforeIcon: <FontAwesomeIcon icon={faPlus} />,
 })`
   padding: 0;
+  width: 2rem;
+  height: 2rem;
 `;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SurveyAnswerType } from "@generated/graphql";
+import { spacingY } from '@utils/stylesUtils';
 
 export const AnswerElementTitleWrapper = styled.div`
   display: flex;
@@ -23,15 +24,18 @@ export const AnswerElementContent = styled(AnswerElementTitle)`
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
 
   p {
     margin: 0;
     white-space: nowrap;
+  }
+
+  & > * {
+    margin: 0.25rem;
   }
 `;
 
