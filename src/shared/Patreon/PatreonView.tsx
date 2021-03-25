@@ -1,6 +1,5 @@
 import React from "react";
 import { Patreons } from "@generated/graphql";
-import dayjs from "dayjs";
 import Button from "@shared/Button";
 import { faSeedling } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -12,7 +11,7 @@ import {
   Header,
   Logo,
   Inner,
-  Date,
+  Date as HeaderDate,
   HeaderText,
   ListWrapper,
   ButtonWrapper,
@@ -46,9 +45,9 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
       <Inner>
         <Title>{t("patreon.list.title")}</Title>
         <ListWrapper dangerouslySetInnerHTML={{ __html: list }} />
-        <Date>
-          {t("patreon.list.updatedAt")}&nbsp;{dayjs(updatedAt).format("YYYY-MM-DD")}
-        </Date>
+        <HeaderDate>
+          {t("patreon.list.updatedAt")}&nbsp;{new Date(updatedAt).toLocaleDateString()}
+        </HeaderDate>
       </Inner>
       <ButtonWrapper>
         <Link

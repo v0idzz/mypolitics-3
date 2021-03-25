@@ -7,7 +7,7 @@ import {
   faDiscord,
 } from "@fortawesome/free-brands-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
-import { useToasts } from "react-toast-notifications";
+import {toast} from "react-hot-toast";
 import useTranslation from "next-translate/useTranslation";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import {
@@ -24,7 +24,6 @@ interface Props {
 
 const ShareSocial: React.FC<Props> = ({ message = "", defaultPath }) => {
   const { t, lang } = useTranslation("common");
-  const { addToast } = useToasts();
   const { url } = useCanonicalUrl(defaultPath);
 
   return (
@@ -58,7 +57,7 @@ const ShareSocial: React.FC<Props> = ({ message = "", defaultPath }) => {
             background="white"
             onClick={async () => {
               await navigator.clipboard.writeText(url);
-              addToast(t("share.copied"), { appearance: "success" });
+              toast.success(t("share.copied"));
             }}
           >
             <FontAwesomeIcon icon={faLink} />

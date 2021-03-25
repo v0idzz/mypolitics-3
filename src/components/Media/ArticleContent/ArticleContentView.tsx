@@ -4,7 +4,6 @@ import Comments from "@shared/Comments";
 import ShareSocial from "@shared/ShareSocial";
 import { PostOrPage } from "@tryghost/content-api";
 import GoogleAd from "@shared/GoogleAd";
-import dayjs from "dayjs";
 import AuthorHeader from "@components/Media/ArticleContent/AuthorHeader";
 import AuthorInfo from "@components/Media/ArticleContent/AuthorInfo";
 import { Like } from "react-facebook";
@@ -18,7 +17,6 @@ import { useRouter } from "next/router";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useTheme } from "styled-components";
-import { rgba } from "polished";
 import { Spinner } from "@shared/Loading";
 import {
   Container,
@@ -134,8 +132,8 @@ const ArticleContent: React.FC<Props> = ({
           <Header>
             <Title>{title}</Title>
             <Lead as="div">
-              {[
-                dayjs(publishedAt).format("DD.MM.YYYY"),
+                          {[
+                  new Date(publishedAt).toLocaleDateString(),
                 "•",
                 t("header.readingTime", { count: readingTime }),
               ].join(" ")}

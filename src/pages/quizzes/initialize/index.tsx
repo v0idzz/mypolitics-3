@@ -4,7 +4,7 @@ import { NextPageContext } from "next";
 import { getRedirectIfInitialized } from "@components/Quiz/utils/getRedirectIfInitialized";
 import { Cookies as ConstCookies } from "@constants";
 import Cookies from "cookies";
-import dayjs from "dayjs";
+import {addMonths} from 'date-fns';
 
 const QuizInitializePage: React.FC = () => <InitPage />;
 
@@ -13,7 +13,7 @@ export const getServerSideProps = (context: NextPageContext) => {
   const redirect = getRedirectIfInitialized(context);
   const cookies = new Cookies(req, res);
   cookies.set(ConstCookies.INITIALIZED, new Date().toISOString(), {
-    expires: dayjs().add(3, "month").toDate(),
+    expires: addMonths(new Date(), 3),
   });
 
   return {
