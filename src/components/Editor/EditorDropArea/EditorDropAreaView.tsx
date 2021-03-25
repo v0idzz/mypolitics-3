@@ -29,7 +29,6 @@ const EditorDropArea: React.FC<Props> = ({
   const { show } = useEditorSlidingUpPanel();
 
   const handleDrop = ({ id }: any) => {
-    console.log(id);
     onDropOrAdd(id);
   };
 
