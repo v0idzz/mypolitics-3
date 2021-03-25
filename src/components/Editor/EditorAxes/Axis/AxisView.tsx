@@ -17,12 +17,13 @@ import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel
 import { useAxisSelect, useIdeology } from "./AxisUtils";
 import {
   Container,
-  Info,
   IdeologyContainer,
   IdeologyName,
+  Info,
   Wrapper,
 } from "./AxisStyle";
 import { translate } from '@utils/translation';
+import { ItemType } from "@constants";
 
 library.add(faTimes);
 
@@ -31,7 +32,6 @@ const AxisIdeology: React.FC<{
   side: "left" | "right";
   axisId: string;
 }> = ({ data, side, axisId }) => {
-  const { t } = useTranslation("editor");
   const { update } = useEntity({
     id: axisId,
     name: "QuizAxis",
@@ -50,7 +50,7 @@ const AxisIdeology: React.FC<{
     });
 
   const handleClick = () => {
-    show("ideology", (id) => {
+    show(ItemType.Ideology, (id) => {
       handleDrop({ id });
     });
   };

@@ -3,10 +3,10 @@ import {
   EditorIdeologyPartsFragment,
   EditorIdeologyPartsFragmentDoc,
 } from "@generated/graphql";
-import useEntity, { useEntityLazy } from "@components/Editor/utils/useEntity";
+import useEntity from "@components/Editor/utils/useEntity";
 
 import { ConnectDropTarget, useDrop } from "react-dnd";
-import { itemTypes } from "@constants";
+import { ItemType } from "@constants";
 
 export const useIdeology = (id: string): EditorIdeologyPartsFragment => {
   const { data } = useEntity<EditorIdeologyPartsFragment>({
@@ -43,8 +43,8 @@ export const useAxisSelect = ({
       [side]: { id },
     });
 
-  const [_, drop] = useDrop(() => ({
-    accept: itemTypes.ideology,
+  const [, drop] = useDrop(() => ({
+    accept: ItemType.Ideology,
     drop: handleDrop,
   }));
 
