@@ -18,10 +18,10 @@ export const Headers = {
   ADMIN: "mypolitics-admin",
 };
 
-export const itemTypes = {
-  party: "party",
-  ideology: "ideology",
-};
+export enum ItemType {
+  Party = "party",
+  Ideology = "ideology",
+}
 
 export const paths = {
   home: "/",

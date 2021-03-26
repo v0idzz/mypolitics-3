@@ -27,17 +27,7 @@ export const Info = styled.button`
   border-radius: 0.25rem;
   padding: 1rem;
   grid-column: 1 / -1;
-`;
-
-export const TraitsWrapper = styled.div`
-  background: ${({ theme }) => theme.colors.background};
-  border-radius: 0.5rem;
-  display: grid;
-  padding: 0.75rem;
-  grid-gap: 0.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
-  color: ${({ theme }) => theme.colors.primary};
-  font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
+  width: 100%;
 `;
 
 export const AddButton = styled(Button).attrs({

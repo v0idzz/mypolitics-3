@@ -1,23 +1,29 @@
-import { ConnectDropTarget, useDrop } from "react-dnd";
 import { useEntityLazy } from "@components/Editor/utils/useEntity";
 import {
   EditorIdeologyPartsFragmentDoc,
   EditorPartyPartsFragmentDoc,
 } from "@generated/graphql";
 import { UseQuestion } from "./useQuestion";
+import { ItemType } from "@constants";
+import { DocumentNode } from "@apollo/client";
 
 interface UseQuestionDrop {
-  ref: ConnectDropTarget;
   handleDrop: ({ id }: any) => void;
 }
 
 interface UseQuestionDropInput {
-  item: string;
+  item: ItemType;
   type: "agree" | "disagree";
   question: UseQuestion;
 }
 
-const itemsConfig = {
+interface ItemConfig {
+  name: string;
+  entity: "ideologies" | "parties";
+  document: DocumentNode;
+}
+
+const itemsConfig: Record<string, ItemConfig> = {
   ideology: {
     name: "Ideology",
     entity: "ideologies",
@@ -38,7 +44,7 @@ const useQuestionEffectsDrop = <T>({
   const [getEntity] = useEntityLazy();
   const { handleChange } = question;
   const { name, entity, document } = itemsConfig[item];
-  const handleDrop = ({ id }: any) => {
+  const handleDrop = (id: string) => {
     const { data: instance } = getEntity({
       id,
       name,
@@ -53,13 +59,7 @@ const useQuestionEffectsDrop = <T>({
     });
   };
 
-  const [_, drop] = useDrop(() => ({
-    accept: item,
-    drop: handleDrop,
-  }));
-
   return {
-    ref: drop,
     handleDrop,
   };
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { itemTypes } from "@constants";
 import useEntity from "@components/Editor/utils/useEntity";
 import {
   EditorPartyPartsFragment,
   EditorPartyPartsFragmentDoc,
 } from "@generated/graphql";
 import { Image } from "./PartyItemStyle";
-import useTranslation from 'next-translate/useTranslation';
+import useTranslation from "next-translate/useTranslation";
+import { ItemType } from "@constants";
 
 interface Props {
   id: string;
@@ -17,14 +17,13 @@ interface Props {
 }
 
 const PartyItem: React.FC<Props> = ({ id, onClick, title, xl }) => {
-  const { t } = useTranslation("editor");
   const { data } = useEntity<EditorPartyPartsFragment>({
     id,
     name: "Party",
     document: EditorPartyPartsFragmentDoc,
   });
   const [collected, drag] = useDrag(() => ({
-    item: { id, type: itemTypes.party },
+    item: { id, type: ItemType.Party },
   }));
   const { name, logoUrl } = data;
 

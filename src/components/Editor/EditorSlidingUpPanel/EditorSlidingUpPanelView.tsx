@@ -13,8 +13,7 @@ import { IdeologyItem, PartyItem } from "@components/Editor";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useBreakpoint from "@utils/hooks/useBreakpoint";
-
-export type ItemType = "party" | "ideology" | "trait";
+import { ItemType } from "@constants";
 
 interface Props {
   editor: UseEditor;
@@ -24,15 +23,11 @@ const EditorSlidingUpPanel: React.FC<Props> = ({ editor }) => {
   const { isIn, type, callback, hide } = useEditorSlidingUpPanel();
 
   const { versionInput } = editor;
-  const { parties, traits } = versionInput;
-  const ideologies = versionInput.ideologies.filter(
-    (id) => !traits.includes(id)
-  );
+  const { parties, ideologies } = versionInput;
 
   const [items, Component]: [string[], React.FC<any>] = R.cond([
-    [R.equals("party"), R.always([parties, PartyItem])],
-    [R.equals("ideology"), R.always([ideologies, IdeologyItem])],
-    [R.equals("trait"), R.always([traits, IdeologyItem])],
+    [R.equals(ItemType.Party), R.always([parties, PartyItem])],
+    [R.equals(ItemType.Ideology), R.always([ideologies, IdeologyItem])],
   ])(type);
 
   const handleItemClick = (id: string) => {
