@@ -19,6 +19,7 @@ import {
   Logo,
   EmptyWrapper,
 } from "./SurveysHistoryStyle";
+import { translate } from '@utils/translation';
 
 library.add(faArrowDown);
 
@@ -83,11 +84,11 @@ const SurveyHistoryElement: React.FC<SurveyHistoryElementProps> = ({
             {quiz.logoUrl && (
               <Logo
                 src={quiz.logoUrl}
-                alt={quiz.title ? quiz.title[lang] : quiz.slug}
+                alt={quiz.title ? translate(quiz.title, lang) : quiz.slug}
               />
             )}
             {!quiz.logoUrl && (
-              <Title>{quiz.title ? quiz.title[lang] : quiz.slug}</Title>
+              <Title>{quiz.title ? translate(quiz.title, lang) : quiz.slug}</Title>
             )}
           </a>
         </Link>

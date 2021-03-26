@@ -9,6 +9,7 @@ import {
 import IdeologyIcon from "@shared/IdeologyIcon";
 import useTranslation from "next-translate/useTranslation";
 import { Container } from "./IdeologyItemStyle";
+import { translate } from '@utils/translation';
 
 interface Props {
   id: string;
@@ -35,7 +36,7 @@ const IdeologyItem: React.FC<Props> = ({ id, onClick, title, xl }) => {
       ref={drag}
       onClick={onClick}
       background={color}
-      title={title || name[lang]}
+      title={title || translate(name, lang)}
       xl={xl}
       {...collected}
     >

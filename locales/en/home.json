@@ -1,6 +1,40 @@
 {
   "hero": {
-    "title": "<0>We are promoting <1>politically aware</1> society</0>",
-    "subTitle": "We are promoting civic attitudes and politically educating people around the world."
+    "title": "<0>We are building a <1>politically aware society</1></0>",
+    "subTitle": "We promote civic attitude and educate people all over the world",
+    "quizLink": "Political views quiz",
+    "learnMore": "Learn more",
+    "candidate": "Candidate"
+  },
+  "quiz": {
+    "title": "Political views test",
+    "slogan": "the most advanced",
+    "content": {
+      "text": "We have created a test of political views that has been used by nearly half a million people, including many famous political figures. Based on your answers, the test matches you with the closest ideology, political party and a location on the political compass. ",
+      "buttonText": "Check your political views "
+    }
+  },
+  "news": {
+    "title": "News and opinions",
+    "slogan": "journalism",
+    "content": {
+      "text": "In a world in which journalism is increasingly partisan, we have created myPolitics News to uphold the principle of objectivity. Meanwhile, through myPolitics View, we promote a more ideology-based approach to increase understanding of views from the entire political spectrum. ",
+      "buttonText": "See more"
+    }
+  },
+  "talk": {
+    "title": "Debates and political interviews ",
+    "slogan": "most interesting",
+    "content": {
+      "text": "We promote political activism by organising debates and interviews with youth organisations and politicians from across the political spectrum.",
+      "buttonText": "See more"
+    }
+  },
+  "partners": {
+    "title": "Would you like to work with us?",
+    "lead": "We are open to partnership!",
+    "content": {
+      "title": "Our partners"
+    }
   }
 }

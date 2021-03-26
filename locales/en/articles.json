@@ -1,3 +1,34 @@
 {
-
+  "SEO": {
+    "title": "News and opinion | myPolitics",
+    "description": "Never miss an update"
+  },
+  "hero": {
+    "title": "News and opinion"
+  },
+  "news": {
+    "title": "News",
+    "lead": "Never miss any news"
+  },
+  "header": {
+    "readingTime": {
+      "one": "Estimated reading time: one minute",
+      "few": "Estimated reading time: {{count}} minutes"
+    }
+  },
+  "view": {
+    "title": "Opinions ",
+    "lead": "Get to know the views of the opposite side"
+  },
+  "contact": {
+    "title": "<0><1>Want to contribute your own article?</1> Send it to us!/0>"
+  },
+  "checkMore": {
+    "title": "See other entries"
+  },
+  "share": {
+    "title": "Like what you see/read? ",
+    "facebook": "Share on Facebook",
+    "twitter": "Share on Twitter"
+  }
 }

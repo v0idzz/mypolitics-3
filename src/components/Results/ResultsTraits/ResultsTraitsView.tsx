@@ -12,6 +12,7 @@ import {
   Content,
   TraitContainer,
 } from "./ResultsTraitsStyle";
+import { translate } from '@utils/translation';
 
 interface Props {
   traits: ResultsTraitPartsFragment[];
@@ -28,12 +29,12 @@ const ResultsTraits: React.FC<Props> = ({ traits }) => {
 
   const toTrait = (trait: ResultsTraitPartsFragment) => (
     <TraitContainer
-      key={trait.name[lang]}
+      key={translate(trait.name, lang)}
       background={trait.color}
       onClick={() => onChange(trait)}
     >
       <IdeologyIcon icon={trait.icon} />
-      <span>{trait.name[lang]}</span>
+      <span>{translate(trait.name, lang)}</span>
     </TraitContainer>
   );
 

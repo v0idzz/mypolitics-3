@@ -46,7 +46,7 @@ const HeroView: React.FC = () => {
         </Content>
         <Illustration
           src={require("@assets/images/candidate.png")}
-          alt={t('hero.candidate')}
+          alt={t("hero.candidate")}
         />
       </HeroSection>
     </Wrapper>

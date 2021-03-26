@@ -28,7 +28,7 @@ export const getRandomPosts = async (
 
   return getManyPosts({
     ...options,
-    ...defaultOptions,
+    ...(idsFiltered.length > 0 ? defaultOptions : {}),
   })
     .then(shuffle)
     .then(replaceHttpHttps);

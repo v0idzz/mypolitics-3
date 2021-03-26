@@ -24,8 +24,8 @@ import RandomContent from "@shared/StandardPage/RandomContent/RandomContentView"
 import Link from "next/link";
 import Button from "@shared/Button";
 import { paths } from "@constants";
+import useTranslation from "next-translate/useTranslation";
 import { Content, Inner } from "./StandardPageStyle";
-import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPollH, faPencilRuler);
 
@@ -91,11 +91,15 @@ const StandardPage: React.FC<Props> = ({
                 type="short-news"
               />
               <GoogleAd id="myp3-standard-middle" />
-              <CurrentTalk />
-              <ArticlesListSection talks={talks} type="short-talk" />
             </>
           )}
-          <GoogleAd id="myp3-standard-bottom" />
+          <CurrentTalk />
+          {talks.length > 0 && (
+            <>
+              <ArticlesListSection talks={talks} type="short-talk" />
+              <GoogleAd id="myp3-standard-bottom" />
+            </>
+          )}
           {patreons && <Patreon patreons={patreons} />}
           <RandomContent />
           {randomArticle && (

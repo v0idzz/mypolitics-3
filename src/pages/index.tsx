@@ -31,6 +31,7 @@ import { CurrentTalk } from "@components/Talk";
 import Patreon from "@shared/Patreon";
 import styled from "styled-components";
 import { EditorCTA } from "@components/Editor";
+import useTranslation from "next-translate/useTranslation";
 
 library.add(faPollH);
 
@@ -58,44 +59,48 @@ const Home: React.FC<Props> = ({
   partners,
   featuredQuizzes,
   patreons,
-}) => (
-  <PageContainer>
-    <Hero />
-    <CurrentTalk />
-    <QuizSection />
-    <InnerSection>
-      <Section
-        title="Testy poglądów politycznych"
-        icon={<FontAwesomeIcon icon={faPollH} />}
-      >
-        {featuredQuizzes.map((quiz) => (
-          <Link
-            featured={quiz.slug === "mypolitics"}
-            key={quiz.id}
-            quiz={quiz}
-            showType
+}) => {
+  const { t } = useTranslation("common");
+
+  return (
+    <PageContainer>
+      <Hero />
+      <CurrentTalk />
+      <QuizSection />
+      <InnerSection>
+        <Section
+          title={t("standardPage.section.quizzes.title")}
+          icon={<FontAwesomeIcon icon={faPollH} />}
+        >
+          {featuredQuizzes.map((quiz) => (
+            <Link
+              featured={quiz.slug === "mypolitics"}
+              key={quiz.id}
+              quiz={quiz}
+              showType
+            />
+          ))}
+        </Section>
+        <EditorCTA />
+      </InnerSection>
+      <NewsSection posts={posts} />
+      <TalkSection talks={talks} />
+      <PartnersSection partners={partners} />
+      <ContactActionSection
+        title={
+          <Trans
+            i18nKey="common:contact.title"
+            components={[<React.Fragment key="0" />, <b key="1" />]}
           />
-        ))}
-      </Section>
-      <EditorCTA />
-    </InnerSection>
-    <NewsSection posts={posts} />
-    <TalkSection talks={talks} />
-    <PartnersSection partners={partners} />
-    <ContactActionSection
-      title={
-        <Trans
-          i18nKey="common:contact.title"
-          components={[<React.Fragment key="0" />, <b key="1" />]}
-        />
-      }
-    />
-    <InnerSection>
-      <Patreon patreons={patreons} />
-      <ShareSocial />
-    </InnerSection>
-  </PageContainer>
-);
+        }
+      />
+      <InnerSection>
+        <Patreon patreons={patreons} />
+        <ShareSocial />
+      </InnerSection>
+    </PageContainer>
+  );
+};
 
 export const getServerSideProps = async (): Promise<{ props: Props }> => {
   const client = initializeApollo();

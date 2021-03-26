@@ -13,7 +13,7 @@ export const categoriesConfig: Record<string, string[]> = {
 
 export const useCategory = (tags: Tag[]): UseCategory => {
   const { lang } = useTranslation();
-  const categories = categoriesConfig[lang];
+  const categories = categoriesConfig[lang] || categoriesConfig.en;
 
   const withoutInternal = (tag: Tag) => tag.visibility !== "internal";
   const filteredTags = tags.filter(withoutInternal);

@@ -7,6 +7,7 @@ import { paths } from "@constants";
 import { Comments } from "react-facebook";
 import { QuizBasicPartsFragment } from "@generated/graphql";
 import { Container } from "./CommentsStyle";
+import { translate } from '@utils/translation';
 
 interface Props {
   post?: PostOrPage;
@@ -23,7 +24,7 @@ const DisqusComments: React.FC<Props> = ({ post, quiz, type = "disqus" }) => {
 
   const disqusConfig = {
     identifier: post ? post.id : quiz.slug,
-    title: post ? post.title[lang] : quiz.title[lang],
+    title: post ? post.title : translate(quiz.title, lang),
     language: lang,
     url,
   };

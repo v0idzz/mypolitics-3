@@ -17,6 +17,7 @@ import StandardPage, {
 } from "@shared/StandardPage";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { getBackgroundImage } from "@components/Quiz/utils/getBackgroundImage";
+import { translate } from "@utils/translation";
 
 interface Props {
   results: ResultsPartsFragment;
@@ -30,8 +31,8 @@ const ResultsPage: React.FC<Props> = ({
   standardPageProps,
 }) => {
   const { lang } = useTranslation();
-  const title = results.quiz.title[lang];
-  const description = results.quiz.description[lang];
+  const title = translate(results.quiz.title, lang);
+  const description = translate(results.quiz.description, lang);
   const image = getBackgroundImage(title);
 
   const standardHeader = {
@@ -55,7 +56,10 @@ const ResultsPage: React.FC<Props> = ({
 
   const politicianHeader = {
     title: `${politician?.name} – wyniki w teście ${title}!`,
-    description: `Porównaj swoje poglądy! ${politician?.biography[lang]}`,
+    description: `Porównaj swoje poglądy! ${translate(
+      politician?.biography,
+      lang
+    )}`,
   };
 
   const politicianSeo: NextSeoProps = politician && {

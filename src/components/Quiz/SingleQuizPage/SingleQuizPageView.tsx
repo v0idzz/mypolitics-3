@@ -43,6 +43,7 @@ import {
   Title,
   AuthorHeader,
 } from "./SingleQuizPageStyle";
+import { translate } from '@utils/translation';
 
 interface Props {
   quiz: SingleQuizQuery["quiz"];
@@ -82,8 +83,8 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
       <GoogleAd id="myp3-standard-top" />
       <Container>
         <Header>
-          {quiz.logoUrl && <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />}
-          {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
+          {quiz.logoUrl && <Logo src={quiz.logoUrl} alt={translate(quiz.title, lang)} />}
+          {!quiz.logoUrl && <Title>{translate(quiz.title, lang)}</Title>}
           {!isClassic && (
             <Button onClick={handleStartClick} loading={loading} showShadow>
               {t("link.begin")}
@@ -101,7 +102,7 @@ const QuizzesPage: React.FC<Props> = ({ quiz }) => {
             <Vote quizId={quiz.id} value={quiz.meta.votes.value} />
           )}
           <Box>
-            <Description>{description[lang]}</Description>
+            <Description>{translate(description, lang)}</Description>
           </Box>
           <Box
             header={{

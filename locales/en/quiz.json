@@ -1,3 +1,162 @@
 {
-
+  "ideologies": {
+    "e84642622ce79db59c79b101650cd342": "Stalinism",
+    "5d7ed94a1045ee03d113d6ff8ac0fd21": "Strasserism",
+    "d205a81b8749ba9815224f30d4378380": "Fascism",
+    "7ac22d90e079d52413de4bf313abb5a8": "Francoism",
+    "e81131795dbcd0e9aa2df7cad0469dbd": "Pinochetism",
+    "f78793d37d2f256c190a4f2b5f5ef72e": "Socialism",
+    "bbdae02075351dfcfef18f82fe76ac4b": "Statism",
+    "f06c01c4e2b54c391dc24c478557ce9d": "Traditional conservatism",
+    "c96cb0f5a6aef182513caf03b320c0ed": "Conservatism",
+    "aeb2f0fe859d3d840a4eef1e15c1f5b4": "Paleolibertarianism",
+    "8dac303a993812f4115549b61ace48b8": "Centrism",
+    "2776bcfeeeadaae581c2283dea68516f": "Conservative liberalism",
+    "71506c04f97f716e2d8b6537eb3bb93b": "Social democracy",
+    "d2d1c8ba3fd291fb122cd3315b848ea9": "New Left",
+    "7115a02b1eaff53a8ddfe3d11a070034": "Democratic socialism ",
+    "9042e3760f1dd9e27dd7a32d3ab05399": "Anarcho-communism",
+    "18ddec23a18de5352780b95eebd814fa": "Social liberalism",
+    "37e56f7a2b1b9ddfe5c9963c9d61fc37": "Syndicalism",
+    "0e9c1fda905589e201751d712e8bc147": "Agorism",
+    "72f8fe391101c447cc467ee2dcdcd9e8": "Liberalism",
+    "652cbd1d722c2fcd8e06aa34f8aa22fe": "Libertarianism",
+    "6410ff914a95dfcb1359e16f005b8abc": "Anarcho-capitalism",
+    "default": "No ideology",
+    "select": "Choose from the list"
+  },
+  "features": {
+    "compass": "Compass",
+    "parties": "Parties",
+    "questionsNumber": {
+      "one": "{{count}} question",
+      "few": "{{count}} questions",
+      "other": "{{count}} questions"
+    },
+    "axesNumber": {
+      "one": "{{count}} axis",
+      "few": "{{count}} axes",
+      "other": "{{count}} axes"
+    },
+    "politiciansResults": "Politicians",
+    "traits": "Traits"
+  },
+  "axesIdeologyGrades": {
+    "center": "Centre",
+    "moderate": "Moderate",
+    "hard": "Strong",
+    "radical": "Radical"
+  },
+  "compass": {
+    "left": "Left wing",
+    "center": "Centre",
+    "right": "Right wing"
+  },
+  "answers": {
+    "NEUTRAL": "No answer",
+    "AGREE": "Agree",
+    "DISAGREE": "Disagree"
+  },
+  "weight": {
+    "1": "Somewhat",
+    "2": "Strongly"
+  },
+  "politicianCategory": {
+    "politician": "Politics",
+    "youth": "Youth organisations",
+    "commentator": "Other"
+  },
+  "init": {
+    "basic": "Let's start ",
+    "lead": "Is this your first political views test? ",
+    "yes": "Yes",
+    "no": "No",
+    "simplified": "Simplified",
+    "advancedVariant": "Advanced ",
+    "advanced": "Welcome, political compass veteran! ",
+    "top": "We kindly ask you to provide the closest ideology and location on the biaxial compass. It will help us improve the app. ",
+    "skip": "Skip",
+    "save": "Save the data"
+  },
+  "preInit": {
+    "before": "Before the quiz",
+    "hey": "Hey! ",
+    "beforeWeStart": "Before the quiz",
+    "top": "Your privacy is our priority. Here is how and why we store your data.",
+    "privacy": "Your results are anonymous and they cannot be traced back to you (unless you decide to share them)",
+    "data": "The data is analysed collectively to improve the accuracy of the app",
+    "next": "Next "
+  },
+  "link": {
+    "edit": "Edit",
+    "view": "See",
+    "begin": "Start",
+    "social": "Community",
+    "published": "Published",
+    "denied": "Rejected",
+    "inVerification": "Verification pending",
+    "reason1": "Reason for rejection",
+    "reason2": "Reason"
+  },
+  "results": {
+    "showMore": "Show more",
+    "none": "No results",
+    "famous": "Famous figures' results "
+  },
+  "respondent": {
+    "title": "Respondent's code ",
+    "privacy": "We protect your privacy, we do not store the link between you and your political views. This unique code will allow you to view the history of your results on different devices. ",
+    "change": "Change",
+    "header": "Change your respondent's code",
+    "confirm": "Confirm"
+  },
+  "vote": {
+    "votes": "Votes",
+    "rate": "Rate quiz"
+  },
+  "quizzes": {
+    "other": "Check other quizzes",
+    "history": "Results history"
+  },
+  "single": {
+    "social": "Community quiz ",
+    "functions": "Functions",
+    "stats": "Statistics",
+    "tests": "Tests",
+    "famous": "Famous figures' results ",
+    "author": "Creator:",
+    "license": "Licence ",
+    "comments": "Comments"
+  },
+  "surveyHistory": {
+    "title": "Results history",
+    "showMore": "Show more",
+    "emptyInfo": "Your history is empty. Take a quiz!",
+    "type": {
+      "finished": "Done",
+      "notFinishedYet": "In progress"
+    }
+  },
+  "survey": {
+    "bottomInfo": "You can pause the test at any moment, your progress will be saved.",
+    "question": "Question",
+    "actions": {
+      "previousQuestion": "Previous question",
+      "reset": "Start over",
+      "resetConfirm": "Reset",
+      "main": {
+        "hover": "Click to cancel",
+        "notHover": "To what degree? "
+      },
+      "answer": {
+        "neutral": "I don't know",
+        "agree": "Agree",
+        "disagree": "Disagree"
+      },
+      "weight": {
+        "1": "Somewhat",
+        "2": "Strongly"
+      }
+    }
+  }
 }

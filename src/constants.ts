@@ -1,5 +1,5 @@
 import getConfig from "next/config";
-import { UrlObject } from 'url';
+import { UrlObject } from "url";
 
 const { publicRuntimeConfig } = getConfig();
 export const BASE_PATH = publicRuntimeConfig.BASE_PATH || "";
@@ -80,3 +80,24 @@ export const apiPaths = {
     facebook: `${API_BASE}/auth/facebook`,
   },
 };
+
+export const LANG_CODE = {
+  en: "en",
+  pl: "pl",
+};
+
+export interface Language {
+  id: string;
+  name: string;
+}
+
+export const languages: Language[] = [
+  {
+    id: LANG_CODE.pl,
+    name: "Język polski",
+  },
+  {
+    id: LANG_CODE.en,
+    name: "English language",
+  },
+];

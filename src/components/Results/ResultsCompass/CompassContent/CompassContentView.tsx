@@ -16,6 +16,7 @@ import {
   DescriptionElementContainer,
   DescriptionElementSide,
 } from "./CompassContentStyle";
+import { translate } from '@utils/translation';
 
 const ThirdAxis: React.FC<{ position: number }> = ({ position }) => (
   <ThirdAxisContainer>
@@ -63,16 +64,16 @@ const CompassContent: React.FC<Props> = ({ selectedCompass }) => {
       <Description>
         <DescriptionElement
           position={point.horizontal}
-          name={horizontal.name[lang]}
+          name={translate(horizontal.name, lang)}
         />
         <DescriptionElement
           position={point.vertical}
-          name={vertical.name[lang]}
+          name={translate(vertical.name, lang)}
         />
         {hasThird && (
           <DescriptionElement
             position={point.third}
-            name={selectedCompass.third.name[lang]}
+            name={translate(selectedCompass.third.name, lang)}
           />
         )}
       </Description>

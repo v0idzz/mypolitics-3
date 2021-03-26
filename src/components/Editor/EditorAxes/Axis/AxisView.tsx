@@ -22,6 +22,7 @@ import {
   IdeologyName,
   Wrapper,
 } from "./AxisStyle";
+import { translate } from '@utils/translation';
 
 library.add(faTimes);
 
@@ -69,7 +70,7 @@ const AxisIdeology: React.FC<{
   return (
     <IdeologyContainer color={color}>
       <IdeologyIcon icon={icon} />
-      <IdeologyName>{name[lang]}</IdeologyName>
+      <IdeologyName>{translate(name, lang)}</IdeologyName>
       <ActionButton variant="white" onClick={handleDelete}>
         <FontAwesomeIcon icon={faTimes} />
       </ActionButton>

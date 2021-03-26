@@ -12,6 +12,7 @@ import {
   LeanEffect,
 } from "@components/Results/ResultsAnswers/Answer/AnswerTypes";
 import useTranslation from "next-translate/useTranslation";
+import { translate } from '@utils/translation';
 
 const IdeologyButton: React.FC<{ ideology: Ideology }> = ({ ideology }) => {
   const [showIdeology, setShowIdeology] = useState<Ideology | undefined>(
@@ -58,7 +59,7 @@ export const useAnswerEffects = (answer: LeanAnswer): UseAnswerEffects => {
   } = answer.question.effects;
 
   const mapToIdeologyButton = R.map((ideology) => (
-    <IdeologyButton key={ideology.name[lang]} ideology={ideology} />
+    <IdeologyButton key={translate(ideology.name, lang)} ideology={ideology} />
   ));
 
   const mapToPartyImage = R.map((p) => (

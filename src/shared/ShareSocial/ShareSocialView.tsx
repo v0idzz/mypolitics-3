@@ -7,7 +7,7 @@ import {
   faDiscord,
 } from "@fortawesome/free-brands-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import useTranslation from "next-translate/useTranslation";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 import {
@@ -64,45 +64,49 @@ const ShareSocial: React.FC<Props> = ({ message = "", defaultPath }) => {
           </Button>
         </ButtonGroup>
       </Container>
-      {lang === "pl" && (
-        <Container>
-          <TitleCommunity>Społeczność</TitleCommunity>
-          <ButtonGroup>
-            <a href="https://discord.gg/k9MbvxapuM" rel="noreferrer">
-              <Button
-                background="discord"
-                beforeIcon={<FontAwesomeIcon icon={faDiscord} />}
-              >
-                Discord
-              </Button>
-            </a>
-            <a
-              href="https://facebook.com/groups/sztabmypolitics"
-              target="_blank"
-              rel="noreferrer"
+      <Container>
+        {lang !== "pl" && (
+          <TitleCommunity>{t("share.community")}</TitleCommunity>
+        )}
+        <ButtonGroup>
+          <a href="https://discord.gg/k9MbvxapuM" rel="noreferrer">
+            <Button
+              background="discord"
+              beforeIcon={<FontAwesomeIcon icon={faDiscord} />}
             >
-              <Button
-                background="white"
-                beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
+              Discord
+            </Button>
+          </a>
+          {lang === "pl" && (
+            <>
+              <a
+                href="https://facebook.com/groups/sztabmypolitics"
+                target="_blank"
+                rel="noreferrer"
               >
-                Sztab
-              </Button>
-            </a>
-            <a
-              href="https://facebook.com/groups/polemika"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Button
-                background="white"
-                beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
+                <Button
+                  background="white"
+                  beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
+                >
+                  Sztab
+                </Button>
+              </a>
+              <a
+                href="https://facebook.com/groups/polemika"
+                target="_blank"
+                rel="noreferrer"
               >
-                Polemika
-              </Button>
-            </a>
-          </ButtonGroup>
-        </Container>
-      )}
+                <Button
+                  background="white"
+                  beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
+                >
+                  Polemika
+                </Button>
+              </a>
+            </>
+          )}
+        </ButtonGroup>
+      </Container>
     </Wrapper>
   );
 };

@@ -1,0 +1,173 @@
+{
+  "SEO": {
+    "title": "Quiz editor",
+    "description": "Create your own political quiz "
+  },
+  "header": {
+    "title": "Quiz editor "
+  },
+  "basic": {
+    "title": "Basic data ",
+    "input": {
+      "title": "Title",
+      "description": "Description",
+      "logo": "logo"
+    }
+  },
+  "parties": {
+    "title": "Political parties",
+    "create": "Create party",
+    "import": "Import party",
+    "form": {
+      "logo": "Logo",
+      "country": "State",
+      "name": "Name"
+    },
+    "createModal": {
+      "title": "Create party",
+      "button": "Create/set"
+    },
+    "editModal": {
+      "title": "Edit the party",
+      "button": "Save"
+    }
+  },
+  "ideologies": {
+    "title": "Ideologies",
+    "create": "Create ideology",
+    "import": "Import ideology",
+    "importFromOther": "From other test ",
+    "form": {
+      "icon": "Icon",
+      "name": "Name",
+      "color": "Colour",
+      "description": "Description"
+    },
+    "createModal": {
+      "title": "Create ideology",
+      "button": "Create "
+    },
+    "editModal": {
+      "title": "Edit ideology",
+      "button": "Save"
+    },
+    "importModal": {
+      "title": "import ideology",
+      "url": "Link to the quiz",
+      "button": "import"
+    }
+  },
+  "axes": {
+    "title": "Axes",
+    "deleteButton": "Delete axis",
+    "createButton": "Create axis "
+  },
+  "traits": {
+    "title": "Traits ",
+    "description": [
+      "Traits are the respondent's seperate views which cannot be depicted on the axes ",
+      "It is assigned when the respondent answers 'strongly' to all the questions associated with the trait."
+    ],
+    "dropHere": "Drop ideology here",
+    "clickToDelete": "Click to delete",
+    "dropHereIdeology": "drop ideology here",
+    "clickHereIdeology": "Click to choose an ideology"
+  },
+  "question": {
+    "title": "Questions",
+    "deleteButton": "Add question",
+    "partiesFor": "Parties for",
+    "partiesAgainst": "Parties against",
+    "ideologiesFor": "Ideologies for ",
+    "ideologiesAgainst": "ideologies against",
+    "dropHereParty": "Drop party here",
+    "clickHereParty": "Click to choose a party ",
+    "dropHereIdeology": "Drop an ideology here",
+    "clickHereIdeology": "Click to choose an ideology",
+    "createNew": "Create question",
+    "clickToDelete": "Click to delete"
+  },
+  "toolbox": {
+    "title": "Tools",
+    "cta": "Pick up and drop in a correct box",
+    "section": {
+      "parties": "Parties",
+      "ideologies": "Ideologies",
+      "traits": "Traits"
+    }
+  },
+  "admin": {
+    "title": "Moderation panel",
+    "section": {
+      "verifyRequests": "Quizzes for verification"
+    }
+  },
+  "footer": {
+    "urlTitle": "Link to the quiz",
+    "urlToast": "Copied ",
+    "testBeforeVerify": "Test before verification",
+    "verifyRequest": "Submit for verification ",
+    "verifyToast": "Your test has been submitted successfully. Check the editor's panel for updates. ",
+    "requirements": {
+      "title": "Fulfill the following requirements to submit your quiz",
+      "list": {
+        "titleAndDescription": "Title and description",
+        "minQuestions": "Minimum {{count}} questions",
+        "minIdeologiesOrParties": "Minimum {{count}} ideologies/parties ",
+        "allQuestionsHaveEffects": "Every question has an effect assigned to it?"
+      }
+    }
+  },
+  "adminFooter": {
+    "title": "Verify",
+    "discard": "Reject",
+    "accept": "Accept",
+    "discardModal": {
+      "title": "Reason for rejection",
+      "input": {
+        "label": "Reason of rejection",
+        "placeholder": "Inappropriate words"
+      },
+      "button": "Reject quiz"
+    }
+  },
+  "panel": {
+    "title": "Creator's panel",
+    "section": {
+      "quizzes": {
+        "title": "Your quizzes",
+        "createButton": "Create new quiz"
+      }
+    },
+    "defaultQuizValues": {
+      "title": "My new quiz",
+      "description": "Space for a cool description "
+    }
+  },
+  "verifyRequested": {
+    "title": "Submitted for verification",
+    "section": {
+      "url": {
+        "title": "Private link to your quiz",
+        "description": "Through this link, the test can be ",
+        "urlToast": "Copied "
+      },
+      "meaning": {
+        "title": "What does this mean?",
+        "description": "Once verified, your quiz will join other creator's quizzes and appear on the homepage :)"
+      },
+      "edit": {
+        "title": "Can I edit my quiz?",
+        "description": "Of course! But you will have to submit it again for verification"
+      },
+      "vote": {
+        "title": "What can I do to have my quiz accepted more quickly?",
+        "description": "How quickly your quiz is verified depends on the number of votes your quiz has. Send the link to your friends and ask for a vote."
+      }
+    },
+    "footer": {
+      "returnButton": "Back to editing",
+      "panelButton": "Creator's panel"
+    }
+  }
+}

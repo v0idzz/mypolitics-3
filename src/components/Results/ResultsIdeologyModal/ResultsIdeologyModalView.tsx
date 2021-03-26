@@ -8,6 +8,7 @@ import {
   IconWrapper,
   TitleWrapper,
 } from "./ResultsIdeologyStyle";
+import { translate } from '@utils/translation';
 
 interface Props {
   data?: Pick<ResultsIdeology, "name" | "description" | "color" | "icon">;
@@ -31,14 +32,14 @@ const ResultsIdeologyModal: React.FC<Props> = ({ data, show, onClose }) => {
         <IconWrapper>
           <IdeologyIcon icon={icon} />
         </IconWrapper>
-        <TitleWrapper>{name[lang]}</TitleWrapper>
+        <TitleWrapper>{translate(name, lang)}</TitleWrapper>
       </TitleContainer>
     ),
   };
 
   return (
     <Modal header={header} show={show} onClose={onClose}>
-      {description[lang]}
+      {translate(description, lang)}
     </Modal>
   );
 };
