@@ -49,6 +49,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
             dropText={t("question.dropHereIdeology")}
             clickText={t("question.clickHereIdeology")}
             onDropOrAdd={handleAgreeDrop}
+            padding={0.5}
           >
             {agreeIdeologies.map(({ id }) => (
               <IdeologyItem
@@ -71,6 +72,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
             dropText={t("question.dropHereIdeology")}
             clickText={t("question.clickHereIdeology")}
             onDropOrAdd={handleDisagreeDrop}
+            padding={0.5}
           >
             {disagreeIdeologies.map(({ id }) => (
               <IdeologyItem

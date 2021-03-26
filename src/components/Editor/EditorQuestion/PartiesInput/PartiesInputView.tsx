@@ -48,6 +48,7 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
           dropText={t("question.dropHereParty")}
           clickText={t("question.clickHereParty")}
           onDropOrAdd={handleAgreeDrop}
+          padding={0.5}
         >
           {agreeParties.map(({ id }) => (
             <PartyItem
@@ -68,6 +69,7 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
           dropText={t("question.dropHereParty")}
           clickText={t("question.clickHereParty")}
           onDropOrAdd={handleDisagreeDrop}
+          padding={0.5}
         >
           {disagreeParties.map(({ id }) => (
             <PartyItem

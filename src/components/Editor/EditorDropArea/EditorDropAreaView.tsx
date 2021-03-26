@@ -16,6 +16,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   multiple?: boolean;
   onDropOrAdd: (item: any) => void;
   children: React.ReactNode;
+  padding?: number;
 }
 
 const EditorDropArea: React.FC<Props> = ({

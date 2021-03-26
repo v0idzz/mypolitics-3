@@ -2,9 +2,9 @@ import React from "react";
 import { IdeologyItem } from "@components/Editor";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import useTranslation from "next-translate/useTranslation";
-import { Description, TraitsDropArea } from "./EditorTraitsStyle";
-import EditorDropArea from "@components/Editor/EditorDropArea";
+import { Description } from "./EditorTraitsStyle";
 import { ItemType } from "@constants";
+import { EditorIconsDropArea } from "@components/Editor/EditorDropArea";
 
 interface Props {
   editor: UseEditor;
@@ -25,12 +25,13 @@ const EditorTraits: React.FC<Props> = ({ editor }) => {
     <Description>
       <span>{t("traits.description.0")}</span>
       <span>{t("traits.description.1")}</span>
-      <TraitsDropArea
+      <EditorIconsDropArea
         clickText={t("traits.clickHereIdeology")}
         dropText={t("traits.dropHereIdeology")}
         multiple
         accept={ItemType.Ideology}
         onDropOrAdd={handleAdd}
+        padding={0.75}
       >
         {traits.map((trait) => (
           <IdeologyItem
@@ -40,7 +41,7 @@ const EditorTraits: React.FC<Props> = ({ editor }) => {
             id={trait.id}
           />
         ))}
-      </TraitsDropArea>
+      </EditorIconsDropArea>
     </Description>
   );
 };
