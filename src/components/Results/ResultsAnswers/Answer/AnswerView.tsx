@@ -56,7 +56,7 @@ const Answer: React.FC<Props> = ({ data, num, party }) => {
       <Header>
         <HeaderInfo>
           <Number>#{num}</Number>
-          <Question>{translate(qustion.text, lang)}</Question>
+          <Question>{translate(question.text, lang)}</Question>
         </HeaderInfo>
         <HeaderActions>
           {!isNeutral && party && !partyNeutral && (
