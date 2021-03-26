@@ -27,21 +27,20 @@ export const getStandardPageProps = async ({
   const client = initializeApollo();
   const [viewTag, newsTag] = categoriesConfig[locale];
   const notCurrentFilter = `slug:-['${query.slug}']`;
-  const langTag = `hash-${locale}`;
 
   const newsQuery = getRandomPosts({
     limit: 1,
-    filter: `tags:[${newsTag}]+tags:[${langTag}]+${notCurrentFilter}`,
+    filter: `tags:${newsTag}+${notCurrentFilter}`,
   });
 
   const viewQuery = getRandomPosts({
     limit: 2,
-    filter: `tags:[${viewTag}]+tags:[${langTag}]+${notCurrentFilter}`,
+    filter: `tags:${viewTag}+${notCurrentFilter}`,
   });
 
   const randomArticleQuery = getRandomPosts({
     limit: 1,
-    filter: `tags:[${viewTag}]+tags:[${langTag}]+${notCurrentFilter}`,
+    filter: `tags:${viewTag}+${notCurrentFilter}`,
     fields: ["id", "title", "slug", "feature_image", "published_at"],
     include: ["tags", "authors"],
   });

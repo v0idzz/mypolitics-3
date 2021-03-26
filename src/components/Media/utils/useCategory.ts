@@ -8,7 +8,7 @@ interface UseCategory {
 
 export const categoriesConfig: Record<string, string[]> = {
   pl: ["Opinia", "News"],
-  en: ["View", "News"],
+  en: ["View", "Report"],
 };
 
 export const useCategory = (tags: Tag[]): UseCategory => {
