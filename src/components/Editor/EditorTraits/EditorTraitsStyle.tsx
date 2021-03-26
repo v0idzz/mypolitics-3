@@ -4,6 +4,7 @@ import Button from "@shared/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
+import EditorDropArea from "@components/Editor/EditorDropArea";
 
 export const Description = styled.div`
   font-size: 1rem;
@@ -29,7 +30,7 @@ export const Info = styled.button`
   grid-column: 1 / -1;
 `;
 
-export const TraitsWrapper = styled.div`
+export const TraitsDropArea = styled((props) => <EditorDropArea {...props} />)`
   padding: 0.75rem;
 `;
 

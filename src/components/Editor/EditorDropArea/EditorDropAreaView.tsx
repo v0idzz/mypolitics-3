@@ -9,7 +9,7 @@ import { useDrop } from "react-dnd";
 import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
 import { ItemType } from "@constants";
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   accept: ItemType;
   dropText: string;
   clickText: string;
@@ -25,6 +25,7 @@ const EditorDropArea: React.FC<Props> = ({
   dropText,
   multiple,
   children,
+  ...rest
 }) => {
   const { show } = useEditorSlidingUpPanel();
 
@@ -44,7 +45,7 @@ const EditorDropArea: React.FC<Props> = ({
   const isClickable = useBreakpoint("md");
 
   return (
-    <Container ref={drop}>
+    <Container ref={drop} {...rest}>
       {children}
       {children.length > 0 && isClickable && multiple && (
         <AddButton onClick={handleAddClick} />
