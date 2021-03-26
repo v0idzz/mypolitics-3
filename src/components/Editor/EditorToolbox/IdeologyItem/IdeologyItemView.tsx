@@ -1,6 +1,5 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { itemTypes } from "@constants";
 import useEntity from "@components/Editor/utils/useEntity";
 import {
   EditorIdeologyPartsFragment,
@@ -10,6 +9,7 @@ import IdeologyIcon from "@shared/IdeologyIcon";
 import useTranslation from "next-translate/useTranslation";
 import { Container } from "./IdeologyItemStyle";
 import { translate } from '@utils/translation';
+import { ItemType } from "@constants";
 
 interface Props {
   id: string;
@@ -19,7 +19,6 @@ interface Props {
 }
 
 const IdeologyItem: React.FC<Props> = ({ id, onClick, title, xl }) => {
-  const { t } = useTranslation("editor");
   const { lang } = useTranslation();
   const { data } = useEntity<EditorIdeologyPartsFragment>({
     id,
@@ -28,7 +27,7 @@ const IdeologyItem: React.FC<Props> = ({ id, onClick, title, xl }) => {
   });
   const { name, icon, color } = data;
   const [collected, drag] = useDrag(() => ({
-    item: { id, type: itemTypes.ideology },
+    item: { id, type: ItemType.Ideology },
   }));
 
   return (

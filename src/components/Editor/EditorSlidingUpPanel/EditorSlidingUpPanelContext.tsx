@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ItemType } from "./EditorSlidingUpPanelView";
+import { ItemType } from "@constants";
 
 type Callback = (id: string) => void;
 
@@ -28,7 +28,7 @@ export const useEditorSlidingUpPanel = () => {
 
 export const EditorSlidingUpPanelProvider: React.FC = ({ children }) => {
   const [isIn, setIsIn] = useState(false);
-  const [type, setType] = useState<ItemType>("party");
+  const [type, setType] = useState<ItemType>(ItemType.Party);
   const [callback, setCallback] = useState<Callback>();
 
   const show = (type: ItemType, callback: Callback) => {

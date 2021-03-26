@@ -1,5 +1,4 @@
 import getConfig from "next/config";
-import { UrlObject } from "url";
 
 const { publicRuntimeConfig } = getConfig();
 export const BASE_PATH = publicRuntimeConfig.BASE_PATH || "";
@@ -18,10 +17,10 @@ export const Headers = {
   ADMIN: "mypolitics-admin",
 };
 
-export const itemTypes = {
-  party: "party",
-  ideology: "ideology",
-};
+export enum ItemType {
+  Party = "party",
+  Ideology = "ideology",
+}
 
 export const paths = {
   home: "/",

@@ -26,6 +26,7 @@ export const AnswerElementContent = styled(AnswerElementTitle)`
   border-bottom-left-radius: 0.5rem;
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.secondary.regular};
 

@@ -1,15 +1,12 @@
 import React from "react";
 import { AnswerEffect } from "@components/Results";
 import { SurveyAnswerType } from "@generated/graphql";
-import { itemTypes } from "@constants";
+import { ItemType } from "@constants";
 import { PartyItem } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
-import useBreakpoint from "@utils/hooks/useBreakpoint";
-import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
-import { AddButton } from "@components/Editor/EditorTraits/EditorTraitsStyle";
 import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
 import { UseQuestion } from "../utils/useQuestion";
-import { Info } from "../EditorQuestionStyle";
+import { EditorIconsDropArea } from "@components/Editor/EditorDropArea";
 
 interface Props {
   question: UseQuestion;
@@ -18,23 +15,16 @@ interface Props {
 const PartiesInput: React.FC<Props> = ({ question }) => {
   const { t } = useTranslation("editor");
   const { data, handleChange } = question;
-  const args = { question, item: itemTypes.party };
-  const { ref: agreeRef, handleDrop: handleAgreeDrop } = useQuestionEffectsDrop(
-    {
-      type: "agree",
-      ...args,
-    }
-  );
-
-  const {
-    ref: disagreeRef,
-    handleDrop: handleDisagreeDrop,
-  } = useQuestionEffectsDrop({
-    type: "disagree",
+  const args = { question, item: ItemType.Party };
+  const { handleDrop: handleAgreeDrop } = useQuestionEffectsDrop({
+    type: "agree",
     ...args,
   });
 
-  const { show } = useEditorSlidingUpPanel();
+  const { handleDrop: handleDisagreeDrop } = useQuestionEffectsDrop({
+    type: "disagree",
+    ...args,
+  });
 
   const agreeParties = data.effects.agree.parties || [];
   const disagreeParties = data.effects.disagree.parties || [];
@@ -47,21 +37,18 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
       entity: "parties",
     });
 
-  const handlePickClick = (type: "disagree" | "agree") => {
-    show("party", (id: string) => {
-      const handler = type === "agree" ? handleAgreeDrop : handleDisagreeDrop;
-      handler({ id });
-    });
-  };
-
-  const isClickable = useBreakpoint("md");
-
   return (
     <>
-      <div ref={agreeRef}>
-        <AnswerEffect
-          title={t("question.partiesFor")}
-          type={SurveyAnswerType.Agree}
+      <AnswerEffect
+        title={t("question.partiesFor")}
+        type={SurveyAnswerType.Agree}
+      >
+        <EditorIconsDropArea
+          accept={ItemType.Party}
+          dropText={t("question.dropHereParty")}
+          clickText={t("question.clickHereParty")}
+          onDropOrAdd={handleAgreeDrop}
+          padding={0.5}
         >
           {agreeParties.map(({ id }) => (
             <PartyItem
@@ -71,25 +58,18 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
               id={id}
             />
           ))}
-          {agreeParties.length > 0 && isClickable && (
-            <AddButton onClick={() => handlePickClick("agree")} />
-          )}
-          {agreeParties.length === 0 && (
-            <Info
-              as={isClickable ? "button" : "div"}
-              onClick={() => handlePickClick("agree")}
-            >
-              {isClickable
-                ? t("question.clickHereParty")
-                : t("question.dropHereParty")}
-            </Info>
-          )}
-        </AnswerEffect>
-      </div>
-      <div ref={disagreeRef}>
-        <AnswerEffect
-          title={t("question.partiesAgainst")}
-          type={SurveyAnswerType.Disagree}
+        </EditorIconsDropArea>
+      </AnswerEffect>
+      <AnswerEffect
+        title={t("question.partiesAgainst")}
+        type={SurveyAnswerType.Disagree}
+      >
+        <EditorIconsDropArea
+          accept={ItemType.Party}
+          dropText={t("question.dropHereParty")}
+          clickText={t("question.clickHereParty")}
+          onDropOrAdd={handleDisagreeDrop}
+          padding={0.5}
         >
           {disagreeParties.map(({ id }) => (
             <PartyItem
@@ -99,21 +79,8 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
               id={id}
             />
           ))}
-          {disagreeParties.length > 0 && isClickable && (
-            <AddButton onClick={() => handlePickClick("disagree")} />
-          )}
-          {disagreeParties.length === 0 && (
-            <Info
-              onClick={() => handlePickClick("disagree")}
-              as={isClickable ? "button" : "div"}
-            >
-              {isClickable
-                ? t("question.clickHereParty")
-                : t("question.dropHereParty")}
-            </Info>
-          )}
-        </AnswerEffect>
-      </div>
+        </EditorIconsDropArea>
+      </AnswerEffect>
     </>
   );
 };
