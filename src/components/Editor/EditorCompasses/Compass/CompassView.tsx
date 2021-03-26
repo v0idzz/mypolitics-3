@@ -4,8 +4,6 @@ import InternationalizedInput from "@shared/InternationalizedInput";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import { deepen } from "@components/Editor/EditorCompasses/Compass/CompassUtils";
 import { Container, AxisTitle, AxisWrapper } from "./CompassStyle";
-import { Info, TraitsWrapper } from '@components/Editor/EditorTraits/EditorTraitsStyle';
-import { IdeologyItem } from '@components/Editor';
 
 interface Props {
   compass: EditorQuizQuery["quiz"]["lastUpdatedVersion"]["compassModes"][0];
