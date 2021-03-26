@@ -24,6 +24,7 @@ import {
   Title,
   AuthorHeader,
 } from "./SingleSurveyPageStyle";
+import { translate } from '@utils/translation';
 
 library.add(faArrowLeft, faUndoAlt, faTimes, faCheck);
 
@@ -41,8 +42,8 @@ const SurveyPage: React.FC = () => {
   return (
     <Container>
       <Header>
-        {quiz.logoUrl && <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />}
-        {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
+        {quiz.logoUrl && <Logo src={quiz.logoUrl} alt={translate(quiz.title, lang)} />}
+        {!quiz.logoUrl && <Title>{translate(quiz.title, lang)}</Title>}
       </Header>
       {quiz.type === QuizType.Community && (
         <AuthorHeader>{t("single.social")}</AuthorHeader>
@@ -58,7 +59,7 @@ const SurveyPage: React.FC = () => {
             }}
           >
             <span>
-              <FormQuestion>{currentQuestion.text[lang]}</FormQuestion>
+              <FormQuestion>{translate(currentQuestion.text, lang)}</FormQuestion>
             </span>
           </CSSTransition>
         </SwitchTransition>

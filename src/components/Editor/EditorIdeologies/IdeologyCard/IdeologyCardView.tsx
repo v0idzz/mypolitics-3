@@ -9,6 +9,7 @@ import ActionButton from "@shared/ActionButton";
 import IdeologyEdit from "@components/Editor/EditorIdeologies/IdeologyEdit";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import { Container, Name } from "./IdeologyCardStyle";
+import { translate } from '@utils/translation';
 
 library.add(faPen, faTimes);
 
@@ -30,7 +31,7 @@ const IdeologyCard: React.FC<Props> = ({
   return (
     <Container color={color}>
       <IdeologyIcon icon={icon} />
-      <Name>{name[lang]}</Name>
+      <Name>{translate(name, lang)}</Name>
       {showActions && editor && (
         <>
           {viewerCanEdit && (

@@ -10,6 +10,7 @@ import StandardPage, {
   StandardPageProps,
 } from "@shared/StandardPage";
 import { getBackgroundImage } from "@components/Quiz/utils/getBackgroundImage";
+import { translate } from '@utils/translation';
 
 interface Props {
   quiz: SingleQuizQuery["quiz"];
@@ -18,8 +19,8 @@ interface Props {
 
 const SingleQuizPage: React.FC<Props> = ({ quiz, standardPageProps }) => {
   const { lang } = useTranslation();
-  const title = quiz.title[lang];
-  const description = quiz.description[lang];
+  const title = translate(quiz.title, lang);
+  const description = translate(quiz.description, lang);
   const image = getBackgroundImage(title);
 
   return (

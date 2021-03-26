@@ -3,6 +3,7 @@ import * as R from "ramda";
 import useTranslation from "next-translate/useTranslation";
 import { AxisSide } from "@components/Results/ResultsAxes/ResultsAxisSide/ResultsAxisSideTypes";
 import useAdjectiveDeclination from "@utils/hooks/useAdjectiveDeclination";
+import { translate } from "@utils/translation";
 import { AxisSides } from "./ResultsAxisTypes";
 
 const defaultIfNaN = (value: number, defaultNumber: number) =>
@@ -55,10 +56,12 @@ export const useAxisTitle = ({
     [R.T, R.always(right)],
   ])(right.percentage);
 
-  const ideologyName = side.data.name[lang].toLowerCase();
+  const ideologyName = translate(side.data.name, lang).toLowerCase();
   const declineIfAdj = (text: string) => {
     const adjVerb = text.split(" ");
-    return adjVerb.length > 1 ? decline(adjVerb[0], adjVerb[1]) : text;
+    return adjVerb.length > 1
+      ? decline(adjVerb[0], adjVerb.slice(1).join(" "))
+      : text;
   };
   const textTranslation = (type: string) =>
     declineIfAdj(t(`axesIdeologyGrades.${type}`, { ideology: ideologyName }));

@@ -21,6 +21,7 @@ import {
   Title,
   TypeTitle,
 } from "./QuizLinkStyle";
+import { translate } from '@utils/translation';
 
 library.add(faPen, faEye, faUsers);
 
@@ -72,9 +73,9 @@ const QuizLink: React.FC<Props> = ({
           <Link href={path}>
             <a>
               {quiz.logoUrl && (
-                <Image src={quiz.logoUrl} alt={quiz.title[lang]} />
+                <Image src={quiz.logoUrl} alt={translate(quiz.title, lang)} />
               )}
-              {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
+              {!quiz.logoUrl && <Title>{translate(quiz.title, lang)}</Title>}
             </a>
           </Link>
           {quiz.type === QuizType.Community && showType && (

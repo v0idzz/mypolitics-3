@@ -1,6 +1,7 @@
 import React from "react";
 import { ResultsPoliticianPartsFragment } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
+import { translate } from "@utils/translation";
 import { Container, Image, Biography } from "./ResultsPoliticianInfoStyle";
 
 interface Props {
@@ -13,7 +14,7 @@ const ResultsPoliticianInfo: React.FC<Props> = ({ politician }) => {
   return (
     <Container>
       <Image src={politician.image.url} alt={politician.name} />
-      <Biography>{politician.biography[lang]}</Biography>
+      <Biography>{translate(politician?.biography, lang)}</Biography>
     </Container>
   );
 };

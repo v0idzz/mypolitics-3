@@ -1,0 +1,48 @@
+{
+  "answers": {
+    "analyze": "Analyse your answers",
+    "compare": "Compare with a party",
+    "show": "Show",
+    "showMore": "Show more",
+    "agree": "Agreed with ",
+    "disagree": "Disagreed with",
+    "ideYes": "Ideologies for",
+    "ideNo": "Ideologies against",
+    "parYes": "Parties for",
+    "parNo": "Parties against"
+  },
+  "content": {
+    "checkOut": "Check my political views in "
+  },
+  "description": {
+    "title": "What does my result mean?",
+    "axes": "The ideological axes define your views in particular spheres, contrasting two opposite ideas. Click on the icon to learn what it stands for.",
+    "compass": "The political compass depicts your location on bi- or three-axle political sphere. The location in each axis of the chart corresponds with the values on the ideological axes. "
+  },
+  "header": {
+    "finished": "Finished",
+    "id": "ID",
+    "social": "Community Quiz "
+  },
+  "ideology": {
+    "title": "How does the ideology matching work? ",
+    "desc1": "In the alpha version of the test, the ideology matching is based exclusively on the location on the compass. ",
+    "desc2": "Basing on the previously prepared map of ideologies, the algorithm assorts the ideology your location is the closest to. "
+  },
+  "party": {
+    "title": "How does the party matching work? / How does party assortment work? ",
+    "desc1": "The percentage depicts compatibility between answers given by the respondent and the parties",
+    "desc2": "You can check which questions you agree on with a given party in the Analysis section below ",
+    "header": "Party ",
+    "agreement": "Answers compatibility ",
+    "authorized": "The blue stamp marks answers that have been authorized by a party representative",
+    "percentage": "The percentage depicts compatibility between the respondent's and party's answers",
+    "auth": "Authorized answer "
+  },
+  "trait": {
+    "title": "How do traits work?",
+    "desc1": "Traits are respondent's individual views that cannot be depicted on the axes ",
+    "desc2": "It is assigned when the respondent answers 'strongly' to all the questions associated with the trait.",
+    "header": "Traits"
+  }
+}

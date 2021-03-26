@@ -8,12 +8,12 @@ interface UseCategory {
 
 export const categoriesConfig: Record<string, string[]> = {
   pl: ["Opinia", "News"],
-  en: ["View", "News"],
+  en: ["View", "Report"],
 };
 
 export const useCategory = (tags: Tag[]): UseCategory => {
   const { lang } = useTranslation();
-  const categories = categoriesConfig[lang];
+  const categories = categoriesConfig[lang] || categoriesConfig.en;
 
   const withoutInternal = (tag: Tag) => tag.visibility !== "internal";
   const filteredTags = tags.filter(withoutInternal);

@@ -1,20 +1,16 @@
 import React from "react";
 import { DefaultSeo } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
-import { BASE_PATH } from "@constants";
+import { BASE_PATH, languages } from "@constants";
 import useCanonicalUrl from "@utils/hooks/useCanonicalUrl";
 
 const HeadSEO: React.FC = () => {
   const { t, lang } = useTranslation("common");
   const { url, getCustomLangUrl } = useCanonicalUrl();
-  const locale = {
-    pl: "pl_PL",
-    en: "en_US",
-  };
 
-  const languageAlternates = Object.keys(locale).map((key) => ({
-    hrefLang: key,
-    href: getCustomLangUrl(key),
+  const languageAlternates = languages.map(({ id }) => ({
+    hrefLang: id,
+    href: getCustomLangUrl(id),
   }));
 
   return (
@@ -27,7 +23,7 @@ const HeadSEO: React.FC = () => {
         type: "website",
         site_name: "myPolitics",
         description: t("SEO.description"),
-        locale: locale[lang],
+        locale: lang,
         images: [
           {
             url: `${BASE_PATH}/static/thumbnail.png`,

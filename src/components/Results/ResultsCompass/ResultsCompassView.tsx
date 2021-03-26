@@ -4,6 +4,7 @@ import useTranslation from "next-translate/useTranslation";
 import * as R from "ramda";
 import CompassContent from "@components/Results/ResultsCompass/CompassContent";
 import { Container, ListElement, List } from "./ResultsCompassStyle";
+import { translate } from '@utils/translation';
 
 interface Props {
   compasses: ResultsCompassPartsFragment[];
@@ -25,7 +26,7 @@ const ResultsCompass: React.FC<Props> = ({
       selected={selectedCompass === compass}
       onClick={() => onChange(compass)}
     >
-      {compass.name[lang]}
+      {translate(compass.name, lang)}
     </ListElement>
   );
   const elements = R.map(toListElement, compasses);

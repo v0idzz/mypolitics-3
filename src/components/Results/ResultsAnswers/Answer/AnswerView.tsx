@@ -24,6 +24,7 @@ import {
   SubHeader,
 } from "./AnswerStyle";
 import { useAnswerEffects } from "./AnwerUtils";
+import { translate } from '@utils/translation';
 
 library.add(faThumbsUp, faThumbsDown);
 
@@ -55,7 +56,7 @@ const Answer: React.FC<Props> = ({ data, num, party }) => {
       <Header>
         <HeaderInfo>
           <Number>#{num}</Number>
-          <Question>{question.text[lang]}</Question>
+          <Question>{translate(qustion.text, lang)}</Question>
         </HeaderInfo>
         <HeaderActions>
           {!isNeutral && party && !partyNeutral && (

@@ -1,3 +1,92 @@
 {
-
+  "SEO": {
+    "title": "myPolitics - Political views tests",
+    "description": "Test your views and find where you stand or create your own quiz. Enter and try! Political compass, 7 axes, closest party and ideology"
+  },
+  "contact": {
+    "email": "biuro@mypolitics.pl",
+    "title": "<0><1>Any questions?</1> Please contact us.</0>"
+  },
+  "documents": {
+    "rules": "Terms and conditions",
+    "privacy": "Privacy policy",
+    "gdpr": "How do we use your data?"
+  },
+  "footer": {
+    "rules": "Terms and conditions",
+    "privacy": "Privacy",
+    "gdpr": "Your data"
+  },
+  "header": {
+    "articles": "Articles",
+    "talks": "Debates",
+    "quiz": "Quizzes",
+    "history": "History",
+    "creator": "Creator's panel",
+    "quizMod": "Moderation"
+  },
+  "share": {
+    "share": "Share",
+    "community": "Community",
+    "copied": "Copied!"
+  },
+  "errorMessages": [
+    "File not found",
+    "Unauthorized",
+    "Respondent's header not found",
+    "The survey has closed",
+    "The survey has not closed yet",
+    "This version has already been published",
+    "Incorrect login details",
+    "user/username already exists",
+    "A verification email has been sent to your email address again.",
+    "User does not exist",
+    "You have already voted",
+    "The verification email has already been sent. Try again in 15 minutes."
+  ],
+  "talkType": {
+    "classic": "Youth organisation debates",
+    "mvsp": "Youth vs politicians",
+    "interview": "Interview",
+    "expert": "Expert opinion",
+    "ring": "Political Ring"
+  },
+  "country": {
+    "POLAND": "Poland",
+    "ENGLAND": "United Kingdom",
+    "UNITED_STATES": "USA"
+  },
+  "groupAd": {
+    "button": "Join!"
+  },
+  "patreon": {
+    "title": "Patreon",
+    "description": "We are not associated with or financed by any political option. You can support our work on Patreon.",
+    "list": {
+      "title": "myPolitics' Patrons",
+      "updatedAt": "As of:"
+    },
+    "button": "Become a Patron"
+  },
+  "editorCta": {
+    "button": "Creator's panel",
+    "title": [
+      "Didn't like this quiz?",
+      "You can create a better one!"
+    ]
+  },
+  "standardPage": {
+    "section": {
+      "quizzes": {
+        "title": "Political views tests",
+        "button": "Show more"
+      }
+    }
+  },
+  "uploadInput": {
+    "button": "Choose file"
+  },
+  "userInfo": {
+    "login": "Log in"
+  }
 }

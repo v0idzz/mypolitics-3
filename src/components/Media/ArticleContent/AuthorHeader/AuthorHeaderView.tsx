@@ -17,10 +17,9 @@ interface Props {
 }
 
 const AuthorHeader: React.FC<Props> = ({ post }) => {
-  const { tags, authors } = post;
+  const { tags, primary_author: author } = post;
   const { category, subCategories } = useCategory(tags);
   const hasSubcategories = subCategories.length > 0;
-  const author = authors[0];
 
   return (
     <Container>
@@ -33,10 +32,12 @@ const AuthorHeader: React.FC<Props> = ({ post }) => {
         )}
         <SubCategory>{subCategories.join(", ")}</SubCategory>
       </CategoryWrapper>
-      <AuthorWrapper>
-        {author.profile_image && <AuthorImage src={author.profile_image} />}
-        <AuthorName>{author.name}</AuthorName>
-      </AuthorWrapper>
+      {author && (
+        <AuthorWrapper>
+          {author.profile_image && <AuthorImage src={author.profile_image} />}
+          <AuthorName>{author.name}</AuthorName>
+        </AuthorWrapper>
+      )}
     </Container>
   );
 };

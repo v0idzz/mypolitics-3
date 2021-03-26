@@ -20,6 +20,7 @@ import useTranslation from "next-translate/useTranslation";
 import { EditorCTA } from "@components/Editor";
 import { Vote } from "@components/Quiz";
 import { Col, Container, Row } from "./ResultsContentStyle";
+import { translate } from '@utils/translation';
 
 interface Props {
   results: ResultsPartsFragment;
@@ -84,7 +85,7 @@ const ResultsContent: React.FC<Props> = ({ results, politician }) => {
       )}
       <EditorCTA />
       <ShareSocial
-        message={`${t("content.checkOut")} ${results.quiz.title[lang]}!`}
+        message={`${t("content.checkOut")} ${translate(results.quiz.title, lang)}!`}
       />
       <Like
         href="http://www.facebook.com/myPoliticsTest"

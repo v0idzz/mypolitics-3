@@ -84,8 +84,4 @@ export const ButtonGroup = styled.div`
   `}
 `;
 
-export const TitleCommunity = styled.h5`
-  ${breakpoint("lg")`
-    display: none;
-  `}
-`;
+export const TitleCommunity = styled.h5``;

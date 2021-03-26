@@ -13,7 +13,7 @@ import {
   DropdownButton,
   LanguageImage,
 } from "./LanguageSelectStyle";
-import { Language, languages } from "./LanguageSelectUtils";
+import { Language, languages } from "@constants";
 
 library.add(faAngleDown, faAngleUp);
 
@@ -40,10 +40,10 @@ const LanguageSelect: React.FC<Props> = ({
     const languageSelected = id === currentLang;
 
     const handleClick = (e: React.MouseEvent) => {
-      e.preventDefault();
       toggleShowFull();
 
       if (!global) {
+        e.preventDefault();
         onChange(id);
       }
     };

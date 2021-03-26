@@ -30,17 +30,17 @@ export const getStandardPageProps = async ({
 
   const newsQuery = getRandomPosts({
     limit: 1,
-    filter: `tag:${newsTag}+${notCurrentFilter}`,
+    filter: `tags:${newsTag}+${notCurrentFilter}`,
   });
 
   const viewQuery = getRandomPosts({
     limit: 2,
-    filter: `tag:${viewTag}+${notCurrentFilter}`,
+    filter: `tags:${viewTag}+${notCurrentFilter}`,
   });
 
   const randomArticleQuery = getRandomPosts({
     limit: 1,
-    filter: `tag:${viewTag}+${notCurrentFilter}`,
+    filter: `tags:${viewTag}+${notCurrentFilter}`,
     fields: ["id", "title", "slug", "feature_image", "published_at"],
     include: ["tags", "authors"],
   });
@@ -50,6 +50,9 @@ export const getStandardPageProps = async ({
     variables: {
       limit: 3,
       sort: "end:desc",
+      where: {
+        lang: locale,
+      },
     },
   });
 

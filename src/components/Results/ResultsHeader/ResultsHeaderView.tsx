@@ -17,6 +17,7 @@ import {
   Title,
   AuthorHeader,
 } from "./ResultsHeaderStyle";
+import { translate } from '@utils/translation';
 
 interface Props {
   results: ResultsPartsFragment;
@@ -35,9 +36,9 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
           <Link href={path}>
             <a>
               {quiz.logoUrl && (
-                <Logo src={quiz.logoUrl} alt={quiz.title[lang]} />
+                <Logo src={quiz.logoUrl} alt={translate(quiz.title, lang)} />
               )}
-              {!quiz.logoUrl && <Title>{quiz.title[lang]}</Title>}
+              {!quiz.logoUrl && <Title>{translate(quiz.title, lang)}</Title>}
             </a>
           </Link>
         </div>
