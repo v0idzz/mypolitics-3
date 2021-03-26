@@ -4,13 +4,9 @@ import { SurveyAnswerType } from "@generated/graphql";
 import { ItemType } from "@constants";
 import { PartyItem } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
-import useBreakpoint from "@utils/hooks/useBreakpoint";
-import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
-import { AddButton } from "@components/Editor/EditorTraits/EditorTraitsStyle";
 import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
 import { UseQuestion } from "../utils/useQuestion";
-import { Info } from "../EditorQuestionStyle";
-import EditorDropArea from "@components/Editor/EditorDropArea";
+import { EditorIconsDropArea } from "@components/Editor/EditorDropArea";
 
 interface Props {
   question: UseQuestion;
@@ -47,7 +43,7 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
         title={t("question.partiesFor")}
         type={SurveyAnswerType.Agree}
       >
-        <EditorDropArea
+        <EditorIconsDropArea
           accept={ItemType.Party}
           dropText={t("question.dropHereParty")}
           clickText={t("question.clickHereParty")}
@@ -61,13 +57,13 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
               id={id}
             />
           ))}
-        </EditorDropArea>
+        </EditorIconsDropArea>
       </AnswerEffect>
       <AnswerEffect
         title={t("question.partiesAgainst")}
         type={SurveyAnswerType.Disagree}
       >
-        <EditorDropArea
+        <EditorIconsDropArea
           accept={ItemType.Party}
           dropText={t("question.dropHereParty")}
           clickText={t("question.clickHereParty")}
@@ -81,7 +77,7 @@ const PartiesInput: React.FC<Props> = ({ question }) => {
               id={id}
             />
           ))}
-        </EditorDropArea>
+        </EditorIconsDropArea>
       </AnswerEffect>
     </>
   );

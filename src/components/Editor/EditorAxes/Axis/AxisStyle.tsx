@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { mix, transparentize } from "polished";
+import EditorDropArea from "@components/Editor/EditorDropArea";
 
 export const Container = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ export const IdeologyContainer = styled.div<{ color: string }>`
   padding: 0.75rem;
   background: ${({ color }) => color};
   vertical-align: middle;
-  width: 50%;
+  width: 100%;
 
   span,
   img {
@@ -37,6 +38,12 @@ export const IdeologyContainer = styled.div<{ color: string }>`
     width: 1rem;
     color: ${({ theme }) => theme.colors.backgroundLighten};
   }
+`;
+
+export const IdeologyDropArea = styled((props) => (
+  <EditorDropArea {...props} />
+))`
+  width: 50%;
 `;
 
 export const IdeologyName = styled.div`

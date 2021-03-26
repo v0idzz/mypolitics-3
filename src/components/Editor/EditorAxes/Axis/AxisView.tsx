@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import {
   EditorAxisPartsFragment,
   EditorAxisPartsFragmentDoc,
@@ -12,17 +12,15 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import useEntity from "@components/Editor/utils/useEntity";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import ActionButton from "@shared/ActionButton";
-import useBreakpoint from "@utils/hooks/useBreakpoint";
-import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
 import { useAxisSelect, useIdeology } from "./AxisUtils";
 import {
   Container,
   IdeologyContainer,
   IdeologyName,
-  Info,
   Wrapper,
+  IdeologyDropArea,
 } from "./AxisStyle";
-import { translate } from '@utils/translation';
+import { translate } from "@utils/translation";
 import { ItemType } from "@constants";
 
 library.add(faTimes);
@@ -38,43 +36,33 @@ const AxisIdeology: React.FC<{
     document: EditorAxisPartsFragmentDoc,
   });
   const { lang } = useTranslation();
-  const { ref, handleDrop } = useAxisSelect({
+  const { handleDrop } = useAxisSelect({
     side,
     axisId,
   });
-  const { show } = useEditorSlidingUpPanel();
 
   const handleDelete = () =>
     update({
       [side]: null,
     });
 
-  const handleClick = () => {
-    show(ItemType.Ideology, (id) => {
-      handleDrop({ id });
-    });
-  };
-
-  const isClickable = useBreakpoint("md");
-
-  if (!data) {
-    return (
-      <Info as={isClickable ? "button" : "div"} onClick={handleClick} ref={ref}>
-        {isClickable ? "Kliknij, aby wybrać ideologię" : "Upuść ideologię"}
-      </Info>
-    );
-  }
-
-  const { name, icon, color } = data;
-
   return (
-    <IdeologyContainer color={color}>
-      <IdeologyIcon icon={icon} />
-      <IdeologyName>{translate(name, lang)}</IdeologyName>
-      <ActionButton variant="white" onClick={handleDelete}>
-        <FontAwesomeIcon icon={faTimes} />
-      </ActionButton>
-    </IdeologyContainer>
+    <IdeologyDropArea
+      accept={ItemType.Ideology}
+      dropText="Upuść ideologię"
+      clickText="Kliknij, aby wybrać ideologię"
+      onDropOrAdd={handleDrop}
+    >
+      {data && (
+        <IdeologyContainer color={data.color}>
+          <IdeologyIcon icon={data.icon} />
+          <IdeologyName>{translate(data.name, lang)}</IdeologyName>
+          <ActionButton variant="white" onClick={handleDelete}>
+            <FontAwesomeIcon icon={faTimes} />
+          </ActionButton>
+        </IdeologyContainer>
+      )}
+    </IdeologyDropArea>
   );
 };
 

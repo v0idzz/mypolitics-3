@@ -6,7 +6,7 @@ import { IdeologyItem } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
 import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
 import { UseQuestion } from "../utils/useQuestion";
-import EditorDropArea from "@components/Editor/EditorDropArea";
+import { EditorIconsDropArea } from "@components/Editor/EditorDropArea";
 
 interface Props {
   question: UseQuestion;
@@ -44,7 +44,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
           title={t("question.ideologiesFor")}
           type={SurveyAnswerType.Agree}
         >
-          <EditorDropArea
+          <EditorIconsDropArea
             accept={ItemType.Ideology}
             dropText={t("question.dropHereIdeology")}
             clickText={t("question.clickHereIdeology")}
@@ -58,7 +58,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
                 id={id}
               />
             ))}
-          </EditorDropArea>
+          </EditorIconsDropArea>
         </AnswerEffect>
       </div>
       <div>
@@ -66,7 +66,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
           title={t("question.ideologiesAgainst")}
           type={SurveyAnswerType.Disagree}
         >
-          <EditorDropArea
+          <EditorIconsDropArea
             accept={ItemType.Ideology}
             dropText={t("question.dropHereIdeology")}
             clickText={t("question.clickHereIdeology")}
@@ -80,7 +80,7 @@ const IdeologiesInput: React.FC<Props> = ({ question }) => {
                 id={id}
               />
             ))}
-          </EditorDropArea>
+          </EditorIconsDropArea>
         </AnswerEffect>
       </div>
     </>

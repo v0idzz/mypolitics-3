@@ -15,7 +15,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   clickText: string;
   multiple?: boolean;
   onDropOrAdd: (item: any) => void;
-  children: JSX.Element[];
+  children: React.ReactNode;
 }
 
 const EditorDropArea: React.FC<Props> = ({
@@ -44,16 +44,18 @@ const EditorDropArea: React.FC<Props> = ({
 
   const isClickable = useBreakpoint("md");
 
+  const childrenCount = React.Children.count(children);
+
   return (
     <Container ref={drop} {...rest}>
       {children}
-      {children.length > 0 && isClickable && multiple && (
-        <AddButton onClick={handleAddClick} />
-      )}
-      {children.length === 0 && (
+      {childrenCount === 0 && (
         <Info as={isClickable ? "button" : "div"} onClick={handleAddClick}>
           {isClickable ? clickText : dropText}
         </Info>
+      )}
+      {childrenCount > 0 && isClickable && multiple && (
+        <AddButton onClick={handleAddClick} />
       )}
     </Container>
   );
