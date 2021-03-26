@@ -23,6 +23,7 @@ export const Info = styled.button`
 `;
 
 export const IdeologyContainer = styled.div<{ color: string }>`
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
