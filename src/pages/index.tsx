@@ -20,6 +20,7 @@ import {
   TalksByFilterQuery,
   PatreonQuery,
   PatreonDocument,
+  Language,
 } from "@generated/graphql";
 import { initializeApollo } from "@services/apollo";
 import ShareSocial from "@shared/ShareSocial";
@@ -32,6 +33,7 @@ import Patreon from "@shared/Patreon";
 import styled from "styled-components";
 import { EditorCTA } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
+import { languages } from "@constants";
 
 library.add(faPollH);
 
@@ -102,8 +104,14 @@ const Home: React.FC<Props> = ({
   );
 };
 
-export const getServerSideProps = async (): Promise<{ props: Props }> => {
+export const getServerSideProps = async ({
+  locale,
+}: {
+  locale: string;
+}): Promise<{ props: Props }> => {
   const client = initializeApollo();
+  const language = languages.find((lang) => lang.id === locale);
+  const languageEnum = language ? language.enum : Language.English;
 
   const postsQuery = getManyPosts({
     limit: 2,
@@ -123,6 +131,9 @@ export const getServerSideProps = async (): Promise<{ props: Props }> => {
 
   const quizzesQuery = client.query<FeaturedQuizzesQuery>({
     query: FeaturedQuizzesDocument,
+    variables: {
+      lang: languageEnum,
+    },
   });
 
   const patreonQuery = client.query<PatreonQuery>({

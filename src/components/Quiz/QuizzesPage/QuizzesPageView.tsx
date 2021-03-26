@@ -18,6 +18,7 @@ import { History as SurveysHistory } from "@components/Survey";
 import Button from "@shared/Button";
 import { EditorCTA } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
+import { SearchBox } from "@components/Quiz/QuizzesPage/QuizzesPageStyle";
 
 interface Props {
   list: QuizBasicPartsFragment[];
@@ -45,6 +46,9 @@ const QuizzesPage: React.FC<Props> = ({ list }) => {
           title={t("quizzes.other")}
           icon={<FontAwesomeIcon icon={faPollH} />}
         >
+          <SearchBox>
+            <div className="gcse-search" />
+          </SearchBox>
           {limitedQuizzes.map((quiz, key) => (
             <>
               <Link key={quiz.id} quiz={quiz} showType />

@@ -1597,6 +1597,7 @@ export type CreateQuizInput = {
   logoUrl: Scalars['String'];
   title: TextTranslationInput;
   description: TextTranslationInput;
+  languages: Array<Language>;
 };
 
 export type CreateQuizVersionInput = {
@@ -1787,6 +1788,7 @@ export type QuizMeta = {
   votes: QuizVotes;
   authors: Array<User>;
   license: QuizLicense;
+  languages: Array<Language>;
 };
 
 export type QuizStatistics = {
@@ -1808,6 +1810,9 @@ export enum QuizVerificationState {
 
 export type QuizVerifyRequest = {
   __typename?: 'QuizVerifyRequest';
+  id: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
   version: QuizVersion;
   moderator?: Maybe<User>;
   reason?: Maybe<Scalars['String']>;
@@ -1995,6 +2000,7 @@ export type UpdateQuizInput = {
   logoUrl?: Maybe<Scalars['String']>;
   description?: Maybe<TextTranslationInput>;
   currentVersion?: Maybe<Scalars['String']>;
+  languages: Array<Language>;
 };
 
 export type UpdateQuizVersionInput = {
@@ -2248,6 +2254,11 @@ export type QuerySurveyArgs = {
 
 export type QueryQuizArgs = {
   slug: Scalars['String'];
+};
+
+
+export type QuerySocialQuizzesArgs = {
+  lang: Language;
 };
 
 
@@ -2950,7 +2961,9 @@ export type CurrentUserQuizzesQuery = (
   )> }
 );
 
-export type FeaturedQuizzesQueryVariables = Exact<{ [key: string]: never; }>;
+export type FeaturedQuizzesQueryVariables = Exact<{
+  lang: Language;
+}>;
 
 
 export type FeaturedQuizzesQuery = (
@@ -4785,11 +4798,11 @@ export type CurrentUserQuizzesQueryHookResult = ReturnType<typeof useCurrentUser
 export type CurrentUserQuizzesLazyQueryHookResult = ReturnType<typeof useCurrentUserQuizzesLazyQuery>;
 export type CurrentUserQuizzesQueryResult = Apollo.QueryResult<CurrentUserQuizzesQuery, CurrentUserQuizzesQueryVariables>;
 export const FeaturedQuizzesDocument = gql`
-    query FeaturedQuizzes {
+    query FeaturedQuizzes($lang: Language!) {
   featuredQuizzes {
     ...QuizBasicParts
   }
-  socialQuizzes {
+  socialQuizzes(lang: $lang) {
     ...QuizBasicParts
   }
 }
@@ -4807,10 +4820,11 @@ export const FeaturedQuizzesDocument = gql`
  * @example
  * const { data, loading, error } = useFeaturedQuizzesQuery({
  *   variables: {
+ *      lang: // value for 'lang'
  *   },
  * });
  */
-export function useFeaturedQuizzesQuery(baseOptions?: Apollo.QueryHookOptions<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>) {
+export function useFeaturedQuizzesQuery(baseOptions: Apollo.QueryHookOptions<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>) {
         return Apollo.useQuery<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>(FeaturedQuizzesDocument, baseOptions);
       }
 export function useFeaturedQuizzesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeaturedQuizzesQuery, FeaturedQuizzesQueryVariables>) {

@@ -27,19 +27,19 @@ export const Header = styled.div`
 `;
 
 export const PoliticianSubHeader = styled(Header)`
-  border-radius: 0;
-  background: ${({ theme }) => theme.colors.primary};
+  border-radius: 0 !important;
+  background: ${({ theme }) => theme.colors.primary} !important;
   font-size: 1.1rem;
-  color: ${({ theme }) => theme.colors.backgroundLighten};
+  color: ${({ theme }) => theme.colors.backgroundLighten} !important;;
   font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
   font-family: ${({ theme }) => theme.fontFamily.secondary};
-  padding: 1.25rem;
-  text-align: center;
-  justify-content: center;
+  padding: 1.25rem !important;
+  text-align: center !important;
+  justify-content: center !important;
 
   ${breakpoint("md")`
     font-size: 1.25rem;
-    padding: 1.5rem;
+    padding: 1.5rem !important;
   `}
 `;
 

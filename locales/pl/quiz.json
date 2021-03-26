@@ -1,4 +1,8 @@
 {
+  "SEO": {
+    "title": "Test polityczny {{title}}",
+    "description": "Sprawdź swoje poglądy polityczne w teście wyborczym {{title}}! {{description}}"
+  },
   "ideologies": {
     "e84642622ce79db59c79b101650cd342": "Stalinizm",
     "5d7ed94a1045ee03d113d6ff8ac0fd21": "Strasseryzm",

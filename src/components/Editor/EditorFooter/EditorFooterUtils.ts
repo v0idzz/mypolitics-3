@@ -1,5 +1,6 @@
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import { UpdateQuizVersionInput } from '@generated/graphql';
+import useTranslation from 'next-translate/useTranslation';
 
 export interface Requirement {
   name: string;
@@ -11,6 +12,7 @@ interface UseRequirements {
 }
 
 export const useRequirements = (editor: UseEditor): UseRequirements => {
+  const { t } = useTranslation("editor");
   const { versionInput, basicInput, data } = editor;
   const { title, description } = basicInput;
   const { questions: versionQuestions, ideologies, parties } = versionInput;
@@ -29,19 +31,19 @@ export const useRequirements = (editor: UseEditor): UseRequirements => {
 
   const list = [
     {
-      name: "Tytuł i opis",
+      name: t("footer.requirements.list.titleAndDescription"),
       fulfilled: hasTextData(title) && hasTextData(description),
     },
     {
-      name: "Minimum 5 pytań",
+      name: t("footer.requirements.list.minQuestions", { count: 5 }),
       fulfilled: versionQuestions.length >= 5,
     },
     {
-      name: "Minimum 2 ideologie lub partie",
+      name: t("footer.requirements.list.minIdeologiesOrParties", { count: 5 }),
       fulfilled: ideologies.length >= 2 || parties.length >= 2,
     },
     {
-      name: "Każde pytanie ma efekt",
+      name: t("footer.requirements.list.allQuestionsHaveEffects"),
       fulfilled: everyQuestionHasEffect,
     },
   ];

@@ -1,5 +1,5 @@
 import getConfig from "next/config";
-import { UrlObject } from "url";
+import { Language as LanguageGraphql } from "@generated/graphql";
 
 const { publicRuntimeConfig } = getConfig();
 export const BASE_PATH = publicRuntimeConfig.BASE_PATH || "";
@@ -71,6 +71,10 @@ export const apiPaths = {
   upload: {
     icon: `${API_BASE}/upload/icon`,
   },
+  utils: {
+    image: (template: string, data: string): string =>
+      `${BASE_PATH}${API_BASE}/utils/images?template=${template}\&data=${data}`,
+  },
   facebook: {
     auth: `${API_BASE}/auth/facebook`,
   },
@@ -89,15 +93,20 @@ export const LANG_CODE = {
 export interface Language {
   id: string;
   name: string;
+  enum: LanguageGraphql;
 }
 
 export const languages: Language[] = [
   {
     id: LANG_CODE.pl,
     name: "Język polski",
+    enum: LanguageGraphql.Polish,
   },
   {
     id: LANG_CODE.en,
     name: "English language",
+    enum: LanguageGraphql.English,
   },
 ];
+
+export const titleTemplate = "%s | myPolitics";

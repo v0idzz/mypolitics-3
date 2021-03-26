@@ -16,8 +16,9 @@ import StandardPage, {
   StandardPageProps,
 } from "@shared/StandardPage";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { getBackgroundImage } from "@components/Quiz/utils/getBackgroundImage";
 import { translate } from "@utils/translation";
+import { apiPaths } from "@constants";
+import { objToBase64 } from "@utils/toBase64";
 
 interface Props {
   results: ResultsPartsFragment;
@@ -30,14 +31,14 @@ const ResultsPage: React.FC<Props> = ({
   politician,
   standardPageProps,
 }) => {
-  const { lang } = useTranslation();
+  const { lang, t } = useTranslation("results");
   const title = translate(results.quiz.title, lang);
   const description = translate(results.quiz.description, lang);
-  const image = getBackgroundImage(title);
+  const image = apiPaths.utils.image("quiz", objToBase64({ title }));
 
   const standardHeader = {
-    title: `Sprawdź moje poglądy w ${title}!`,
-    description: `Nowoczesna platforma testów politycznych i wyborczych. ${description}`,
+    title: t("SEO.title", { title }),
+    description: t("SEO.description", { description }),
   };
 
   const standardSeo: NextSeoProps = {
@@ -55,11 +56,10 @@ const ResultsPage: React.FC<Props> = ({
   };
 
   const politicianHeader = {
-    title: `${politician?.name} – wyniki w teście ${title}!`,
-    description: `Porównaj swoje poglądy! ${translate(
-      politician?.biography,
-      lang
-    )}`,
+    title: t("SEO_politician.title", { title, name: politician?.name }),
+    description: t("SEO_politician.description", {
+      biography: translate(politician?.biography, lang),
+    }),
   };
 
   const politicianSeo: NextSeoProps = politician && {

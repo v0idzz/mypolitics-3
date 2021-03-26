@@ -9,8 +9,9 @@ import StandardPage, {
   getStandardPageProps,
   StandardPageProps,
 } from "@shared/StandardPage";
-import { getBackgroundImage } from "@components/Quiz/utils/getBackgroundImage";
-import { translate } from '@utils/translation';
+import { translate } from "@utils/translation";
+import { apiPaths } from "@constants";
+import { objToBase64 } from "@utils/toBase64";
 
 interface Props {
   quiz: SingleQuizQuery["quiz"];
@@ -18,17 +19,23 @@ interface Props {
 }
 
 const SingleQuizPage: React.FC<Props> = ({ quiz, standardPageProps }) => {
-  const { lang } = useTranslation();
-  const title = translate(quiz.title, lang);
-  const description = translate(quiz.description, lang);
-  const image = getBackgroundImage(title);
+  const { lang, t } = useTranslation("quiz");
+  const rawTitle = translate(quiz.title, lang);
+  const title = t("SEO.title", { title: rawTitle });
+  const description = t("SEO.description", {
+    title: rawTitle,
+    description: translate(quiz.description, lang),
+  });
+  const image = apiPaths.utils.image("quiz", objToBase64({ title: rawTitle }));
 
   return (
     <StandardPage {...standardPageProps}>
       <NextSeo
-        title={`Test polityczny ${title}`}
-        description={`Sprawdź swoje poglądy polityczne w teście wyborczym ${title}! ${description}`}
+        title={title}
+        description={description}
         openGraph={{
+          title,
+          description,
           images: [
             {
               height: 600,

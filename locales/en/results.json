@@ -1,4 +1,12 @@
 {
+  "SEO": {
+    "title": "Check my political views in {{title}}!",
+    "description": "A modern political quiz platform. {{description}}"
+  },
+  "SEO_politician": {
+    "title": "{{name}} – results in quiz {{title}}!",
+    "description": "Compare your views! {{biography}}"
+  },
   "answers": {
     "analyze": "Analyse your answers",
     "compare": "Compare with a party",
@@ -30,7 +38,7 @@
     "desc2": "Basing on the previously prepared map of ideologies, the algorithm assorts the ideology your location is the closest to. "
   },
   "party": {
-    "title": "How does the party matching work? / How does party assortment work? ",
+    "title": "How does the party matching work?",
     "desc1": "The percentage depicts compatibility between answers given by the respondent and the parties",
     "desc2": "You can check which questions you agree on with a given party in the Analysis section below ",
     "header": "Party ",

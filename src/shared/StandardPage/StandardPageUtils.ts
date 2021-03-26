@@ -1,17 +1,18 @@
 import {
   BasicTalkPartsFragment,
   FeaturedQuizzesDocument,
-  FeaturedQuizzesQuery,
+  FeaturedQuizzesQuery, Language,
   PatreonDocument,
   PatreonQuery,
   TalksByFilterDocument,
   TalksByFilterQuery,
-} from "@generated/graphql";
+} from '@generated/graphql';
 import { initializeApollo } from "@services/apollo";
 import { getRandomPosts } from "@services/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 import { categoriesConfig } from "@components/Media/utils/useCategory";
 import { NextPageContext } from "next";
+import { languages } from '@constants';
 
 export interface StandardPageProps {
   articles: PostOrPage[];
@@ -27,6 +28,8 @@ export const getStandardPageProps = async ({
   const client = initializeApollo();
   const [viewTag, newsTag] = categoriesConfig[locale];
   const notCurrentFilter = `slug:-['${query.slug}']`;
+  const language = languages.find((lang) => lang.id === locale);
+  const languageEnum = language ? language.enum : Language.English;
 
   const newsQuery = getRandomPosts({
     limit: 1,
@@ -58,6 +61,9 @@ export const getStandardPageProps = async ({
 
   const quizzesQuery = client.query<FeaturedQuizzesQuery>({
     query: FeaturedQuizzesDocument,
+    variables: {
+      lang: languageEnum,
+    },
   });
 
   const patreonQuery = client.query<PatreonQuery>({
