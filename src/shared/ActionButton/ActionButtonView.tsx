@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container } from "./ActionButtonStyle";
 import { Size, Variant } from "./ActionButtonTypes";
+import Tooltip from "@shared/Tooltip";
+import useTranslation from "next-translate/useTranslation";
 
 interface Props {
   children: React.ReactNode;
@@ -21,12 +23,13 @@ const ActionButton: React.FC<Props> = ({
   disabled,
   size = "regular",
 }) => {
+  const { t } = useTranslation("editor");
   const [confirm, setConfirm] = useState<boolean>(false);
 
   const handleClickConfirm = (e: React.MouseEvent) => {
     if (!confirm) {
       setConfirm(true);
-      setTimeout(() => setConfirm(false), 1000);
+      setTimeout(() => setConfirm(false), 2000);
       return;
     }
 
@@ -34,16 +37,22 @@ const ActionButton: React.FC<Props> = ({
   };
 
   return (
-    <Container
-      onClick={mustConfirm ? handleClickConfirm : onClick}
-      confirm={confirm}
-      variant={variant}
-      title={title}
-      size={size}
-      disabled={disabled}
+    <Tooltip
+      show={confirm}
+      variant="error"
+      text={t("misc.clickToConfirmAction")}
     >
-      {children}
-    </Container>
+      <Container
+        onClick={mustConfirm ? handleClickConfirm : onClick}
+        confirm={confirm}
+        variant={variant}
+        title={title}
+        size={size}
+        disabled={disabled}
+      >
+        {children}
+      </Container>
+    </Tooltip>
   );
 };
 

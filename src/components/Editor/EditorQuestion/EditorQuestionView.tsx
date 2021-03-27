@@ -29,16 +29,9 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
   const { t } = useTranslation("editor");
   const { actions } = editor;
   const question = useQuestion(questionId);
-  const [deleteConfirmed, setDeleteConfirmed] = useState<boolean>(false);
   const [opened, setOpened] = useState<boolean>(false);
 
-  const handleDeleteConfirm = () => {
-    if (!deleteConfirmed) {
-      setDeleteConfirmed(true);
-      setTimeout(() => setDeleteConfirmed(false), 2000);
-      return;
-    }
-
+  const handleDeleteClick = () => {
     actions.question.delete(questionId);
   };
 
@@ -49,7 +42,7 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
       </NumberWrapper>
       <ActionsWrapper>
         <ActionButton
-          onClick={handleDeleteConfirm}
+          onClick={handleDeleteClick}
           title={t("question.deleteButton")}
           mustConfirm
           variant="red"
@@ -66,7 +59,6 @@ const EditorQuestion: React.FC<Props> = ({ questionId, index, editor }) => {
 
   const rerender = JSON.stringify({
     data: question.data,
-    deleteConfirmed,
     opened,
     index,
   });
