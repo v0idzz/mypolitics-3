@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PageContainer } from "@shared/Page";
 import { ArticlesHero, ArticlesListSection } from "@components/Media";
 import Trans from "next-translate/Trans";
@@ -10,8 +10,15 @@ import { getManyPosts, getRandomPosts } from "@services/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 import { CurrentTalk } from "@components/Talk";
 import GoogleAd from "@shared/GoogleAd";
+import Modal from "@shared/Modal";
+import { useTheme } from "styled-components";
+import Obfuscate from "react-obfuscate";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import Button from "@shared/Button";
 
 interface Props {
+  languageNotAvailable: boolean;
   posts: {
     featured: PostOrPage[];
     news: PostOrPage[];
@@ -19,12 +26,30 @@ interface Props {
   };
 }
 
-const Articles: React.FC<Props> = ({ posts }) => {
+const Articles: React.FC<Props> = ({ posts, languageNotAvailable }) => {
+  const [showModalLang, setShowModalLang] = useState(languageNotAvailable);
   const { t } = useTranslation("articles");
+  const theme = useTheme();
 
   return (
     <PageContainer>
       <NextSeo title={t("SEO.title")} description={t("SEO.description")} />
+      <Modal
+        show={showModalLang}
+        onClose={() => setShowModalLang(false)}
+        header={{
+          title: "Language not available",
+          color: theme.colors.red,
+        }}
+      >
+        <Trans
+          i18nKey="articles:contact.title"
+          components={[<p key="0" />, <b key="1" />]}
+        />
+        <Button beforeIcon={<FontAwesomeIcon icon={faEnvelope} />} showShadow>
+          <Obfuscate email={t("common:contact.email")} />
+        </Button>
+      </Modal>
       <ArticlesHero featuredPosts={posts.featured} />
       <div className="container">
         <GoogleAd id="myp3-standard-top" />
@@ -50,7 +75,7 @@ const Articles: React.FC<Props> = ({ posts }) => {
 export const getServerSideProps = async ({
   locale,
 }): Promise<{ props: Props }> => {
-  const [viewTag, newsTag] = categoriesConfig[locale];
+  const [viewTag, newsTag] = categoriesConfig.pl;
 
   const getView = getRandomPosts({
     limit: 6,
@@ -78,6 +103,7 @@ export const getServerSideProps = async ({
 
   return {
     props: {
+      languageNotAvailable: locale !== "pl",
       posts: {
         featured,
         news,
