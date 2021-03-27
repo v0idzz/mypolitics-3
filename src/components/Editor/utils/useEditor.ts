@@ -5,12 +5,12 @@ import {
 } from "@generated/graphql";
 import { useEffect } from "react";
 import { useDebounceCallback } from "@react-hook/debounce";
+import hash from "object-hash";
+import { useLanguages } from "./useLanguages";
 import useBasicInput from "./useBasicInput";
 import useVersionInput from "./useVersionInput";
 import useEditorData from "./useEditorData";
 import useEditorActions, { EditorActions } from "./useEditorActions";
-import hash from "object-hash";
-import { getLanguages } from '@components/Editor/utils/getLanguages';
 
 export interface UseEditor {
   data: EditorQuizQueryHookResult;
@@ -26,7 +26,8 @@ export const useEditor = (): UseEditor => {
   const basicInput = useBasicInput(data?.data);
   const versionInputHash = hash({ versionInput });
   const basicInputHash = hash({ basicInput });
-  const languages = JSON.stringify(getLanguages(data?.data));
+  const languages = useLanguages(data?.data);
+  const languagesString = JSON.stringify(languages);
 
   const handleVersionInput = useDebounceCallback(async () => {
     if (typeof versionInput === "undefined") {
@@ -50,7 +51,7 @@ export const useEditor = (): UseEditor => {
 
   useEffect(() => {
     handleBasicInput();
-  }, [basicInputHash, languages]);
+  }, [basicInputHash, languagesString]);
 
   return {
     data,
