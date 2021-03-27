@@ -124,16 +124,19 @@ export const MobileNavigation = styled.div<{
   buttonPadding: boolean;
 }>`
   position: fixed;
-  top: ${({ buttonPadding }) => (buttonPadding ? "4.5rem" : "4rem")};
+  top: 4.5rem;
   right: -100%;
   transition: right 0.3s ease-in-out;
   box-shadow: 0 0 16px rgba(0, 86, 105, 0.25);
   background: ${({ theme }) => darken(0.05, theme.colors.primaryDarken)};
-  height: calc(
-    100vh - ${({ buttonPadding }) => (buttonPadding ? "4.5rem" : "4rem")}
-  );
+  height: calc(100vh - 4.5rem);
   padding: 1.5rem;
   width: min(90%, 25rem);
+
+  ${breakpoint("md")`
+    top: 5rem;
+    height: calc(100vh - 5rem);
+  `};
 
   ${({ show }) =>
     show &&
@@ -189,7 +192,7 @@ export const NavDivider = styled.div`
     display: none;
   }
 
-  ${breakpoint("md")`
+  ${breakpoint("lg")`
     background: rgba(255, 255, 255, 0.25);
     height: 1em;
     width: 1px;

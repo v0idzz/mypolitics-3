@@ -4,9 +4,9 @@ import { SurveyAnswerType } from "@generated/graphql";
 import { ItemType } from "@constants";
 import { IdeologyItem } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
+import { EditorIconsDropArea } from "@components/Editor/EditorDropArea";
 import useQuestionEffectsDrop from "../utils/useQuestionEffectsDrop";
 import { UseQuestion } from "../utils/useQuestion";
-import { EditorIconsDropArea } from "@components/Editor/EditorDropArea";
 
 interface Props {
   question: UseQuestion;

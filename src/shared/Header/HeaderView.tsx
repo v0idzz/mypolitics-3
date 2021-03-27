@@ -84,12 +84,12 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
             {navLinks}
             {!firstTimer && <UserInfo />}
           </DesktopNavigation>
-          {firstTimer && <LanguageSelect />}
+          <LanguageSelect />
           <MobileNavigationWrapper>
             <MobileNavigationButton onClick={toggleMenu}>
               <FontAwesomeIcon icon={showMenu ? faTimes : faBars} />
             </MobileNavigationButton>
-            <MobileNavigation show={showMenu} buttonPadding={firstTimer}>
+            <MobileNavigation show={showMenu} buttonPadding>
               <MobileNavigationInner onClick={toggleMenu}>
                 {navLinks}
                 <UserInfo />

@@ -61,6 +61,7 @@ const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
       </InputLabel>
       <InputLabel title={t("ideologies.form.name")}>
         <InternationalizedInput
+          controlled
           value={values.name}
           onChange={(value) => {
             setFieldValue("name", value);
@@ -95,6 +96,7 @@ const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
       </ColorInputWrapper>
       <InputLabel title={t("ideologies.form.description")}>
         <InternationalizedInput
+          controlled
           value={values.description}
           onChange={(value) => {
             setFieldValue("description", value);
