@@ -124,6 +124,11 @@ const ArticleContent: React.FC<Props> = ({
     });
   }, []);
 
+  const leadItems = [new Date(publishedAt).toLocaleDateString()];
+  if (readingTime !== undefined) {
+    leadItems.push("•", t("header.readingTime", { count: readingTime }));
+  }
+
   return (
     <Container>
       {showFull && <ArticleHead post={post} />}
@@ -131,13 +136,7 @@ const ArticleContent: React.FC<Props> = ({
         <ContentWrapper>
           <Header>
             <Title>{title}</Title>
-            <Lead as="div">
-                          {[
-                  new Date(publishedAt).toLocaleDateString(),
-                "•",
-                t("header.readingTime", { count: readingTime }),
-              ].join(" ")}
-            </Lead>
+            <Lead as="div">{leadItems.join(" ")}</Lead>
           </Header>
           <AuthorHeader post={post} />
         </ContentWrapper>
