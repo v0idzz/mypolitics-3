@@ -34,6 +34,7 @@ import styled from "styled-components";
 import { EditorCTA } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
 import { languages } from "@constants";
+import { toLanguageEnum } from '@utils/toLanguageEnum';
 
 library.add(faPollH);
 
@@ -110,8 +111,6 @@ export const getServerSideProps = async ({
   locale: string;
 }): Promise<{ props: Props }> => {
   const client = initializeApollo();
-  const language = languages.find((lang) => lang.id === locale);
-  const languageEnum = language ? language.enum : Language.English;
 
   const postsQuery = getManyPosts({
     limit: 2,
@@ -132,7 +131,7 @@ export const getServerSideProps = async ({
   const quizzesQuery = client.query<FeaturedQuizzesQuery>({
     query: FeaturedQuizzesDocument,
     variables: {
-      lang: languageEnum,
+      lang: toLanguageEnum(locale),
     },
   });
 

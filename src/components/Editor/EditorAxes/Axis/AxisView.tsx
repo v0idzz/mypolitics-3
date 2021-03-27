@@ -12,16 +12,16 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import useEntity from "@components/Editor/utils/useEntity";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import ActionButton from "@shared/ActionButton";
+import { translate } from "@utils/translation";
+import { ItemType } from "@constants";
 import { useAxisSelect, useIdeology } from "./AxisUtils";
 import {
   Container,
   IdeologyContainer,
   IdeologyName,
-  Wrapper,
   IdeologyDropArea,
+  Wrapper,
 } from "./AxisStyle";
-import { translate } from "@utils/translation";
-import { ItemType } from "@constants";
 
 library.add(faTimes);
 

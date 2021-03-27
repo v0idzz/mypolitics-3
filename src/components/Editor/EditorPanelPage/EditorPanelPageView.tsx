@@ -22,14 +22,14 @@ import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { paths } from "@constants";
 import { ErrorCode } from "@typeDefs/error";
+import { toLanguageEnum } from "@utils/toLanguageEnum";
 import { Title, ButtonWrapper } from "./EditorPanelPageStyle";
 
 library.add(faPencilRuler, faPollH, faPlus);
 
 const EditorListPage: React.FC = () => {
-  const { t } = useTranslation("editor");
+  const { t, lang } = useTranslation("editor");
   const router = useRouter();
-  const { lang } = useTranslation();
   const { data, loading } = useCurrentUserQuizzesQuery({
     onError: (error) => {
       const message = error.graphQLErrors[0].message as any;
@@ -52,6 +52,7 @@ const EditorListPage: React.FC = () => {
           [lang]: t("panel.defaultQuizValues.description"),
         },
         logoUrl: "",
+        languages: [toLanguageEnum(lang)],
       },
     },
     refetchQueries: [

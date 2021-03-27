@@ -13,6 +13,7 @@ import StandardPage, {
 } from "@shared/StandardPage";
 import Head from "next/head";
 import { languages } from "@constants";
+import { toLanguageEnum } from '@utils/toLanguageEnum';
 
 interface Props {
   list: QuizBasicPartsFragment[];
@@ -32,8 +33,7 @@ export const getServerSideProps = async (
   context
 ): Promise<{ props: Props }> => {
   const client = initializeApollo();
-  const language = languages.find((lang) => lang.id === context.locale);
-  const languageEnum = language ? language.enum : Language.English;
+  const languageEnum = toLanguageEnum(context.locale);
   const { data } = await client.query<FeaturedQuizzesQuery>({
     query: FeaturedQuizzesDocument,
     variables: {
