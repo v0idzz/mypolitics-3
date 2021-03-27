@@ -96,6 +96,9 @@
       "traits": "Cechy"
     }
   },
+  "misc": {
+    "clickToConfirmAction": "Naciśnij ponownie, aby potwierdzić"
+  },
   "admin": {
     "title": "Panel moderacji",
     "section": {

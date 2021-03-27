@@ -96,6 +96,9 @@
       "traits": "Traits"
     }
   },
+  "misc": {
+    "clickToConfirmAction": "Click again to confirm"
+  },
   "admin": {
     "title": "Moderation panel",
     "section": {
