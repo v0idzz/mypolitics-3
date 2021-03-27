@@ -1,4 +1,12 @@
 {
+  "SEO": {
+    "title": "Sprawdź moje poglądy w {{title}}!",
+    "description": "Nowoczesna platforma testów politycznych i wyborczych. {{description}}"
+  },
+  "SEO_politician": {
+    "title": "{{name}} – wyniki w teście {{title}}!",
+    "description": "Porównaj swoje poglądy! {{biography}}"
+  },
   "answers": {
     "analyze": "Analiza odpowiedzi",
     "compare": "Porównaj z partią",

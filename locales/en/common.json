@@ -3,6 +3,23 @@
     "title": "myPolitics - Political views tests",
     "description": "Test your views and find where you stand or create your own quiz. Enter and try! Political compass, 7 axes, closest party and ideology"
   },
+  "404": {
+    "SEO": {
+      "title": "Error 404"
+    },
+    "title": "Page not found",
+    "returnButton": "Go to home page"
+  },
+  "500": {
+    "SEO": {
+      "title": "Error occurred"
+    },
+    "title": {
+      "withCode": "Error occurred {{statusCode}}",
+      "default": "Unknown error occurred"
+    },
+    "description": "Try refreshing the page. If that doesn't help - let us know!"
+  },
   "contact": {
     "email": "biuro@mypolitics.pl",
     "title": "<0><1>Any questions?</1> Please contact us.</0>"

@@ -6,21 +6,31 @@ import { NextSeo } from "next-seo";
 import CenteredPage from "@shared/CenteredPage";
 import { Title } from "@shared/Typography";
 import Button from "@shared/Button";
+import { titleTemplate } from "@constants";
+import useTranslation from "next-translate/useTranslation";
 
-const NotFound: NextPage = () => (
-  <CenteredPage fullWidth={false}>
-    <NextSeo title="Błąd 404" titleTemplate="%s | myPolitics" />
-    <Title>Strona nie została znaleziona</Title>
-    <Image
-      src="/static/404.jpg"
-      width={300}
-      height={350}
-      alt="Obrazek 'PKW Error 404' autorstwa Goorsky.pl"
-    />
-    <Link href="/">
-      <Button>Powróć na stronę główną</Button>
-    </Link>
-  </CenteredPage>
-);
+const NotFound: NextPage = () => {
+  const { t } = useTranslation("common");
+
+  return (
+    <CenteredPage fullWidth={false}>
+      <NextSeo
+        title={t("404.SEO.title")}
+        titleTemplate={titleTemplate}
+        noindex
+      />
+      <Title>{t("404.title")}</Title>
+      <Image
+        src="/static/404.jpg"
+        width={300}
+        height={350}
+        alt="Obrazek 'PKW Error 404' autorstwa Goorsky.pl"
+      />
+      <Link href="/">
+        <Button>{t("404.returnButton")}</Button>
+      </Link>
+    </CenteredPage>
+  );
+};
 
 export default NotFound;

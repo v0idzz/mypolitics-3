@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Obfuscate from "react-obfuscate";
 import useTranslation from "next-translate/useTranslation";
 import { Title } from "@shared/Typography";
+import { titleTemplate } from "@constants";
 
 interface Props {
   statusCode: number | null;
@@ -21,11 +22,17 @@ const ErrorPage: NextPage<Props> = ({ statusCode }: Props) => {
 
   return (
     <CenteredPage fullWidth={false}>
-      <NextSeo title="Wystąpił błąd" titleTemplate="%s – myPolitics" />
+      <NextSeo
+        title={t("500.SEO.title")}
+        titleTemplate={titleTemplate}
+        noindex
+      />
       <Title>
-        {statusCode ? `Wystąpił błąd ${statusCode}` : "Wystąpił nieznany błąd"}
+        {statusCode
+          ? t("500.title.withCode", { statusCode })
+          : t("500.title.default")}
       </Title>
-      <p>Spróbuj odświeżyć stronę. Jeżeli to nie pomoże - daj nam znać!</p>
+      <p>{t("500.description")}</p>
       <Button beforeIcon={<FontAwesomeIcon icon={faEnvelope} />} showShadow>
         <Obfuscate email={t("contact.email")} />
       </Button>

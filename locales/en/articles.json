@@ -1,6 +1,6 @@
 {
   "SEO": {
-    "title": "News and opinion | myPolitics",
+    "title": "News and opinion",
     "description": "Never miss an update"
   },
   "hero": {
@@ -27,7 +27,7 @@
     "title": "See other entries"
   },
   "share": {
-    "title": "Like what you see/read? ",
+    "title": "Like what you read?",
     "facebook": "Share on Facebook",
     "twitter": "Share on Twitter"
   }

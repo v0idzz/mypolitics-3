@@ -41,9 +41,7 @@ export const IdeologyContainer = styled.div<{ color: string }>`
   }
 `;
 
-export const IdeologyDropArea = styled((props) => (
-  <EditorDropArea {...props} />
-))`
+export const IdeologyDropArea = styled(EditorDropArea)`
   width: 50%;
 `;
 

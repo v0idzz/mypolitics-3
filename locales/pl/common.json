@@ -3,6 +3,23 @@
     "title": "myPolitics – Test poglądów politycznych",
     "description": "Test i kompas polityczny ukazujący Twoje poglądy - 7 osi, najbliższa partia i ideologia. Wejdź i sprawdź!"
   },
+  "404": {
+    "SEO": {
+      "title": "Błąd 404"
+    },
+    "title": "Strona nie została znaleziona",
+    "returnButton": "Powróć na stronę główną"
+  },
+  "500": {
+    "SEO": {
+      "title": "Wystąpił błąd"
+    },
+    "title": {
+      "withCode": "Wystąpił błąd {{statusCode}}",
+      "default": "Wystąpił nieznany błąd"
+    },
+    "description": "Spróbuj odświeżyć stronę. Jeżeli to nie pomoże - daj nam znać!"
+  },
   "contact": {
     "email": "biuro@mypolitics.pl",
     "title": "<0><1>Masz pytania?</1> Zapraszamy do kontaktu!</0>"

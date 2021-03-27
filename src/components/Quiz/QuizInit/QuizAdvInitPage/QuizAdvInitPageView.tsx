@@ -7,7 +7,7 @@ import {
   useUpdateRespondentMutation,
 } from "@generated/graphql";
 import Button from "@shared/Button";
-import { paths } from "@constants";
+import { paths, titleTemplate } from '@constants';
 import Link from "next/link";
 import * as R from "ramda";
 import { useRouter } from "next/router";
@@ -69,7 +69,7 @@ const QuizPreInitPage: React.FC = () => {
 
   return (
     <CenteredPage fullWidth={false}>
-      <NextSeo title={t('init.advanced')} titleTemplate="%s – myPolitics" />
+      <NextSeo title={t('init.advanced')} titleTemplate={titleTemplate} />
       <GoogleAd id="myp3-standard-top" />
       <InitStep title={t('init.advanced')}>
         <Content>

@@ -7,6 +7,7 @@ import {
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { paths } from "@constants";
+import { translate } from "@utils/translation";
 import {
   Info,
   Header,
@@ -17,7 +18,6 @@ import {
   Title,
   AuthorHeader,
 } from "./ResultsHeaderStyle";
-import { translate } from '@utils/translation';
 
 interface Props {
   results: ResultsPartsFragment;
@@ -46,12 +46,12 @@ const ResultsHeader: React.FC<Props> = ({ results, politician }) => {
           <HeaderDate>
             <span>{t("header.finished")}</span>&nbsp;
             {new Date(updatedAt).toLocaleString(undefined, {
-                hour12: false,
-                day: 'numeric',
-                month: 'numeric',
-                year: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric'
+              hour12: false,
+              day: "numeric",
+              month: "numeric",
+              year: "numeric",
+              hour: "numeric",
+              minute: "numeric",
             })}
           </HeaderDate>
           <Id>

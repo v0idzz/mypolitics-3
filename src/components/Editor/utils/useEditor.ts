@@ -10,6 +10,7 @@ import useVersionInput from "./useVersionInput";
 import useEditorData from "./useEditorData";
 import useEditorActions, { EditorActions } from "./useEditorActions";
 import hash from "object-hash";
+import { getLanguages } from '@components/Editor/utils/getLanguages';
 
 export interface UseEditor {
   data: EditorQuizQueryHookResult;
@@ -25,6 +26,7 @@ export const useEditor = (): UseEditor => {
   const basicInput = useBasicInput(data?.data);
   const versionInputHash = hash({ versionInput });
   const basicInputHash = hash({ basicInput });
+  const languages = JSON.stringify(getLanguages(data?.data));
 
   const handleVersionInput = useDebounceCallback(async () => {
     if (typeof versionInput === "undefined") {
@@ -48,7 +50,7 @@ export const useEditor = (): UseEditor => {
 
   useEffect(() => {
     handleBasicInput();
-  }, [basicInputHash]);
+  }, [basicInputHash, languages]);
 
   return {
     data,

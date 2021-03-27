@@ -4,7 +4,7 @@ import { InitStep } from "@components/Quiz";
 import Button from "@shared/Button";
 import CenteredPage from "@shared/CenteredPage";
 import Link from "next/link";
-import { paths } from "@constants";
+import { paths, titleTemplate } from '@constants';
 import GoogleAd from "@shared/GoogleAd";
 import { ButtonChips, Content } from "./QuizInitPageStyle";
 import useTranslation from "next-translate/useTranslation";
@@ -14,7 +14,7 @@ const QuizInitPage: React.FC = () => {
 
     return (
         <CenteredPage fullWidth={false}>
-            <NextSeo title={t('init.basic')} titleTemplate="%s – myPolitics" />
+            <NextSeo title={t('init.basic')} titleTemplate={titleTemplate} />
             <GoogleAd id="myp3-standard-top" />
             <InitStep
                 title={t('init.basic')}

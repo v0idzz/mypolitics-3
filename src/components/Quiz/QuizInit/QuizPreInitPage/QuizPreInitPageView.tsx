@@ -3,7 +3,7 @@ import { NextSeo } from "next-seo";
 import { InitStep } from "@components/Quiz";
 import Button from "@shared/Button";
 import Link from "next/link";
-import { paths } from "@constants";
+import { paths, titleTemplate } from '@constants';
 import CenteredPage from "@shared/CenteredPage";
 import GoogleAd from "@shared/GoogleAd";
 import useTranslation from "next-translate/useTranslation";
@@ -15,7 +15,7 @@ const QuizPreInitPage: React.FC = () => {
 
   return (
     <CenteredPage fullWidth={false}>
-      <NextSeo title={t("preInit.before")} titleTemplate="%s – myPolitics" />
+      <NextSeo title={t("preInit.before")} titleTemplate={titleTemplate} />
       <GoogleAd id="myp3-standard-top" />
       <InitStep
         title={t("preInit.hey")}

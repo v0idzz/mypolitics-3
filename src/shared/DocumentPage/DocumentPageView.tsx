@@ -5,6 +5,7 @@ import ContactActionSection from "@shared/ContactActionSection";
 import { NextSeo } from "next-seo";
 import CenteredPage from "@shared/CenteredPage";
 import { Content, ContactWrapper } from "./DocumentPageStyle";
+import { titleTemplate } from '@constants';
 
 interface Props {
   document: string;
@@ -13,7 +14,7 @@ interface Props {
 
 const DocumentPage: React.FC<Props> = ({ document, name }) => (
   <>
-    <NextSeo title={name} titleTemplate="%s | myPolitics" />
+    <NextSeo title={name} titleTemplate={titleTemplate} />
     <CenteredPage>
       <Title>{name}</Title>
       <Content dangerouslySetInnerHTML={{ __html: document }} />

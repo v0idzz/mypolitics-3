@@ -114,7 +114,7 @@
         "titleAndDescription": "Title and description",
         "minQuestions": "Minimum {{count}} questions",
         "minIdeologiesOrParties": "Minimum {{count}} ideologies/parties ",
-        "allQuestionsHaveEffects": "Every question has an effect assigned to it?"
+        "allQuestionsHaveEffects": "Every question has an effect assigned to it"
       }
     }
   },

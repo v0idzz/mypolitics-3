@@ -12,6 +12,7 @@ import { getRandomPosts } from "@services/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 import { categoriesConfig } from "@components/Media/utils/useCategory";
 import { NextPageContext } from "next";
+import { toLanguageEnum } from "@utils/toLanguageEnum";
 
 export interface StandardPageProps {
   articles: PostOrPage[];
@@ -27,6 +28,7 @@ export const getStandardPageProps = async ({
   const client = initializeApollo();
   const [viewTag, newsTag] = categoriesConfig[locale];
   const notCurrentFilter = `slug:-['${query.slug}']`;
+  const languageEnum = toLanguageEnum(locale);
 
   const newsQuery = getRandomPosts({
     limit: 1,
@@ -58,6 +60,9 @@ export const getStandardPageProps = async ({
 
   const quizzesQuery = client.query<FeaturedQuizzesQuery>({
     query: FeaturedQuizzesDocument,
+    variables: {
+      lang: languageEnum,
+    },
   });
 
   const patreonQuery = client.query<PatreonQuery>({

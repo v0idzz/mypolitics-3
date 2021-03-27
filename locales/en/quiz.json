@@ -1,4 +1,8 @@
 {
+  "SEO": {
+    "title": "Political test {{title}}",
+    "description": "Test your political views in an election quiz {{title}}! {{description}}"
+  },
   "ideologies": {
     "e84642622ce79db59c79b101650cd342": "Stalinism",
     "5d7ed94a1045ee03d113d6ff8ac0fd21": "Strasserism",
