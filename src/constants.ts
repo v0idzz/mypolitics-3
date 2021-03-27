@@ -2,7 +2,10 @@ import getConfig from "next/config";
 import { Language as LanguageGraphql } from "@generated/graphql";
 
 const { publicRuntimeConfig } = getConfig();
-export const BASE_PATH = publicRuntimeConfig.BASE_PATH || "";
+export const BASE_PATH =
+  typeof window !== "undefined"
+    ? window.location.origin
+    : publicRuntimeConfig.BASE_PATH || "";
 
 export const recaptchaSiteKey =
   publicRuntimeConfig.NODE_ENV === "production"

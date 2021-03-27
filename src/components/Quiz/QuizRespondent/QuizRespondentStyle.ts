@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { darken } from "polished";
 import breakpoint from "styled-components-breakpoint";
 import { Input as BaseInput } from "@shared/Common";
-import { spacingY } from '@utils/stylesUtils';
+import { spacingX, spacingY } from "@utils/stylesUtils";
 
 export const Container = styled.section`
   padding: 1rem;
@@ -92,15 +92,24 @@ export const Actions = styled.div`
 export const InputGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
-  ${spacingY(1)};
+
+  ${breakpoint("xs", "sm")`
+    ${spacingY(1)};
+  `}
+
+  ${breakpoint("sm")`
+    ${BaseInput} {
+      margin: 1rem;
+    }
+  `}
 `;
 
 export const Input = styled(BaseInput)`
   width: 7rem;
 
   ${breakpoint("xs", "sm")`
-        width: 100%;
-    `}
+    width: 100%;
+  `}
 `;
 
 export const Form = styled.form`
