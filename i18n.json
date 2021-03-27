@@ -10,5 +10,15 @@
     "rgx:^\\/editor|.+": ["editor"],
     "rgx:^\\/auth|.+": ["auth"],
     "rgx:^\\/survey|.+": ["quiz"]
-  }
+  },
+  "domains": [
+    {
+      "domain": "mypolitics.pl",
+      "defaultLocale": "pl"
+    },
+    {
+      "domain": "mypolitics.eu",
+      "defaultLocale": "en"
+    }
+  ]
 }

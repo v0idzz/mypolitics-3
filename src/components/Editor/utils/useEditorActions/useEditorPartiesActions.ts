@@ -76,6 +76,8 @@ const useEditorPartiesActions = (
     },
     update: async (id: string, values: UpdatePartyInput) => {
       try {
+        (values as any).viewerCanEdit = undefined;
+
         const { update: updateEntity } = getEntity({
           id,
           name: "Party",

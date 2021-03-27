@@ -25,7 +25,7 @@
     },
     "createModal": {
       "title": "Create party",
-      "button": "Create/set"
+      "button": "Create"
     },
     "editModal": {
       "title": "Edit the party",

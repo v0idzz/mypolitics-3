@@ -2,7 +2,7 @@ import React from "react";
 import { useCurrentUserQuery, UserRole } from "@generated/graphql";
 import Link from "next/link";
 import { apiPaths, paths } from "@constants";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import {
   faCrown,
   faShieldAlt,

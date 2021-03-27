@@ -9,16 +9,30 @@ import { Container, Input } from "./InternationalizedInputStyle";
 interface Props {
   value: TextTranslationInput;
   onChange(value: TextTranslationInput): void;
+  controlled?: boolean;
 }
 
 const InternationalizedInput: React.FC<Props> = ({
+  onChange: onGlobalChange,
   value: defaultValue,
-  onChange,
+  controlled = false,
 }) => {
   const { lang } = useTranslation();
   const [value, setValue] = useState<TextTranslationInput>(defaultValue);
   const [selectedLang, setSelectedLang] = useState<string>(lang);
-  const handleChange = useDebounceCallback((v) => onChange(v), 1000);
+  const handleGlobalChange = useDebounceCallback(
+    (v) => onGlobalChange(v),
+    1000
+  );
+
+  const handleControlledChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = {
+      ...defaultValue,
+      [selectedLang]: e.target.value,
+    };
+
+    onGlobalChange(newValue);
+  };
 
   const handleLocalChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = {
@@ -27,7 +41,7 @@ const InternationalizedInput: React.FC<Props> = ({
     };
 
     setValue(newValue);
-    handleChange(newValue);
+    handleGlobalChange(newValue);
   };
 
   return (
@@ -38,7 +52,10 @@ const InternationalizedInput: React.FC<Props> = ({
         onChange={setSelectedLang}
         color="bluish"
       />
-      <Input value={value[selectedLang]} onChange={handleLocalChange} />
+      <Input
+        value={(controlled ? defaultValue : value)[selectedLang]}
+        onChange={controlled ? handleControlledChange : handleLocalChange}
+      />
     </Container>
   );
 };

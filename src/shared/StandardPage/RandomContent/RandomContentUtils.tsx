@@ -36,12 +36,13 @@ const useRandomContentsConfig = (): React.FC[] => {
 };
 
 export const useRandomContent = (): React.FC => {
+  const { lang } = useTranslation();
   const randomContents = useRandomContentsConfig();
   const [id, setId] = useState(0);
 
   useEffect(() => {
     setId(Math.floor(Math.random() * randomContents.length));
-  }, [randomContents]);
+  }, [randomContents, lang]);
 
   return randomContents[id];
 };
