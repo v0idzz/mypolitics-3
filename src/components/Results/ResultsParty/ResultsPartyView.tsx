@@ -25,13 +25,16 @@ const ResultsParty: React.FC<Props> = ({ parties, authorizedPartiesIds }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const { isClassic } = useCurrentResults();
   const { t, lang } = useTranslation("results");
-  const [country, setCountry] = useState(langToCountry(lang));
+  const byCountry = R.groupBy(R.prop("country"));
+  const countriesList = R.keys(byCountry(parties));
+  const langCountry = langToCountry(lang);
+  const [country, setCountry] = useState(
+    countriesList.includes(langCountry) ? langCountry : countriesList[0]
+  );
   const maxParties = isClassic ? 1 : 2;
   const partiesList = parties
     .filter((p) => p.country === country)
     .slice(0, showMore ? parties.length : maxParties);
-  const byCountry = R.groupBy(R.prop("country"));
-  const countriesList = R.keys(byCountry(parties));
 
   const handleShowMore = () => setShowMore(true);
 

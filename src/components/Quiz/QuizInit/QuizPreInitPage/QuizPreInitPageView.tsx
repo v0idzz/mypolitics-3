@@ -3,7 +3,7 @@ import { NextSeo } from "next-seo";
 import { InitStep } from "@components/Quiz";
 import Button from "@shared/Button";
 import Link from "next/link";
-import { paths, titleTemplate } from '@constants';
+import { paths, titleTemplate } from "@constants";
 import CenteredPage from "@shared/CenteredPage";
 import GoogleAd from "@shared/GoogleAd";
 import useTranslation from "next-translate/useTranslation";
@@ -27,7 +27,10 @@ const QuizPreInitPage: React.FC = () => {
             {t("preInit.top")}
             <Trans i18nKey="quiz:preInit.top" components={[<span />]} />
           </TopText>
-          <Chips>{t("preInit.privacy")}</Chips>
+          <Trans
+            i18nKey="quiz:preInit.privacy"
+            components={[<Chips key="0" />, <span key="1" />]}
+          />
           <Chips>{t("preInit.data")}</Chips>
           <Link href={paths.quizzesInitialize} passHref>
             <Button as="a" showShadow>

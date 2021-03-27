@@ -17,7 +17,7 @@
   "parties": {
     "title": "Political parties",
     "create": "Create party",
-    "import": "Import party",
+    "import": "Import parties",
     "form": {
       "logo": "Logo",
       "country": "State",
@@ -35,7 +35,7 @@
   "ideologies": {
     "title": "Ideologies",
     "create": "Create ideology",
-    "import": "Import ideology",
+    "import": "Import ideologies",
     "importFromOther": "From other test ",
     "form": {
       "icon": "Icon",
@@ -52,7 +52,7 @@
       "button": "Save"
     },
     "importModal": {
-      "title": "import ideology",
+      "title": "import ideologies",
       "url": "Link to the quiz",
       "button": "import"
     }
@@ -78,8 +78,8 @@
     "deleteButton": "Add question",
     "partiesFor": "Parties for",
     "partiesAgainst": "Parties against",
-    "ideologiesFor": "Ideologies for ",
-    "ideologiesAgainst": "ideologies against",
+    "ideologiesFor": "Ideologies for",
+    "ideologiesAgainst": "Ideologies against",
     "dropHereParty": "Drop party here",
     "clickHereParty": "Click to choose a party ",
     "dropHereIdeology": "Drop an ideology here",
