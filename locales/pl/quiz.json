@@ -87,7 +87,7 @@
     "hey": "Cześć!",
     "beforeWeStart": "Zanim przejdziesz do quizów...",
     "top": "Twoja prywatność jest dla nas priorytetem. Tutaj prosto opisaliśmy jak i w jakich celach przechowujemy Twoje dane.",
-    "privacy": "Twoje wyniki są <0>anonimowe</0> i nie ma możliwości ich powiązania z Tobą (chyba że sam je upublicznisz)",
+    "privacy": "<0>Twoje wyniki są <1>anonimowe</1> i nie ma możliwości ich powiązania z Tobą (chyba że sam je upublicznisz)</0>",
     "data": "Dane są analizowane zbiorowo w celu poprawy dokładności aplikacji",
     "next": "Przejdź dalej"
   },

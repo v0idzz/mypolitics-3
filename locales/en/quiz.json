@@ -46,15 +46,15 @@
     "traits": "Traits"
   },
   "axesIdeologyGrades": {
-    "center": "Centre",
-    "moderate": "Moderate",
-    "hard": "Strong",
-    "radical": "Radical"
+    "center": "Centre {{ideology}}",
+    "moderate": "Moderate {{ideology}}",
+    "hard": "Strong {{ideology}}",
+    "radical": "Radical {{ideology}}"
   },
   "compass": {
-    "left": "Left wing",
+    "left": "Left-wing",
     "center": "Centre",
-    "right": "Right wing"
+    "right": "Right-wing"
   },
   "answers": {
     "NEUTRAL": "No answer",
@@ -87,7 +87,7 @@
     "hey": "Hey! ",
     "beforeWeStart": "Before the quiz",
     "top": "Your privacy is our priority. Here is how and why we store your data.",
-    "privacy": "Your results are anonymous and they cannot be traced back to you (unless you decide to share them)",
+    "privacy": "<0>Your results are <1>anonymous</1> and they cannot be traced back to you (unless you decide to share them)</0>",
     "data": "The data is analysed collectively to improve the accuracy of the app",
     "next": "Next "
   },

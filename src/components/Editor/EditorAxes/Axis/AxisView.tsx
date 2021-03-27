@@ -30,6 +30,7 @@ const AxisIdeology: React.FC<{
   side: "left" | "right";
   axisId: string;
 }> = ({ data, side, axisId }) => {
+  const { t } = useTranslation("editor");
   const { update } = useEntity({
     id: axisId,
     name: "QuizAxis",
@@ -49,8 +50,8 @@ const AxisIdeology: React.FC<{
   return (
     <IdeologyDropArea
       accept={ItemType.Ideology}
-      dropText="Upuść ideologię"
-      clickText="Kliknij, aby wybrać ideologię"
+      dropText={t("question.dropHereIdeology")}
+      clickText={t("question.clickHereIdeology")}
       onDropOrAdd={handleDrop}
     >
       {data && (
