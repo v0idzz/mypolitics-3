@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "./EditorDropAreaStyles";
 import useBreakpoint from "@utils/hooks/useBreakpoint";
 import {
   AddButton,
@@ -8,6 +7,7 @@ import {
 import { useDrop } from "react-dnd";
 import { useEditorSlidingUpPanel } from "@components/Editor/EditorSlidingUpPanel";
 import { ItemType } from "@constants";
+import { Container } from "./EditorDropAreaStyles";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   accept: ItemType;

@@ -94,6 +94,7 @@ const useEditorCommonActions = (
       console.error(e);
 
       if (
+        typeof e.graphQLErrors === "object" &&
         e.graphQLErrors[0]?.message?.code === ErrorCode.QUIZ_VERSION_PUBLISHED
       ) {
         await saveVersion(input, false);

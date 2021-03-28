@@ -3,12 +3,11 @@ import Button from "@shared/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { Country, useEditorStandardPartiesQuery } from "@generated/graphql";
+import { useEditorStandardPartiesQuery } from "@generated/graphql";
 import { UseEditor } from "@components/Editor/utils/useEditor";
 import * as R from "ramda";
-import { CountryImage } from "@shared/CountrySelect/CountrySelectStyle";
+import useTranslation from "next-translate/useTranslation";
 import { Container } from "./PartiesImportStyle";
-import useTranslation from 'next-translate/useTranslation';
 
 library.add(faPlus);
 
@@ -18,7 +17,9 @@ interface Props {
 
 const IdeologiesImport: React.FC<Props> = ({ editor }) => {
   const { t } = useTranslation("editor");
-  const { data } = useEditorStandardPartiesQuery();
+  const { data } = useEditorStandardPartiesQuery({
+    fetchPolicy: "no-cache",
+  });
   const { actions } = editor;
   const parties = data?.quiz.currentVersion.parties || [];
   const byCountry = R.groupBy(R.prop("country"));

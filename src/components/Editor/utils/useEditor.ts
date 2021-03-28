@@ -29,21 +29,29 @@ export const useEditor = (): UseEditor => {
   const languages = useLanguages(data?.data);
   const languagesString = JSON.stringify(languages);
 
-  const handleVersionInput = useDebounceCallback(async () => {
-    if (typeof versionInput === "undefined") {
-      return;
-    }
+  const handleVersionInput = useDebounceCallback(
+    async () => {
+      if (typeof versionInput === "undefined") {
+        return;
+      }
 
-    await actions.updateVersion(versionInput);
-  }, 5000);
+      await actions.updateVersion(versionInput);
+    },
+    5000,
+    false
+  );
 
-  const handleBasicInput = useDebounceCallback(async () => {
-    if (typeof basicInput === "undefined") {
-      return;
-    }
+  const handleBasicInput = useDebounceCallback(
+    async () => {
+      if (typeof basicInput === "undefined") {
+        return;
+      }
 
-    await actions.updateBasic(basicInput);
-  }, 5000);
+      await actions.updateBasic(basicInput);
+    },
+    5000,
+    false
+  );
 
   useEffect(() => {
     handleVersionInput();
