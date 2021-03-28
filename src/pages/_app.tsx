@@ -6,7 +6,6 @@ import { Toaster } from "react-hot-toast";
 import Layout from "@layout";
 import Router from "next/router";
 import NProgress from "nprogress";
-import "nprogress/nprogress.css";
 import "modern-normalize/modern-normalize.css";
 import { FacebookProvider } from "react-facebook";
 import useTranslation from "next-translate/useTranslation";
