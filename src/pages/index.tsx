@@ -12,16 +12,11 @@ import {
 import { getManyPosts } from "@services/ghost";
 import {
   BasicTalkPartsFragment,
-  ComponentPersonPartner,
-  FeaturedQuizzesDocument,
   FeaturedQuizzesQuery,
-  PartnersDocument,
-  TalksByFilterDocument,
-  TalksByFilterQuery,
   PatreonQuery,
-  PatreonDocument,
-  Language,
-} from "@generated/graphql";
+  StandardPageDocument,
+  HomePageQuery, HomePageDocument,
+} from '@generated/graphql';
 import { initializeApollo } from "@services/apollo";
 import ShareSocial from "@shared/ShareSocial";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,15 +28,14 @@ import Patreon from "@shared/Patreon";
 import styled from "styled-components";
 import { EditorCTA } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
-import { languages } from "@constants";
-import { toLanguageEnum } from '@utils/toLanguageEnum';
+import { toLanguageEnum } from "@utils/toLanguageEnum";
 
 library.add(faPollH);
 
 interface Props {
   posts: any;
   talks: BasicTalkPartsFragment[];
-  partners: ComponentPersonPartner[];
+  partners: HomePageQuery["partner"]["partners"];
   featuredQuizzes: FeaturedQuizzesQuery["featuredQuizzes"];
   patreons: PatreonQuery["patreon"];
 }
@@ -116,47 +110,25 @@ export const getServerSideProps = async ({
     limit: 2,
   });
 
-  const talksQuery = client.query<TalksByFilterQuery>({
-    query: TalksByFilterDocument,
-    variables: {
-      limit: 2,
-      sort: "end:desc",
-    },
-  });
-
-  const partnersQuery = client.query({
-    query: PartnersDocument,
-  });
-
-  const quizzesQuery = client.query<FeaturedQuizzesQuery>({
-    query: FeaturedQuizzesDocument,
+  const homePageQuery = client.query<HomePageQuery>({
+    query: HomePageDocument,
     variables: {
       lang: toLanguageEnum(locale),
     },
   });
 
-  const patreonQuery = client.query<PatreonQuery>({
-    query: PatreonDocument,
-  });
-
-  const [posts, talks, partners, quizzes, patreons] = await Promise.all([
-    postsQuery,
-    talksQuery,
-    partnersQuery,
-    quizzesQuery,
-    patreonQuery,
-  ]);
+  const [posts, homePage] = await Promise.all([postsQuery, homePageQuery]);
 
   return {
     props: {
       posts: posts || [],
-      talks: talks?.data?.talks || [],
-      partners: partners?.data.partner.partners || [],
+      talks: homePage?.data?.talks || [],
+      partners: homePage?.data.partner.partners || [],
+      patreons: homePage?.data.patreon,
       featuredQuizzes: [
-        ...(quizzes?.data.featuredQuizzes || []),
-        ...(quizzes?.data.socialQuizzes || []).slice(0, 2),
+        ...(homePage?.data.featuredQuizzes || []),
+        ...(homePage?.data.socialQuizzes || []),
       ],
-      patreons: patreons?.data.patreon,
     },
   };
 };

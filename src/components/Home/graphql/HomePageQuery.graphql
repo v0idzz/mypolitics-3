@@ -1,0 +1,25 @@
+query HomePage($lang: Language!) {
+    talks(limit: 2, sort: "end:desc") {
+        ...BasicTalkParts
+    }
+    partner {
+        _id
+        partners {
+            name
+            image {
+                formats
+            }
+            url
+        }
+    }
+    featuredQuizzes {
+        ...QuizBasicParts
+    }
+    socialQuizzes(lang: $lang, limit: 2) {
+        ...QuizBasicParts
+    }
+    patreon {
+        updatedAt
+        list
+    }
+}

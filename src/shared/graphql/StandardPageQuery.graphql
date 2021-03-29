@@ -1,0 +1,15 @@
+query StandardPage($lang: Language!, $locale: String!) {
+    talks(limit: 3, sort: "end:desc", where: { lang: $locale }) {
+        ...BasicTalkParts
+    }
+    featuredQuizzes {
+        ...QuizBasicParts
+    }
+    socialQuizzes(lang: $lang, limit: 3) {
+        ...QuizBasicParts
+    }
+    patreon {
+        updatedAt
+        list
+    }
+}

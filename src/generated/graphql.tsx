@@ -2258,6 +2258,8 @@ export type QueryQuizArgs = {
 
 
 export type QuerySocialQuizzesArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
   lang: Language;
 };
 
@@ -2864,6 +2866,39 @@ export type VerifyQuizMutationVariables = Exact<{
 export type VerifyQuizMutation = (
   { __typename?: 'Mutation' }
   & Pick<Mutation, 'verifyQuiz'>
+);
+
+export type HomePageQueryVariables = Exact<{
+  lang: Language;
+}>;
+
+
+export type HomePageQuery = (
+  { __typename?: 'Query' }
+  & { talks?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>>, partner?: Maybe<(
+    { __typename?: 'Partners' }
+    & Pick<Partners, '_id'>
+    & { partners?: Maybe<Array<Maybe<(
+      { __typename?: 'ComponentPersonPartner' }
+      & Pick<ComponentPersonPartner, 'name' | 'url'>
+      & { image?: Maybe<(
+        { __typename?: 'UploadFile' }
+        & Pick<UploadFile, 'formats'>
+      )> }
+    )>>> }
+  )>, featuredQuizzes: Array<(
+    { __typename?: 'Quiz' }
+    & QuizBasicPartsFragment
+  )>, socialQuizzes: Array<(
+    { __typename?: 'Quiz' }
+    & QuizBasicPartsFragment
+  )>, patreon?: Maybe<(
+    { __typename?: 'Patreons' }
+    & Pick<Patreons, 'updatedAt' | 'list'>
+  )> }
 );
 
 export type BasicPostPartsFragment = (
@@ -3597,6 +3632,29 @@ export type RulesDocumentQuery = (
       { __typename?: 'ComponentTranslationRichTextTranslation' }
       & Pick<ComponentTranslationRichTextTranslation, 'pl' | 'en'>
     )> }
+  )> }
+);
+
+export type StandardPageQueryVariables = Exact<{
+  lang: Language;
+  locale: Scalars['String'];
+}>;
+
+
+export type StandardPageQuery = (
+  { __typename?: 'Query' }
+  & { talks?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>>, featuredQuizzes: Array<(
+    { __typename?: 'Quiz' }
+    & QuizBasicPartsFragment
+  )>, socialQuizzes: Array<(
+    { __typename?: 'Quiz' }
+    & QuizBasicPartsFragment
+  )>, patreon?: Maybe<(
+    { __typename?: 'Patreons' }
+    & Pick<Patreons, 'updatedAt' | 'list'>
   )> }
 );
 
@@ -4624,6 +4682,60 @@ export function useVerifyQuizMutation(baseOptions?: Apollo.MutationHookOptions<V
 export type VerifyQuizMutationHookResult = ReturnType<typeof useVerifyQuizMutation>;
 export type VerifyQuizMutationResult = Apollo.MutationResult<VerifyQuizMutation>;
 export type VerifyQuizMutationOptions = Apollo.BaseMutationOptions<VerifyQuizMutation, VerifyQuizMutationVariables>;
+export const HomePageDocument = gql`
+    query HomePage($lang: Language!) {
+  talks(limit: 2, sort: "end:desc") {
+    ...BasicTalkParts
+  }
+  partner {
+    _id
+    partners {
+      name
+      image {
+        formats
+      }
+      url
+    }
+  }
+  featuredQuizzes {
+    ...QuizBasicParts
+  }
+  socialQuizzes(lang: $lang, limit: 2) {
+    ...QuizBasicParts
+  }
+  patreon {
+    updatedAt
+    list
+  }
+}
+    ${BasicTalkPartsFragmentDoc}
+${QuizBasicPartsFragmentDoc}`;
+
+/**
+ * __useHomePageQuery__
+ *
+ * To run a query within a React component, call `useHomePageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHomePageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useHomePageQuery({
+ *   variables: {
+ *      lang: // value for 'lang'
+ *   },
+ * });
+ */
+export function useHomePageQuery(baseOptions: Apollo.QueryHookOptions<HomePageQuery, HomePageQueryVariables>) {
+        return Apollo.useQuery<HomePageQuery, HomePageQueryVariables>(HomePageDocument, baseOptions);
+      }
+export function useHomePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HomePageQuery, HomePageQueryVariables>) {
+          return Apollo.useLazyQuery<HomePageQuery, HomePageQueryVariables>(HomePageDocument, baseOptions);
+        }
+export type HomePageQueryHookResult = ReturnType<typeof useHomePageQuery>;
+export type HomePageLazyQueryHookResult = ReturnType<typeof useHomePageLazyQuery>;
+export type HomePageQueryResult = Apollo.QueryResult<HomePageQuery, HomePageQueryVariables>;
 export const PostByIdDocument = gql`
     query PostById($id: ID!) {
   post(id: $id) {
@@ -5678,3 +5790,48 @@ export function useRulesDocumentLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type RulesDocumentQueryHookResult = ReturnType<typeof useRulesDocumentQuery>;
 export type RulesDocumentLazyQueryHookResult = ReturnType<typeof useRulesDocumentLazyQuery>;
 export type RulesDocumentQueryResult = Apollo.QueryResult<RulesDocumentQuery, RulesDocumentQueryVariables>;
+export const StandardPageDocument = gql`
+    query StandardPage($lang: Language!, $locale: String!) {
+  talks(limit: 3, sort: "end:desc", where: {lang: $locale}) {
+    ...BasicTalkParts
+  }
+  featuredQuizzes {
+    ...QuizBasicParts
+  }
+  socialQuizzes(lang: $lang, limit: 3) {
+    ...QuizBasicParts
+  }
+  patreon {
+    updatedAt
+    list
+  }
+}
+    ${BasicTalkPartsFragmentDoc}
+${QuizBasicPartsFragmentDoc}`;
+
+/**
+ * __useStandardPageQuery__
+ *
+ * To run a query within a React component, call `useStandardPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useStandardPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useStandardPageQuery({
+ *   variables: {
+ *      lang: // value for 'lang'
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useStandardPageQuery(baseOptions: Apollo.QueryHookOptions<StandardPageQuery, StandardPageQueryVariables>) {
+        return Apollo.useQuery<StandardPageQuery, StandardPageQueryVariables>(StandardPageDocument, baseOptions);
+      }
+export function useStandardPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StandardPageQuery, StandardPageQueryVariables>) {
+          return Apollo.useLazyQuery<StandardPageQuery, StandardPageQueryVariables>(StandardPageDocument, baseOptions);
+        }
+export type StandardPageQueryHookResult = ReturnType<typeof useStandardPageQuery>;
+export type StandardPageLazyQueryHookResult = ReturnType<typeof useStandardPageLazyQuery>;
+export type StandardPageQueryResult = Apollo.QueryResult<StandardPageQuery, StandardPageQueryVariables>;
