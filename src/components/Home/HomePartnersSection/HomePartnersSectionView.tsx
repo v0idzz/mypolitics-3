@@ -1,6 +1,6 @@
 import React from "react";
 import * as R from "ramda";
-import { ComponentPersonPartner } from "@generated/graphql";
+import { ComponentPersonPartner, HomePageQuery } from "@generated/graphql";
 import { Lead, Title } from "@shared/Typography";
 import useTranslation from "next-translate/useTranslation";
 import {
@@ -19,12 +19,12 @@ import {
 const backgroundImage = require("@assets/images/home-hero.png?resize&sizes[]=600&sizes[]=1200&sizes[]=1440");
 
 interface Props {
-  partners: ComponentPersonPartner[];
+  partners: HomePageQuery["partner"]["partners"];
 }
 
 const HomePartnersSection: React.FC<Props> = ({ partners }) => {
   const { t } = useTranslation("home");
-  const toPartnerLink = (partner: ComponentPersonPartner) => (
+  const toPartnerLink = (partner: HomePageQuery["partner"]["partners"][0]) => (
     <PartnerLink
       key={partner.url}
       href={partner.url}

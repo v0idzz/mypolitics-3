@@ -4,6 +4,8 @@ import {
   FeaturedQuizzesQuery,
   PatreonDocument,
   PatreonQuery,
+  StandardPageDocument,
+  StandardPageQuery,
   TalksByFilterDocument,
   TalksByFilterQuery,
 } from "@generated/graphql";
@@ -47,51 +49,28 @@ export const getStandardPageProps = async ({
     include: ["tags", "authors"],
   });
 
-  const talksQuery = client.query<TalksByFilterQuery>({
-    query: TalksByFilterDocument,
-    variables: {
-      limit: 3,
-      sort: "end:desc",
-      where: {
-        lang: locale,
-      },
-    },
-  });
-
-  const quizzesQuery = client.query<FeaturedQuizzesQuery>({
-    query: FeaturedQuizzesDocument,
+  const standardPageQuery = client.query<StandardPageQuery>({
+    query: StandardPageDocument,
     variables: {
       lang: languageEnum,
+      locale,
     },
   });
 
-  const patreonQuery = client.query<PatreonQuery>({
-    query: PatreonDocument,
-  });
-
-  const [
-    news,
-    view,
-    randomArticles,
-    talks,
-    quizzes,
-    patreons,
-  ] = await Promise.all([
+  const [news, view, randomArticles, standardPage] = await Promise.all([
     newsQuery,
     viewQuery,
     randomArticleQuery,
-    talksQuery,
-    quizzesQuery,
-    patreonQuery,
+    standardPageQuery,
   ]);
 
   return {
     articles: [...(news || []), ...(view || []), ...(randomArticles || [])],
-    talks: talks?.data.talks || [],
-    patreons: patreons?.data.patreon,
+    talks: standardPage?.data.talks || [],
+    patreons: standardPage?.data.patreon,
     quizzes: [
-      ...(quizzes?.data.featuredQuizzes || []),
-      ...(quizzes?.data.socialQuizzes.slice(0, 3) || []),
+      ...(standardPage?.data.featuredQuizzes || []),
+      ...(standardPage?.data.socialQuizzes || []),
     ],
   };
 };
