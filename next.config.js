@@ -1,7 +1,6 @@
 /* eslint @typescript-eslint/no-var-requires:0 */
 const nextTranslate = require("next-translate");
 const optimizedImages = require("next-optimized-images");
-const withPreact = require("next-plugin-preact");
 const withPlugins = require("next-compose-plugins");
 
 const nextConfig = {
@@ -55,7 +54,6 @@ module.exports = withPlugins(
         },
       },
     ],
-    [withPreact],
   ],
   nextConfig
 );
