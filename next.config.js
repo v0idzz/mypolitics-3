@@ -46,6 +46,7 @@ const nextConfig = {
 
 module.exports = withPlugins(
   [
+    withPreact,
     nextTranslate,
     [
       optimizedImages,
@@ -55,7 +56,6 @@ module.exports = withPlugins(
         },
       },
     ],
-    [withPreact],
   ],
   nextConfig
 );
