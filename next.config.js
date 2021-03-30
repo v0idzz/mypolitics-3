@@ -2,6 +2,7 @@
 const nextTranslate = require("next-translate");
 const optimizedImages = require("next-optimized-images");
 const withPlugins = require("next-compose-plugins");
+const withPreact = require("next-plugin-preact");
 
 const nextConfig = {
   webpack(config) {
@@ -54,6 +55,7 @@ module.exports = withPlugins(
         },
       },
     ],
+    [withPreact],
   ],
   nextConfig
 );
