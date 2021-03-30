@@ -47,20 +47,21 @@
     "community": "Community",
     "copied": "Copied!"
   },
-  "errorMessages": [
-    "File not found",
-    "Unauthorized",
-    "Respondent's header not found",
-    "The survey has closed",
-    "The survey has not closed yet",
-    "This version has already been published",
-    "Incorrect login details",
-    "user/username already exists",
-    "A verification email has been sent to your email address again.",
-    "User does not exist",
-    "You have already voted",
-    "The verification email has already been sent. Try again in 15 minutes."
-  ],
+  "errorMessages": {
+    "0": "File not found",
+    "1": "Unauthorized",
+    "2": "Respondent's header not found",
+    "3": "The survey has closed",
+    "4": "The survey has not closed yet",
+    "5": "This version has already been published",
+    "6": "Incorrect login details",
+    "7": "user/username already exists",
+    "8": "A verification email has been sent to your email address again",
+    "9": "User does not exist",
+    "10": "You have already voted",
+    "11": "The verification email has already been sent. Try again in 15 minutes",
+    "default": "Unknown error"
+  },
   "talkType": {
     "classic": "Youth organisation debates",
     "mvsp": "Youth vs politicians",
