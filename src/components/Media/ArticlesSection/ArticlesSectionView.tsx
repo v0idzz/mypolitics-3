@@ -2,9 +2,9 @@ import React from "react";
 import { Title, Lead } from "@shared/Typography";
 import { PostOrPage } from "@tryghost/content-api";
 import { Link as PostLink } from "@components/Media";
-import { Link as TalkLink } from "@components/Talk";
 import { BasicTalkPartsFragment } from "@generated/graphql";
 import * as R from "ramda";
+import dynamic from "next/dynamic";
 import {
   Container,
   Header,
@@ -23,6 +23,8 @@ interface Props {
   posts: PostOrPage[];
   talks: BasicTalkPartsFragment[];
 }
+
+const TalkLink = dynamic(() => import("@components/Talk/TalkLink"));
 
 const ArticlesSection: React.FC<Props> = ({
   title,
