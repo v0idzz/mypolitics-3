@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@apollo/react-ssr": "^4.0.0",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
