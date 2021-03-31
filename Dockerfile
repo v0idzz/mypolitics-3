@@ -1,5 +1,5 @@
 FROM node:alpine AS deps
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat python make g++
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install
