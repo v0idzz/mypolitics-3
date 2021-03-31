@@ -14,7 +14,7 @@ export const getVideoId = (url: string): string => {
   return match[2];
 };
 
-const NewsLink: React.FC<Props> = ({ data }) => {
+const TalkLink: React.FC<Props> = ({ data }) => {
   const { url, title } = data;
   const videoId = getVideoId(url);
 
@@ -29,4 +29,4 @@ const NewsLink: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default NewsLink;
+export default TalkLink;
