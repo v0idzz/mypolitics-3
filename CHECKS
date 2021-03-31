@@ -1,5 +1,6 @@
 WAIT=10
 ATTEMPTS=6
-/
-/health/ping pong
-/quizzes/mypolitics
+//mypolitics.pl
+//mypolitics.eu
+//mypolitics.pl/health/ping pong
+//mypolitics.pl/quizzes/mypolitics

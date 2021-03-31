@@ -25,6 +25,7 @@ import Link from "next/link";
 import Button from "@shared/Button";
 import { paths } from "@constants";
 import useTranslation from "next-translate/useTranslation";
+import AlertErrorBoundary from "@shared/AlertErrorBoundary";
 import { Content, Inner } from "./StandardPageStyle";
 
 library.add(faPollH, faPencilRuler);
@@ -101,7 +102,9 @@ const StandardPage: React.FC<Props> = ({
             </>
           )}
           {patreons && <Patreon patreons={patreons} />}
-          <RandomContent />
+          <AlertErrorBoundary>
+            <RandomContent />
+          </AlertErrorBoundary>
           {randomArticle && (
             <ArticleContent post={randomArticle} showFull={false} />
           )}

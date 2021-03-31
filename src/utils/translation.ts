@@ -13,7 +13,7 @@ export const translate = (
     const lang = languages[i];
     const exists = typeof translation[lang] !== "undefined";
 
-    if (exists && translation[lang] !== null) {
+    if (exists && !!translation[lang]) {
       return translation[lang];
     }
   }
