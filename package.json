@@ -50,6 +50,7 @@
     "react-dnd": "^13.1.1",
     "react-dnd-html5-backend": "^12.1.1",
     "react-dom": "17.0.1",
+    "react-error-boundary": "^3.1.1",
     "react-facebook": "^8.1.4",
     "react-google-recaptcha": "^2.1.0",
     "react-hook-form": "^6.15.4",
@@ -60,7 +61,7 @@
     "react-transition-group": "^4.4.1",
     "responsive-loader": "^2.2.1",
     "sharp": "^0.26.3",
-    "styled-components": "^5.2.1",
+    "styled-components": "5.2.0",
     "styled-components-breakpoint": "^2.1.1",
     "svg-react-loader": "^0.4.6",
     "use-debounce": "^5.2.1"

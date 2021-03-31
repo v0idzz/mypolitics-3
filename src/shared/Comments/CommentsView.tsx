@@ -7,7 +7,8 @@ import { paths } from "@constants";
 import { Comments } from "react-facebook";
 import { QuizBasicPartsFragment } from "@generated/graphql";
 import { Container } from "./CommentsStyle";
-import { translate } from '@utils/translation';
+import { translate } from "@utils/translation";
+import AlertErrorBoundary from "@shared/AlertErrorBoundary";
 
 interface Props {
   post?: PostOrPage;
@@ -30,12 +31,14 @@ const DisqusComments: React.FC<Props> = ({ post, quiz, type = "disqus" }) => {
   };
 
   return (
-    <Container>
-      {type === "facebook" && <Comments lang="pl" width="100%" href={url} />}
-      {type === "disqus" && (
-        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-      )}
-    </Container>
+    <AlertErrorBoundary>
+      <Container>
+        {type === "facebook" && <Comments lang="pl" width="100%" href={url} />}
+        {type === "disqus" && (
+          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+        )}
+      </Container>
+    </AlertErrorBoundary>
   );
 };
 export default DisqusComments;
