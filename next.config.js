@@ -7,9 +7,7 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/,
-      },
+      include: /\.(js|ts)x?$/,
       use: ["@svgr/webpack"],
     });
 
@@ -21,6 +19,16 @@ const nextConfig = {
   publicRuntimeConfig: {
     NODE_ENV: process.env.NODE_ENV,
     BASE_PATH: process.env.BASE_PATH,
+  },
+  reactStrictMode: true,
+  experimental: {
+    optimizeFonts: true,
+    optimizeImages: true,
+    optimizeCss: true,
+  },
+  future: {
+    webpack5: true,
+    strictPostcssConfiguration: true,
   },
   async redirects() {
     return [
