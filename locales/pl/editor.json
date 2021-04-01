@@ -97,7 +97,8 @@
     }
   },
   "misc": {
-    "clickToConfirmAction": "Naciśnij ponownie, aby potwierdzić"
+    "clickToConfirmAction": "Naciśnij ponownie, aby potwierdzić",
+    "unsavedChangesWarning": "Masz niezapisane zmiany. Czy na pewno chcesz opuścić tę stronę?"
   },
   "admin": {
     "title": "Panel moderacji",
@@ -106,6 +107,9 @@
     }
   },
   "footer": {
+    "saveButton": "Zapisz",
+    "autoSaved": "Zapisano automatycznie",
+    "manuallySaved": "Zapisano",
     "urlTitle": "Link do quizu:",
     "urlToast": "Skopiowano do schowka",
     "testBeforeVerify": "Przetestuj przed weryfikacją",

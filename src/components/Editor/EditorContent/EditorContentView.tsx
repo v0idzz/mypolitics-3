@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import {
   Box,
   Question,
@@ -27,10 +27,13 @@ import EditorSlidingUpPanel, {
 } from "@components/Editor/EditorSlidingUpPanel";
 import useTranslation from "next-translate/useTranslation";
 import { Col, Row, Title, ToolboxCol } from "./EditorContentStyle";
+import useWarnIfUnsavedChanges from "@components/Editor/utils/useWarnIfUnsavedChanges";
 
 library.add(faPlus);
 
 const EditorContent: React.FC = () => {
+  useWarnIfUnsavedChanges();
+
   const { t } = useTranslation("editor");
   const { query } = useRouter();
   const editor = useEditor();

@@ -5,6 +5,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { Content } from "@components/Editor";
 import useTranslation from "next-translate/useTranslation";
 import { Container, Header, IconWrapper, Title } from "./EditorPageStyle";
+import { ChangeTrackerProvider } from "@components/Editor/utils/ChangeTrackerContext";
 
 library.add(faPencilRuler);
 
@@ -22,7 +23,9 @@ const EditorPage: React.FC = () => {
         </div>
       </Header>
       <div>
-        <Content />
+        <ChangeTrackerProvider>
+          <Content />
+        </ChangeTrackerProvider>
       </div>
     </Container>
   );
