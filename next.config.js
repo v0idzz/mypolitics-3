@@ -21,11 +21,6 @@ const nextConfig = {
     BASE_PATH: process.env.BASE_PATH,
   },
   reactStrictMode: true,
-  experimental: {
-    optimizeFonts: true,
-    optimizeImages: true,
-    optimizeCss: true,
-  },
   future: {
     webpack5: true,
     strictPostcssConfiguration: true,
