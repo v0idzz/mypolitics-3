@@ -7,6 +7,7 @@ import {
   faCopy,
   faFlask,
   faTimes,
+  faSave,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "@shared/Button";
@@ -27,14 +28,16 @@ import {
   RequirementContainer,
   RequirementIcon,
   Info,
+  SaveContainer,
 } from "./EditorFooterStyle";
 import {
   useRequirements,
   Requirement,
   TestedVersion,
 } from "./EditorFooterUtils";
+import { useChangeTracker } from "@components/Editor/utils/ChangeTrackerContext";
 
-library.add(faCheck, faTimes, faFlask, faCopy);
+library.add(faCheck, faTimes, faFlask, faCopy, faSave);
 
 interface Props {
   editor: UseEditor;
@@ -42,6 +45,7 @@ interface Props {
 
 const EditorFooter: React.FC<Props> = ({ editor }) => {
   const { t } = useTranslation("editor");
+  const { hasUncommittedChanges, commitChanges, lastSave } = useChangeTracker();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const { actions, versionInput, basicInput, data } = editor;
@@ -126,9 +130,31 @@ const EditorFooter: React.FC<Props> = ({ editor }) => {
     setLoading(false);
   };
 
+  const handleSaveClick = async () => {
+    await commitChanges(false);
+  };
+
   return (
     <Container>
       <div>
+        <SaveContainer>
+          {hasUncommittedChanges ? (
+            <Button
+              onClick={handleSaveClick}
+              beforeIcon={<FontAwesomeIcon icon={faSave} />}
+            >
+              {t("footer.saveButton")}
+            </Button>
+          ) : (
+            <>
+              {t(
+                lastSave.autoSave ? "footer.autoSaved" : "footer.manuallySaved"
+              )}
+              &nbsp;
+              <FontAwesomeIcon icon={faCheck} />
+            </>
+          )}
+        </SaveContainer>
         <Info>
           {t("footer.urlTitle")}&nbsp;
           <span

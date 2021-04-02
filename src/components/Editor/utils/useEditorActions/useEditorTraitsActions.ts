@@ -2,8 +2,6 @@ import { useEntityLazy } from "@components/Editor/utils/useEntity";
 import {
   EditorIdeologyPartsFragment,
   EditorIdeologyPartsFragmentDoc,
-  ResultsTraitPartsFragment,
-  ResultsTraitPartsFragmentDoc,
 } from "@generated/graphql";
 import {
   EditorGetCurrentDataFunction,
