@@ -1,6 +1,6 @@
 # myPolitics 3 Frontend
 
-> Advanced political platform with quizzes, news articles and more.
+> Advanced political platform with quizzes, news, articles and more.
 
 ## Development
 
