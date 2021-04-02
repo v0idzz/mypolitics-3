@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import GroupAd from "@shared/GroupAd";
 import useTranslation from "next-translate/useTranslation";
 import * as R from "ramda";
@@ -36,13 +36,8 @@ const useRandomContentsConfig = (): React.FC[] => {
 };
 
 export const useRandomContent = (): React.FC => {
-  const { lang } = useTranslation();
   const randomContents = useRandomContentsConfig();
-  const [id, setId] = useState(0);
-
-  useEffect(() => {
-    setId(Math.floor(Math.random() * randomContents.length));
-  }, [randomContents, lang]);
+  const id = Math.floor(Math.random() * randomContents.length);
 
   return randomContents[id];
 };
