@@ -25,3 +25,4 @@ jobs:
           git_remote_url: ${{ secrets.REMOTE_URL }}
           ssh_host_key: ${{ secrets.SSH_HOST_KEY }}
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+          git_push_flags: -q
