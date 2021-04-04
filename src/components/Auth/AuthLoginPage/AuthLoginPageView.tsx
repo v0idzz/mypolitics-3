@@ -27,7 +27,7 @@ const AuthLoginPage: React.FC = () => {
       <Divider />
       {!query?.state && (
         <>
-          <Link href={apiPaths.facebook.auth} passHref>
+          <Link href={apiPaths.facebook.auth} locale={false} passHref>
             <Button
               background="facebook"
               beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}
