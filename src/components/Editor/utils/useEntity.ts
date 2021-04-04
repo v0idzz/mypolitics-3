@@ -1,7 +1,6 @@
 import { DocumentNode, useApolloClient } from "@apollo/client";
 import * as R from "ramda";
 import { DeepPartial } from "@typeDefs/common";
-import { useDebounceCallback } from '@react-hook/debounce';
 
 interface UseEntity<T> {
   data: T;
