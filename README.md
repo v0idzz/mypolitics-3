@@ -19,7 +19,7 @@ index 090e6fc..667e2cf 100644
          ]
        : [];
 ```
-Then:
+Then run:
 ```bash
 $ yarn install
 $ yarn dev
