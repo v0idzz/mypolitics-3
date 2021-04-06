@@ -16,31 +16,52 @@ export const Container = styled.div<{
   z-index: 100;
   transition: 0.2s ease-in-out;
   padding: 1.25rem 1rem;
-  -webkit-backdrop-filter: blur(0);
-  backdrop-filter: blur(0);
+
+  ${breakpoint("md")`
+    ${({ highlighted }) =>
+      highlighted &&
+      css`
+        padding: 1rem;
+      `}
+  `}
 
   ${breakpoint("xl")`
-    border-radius: 1rem;
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
     padding: 1rem 0;
   `}
 
-  ${({ theme, highlighted, noTransparent }) =>
-    highlighted &&
-    css`
-      ${breakpoint("md")`
-        padding: 1rem;
-      `};
-      max-width: ${theme.breakpoints.xl + 32}px;
-      box-shadow: 0 0 16px rgba(0, 86, 105, 0.25);
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-      background: ${noTransparent
-        ? theme.colors.primaryDarken
-        : transparentize(0.05, theme.colors.primaryDarken)};
-    `}
+  &::before {
+    content: "";
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    position: absolute;
+    width: 100%;
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+    transition: 0.2s ease-in-out;
+    z-index: -1;
+
+    ${({ theme, highlighted, noTransparent }) =>
+      highlighted &&
+      css`
+        ${breakpoint("md")`
+          width: calc(100% + 2rem);
+        `};
+        ${breakpoint("xl")`
+          border-radius: 1rem;
+        `};
+        box-shadow: 0 0 16px rgba(0, 86, 105, 0.25);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        background: ${noTransparent
+          ? theme.colors.primaryDarken
+          : transparentize(0.05, theme.colors.primaryDarken)};
+      `}
+  }
 `;
 
 export const Inner = styled.div`
