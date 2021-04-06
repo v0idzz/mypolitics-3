@@ -45,14 +45,15 @@ export const Container = styled.div<{
     transition: 0.2s ease-in-out;
     z-index: -1;
 
+    ${breakpoint("xl")`
+      border-radius: 1rem;
+    `};
+
     ${({ theme, highlighted, noTransparent }) =>
       highlighted &&
       css`
         ${breakpoint("md")`
           width: calc(100% + 2rem);
-        `};
-        ${breakpoint("xl")`
-          border-radius: 1rem;
         `};
         box-shadow: 0 0 16px rgba(0, 86, 105, 0.25);
         -webkit-backdrop-filter: blur(4px);
