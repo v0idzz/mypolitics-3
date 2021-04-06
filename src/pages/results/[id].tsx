@@ -14,7 +14,6 @@ import StandardPage, {
   getStandardPageProps,
   StandardPageProps,
 } from "@shared/StandardPage";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 import { translate } from "@utils/translation";
 import { apiPaths } from "@constants";
 import {objToBase64} from "@utils/toBase64";
