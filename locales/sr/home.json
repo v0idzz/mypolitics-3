@@ -1,0 +1,116 @@
+[
+ {
+   "hero": {
+      "title": "hero/subTitle"
+   },
+   "Gradimo politički svesno društvo": "Promovišemo građanski stav i edukujemo ljude širom sveta"
+},
+ {
+   "hero": {
+      "title": "hero/quizLink"
+   },
+   "Gradimo politički svesno društvo": "Test političkih stavova"
+},
+ {
+   "hero": {
+      "title": "hero/learnMore"
+   },
+   "Gradimo politički svesno društvo": "Saznaj više"
+},
+ {
+   "hero": {
+      "title": "hero/candidate"
+   },
+   "Gradimo politički svesno društvo": "Kandidat"
+},
+ {
+   "hero": {
+      "title": "quiz/title"
+   },
+   "Gradimo politički svesno društvo": "Test političkih stavova"
+},
+ {
+   "hero": {
+      "title": "quiz/slogan"
+   },
+   "Gradimo politički svesno društvo": "najnaprednije"
+},
+ {
+   "hero": {
+      "title": "quiz/content/text"
+   },
+   "Gradimo politički svesno društvo": "Napravili smo test političkih stavova koga je koristilo skoro pola miliona ljudi i mnoge poznate političke figure. Na osnovu tvojih odgovora, test te svrstava u najbližu ideologiju, političku stranku i poziciju na političkom kompasu."
+},
+ {
+   "hero": {
+      "title": "quiz/content/buttonText"
+   },
+   "Gradimo politički svesno društvo": "Proveri svoje političke stavove"
+},
+ {
+   "hero": {
+      "title": "news/title"
+   },
+   "Gradimo politički svesno društvo": "Novisti i mišljenja"
+},
+ {
+   "hero": {
+      "title": "news/slogan"
+   },
+   "Gradimo politički svesno društvo": "Novinarstvo"
+},
+ {
+   "hero": {
+      "title": "news/content/text"
+   },
+   "Gradimo politički svesno društvo": "U svetu gde novinarstvo postaje sve više partijsko, napravili smo myPolitics News koji podržava principe objektivnosti. U međuvremenu, preko myPolitics View, promovišemo ideološki zasnovan pristup kako bi povećali razumevanje stavova iz čitavog političkog spektra."
+},
+ {
+   "hero": {
+      "title": "news/content/buttonText"
+   },
+   "Gradimo politički svesno društvo": "Pogledaj više"
+},
+ {
+   "hero": {
+      "title": "talk/title"
+   },
+   "Gradimo politički svesno društvo": "Debate i politički intervjui"
+},
+ {
+   "hero": {
+      "title": "talk/slogan"
+   },
+   "Gradimo politički svesno društvo": "Najzanimljivije"
+},
+ {
+   "hero": {
+      "title": "talk/content/text"
+   },
+   "Gradimo politički svesno društvo": "Promovišemo politički aktivizam organizovanjem debata i intervjua sa omladinskim organizacijama i političarima iz čitavog političkog spektra."
+},
+ {
+   "hero": {
+      "title": "talk/content/buttonText"
+   },
+   "Gradimo politički svesno društvo": "Pogledaj više"
+},
+ {
+   "hero": {
+      "title": "partners/title"
+   },
+   "Gradimo politički svesno društvo": "Da li bi želeo da radiš sa nama? / Partnerstvo?"
+},
+ {
+   "hero": {
+      "title": "partners/lead"
+   },
+   "Gradimo politički svesno društvo": "Otvoreni smo za partnerstvo! / Tražimo partnere"
+},
+ {
+   "hero": {
+      "title": "partners/content/title"
+   },
+   "Gradimo politički svesno društvo": "Naši partneri"
+}
+]

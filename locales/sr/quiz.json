@@ -1,0 +1,164 @@
+[
+ {
+   "ideologies": {
+      "e84642622ce79db59c79b101650cd342": "Staljinizam",
+      "5d7ed94a1045ee03d113d6ff8ac0fd21": "Štraserizam",
+      "d205a81b8749ba9815224f30d4378380": "Fašizam",
+      "7ac22d90e079d52413de4bf313abb5a8": "Frankoizam",
+      "e81131795dbcd0e9aa2df7cad0469dbd": "Pinočeizam",
+      "f78793d37d2f256c190a4f2b5f5ef72e": "Socijalizam",
+      "bbdae02075351dfcfef18f82fe76ac4b": "Etatizam",
+      "f06c01c4e2b54c391dc24c478557ce9d": "Tradicionalni konzervativizam",
+      "c96cb0f5a6aef182513caf03b320c0ed": "Konzervativizam",
+      "aeb2f0fe859d3d840a4eef1e15c1f5b4": "Paleolibertarijanizam",
+      "8dac303a993812f4115549b61ace48b8": "Centrizam",
+      "2776bcfeeeadaae581c2283dea68516f": "Konzervativni liberalizam",
+      "71506c04f97f716e2d8b6537eb3bb93b": "Socijaldemokratija",
+      "d2d1c8ba3fd291fb122cd3315b848ea9": "Nova levica",
+      "7115a02b1eaff53a8ddfe3d11a070034": "Demokratski socijalizam",
+      "9042e3760f1dd9e27dd7a32d3ab05399": "Anarho-komunizam",
+      "18ddec23a18de5352780b95eebd814fa": "Socijalni liberalizam",
+      "37e56f7a2b1b9ddfe5c9963c9d61fc37": "Sindikalizam",
+      "0e9c1fda905589e201751d712e8bc147": "Agorizam",
+      "72f8fe391101c447cc467ee2dcdcd9e8": "Liberalizam",
+      "652cbd1d722c2fcd8e06aa34f8aa22fe": "Libertarijanizam",
+      "6410ff914a95dfcb1359e16f005b8abc": "Anarho-kapitalizam",
+      "default": "Bez ideologije",
+      "select": "Izaberi iz liste"
+   },
+   "features": {
+      "compass": "Kompas",
+      "parties": "Političke stranke",
+      "questionsNumber": {
+         "one": "Pitanje",
+         "few": "Pitanja",
+         "other": "Pitanja"
+      },
+      "axesNumber": {
+         "one": "osa",
+         "few": "ose",
+         "other": "ose"
+      },
+      "politiciansResults": "Političari",
+      "traits": "Osobine"
+   },
+   "axesIdeologyGrades": {
+      "center": "Centar",
+      "moderate": "umeren",
+      "hard": "snažan",
+      "radical": "radikalan/ekstreman"
+   },
+   "compass": {
+      "left": "Levica",
+      "center": "centar",
+      "right": "desnica"
+   },
+   "answers": {
+      "NEUTRAL": "bez odgovora",
+      "AGREE": "Slažem se",
+      "DISAGREE": "Ne slažem se"
+   },
+   "weight": [
+      "delimično",
+      "Snažno"
+   ],
+   "politicianCategory": {
+      "politician": "Politika",
+      "youth": "Omladinske organizacije",
+      "commentator": "Ostali"
+   },
+   "init": {
+      "basic": "Započnimo",
+      "lead": "Da li je ovo tvoj prvi test političkih stavova?",
+      "yes": "Da",
+      "no": "Ne",
+      "simplified": "Pojednostavljeno",
+      "advancedVariant": "Napredno",
+      "advanced": "Dobrodošao, veteranu političkog kompasa!",
+      "top": "Izaberi najbližu ideologiju i položaj na dvoosnom kompasu. To će nam pomoći da unapredimo aplikaciju.",
+      "skip": "Preskoči",
+      "save": "Sačuvaj podatke"
+   },
+   "preInit": {
+      "before": "Pre kviza...",
+      "hey": "Hej!",
+      "beforeWeStart": "Pre kviza...",
+      "top": "Tvoja privatnost je naš prioritet. Evo kako i zašto mi prikupljamo tvoje podatke.",
+      "privacy": "Tvoji rezultati su anonimni i ne mogu se povezati nazad sa tobom (osim ako ne odlučiš da ih sam podeliš)",
+      "data": "Podaci se prikupljaju i analiziraju da bi se poboljšala tačnost aplikacije.",
+      "next": "Sledeće"
+   },
+   "link": {
+      "edit": "Uredi",
+      "view": "Pogledaj",
+      "begin": "Započni",
+      "social": "Zajednica",
+      "published": "Objavljeno",
+      "denied": "Odbijeno",
+      "inVerification": "Nerešena verifikacija",
+      "reason1": "Razlog za odbijanje",
+      "reason2": "Razlog"
+   },
+   "results": {
+      "showMore": "Pokaži više",
+      "none": "Nema rezultata",
+      "famous": "Rezultati izvesnih političkih ličnosti"
+   },
+   "respondent": {
+      "title": "Kôd ispitanika:",
+      "privacy": "Mi poštujemo tvoju privatnost i ne ostavljamo ikakvu vezu između tebe i tvojih političkih stavova. Ovaj jedinstveni kôd će ti omogućiti da vidiš istoriju tvojih rezultata na drugim uređajima.",
+      "change": "Promeni",
+      "header": "Promeni kôd ispitanika",
+      "confirm": "Potvrdi"
+   },
+   "vote": {
+      "votes": "Glasovi",
+      "rate": "Oceni kviz"
+   },
+   "quizzes": {
+      "other": "Proveri druge kvizove",
+      "history": "Istorija rezultata"
+   },
+   "single": {
+      "social": "Kvizovi zajednice",
+      "functions": "Funkcije",
+      "stats": "Statistike",
+      "tests": "testovi",
+      "famous": "Rezultati izvesnih političkih ličnosti",
+      "author": "Stvaralac:",
+      "license": "Dozvola",
+      "comments": "Komentari"
+   },
+   "surveyHistory": {
+      "title": "Istorija rezultata",
+      "showMore": "Pokaži više",
+      "emptyInfo": "Istorija je prazna. Uradi kviz!",
+      "type": {
+         "finished": "Gotovo",
+         "notFinishedYet": "U toku"
+      }
+   },
+   "survey": {
+      "bottomInfo": "Možeš obustaviti test u bilo kom trenutku; tvoji odgovori će biti sačuvani.",
+      "question": "Pitanje",
+      "actions": {
+         "previousQuestion": "Prethodno pitanje",
+         "reset": "Počni iznova",
+         "resetConfirm": "Resetuj",
+         "main": {
+            "hover": "Klikni da otkažeš",
+            "notHover": "Izaberi stepen / Izaberi do kog stepena/obima / Do kog stepena?"
+         },
+         "answer": {
+            "neutral": "Ne znam",
+            "agree": "Slažem se",
+            "disagree": "Ne slažem se"
+         },
+         "weight": [
+            "Delimično",
+            "Snažno"
+         ]
+      }
+   }
+}
+]

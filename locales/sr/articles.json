@@ -1,0 +1,37 @@
+[
+ {
+   "SEO": {
+      "title": "Novosti i mišljenja | myPolitics",
+      "description": "Ne propusti najnovije informacije"
+   },
+   "hero": {
+      "title": "Novosti i mišljenja"
+   },
+   "news": {
+      "title": "Novosti",
+      "lead": "Ne propusti ikakve novosti"
+   },
+   "header": {
+      "readingTime": {
+         "one": "Procenjeno vreme čitanja: jedan minut",
+         "few": "Procenjeno vreme čitanja: {{count}} minuta",
+         "many": ""
+      }
+   },
+   "view": {
+      "title": "Mišljenja",
+      "lead": "upoznajte stavove suprotne strane"
+   },
+   "contact": {
+      "title": "Želiš doprineti sa sopstvenim tekstom? Pošalji ga nama!"
+   },
+   "checkMore": {
+      "title": "Pogledaj ostale unose"
+   },
+   "share": {
+      "title": "Da li ti se svideo?",
+      "facebook": "Podeli na Facebook",
+      "twitter": "Podeli na Twitter"
+   }
+}
+]

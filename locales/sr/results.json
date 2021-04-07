@@ -1,0 +1,28 @@
+[
+ {
+   "header": {
+      "social": "Kviz zajednice"
+   },
+   "ideology": {
+      "title": "Kako funkcioniše sistem podudaranja ideologija?",
+      "desc1": "U alfa verziji testa, podudarna ideologija se zasniva isključivo na lokaciji na kompasu.",
+      "desc2": "Na osnovu prethodno pripremljene mape ideologija, algoritam sortira onu na kojoj ste u datom trenutku"
+   },
+   "party": {
+      "title": "Kako funkcioniše sistem podudaranja stranaka?",
+      "desc1": "Procenat prikazuje kompatibilnost između odgovora ispitanika i stranaka",
+      "desc2": "U odeljku analize ispod možete proveriti oko kojih pitanja se tačno slažete sa datom strankom",
+      "header": "Stranka",
+      "agreement": "Kompatibilnost odgovora",
+      "authorized": "Plava oznaka znači da je predstavnik date stranke odobrio njene odgovore u testu",
+      "percentage": "Procenat prikazuje kompatibilnost između odgovora ispitanika i stranaka",
+      "auth": "ovlašćeni odgovor"
+   },
+   "trait": {
+      "title": "Kako funkcionišu osobine?",
+      "desc1": "Osobine su pojedinačni stavovi ispitanika koji se ne mogu prikazati na osama",
+      "desc2": "Dodeljuju se kada ispitanik odgovori \"snažno\" na svim pitanjima povezanim sa osobinom",
+      "header": "Osobine"
+   }
+}
+]
