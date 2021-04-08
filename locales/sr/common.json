@@ -1,93 +1,91 @@
-[
- {
-   "SEO": {
-      "title": "myPolitics - test političkih stavova",
-      "description": "Test i politički kompas koji prikazuju Vaše stavove: 7 osa, najbliža stranka i ideologija. Ukucajte i probajte!"
-   },
-   "contact": {
-      "email": "biuro@mypolitics.pl",
-      "title": "Imaš pitanja? Obrati nam se."
-   },
-   "documents": {
-      "rules": "Pravila korišćenja",
-      "privacy": "Politika privatnosti",
-      "gdpr": "Kako se ophodimo prema podacima?"
-   },
-   "footer": {
-      "rules": "Pravila korišćenja",
-      "privacy": "Privatnost",
-      "gdpr": "Tvoji podaci"
-   },
-   "header": {
-      "articles": "Članci",
-      "talks": "Debate",
-      "quiz": "Test političkih stavova",
-      "history": "Istorija",
-      "creator": "Panel za stvaraoce",
-      "quizMod": "Moderacija"
-   },
-   "share": {
-      "share": "Podeli",
-      "copied": "Kopirano"
-   },
-   "errorMessages": [
-      "Fajl nije pronađen",
-      "Neovlašćeno",
-      "Zaglavlje ispitanika nije pronađeno",
-      "Test je završen",
-      "Test još nije završen",
-      "Ova verzija je već objavljena",
-      "Pogrešni detalji za prijavu",
-      "Korisnik/korisničko ime već postoji",
-      "Verifikacioni imejl je ponovo poslat na tvoju imejl adresu",
-      "Korisnik ne postoji",
-      "Već si glasao",
-      "Verifikacioni imejl je već poslat. Pokušaj ponovo za 15 minuta."
-   ],
-   "talkType": {
-      "classic": "Debate omladinskih organizacija",
-      "mvsp": "Omladina protiv političara",
-      "interview": "Intervjui",
-      "expert": "Mišljenje stručnjaka",
-      "ring": "Politički ring"
-   },
-   "country": {
-      "POLAND": "Poljska",
-      "ENGLAND": "Ujedinjeno Kraljevstvo",
-      "UNITED_STATES": "SAD"
-   },
-   "groupAd": {
-      "button": "Pridruži se!"
-   },
-   "patreon": {
-      "title": "Patronite",
-      "description": "Nismo povezani sa, niti finansirani od bilo koje političke opcije. Podrži naš rad na platformi Patronite.",
-      "list": {
-         "title": "myPolitics pokrovitelji",
-         "updatedAt": "Od:"
-      },
-      "button": "Postani pokrovitelj?"
-   },
-   "editorCta": {
-      "button": "Panel za stvaraoce",
-      "title": [
-         "Nije ti se svideo kviz?",
-         "Možeš napraviti bolji!"
-      ]
-   },
-   "standardPage": {
-      "section": {
-         "quizzes": {
-            "title": "Test političkih stavova",
-            "button": "Pokaži više"
-         }
+{
+  "SEO": {
+    "title": "myPolitics - test političkih stavova",
+    "description": "Test i politički kompas koji prikazuju Vaše stavove: 7 osa, najbliža stranka i ideologija. Ukucajte i probajte!"
+  },
+  "contact": {
+    "email": "biuro@mypolitics.pl",
+    "title": "Imaš pitanja? Obrati nam se."
+  },
+  "documents": {
+    "rules": "Pravila korišćenja",
+    "privacy": "Politika privatnosti",
+    "gdpr": "Kako se ophodimo prema podacima?"
+  },
+  "footer": {
+    "rules": "Pravila korišćenja",
+    "privacy": "Privatnost",
+    "gdpr": "Tvoji podaci"
+  },
+  "header": {
+    "articles": "Članci",
+    "talks": "Debate",
+    "quiz": "Test političkih stavova",
+    "history": "Istorija",
+    "creator": "Panel za stvaraoce",
+    "quizMod": "Moderacija"
+  },
+  "share": {
+    "share": "Podeli",
+    "copied": "Kopirano"
+  },
+  "errorMessages": [
+    "Fajl nije pronađen",
+    "Neovlašćeno",
+    "Zaglavlje ispitanika nije pronađeno",
+    "Test je završen",
+    "Test još nije završen",
+    "Ova verzija je već objavljena",
+    "Pogrešni detalji za prijavu",
+    "Korisnik/korisničko ime već postoji",
+    "Verifikacioni imejl je ponovo poslat na tvoju imejl adresu",
+    "Korisnik ne postoji",
+    "Već si glasao",
+    "Verifikacioni imejl je već poslat. Pokušaj ponovo za 15 minuta."
+  ],
+  "talkType": {
+    "classic": "Debate omladinskih organizacija",
+    "mvsp": "Omladina protiv političara",
+    "interview": "Intervjui",
+    "expert": "Mišljenje stručnjaka",
+    "ring": "Politički ring"
+  },
+  "country": {
+    "POLAND": "Poljska",
+    "ENGLAND": "Ujedinjeno Kraljevstvo",
+    "UNITED_STATES": "SAD"
+  },
+  "groupAd": {
+    "button": "Pridruži se!"
+  },
+  "patreon": {
+    "title": "Patronite",
+    "description": "Nismo povezani sa, niti finansirani od bilo koje političke opcije. Podrži naš rad na platformi Patronite.",
+    "list": {
+      "title": "myPolitics pokrovitelji",
+      "updatedAt": "Od:"
+    },
+    "button": "Postani pokrovitelj?"
+  },
+  "editorCta": {
+    "button": "Panel za stvaraoce",
+    "title": [
+      "Nije ti se svideo kviz?",
+      "Možeš napraviti bolji!"
+    ]
+  },
+  "standardPage": {
+    "section": {
+      "quizzes": {
+        "title": "Test političkih stavova",
+        "button": "Pokaži više"
       }
-   },
-   "uploadInput": {
-      "button": "Izaberi fajl"
-   },
-   "userInfo": {
-      "login": "Prijavi se"
-   }
+    }
+  },
+  "uploadInput": {
+    "button": "Izaberi fajl"
+  },
+  "userInfo": {
+    "login": "Prijavi se"
+  }
 }
-]

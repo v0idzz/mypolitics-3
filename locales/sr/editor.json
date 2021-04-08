@@ -1,175 +1,173 @@
-[
- {
-   "SEO": {
-      "title": "Editor kviza",
-      "description": "Napravi sopstveni politički kviz"
-   },
-   "header": {
-      "title": "Editor kviza"
-   },
-   "basic": {
-      "title": "Osnovni podaci",
+{
+  "SEO": {
+    "title": "Editor kviza",
+    "description": "Napravi sopstveni politički kviz"
+  },
+  "header": {
+    "title": "Editor kviza"
+  },
+  "basic": {
+    "title": "Osnovni podaci",
+    "input": {
+      "title": "Naslov",
+      "description": "Opis",
+      "logo": "Logotip"
+    }
+  },
+  "parties": {
+    "title": "Političke stranke",
+    "create": "Napravi stranku",
+    "import": "Unesi stranku",
+    "form": {
+      "logo": "Logotip",
+      "country": "Država",
+      "name": "Ime"
+    },
+    "createModal": {
+      "title": "Napravi stranku",
+      "button": "Napravi/postavi"
+    },
+    "editModal": {
+      "title": "Izmeni stranku",
+      "button": "Sačuvaj"
+    }
+  },
+  "ideologies": {
+    "title": "Ideologije",
+    "create": "Napravi ideologiju",
+    "import": "Unesi ideologiju",
+    "importFromOther": "Sa drugog testa",
+    "form": {
+      "icon": "Ikonica/Simbol",
+      "name": "Ime",
+      "color": "Boja",
+      "description": "Opis"
+    },
+    "createModal": {
+      "title": "Napravi ideologiju",
+      "button": "Napravi"
+    },
+    "editModal": {
+      "title": "Izmeni ideologiju",
+      "button": "Sačuvaj"
+    },
+    "importModal": {
+      "title": "unesi ideologiju",
+      "url": "Link do kviza",
+      "button": "unesi"
+    }
+  },
+  "axes": {
+    "title": "Ose",
+    "deleteButton": "Izbriši osu",
+    "createButton": "Napravi osu"
+  },
+  "traits": {
+    "title": "Osobine",
+    "description": [
+      "Osobine su pojedinačni stavovi ispitanika koji se ne mogu prikazati na osama",
+      "Dodeljuju se kada ispitanik odgovori \"snažno\" na svim pitanjima povezanim sa osobinom"
+    ],
+    "dropHere": "Spusti ideologiju ovde",
+    "clickToDelete": "Klikni za brisanje",
+    "dropHereIdeology": "spusti ideologiju ovde",
+    "clickHereIdeology": "Klikni za izbor ideologije"
+  },
+  "question": {
+    "title": "Pitanja",
+    "deleteButton": "Dodaj pitanje",
+    "partiesFor": "Stranke za",
+    "partiesAgainst": "Stranke protiv",
+    "ideologiesFor": "Ideologije za",
+    "ideologiesAgainst": "Ideologije protiv",
+    "dropHereParty": "Spusti stranku ovde",
+    "clickHereParty": "Klikni za izbor stranke",
+    "dropHereIdeology": "Spusti ideologiju ovde",
+    "clickHereIdeology": "Klikni za izbor ideologije",
+    "createNew": "Napravi pitanje",
+    "clickToDelete": "Klikni za brisanje"
+  },
+  "toolbox": {
+    "title": "Alati",
+    "cta": "Pokupi i spusti u odgovarajuću kutiju",
+    "section": {
+      "parties": "Stranke",
+      "ideologies": "Ideologije",
+      "traits": "Osobine"
+    }
+  },
+  "admin": {
+    "title": "Panel za moderaciju",
+    "section": {
+      "verifyRequests": "Kvizovi za verifikaciju"
+    }
+  },
+  "footer": {
+    "urlTitle": "Link do kviza",
+    "urlToast": "Kopirano",
+    "testBeforeVerify": "Test pre verifikacije",
+    "verifyRequest": "Podnesi za verifikaciju",
+    "verifyToast": "Tvoj test je uspešno podnet za verifikaciju; na panelu za editore će biti prikazan rezultat.",
+    "requirements": {
+      "title": "Ispuni sledeće uslove kako bi podneo kviz na verifikaciju",
+      "list": {
+        "titleAndDescription": "Naslov i opis",
+        "minQuestions": "Minimum {} pitanja",
+        "minIdeologiesOrParties": "Minimum {} ideologija/partija",
+        "allQuestionsHaveEffects": "Svako pitanje ima dodeljen efekat"
+      }
+    }
+  },
+  "adminFooter": {
+    "title": "Verifikuj",
+    "discard": "Odbij",
+    "accept": "Prihvati",
+    "discardModal": {
+      "title": "Razlog odbijanja",
       "input": {
-         "title": "Naslov",
-         "description": "Opis",
-         "logo": "Logotip"
-      }
-   },
-   "parties": {
-      "title": "Političke stranke",
-      "create": "Napravi stranku",
-      "import": "Unesi stranku",
-      "form": {
-         "logo": "Logotip",
-         "country": "Država",
-         "name": "Ime"
+        "label": "Razlog odbijanja",
+        "placeholder": "neprimerene reči"
       },
-      "createModal": {
-         "title": "Napravi stranku",
-         "button": "Napravi/postavi"
+      "button": "Odbij kviz"
+    }
+  },
+  "panel": {
+    "title": "Panel stvaraoca",
+    "section": {
+      "quizzes": {
+        "title": "Tvoji kvizovi",
+        "createButton": "Napravi novi kviz"
+      }
+    },
+    "defaultQuizValues": {
+      "title": "Moj novi kviz",
+      "description": "Prostor za opis"
+    }
+  },
+  "verifyRequested": {
+    "title": "Podneto na verifikaciju",
+    "section": {
+      "url": {
+        "title": "Pojedinačni link za tvoj kviz",
+        "description": "Preko ovog linka, test može biti",
+        "urlToast": "Kopirano"
       },
-      "editModal": {
-         "title": "Izmeni stranku",
-         "button": "Sačuvaj"
-      }
-   },
-   "ideologies": {
-      "title": "Ideologije",
-      "create": "Napravi ideologiju",
-      "import": "Unesi ideologiju",
-      "importFromOther": "Sa drugog testa",
-      "form": {
-         "icon": "Ikonica/Simbol",
-         "name": "Ime",
-         "color": "Boja",
-         "description": "Opis"
+      "meaning": {
+        "title": "Šta to znači?",
+        "description": "Kada se verifikuje, tvoj kviz će se pridružiti kvizovima drugih stvaraoca i pojaviti na početnoj stranici :)"
       },
-      "createModal": {
-         "title": "Napravi ideologiju",
-         "button": "Napravi"
+      "edit": {
+        "title": "Mogu li da izmenim moj kviz?",
+        "description": "Naravno! Ali moraćete da ga podnesete na ponovnu verifikaciju"
       },
-      "editModal": {
-         "title": "Izmeni ideologiju",
-         "button": "Sačuvaj"
-      },
-      "importModal": {
-         "title": "unesi ideologiju",
-         "url": "Link do kviza",
-         "button": "unesi"
+      "vote": {
+        "title": "Šta mogu učiniti da se moj kviz prihvati brže?",
+        "description": "Brzina verifikacije zavisi od broja glasova koje tvoj kviz ima. Pošalji link svojim prijateljima i zatraži glas!"
       }
-   },
-   "axes": {
-      "title": "Ose",
-      "deleteButton": "Izbriši osu",
-      "createButton": "Napravi osu"
-   },
-   "traits": {
-      "title": "Osobine",
-      "description": [
-         "Osobine su pojedinačni stavovi ispitanika koji se ne mogu prikazati na osama",
-         "Dodeljuju se kada ispitanik odgovori \"snažno\" na svim pitanjima povezanim sa osobinom"
-      ],
-      "dropHere": "Spusti ideologiju ovde",
-      "clickToDelete": "Klikni za brisanje",
-      "dropHereIdeology": "spusti ideologiju ovde",
-      "clickHereIdeology": "Klikni za izbor ideologije"
-   },
-   "question": {
-      "title": "Pitanja",
-      "deleteButton": "Dodaj pitanje",
-      "partiesFor": "Stranke za",
-      "partiesAgainst": "Stranke protiv",
-      "ideologiesFor": "Ideologije za",
-      "ideologiesAgainst": "Ideologije protiv",
-      "dropHereParty": "Spusti stranku ovde",
-      "clickHereParty": "Klikni za izbor stranke",
-      "dropHereIdeology": "Spusti ideologiju ovde",
-      "clickHereIdeology": "Klikni za izbor ideologije",
-      "createNew": "Napravi pitanje",
-      "clickToDelete": "Klikni za brisanje"
-   },
-   "toolbox": {
-      "title": "Alati",
-      "cta": "Pokupi i spusti u odgovarajuću kutiju",
-      "section": {
-         "parties": "Stranke",
-         "ideologies": "Ideologije",
-         "traits": "Osobine"
-      }
-   },
-   "admin": {
-      "title": "Panel za moderaciju",
-      "section": {
-         "verifyRequests": "Kvizovi za verifikaciju"
-      }
-   },
-   "footer": {
-      "urlTitle": "Link do kviza",
-      "urlToast": "Kopirano",
-      "testBeforeVerify": "Test pre verifikacije",
-      "verifyRequest": "Podnesi za verifikaciju",
-      "verifyToast": "Tvoj test je uspešno podnet za verifikaciju; na panelu za editore će biti prikazan rezultat.",
-      "requirements": {
-         "title": "Ispuni sledeće uslove kako bi podneo kviz na verifikaciju",
-         "list": {
-            "titleAndDescription": "Naslov i opis",
-            "minQuestions": "Minimum {} pitanja",
-            "minIdeologiesOrParties": "Minimum {} ideologija/partija",
-            "allQuestionsHaveEffects": "Svako pitanje ima dodeljen efekat"
-         }
-      }
-   },
-   "adminFooter": {
-      "title": "Verifikuj",
-      "discard": "Odbij",
-      "accept": "Prihvati",
-      "discardModal": {
-         "title": "Razlog odbijanja",
-         "input": {
-            "label": "Razlog odbijanja",
-            "placeholder": "neprimerene reči"
-         },
-         "button": "Odbij kviz"
-      }
-   },
-   "panel": {
-      "title": "Panel stvaraoca",
-      "section": {
-         "quizzes": {
-            "title": "Tvoji kvizovi",
-            "createButton": "Napravi novi kviz"
-         }
-      },
-      "defaultQuizValues": {
-         "title": "Moj novi kviz",
-         "description": "Prostor za opis"
-      }
-   },
-   "verifyRequested": {
-      "title": "Podneto na verifikaciju",
-      "section": {
-         "url": {
-            "title": "Pojedinačni link za tvoj kviz",
-            "description": "Preko ovog linka, test može biti",
-            "urlToast": "Kopirano"
-         },
-         "meaning": {
-            "title": "Šta to znači?",
-            "description": "Kada se verifikuje, tvoj kviz će se pridružiti kvizovima drugih stvaraoca i pojaviti na početnoj stranici :)"
-         },
-         "edit": {
-            "title": "Mogu li da izmenim moj kviz?",
-            "description": "Naravno! Ali moraćete da ga podnesete na ponovnu verifikaciju"
-         },
-         "vote": {
-            "title": "Šta mogu učiniti da se moj kviz prihvati brže?",
-            "description": "Brzina verifikacije zavisi od broja glasova koje tvoj kviz ima. Pošalji link svojim prijateljima i zatraži glas!"
-         }
-      },
-      "footer": {
-         "returnButton": "Nazad na uređivanje",
-         "panelButton": "Panel za stvaraoca"
-      }
-   }
+    },
+    "footer": {
+      "returnButton": "Nazad na uređivanje",
+      "panelButton": "Panel za stvaraoca"
+    }
+  }
 }
-]
