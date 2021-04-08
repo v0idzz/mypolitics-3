@@ -3,6 +3,7 @@ fragment EditorQuestionParts on Question {
     text {
         pl
         en
+        sr
     }
     effects {
         disagree {

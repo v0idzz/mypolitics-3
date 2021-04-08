@@ -3,10 +3,12 @@ fragment EditorIdeologyParts on Ideology {
     name {
         pl
         en
+        sr
     }
     description {
         pl
         en
+        sr
     }
     icon {
         type

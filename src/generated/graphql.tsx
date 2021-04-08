@@ -2533,7 +2533,7 @@ export type CompassAxisPartsFragment = (
     ) }
   )>, name?: Maybe<(
     { __typename?: 'TextTranslation' }
-    & Pick<TextTranslation, 'pl' | 'en'>
+    & Pick<TextTranslation, 'pl' | 'en' | 'sr'>
   )> }
 );
 
@@ -2606,10 +2606,10 @@ export type EditorIdeologyPartsFragment = (
   & Pick<Ideology, 'id' | 'color' | 'viewerCanEdit'>
   & { name: (
     { __typename?: 'TextTranslation' }
-    & Pick<TextTranslation, 'pl' | 'en'>
+    & Pick<TextTranslation, 'pl' | 'en' | 'sr'>
   ), description: (
     { __typename?: 'TextTranslation' }
-    & Pick<TextTranslation, 'pl' | 'en'>
+    & Pick<TextTranslation, 'pl' | 'en' | 'sr'>
   ), icon: (
     { __typename?: 'IdeologyIcon' }
     & Pick<IdeologyIcon, 'type' | 'value'>
@@ -2626,7 +2626,7 @@ export type EditorQuestionPartsFragment = (
   & Pick<Question, 'id'>
   & { text: (
     { __typename?: 'TextTranslation' }
-    & Pick<TextTranslation, 'pl' | 'en'>
+    & Pick<TextTranslation, 'pl' | 'en' | 'sr'>
   ), effects: (
     { __typename?: 'QuestionEffects' }
     & { disagree: (
@@ -2682,10 +2682,10 @@ export type EditorQuizQuery = (
     & Pick<Quiz, 'id' | 'slug' | 'logoUrl'>
     & { title: (
       { __typename?: 'TextTranslation' }
-      & Pick<TextTranslation, 'pl' | 'en'>
+      & Pick<TextTranslation, 'pl' | 'en' | 'sr'>
     ), description: (
       { __typename?: 'TextTranslation' }
-      & Pick<TextTranslation, 'pl' | 'en'>
+      & Pick<TextTranslation, 'pl' | 'en' | 'sr'>
     ), lastUpdatedVersion: (
       { __typename?: 'QuizVersion' }
       & Pick<QuizVersion, 'id' | 'publishedOn'>
@@ -2699,7 +2699,7 @@ export type EditorQuizQuery = (
         { __typename?: 'QuizCompassMode' }
         & { name?: Maybe<(
           { __typename?: 'TextTranslation' }
-          & Pick<TextTranslation, 'pl' | 'en'>
+          & Pick<TextTranslation, 'pl' | 'en' | 'sr'>
         )>, horizontal: (
           { __typename?: 'QuizCompassAxis' }
           & CompassAxisPartsFragment
@@ -3678,6 +3678,7 @@ export const CompassAxisPartsFragmentDoc = gql`
   name {
     pl
     en
+    sr
   }
 }
     `;
@@ -3698,10 +3699,12 @@ export const EditorIdeologyPartsFragmentDoc = gql`
   name {
     pl
     en
+    sr
   }
   description {
     pl
     en
+    sr
   }
   icon {
     type
@@ -3726,6 +3729,7 @@ export const EditorQuestionPartsFragmentDoc = gql`
   text {
     pl
     en
+    sr
   }
   effects {
     disagree {
@@ -4249,10 +4253,12 @@ export const EditorQuizDocument = gql`
     title {
       pl
       en
+      sr
     }
     description {
       pl
       en
+      sr
     }
     logoUrl
     lastUpdatedVersion {
@@ -4268,6 +4274,7 @@ export const EditorQuizDocument = gql`
         name {
           pl
           en
+          sr
         }
         horizontal {
           ...CompassAxisParts

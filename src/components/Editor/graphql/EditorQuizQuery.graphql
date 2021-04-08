@@ -5,10 +5,12 @@ query EditorQuiz ($slug: String!) {
         title {
             pl
             en
+            sr
         }
         description {
             pl
             en
+            sr
         }
         logoUrl
         lastUpdatedVersion {
@@ -24,6 +26,7 @@ query EditorQuiz ($slug: String!) {
                 name {
                     pl
                     en
+                    sr
                 }
                 horizontal {
                     ...CompassAxisParts

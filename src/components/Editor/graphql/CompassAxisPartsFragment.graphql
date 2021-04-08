@@ -14,5 +14,6 @@ fragment CompassAxisParts on QuizCompassAxis {
     name {
         pl
         en
+        sr
     }
 }
