@@ -1572,7 +1572,8 @@ export type AddPartyAnswersInput = {
 export enum Country {
   Poland = 'POLAND',
   England = 'ENGLAND',
-  UnitedStates = 'UNITED_STATES'
+  UnitedStates = 'UNITED_STATES',
+  Serbia = 'SERBIA'
 }
 
 export type CreateIdeologyInput = {

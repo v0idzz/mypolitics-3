@@ -1,7 +1,12 @@
 import { Country } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 
-const defaultList = [Country.Poland, Country.England, Country.UnitedStates];
+const defaultList = [
+  Country.Poland,
+  Country.England,
+  Country.UnitedStates,
+  Country.Serbia,
+];
 
 export const useCountries = (
   list: Country[] = defaultList
