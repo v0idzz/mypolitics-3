@@ -1648,7 +1648,8 @@ export type IdeologyIconInput = {
 
 export enum Language {
   Polish = 'POLISH',
-  English = 'ENGLISH'
+  English = 'ENGLISH',
+  Serbian = 'SERBIAN'
 }
 
 export type Party = {
@@ -1970,11 +1971,13 @@ export type TextTranslation = {
   __typename?: 'TextTranslation';
   pl?: Maybe<Scalars['String']>;
   en?: Maybe<Scalars['String']>;
+  sr?: Maybe<Scalars['String']>;
 };
 
 export type TextTranslationInput = {
   pl?: Maybe<Scalars['String']>;
   en?: Maybe<Scalars['String']>;
+  sr?: Maybe<Scalars['String']>;
 };
 
 export type UpdateIdeologyInput = {

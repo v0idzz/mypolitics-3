@@ -91,6 +91,7 @@ export const apiPaths = {
 export const LANG_CODE = {
   en: "en",
   pl: "pl",
+  sr: "sr",
 };
 
 export interface Language {
@@ -109,6 +110,11 @@ export const languages: Language[] = [
     id: LANG_CODE.en,
     name: "English language",
     enum: LanguageGraphql.English,
+  },
+  {
+    id: LANG_CODE.sr,
+    name: "Srpski jezik",
+    enum: LanguageGraphql.Serbian,
   },
 ];
 
