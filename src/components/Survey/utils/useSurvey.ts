@@ -35,6 +35,7 @@ export interface UseSurveyActions {
   deleteSurvey(): void;
   previousQuestion(): void;
   nextQuestion(answer: SlimAnswer): Promise<boolean>;
+  viewResults(): void;
 }
 
 interface UseSurvey {
@@ -76,7 +77,7 @@ const useServerData = (id: string): Omit<UseSurveyData, "currentQuestion"> => {
 
 export const useSurvey = (id: string): UseSurvey => {
   const client = useApolloClient();
-  const router = useRouter();
+  const { query, ...router } = useRouter();
   const handleErrors = useHandleErrors();
   const [updateSurvey, { loading }] = useUpdateSurveyMutation();
   const { questions, answers, quiz } = useServerData(id);
@@ -101,15 +102,21 @@ export const useSurvey = (id: string): UseSurvey => {
         },
       });
     } catch (e) {
-      handleErrors(e);
-
       const notAuthorized = e.graphQLErrors.some(
         ({ message }) => message.code === ErrorCode.NOT_AUTHORIZED
+      );
+      const surveyFinished = e.graphQLErrors.some(
+        ({ message }) => message.code === ErrorCode.SURVEY_FINISHED
       );
 
       if (notAuthorized) {
         await router.push(paths.quiz(quiz.slug));
+      } else if (surveyFinished) {
+        await router.replace(paths.results(`${query.id}`));
+        return;
       }
+
+      handleErrors(e);
     }
   };
 
@@ -153,6 +160,10 @@ export const useSurvey = (id: string): UseSurvey => {
     updateAnswers(newAnswers);
   };
 
+  const viewResults = async () => {
+    await router.replace(paths.results(`${query.id}`));
+  };
+
   const currentQuestion = questions && questions[answers.length];
 
   useEffect(() => {
@@ -167,6 +178,7 @@ export const useSurvey = (id: string): UseSurvey => {
       deleteSurvey,
       previousQuestion,
       nextQuestion,
+      viewResults,
     },
     data: {
       currentQuestion,

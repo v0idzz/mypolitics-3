@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "@shared/Button";
 import { CSSTransition } from "react-transition-group";
-import { paths } from "@constants";
-import { useRouter } from "next/router";
 import {
   SlimAnswer,
   UseSurveyActions,
@@ -21,8 +19,7 @@ interface Props {
 
 const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
   const { t } = useTranslation("quiz");
-  const { query, ...router } = useRouter();
-  const { nextQuestion } = actions;
+  const { nextQuestion, viewResults } = actions;
   const { currentQuestion } = data;
   const [tempAnswer, setTempAnswer] = React.useState<SlimAnswer | undefined>();
   const [isHover, setHover] = React.useState<boolean>(false);
@@ -31,7 +28,7 @@ const SurveyAnswers: React.FC<Props> = ({ actions, data }) => {
     if (await nextQuestion(answer)) {
       setTempAnswer(undefined);
     } else {
-      router.push(paths.results(`${query.id}`));
+      await viewResults();
     }
   };
 
