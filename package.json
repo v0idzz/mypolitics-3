@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@apollo/react-ssr": "^4.0.0",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -34,7 +35,7 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
     "modern-normalize": "^1.0.0",
-    "next": "10.0.3",
+    "next": "10.1.2",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",
     "next-seo": "^4.17.0",
@@ -64,7 +65,8 @@
     "styled-components": "5.2.0",
     "styled-components-breakpoint": "^2.1.1",
     "svg-react-loader": "^0.4.6",
-    "use-debounce": "^5.2.1"
+    "use-debounce": "^5.2.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -83,6 +85,7 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-polished": "^1.1.0",
     "babel-plugin-styled-components": "^1.12.0",
+    "critters": "0.0.10",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.0.0",
@@ -96,5 +99,8 @@
     "graphql-codegen-apollo-next-ssr": "^1.2.1",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3"
+  },
+  "resolutions": {
+    "webpack": "^5.28.0"
   }
 }

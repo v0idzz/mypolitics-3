@@ -30,7 +30,7 @@ const AuthSignupPage: React.FC = () => {
         <Title>{t("title")}</Title>
       </Header>
       <Divider />
-      <Link href={apiPaths.facebook.auth} passHref>
+      <Link href={apiPaths.facebook.auth} locale={false} passHref>
         <Button
           background="facebook"
           beforeIcon={<FontAwesomeIcon icon={faFacebookF} />}

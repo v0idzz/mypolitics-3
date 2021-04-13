@@ -107,5 +107,8 @@
   "userInfo": {
     "login": "Zaloguj się",
     "logoutSuccess": "Poprawnie wylogowano"
+  },
+  "team": {
+    "title": "Zespół"
   }
 }

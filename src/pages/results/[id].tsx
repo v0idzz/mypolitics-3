@@ -10,15 +10,15 @@ import {
 import { SinglePage } from "@components/Results";
 import { NextSeo, NextSeoProps } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
-import Head from "next/head";
 import StandardPage, {
   getStandardPageProps,
   StandardPageProps,
 } from "@shared/StandardPage";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 import { translate } from "@utils/translation";
 import { apiPaths } from "@constants";
-import { objToBase64 } from "@utils/toBase64";
+import {objToBase64} from "@utils/toBase64";
+
+import '@fortawesome/fontawesome-free/css/all.css'
 
 interface Props {
   results: ResultsPartsFragment;
@@ -79,12 +79,6 @@ const ResultsPage: React.FC<Props> = ({
 
   return (
     <StandardPage {...standardPageProps}>
-      <Head>
-        <link
-          href="https://use.fontawesome.com/releases/v5.11.1/css/all.css"
-          rel="stylesheet"
-        />
-      </Head>
       <NextSeo {...seo} />
       <SinglePage results={results} politician={politician} />
     </StandardPage>

@@ -7,8 +7,12 @@ import Layout from "@layout";
 import Router from "next/router";
 import NProgress from "nprogress";
 import "modern-normalize/modern-normalize.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from '@fortawesome/fontawesome-svg-core';
 import { FacebookProvider } from "react-facebook";
 import useTranslation from "next-translate/useTranslation";
+
+config.autoAddCss = false;
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());

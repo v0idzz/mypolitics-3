@@ -6,9 +6,8 @@ import {
   useUpdateQuestionMutation,
 } from "@generated/graphql";
 import { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
 import useEntity from "@components/Editor/utils/useEntity";
-import { useDebounceCallback } from "@react-hook/debounce";
+import { useChangeTracker } from "@components/Editor/utils/ChangeTrackerContext";
 
 export interface EffectInput {
   type: "agree" | "disagree";
@@ -35,6 +34,7 @@ const useQuestion = (id: string): UseQuestion => {
     name: "Question",
     document: EditorQuestionPartsFragmentDoc,
   });
+  const { enqueueChange } = useChangeTracker();
   const [firstTime, setFirstTime] = useState(true);
   const [updateQuestion, { loading }] = useUpdateQuestionMutation();
 
@@ -107,8 +107,8 @@ const useQuestion = (id: string): UseQuestion => {
     };
   };
 
-  const handleUpdate = useDebounceCallback(
-    async () => {
+  const handleUpdate = () =>
+    enqueueChange(async () => {
       if (loading) {
         return;
       }
@@ -125,10 +125,7 @@ const useQuestion = (id: string): UseQuestion => {
       } catch (e) {
         console.error(e);
       }
-    },
-    5000,
-    false
-  );
+    }, id);
 
   useEffect(() => {
     if (firstTime) {

@@ -34,6 +34,12 @@ export const Info = styled.div`
   }
 `;
 
+export const SaveContainer = styled.div`
+  font-weight: ${({ theme }) => theme.fontWeight.secondary.bold};
+  color: ${({ theme }) => theme.colors.green};
+  margin-bottom: 1rem;
+`;
+
 export const RequirementContainer = styled.div`
   display: grid;
   grid-template-columns: 2rem auto;

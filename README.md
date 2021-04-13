@@ -1,6 +1,6 @@
 # myPolitics 3 Frontend
 
-> Advanced political platform with quizzes, news articles and more.
+> Advanced political platform with quizzes, news, articles and more.
 
 ## Development
 For now you can point your local instance to use our public API by applying this patch:

@@ -4,13 +4,13 @@ import {
   UpdateQuizVersionInput,
 } from "@generated/graphql";
 import { useEffect } from "react";
-import { useDebounceCallback } from "@react-hook/debounce";
 import hash from "object-hash";
 import { useLanguages } from "./useLanguages";
 import useBasicInput from "./useBasicInput";
 import useVersionInput from "./useVersionInput";
 import useEditorData from "./useEditorData";
 import useEditorActions, { EditorActions } from "./useEditorActions";
+import { useChangeTracker } from "@components/Editor/utils/ChangeTrackerContext";
 
 export interface UseEditor {
   data: EditorQuizQueryHookResult;
@@ -20,6 +20,7 @@ export interface UseEditor {
 }
 
 export const useEditor = (): UseEditor => {
+  const { enqueueChange } = useChangeTracker();
   const data = useEditorData();
   const actions = useEditorActions();
   const versionInput = useVersionInput(data?.data);
@@ -29,29 +30,23 @@ export const useEditor = (): UseEditor => {
   const languages = useLanguages(data?.data);
   const languagesString = JSON.stringify(languages);
 
-  const handleVersionInput = useDebounceCallback(
-    async () => {
+  const handleVersionInput = () =>
+    enqueueChange(async () => {
       if (typeof versionInput === "undefined") {
         return;
       }
 
       await actions.updateVersion(versionInput);
-    },
-    5000,
-    false
-  );
+    }, "version");
 
-  const handleBasicInput = useDebounceCallback(
-    async () => {
+  const handleBasicInput = () =>
+    enqueueChange(async () => {
       if (typeof basicInput === "undefined") {
         return;
       }
 
       await actions.updateBasic(basicInput);
-    },
-    5000,
-    false
-  );
+    }, "basic");
 
   useEffect(() => {
     handleVersionInput();

@@ -106,5 +106,8 @@
   },
   "userInfo": {
     "login": "Log in"
+  },
+  "team": {
+    "title": "Team"
   }
 }

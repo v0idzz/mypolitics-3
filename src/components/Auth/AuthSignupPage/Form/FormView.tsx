@@ -16,6 +16,7 @@ import { useHandleErrors } from "@utils/hooks/useHandleErrors";
 import Alert from "@shared/Alert";
 import Trans from "next-translate/Trans";
 import useTranslation from "next-translate/useTranslation";
+import { object, string, ref } from "yup";
 import { initialValues } from "./FormUtils";
 
 const { publicRuntimeConfig } = getConfig();
@@ -25,9 +26,27 @@ const FormView: React.FC = () => {
   const handleErrors = useHandleErrors();
   const [createUser, { loading, data }] = useCreateUserMutation();
 
+  const schema = object().shape({
+    name: string()
+      .min(2, t("errors.shortName"))
+      .max(50, t("errors.longName"))
+      .required(t("errors.required")),
+    email: string()
+      .email(t("errors.invalidMail"))
+      .required(t("errors.required")),
+    repeatEmail: string()
+      .email(t("errors.invalidMail"))
+      .oneOf([ref("email"), null], t("errors.differentMail"))
+      .required(t("errors.required")),
+    password: string()
+      .min(6, t("errors.shortPassword"))
+      .matches(/[A-Z]/, t("errors.passwordValidation"))
+      .required(t("errors.required")),
+  });
+
   const formik = useFormik({
     initialValues,
-    onSubmit: async ({ repeatEmail, ...values }) => {
+    onSubmit: async ({ ...values }) => {
       try {
         await createUser({
           variables: {
@@ -38,6 +57,7 @@ const FormView: React.FC = () => {
         handleErrors(e);
       }
     },
+    validationSchema: schema,
   });
 
   const sitekey =
@@ -52,37 +72,56 @@ const FormView: React.FC = () => {
           name="name"
           type="text"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.name}
-          required
+          isInvalid={!!(formik.touched.name && formik.errors.name)}
         />
+        {formik.touched.name && formik.errors.name && (
+          <Alert type="error">{formik.errors.name}</Alert>
+        )}
       </InputLabel>
       <InputLabel title={t("form.email")}>
         <Input
           name="email"
           type="email"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.email}
           placeholder="john.doe@mypolitics.pl"
           required
+          isInvalid={!!(formik.touched.email && formik.errors.email)}
         />
+        {formik.touched.email && formik.errors.email && (
+          <Alert type="error">{formik.errors.email}</Alert>
+        )}
       </InputLabel>
       <InputLabel title={t("form.emailRepeat")}>
         <Input
           name="repeatEmail"
           type="email"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.repeatEmail}
           required
+          isInvalid={!!(formik.touched.repeatEmail && formik.errors.repeatEmail)}
         />
+        {formik.touched.repeatEmail && formik.errors.repeatEmail && (
+          <Alert type="error">{formik.errors.repeatEmail}</Alert>
+        )}
       </InputLabel>
       <InputLabel title={t("form.password")}>
         <Input
           name="password"
           type="password"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.password}
           required
+          isInvalid={!!(formik.touched.password && formik.errors.password)}
         />
+        {formik.touched.password && formik.errors.password && (
+          <Alert type="error">{formik.errors.password}</Alert>
+        )}
       </InputLabel>
       <ReCAPTCHA
         onChange={(value) => formik.setFieldValue("recaptcha", value)}

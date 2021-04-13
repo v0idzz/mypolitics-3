@@ -1,8 +1,7 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import LanguageSelect from "@shared/LanguageSelect";
 import useTranslation from "next-translate/useTranslation";
 import { TextTranslationInput } from "@generated/graphql";
-import { useDebounce } from "use-debounce";
 import { useDebounceCallback } from "@react-hook/debounce";
 import { Container, Input } from "./InternationalizedInputStyle";
 
@@ -20,10 +19,7 @@ const InternationalizedInput: React.FC<Props> = ({
   const { lang } = useTranslation();
   const [value, setValue] = useState<TextTranslationInput>(defaultValue);
   const [selectedLang, setSelectedLang] = useState<string>(lang);
-  const handleGlobalChange = useDebounceCallback(
-    (v) => onGlobalChange(v),
-    1000
-  );
+  const handleGlobalChange = useDebounceCallback((v) => onGlobalChange(v), 100);
 
   const handleControlledChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = {
