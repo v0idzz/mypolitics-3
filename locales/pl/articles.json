@@ -12,6 +12,7 @@
   },
   "header": {
     "readingTime": {
+      "zero": "mniej niż minuta czytania",
       "one": "minuta czytania",
       "few": "{{count}} minuty czytania",
       "many": "{{count}} minut czytania"
