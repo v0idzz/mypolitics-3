@@ -126,7 +126,12 @@ const ArticleContent: React.FC<Props> = ({
 
   const leadItems = [new Date(publishedAt).toLocaleDateString()];
   if (readingTime !== undefined) {
-    leadItems.push("•", t("header.readingTime", { count: readingTime }));
+    leadItems.push(
+      "•",
+      readingTime === 0
+        ? t("header.readingTime.zero")
+        : t("header.readingTime", { count: readingTime })
+    );
   }
 
   return (
