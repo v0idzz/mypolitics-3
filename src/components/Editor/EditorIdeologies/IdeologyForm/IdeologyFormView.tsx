@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import InputLabel from "@shared/InputLabel";
 import UploadInput from "@shared/UploadInput";
 import { apiPaths } from "@constants";
@@ -17,6 +17,7 @@ import {
   colors,
   initialValues as defaultInitialValues,
 } from "./IdeologyFormUtils";
+import useColorPickerDropdown from "./useColorPickerDropdown";
 
 library.add(faPlus);
 
@@ -31,7 +32,9 @@ interface Props {
 
 const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
   const { t } = useTranslation("editor");
-  const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
+  const toggleRef = useRef<HTMLInputElement>(null);
+  const colorPickerRef = useRef<HTMLDivElement>(null);
+  const showColorPicker = useColorPickerDropdown(toggleRef, colorPickerRef);
 
   const {
     handleSubmit,
@@ -71,23 +74,22 @@ const IdeologyForm: React.FC<Props> = ({ button, onSubmit, initialValues }) => {
       <ColorInputWrapper>
         <InputLabel title={t("ideologies.form.color")}>
           <input
+            ref={toggleRef}
             name="color"
             type="color"
             value={values.color}
             onChange={handleChange}
             onClick={(e) => {
               e.preventDefault();
-              setShowColorPicker(!showColorPicker);
             }}
           />
         </InputLabel>
         {showColorPicker && (
-          <BlockPickerWrapper>
+          <BlockPickerWrapper ref={colorPickerRef}>
             <TwitterPicker
               color={values.color}
-              onChange={(value) => {
+              onChangeComplete={(value) => {
                 setFieldValue("color", value.hex);
-                setShowColorPicker(false);
               }}
               colors={colors}
             />
