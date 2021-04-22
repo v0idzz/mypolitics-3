@@ -19,7 +19,7 @@ const QuizCompassInput: React.FC<Props> = ({ value, onChange }) => {
     const round = (num) => Math.round((num + Number.EPSILON) * 100) / 100;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const compass = e.target.getBoundingClientRect();
+    const compass = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - compass.x;
     const clickY = e.clientY - compass.y;
     const roundedX = round(clickX / compass.width);
