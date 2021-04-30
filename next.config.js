@@ -25,15 +25,6 @@ const nextConfig = {
     webpack5: true,
     strictPostcssConfiguration: true,
   },
-  async redirects() {
-    return [
-      {
-        source: "/talks",
-        destination: "https://youtube.com/myPolitics",
-        permanent: false,
-      },
-    ];
-  },
   async rewrites() {
     return process.env.NODE_ENV !== "production"
       ? [

@@ -1,0 +1,20 @@
+query TalksPage {
+    featured: talks(limit: 3, sort: "end:desc") {
+        ...BasicTalkParts
+    }
+    mvsp: talks(limit: 3, sort: "end:desc", where: { type: "mvsp" }) {
+        ...BasicTalkParts
+    },
+    classic: talks(limit: 3, sort: "end:desc", where: { type: "classic" }) {
+        ...BasicTalkParts
+    }
+    ring: talks(limit: 3, sort: "end:desc", where: { type: "ring" }) {
+        ...BasicTalkParts
+    }
+    expert: talks(limit: 3, sort: "end:desc", where: { type: "expert" }) {
+        ...BasicTalkParts
+    }
+    interview: talks(limit: 3, sort: "end:desc", where: { type: "interview" }) {
+        ...BasicTalkParts
+    }
+}

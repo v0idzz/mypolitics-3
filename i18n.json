@@ -9,7 +9,8 @@
     "rgx:^\\/results|.+": ["quiz", "results"],
     "rgx:^\\/editor|.+": ["editor"],
     "rgx:^\\/auth|.+": ["auth"],
-    "rgx:^\\/survey|.+": ["quiz"]
+    "rgx:^\\/survey|.+": ["quiz"],
+    "rgx:^\\/talks|.+": ["talks"]
   },
   "domains": [
     {
