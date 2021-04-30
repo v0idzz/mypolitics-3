@@ -46,7 +46,7 @@ const FormView: React.FC = () => {
 
   const formik = useFormik({
     initialValues,
-    onSubmit: async ({ ...values }) => {
+    onSubmit: async ({ repeatEmail, ...values }) => {
       try {
         await createUser({
           variables: {
@@ -103,7 +103,9 @@ const FormView: React.FC = () => {
           onBlur={formik.handleBlur}
           value={formik.values.repeatEmail}
           required
-          isInvalid={!!(formik.touched.repeatEmail && formik.errors.repeatEmail)}
+          isInvalid={
+            !!(formik.touched.repeatEmail && formik.errors.repeatEmail)
+          }
         />
         {formik.touched.repeatEmail && formik.errors.repeatEmail && (
           <Alert type="error">{formik.errors.repeatEmail}</Alert>
