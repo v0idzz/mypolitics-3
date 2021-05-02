@@ -73,6 +73,7 @@ const QuizzesPage: React.FC<Props> = ({ list }) => {
       {clientSide && (
         <>
           <Section
+            id="history"
             title={t("quizzes.history")}
             icon={<FontAwesomeIcon icon={faHistory} />}
           >
