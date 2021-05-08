@@ -152,10 +152,13 @@
         "hover": "Kliknij, by anulować",
         "notHover": "Wybierz rodzaj poniżej"
       },
+      "oneClickAnswering": "Odpowiadaj jednym kliknięciem",
       "answer": {
         "neutral": "Nie wiem",
+        "stronglyAgree": "Zdecydowanie zgadzam się",
         "agree": "Zgadzam się",
-        "disagree": "Nie zgadzam się"
+        "disagree": "Nie zgadzam się",
+        "stronglyDisagree": "Zdecydowanie nie zgadzam się"
       },
       "weight": {
         "1": "Częściowo",
