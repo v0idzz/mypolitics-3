@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 import Toggle from "@shared/Toggle";
 
 export const Container = styled.div`
@@ -9,5 +10,9 @@ export const Container = styled.div`
 `;
 
 export const AnsweringModeToggle = styled(Toggle)`
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+
+  ${breakpoint("md")`
+    margin-bottom: 1.5rem;
+  `}
 `;

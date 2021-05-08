@@ -8,7 +8,7 @@ export const Container = styled.label`
 export const Toggle = styled.div`
   border-radius: 999px;
   background-color: ${({ theme }) => theme.colors.primaryDarken};
-  width: 4rem;
+  width: 3.5rem;
   height: 2rem;
   position: relative;
   transition: all 0.2s;
@@ -21,9 +21,9 @@ export const Toggle = styled.div`
     position: absolute;
     transition: all 0.2s;
     top: 2px;
-    right: calc(50% + 2px);
+    right: calc(1.5rem + 2px);
     height: calc(100% - 4px);
-    width: calc(50% - 4px);
+    width: calc(2rem - 4px);
   }
 
   &[aria-checked="true"] {
@@ -32,7 +32,7 @@ export const Toggle = styled.div`
     &::before {
       right: 2px;
       height: calc(100% - 4px);
-      width: calc(50% - 4px);
+      width: calc(2rem - 4px);
     }
   }
 `;
