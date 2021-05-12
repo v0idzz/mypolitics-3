@@ -214,6 +214,7 @@ export type CreateTalkPayload = {
   talk?: Maybe<Talk>;
 };
 
+
 export type CreateUserPayload = {
   __typename?: 'createUserPayload';
   user?: Maybe<UsersPermissionsUser>;
@@ -3514,6 +3515,32 @@ export type TalksByFilterQuery = (
   )>>> }
 );
 
+export type TalksPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TalksPageQuery = (
+  { __typename?: 'Query' }
+  & { featured?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>>, mvsp?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>>, classic?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>>, ring?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>>, expert?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>>, interview?: Maybe<Array<Maybe<(
+    { __typename?: 'Talk' }
+    & BasicTalkPartsFragment
+  )>>> }
+);
+
 export type DepartmentPartsFragment = (
   { __typename?: 'ComponentCommonDepartment' }
   & Pick<ComponentCommonDepartment, 'id' | 'title'>
@@ -5545,6 +5572,53 @@ export function useTalksByFilterLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type TalksByFilterQueryHookResult = ReturnType<typeof useTalksByFilterQuery>;
 export type TalksByFilterLazyQueryHookResult = ReturnType<typeof useTalksByFilterLazyQuery>;
 export type TalksByFilterQueryResult = Apollo.QueryResult<TalksByFilterQuery, TalksByFilterQueryVariables>;
+export const TalksPageDocument = gql`
+    query TalksPage {
+  featured: talks(limit: 3, sort: "end:desc") {
+    ...BasicTalkParts
+  }
+  mvsp: talks(limit: 3, sort: "end:desc", where: {type: "mvsp"}) {
+    ...BasicTalkParts
+  }
+  classic: talks(limit: 3, sort: "end:desc", where: {type: "classic"}) {
+    ...BasicTalkParts
+  }
+  ring: talks(limit: 3, sort: "end:desc", where: {type: "ring"}) {
+    ...BasicTalkParts
+  }
+  expert: talks(limit: 3, sort: "end:desc", where: {type: "expert"}) {
+    ...BasicTalkParts
+  }
+  interview: talks(limit: 3, sort: "end:desc", where: {type: "interview"}) {
+    ...BasicTalkParts
+  }
+}
+    ${BasicTalkPartsFragmentDoc}`;
+
+/**
+ * __useTalksPageQuery__
+ *
+ * To run a query within a React component, call `useTalksPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTalksPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTalksPageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTalksPageQuery(baseOptions?: Apollo.QueryHookOptions<TalksPageQuery, TalksPageQueryVariables>) {
+        return Apollo.useQuery<TalksPageQuery, TalksPageQueryVariables>(TalksPageDocument, baseOptions);
+      }
+export function useTalksPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TalksPageQuery, TalksPageQueryVariables>) {
+          return Apollo.useLazyQuery<TalksPageQuery, TalksPageQueryVariables>(TalksPageDocument, baseOptions);
+        }
+export type TalksPageQueryHookResult = ReturnType<typeof useTalksPageQuery>;
+export type TalksPageLazyQueryHookResult = ReturnType<typeof useTalksPageLazyQuery>;
+export type TalksPageQueryResult = Apollo.QueryResult<TalksPageQuery, TalksPageQueryVariables>;
 export const TeamDocument = gql`
     query Team {
   team {

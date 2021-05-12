@@ -12,6 +12,7 @@
   },
   "header": {
     "readingTime": {
+      "zero": "Estimated reading time: less than a minute",
       "one": "Estimated reading time: one minute",
       "few": "Estimated reading time: {{count}} minutes"
     }

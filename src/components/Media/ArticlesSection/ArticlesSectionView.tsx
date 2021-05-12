@@ -5,15 +5,13 @@ import { Link as PostLink } from "@components/Media";
 import { BasicTalkPartsFragment } from "@generated/graphql";
 import * as R from "ramda";
 import dynamic from "next/dynamic";
+import { Container, Image, ImageTitleWrapper } from "./ArticlesSectionStyle";
 import {
-  Container,
-  Header,
-  Image,
-  Content,
-  List,
-  Background,
-  ImageTitleWrapper,
-} from "./ArticlesSectionStyle";
+  BaseSectionBackground,
+  BaseSectionContent,
+  BaseSectionHeader,
+  BaseSectionList,
+} from "@shared/BaseSection";
 
 interface Props {
   title: React.ReactNode;
@@ -54,15 +52,15 @@ const ArticlesSection: React.FC<Props> = ({
 
   return (
     <Container className="container">
-      <Header align={align}>
+      <BaseSectionHeader align={align}>
         <Image src={imageSrc} alt="section-title" />
         {titleElement}
         {lead && <Lead>{lead}</Lead>}
-      </Header>
-      <Content>
-        <Background />
-        <List>{elementsList}</List>
-      </Content>
+      </BaseSectionHeader>
+      <BaseSectionContent>
+        <BaseSectionBackground />
+        <BaseSectionList>{elementsList}</BaseSectionList>
+      </BaseSectionContent>
     </Container>
   );
 };
