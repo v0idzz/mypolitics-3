@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Patreons } from "@generated/graphql";
 import Button from "@shared/Button";
 import { faSeedling } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +16,8 @@ import {
   ListWrapper,
   ButtonWrapper,
   Title,
+  GoldenPatreonsList,
+  GoldenPatreonsContainer,
 } from "./PatreonStyle";
 
 library.add(faSeedling);
@@ -24,10 +26,36 @@ interface Props {
   patreons: Pick<Patreons, "updatedAt" | "list">;
 }
 
+type ParsedPatreonType = "regular" | "gold";
+
+interface ParsedPatreon {
+  name: string;
+  type: ParsedPatreonType;
+}
+
 const Patreon: React.FC<Props> = ({ patreons }) => {
   const { t } = useTranslation("common");
   const { updatedAt, list } = patreons;
   const { lang } = useTranslation();
+  const [parsedPatreons, setParsedPatreons] = useState<ParsedPatreon[]>([]);
+
+  useEffect(() => {
+    const parser = new DOMParser();
+
+    const newPatreons: ParsedPatreon[] = [];
+    const doc = parser.parseFromString(list, "text/html");
+    const patreonNodes = doc.body.querySelectorAll("p");
+    // @ts-ignore
+    for (const patreonNode of patreonNodes) {
+      let type: ParsedPatreonType = "regular";
+      if (patreonNode.querySelector("strong")) {
+        type = "gold";
+      }
+      newPatreons.push({ name: patreonNode.innerText, type: type });
+    }
+
+    setParsedPatreons(newPatreons);
+  }, [list]);
 
   return (
     <Container>
@@ -44,9 +72,26 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
       </Header>
       <Inner>
         <Title>{t("patreon.list.title")}</Title>
-        <ListWrapper dangerouslySetInnerHTML={{ __html: list }} />
+        <GoldenPatreonsContainer>
+          <h3>{t("patreon.list.gold")}</h3>
+          <GoldenPatreonsList>
+            {parsedPatreons
+              .filter((p) => p.type === "gold")
+              .map((p, i) => (
+                <li key={i}>{p.name}</li>
+              ))}
+          </GoldenPatreonsList>
+        </GoldenPatreonsContainer>
+        <ListWrapper>
+          {parsedPatreons
+            .filter((p) => p.type === "regular")
+            .map((p, i) => (
+              <li key={i}>{p.name}</li>
+            ))}
+        </ListWrapper>
         <HeaderDate>
-          {t("patreon.list.updatedAt")}&nbsp;{new Date(updatedAt).toLocaleDateString()}
+          {t("patreon.list.updatedAt")}&nbsp;
+          {new Date(updatedAt).toLocaleDateString()}
         </HeaderDate>
       </Inner>
       <ButtonWrapper>

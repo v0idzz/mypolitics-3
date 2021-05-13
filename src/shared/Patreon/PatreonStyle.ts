@@ -64,27 +64,64 @@ export const Inner = styled.div`
   padding: 2rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
   border-radius: 0.5rem;
-  
+
   ${breakpoint("xs", "md")`
     grid-gap: 1rem;
     padding: 1rem;
   `};
 `;
 
-export const ListWrapper = styled.div`
+export const ListWrapper = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, 160px);
   color: ${({ theme }) => theme.colors.textMuted};
   grid-gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
-  p {
+  li {
     margin: 0;
     padding: 0;
   }
-  
+
   ${breakpoint("xs", "md")`
     grid-gap: 0.75rem;
   `};
+`;
+export const GoldenPatreonsContainer = styled.section`
+  border-radius: 0.5rem;
+  align-items: center;
+  display: flex;
+  background: ${({ theme }) => transparentize(0.9, theme.colors.yellow)};
+  padding: 1rem;
+
+  & > h3 {
+    border-radius: 0.5rem;
+    background: ${({ theme }) => theme.colors.yellow};
+    padding: 0.5rem;
+    color: white;
+    white-space: nowrap;
+  }
+`;
+
+export const GoldenPatreonsList = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  flex-grow: 1;
+  margin: 0 1rem;
+  font-weight: bold;
+  font-size: 1.125rem;
+  text-align: center;
+  white-space: nowrap;
+  flex-wrap: wrap;
+  color: ${({ theme }) => theme.colors.yellow};
+
+  & > li {
+    padding: 0.25rem 0.5rem;
+  }
 `;
 
 export const Date = styled.div`
