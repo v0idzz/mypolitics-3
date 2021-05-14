@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, DefaultTheme } from "styled-components";
 import { transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
 
@@ -89,35 +89,62 @@ export const ListWrapper = styled.ul`
     grid-gap: 0.75rem;
   `};
 `;
-export const GoldenPatreonsContainer = styled.section`
+
+const getPatreonsColor = (patreonType: string, theme: DefaultTheme) =>
+  patreonType === "diamond" ? theme.colors.primary : theme.colors.yellow;
+
+interface BasePatreonProps {
+  type?: "gold" | "diamond";
+}
+
+export const PatreonsContainer = styled.section<BasePatreonProps>`
+  ${({ type }) =>
+    type === "diamond" &&
+    css`
+      flex-direction: column;
+    `}
   border-radius: 0.5rem;
   align-items: center;
   display: flex;
-  background: ${({ theme }) => transparentize(0.9, theme.colors.yellow)};
+  background: ${({ theme, type }) =>
+    transparentize(0.9, getPatreonsColor(type, theme))};
   padding: 1rem;
 
   & > h3 {
     border-radius: 0.5rem;
-    background: ${({ theme }) => theme.colors.yellow};
+    background: ${({ theme, type }) => getPatreonsColor(type, theme)};
     padding: 0.5rem;
     color: white;
     white-space: nowrap;
+
+    & > span {
+      margin-right: 0.5rem;
+    }
   }
 `;
 
-export const GoldenPatreonsList = styled.ul`
+export const PatreonsList = styled.ul<BasePatreonProps>`
+  ${({ type }) =>
+    type === "diamond" &&
+    css`
+      flex-direction: column;
+    `}
+
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   list-style: none;
   padding: 0;
   flex-grow: 1;
-  margin: 0 1rem;
+  margin-top: ${({ type }) => (type === "diamond" ? "0.5rem" : "0")};
+  margin-bottom: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
   font-weight: bold;
-  font-size: 1.125rem;
+  font-size: ${({ type }) => (type === "diamond" ? "1.25rem" : "1.125rem")};
   text-align: center;
   white-space: nowrap;
   flex-wrap: wrap;
-  color: ${({ theme }) => theme.colors.yellow};
+  color: ${({ theme, type }) => getPatreonsColor(type, theme)};
 
   & > li {
     padding: 0.25rem 0.5rem;

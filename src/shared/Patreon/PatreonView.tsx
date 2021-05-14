@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Patreons } from "@generated/graphql";
 import Button from "@shared/Button";
-import { faSeedling } from "@fortawesome/free-solid-svg-icons";
+import { faSeedling, faGem, faCrown } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -16,17 +16,17 @@ import {
   ListWrapper,
   ButtonWrapper,
   Title,
-  GoldenPatreonsList,
-  GoldenPatreonsContainer,
+  PatreonsList,
+  PatreonsContainer,
 } from "./PatreonStyle";
 
-library.add(faSeedling);
+library.add(faSeedling, faGem, faCrown);
 
 interface Props {
   patreons: Pick<Patreons, "updatedAt" | "list">;
 }
 
-type ParsedPatreonType = "regular" | "gold";
+type ParsedPatreonType = "regular" | "gold" | "diamond";
 
 interface ParsedPatreon {
   name: string;
@@ -50,9 +50,13 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
       let type: ParsedPatreonType = "regular";
       if (patreonNode.querySelector("strong")) {
         type = "gold";
+      } else if (patreonNode.querySelector("i")) {
+        type = "diamond";
       }
       newPatreons.push({ name: patreonNode.innerText, type: type });
     }
+
+    newPatreons.push({ name: "Patron Diament", type: "diamond" });
 
     setParsedPatreons(newPatreons);
   }, [list]);
@@ -72,16 +76,36 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
       </Header>
       <Inner>
         <Title>{t("patreon.list.title")}</Title>
-        <GoldenPatreonsContainer>
-          <h3>{t("patreon.list.gold")}</h3>
-          <GoldenPatreonsList>
+        <PatreonsContainer type="diamond">
+          <h3>
+            <span>
+              <FontAwesomeIcon icon={faGem} />
+            </span>
+            {t("patreon.list.platinum")}
+          </h3>
+          <PatreonsList type="diamond">
+            {parsedPatreons
+              .filter((p) => p.type === "diamond")
+              .map((p, i) => (
+                <li key={i}>{p.name}</li>
+              ))}
+          </PatreonsList>
+        </PatreonsContainer>
+        <PatreonsContainer>
+          <h3>
+            <span>
+              <FontAwesomeIcon icon={faCrown} />
+            </span>
+            {t("patreon.list.gold")}
+          </h3>
+          <PatreonsList>
             {parsedPatreons
               .filter((p) => p.type === "gold")
               .map((p, i) => (
                 <li key={i}>{p.name}</li>
               ))}
-          </GoldenPatreonsList>
-        </GoldenPatreonsContainer>
+          </PatreonsList>
+        </PatreonsContainer>
         <ListWrapper>
           {parsedPatreons
             .filter((p) => p.type === "regular")
