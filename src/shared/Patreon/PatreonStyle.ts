@@ -1,6 +1,7 @@
 import styled, { css, DefaultTheme } from "styled-components";
 import { transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
+import { ParsedPatreonTypeExceptRegular } from "@shared/Patreon/types";
 
 export const Container = styled.div`
   display: grid;
@@ -90,11 +91,13 @@ export const ListWrapper = styled.ul`
   `};
 `;
 
-const getPatreonsColor = (patreonType: string, theme: DefaultTheme) =>
-  patreonType === "diamond" ? theme.colors.primary : theme.colors.yellow;
+const getPatreonsColor = (
+  patreonType: ParsedPatreonTypeExceptRegular,
+  theme: DefaultTheme
+) => (patreonType === "diamond" ? theme.colors.primary : theme.colors.yellow);
 
 interface BasePatreonProps {
-  type?: "gold" | "diamond";
+  type?: ParsedPatreonTypeExceptRegular;
 }
 
 export const PatreonsContainer = styled.section<BasePatreonProps>`

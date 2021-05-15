@@ -16,17 +16,15 @@ import {
   ListWrapper,
   ButtonWrapper,
   Title,
-  PatreonsList,
-  PatreonsContainer,
 } from "./PatreonStyle";
+import { ParsedPatreonType } from "./types";
+import PatreonsInnerSection from "@shared/Patreon/PatreonsInnerSection";
 
 library.add(faSeedling, faGem, faCrown);
 
 interface Props {
   patreons: Pick<Patreons, "updatedAt" | "list">;
 }
-
-type ParsedPatreonType = "regular" | "gold" | "diamond";
 
 interface ParsedPatreon {
   name: string;
@@ -56,8 +54,6 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
       newPatreons.push({ name: patreonNode.innerText, type: type });
     }
 
-    newPatreons.push({ name: "Patron Diament", type: "diamond" });
-
     setParsedPatreons(newPatreons);
   }, [list]);
 
@@ -76,36 +72,18 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
       </Header>
       <Inner>
         <Title>{t("patreon.list.title")}</Title>
-        <PatreonsContainer type="diamond">
-          <h3>
-            <span>
-              <FontAwesomeIcon icon={faGem} />
-            </span>
-            {t("patreon.list.platinum")}
-          </h3>
-          <PatreonsList type="diamond">
-            {parsedPatreons
-              .filter((p) => p.type === "diamond")
-              .map((p, i) => (
-                <li key={i}>{p.name}</li>
-              ))}
-          </PatreonsList>
-        </PatreonsContainer>
-        <PatreonsContainer>
-          <h3>
-            <span>
-              <FontAwesomeIcon icon={faCrown} />
-            </span>
-            {t("patreon.list.gold")}
-          </h3>
-          <PatreonsList>
-            {parsedPatreons
-              .filter((p) => p.type === "gold")
-              .map((p, i) => (
-                <li key={i}>{p.name}</li>
-              ))}
-          </PatreonsList>
-        </PatreonsContainer>
+        <PatreonsInnerSection
+          type="diamond"
+          list={parsedPatreons
+            .filter((p) => p.type === "diamond")
+            .map((p) => p.name)}
+        />
+        <PatreonsInnerSection
+          type="gold"
+          list={parsedPatreons
+            .filter((p) => p.type === "gold")
+            .map((p) => p.name)}
+        />
         <ListWrapper>
           {parsedPatreons
             .filter((p) => p.type === "regular")
