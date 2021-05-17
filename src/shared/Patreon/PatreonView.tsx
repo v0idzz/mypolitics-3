@@ -53,8 +53,8 @@ const Patreon: React.FC<Props> = ({ patreons }) => {
         <Link
           href={
             lang === "pl"
-              ? "https://patronite.pl/mypolitics"
-              : "https://patreon.com/mypolitics"
+              ? "//patronite.pl/mypolitics"
+              : "//patreon.com/mypolitics"
           }
           passHref
         >
