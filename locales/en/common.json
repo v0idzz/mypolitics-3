@@ -60,6 +60,7 @@
     "9": "User does not exist",
     "10": "You have already voted",
     "11": "The verification email has already been sent. Try again in 15 minutes",
+    "12": "Missing reCAPTCHA",
     "default": "Unknown error"
   },
   "talkType": {

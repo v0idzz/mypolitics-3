@@ -60,6 +60,7 @@
     "9": "Użytkownik nie istnieje",
     "10": "Już oddałeś/oddałaś głos",
     "11": "Email weryfikacyjny został już wysłany. Spróbuj ponownie za 15 minut",
+    "12": "Brakująca reCAPTCHA",
     "default": "Nieznany błąd"
   },
   "talkType": {

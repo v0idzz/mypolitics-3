@@ -15,8 +15,8 @@ import { useRouter } from "next/router";
 import { useApolloClient } from "@apollo/client";
 import { CurrentUserDocument } from "@generated/graphql";
 import { useFirstTimer } from "@utils/hooks/useFirstTimer";
+import useTranslation from "next-translate/useTranslation";
 import { FormValues, initialValues } from "./FormUtils";
-import useTranslation from 'next-translate/useTranslation';
 
 const FormView: React.FC = () => {
   const { t } = useTranslation("auth");
@@ -31,30 +31,37 @@ const FormView: React.FC = () => {
     onSubmit: async (values) => {
       setLoading(true);
 
-      await fetch(apiPaths.auth.login, {
-        body: JSON.stringify(values),
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-        .then(async (r) => {
-          if (!r.ok) {
-            throw new Error(JSON.stringify(await r.json()));
-          }
-
-          setValue(false);
-
-          await client.query({
-            query: CurrentUserDocument,
-          });
-
-          await router.push(paths.editorPanel);
-        })
-        .catch((e) => {
-          handleErrors(JSON.parse(e.message));
+      if (!values.recaptcha) {
+        handleErrors({
+          code: 12,
+          text: "Missing reCAPTCHA",
         });
+      } else {
+        await fetch(apiPaths.auth.login, {
+          body: JSON.stringify(values),
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then(async (r) => {
+            if (!r.ok) {
+              throw new Error(JSON.stringify(await r.json()));
+            }
+
+            setValue(false);
+
+            await client.query({
+              query: CurrentUserDocument,
+            });
+
+            await router.push(paths.editorPanel);
+          })
+          .catch((error) => {
+            handleErrors(JSON.parse(error.message));
+          });
+      }
 
       setLoading(false);
     },
