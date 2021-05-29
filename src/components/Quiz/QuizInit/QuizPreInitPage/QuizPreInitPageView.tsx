@@ -25,7 +25,6 @@ const QuizPreInitPage: React.FC = () => {
         <Content>
           <TopText>
             {t("preInit.top")}
-            <Trans i18nKey="quiz:preInit.top" components={[<span />]} />
           </TopText>
           <Trans
             i18nKey="quiz:preInit.privacy"
