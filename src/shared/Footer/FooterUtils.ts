@@ -5,17 +5,8 @@ import {
   faTelegramPlane,
   faDiscord,
   faGithub,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
-
-library.add(
-  faFacebookF,
-  faTwitter,
-  faInstagram,
-  faTelegramPlane,
-  faDiscord,
-  faGithub
-);
 
 export interface SocialLink {
   url: string;
@@ -25,6 +16,10 @@ export interface SocialLink {
 }
 
 export const socialLinks = (lang: string): SocialLink[] => [
+  {
+    url: "https://www.youtube.com/myPolitics",
+    icon: faYoutube,
+  },
   {
     url: "https://facebook.com/myPoliticsTest",
     icon: faFacebookF,

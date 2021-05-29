@@ -11,6 +11,7 @@ import { initializeApollo } from "@services/apollo";
 import TalkCategorySection from "@components/Talk/TalkCategorySection";
 import { NextSeo } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
+import TalkYoutubeSection from "@components/Talk/TalkYoutubeSection";
 
 interface Props {
   featuredTalks: BasicTalkPartsFragment[];
@@ -37,6 +38,7 @@ const Talks: React.FC<Props> = ({
       <TalkCategorySection type={Enum_Talk_Type.Classic} talks={classic} />
       <TalkCategorySection type={Enum_Talk_Type.Ring} talks={ring} />
       <TalkCategorySection type={Enum_Talk_Type.Expert} talks={expert} />
+      <TalkYoutubeSection />
     </PageContainer>
   );
 };
