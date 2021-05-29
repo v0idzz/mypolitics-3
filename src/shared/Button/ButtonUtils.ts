@@ -162,6 +162,10 @@ export const getBackgrounds = (
     background: #ff0000;
     color: white;
 
+    &:hover {
+      background: ${darken(0.0125, "#ff0000")};
+    }
+
     ${pulsating && pulse("#ff0000")}
   `,
 });
