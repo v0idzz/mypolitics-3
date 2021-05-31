@@ -11,7 +11,7 @@ import StandardPage, {
 } from "@shared/StandardPage";
 import { translate } from "@utils/translation";
 import { apiPaths } from "@constants";
-import { objToBase64 } from "@utils/toBase64";
+import { objToBase64Uri } from "@utils/toBase64";
 
 interface Props {
   quiz: SingleQuizQuery["quiz"];
@@ -26,7 +26,10 @@ const SingleQuizPage: React.FC<Props> = ({ quiz, standardPageProps }) => {
     title: rawTitle,
     description: translate(quiz.description, lang),
   });
-  const image = apiPaths.utils.image("quiz", objToBase64({ title: rawTitle }));
+  const image = apiPaths.utils.image(
+    "quiz",
+    objToBase64Uri({ title: rawTitle })
+  );
 
   return (
     <StandardPage {...standardPageProps}>

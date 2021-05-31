@@ -1,5 +1,5 @@
-export const objToBase64 = (obj: Record<any, any>): string => {
-  const str = unescape(encodeURIComponent(JSON.stringify(obj)));
+export const objToBase64Uri = (obj: Record<any, any>): string => {
+  const str = JSON.stringify(obj);
   const buff = Buffer.from(str);
-  return buff.toString("base64");
+  return encodeURIComponent(buff.toString("base64"));
 };
