@@ -82,6 +82,8 @@
     "title": "Patronite",
     "description": "Nie mamy powiązania z żadną opcją wpływu i nikt nas nie finansuje. Możesz wesprzeć nasze działania poprzez Patronite",
     "list": {
+      "diamond": "Patroni Diamentowi",
+      "gold": "Patroni Złoci",
       "title": "Patroni myPolitics",
       "updatedAt": "Stan na dzień:"
     },

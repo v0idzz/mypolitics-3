@@ -82,6 +82,8 @@
     "title": "Patreon",
     "description": "We are not associated with or financed by any political option. You can support our work on Patreon.",
     "list": {
+      "diamond": "Diamond Patrons",
+      "gold": "Gold Patrons",
       "title": "myPolitics' Patrons",
       "updatedAt": "As of:"
     },
