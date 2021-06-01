@@ -17,7 +17,7 @@ export const sizes: Sizes = {
   `,
 };
 
-const pulse = (color) => keyframes`
+const pulseFrames = (color) => keyframes`
   0% {
 		box-shadow: 0 0 0 0 ${transparentize(0.3, color)};
 	}
@@ -29,6 +29,10 @@ const pulse = (color) => keyframes`
 	100% {
 		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 	}
+`;
+
+const pulse = (color) => css`
+  animation: ${pulseFrames(color)} 2s infinite;
 `;
 
 export const getBackgrounds = (
@@ -55,10 +59,7 @@ export const getBackgrounds = (
       box-shadow: 0px 0px 24px rgba(0, 179, 219, 0.33);
     `};
 
-    ${pulsating &&
-    css`
-      animation: ${pulse(theme.colors.primary)} 2s infinite;
-    `}
+    ${pulsating && pulse(theme.colors.primary)}
   `,
   bluish: css`
     background: ${transparentize(0.9, theme.colors.primary)};
@@ -74,10 +75,7 @@ export const getBackgrounds = (
       box-shadow: 0px 0px 24px rgba(0, 179, 219, 0.33);
     `}
 
-    ${pulsating &&
-    css`
-      animation: ${pulse(transparentize(0.9, theme.colors.primary))} 2s infinite;
-    `}
+    ${pulsating && pulse(transparentize(0.9, theme.colors.primary))};
   `,
   black: css`
     background: rgba(0, 0, 0, 0.8);
@@ -93,10 +91,7 @@ export const getBackgrounds = (
       box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.33);
     `}
 
-    ${pulsating &&
-    css`
-      animation: ${pulse("rgba(0, 0, 0, 0.8)")} 2s infinite;
-    `}
+    ${pulsating && pulse("rgba(0, 0, 0, 0.8)")}
   `,
   gray: css`
     background: ${theme.colors.backgroundDarken};
@@ -112,10 +107,7 @@ export const getBackgrounds = (
       box-shadow: 0px 0px 24px rgba(0, 179, 219, 0.33);
     `}
 
-    ${pulsating &&
-    css`
-      animation: ${pulse(theme.colors.backgroundDarken)} 2s infinite;
-    `}
+    ${pulsating && pulse(theme.colors.backgroundDarken)}
   `,
   white: css`
     background: ${theme.colors.background};
@@ -147,10 +139,7 @@ export const getBackgrounds = (
       box-shadow: 0px 0px 24px #6f87e3;
     `}
 
-    ${pulsating &&
-    css`
-      animation: ${pulse("#6f87e3")} 2s infinite;
-    `}
+    ${pulsating && pulse("#6f87e3")}
   `,
   facebook: css`
     background: #1773ea;
@@ -167,9 +156,16 @@ export const getBackgrounds = (
       box-shadow: 0px 0px 24px #1773EA;
     `}
 
-    ${pulsating &&
-    css`
-      animation: ${pulse("#1773EA")} 2s infinite;
-    `}
+    ${pulsating && pulse("#1773EA")}
+  `,
+  youtube: css`
+    background: #ff0000;
+    color: white;
+
+    &:hover {
+      background: ${darken(0.0125, "#ff0000")};
+    }
+
+    ${pulsating && pulse("#ff0000")}
   `,
 });

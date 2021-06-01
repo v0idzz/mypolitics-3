@@ -5,5 +5,9 @@
   },
   "hero": {
     "title": "Debaty"
+  },
+  "youtube": {
+    "title": "Szukasz czegoś innego?",
+    "button": "Oglądaj więcej na YouTube"
   }
 }
