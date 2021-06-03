@@ -18,6 +18,7 @@ interface Props {
   illustrationUrl: string;
   content: JSX.Element;
   additionalContent: JSX.Element;
+  ref?: any;
 }
 
 const HomeSection: React.FC<Props> = ({
@@ -27,9 +28,10 @@ const HomeSection: React.FC<Props> = ({
   content,
   additionalContent,
   illustrationUrl,
+  ref,
 }) => (
   <Container variant={variant}>
-    <div className="container">
+    <div className="container" ref={ref}>
       <Illustration src={illustrationUrl} alt={title} />
       <Header>
         <Lead>{slogan}</Lead>

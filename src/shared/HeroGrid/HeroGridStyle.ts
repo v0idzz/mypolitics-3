@@ -44,6 +44,10 @@ export const HeroGridCol = styled.div`
       grid-row: 1 / 3;
       grid-template-rows: 1fr 1fr;
     }
+
+    &:nth-child(2) > iframe {
+      max-height: calc(50% - 1rem);
+    }
   `};
 
   &:last-child > :last-child {
