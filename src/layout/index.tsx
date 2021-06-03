@@ -4,13 +4,12 @@ import { ThemeProvider } from "styled-components";
 import theme from "@theme";
 import Footer from "@shared/Footer";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
+import Header from "@shared/Header";
+import { ErrorBoundary } from "react-error-boundary";
 import GlobalStyle from "./globalStyles";
 import Head from "./Head";
 import { ContentWrapper } from "./style";
 import { pathsWithHero } from "./utils";
-
-const Header = dynamic(() => import("@shared/Header"), { ssr: false });
 
 interface Props {
   children: JSX.Element;
@@ -25,7 +24,9 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Head />
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header forceHighlight={pathWithoutHero} />
+        <ErrorBoundary fallback={null}>
+          <Header forceHighlight={pathWithoutHero} />
+        </ErrorBoundary>
         <ContentWrapper headerMargin={pathWithoutHero}>
           {children}
         </ContentWrapper>

@@ -7,7 +7,6 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLogo } from "@utils/hooks/useLogo";
-import { useFirstTimer } from "@utils/hooks/useFirstTimer";
 import { HeaderNavElement, useHeaderNav } from "@shared/Header/HeaderUtils";
 import UserInfo from "@shared/UserInfo";
 import { useRouter } from "next/router";
@@ -36,7 +35,6 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
   const router = useRouter();
   const logo = useLogo();
   const nav = useHeaderNav();
-  const { value: firstTimer } = useFirstTimer();
   const { scrollY } = useWindowScroll(false);
   const scrolled = scrollY > 60;
   const highlighted = scrolled || showMenu || forceHighlight;
@@ -82,7 +80,7 @@ const Header: React.FC<Props> = ({ forceHighlight = false }) => {
         <ActionsWrapper>
           <DesktopNavigation>
             {navLinks}
-            {!firstTimer && <UserInfo />}
+            <UserInfo />
           </DesktopNavigation>
           <LanguageSelect />
           <MobileNavigationWrapper>
