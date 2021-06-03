@@ -14,6 +14,8 @@ import {
   Wrapper,
 } from "./HomeHeroStyle";
 
+const candidateImage = require("@assets/images/candidate.png?resize&sizes[]=320&sizes[]=600");
+
 const HeroView: React.FC = () => {
   const { t } = useTranslation("home");
 
@@ -44,10 +46,14 @@ const HeroView: React.FC = () => {
             </Button>
           </ButtonsWrapper>
         </Content>
-        <Illustration
-          src={require("@assets/images/candidate.png")}
-          alt={t("hero.candidate")}
-        />
+        <Illustration>
+          <source
+            srcSet={require("@assets/images/candidate.png?webp")}
+            type="image/webp"
+          />
+          <source srcSet={candidateImage.srcSet} type="image/png" />
+          <img src={candidateImage.src} alt="background" />
+        </Illustration>
       </HeroSection>
     </Wrapper>
   );

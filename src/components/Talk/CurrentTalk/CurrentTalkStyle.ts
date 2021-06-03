@@ -46,11 +46,13 @@ export const HeaderContent = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-  box-shadow: 0 0 32px 0 rgba(0, 86, 105, 0.25);
-  border-radius: 0.5rem;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
 
-  iframe {
+  iframe, .yt-lite {
+    box-shadow: 0 0 32px 0 rgba(0, 86, 105, 0.25);
+    border-radius: 0.5rem;
+    overflow: hidden;
     width: 80vw;
     height: 100.5%;
     min-height: calc(80vw / 1.77777778);

@@ -81,28 +81,32 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Illustration = styled.img`
-  width: auto;
-  filter: drop-shadow(0px 0px 64px rgba(0, 42, 51, 0.33));
-  max-width: 50%;
-  max-height: 409px;
-  image-rendering: -webkit-optimize-contrast;
+export const Illustration = styled.picture`
+  display: contents;
 
-  ${breakpoint("xs", "md")`
-    position: absolute;
-    bottom: -25vw;
-    height: 50vw;
+  & > img {
     width: auto;
-    max-width: unset;
-    left: 50%;
-    transform: translateX(-50%);
-  `};
+    filter: drop-shadow(0px 0px 64px rgba(0, 42, 51, 0.33));
+    max-width: 50%;
+    max-height: 409px;
+    image-rendering: -webkit-optimize-contrast;
 
-  ${breakpoint("md")`
-    padding-left: 4rem;
-  `};
+    ${breakpoint("xs", "md")`
+      position: absolute;
+      bottom: -25vw;
+      height: 50vw;
+      width: auto;
+      max-width: unset;
+      left: 50%;
+      transform: translateX(-50%);
+    `};
 
-  @media only screen and (min-width: 1660px) {
-    margin-right: -12rem;
+    ${breakpoint("md")`
+      padding-left: 4rem;
+    `};
+
+    @media only screen and (min-width: 1660px) {
+      margin-right: -12rem;
+    }
   }
 `;

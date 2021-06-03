@@ -23,7 +23,10 @@ const HomeNewsSection: React.FC<Props> = ({ posts }) => {
       title={t("news.title")}
       slogan={t("news.slogan")}
       variant="left"
-      illustrationUrl={require("@assets/images/newspaper.png")}
+      illustrationUrls={{
+        modern: require("@assets/images/newspaper.png?webp"),
+        fallback: require("@assets/images/newspaper.png?resize&sizes[]=320&sizes[]=120"),
+      }}
       content={
         <>
           <p>{t("news.content.text")}</p>
