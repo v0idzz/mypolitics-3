@@ -5,7 +5,7 @@ const { publicRuntimeConfig } = getConfig();
 export const BASE_PATH =
   typeof window !== "undefined"
     ? window.location.origin
-    : publicRuntimeConfig.BASE_PATH || "";
+    : publicRuntimeConfig.BASE_PATH || "https://mypolitics.pl";
 
 export const recaptchaSiteKey =
   publicRuntimeConfig.NODE_ENV === "production"
