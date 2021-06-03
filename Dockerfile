@@ -1,6 +1,6 @@
 FROM node:14-slim AS build
 
-RUN apt-get update && apt-get install -y libglu1
+RUN apt-get update && apt-get install -y libglu1 libxi6 libgconf-2-4
 
 WORKDIR /app
 
