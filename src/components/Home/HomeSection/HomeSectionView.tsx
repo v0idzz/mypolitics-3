@@ -11,14 +11,22 @@ import {
   Lead,
 } from "./HomeSectionStyle";
 
+interface ImageUrl {
+  src: string;
+  srcSet: string;
+}
+
 interface Props {
   title: string;
   slogan: string;
   variant: "left" | "right";
-  illustrationUrl: string;
   content: JSX.Element;
   additionalContent: JSX.Element;
   ref?: any;
+  illustrationUrls: {
+    modern: ImageUrl;
+    fallback: ImageUrl;
+  };
 }
 
 const HomeSection: React.FC<Props> = ({
@@ -27,12 +35,16 @@ const HomeSection: React.FC<Props> = ({
   variant,
   content,
   additionalContent,
-  illustrationUrl,
+  illustrationUrls,
   ref,
 }) => (
   <Container variant={variant}>
     <div className="container" ref={ref}>
-      <Illustration src={illustrationUrl} alt={title} />
+      <Illustration>
+        <source srcSet={illustrationUrls.modern.srcSet} type="image/webp" />
+        <source srcSet={illustrationUrls.fallback.srcSet} type="image/png" />
+        <img src={illustrationUrls.fallback.src} alt={title} />
+      </Illustration>
       <Header>
         <Lead>{slogan}</Lead>
         <Title>{title}</Title>

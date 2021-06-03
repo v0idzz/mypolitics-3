@@ -42,7 +42,10 @@ const HomeTalkSection: React.FC<Props> = ({ talks }) => {
         title={t("talk.title")}
         slogan={t("talk.slogan")}
         variant="right"
-        illustrationUrl={require("@assets/images/debate.png")}
+        illustrationUrls={{
+          modern: require("@assets/images/debate.png?webp"),
+          fallback: require("@assets/images/debate.png?resize&sizes[]=320&sizes[]=120"),
+        }}
         additionalContent={show ? additionalContent : null}
         content={
           <>

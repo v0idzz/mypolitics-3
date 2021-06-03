@@ -9,20 +9,22 @@ export const Container = styled.section`
   position: relative;
 `;
 
-export const Image = styled.img`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  max-width: ${({ theme }) => theme.breakpoints.xxl}px;
-  object-fit: cover;
-  display: block;
+export const Image = styled.picture`
+  &, & > img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    max-width: ${({ theme }) => theme.breakpoints.xxl}px;
+    object-fit: cover;
+    display: block;
 
-  ${breakpoint("xxl")`
-    border-radius: 64px;
-  `};
+    ${breakpoint("xxl")`
+      border-radius: 64px;
+    `};
+  }
 `;
 
 export const Overlay = styled(Image)`

@@ -1,7 +1,6 @@
 import React from "react";
 import { BasicTalkPartsFragment } from "@generated/graphql";
-import { Content } from "@components/Talk/CurrentTalk/CurrentTalkStyle";
-import { Container } from "./TalkLinkStyle";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 interface Props {
   data: BasicTalkPartsFragment;
@@ -19,13 +18,25 @@ const TalkLink: React.FC<Props> = ({ data }) => {
   const videoId = getVideoId(url);
 
   return (
-    <Container
-      title={title}
-      src={`https://www.youtube.com/embed/${videoId}`}
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    />
+    <>
+      <style>
+        {`
+          .yt-link {
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            min-height: 12rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+          }
+        `}
+      </style>
+      <LiteYouTubeEmbed
+        wrapperClass="yt-lite yt-link"
+        id={videoId}
+        title={title}
+      />
+    </>
   );
 };
 

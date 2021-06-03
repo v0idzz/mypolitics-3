@@ -42,7 +42,14 @@ const HomePartnersSection: React.FC<Props> = ({ partners }) => {
 
   return (
     <Container>
-      <Image src={backgroundImage.src} srcSet={backgroundImage.srcSet} />
+      <Image>
+        <source
+          srcSet={require("@assets/images/home-hero.png?webp")}
+          type="image/webp"
+        />
+        <source srcSet={backgroundImage.srcSet} type="image/png" />
+        <img src={backgroundImage.src} alt="background" />
+      </Image>
       <Overlay as="div" />
       <Inner>
         <Header>
