@@ -1,13 +1,9 @@
 import {
   BasicTalkPartsFragment,
-  FeaturedQuizzesDocument,
   FeaturedQuizzesQuery,
-  PatreonDocument,
   PatreonQuery,
   StandardPageDocument,
   StandardPageQuery,
-  TalksByFilterDocument,
-  TalksByFilterQuery,
 } from "@generated/graphql";
 import { initializeApollo } from "@services/apollo";
 import { getRandomPosts } from "@services/ghost";
@@ -16,6 +12,8 @@ import { categoriesConfig } from "@components/Media/utils/useCategory";
 import { NextPageContext } from "next";
 import { toLanguageEnum } from "@utils/toLanguageEnum";
 
+type LocaleContext = NextPageContext & { locale: string };
+
 export interface StandardPageProps {
   articles: PostOrPage[];
   talks: BasicTalkPartsFragment[];
@@ -23,13 +21,13 @@ export interface StandardPageProps {
   patreons: PatreonQuery["patreon"];
 }
 
-export const getStandardPageProps = async ({
+const getData = async ({
   locale,
   query,
-}: NextPageContext & { locale: string }): Promise<StandardPageProps> => {
+}: LocaleContext): Promise<StandardPageProps> => {
   const client = initializeApollo();
   const [viewTag, newsTag] = categoriesConfig[locale];
-  const notCurrentFilter = `slug:-['${query.slug}']`;
+  const notCurrentFilter = `slug:-['${query?.slug}']`;
   const languageEnum = toLanguageEnum(locale);
 
   const newsQuery = getRandomPosts({
@@ -74,3 +72,28 @@ export const getStandardPageProps = async ({
     ],
   };
 };
+
+let cache: { lastUpdated: Date; props: StandardPageProps };
+const CACHE_LIVE = 1000 * 60 * 10; // 10 minutes miliseconds
+const isCacheValid = (currentTime) =>
+  currentTime.getTime() - (cache.lastUpdated.getTime() - CACHE_LIVE) >
+  CACHE_LIVE;
+
+export async function getStandardPageProps(
+  context: LocaleContext
+): Promise<StandardPageProps> {
+  const currentTime = new Date();
+  const fetchFromCache = cache && isCacheValid(currentTime);
+
+  if (fetchFromCache) {
+    return cache.props;
+  }
+
+  const props = await getData(context);
+  cache = {
+    lastUpdated: currentTime,
+    props,
+  };
+
+  return props;
+}

@@ -72,9 +72,11 @@ const Articles: React.FC<Props> = ({ posts, languageNotAvailable }) => {
   );
 };
 
-export const getServerSideProps = async ({
+export const getStaticProps = async ({
   locale,
-}): Promise<{ props: Props }> => {
+}: {
+  locale: string;
+}): Promise<{ props: Props; revalidate: number }> => {
   const [viewTag, newsTag] = categoriesConfig.pl;
 
   const getView = getRandomPosts({
@@ -102,6 +104,7 @@ export const getServerSideProps = async ({
   const featured = [news.shift(), ...(newViewData || [])];
 
   return {
+    revalidate: 60,
     props: {
       languageNotAvailable: locale !== "pl",
       posts: {

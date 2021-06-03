@@ -13,7 +13,7 @@ import StandardPage, {
 } from "@shared/StandardPage";
 import Head from "next/head";
 import { languages } from "@constants";
-import { toLanguageEnum } from '@utils/toLanguageEnum';
+import { toLanguageEnum } from "@utils/toLanguageEnum";
 
 interface Props {
   list: QuizBasicPartsFragment[];
@@ -29,9 +29,9 @@ const QuizzesPage: React.FC<Props> = ({ list, standardPageProps }) => (
   </StandardPage>
 );
 
-export const getServerSideProps = async (
+export const getStaticProps = async (
   context
-): Promise<{ props: Props }> => {
+): Promise<{ props: Props; revalidate: number }> => {
   const client = initializeApollo();
   const languageEnum = toLanguageEnum(context.locale);
   const { data } = await client.query<FeaturedQuizzesQuery>({
@@ -44,6 +44,7 @@ export const getServerSideProps = async (
   const standardPageProps = await getStandardPageProps(context);
 
   return {
+    revalidate: 120,
     props: {
       list: [...data.featuredQuizzes, ...data.socialQuizzes],
       standardPageProps,

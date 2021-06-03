@@ -99,11 +99,11 @@ const Home: React.FC<Props> = ({
   );
 };
 
-export const getServerSideProps = async ({
+export const getStaticProps = async ({
   locale,
 }: {
   locale: string;
-}): Promise<{ props: Props }> => {
+}): Promise<{ props: Props; revalidate: number }> => {
   const client = initializeApollo();
 
   const postsQuery = getManyPosts({
@@ -120,6 +120,7 @@ export const getServerSideProps = async ({
   const [posts, homePage] = await Promise.all([postsQuery, homePageQuery]);
 
   return {
+    revalidate: 60,
     props: {
       posts: posts || [],
       talks: homePage?.data?.talks || [],
