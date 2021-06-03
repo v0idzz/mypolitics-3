@@ -24,7 +24,7 @@ interface Props {
   additionalContent: JSX.Element;
   ref?: any;
   illustrationUrls: {
-    modern: ImageUrl;
+    modern: string;
     fallback: ImageUrl;
   };
 }
@@ -41,7 +41,7 @@ const HomeSection: React.FC<Props> = ({
   <Container variant={variant}>
     <div className="container" ref={ref}>
       <Illustration>
-        <source srcSet={illustrationUrls.modern.srcSet} type="image/webp" />
+        <source srcSet={illustrationUrls.modern} type="image/webp" />
         <source srcSet={illustrationUrls.fallback.srcSet} type="image/png" />
         <img src={illustrationUrls.fallback.src} alt={title} />
       </Illustration>

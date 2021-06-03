@@ -37,7 +37,7 @@ const HomeQuizSection: React.FC = () => {
       }}
       additionalContent={
         <AdditionalContentImage>
-          <source srcSet={modernImg.srcSet} type="image/webp" />
+          <source srcSet={modernImg} type="image/webp" />
           <source srcSet={fallbackImg.srcSet} type="image/png" />
           <img src={fallbackImg.src} alt={t("quiz.title")} />
         </AdditionalContentImage>
