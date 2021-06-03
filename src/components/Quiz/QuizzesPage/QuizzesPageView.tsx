@@ -11,6 +11,7 @@ import {
   faPollH,
   faHistory,
   faArrowDown,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,18 +25,24 @@ interface Props {
   list: QuizBasicPartsFragment[];
 }
 
-library.add(faPollH, faHistory);
+library.add(faPollH, faHistory, faSearch);
 const BASE_LIMIT = 6;
 
 const QuizzesPage: React.FC<Props> = ({ list }) => {
+  const [search, setSearch] = useState("");
   const [limit, setLimit] = useState<number>(BASE_LIMIT);
   const { t } = useTranslation("quiz");
   const [firstQuiz, ...quizzes] = list;
   const clientSide = typeof window !== "undefined";
+  const searching = search.length > 0;
 
   const handleShowMore = () => setLimit(limit + BASE_LIMIT);
   const limitedQuizzes = quizzes.filter((_, i) => i < limit);
+  const searchedQuizzes = quizzes.filter(({ title }) =>
+    JSON.stringify(title).toLowerCase().includes(search.toLowerCase())
+  );
   const showButton = limitedQuizzes.length < quizzes.length;
+  const quizzesList = searching ? searchedQuizzes : limitedQuizzes;
 
   return (
     <>
@@ -47,20 +54,26 @@ const QuizzesPage: React.FC<Props> = ({ list }) => {
           icon={<FontAwesomeIcon icon={faPollH} />}
         >
           <SearchBox>
-            <div className="gcse-search" />
+            <input
+              value={search}
+              onChange={({ target: { value } }) => setSearch(value)}
+            />
+            <span>
+              <FontAwesomeIcon icon={faSearch} />
+            </span>
           </SearchBox>
-          {limitedQuizzes.map((quiz, key) => (
+          {quizzesList.map((quiz, key) => (
             <>
               <Link key={quiz.id} quiz={quiz} showType />
               {(key + 1) % BASE_LIMIT === 0 && (
                 <>
-                  <GoogleAd id="myp3-standard-middle" />
-                  {key === limitedQuizzes.length - 1 && <EditorCTA />}
+                  {!searching && <GoogleAd id="myp3-standard-middle" />}
+                  {key === quizzesList.length - 1 && <EditorCTA />}
                 </>
               )}
             </>
           ))}
-          {showButton && (
+          {showButton && !searching && (
             <Button
               onClick={handleShowMore}
               beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}

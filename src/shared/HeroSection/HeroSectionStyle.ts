@@ -35,16 +35,16 @@ export const BackgroundImage = styled.picture`
 
 export const Overlay = styled.div`
   ${backgroundImageImg};
-  
+
   ${breakpoint("md")`
     max-height: 75%;
   `};
-  
+
   ${breakpoint("xxl")`
     border-bottom-left-radius: 128px;
     border-bottom-right-radius: 128px;
   `};
-  
+
   background: linear-gradient(135deg, #002a33 0%, rgba(0, 42, 51, 0) 100%);
   margin-left: -1px;
 `;
