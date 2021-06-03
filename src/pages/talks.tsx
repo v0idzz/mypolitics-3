@@ -43,7 +43,10 @@ const Talks: React.FC<Props> = ({
   );
 };
 
-export const getServerSideProps = async (): Promise<{ props: Props }> => {
+export const getStaticProps = async (): Promise<{
+  props: Props;
+  revalidate: number;
+}> => {
   const client = initializeApollo();
 
   const { data } = await client.query<TalksPageQuery>({
@@ -51,6 +54,7 @@ export const getServerSideProps = async (): Promise<{ props: Props }> => {
   });
 
   return {
+    revalidate: 30,
     props: {
       featuredTalks: data.featured,
       mvsp: data.mvsp,

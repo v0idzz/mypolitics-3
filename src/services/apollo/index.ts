@@ -66,9 +66,9 @@ function createApolloClient() {
   });
 }
 
-export const initializeApollo = (
+export function initializeApollo(
   initialState: NormalizedCacheObject = null
-): ApolloClient<NormalizedCacheObject> => {
+): ApolloClient<NormalizedCacheObject> {
   // eslint-disable-next-line no-underscore-dangle
   const _apolloClient =
     apolloClient === undefined ? createApolloClient() : apolloClient;
@@ -82,7 +82,7 @@ export const initializeApollo = (
 
   if (!apolloClient) apolloClient = _apolloClient;
   return _apolloClient;
-};
+}
 
 export const useApollo = (
   initialState: NormalizedCacheObject
