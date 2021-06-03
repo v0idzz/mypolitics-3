@@ -14,6 +14,7 @@ import Link from "next/link";
 import { paths } from "@constants";
 import Button from "@shared/Button";
 import useTranslation from "next-translate/useTranslation";
+import { useInView } from "react-hook-inview";
 import CategorySelect from "./CategorySelect";
 import {
   PoliticianResultsLink,
@@ -35,6 +36,8 @@ const QuizPoliticiansResults: React.FC<Props> = ({
   onlyContent = false,
   ...props
 }) => {
+  const { t } = useTranslation("quiz");
+  const [ref, inView] = useInView({ unobserveOnEnter: true });
   const BASE_LIMIT = 6;
   const [limit, setLimit] = useState<number>(BASE_LIMIT);
   const [category, setCategory] = useState<PoliticianCategory>(
@@ -46,7 +49,6 @@ const QuizPoliticiansResults: React.FC<Props> = ({
       ...props,
     },
   });
-  const { t } = useTranslation("quiz");
 
   const politiciansResults = data?.politicianResultsConnection.values || [];
   const resultsLimited = politiciansResults.filter((_, k) => k < limit);
@@ -98,12 +100,14 @@ const QuizPoliticiansResults: React.FC<Props> = ({
   }
 
   return (
-    <QuizzesSection
-      icon={<FontAwesomeIcon icon={faLandmark} />}
-      title={t("results.famous")}
-    >
-      {content}
-    </QuizzesSection>
+    <div ref={ref}>
+      <QuizzesSection
+        icon={<FontAwesomeIcon icon={faLandmark} />}
+        title={t("results.famous")}
+      >
+        {inView && content}
+      </QuizzesSection>
+    </div>
   );
 };
 
