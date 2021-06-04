@@ -25,6 +25,6 @@ jobs:
         uses: vitalyliber/dokku-github-action@v6.0
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          HOST: ${{ secrets.REMOTE_URL }}
+          HOST: ${{ secrets.HOST }}
           PROJECT: mypolitics-3
           BRANCH: main
