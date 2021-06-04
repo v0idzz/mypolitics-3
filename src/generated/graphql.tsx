@@ -263,7 +263,10 @@ export type CreateTalkPayload = {
 };
 
 export type CreateUserInput = {
-  data?: Maybe<UserInput>;
+  name: Scalars['String'];
+  email: Scalars['String'];
+  password: Scalars['String'];
+  recaptcha: Scalars['String'];
 };
 
 export type CreateUserPayload = {
