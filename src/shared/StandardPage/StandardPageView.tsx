@@ -15,6 +15,7 @@ import {
   BasicTalkPartsFragment,
   FeaturedQuizzesQuery,
   PatreonQuery,
+  CurrentTalkQuery,
 } from "@generated/graphql";
 import GoogleAd from "@shared/GoogleAd";
 import { CurrentTalk } from "@components/Talk";
@@ -38,6 +39,7 @@ interface Props {
   talks?: BasicTalkPartsFragment[];
   quizzes?: FeaturedQuizzesQuery["featuredQuizzes"];
   patreons?: PatreonQuery["patreon"];
+  currentTalk?: CurrentTalkQuery["talksConnection"];
 }
 
 const StandardPage: React.FC<Props> = ({
@@ -47,6 +49,7 @@ const StandardPage: React.FC<Props> = ({
   talks = [],
   quizzes = [],
   patreons,
+  currentTalk,
 }) => {
   const { t } = useTranslation("common");
   const [quizzesRef, quizzesInView] = useInView({ unobserveOnEnter: true });
@@ -104,7 +107,7 @@ const StandardPage: React.FC<Props> = ({
               <GoogleAd id="myp3-standard-middle" />
             </>
           )}
-          <CurrentTalk />
+          {currentTalk && <CurrentTalk data={currentTalk} />}
           {talks.length > 0 && articlesInView && (
             <>
               <div ref={talksRef}>

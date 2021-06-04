@@ -15,7 +15,7 @@ import {
   FeaturedQuizzesQuery,
   PatreonQuery,
   StandardPageDocument,
-  HomePageQuery, HomePageDocument,
+  HomePageQuery, HomePageDocument, CurrentTalkQuery, CurrentTalkDocument, CurrentTalkQueryResult,
 } from '@generated/graphql';
 import { initializeApollo } from "@services/apollo";
 import ShareSocial from "@shared/ShareSocial";
@@ -38,6 +38,7 @@ interface Props {
   partners: HomePageQuery["partner"]["partners"];
   featuredQuizzes: FeaturedQuizzesQuery["featuredQuizzes"];
   patreons: PatreonQuery["patreon"];
+  currentTalk: CurrentTalkQuery["talksConnection"];
 }
 
 const InnerSection = styled.div`
@@ -56,13 +57,14 @@ const Home: React.FC<Props> = ({
   partners,
   featuredQuizzes,
   patreons,
+  currentTalk,
 }) => {
   const { t } = useTranslation("common");
 
   return (
     <PageContainer>
       <Hero />
-      <CurrentTalk />
+      <CurrentTalk data={currentTalk} />
       <QuizSection />
       <InnerSection>
         <Section
@@ -114,6 +116,7 @@ export const getStaticProps = async ({
     query: HomePageDocument,
     variables: {
       lang: toLanguageEnum(locale),
+      date: new Date().toISOString(),
     },
   });
 
@@ -126,6 +129,7 @@ export const getStaticProps = async ({
       talks: homePage?.data?.talks || [],
       partners: homePage?.data.partner.partners || [],
       patreons: homePage?.data.patreon,
+      currentTalk: homePage?.data.talksConnection,
       featuredQuizzes: [
         ...(homePage?.data.featuredQuizzes || []),
         ...(homePage?.data.socialQuizzes || []),

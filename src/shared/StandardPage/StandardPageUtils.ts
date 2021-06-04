@@ -4,6 +4,7 @@ import {
   PatreonQuery,
   StandardPageDocument,
   StandardPageQuery,
+  CurrentTalkQuery,
 } from "@generated/graphql";
 import { initializeApollo } from "@services/apollo";
 import { getRandomPosts } from "@services/ghost";
@@ -19,6 +20,7 @@ export interface StandardPageProps {
   talks: BasicTalkPartsFragment[];
   quizzes: FeaturedQuizzesQuery["featuredQuizzes"];
   patreons: PatreonQuery["patreon"];
+  currentTalk?: CurrentTalkQuery["talksConnection"];
 }
 
 const getData = async ({
@@ -52,6 +54,7 @@ const getData = async ({
     variables: {
       lang: languageEnum,
       locale,
+      date: new Date().toISOString(),
     },
   });
 
@@ -66,6 +69,7 @@ const getData = async ({
     articles: [...(news || []), ...(view || []), ...(randomArticles || [])],
     talks: standardPage?.data.talks || [],
     patreons: standardPage?.data.patreon,
+    currentTalk: standardPage?.data.talksConnection,
     quizzes: [
       ...(standardPage?.data.featuredQuizzes || []),
       ...(standardPage?.data.socialQuizzes || []),
