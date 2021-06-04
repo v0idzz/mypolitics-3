@@ -69,7 +69,10 @@
     "styled-components-breakpoint": "^2.1.1",
     "svg-react-loader": "^0.4.6",
     "use-debounce": "^5.2.1",
+<<<<<<< HEAD
     "webp-loader": "^0.6.0",
+=======
+>>>>>>> main
     "yup": "^0.32.9"
   },
   "devDependencies": {

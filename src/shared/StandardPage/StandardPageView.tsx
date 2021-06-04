@@ -27,7 +27,10 @@ import Button from "@shared/Button";
 import { paths } from "@constants";
 import useTranslation from "next-translate/useTranslation";
 import AlertErrorBoundary from "@shared/AlertErrorBoundary";
+<<<<<<< HEAD
 import { useInView } from "react-hook-inview";
+=======
+>>>>>>> main
 import { Content, Inner } from "./StandardPageStyle";
 
 library.add(faPollH, faPencilRuler);
@@ -117,12 +120,19 @@ const StandardPage: React.FC<Props> = ({
             </>
           )}
           {patreons && <Patreon patreons={patreons} />}
+<<<<<<< HEAD
           {talksInView && (
             <AlertErrorBoundary>
               <RandomContent />
             </AlertErrorBoundary>
           )}
           {randomArticle && talksInView && (
+=======
+          <AlertErrorBoundary>
+            <RandomContent />
+          </AlertErrorBoundary>
+          {randomArticle && (
+>>>>>>> main
             <ArticleContent post={randomArticle} showFull={false} />
           )}
         </Inner>

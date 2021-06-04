@@ -16,9 +16,15 @@ import StandardPage, {
 } from "@shared/StandardPage";
 import { translate } from "@utils/translation";
 import { apiPaths } from "@constants";
+<<<<<<< HEAD
 import { objToBase64Uri } from "@utils/toBase64";
 
 import "@fortawesome/fontawesome-free/css/all.css";
+=======
+import {objToBase64} from "@utils/toBase64";
+
+import '@fortawesome/fontawesome-free/css/all.css'
+>>>>>>> main
 
 interface Props {
   results: ResultsPartsFragment;
