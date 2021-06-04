@@ -6,23 +6,12 @@ import { Toaster } from "react-hot-toast";
 import Layout from "@layout";
 import "modern-normalize/modern-normalize.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-<<<<<<< HEAD
 import { config } from "@fortawesome/fontawesome-svg-core";
-=======
-import { config } from '@fortawesome/fontawesome-svg-core';
->>>>>>> main
 import { FacebookProvider } from "react-facebook";
 import useTranslation from "next-translate/useTranslation";
 import NextNprogress from "nextjs-progressbar";
 
 config.autoAddCss = false;
-<<<<<<< HEAD
-=======
-
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
->>>>>>> main
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const { lang } = useTranslation();

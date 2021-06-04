@@ -262,15 +262,12 @@ export type CreateTalkPayload = {
   talk?: Maybe<Talk>;
 };
 
-<<<<<<< HEAD
 export type CreateUserInput = {
   name: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
   recaptcha: Scalars['String'];
 };
-=======
->>>>>>> main
 
 export type CreateUserPayload = {
   __typename?: 'createUserPayload';
