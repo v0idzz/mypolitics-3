@@ -67,7 +67,6 @@ const Articles: React.FC<Props> = ({ posts, languageNotAvailable }) => {
           />
         }
       />
-      <CurrentTalk />
     </PageContainer>
   );
 };
