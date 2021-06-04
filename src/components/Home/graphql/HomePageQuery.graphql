@@ -1,4 +1,4 @@
-query HomePage($lang: Language!) {
+query HomePage($lang: Language!, $date: String!) {
     talks(limit: 2, sort: "end:desc") {
         ...BasicTalkParts
     }
@@ -6,7 +6,7 @@ query HomePage($lang: Language!) {
         _id
         partners {
             name
-            image {
+            image { 
                 formats
             }
             url
@@ -21,5 +21,18 @@ query HomePage($lang: Language!) {
     patreon {
         updatedAt
         list
+    }
+    talksConnection(where:{ start_lt: $date, end_gt: $date }) {
+        values {
+            id
+            published_at
+            title
+            url
+            type
+            lang
+        }
+        aggregate {
+            count
+        }
     }
 }

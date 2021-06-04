@@ -86,7 +86,10 @@ export const Lead = styled(DefaultLead)`
 `;
 
 export const Illustration = styled.picture`
+  display: contains;
+
   &, & > img {
+    background: #02b3dc;
     filter: drop-shadow(0px 0px 64px rgba(29, 114, 136, 0.25));
     position: absolute;
     top: 0;
@@ -96,6 +99,7 @@ export const Illustration = styled.picture`
     border-radius: 100%;
     overflow: hidden;
     max-width: 7rem;
+    right: 0;
 
     ${breakpoint("md")`
         height: 20rem;

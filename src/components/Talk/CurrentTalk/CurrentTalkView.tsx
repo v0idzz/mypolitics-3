@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useCurrentTalkLazyQuery } from "@generated/graphql";
+import { CurrentTalkQuery } from "@generated/graphql";
 import useTranslation from "next-translate/useTranslation";
 import { Title, Lead } from "@shared/Typography";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
@@ -15,23 +15,18 @@ import {
   BadgeTitle,
 } from "./CurrentTalkStyle";
 
-const CurrentTalk: React.FC = () => {
+interface Props {
+  data: CurrentTalkQuery["talksConnection"];
+}
+
+const CurrentTalk: React.FC<Props> = ({ data }) => {
   const { t } = useTranslation("common");
-  const [getData, { data }] = useCurrentTalkLazyQuery();
 
-  useEffect(() => {
-    getData({
-      variables: {
-        date: new Date().toISOString(),
-      },
-    });
-  }, []);
-
-  if (!data || data?.talksConnection.values.length === 0) {
+  if (!data || data?.values.length === 0) {
     return null;
   }
 
-  const { type, title, url } = data.talksConnection.values[0];
+  const { type, title, url } = data.values[0];
   const videoId = getVideoId(url);
 
   return (

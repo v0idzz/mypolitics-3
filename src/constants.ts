@@ -15,6 +15,7 @@ export const recaptchaSiteKey =
 export const Cookies = {
   RESPONDENT: "mypolitics-respondent",
   INITIALIZED: "mypolitics-initialized",
+  JWT: "mypolitics-jwt",
 };
 
 export const Headers = {
