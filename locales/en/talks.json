@@ -5,5 +5,12 @@
   },
   "hero": {
     "title": "Debates"
+<<<<<<< HEAD
+  },
+  "youtube": {
+    "title": "Looking for something else?",
+    "button": "Watch more on YouTube"
+=======
+>>>>>>> main
   }
 }

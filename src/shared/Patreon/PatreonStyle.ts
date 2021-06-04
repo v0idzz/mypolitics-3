@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled, { css, DefaultTheme } from "styled-components";
 import { transparentize } from "polished";
 import breakpoint from "styled-components-breakpoint";
+import { ParsedPatreonTypeExceptRegular } from "@shared/Patreon/types";
 
 export const Container = styled.div`
   display: grid;
@@ -64,27 +65,93 @@ export const Inner = styled.div`
   padding: 2rem;
   background: ${({ theme }) => theme.colors.backgroundDarken};
   border-radius: 0.5rem;
-  
+
   ${breakpoint("xs", "md")`
     grid-gap: 1rem;
     padding: 1rem;
   `};
 `;
 
-export const ListWrapper = styled.div`
+export const ListWrapper = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, 160px);
   color: ${({ theme }) => theme.colors.textMuted};
   grid-gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
-  p {
+  li {
     margin: 0;
     padding: 0;
   }
-  
+
   ${breakpoint("xs", "md")`
     grid-gap: 0.75rem;
   `};
+`;
+
+const getPatreonsColor = (
+  patreonType: ParsedPatreonTypeExceptRegular,
+  theme: DefaultTheme
+) => (patreonType === "diamond" ? theme.colors.primary : theme.colors.yellow);
+
+interface BasePatreonProps {
+  type?: ParsedPatreonTypeExceptRegular;
+}
+
+export const PatreonsContainer = styled.section<BasePatreonProps>`
+  ${({ type }) =>
+    type === "diamond" &&
+    css`
+      flex-direction: column;
+    `}
+  border-radius: 0.5rem;
+  align-items: center;
+  display: flex;
+  background: ${({ theme, type }) =>
+    transparentize(0.9, getPatreonsColor(type, theme))};
+  padding: 1rem;
+
+  & > h3 {
+    border-radius: 0.5rem;
+    background: ${({ theme, type }) => getPatreonsColor(type, theme)};
+    padding: 0.5rem;
+    color: white;
+    white-space: nowrap;
+
+    & > span {
+      margin-right: 0.5rem;
+    }
+  }
+`;
+
+export const PatreonsList = styled.ul<BasePatreonProps>`
+  ${({ type }) =>
+    type === "diamond" &&
+    css`
+      flex-direction: column;
+    `}
+
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  flex-grow: 1;
+  margin-top: ${({ type }) => (type === "diamond" ? "0.5rem" : "0")};
+  margin-bottom: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-weight: bold;
+  font-size: ${({ type }) => (type === "diamond" ? "1.25rem" : "1.125rem")};
+  text-align: center;
+  white-space: nowrap;
+  flex-wrap: wrap;
+  color: ${({ theme, type }) => getPatreonsColor(type, theme)};
+
+  & > li {
+    padding: 0.25rem 0.5rem;
+  }
 `;
 
 export const Date = styled.div`

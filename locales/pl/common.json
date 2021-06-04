@@ -60,6 +60,7 @@
     "9": "Użytkownik nie istnieje",
     "10": "Już oddałeś/oddałaś głos",
     "11": "Email weryfikacyjny został już wysłany. Spróbuj ponownie za 15 minut",
+    "12": "Brakująca reCAPTCHA",
     "default": "Nieznany błąd"
   },
   "talkType": {
@@ -81,6 +82,8 @@
     "title": "Patronite",
     "description": "Nie mamy powiązania z żadną opcją wpływu i nikt nas nie finansuje. Możesz wesprzeć nasze działania poprzez Patronite",
     "list": {
+      "diamond": "Patroni Diamentowi",
+      "gold": "Patroni Złoci",
       "title": "Patroni myPolitics",
       "updatedAt": "Stan na dzień:"
     },

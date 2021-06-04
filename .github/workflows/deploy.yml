@@ -22,9 +22,18 @@ jobs:
           fetch-depth: 0
 
       - name: Push to dokku
+<<<<<<< HEAD
+        uses: vitalyliber/dokku-github-action@v6.0
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          HOST: ${{ secrets.REMOTE_URL }}
+          PROJECT: mypolitics-3
+          BRANCH: main
+=======
         uses: dokku/github-action@master
         with:
           git_remote_url: ${{ secrets.REMOTE_URL }}
           ssh_host_key: ${{ secrets.SSH_HOST_KEY }}
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
           git_push_flags: -q
+>>>>>>> main

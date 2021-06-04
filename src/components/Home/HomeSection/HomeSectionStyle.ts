@@ -85,22 +85,28 @@ export const Lead = styled(DefaultLead)`
   `};
 `;
 
-export const Illustration = styled.img`
-  filter: drop-shadow(0px 0px 64px rgba(29, 114, 136, 0.25));
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  height: auto;
-  width: 33%;
-  border-radius: 100%;
-  overflow: hidden;
-  max-width: 7rem;
+export const Illustration = styled.picture`
+  display: contains;
 
-  ${breakpoint("md")`
-      height: 20rem;
-      width: 20rem;
-      max-width: unset;
-    `};
+  &, & > img {
+    background: #02b3dc;
+    filter: drop-shadow(0px 0px 64px rgba(29, 114, 136, 0.25));
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    height: auto;
+    width: 33%;
+    border-radius: 100%;
+    overflow: hidden;
+    max-width: 7rem;
+    right: 0;
+
+    ${breakpoint("md")`
+        height: 20rem;
+        width: 20rem;
+        max-width: unset;
+      `};
+  }
 `;
 
 export const AdditionalContent = styled.div`

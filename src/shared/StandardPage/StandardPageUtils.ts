@@ -1,13 +1,10 @@
 import {
   BasicTalkPartsFragment,
-  FeaturedQuizzesDocument,
   FeaturedQuizzesQuery,
-  PatreonDocument,
   PatreonQuery,
   StandardPageDocument,
   StandardPageQuery,
-  TalksByFilterDocument,
-  TalksByFilterQuery,
+  CurrentTalkQuery,
 } from "@generated/graphql";
 import { initializeApollo } from "@services/apollo";
 import { getRandomPosts } from "@services/ghost";
@@ -16,20 +13,23 @@ import { categoriesConfig } from "@components/Media/utils/useCategory";
 import { NextPageContext } from "next";
 import { toLanguageEnum } from "@utils/toLanguageEnum";
 
+type LocaleContext = NextPageContext & { locale: string };
+
 export interface StandardPageProps {
   articles: PostOrPage[];
   talks: BasicTalkPartsFragment[];
   quizzes: FeaturedQuizzesQuery["featuredQuizzes"];
   patreons: PatreonQuery["patreon"];
+  currentTalk?: CurrentTalkQuery["talksConnection"];
 }
 
-export const getStandardPageProps = async ({
+const getData = async ({
   locale,
   query,
-}: NextPageContext & { locale: string }): Promise<StandardPageProps> => {
+}: LocaleContext): Promise<StandardPageProps> => {
   const client = initializeApollo();
   const [viewTag, newsTag] = categoriesConfig[locale];
-  const notCurrentFilter = `slug:-['${query.slug}']`;
+  const notCurrentFilter = `slug:-['${query?.slug}']`;
   const languageEnum = toLanguageEnum(locale);
 
   const newsQuery = getRandomPosts({
@@ -54,6 +54,7 @@ export const getStandardPageProps = async ({
     variables: {
       lang: languageEnum,
       locale,
+      date: new Date().toISOString(),
     },
   });
 
@@ -68,9 +69,35 @@ export const getStandardPageProps = async ({
     articles: [...(news || []), ...(view || []), ...(randomArticles || [])],
     talks: standardPage?.data.talks || [],
     patreons: standardPage?.data.patreon,
+    currentTalk: standardPage?.data.talksConnection,
     quizzes: [
       ...(standardPage?.data.featuredQuizzes || []),
       ...(standardPage?.data.socialQuizzes || []),
     ],
   };
 };
+
+let cache: { lastUpdated: Date; props: StandardPageProps };
+const CACHE_LIVE = 1000 * 60 * 10; // 10 minutes miliseconds
+const isCacheValid = (currentTime) =>
+  currentTime.getTime() - (cache.lastUpdated.getTime() - CACHE_LIVE) >
+  CACHE_LIVE;
+
+export async function getStandardPageProps(
+  context: LocaleContext
+): Promise<StandardPageProps> {
+  const currentTime = new Date();
+  const fetchFromCache = cache && isCacheValid(currentTime);
+
+  if (fetchFromCache) {
+    return cache.props;
+  }
+
+  const props = await getData(context);
+  cache = {
+    lastUpdated: currentTime,
+    props,
+  };
+
+  return props;
+}

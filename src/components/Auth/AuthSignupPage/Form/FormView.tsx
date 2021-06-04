@@ -46,15 +46,22 @@ const FormView: React.FC = () => {
 
   const formik = useFormik({
     initialValues,
-    onSubmit: async ({ repeatEmail, ...values }) => {
-      try {
-        await createUser({
-          variables: {
-            values,
-          },
+    onSubmit: async (values) => {
+      if (!values.recaptcha) {
+        handleErrors({
+          code: 12,
+          text: "Missing reCAPTCHA",
         });
-      } catch (e) {
-        handleErrors(e);
+      } else {
+        try {
+          await createUser({
+            variables: {
+              values,
+            },
+          });
+        } catch (e) {
+          handleErrors(e);
+        }
       }
     },
     validationSchema: schema,
@@ -67,6 +74,74 @@ const FormView: React.FC = () => {
 
   return (
     <Content onSubmit={formik.handleSubmit}>
+<<<<<<< HEAD
+      {!data?.createUser.id && (
+        <>
+          <InputLabel title={t("form.fullName")}>
+            <Input
+              name="name"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.name}
+              isInvalid={!!(formik.touched.name && formik.errors.name)}
+            />
+            {formik.touched.name && formik.errors.name && (
+              <Alert type="error">{formik.errors.name}</Alert>
+            )}
+          </InputLabel>
+          <InputLabel title={t("form.email")}>
+            <Input
+              name="email"
+              type="email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              placeholder="john.doe@mypolitics.pl"
+              required
+              isInvalid={!!(formik.touched.email && formik.errors.email)}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <Alert type="error">{formik.errors.email}</Alert>
+            )}
+          </InputLabel>
+          <InputLabel title={t("form.emailRepeat")}>
+            <Input
+              name="repeatEmail"
+              type="email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.repeatEmail}
+              required
+              isInvalid={
+                !!(formik.touched.repeatEmail && formik.errors.repeatEmail)
+              }
+            />
+            {formik.touched.repeatEmail && formik.errors.repeatEmail && (
+              <Alert type="error">{formik.errors.repeatEmail}</Alert>
+            )}
+          </InputLabel>
+          <InputLabel title={t("form.password")}>
+            <Input
+              name="password"
+              type="password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              required
+              isInvalid={!!(formik.touched.password && formik.errors.password)}
+            />
+            {formik.touched.password && formik.errors.password && (
+              <Alert type="error">{formik.errors.password}</Alert>
+            )}
+          </InputLabel>
+          <ReCAPTCHA
+            onChange={(value) => formik.setFieldValue("recaptcha", value)}
+            sitekey={sitekey}
+          />
+        </>
+      )}
+=======
       <InputLabel title={t("form.fullName")}>
         <Input
           name="name"
@@ -129,6 +204,7 @@ const FormView: React.FC = () => {
         onChange={(value) => formik.setFieldValue("recaptcha", value)}
         sitekey={sitekey}
       />
+>>>>>>> main
       {data?.createUser.id && (
         <Alert type="success">
           <Trans

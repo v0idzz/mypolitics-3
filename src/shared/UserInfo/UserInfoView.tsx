@@ -22,6 +22,7 @@ import {
   BadgeWrapper,
   LogoutButton,
 } from "./UserInfoStyle";
+import { ErrorBoundary } from "react-error-boundary";
 
 library.add(faCrown, faShieldAlt, faSignOutAlt, faSignInAlt);
 
@@ -93,9 +94,11 @@ const UserInfo: React.FC = () => {
 };
 
 export const UserInfoWrapper: React.FC = () => (
-  <ClientWrapper>
-    <UserInfo />
-  </ClientWrapper>
+  <ErrorBoundary fallback={null}>
+    <ClientWrapper>
+      <UserInfo />
+    </ClientWrapper>
+  </ErrorBoundary>
 );
 
 export default UserInfoWrapper;

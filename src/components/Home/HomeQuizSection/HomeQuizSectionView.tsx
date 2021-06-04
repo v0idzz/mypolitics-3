@@ -7,15 +7,23 @@ import { paths } from "@constants";
 import * as R from "ramda";
 import { AdditionalContentImage } from "./HomeQuizSectionStyle";
 
-const plImg = require("@assets/images/mypolitics-quiz-results-pl.png");
-const intImg = require("@assets/images/mypolitics-quiz-results.png");
+const images = {
+  pl: {
+    modern: require("@assets/images/mypolitics-quiz-results-pl.png?webp"),
+    fallback: require("@assets/images/mypolitics-quiz-results-pl.png?resize&sizes[]=400&sizes[]=800"),
+  },
+  en: {
+    modern: require("@assets/images/mypolitics-quiz-results.png?webp"),
+    fallback: require("@assets/images/mypolitics-quiz-results.png?resize&sizes[]=400&sizes[]=800"),
+  },
+};
 
 const HomeQuizSection: React.FC = () => {
   const { t, lang } = useTranslation("home");
 
-  const contentSrc = R.cond([
-    [R.equals("pl"), R.always(plImg)],
-    [R.T, R.always(intImg)],
+  const { modern: modernImg, fallback: fallbackImg } = R.cond([
+    [R.equals("pl"), R.always(images.pl)],
+    [R.T, R.always(images.en)],
   ])(lang);
 
   return (
@@ -23,8 +31,17 @@ const HomeQuizSection: React.FC = () => {
       title={t("quiz.title")}
       slogan={t("quiz.slogan")}
       variant="right"
-      illustrationUrl={require("@assets/images/quiz.png")}
-      additionalContent={<AdditionalContentImage src={contentSrc} />}
+      illustrationUrls={{
+        modern: require("@assets/images/quiz.png?webp"),
+        fallback: require("@assets/images/quiz.png?resize&sizes[]=320&sizes[]=120"),
+      }}
+      additionalContent={
+        <AdditionalContentImage>
+          <source srcSet={modernImg} type="image/webp" />
+          <source srcSet={fallbackImg.srcSet} type="image/png" />
+          <img src={fallbackImg.src} alt={t("quiz.title")} />
+        </AdditionalContentImage>
+      }
       content={
         <>
           <p>{t("quiz.content.text")}</p>

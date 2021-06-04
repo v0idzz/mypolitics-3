@@ -5,7 +5,7 @@ const { publicRuntimeConfig } = getConfig();
 export const BASE_PATH =
   typeof window !== "undefined"
     ? window.location.origin
-    : publicRuntimeConfig.BASE_PATH || "";
+    : publicRuntimeConfig.BASE_PATH || "https://mypolitics.pl";
 
 export const recaptchaSiteKey =
   publicRuntimeConfig.NODE_ENV === "production"
@@ -15,6 +15,7 @@ export const recaptchaSiteKey =
 export const Cookies = {
   RESPONDENT: "mypolitics-respondent",
   INITIALIZED: "mypolitics-initialized",
+  JWT: "mypolitics-jwt",
 };
 
 export const Headers = {

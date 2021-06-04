@@ -1,4 +1,4 @@
-query StandardPage($lang: Language!, $locale: String!) {
+query StandardPage($lang: Language!, $locale: String!, $date: String!) {
     talks(limit: 3, sort: "end:desc", where: { lang: $locale }) {
         ...BasicTalkParts
     }
@@ -11,5 +11,18 @@ query StandardPage($lang: Language!, $locale: String!) {
     patreon {
         updatedAt
         list
+    }
+    talksConnection(where:{ start_lt: $date, end_gt: $date }) {
+        values {
+            id
+            published_at
+            title
+            url
+            type
+            lang
+        }
+        aggregate {
+            count
+        }
     }
 }

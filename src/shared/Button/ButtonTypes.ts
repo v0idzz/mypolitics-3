@@ -11,6 +11,7 @@ export type Background =
   | "white"
   | "discord"
   | "facebook"
+  | "youtube"
   | "bluish";
 export type Backgrounds = Record<Background, FlattenSimpleInterpolation>;
 

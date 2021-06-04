@@ -15,6 +15,7 @@ import {
   BasicTalkPartsFragment,
   FeaturedQuizzesQuery,
   PatreonQuery,
+  CurrentTalkQuery,
 } from "@generated/graphql";
 import GoogleAd from "@shared/GoogleAd";
 import { CurrentTalk } from "@components/Talk";
@@ -26,6 +27,10 @@ import Button from "@shared/Button";
 import { paths } from "@constants";
 import useTranslation from "next-translate/useTranslation";
 import AlertErrorBoundary from "@shared/AlertErrorBoundary";
+<<<<<<< HEAD
+import { useInView } from "react-hook-inview";
+=======
+>>>>>>> main
 import { Content, Inner } from "./StandardPageStyle";
 
 library.add(faPollH, faPencilRuler);
@@ -37,6 +42,7 @@ interface Props {
   talks?: BasicTalkPartsFragment[];
   quizzes?: FeaturedQuizzesQuery["featuredQuizzes"];
   patreons?: PatreonQuery["patreon"];
+  currentTalk?: CurrentTalkQuery["talksConnection"];
 }
 
 const StandardPage: React.FC<Props> = ({
@@ -46,8 +52,14 @@ const StandardPage: React.FC<Props> = ({
   talks = [],
   quizzes = [],
   patreons,
+  currentTalk,
 }) => {
   const { t } = useTranslation("common");
+  const [quizzesRef, quizzesInView] = useInView({ unobserveOnEnter: true });
+  const [articlesRef, articlesInView] = useInView({ unobserveOnEnter: true });
+  const [talksRef, talksInView] = useInView({
+    unobserveOnEnter: true,
+  });
   const shortenedArticles = articles.filter((_, k) => k < 3);
   const randomArticle = articles.length > 0 && articles[articles.length - 1];
 
@@ -59,53 +71,68 @@ const StandardPage: React.FC<Props> = ({
           <Inner style={{ maxWidth: 850, margin: "auto" }}>
             {quizzes.length > 0 && (
               <>
-                <Section
-                  title={t("standardPage.section.quizzes.title")}
-                  icon={<FontAwesomeIcon icon={faPollH} />}
-                >
-                  {quizzes.map((quiz) => (
-                    <QuizLink
-                      key={quiz.id}
-                      quiz={quiz}
-                      featured={quiz.slug === "mypolitics"}
-                      showType
-                    />
-                  ))}
-                  <Link href={paths.quizzes} passHref>
-                    <Button
-                      as="a"
-                      beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
-                    >
-                      {t("standardPage.section.quizzes.button")}
-                    </Button>
-                  </Link>
-                </Section>
+                <div ref={quizzesRef}>
+                  <Section
+                    title={t("standardPage.section.quizzes.title")}
+                    icon={<FontAwesomeIcon icon={faPollH} />}
+                  >
+                    {quizzes.map((quiz) => (
+                      <QuizLink
+                        key={quiz.id}
+                        quiz={quiz}
+                        featured={quiz.slug === "mypolitics"}
+                        showType
+                      />
+                    ))}
+                    <Link href={paths.quizzes} passHref>
+                      <Button
+                        as="a"
+                        beforeIcon={<FontAwesomeIcon icon={faArrowDown} />}
+                      >
+                        {t("standardPage.section.quizzes.button")}
+                      </Button>
+                    </Link>
+                  </Section>
+                </div>
                 <EditorCTA />
                 <ShareSocial />
               </>
             )}
           </Inner>
-          {articles.length > 0 && (
+          {articles.length > 0 && quizzesInView && (
             <>
-              <ArticlesListSection
-                posts={shortenedArticles}
-                type="short-news"
-              />
+              <div ref={articlesRef}>
+                <ArticlesListSection
+                  posts={shortenedArticles}
+                  type="short-news"
+                />
+              </div>
               <GoogleAd id="myp3-standard-middle" />
             </>
           )}
-          <CurrentTalk />
-          {talks.length > 0 && (
+          {currentTalk && <CurrentTalk data={currentTalk} />}
+          {talks.length > 0 && articlesInView && (
             <>
-              <ArticlesListSection talks={talks} type="short-talk" />
+              <div ref={talksRef}>
+                <ArticlesListSection talks={talks} type="short-talk" />
+              </div>
               <GoogleAd id="myp3-standard-bottom" />
             </>
           )}
           {patreons && <Patreon patreons={patreons} />}
+<<<<<<< HEAD
+          {talksInView && (
+            <AlertErrorBoundary>
+              <RandomContent />
+            </AlertErrorBoundary>
+          )}
+          {randomArticle && talksInView && (
+=======
           <AlertErrorBoundary>
             <RandomContent />
           </AlertErrorBoundary>
           {randomArticle && (
+>>>>>>> main
             <ArticleContent post={randomArticle} showFull={false} />
           )}
         </Inner>

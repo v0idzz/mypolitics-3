@@ -15,7 +15,7 @@ import {
   FeaturedQuizzesQuery,
   PatreonQuery,
   StandardPageDocument,
-  HomePageQuery, HomePageDocument,
+  HomePageQuery, HomePageDocument, CurrentTalkQuery, CurrentTalkDocument, CurrentTalkQueryResult,
 } from '@generated/graphql';
 import { initializeApollo } from "@services/apollo";
 import ShareSocial from "@shared/ShareSocial";
@@ -38,6 +38,7 @@ interface Props {
   partners: HomePageQuery["partner"]["partners"];
   featuredQuizzes: FeaturedQuizzesQuery["featuredQuizzes"];
   patreons: PatreonQuery["patreon"];
+  currentTalk: CurrentTalkQuery["talksConnection"];
 }
 
 const InnerSection = styled.div`
@@ -56,13 +57,14 @@ const Home: React.FC<Props> = ({
   partners,
   featuredQuizzes,
   patreons,
+  currentTalk,
 }) => {
   const { t } = useTranslation("common");
 
   return (
     <PageContainer>
       <Hero />
-      <CurrentTalk />
+      <CurrentTalk data={currentTalk} />
       <QuizSection />
       <InnerSection>
         <Section
@@ -99,11 +101,11 @@ const Home: React.FC<Props> = ({
   );
 };
 
-export const getServerSideProps = async ({
+export const getStaticProps = async ({
   locale,
 }: {
   locale: string;
-}): Promise<{ props: Props }> => {
+}): Promise<{ props: Props; revalidate: number }> => {
   const client = initializeApollo();
 
   const postsQuery = getManyPosts({
@@ -114,17 +116,20 @@ export const getServerSideProps = async ({
     query: HomePageDocument,
     variables: {
       lang: toLanguageEnum(locale),
+      date: new Date().toISOString(),
     },
   });
 
   const [posts, homePage] = await Promise.all([postsQuery, homePageQuery]);
 
   return {
+    revalidate: 60,
     props: {
       posts: posts || [],
       talks: homePage?.data?.talks || [],
       partners: homePage?.data.partner.partners || [],
       patreons: homePage?.data.patreon,
+      currentTalk: homePage?.data.talksConnection,
       featuredQuizzes: [
         ...(homePage?.data.featuredQuizzes || []),
         ...(homePage?.data.socialQuizzes || []),

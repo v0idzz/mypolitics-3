@@ -16,9 +16,15 @@ import StandardPage, {
 } from "@shared/StandardPage";
 import { translate } from "@utils/translation";
 import { apiPaths } from "@constants";
+<<<<<<< HEAD
+import { objToBase64Uri } from "@utils/toBase64";
+
+import "@fortawesome/fontawesome-free/css/all.css";
+=======
 import {objToBase64} from "@utils/toBase64";
 
 import '@fortawesome/fontawesome-free/css/all.css'
+>>>>>>> main
 
 interface Props {
   results: ResultsPartsFragment;
@@ -34,7 +40,7 @@ const ResultsPage: React.FC<Props> = ({
   const { lang, t } = useTranslation("results");
   const title = translate(results.quiz.title, lang);
   const description = translate(results.quiz.description, lang);
-  const image = apiPaths.utils.image("quiz", objToBase64({ title }));
+  const image = apiPaths.utils.image("quiz", objToBase64Uri({ title }));
 
   const standardHeader = {
     title: t("SEO.title", { title }),
