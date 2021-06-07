@@ -46,7 +46,7 @@ const FormView: React.FC = () => {
 
   const formik = useFormik({
     initialValues,
-    onSubmit: async (values) => {
+    onSubmit: async ({ repeatEmail, ...values }) => {
       if (!values.recaptcha) {
         handleErrors({
           code: 12,
